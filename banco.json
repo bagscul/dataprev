@@ -1,0 +1,2147 @@
+[
+{
+"tag": "eng-software",
+"q": "Uma equipe de desenvolvimento da Dataprev adota um processo em que os requisitos são congelados no início, e as fases de análise, projeto, implementação e testes ocorrem em sequência estrita, sem sobreposição. Sobre esse modelo, é correto afirmar que:",
+"alts": [
+"é o modelo incremental, pois cada fase incrementa a anterior",
+"é o modelo em cascata, adequado quando os requisitos são bem compreendidos e estáveis",
+"é o modelo espiral, pois prioriza a análise de riscos entre as fases",
+"é o modelo ágil, pois divide o trabalho em fases curtas",
+"é a prototipação evolutiva, pois o produto evolui fase a fase"
+],
+"ans": 1,
+"why": "Sequência estrita de fases sem sobreposição e requisitos congelados no início definem o modelo em cascata (waterfall). A FGV adora contrastar cascata com incremental."
+},
+{
+"tag": "eng-software",
+"q": "No Scrum, o artefato que reúne, em ordem de prioridade, tudo o que se sabe ser necessário no produto, sendo de responsabilidade exclusiva do Product Owner, é:",
+"alts": [
+"Sprint Backlog",
+"Incremento",
+"Product Backlog",
+"Definition of Done",
+"Burndown Chart"
+],
+"ans": 2,
+"why": "O Product Backlog é a lista ordenada única de tudo que é necessário no produto, gerida pelo PO. O Sprint Backlog é o recorte selecionado para a sprint, gerido pelos Developers."
+},
+{
+"tag": "eng-software",
+"q": "Durante a elicitação de requisitos de um sistema previdenciário, o analista reuniu simultaneamente representantes de diversas áreas em sessões estruturadas e facilitadas para produzir, em conjunto, os requisitos do sistema. Essa técnica é denominada:",
+"alts": [
+"etnografia",
+"brainstorming",
+"JAD (Joint Application Design)",
+"prototipação",
+"entrevista não estruturada"
+],
+"ans": 2,
+"why": "Sessões estruturadas, facilitadas e com múltiplos stakeholders produzindo requisitos em conjunto é a definição de JAD. Brainstorming é livre e sem estrutura; etnografia é observação do usuário no ambiente."
+},
+{
+"tag": "eng-software",
+"q": "No TDD (Test-Driven Development), a ordem correta do ciclo de trabalho é:",
+"alts": [
+"escrever o código, escrever o teste, refatorar",
+"escrever o teste que falha, escrever o código mínimo que passa, refatorar",
+"refatorar, escrever o teste, escrever o código",
+"escrever o código, refatorar, escrever o teste que passa",
+"escrever todos os testes do módulo, implementar o módulo, homologar"
+],
+"ans": 1,
+"why": "O ciclo red-green-refactor: teste que falha primeiro, código mínimo pra passar, depois refatoração. Escrever código antes do teste viola a premissa central do TDD."
+},
+{
+"tag": "eng-software",
+"q": "Um teste que verifica a interação correta entre o módulo de cálculo de benefícios e o módulo de persistência, exercitando os dois em conjunto, é classificado como teste de:",
+"alts": [
+"unidade",
+"integração",
+"aceitação",
+"regressão",
+"carga"
+],
+"ans": 1,
+"why": "Exercitar dois ou mais módulos em conjunto, verificando a interação entre eles, é teste de integração. Unidade isola um componente; aceitação valida contra requisitos do usuário."
+},
+{
+"tag": "eng-software",
+"q": "Sobre o Kanban, analise as afirmativas: I. Limita o trabalho em progresso (WIP) por coluna. II. Exige sprints de duração fixa, como o Scrum. III. Visualiza o fluxo de trabalho em um quadro. Está correto o que se afirma em:",
+"alts": [
+"I, apenas",
+"I e II, apenas",
+"I e III, apenas",
+"II e III, apenas",
+"I, II e III"
+],
+"ans": 2,
+"why": "Kanban limita WIP e visualiza fluxo, mas é fluxo contínuo: não tem sprints de duração fixa. Esse contraste com Scrum é pegadinha recorrente da FGV."
+},
+{
+"tag": "eng-software",
+"q": "A métrica de Análise de Pontos de Função mede o tamanho de um software com base:",
+"alts": [
+"nas linhas de código-fonte produzidas",
+"no esforço em homens-hora da equipe",
+"nas funcionalidades entregues ao usuário, independentemente da tecnologia",
+"na quantidade de classes e métodos do projeto",
+"na velocidade média das sprints anteriores"
+],
+"ans": 2,
+"why": "APF mede tamanho funcional do ponto de vista do usuário, independente de linguagem ou tecnologia. É o oposto conceitual de LOC. Story points, por sua vez, medem esforço relativo, não tamanho funcional."
+},
+{
+"tag": "banco-dados",
+"q": "Uma tabela está na 2FN e não possui atributos não-chave que dependam transitivamente da chave primária. É correto afirmar que essa tabela:",
+"alts": [
+"está apenas na 1FN",
+"está na 3FN",
+"está necessariamente na FNBC",
+"viola a 2FN",
+"possui dependências parciais"
+],
+"ans": 1,
+"why": "3FN = 2FN + ausência de dependências transitivas. FNBC é mais restritiva e não é garantida. A FGV cobra a cadeia 1FN (atomicidade) → 2FN (sem dependência parcial) → 3FN (sem transitiva) com precisão."
+},
+{
+"tag": "banco-dados",
+"q": "Considere as tabelas EMPREGADO(id, nome, dept_id) e DEPTO(id, nome). A consulta que retorna TODOS os empregados, incluindo os sem departamento, junto com o nome do departamento quando houver, usa:",
+"alts": [
+"INNER JOIN",
+"LEFT JOIN partindo de EMPREGADO",
+"RIGHT JOIN partindo de EMPREGADO",
+"CROSS JOIN",
+"FULL JOIN com filtro WHERE dept_id IS NOT NULL"
+],
+"ans": 1,
+"why": "LEFT JOIN preserva todas as linhas da tabela à esquerda (EMPREGADO), preenchendo com NULL quando não há correspondência. INNER JOIN eliminaria os sem departamento."
+},
+{
+"tag": "banco-dados",
+"q": "Sobre as propriedades ACID de transações, a garantia de que uma transação levará o banco de um estado válido a outro estado válido, respeitando todas as regras e restrições definidas, é a:",
+"alts": [
+"atomicidade",
+"consistência",
+"isolamento",
+"durabilidade",
+"disponibilidade"
+],
+"ans": 1,
+"why": "Consistência = estado válido para estado válido. Atomicidade é tudo-ou-nada; isolamento é não-interferência entre transações concorrentes; durabilidade é persistência após commit. Disponibilidade nem faz parte do ACID (é do CAP)."
+},
+{
+"tag": "banco-dados",
+"q": "Um sistema precisa armazenar documentos JSON com estruturas variáveis e sem esquema fixo, priorizando escalabilidade horizontal. O tipo de banco NoSQL mais adequado é:",
+"alts": [
+"chave-valor, como o Redis puro",
+"orientado a documentos, como o MongoDB",
+"colunar, como o Cassandra",
+"orientado a grafos, como o Neo4j",
+"relacional distribuído"
+],
+"ans": 1,
+"why": "Documentos JSON com esquema flexível é o caso de uso canônico dos bancos de documentos. Chave-valor não consulta o interior do valor; grafos servem para relacionamentos densos."
+},
+{
+"tag": "banco-dados",
+"q": "Em SQL, o comando TRUNCATE TABLE difere do DELETE sem WHERE porque o TRUNCATE:",
+"alts": [
+"permite cláusula WHERE para filtrar linhas",
+"é uma operação DML registrada linha a linha no log",
+"é DDL, geralmente não dispara triggers de DELETE e reinicia contadores de identidade",
+"pode ser desfeito individualmente linha a linha",
+"é sempre mais lento em tabelas grandes"
+],
+"ans": 2,
+"why": "TRUNCATE é DDL: desaloca páginas em bloco, não dispara triggers de linha e costuma resetar sequences/identity. DELETE é DML, linha a linha, logado. Classificar TRUNCATE como DDL é pegadinha clássica."
+},
+{
+"tag": "banco-dados",
+"q": "Uma view materializada difere de uma view comum porque:",
+"alts": [
+"não pode ser consultada com SELECT",
+"armazena fisicamente o resultado da consulta, exigindo atualização periódica",
+"é sempre atualizada em tempo real sem custo",
+"só pode ser criada sobre uma única tabela",
+"não aceita índices"
+],
+"ans": 1,
+"why": "View comum é apenas uma consulta nomeada, resolvida em tempo de execução. Materializada persiste o resultado em disco e precisa de refresh, trocando atualidade por desempenho de leitura."
+},
+{
+"tag": "java",
+"q": "Em Java, sobre a diferença entre == e equals() para objetos String, é correto afirmar que:",
+"alts": [
+"== compara conteúdo e equals() compara referência",
+"ambos comparam sempre o conteúdo",
+"== compara referências de memória e equals() compara o conteúdo",
+"equals() só funciona para strings literais",
+"== lança exceção quando aplicado a objetos"
+],
+"ans": 2,
+"why": "== compara identidade (mesma referência). equals() na String compara conteúdo caractere a caractere. O pool de strings faz literais iguais às vezes passarem no ==, o que torna a pegadinha ainda mais traiçoeira."
+},
+{
+"tag": "java",
+"q": "No Spring Framework, a anotação que marca uma classe como componente de acesso a dados, com tradução automática de exceções de persistência, é:",
+"alts": [
+"@Service",
+"@Controller",
+"@Repository",
+"@Component",
+"@Autowired"
+],
+"ans": 2,
+"why": "@Repository é o estereótipo da camada de persistência e ativa a tradução de exceções específicas do provedor para a hierarquia DataAccessException do Spring. @Service é lógica de negócio; @Autowired é injeção, não estereótipo."
+},
+{
+"tag": "java",
+"q": "No JPA, a anotação que define o relacionamento em que muitos registros de uma entidade se associam a um registro de outra é:",
+"alts": [
+"@OneToOne",
+"@OneToMany",
+"@ManyToOne",
+"@JoinTable",
+"@ElementCollection"
+],
+"ans": 2,
+"why": "Do lado 'muitos' apontando para o lado 'um', usa-se @ManyToOne (ex.: muitos Empregados para um Departamento). @OneToMany é a visão inversa, do lado 'um'."
+},
+{
+"tag": "java",
+"q": "Sobre a JVM, a área de memória onde os objetos são alocados dinamicamente e sobre a qual atua o garbage collector é:",
+"alts": [
+"a pilha (stack) de cada thread",
+"o heap",
+"a metaspace",
+"o program counter",
+"os registradores nativos"
+],
+"ans": 1,
+"why": "Objetos vivem no heap, domínio do GC. A stack guarda frames de métodos e variáveis locais por thread; a metaspace guarda metadados de classes."
+},
+{
+"tag": "java",
+"q": "No Spring Boot, o mecanismo pelo qual dependências declaradas no classpath fazem o framework configurar beans automaticamente, sem XML, é chamado de:",
+"alts": [
+"injeção por construtor",
+"autoconfiguration",
+"component scan",
+"lazy initialization",
+"proxy dinâmico"
+],
+"ans": 1,
+"why": "Autoconfiguration é a marca registrada do Boot: detecta o que está no classpath e configura sozinho. Component scan só encontra os SEUS componentes anotados; são coisas diferentes."
+},
+{
+"tag": "programacao",
+"q": "O princípio SOLID que estabelece que classes devem estar abertas para extensão, mas fechadas para modificação, é o:",
+"alts": [
+"Single Responsibility Principle",
+"Open/Closed Principle",
+"Liskov Substitution Principle",
+"Interface Segregation Principle",
+"Dependency Inversion Principle"
+],
+"ans": 1,
+"why": "A própria definição do OCP. A FGV costuma dar a definição e pedir a sigla, ou trocar as definições entre si; ISP e SRP são as mais confundidas entre os candidatos."
+},
+{
+"tag": "programacao",
+"q": "Um sistema precisa garantir que exista uma única instância de uma classe de configuração, com ponto de acesso global. O padrão de projeto adequado é:",
+"alts": [
+"Factory Method",
+"Singleton",
+"Observer",
+"Adapter",
+"Strategy"
+],
+"ans": 1,
+"why": "Instância única + acesso global = Singleton, padrão criacional. Factory cria famílias de objetos; Observer notifica dependentes; Strategy troca algoritmos."
+},
+{
+"tag": "programacao",
+"q": "O padrão de projeto que permite converter a interface de uma classe existente em outra interface esperada pelo cliente, viabilizando o trabalho conjunto de classes incompatíveis, é o:",
+"alts": [
+"Decorator",
+"Facade",
+"Adapter",
+"Proxy",
+"Bridge"
+],
+"ans": 2,
+"why": "Converter interface incompatível em compatível é Adapter. Facade simplifica um subsistema; Decorator adiciona responsabilidades; Proxy controla acesso. Os quatro estruturais são frequentemente trocados entre si pela banca."
+},
+{
+"tag": "programacao",
+"q": "Em orientação a objetos, o mecanismo pelo qual uma subclasse fornece implementação específica para um método já definido na superclasse, mantendo a mesma assinatura, é:",
+"alts": [
+"sobrecarga (overloading)",
+"sobrescrita (overriding)",
+"encapsulamento",
+"composição",
+"agregação"
+],
+"ans": 1,
+"why": "Mesma assinatura em subclasse = sobrescrita (overriding), base do polimorfismo dinâmico. Sobrecarga é mesmo nome com assinaturas DIFERENTES na mesma classe. Par de conceitos favorito da banca."
+},
+{
+"tag": "programacao",
+"q": "Sobre o formato JSON, é correto afirmar que:",
+"alts": [
+"suporta nativamente o tipo data (date)",
+"permite comentários com // e /* */",
+"representa objetos como pares chave-valor, com chaves obrigatoriamente entre aspas duplas",
+"exige declaração de esquema antes do uso",
+"é um formato binário mais compacto que XML"
+],
+"ans": 2,
+"why": "JSON: chaves sempre string com aspas duplas, sem comentários, sem tipo data nativo (datas viram strings), sem esquema obrigatório, e é texto, não binário. Caiu JSON na Dataprev 2024."
+},
+{
+"tag": "programacao",
+"q": "Uma API REST bem projetada que recebe uma requisição para criar um recurso com sucesso deve retornar o código HTTP:",
+"alts": [
+"200 OK",
+"201 Created",
+"204 No Content",
+"301 Moved Permanently",
+"400 Bad Request"
+],
+"ans": 1,
+"why": "Criação bem-sucedida = 201 Created, idealmente com header Location apontando o novo recurso. 200 é sucesso genérico; 204 é sucesso sem corpo (comum em DELETE)."
+},
+{
+"tag": "arquitetura",
+"q": "Comparada à arquitetura monolítica, a arquitetura de microsserviços tem como característica:",
+"alts": [
+"deploy único de toda a aplicação a cada alteração",
+"acoplamento forte entre os módulos de negócio",
+"serviços independentes, com deploy isolado e comunicação via rede",
+"banco de dados obrigatoriamente único e compartilhado",
+"impossibilidade de usar tecnologias diferentes entre serviços"
+],
+"ans": 2,
+"why": "Microsserviços = independência de deploy, comunicação via rede (REST, mensageria) e liberdade tecnológica por serviço, idealmente com dados descentralizados. As demais alternativas descrevem o monólito."
+},
+{
+"tag": "arquitetura",
+"q": "Na arquitetura hexagonal (ports and adapters), o objetivo central é:",
+"alts": [
+"acelerar o deploy através de containers",
+"isolar o núcleo de negócio das tecnologias externas, que se conectam por portas e adaptadores",
+"eliminar a necessidade de testes de integração",
+"garantir que a interface gráfica dite o modelo de domínio",
+"substituir a arquitetura em camadas por chamadas diretas ao banco"
+],
+"ans": 1,
+"why": "O hexágono protege o domínio: o núcleo não conhece banco, framework ou UI; tudo externo entra por portas (interfaces) e adaptadores. É inversão de dependência em escala arquitetural."
+},
+{
+"tag": "arquitetura",
+"q": "Em uma arquitetura de microsserviços, o componente que atua como ponto único de entrada, roteando requisições externas para os serviços internos e centralizando questões como autenticação e rate limiting, é o:",
+"alts": [
+"service mesh",
+"API Gateway",
+"message broker",
+"load balancer de camada 2",
+"circuit breaker"
+],
+"ans": 1,
+"why": "Ponto único de entrada para clientes externos com roteamento e cross-cutting concerns é o API Gateway. Service mesh trata comunicação interna serviço-a-serviço; broker é mensageria assíncrona."
+},
+{
+"tag": "arquitetura",
+"q": "Na arquitetura orientada a serviços (SOA), o barramento que intermedeia, roteia e transforma mensagens entre os serviços é conhecido como:",
+"alts": [
+"ESB (Enterprise Service Bus)",
+"DNS corporativo",
+"ETL",
+"CDN",
+"VPN site-to-site"
+],
+"ans": 0,
+"why": "O ESB é o intermediário clássico da SOA: roteamento, transformação e orquestração de mensagens entre serviços. Questão de SOA caiu na Dataprev 2024."
+},
+{
+"tag": "redes",
+"q": "No modelo OSI, a camada responsável pelo roteamento de pacotes entre redes distintas, onde opera o protocolo IP, é a camada de:",
+"alts": [
+"enlace (2)",
+"rede (3)",
+"transporte (4)",
+"sessão (5)",
+"aplicação (7)"
+],
+"ans": 1,
+"why": "IP e roteamento entre redes = camada 3 (rede). Enlace cuida do meio local (switches, MAC); transporte cuida de portas e confiabilidade (TCP/UDP). Modelo OSI caiu na Dataprev 2024."
+},
+{
+"tag": "redes",
+"q": "Sobre TCP e UDP, é correto afirmar que:",
+"alts": [
+"ambos garantem entrega ordenada dos segmentos",
+"o UDP estabelece conexão via three-way handshake",
+"o TCP é orientado a conexão e garante entrega e ordem; o UDP não oferece essas garantias",
+"o TCP é preferido em streaming de vídeo ao vivo por ser mais rápido",
+"o UDP realiza controle de congestionamento"
+],
+"ans": 2,
+"why": "TCP: conexão, confiabilidade, ordem, controle de congestionamento. UDP: sem conexão, sem garantias, por isso mais leve, preferido em tempo real. O handshake é exclusivo do TCP."
+},
+{
+"tag": "redes",
+"q": "No estabelecimento de uma conexão HTTPS, durante o handshake TLS, a criptografia assimétrica é utilizada para:",
+"alts": [
+"cifrar todo o tráfego de dados da sessão",
+"trocar/estabelecer com segurança a chave simétrica que cifrará a sessão",
+"comprimir os pacotes antes do envio",
+"substituir a necessidade de certificados digitais",
+"autenticar o usuário final com login e senha"
+],
+"ans": 1,
+"why": "O padrão híbrido: assimétrica (lenta) só no handshake, para acordar a chave de sessão; simétrica (rápida) para o volume de dados. Exatamente o tipo de questão de SSL/TLS que caiu em 2024."
+},
+{
+"tag": "redes",
+"q": "O protocolo da camada de aplicação usado para traduzir nomes de domínio, como dataprev.gov.br, em endereços IP é o:",
+"alts": [
+"DHCP",
+"DNS",
+"SMTP",
+"SNMP",
+"ARP"
+],
+"ans": 1,
+"why": "DNS resolve nome → IP. DHCP atribui IPs dinamicamente; SMTP envia e-mail; SNMP gerencia rede; ARP resolve IP → MAC na rede local (e nem é de aplicação)."
+},
+{
+"tag": "redes",
+"q": "Uma VLAN tem como principal função:",
+"alts": [
+"aumentar a potência do sinal wireless",
+"segmentar logicamente uma rede física em domínios de broadcast distintos",
+"criptografar o tráfego entre switches",
+"substituir o roteador na comunicação entre redes",
+"converter endereços privados em públicos"
+],
+"ans": 1,
+"why": "VLAN = segmentação lógica sobre a mesma infraestrutura física, isolando domínios de broadcast. Conversão de endereços é NAT; criptografia não é função de VLAN."
+},
+{
+"tag": "seguranca",
+"q": "Os três pilares clássicos da segurança da informação, conhecidos como tríade CID, são:",
+"alts": [
+"controle, integridade e disponibilidade",
+"confidencialidade, integridade e disponibilidade",
+"confidencialidade, isolamento e durabilidade",
+"criptografia, identidade e defesa",
+"confiabilidade, imparcialidade e detecção"
+],
+"ans": 1,
+"why": "CID = Confidencialidade (só quem deve acessa), Integridade (dado não alterado indevidamente), Disponibilidade (acessível quando necessário). Cuidado com a alternativa que troca por termos do ACID."
+},
+{
+"tag": "seguranca",
+"q": "Sobre criptografia, a principal diferença entre os sistemas simétrico e assimétrico é que:",
+"alts": [
+"o simétrico usa par de chaves pública/privada; o assimétrico usa chave única",
+"o simétrico usa a mesma chave para cifrar e decifrar; o assimétrico usa um par de chaves matematicamente relacionadas",
+"o assimétrico é sempre mais rápido para grandes volumes",
+"o simétrico não pode ser usado em comunicações de rede",
+"o assimétrico dispensa a proteção da chave privada"
+],
+"ans": 1,
+"why": "Simétrico: uma chave compartilhada (AES, DES). Assimétrico: par pública/privada (RSA). O assimétrico é ordens de magnitude mais lento, por isso o modelo híbrido do TLS."
+},
+{
+"tag": "seguranca",
+"q": "Uma função hash criptográfica, como SHA-256, tem como característica essencial:",
+"alts": [
+"ser reversível mediante a chave correta",
+"produzir saída de tamanho fixo e ser computacionalmente inviável de inverter",
+"cifrar o conteúdo para transmissão segura",
+"exigir par de chaves pública e privada",
+"garantir a disponibilidade do dado"
+],
+"ans": 1,
+"why": "Hash: unidirecional, saída de tamanho fixo, determinístico, resistente a colisões. Não é cifra (não existe 'decifrar' um hash) e não usa chave. Serve para integridade, não confidencialidade."
+},
+{
+"tag": "seguranca",
+"q": "No OWASP Top 10, a vulnerabilidade em que dados não confiáveis são enviados a um interpretador como parte de um comando, permitindo a execução de instruções não previstas, por exemplo em consultas SQL, é classificada como:",
+"alts": [
+"Cross-Site Scripting (XSS)",
+"quebra de autenticação",
+"injeção (injection)",
+"desserialização insegura",
+"exposição de dados sensíveis"
+],
+"ans": 2,
+"why": "Dados do usuário chegando a um interpretador como comando = injeção, cujo exemplo canônico é SQL Injection. XSS é injeção de script no navegador da vítima, categoria distinta."
+},
+{
+"tag": "seguranca",
+"q": "A diferença fundamental entre SAST e DAST na análise de segurança de aplicações é que o SAST:",
+"alts": [
+"testa a aplicação em execução, simulando ataques externos",
+"analisa o código-fonte sem executar a aplicação, enquanto o DAST testa a aplicação em execução",
+"é aplicável apenas a aplicações mobile",
+"substitui integralmente os testes de penetração",
+"só funciona em linguagens compiladas"
+],
+"ans": 1,
+"why": "SAST = estático, caixa-branca, código-fonte parado. DAST = dinâmico, caixa-preta, aplicação rodando. O 'S' e o 'D' entregam a resposta, mas a banca embaralha as descrições."
+},
+{
+"tag": "seguranca",
+"q": "O OAuth 2.0 é um protocolo cuja finalidade principal é:",
+"alts": [
+"cifrar o canal de comunicação entre cliente e servidor",
+"autorizar acesso delegado a recursos, sem compartilhar credenciais do usuário",
+"substituir o uso de certificados digitais",
+"gerar hashes de senhas para armazenamento",
+"sincronizar diretórios LDAP entre domínios"
+],
+"ans": 1,
+"why": "OAuth2 é AUTORIZAÇÃO delegada: o app acessa recursos em nome do usuário via token, sem nunca ver a senha. Autenticação de identidade é papel do OpenID Connect, construído sobre ele."
+},
+{
+"tag": "bi",
+"q": "Em um data warehouse, a modelagem dimensional em esquema estrela (star schema) é caracterizada por:",
+"alts": [
+"tabelas totalmente normalizadas até a 3FN",
+"uma tabela fato central ligada diretamente a tabelas de dimensão desnormalizadas",
+"ausência de tabelas de dimensão",
+"dimensões normalizadas em múltiplos níveis hierárquicos",
+"fatos redundantes espalhados pelas dimensões"
+],
+"ans": 1,
+"why": "Estrela: fato no centro, dimensões desnormalizadas ao redor, um join de distância. Dimensões normalizadas em cascata caracterizam o snowflake. Contraste favorito da banca."
+},
+{
+"tag": "bi",
+"q": "A operação OLAP que aumenta o nível de detalhe da análise, navegando de um nível mais agregado para um mais granular, como de ano para mês, é chamada de:",
+"alts": [
+"roll-up",
+"drill-down",
+"slice",
+"dice",
+"pivot"
+],
+"ans": 1,
+"why": "Drill-down desce na hierarquia (mais detalhe); roll-up sobe (mais agregação); slice fixa uma dimensão; dice recorta um subcubo; pivot rotaciona eixos."
+},
+{
+"tag": "bi",
+"q": "No processo ETL, a etapa de transformação compreende:",
+"alts": [
+"a coleta dos dados nas fontes de origem",
+"a limpeza, padronização e adequação dos dados às regras do destino",
+"o carregamento físico dos dados no data warehouse",
+"a criação dos relatórios finais",
+"o backup incremental das fontes"
+],
+"ans": 1,
+"why": "E = extração das fontes; T = limpeza, padronização, conversão, deduplicação; L = carga no destino. A transformação é onde vive a inteligência do processo."
+},
+{
+"tag": "bi",
+"q": "A principal diferença entre um data warehouse e um data lake é que o data lake:",
+"alts": [
+"só armazena dados estruturados e modelados",
+"armazena dados brutos em formato nativo, aplicando esquema apenas na leitura (schema-on-read)",
+"exige modelagem dimensional prévia obrigatória",
+"não pode ser usado para machine learning",
+"é sempre menor em volume que o warehouse"
+],
+"ans": 1,
+"why": "Lake: dado bruto, qualquer formato, schema-on-read. Warehouse: dado tratado e modelado, schema-on-write. O lake é justamente o habitat preferido de cientistas de dados."
+},
+{
+"tag": "frontend",
+"q": "Uma SPA (Single Page Application) caracteriza-se por:",
+"alts": [
+"recarregar a página inteira a cada interação do usuário",
+"carregar uma única página HTML e atualizar o conteúdo dinamicamente via JavaScript, sem recarga completa",
+"funcionar exclusivamente offline",
+"dispensar completamente o uso de servidor",
+"ser renderizada apenas no servidor"
+],
+"ans": 1,
+"why": "SPA carrega o shell uma vez e troca conteúdo via JS/AJAX consumindo APIs. O oposto do modelo tradicional multi-page com recarga a cada clique."
+},
+{
+"tag": "frontend",
+"q": "No React, o mecanismo de comparação de uma representação virtual da interface com o DOM real, atualizando apenas o que mudou, envolve o conceito de:",
+"alts": [
+"two-way data binding nativo",
+"Virtual DOM e reconciliação",
+"manipulação direta e imperativa do DOM",
+"templates compilados no servidor",
+"shadow DOM obrigatório"
+],
+"ans": 1,
+"why": "React mantém o Virtual DOM, faz diff com o estado anterior (reconciliação) e aplica só as mudanças mínimas no DOM real. Two-way binding nativo é associado ao Angular, não ao React."
+},
+{
+"tag": "frontend",
+"q": "Um PWA (Progressive Web App) diferencia-se de um site tradicional principalmente por:",
+"alts": [
+"exigir publicação em loja de aplicativos",
+"usar service workers para funcionar offline e permitir instalação e notificações",
+"ser desenvolvido exclusivamente em linguagem nativa",
+"não poder ser acessado por navegador",
+"dispensar o protocolo HTTPS"
+],
+"ans": 1,
+"why": "PWA = web app com service worker (cache/offline), manifest (instalável) e HTTPS obrigatório. Não passa por loja e roda no navegador; essa é a graça."
+},
+{
+"tag": "frontend",
+"q": "Em acessibilidade web, os atributos ARIA (Accessible Rich Internet Applications) servem para:",
+"alts": [
+"acelerar o carregamento da página",
+"fornecer semântica adicional a elementos dinâmicos, permitindo interpretação por tecnologias assistivas",
+"criptografar dados de formulários",
+"substituir o CSS na estilização",
+"validar o HTML no servidor"
+],
+"ans": 1,
+"why": "ARIA (role, aria-label etc.) dá semântica a componentes dinâmicos para leitores de tela. Acessibilidade e usabilidade estão nomeadas no edital do perfil 3."
+},
+{
+"tag": "governanca",
+"q": "No ITIL v4, o conceito central que descreve como os componentes e atividades da organização trabalham juntos para cocriar valor por meio de serviços é o:",
+"alts": [
+"ciclo de vida do serviço em cinco estágios",
+"Sistema de Valor de Serviço (SVS)",
+"catálogo de configuração",
+"funil de demandas",
+"acordo de nível operacional"
+],
+"ans": 1,
+"why": "O SVS é a grande mudança conceitual do ITIL v4 sobre o v3 (que era o ciclo de vida em 5 estágios). Cocriação de valor é o vocabulário-chave da versão 4."
+},
+{
+"tag": "governanca",
+"q": "No COBIT 2019, a distinção fundamental entre governança e gestão de TI é que a governança:",
+"alts": [
+"executa as operações diárias de TI",
+"avalia, direciona e monitora (EDM), enquanto a gestão planeja, constrói, executa e monitora",
+"é responsabilidade exclusiva do gerente de projetos",
+"trata apenas da infraestrutura física",
+"é sinônimo de gestão no framework"
+],
+"ans": 1,
+"why": "Governança = EDM (Evaluate, Direct, Monitor), papel do conselho. Gestão = PBRM (Plan, Build, Run, Monitor), papel da diretoria executiva. Separação estrutural do COBIT."
+},
+{
+"tag": "governanca",
+"q": "Na notação BPMN, o elemento gráfico losango representa:",
+"alts": [
+"um evento de início",
+"uma atividade ou tarefa",
+"um gateway, que controla divergência e convergência do fluxo",
+"um pool de participantes",
+"um artefato de dados"
+],
+"ans": 2,
+"why": "Losango = gateway (decisão/paralelismo). Círculo = evento; retângulo arredondado = atividade; retângulo grande = pool/lane. A banca cobra a simbologia literal."
+},
+{
+"tag": "governanca",
+"q": "Segundo o Guia PMBOK, a diferença entre projeto e operação continuada é que o projeto:",
+"alts": [
+"é permanente e repetitivo",
+"é um esforço temporário com início e fim definidos, para criar produto, serviço ou resultado único",
+"não possui restrições de escopo ou prazo",
+"dispensa gerenciamento formal",
+"é sempre executado por equipes externas"
+],
+"ans": 1,
+"why": "Temporário + resultado único = projeto. Operação é contínua e repetitiva. Definição de abertura do PMBOK, cobrada de forma literal."
+},
+{
+"tag": "orfaos",
+"q": "Em uma blockchain, a integridade da cadeia é garantida principalmente porque cada bloco:",
+"alts": [
+"é armazenado em um único servidor central de confiança",
+"contém o hash criptográfico do bloco anterior, tornando alterações retroativas detectáveis",
+"é criptografado com a chave privada de todos os usuários",
+"pode ser editado por qualquer nó mediante votação simples",
+"depende de um administrador que valida manualmente as transações"
+],
+"ans": 1,
+"why": "O encadeamento por hash: alterar um bloco antigo invalida os hashes de todos os seguintes. Somado ao consenso distribuído, torna a adulteração impraticável. Blockchain caiu de surpresa em 2024, de forma básica exatamente assim."
+},
+{
+"tag": "orfaos",
+"q": "RPA (Robotic Process Automation) é uma tecnologia voltada a:",
+"alts": [
+"fabricar robôs físicos para linhas de montagem",
+"automatizar tarefas digitais repetitivas e baseadas em regras, simulando a interação humana com sistemas",
+"substituir bancos de dados relacionais",
+"treinar redes neurais profundas",
+"gerenciar clusters Kubernetes"
+],
+"ans": 1,
+"why": "RPA = software que imita o usuário (cliques, digitação, leitura de tela) em tarefas repetitivas e regradas. Não é IA nem robô físico; está nomeado no edital do perfil 3."
+},
+{
+"tag": "orfaos",
+"q": "A diferença entre intranet e extranet é que a extranet:",
+"alts": [
+"é aberta a qualquer usuário da internet sem autenticação",
+"estende o acesso a partes autorizadas externas, como parceiros e fornecedores, mediante controle",
+"funciona apenas dentro da rede local física",
+"não utiliza os protocolos TCP/IP",
+"é sinônimo de rede social corporativa"
+],
+"ans": 1,
+"why": "Intranet = interno à organização. Extranet = intranet estendida a terceiros autorizados. Internet = pública. O item 'ambientes internet, extranet, intranet e portal' está literal no edital."
+},
+{
+"tag": "orfaos",
+"q": "Em uma aplicação web Java, a diferença entre um servidor web e um servidor de aplicação é que o servidor de aplicação:",
+"alts": [
+"serve apenas conteúdo estático como HTML e imagens",
+"oferece container completo para componentes de negócio, como EJB, além do container web",
+"não suporta o protocolo HTTP",
+"é sempre mais leve que o servidor web",
+"dispensa a JVM"
+],
+"ans": 1,
+"why": "Servidor web (Apache, Nginx) serve estático e faz proxy. Servidor de aplicação (JBoss, WebLogic) tem containers para a especificação Java EE completa, incluindo EJB. Distinção nomeada no edital."
+},
+{
+"tag": "legislacao",
+"q": "Segundo a LGPD (Lei 13.709/2018), o agente de tratamento a quem competem as decisões referentes ao tratamento de dados pessoais é o:",
+"alts": [
+"operador",
+"encarregado (DPO)",
+"controlador",
+"titular",
+"órgão de pesquisa"
+],
+"ans": 2,
+"why": "Controlador decide; operador trata em nome do controlador; encarregado é o canal de comunicação com titulares e ANPD. Trio de papéis mais cobrado da LGPD."
+},
+{
+"tag": "legislacao",
+"q": "Nos termos da LGPD, dado pessoal sensível é aquele que revela, entre outros:",
+"alts": [
+"nome completo e endereço residencial",
+"origem racial ou étnica, convicção religiosa, opinião política, dado referente à saúde ou à vida sexual, dado genético ou biométrico",
+"número de telefone e e-mail corporativo",
+"histórico de compras online",
+"placa de veículo automotor"
+],
+"ans": 1,
+"why": "O rol do art. 5º, II é taxativo e cai literal: racial/étnico, religião, opinião política, filiação sindical, saúde, vida sexual, genético, biométrico. Nome e endereço são pessoais comuns."
+},
+{
+"tag": "legislacao",
+"q": "O Marco Civil da Internet (Lei 12.965/2014) estabelece, como regra geral, que o provedor de aplicações somente será responsabilizado civilmente por conteúdo gerado por terceiros se:",
+"alts": [
+"o conteúdo for denunciado por qualquer usuário",
+"após ordem judicial específica, não tomar as providências para tornar o conteúdo indisponível",
+"o autor do conteúdo for anônimo",
+"o conteúdo tiver mais de mil compartilhamentos",
+"houver simples notificação extrajudicial da vítima, em qualquer hipótese"
+],
+"ans": 1,
+"why": "Art. 19: responsabilização só após descumprir ordem judicial específica. A exceção é conteúdo íntimo não consentido, em que basta notificação. A regra e a exceção formam a pegadinha."
+},
+{
+"tag": "legislacao",
+"q": "A Lei de Acesso à Informação (Lei 12.527/2011) estabelece que o acesso à informação pública é a regra, e o sigilo, a exceção. O prazo máximo de restrição para informação classificada como ultrassecreta é de:",
+"alts": [
+"5 anos",
+"10 anos",
+"15 anos",
+"25 anos",
+"50 anos"
+],
+"ans": 3,
+"why": "Ultrassecreta: 25 anos (renovável uma vez). Secreta: 15. Reservada: 5. A tríade de prazos é decoreba clássica de LAI."
+},
+{
+"tag": "legislacao",
+"q": "A Lei 12.737/2012 (Lei de Delitos Informáticos, conhecida como Lei Carolina Dieckmann) tipificou como crime a conduta de:",
+"alts": [
+"enviar e-mails de propaganda sem consentimento",
+"invadir dispositivo informático alheio, mediante violação indevida de mecanismo de segurança, para obter, adulterar ou destruir dados",
+"utilizar rede social com perfil falso",
+"compartilhar notícias falsas",
+"acessar redes wi-fi públicas sem autorização do estabelecimento"
+],
+"ans": 1,
+"why": "O art. 154-A do CP, inserido por essa lei: invasão de dispositivo com violação de mecanismo de segurança. O edital cobra especificamente o art. 2º dessa lei."
+},
+{
+"tag": "rlm",
+"q": "Uma equipe de 8 analistas precisa formar uma comissão de 3 membros para revisar um edital. O número de comissões distintas possíveis é:",
+"alts": [
+"24",
+"56",
+"112",
+"336",
+"512"
+],
+"ans": 1,
+"why": "Combinação, pois a ordem não importa: C(8,3) = 8!/(3!·5!) = 56. Se fosse arranjo (cargos distintos), seria 336; a FGV coloca o arranjo como distrator."
+},
+{
+"tag": "rlm",
+"q": "A negação da proposição 'Todos os candidatos estudaram Java' é:",
+"alts": [
+"nenhum candidato estudou Java",
+"todos os candidatos não estudaram Java",
+"pelo menos um candidato não estudou Java",
+"a maioria dos candidatos não estudou Java",
+"se um candidato estudou Java, então todos estudaram"
+],
+"ans": 2,
+"why": "Negação de 'todo A é B' = 'existe A que não é B'. Negar universal com outro universal ('nenhum') é o erro que a banca planta como primeira alternativa."
+},
+{
+"tag": "rlm",
+"q": "Um servidor processa 240 requisições em 8 minutos. Mantida a mesma taxa, quantas requisições processará em 1 hora e 15 minutos?",
+"alts": [
+"1.800",
+"2.250",
+"2.400",
+"2.700",
+"3.000"
+],
+"ans": 1,
+"why": "240/8 = 30 req/min. 1h15 = 75 min. 30 × 75 = 2.250. Regra de três direta; o cuidado é converter o tempo misto para minutos."
+},
+{
+"tag": "rlm",
+"q": "Se a proposição 'Se o sistema está no ar, então o backup foi concluído' é verdadeira, e sabe-se que o backup NÃO foi concluído, pode-se concluir que:",
+"alts": [
+"o sistema está no ar",
+"o sistema não está no ar",
+"o backup será concluído em breve",
+"nada se pode concluir sobre o sistema",
+"o sistema está no ar e o backup falhou"
+],
+"ans": 1,
+"why": "Modus tollens: (P→Q) e ¬Q permitem concluir ¬P. É a forma válida; o distrator clássico é a falácia de afirmar o consequente."
+},
+{
+"tag": "rlm",
+"q": "Em uma sala de prova há 60 candidatos. Sabe-se que 35 dominam Java, 28 dominam Python e 12 dominam ambas. Quantos candidatos não dominam nenhuma das duas linguagens?",
+"alts": [
+"3",
+"7",
+"9",
+"12",
+"15"
+],
+"ans": 2,
+"why": "Inclusão-exclusão: |J∪P| = 35 + 28 − 12 = 51. Fora: 60 − 51 = 9. Esquecer de subtrair a interseção leva ao distrator errado."
+},
+{
+"tag": "eng-software",
+"q": "Sobre DevOps, o conceito de integração contínua (CI) consiste em:",
+"alts": [
+"fazer deploy em produção a cada commit, sem qualquer validação",
+"integrar o código dos desenvolvedores frequentemente ao repositório principal, com build e testes automatizados a cada integração",
+"reunir a equipe diariamente para integrar conhecimentos",
+"integrar os servidores de produção e homologação em uma única máquina",
+"publicar releases apenas uma vez por semestre, de forma consolidada"
+],
+"ans": 1,
+"why": "CI = merge frequente + build e testes automáticos a cada integração, detectando conflito cedo. Deploy automático em produção é CD (deployment contínuo), etapa seguinte."
+},
+{
+"tag": "eng-software",
+"q": "No Git, o comando que cria uma cópia local de um repositório remoto completo, incluindo todo o histórico, é:",
+"alts": [
+"git init",
+"git pull",
+"git clone",
+"git fetch",
+"git checkout"
+],
+"ans": 2,
+"why": "clone = cópia inicial completa do remoto. init cria repo vazio; pull = fetch + merge no repo já existente; fetch baixa sem mesclar. Git está nomeado no edital do perfil 3."
+},
+{
+"tag": "banco-dados",
+"q": "Em um SGBD relacional, um índice tem como principal finalidade:",
+"alts": [
+"garantir a normalização automática das tabelas",
+"acelerar a recuperação de dados, ao custo de espaço adicional e de escritas mais lentas",
+"impedir a inserção de valores nulos",
+"substituir a chave primária",
+"comprimir os dados armazenados"
+],
+"ans": 1,
+"why": "Índice troca espaço e custo de escrita (precisa ser mantido a cada INSERT/UPDATE) por leitura rápida. Não normaliza nada e não substitui constraint."
+},
+{
+"tag": "seguranca",
+"q": "Na LGPD e nas boas práticas de segurança, a técnica que remove ou descaracteriza os identificadores de um conjunto de dados de modo que o titular não possa mais ser identificado, considerando meios técnicos razoáveis, é chamada de:",
+"alts": [
+"pseudonimização",
+"anonimização",
+"tokenização reversível",
+"criptografia de trânsito",
+"minimização"
+],
+"ans": 1,
+"why": "Anonimização = irreversível por meios razoáveis, e o dado deixa de ser pessoal para a LGPD. Pseudonimização é reversível com informação adicional guardada à parte, e o dado continua pessoal."
+},
+{
+"tag": "governanca",
+"q": "No Scrum, o evento com duração máxima de 15 minutos, realizado diariamente pelos Developers para inspecionar o progresso rumo à meta da Sprint e adaptar o plano, é a:",
+"alts": [
+"Sprint Review",
+"Sprint Retrospective",
+"Daily Scrum",
+"Sprint Planning",
+"Refinement"
+],
+"ans": 2,
+"why": "Daily Scrum: 15 min, diária, dos Developers, foco na meta da Sprint. Review inspeciona o incremento com stakeholders; Retrospective inspeciona o processo."
+},
+{
+"tag": "eng-software",
+"q": "No modelo de desenvolvimento incremental, o software é construído:",
+"alts": [
+"em uma única entrega final, após todas as fases sequenciais",
+"em versões sucessivas, cada uma agregando funcionalidades operacionais ao produto",
+"apenas por meio de protótipos descartáveis",
+"sem levantamento prévio de requisitos",
+"exclusivamente por ferramentas de geração automática de código"
+],
+"ans": 1,
+"why": "Incremental = entregas sucessivas, cada incremento é um subconjunto funcional utilizável. A entrega única final é a cascata."
+},
+{
+"tag": "eng-software",
+"q": "O requisito 'o sistema deve responder a qualquer consulta em até 2 segundos' é classificado como:",
+"alts": [
+"requisito funcional",
+"requisito não funcional de desempenho",
+"regra de negócio",
+"requisito de domínio funcional",
+"restrição de projeto de interface"
+],
+"ans": 1,
+"why": "Requisito funcional descreve O QUE o sistema faz; não funcional descreve COMO (desempenho, segurança, usabilidade). Tempo de resposta é o exemplo clássico de não funcional."
+},
+{
+"tag": "eng-software",
+"q": "São práticas associadas ao Extreme Programming (XP), EXCETO:",
+"alts": [
+"programação em pares",
+"integração contínua",
+"desenvolvimento guiado por testes",
+"refatoração constante",
+"documentação extensa e detalhada antes da codificação"
+],
+"ans": 4,
+"why": "XP prega código como documentação principal e comunicação direta. Documentação extensa prévia é traço de processos prescritivos, o oposto do XP."
+},
+{
+"tag": "eng-software",
+"q": "No Scrum, o responsável por remover impedimentos que atrapalham o progresso da equipe e por garantir a compreensão e aplicação do framework é o:",
+"alts": [
+"Product Owner",
+"Scrum Master",
+"gerente de projetos",
+"líder técnico",
+"stakeholder principal"
+],
+"ans": 1,
+"why": "Scrum Master = servo-líder, remove impedimentos e protege o processo. O PO cuida do produto e do backlog. Gerente de projetos nem é papel do Scrum."
+},
+{
+"tag": "eng-software",
+"q": "A diferença entre a Sprint Review e a Sprint Retrospective é que a Review:",
+"alts": [
+"inspeciona o processo de trabalho da equipe",
+"inspeciona o incremento do produto com os stakeholders, enquanto a Retrospective inspeciona o processo e as pessoas",
+"ocorre diariamente em 15 minutos",
+"é realizada apenas pelo Scrum Master",
+"substitui a Retrospective quando o prazo está apertado"
+],
+"ans": 1,
+"why": "Review = olhar para o PRODUTO (incremento, feedback de stakeholders). Retrospective = olhar para o PROCESSO (o que melhorar no trabalho da equipe)."
+},
+{
+"tag": "eng-software",
+"q": "O teste executado após uma alteração no código para garantir que funcionalidades que já funcionavam não foram quebradas é o teste de:",
+"alts": [
+"fumaça (smoke test)",
+"regressão",
+"aceitação",
+"estresse",
+"usabilidade"
+],
+"ans": 1,
+"why": "Regressão = reexecutar testes existentes após mudança para detectar efeitos colaterais. Por isso a automação de testes é tão valiosa: regressão manual não escala."
+},
+{
+"tag": "eng-software",
+"q": "No teste de caixa-preta, o testador:",
+"alts": [
+"conhece a estrutura interna do código e projeta casos com base nos caminhos lógicos",
+"avalia entradas e saídas sem conhecimento da implementação interna",
+"analisa apenas a cobertura de linhas de código",
+"executa exclusivamente testes unitários",
+"depende do acesso ao repositório de código-fonte"
+],
+"ans": 1,
+"why": "Caixa-preta = comportamento externo (entradas/saídas contra a especificação). Caixa-branca = estrutura interna, caminhos, cobertura. A banca troca as duas descrições."
+},
+{
+"tag": "eng-software",
+"q": "O BDD (Behavior-Driven Development) caracteriza-se por:",
+"alts": [
+"eliminar a necessidade de testes automatizados",
+"descrever o comportamento esperado em linguagem natural estruturada, como no formato Given-When-Then, aproximando negócio e desenvolvimento",
+"substituir o Product Owner por analistas de teste",
+"exigir que todos os testes sejam escritos após a entrega",
+"ser incompatível com o TDD"
+],
+"ans": 1,
+"why": "BDD = especificação por exemplos em linguagem acessível ao negócio (Gherkin: Dado-Quando-Então), que vira teste executável. É uma evolução do TDD com foco em comportamento, não incompatível com ele."
+},
+{
+"tag": "eng-software",
+"q": "Na engenharia de software, a distinção entre verificação e validação é sintetizada como:",
+"alts": [
+"verificação pergunta 'estamos construindo o produto certo?' e validação 'estamos construindo certo o produto?'",
+"verificação pergunta 'estamos construindo certo o produto?' e validação 'estamos construindo o produto certo?'",
+"ambas verificam apenas a conformidade com padrões de codificação",
+"validação ocorre sempre antes da verificação",
+"são sinônimos no vocabulário da qualidade"
+],
+"ans": 1,
+"why": "Verificação = conformidade com a especificação (construir certo). Validação = atender à necessidade real do usuário (produto certo). A inversão das frases é a pegadinha padrão."
+},
+{
+"tag": "eng-software",
+"q": "A prototipação descartável (throwaway) tem como objetivo principal:",
+"alts": [
+"evoluir gradualmente até se tornar o produto final",
+"esclarecer e validar requisitos pouco compreendidos, sendo descartada após cumprir esse papel",
+"substituir a documentação de arquitetura",
+"acelerar o deploy em produção",
+"reduzir o custo de infraestrutura"
+],
+"ans": 1,
+"why": "Protótipo descartável serve para reduzir incerteza de requisitos e morre depois. O evolutivo, ao contrário, vira base do produto. Contraste cobrado com frequência."
+},
+{
+"tag": "eng-software",
+"q": "O conceito de DevSecOps propõe que a segurança:",
+"alts": [
+"seja verificada apenas na homologação final, por equipe independente",
+"seja integrada desde o início do ciclo de desenvolvimento, automatizada na esteira de CI/CD (shift-left)",
+"seja responsabilidade exclusiva do time de infraestrutura",
+"substitua os testes funcionais",
+"dispense análise de código"
+],
+"ans": 1,
+"why": "DevSecOps = deslocar a segurança para a esquerda do ciclo (shift-left): SAST, DAST e análise de dependências dentro do pipeline, responsabilidade compartilhada."
+},
+{
+"tag": "eng-software",
+"q": "Sobre story points, é correto afirmar que representam:",
+"alts": [
+"a quantidade exata de horas que uma tarefa consumirá",
+"uma medida relativa de esforço e complexidade, calibrada pela própria equipe",
+"o número de linhas de código estimado",
+"o valor financeiro da funcionalidade",
+"a quantidade de desenvolvedores necessária"
+],
+"ans": 1,
+"why": "Story point é estimativa RELATIVA (uma história de 8 custa cerca de 4x uma de 2), não conversível diretamente em horas. Ponto de função mede tamanho funcional; story point, esforço percebido."
+},
+{
+"tag": "banco-dados",
+"q": "Em um banco relacional, a restrição de chave estrangeira (foreign key) garante:",
+"alts": [
+"a unicidade dos valores na coluna",
+"a integridade referencial, impedindo referências a registros inexistentes na tabela relacionada",
+"a atomicidade das transações",
+"o incremento automático de identificadores",
+"a criptografia dos dados referenciados"
+],
+"ans": 1,
+"why": "FK = integridade referencial: o valor deve existir na tabela referenciada (ou ser nulo, se permitido). Unicidade é papel de PK/UNIQUE."
+},
+{
+"tag": "banco-dados",
+"q": "Em SQL, a diferença entre as cláusulas WHERE e HAVING é que o HAVING:",
+"alts": [
+"filtra linhas antes do agrupamento",
+"filtra grupos após a agregação realizada pelo GROUP BY",
+"é obrigatório em toda consulta com JOIN",
+"substitui o ORDER BY",
+"só aceita comparações de igualdade"
+],
+"ans": 1,
+"why": "WHERE filtra linhas ANTES de agrupar; HAVING filtra os grupos DEPOIS, podendo usar funções de agregação (HAVING COUNT(*) > 5). Sequência lógica clássica de prova."
+},
+{
+"tag": "banco-dados",
+"q": "Em SQL, a diferença entre UNION e UNION ALL é que o UNION:",
+"alts": [
+"mantém todas as linhas, inclusive duplicadas",
+"elimina linhas duplicadas do resultado combinado, enquanto o UNION ALL as mantém",
+"exige que as consultas tenham números diferentes de colunas",
+"ordena o resultado de forma decrescente por padrão",
+"só combina consultas da mesma tabela"
+],
+"ans": 1,
+"why": "UNION deduplica (com custo de ordenação/comparação); UNION ALL simplesmente concatena, sendo mais rápido. Número e compatibilidade de colunas devem coincidir em ambos."
+},
+{
+"tag": "banco-dados",
+"q": "A diferença entre os comandos DELETE e DROP em SQL é que o DROP:",
+"alts": [
+"remove apenas as linhas, preservando a estrutura",
+"remove a estrutura do objeto (tabela, índice) do banco, incluindo seus dados",
+"aceita cláusula WHERE",
+"é uma operação DML",
+"pode ser aplicado somente a views"
+],
+"ans": 1,
+"why": "DELETE (DML) remove linhas; DROP (DDL) remove o objeto inteiro do catálogo. TRUNCATE fica no meio: esvazia a tabela mas preserva a estrutura."
+},
+{
+"tag": "banco-dados",
+"q": "Em uma transação SQL, o comando que desfaz todas as alterações realizadas desde o início da transação é:",
+"alts": [
+"COMMIT",
+"SAVEPOINT",
+"ROLLBACK",
+"REVOKE",
+"UNDO TABLE"
+],
+"ans": 2,
+"why": "ROLLBACK desfaz; COMMIT confirma; SAVEPOINT marca ponto intermediário para rollback parcial; REVOKE é DCL (permissões)."
+},
+{
+"tag": "banco-dados",
+"q": "Na modelagem entidade-relacionamento, um relacionamento muitos-para-muitos (N:M) entre duas entidades é implementado no modelo relacional por meio de:",
+"alts": [
+"uma chave estrangeira em qualquer uma das duas tabelas",
+"uma tabela associativa contendo as chaves das duas entidades",
+"uma coluna multivalorada em ambas as tabelas",
+"um índice composto na entidade mais volumosa",
+"uma trigger de sincronização"
+],
+"ans": 1,
+"why": "N:M vira tabela intermediária (associativa) com FKs para as duas pontas. FK direta só resolve 1:N; coluna multivalorada viola a 1FN."
+},
+{
+"tag": "banco-dados",
+"q": "Uma tabela viola a Primeira Forma Normal (1FN) quando:",
+"alts": [
+"possui dependências transitivas",
+"possui atributos multivalorados ou grupos repetitivos, sem valores atômicos",
+"possui chave primária composta",
+"possui mais de dez colunas",
+"não possui índices secundários"
+],
+"ans": 1,
+"why": "1FN = todo atributo atômico, sem listas nem grupos de repetição. Transitividade é assunto de 3FN; dependência parcial, de 2FN."
+},
+{
+"tag": "banco-dados",
+"q": "Sobre a chave primária de uma tabela relacional, é correto afirmar que ela:",
+"alts": [
+"pode conter valores nulos, desde que únicos",
+"deve ser única e não nula, identificando cada linha da tabela",
+"pode se repetir quando a tabela for particionada",
+"é obrigatoriamente numérica e sequencial",
+"é dispensável em tabelas com chave estrangeira"
+],
+"ans": 1,
+"why": "PK = unicidade + NOT NULL. Não precisa ser numérica nem sequencial (pode ser natural ou composta), e nulo é proibido por definição."
+},
+{
+"tag": "banco-dados",
+"q": "Um banco de dados NoSQL do tipo chave-valor, como o Redis, é especialmente indicado para:",
+"alts": [
+"consultas analíticas complexas com múltiplos joins",
+"cache de sessões e dados de acesso ultrarrápido por chave conhecida",
+"relacionamentos densos entre entidades, como redes sociais",
+"garantia de integridade referencial entre tabelas",
+"modelagem dimensional de data warehouse"
+],
+"ans": 1,
+"why": "Chave-valor = leitura/escrita O(1) por chave, ideal para cache e sessão. Não faz join nem consulta pelo interior do valor. Grafos servem para relacionamentos densos."
+},
+{
+"tag": "banco-dados",
+"q": "Segundo o teorema CAP, em um sistema distribuído sujeito a partições de rede, é necessário escolher entre:",
+"alts": [
+"consistência e durabilidade",
+"consistência e disponibilidade",
+"atomicidade e isolamento",
+"desempenho e segurança",
+"escalabilidade e portabilidade"
+],
+"ans": 1,
+"why": "CAP: na presença de Partição (inevitável em rede), o sistema escolhe entre Consistência e Availability. Bancos NoSQL costumam relaxar consistência (eventual) em favor de disponibilidade."
+},
+{
+"tag": "banco-dados",
+"q": "Os comandos GRANT e REVOKE pertencem à categoria SQL denominada:",
+"alts": [
+"DML (Data Manipulation Language)",
+"DDL (Data Definition Language)",
+"DCL (Data Control Language)",
+"TCL (Transaction Control Language)",
+"DQL (Data Query Language)"
+],
+"ans": 2,
+"why": "GRANT/REVOKE controlam privilégios = DCL. DDL define estrutura (CREATE, ALTER, DROP); DML manipula dados; TCL controla transações (COMMIT, ROLLBACK)."
+},
+{
+"tag": "java",
+"q": "Em Java, a diferença entre uma interface e uma classe abstrata é que a classe abstrata:",
+"alts": [
+"não pode conter nenhum método implementado",
+"pode ter construtores e atributos de instância, enquanto a interface não possui construtores",
+"permite herança múltipla, ao contrário da interface",
+"não pode ser estendida por outras classes",
+"é sempre final"
+],
+"ans": 1,
+"why": "Classe abstrata: construtor, estado de instância, herança simples. Interface: sem construtor, sem estado de instância (desde o Java 8 pode ter métodos default e static), e uma classe pode implementar várias."
+},
+{
+"tag": "java",
+"q": "Em Java, a palavra-chave final aplicada a uma classe tem o efeito de:",
+"alts": [
+"impedir a instanciação da classe",
+"impedir que a classe seja estendida por herança",
+"tornar todos os atributos constantes automaticamente",
+"forçar a implementação de todos os métodos",
+"marcar a classe para remoção pelo garbage collector"
+],
+"ans": 1,
+"why": "final em classe = não herdável (ex.: String). Em método = não sobrescrevível. Em variável = valor único após atribuição. Impedir instanciação é papel de construtor privado ou classe abstrata."
+},
+{
+"tag": "java",
+"q": "Em Java, sobre exceções verificadas (checked) e não verificadas (unchecked), é correto afirmar que:",
+"alts": [
+"NullPointerException é uma exceção verificada",
+"exceções verificadas devem ser tratadas ou declaradas na assinatura do método, como IOException",
+"exceções não verificadas exigem cláusula throws obrigatória",
+"RuntimeException e suas subclasses são verificadas",
+"o compilador ignora as exceções verificadas"
+],
+"ans": 1,
+"why": "Checked (IOException, SQLException): o compilador exige try-catch ou throws. Unchecked (RuntimeException e filhas, como NullPointerException): não exige. A troca dos exemplos é a pegadinha."
+},
+{
+"tag": "java",
+"q": "Nas coleções Java, comparando ArrayList e LinkedList, o ArrayList oferece melhor desempenho para:",
+"alts": [
+"inserções frequentes no início da lista",
+"acesso aleatório por índice, via get(i)",
+"remoções frequentes no meio da lista",
+"uso como fila duplamente encadeada",
+"economia de memória por elemento em listas gigantes com inserções no meio"
+],
+"ans": 1,
+"why": "ArrayList = array dinâmico, get(i) em tempo constante. LinkedList = nós encadeados, bom para inserir/remover nas extremidades, péssimo para acesso por índice."
+},
+{
+"tag": "java",
+"q": "Sobre o HashMap em Java, é correto afirmar que:",
+"alts": [
+"mantém as chaves em ordem de inserção",
+"não admite valores repetidos",
+"associa chaves únicas a valores, sem garantia de ordem de iteração",
+"é sincronizado por padrão para uso concorrente",
+"não permite chave nula em nenhuma hipótese"
+],
+"ans": 2,
+"why": "HashMap: chaves únicas, valores livres, ordem de iteração não garantida, não sincronizado (isso é o ConcurrentHashMap), e aceita uma chave nula. Ordem de inserção é o LinkedHashMap."
+},
+{
+"tag": "java",
+"q": "No Spring, o padrão em que o framework instancia e fornece as dependências de um objeto, em vez de o próprio objeto criá-las, é chamado de:",
+"alts": [
+"service locator obrigatório",
+"inversão de controle com injeção de dependência",
+"reflexão tardia",
+"proxy reverso",
+"herança de contêiner"
+],
+"ans": 1,
+"why": "IoC/DI é o coração do Spring: o contêiner cria os beans e injeta as dependências (via construtor, setter ou campo com @Autowired), invertendo o controle da criação."
+},
+{
+"tag": "java",
+"q": "No JPA, as anotações mínimas para que uma classe seja gerenciada como entidade persistente e tenha sua chave identificada são:",
+"alts": [
+"@Table e @Column",
+"@Entity e @Id",
+"@Repository e @Autowired",
+"@Persistence e @Key",
+"@Component e @GeneratedValue"
+],
+"ans": 1,
+"why": "@Entity marca a classe como entidade; @Id marca a chave primária. @Table e @Column são opcionais (customizam nomes); @Repository é Spring, não JPA."
+},
+{
+"tag": "java",
+"q": "Uma característica do Spring Boot que simplifica a publicação de aplicações web é:",
+"alts": [
+"a exigência de instalação separada de um servidor de aplicação completo",
+"o servidor embutido (como Tomcat), que permite executar a aplicação como um JAR autônomo",
+"a proibição de arquivos de configuração",
+"a compilação para código nativo obrigatória",
+"o uso exclusivo de XML para configuração"
+],
+"ans": 1,
+"why": "Boot embute o servlet container: java -jar app.jar e está no ar. Elimina o deploy de WAR em servidor externo. Configuração é por convenção + application.properties, não XML obrigatório."
+},
+{
+"tag": "java",
+"q": "Sobre a classe String em Java, é correto afirmar que:",
+"alts": [
+"é mutável, permitindo alteração direta de seus caracteres",
+"é imutável, e concatenações intensivas devem preferir StringBuilder",
+"só pode ser criada com o operador new",
+"não pode ser usada como chave de HashMap",
+"é um tipo primitivo"
+],
+"ans": 1,
+"why": "String é imutável: cada concatenação cria novo objeto. Em laços, StringBuilder evita a proliferação de objetos. A imutabilidade é justamente o que a torna ótima chave de mapa."
+},
+{
+"tag": "java",
+"q": "Considere: Animal a = new Cachorro(); a.som(); onde Cachorro estende Animal e sobrescreve o método som(). O método executado será:",
+"alts": [
+"o da classe Animal, pois a referência é do tipo Animal",
+"o da classe Cachorro, pois a ligação do método é dinâmica, baseada no objeto real",
+"nenhum, pois o código não compila",
+"ambos, em sequência",
+"o de Animal em tempo de compilação e o de Cachorro apenas se houver cast explícito"
+],
+"ans": 1,
+"why": "Polimorfismo dinâmico (late binding): o tipo da REFERÊNCIA decide o que compila; o tipo do OBJETO decide o que executa. Roda o som() de Cachorro."
+},
+{
+"tag": "seguranca",
+"q": "A assinatura digital de um documento garante autenticidade, integridade e não repúdio porque o resumo (hash) do documento é cifrado com:",
+"alts": [
+"a chave pública do destinatário",
+"a chave privada do signatário, verificável por qualquer um com a chave pública correspondente",
+"uma chave simétrica compartilhada previamente",
+"o certificado da autoridade certificadora",
+"a senha do usuário"
+],
+"ans": 1,
+"why": "Assinar = cifrar o hash com a chave PRIVADA do emissor. Qualquer um verifica com a pública. Cifrar com a pública do destinatário é confidencialidade, operação inversa. Troca clássica da banca."
+},
+{
+"tag": "seguranca",
+"q": "Um certificado digital, no modelo de infraestrutura de chaves públicas (ICP), tem como função principal:",
+"alts": [
+"armazenar as senhas do usuário de forma cifrada",
+"vincular uma chave pública à identidade de seu titular, com garantia de uma Autoridade Certificadora",
+"substituir o uso de criptografia nas comunicações",
+"gerar chaves simétricas aleatórias",
+"registrar logs de acesso ao sistema"
+],
+"ans": 1,
+"why": "Certificado = chave pública + identidade + assinatura da AC. Resolve o problema de saber que aquela chave pública pertence mesmo àquela entidade."
+},
+{
+"tag": "seguranca",
+"q": "O malware que cifra os arquivos da vítima e exige pagamento para restabelecer o acesso é classificado como:",
+"alts": [
+"spyware",
+"ransomware",
+"worm",
+"rootkit",
+"adware"
+],
+"ans": 1,
+"why": "Ransomware = sequestro por criptografia + resgate. Spyware espiona; worm se autopropaga pela rede; rootkit oculta a presença do invasor com privilégios elevados."
+},
+{
+"tag": "seguranca",
+"q": "O ataque em que a vítima recebe mensagem que simula comunicação legítima de uma instituição, induzindo-a a fornecer credenciais ou dados sensíveis, é denominado:",
+"alts": [
+"força bruta",
+"phishing",
+"SQL injection",
+"man-in-the-middle",
+"negação de serviço (DoS)"
+],
+"ans": 1,
+"why": "Phishing = engenharia social por mensagem fraudulenta que 'pesca' credenciais. Não explora falha técnica, explora o humano. Variante dirigida a alvo específico = spear phishing."
+},
+{
+"tag": "seguranca",
+"q": "A diferença entre IDS e IPS é que o IPS:",
+"alts": [
+"apenas registra os eventos suspeitos para análise posterior",
+"atua em linha (inline) no tráfego, podendo bloquear ativamente o ataque detectado",
+"é instalado exclusivamente nas estações de trabalho",
+"substitui o firewall de borda",
+"não utiliza assinaturas de ataques"
+],
+"ans": 1,
+"why": "IDS = Detection: monitora e alerta, fora do fluxo. IPS = Prevention: fica no caminho do tráfego e bloqueia. O edital do perfil cita os dois conceitos nominalmente."
+},
+{
+"tag": "seguranca",
+"q": "A solução que centraliza, correlaciona e analisa registros (logs) e eventos de segurança de múltiplas fontes da infraestrutura, gerando alertas de incidentes, é o:",
+"alts": [
+"WAF",
+"SIEM (Security Information and Event Management)",
+"DLP",
+"antivírus corporativo",
+"proxy reverso"
+],
+"ans": 1,
+"why": "SIEM = agregação + correlação de eventos de toda a infraestrutura, base do trabalho de um SOC. WAF protege aplicações web; DLP previne vazamento de dados. SIEM está nominal no edital."
+},
+{
+"tag": "seguranca",
+"q": "No ataque de Cross-Site Scripting (XSS), o código malicioso é executado:",
+"alts": [
+"no servidor de banco de dados",
+"no navegador da vítima, injetado em página que ela visualiza",
+"no firewall de borda da rede",
+"apenas em aplicações desktop",
+"no serviço de DNS"
+],
+"ans": 1,
+"why": "XSS = script injetado em conteúdo web e executado no NAVEGADOR do usuário (roubo de sessão, redirecionamento). SQL injection, em contraste, executa no banco. Par de vulnerabilidades mais confundido."
+},
+{
+"tag": "seguranca",
+"q": "O princípio do menor privilégio estabelece que:",
+"alts": [
+"todos os usuários devem ter acesso de administrador para agilizar o trabalho",
+"cada usuário ou processo deve ter apenas as permissões estritamente necessárias às suas funções",
+"as senhas devem ter o menor tamanho possível",
+"os privilégios devem ser concedidos por ordem de chegada",
+"o acesso deve ser liberado por padrão e restringido sob demanda"
+],
+"ans": 1,
+"why": "Menor privilégio limita o estrago de contas comprometidas e erros: só o necessário, pelo tempo necessário. Base de controle de acesso cobrada de forma direta."
+},
+{
+"tag": "redes",
+"q": "São faixas de endereços IPv4 reservadas para redes privadas (RFC 1918):",
+"alts": [
+"8.8.8.0/24, 200.100.0.0/16 e 172.32.0.0/12",
+"10.0.0.0/8, 172.16.0.0/12 e 192.168.0.0/16",
+"127.0.0.0/8, 224.0.0.0/4 e 169.254.0.0/16",
+"1.1.1.0/24, 186.20.0.0/16 e 191.168.0.0/16",
+"10.0.0.0/8, 172.15.0.0/12 e 192.169.0.0/16"
+],
+"ans": 1,
+"why": "As três faixas privadas: 10.x.x.x, 172.16-31.x.x e 192.168.x.x. Os distratores mudam um dígito (172.32, 192.169), que é exatamente como a FGV pega desatento. 127.x é loopback; 169.254 é APIPA."
+},
+{
+"tag": "redes",
+"q": "O endereço IPv6 possui comprimento de:",
+"alts": [
+"32 bits",
+"64 bits",
+"128 bits",
+"256 bits",
+"48 bits"
+],
+"ans": 2,
+"why": "IPv6 = 128 bits (8 grupos hexadecimais), contra 32 do IPv4. 48 bits é endereço MAC. Decoreba direta que a banca cobra."
+},
+{
+"tag": "redes",
+"q": "O NAT (Network Address Translation) tem como função principal:",
+"alts": [
+"atribuir endereços IP automaticamente aos hosts",
+"traduzir endereços IP privados em públicos, permitindo que redes internas acessem a internet",
+"resolver nomes de domínio em endereços IP",
+"criptografar o tráfego entre redes",
+"segmentar a rede em domínios de broadcast"
+],
+"ans": 1,
+"why": "NAT traduz privado↔público na borda, economizando IPv4 e ocultando a topologia interna. Atribuição automática é DHCP; resolução de nomes é DNS; segmentação é VLAN."
+},
+{
+"tag": "redes",
+"q": "O protocolo que permite a um host obter automaticamente endereço IP, máscara, gateway e DNS ao ingressar na rede é o:",
+"alts": [
+"ARP",
+"DHCP",
+"ICMP",
+"SNMP",
+"FTP"
+],
+"ans": 1,
+"why": "DHCP = configuração dinâmica de host (processo DORA: Discover, Offer, Request, Ack). ARP mapeia IP→MAC; ICMP diagnostica (ping); SNMP gerencia dispositivos."
+},
+{
+"tag": "redes",
+"q": "A diferença entre um switch e um hub é que o switch:",
+"alts": [
+"repete o sinal recebido para todas as portas indistintamente",
+"encaminha quadros apenas à porta do destinatário, com base na tabela de endereços MAC",
+"opera na camada de rede, roteando pacotes IP",
+"funciona apenas em redes sem fio",
+"elimina a necessidade de cabeamento"
+],
+"ans": 1,
+"why": "Switch (camada 2) aprende MACs e comuta quadro só para a porta certa; hub (camada 1) repete para todos, gerando colisões. Rotear IP é papel do roteador (camada 3)."
+},
+{
+"tag": "redes",
+"q": "As portas TCP padrão dos protocolos HTTP e HTTPS são, respectivamente:",
+"alts": [
+"21 e 22",
+"25 e 110",
+"80 e 443",
+"53 e 67",
+"8080 e 8443"
+],
+"ans": 2,
+"why": "HTTP 80, HTTPS 443. 21=FTP, 22=SSH, 25=SMTP, 53=DNS. 8080/8443 são alternativas comuns, não o padrão. Tabela de portas é decoreba recorrente da FGV."
+},
+{
+"tag": "redes",
+"q": "O SSH substitui o Telnet na administração remota principalmente porque:",
+"alts": [
+"é mais rápido por não usar criptografia",
+"cifra toda a comunicação, incluindo a autenticação, na porta padrão 22",
+"funciona sem autenticação de usuário",
+"opera na camada física",
+"transmite as credenciais em texto claro para auditoria"
+],
+"ans": 1,
+"why": "Telnet trafega tudo em claro, inclusive senha; SSH cifra a sessão inteira (porta 22). É o exemplo canônico de protocolo inseguro substituído por seguro."
+},
+{
+"tag": "redes",
+"q": "Um firewall stateful diferencia-se do filtro de pacotes simples (stateless) porque:",
+"alts": [
+"analisa apenas os cabeçalhos de cada pacote isoladamente",
+"mantém tabela de estado das conexões, avaliando cada pacote no contexto da sessão a que pertence",
+"atua exclusivamente na camada de aplicação",
+"bloqueia somente tráfego de saída",
+"dispensa regras de filtragem"
+],
+"ans": 1,
+"why": "Stateful rastreia conexões (ex.: só aceita resposta de fora se houve requisição de dentro). Stateless olha pacote a pacote, sem contexto. Camada de aplicação é o firewall de próxima geração/WAF."
+},
+{
+"tag": "programacao",
+"q": "O padrão de projeto em que um objeto notifica automaticamente seus dependentes sobre mudanças de estado, estabelecendo relação um-para-muitos com baixo acoplamento, é o:",
+"alts": [
+"Singleton",
+"Observer",
+"Builder",
+"Flyweight",
+"Template Method"
+],
+"ans": 1,
+"why": "Observer = publicador/assinantes: mudou o estado, notifica todos os inscritos. Base conceitual de eventos, listeners e sistemas reativos."
+},
+{
+"tag": "programacao",
+"q": "O padrão Strategy é indicado quando se deseja:",
+"alts": [
+"garantir instância única de uma classe",
+"definir uma família de algoritmos intercambiáveis, encapsulados e selecionáveis em tempo de execução",
+"adicionar responsabilidades a um objeto dinamicamente",
+"simplificar a interface de um subsistema complexo",
+"clonar objetos existentes"
+],
+"ans": 1,
+"why": "Strategy encapsula algoritmos permutáveis atrás de uma interface (ex.: cálculo de frete por transportadora). Adicionar responsabilidade dinamicamente é Decorator; clonar é Prototype."
+},
+{
+"tag": "programacao",
+"q": "O padrão Factory Method propõe:",
+"alts": [
+"que a criação de objetos seja delegada a subclasses, que decidem qual classe concreta instanciar",
+"que todos os objetos sejam criados no método main",
+"a proibição de construtores públicos em todo o sistema",
+"a criação de objetos apenas por reflexão",
+"que objetos sejam sempre reutilizados de um pool"
+],
+"ans": 0,
+"why": "Factory Method define a interface de criação e deixa a subclasse escolher o produto concreto, desacoplando o cliente da classe instanciada. Padrão criacional do GoF."
+},
+{
+"tag": "programacao",
+"q": "O princípio da Inversão de Dependência (DIP), do SOLID, estabelece que:",
+"alts": [
+"classes de baixo nível devem conhecer os detalhes das de alto nível",
+"módulos de alto e baixo nível devem depender de abstrações, e não de implementações concretas",
+"toda dependência deve ser instanciada com new dentro da própria classe",
+"interfaces devem ser evitadas para reduzir complexidade",
+"a herança deve substituir a composição sempre que possível"
+],
+"ans": 1,
+"why": "DIP: dependa de abstrações (interfaces), não de concretos. É o princípio que a injeção de dependência do Spring materializa na prática."
+},
+{
+"tag": "programacao",
+"q": "O princípio da Substituição de Liskov (LSP) é violado quando:",
+"alts": [
+"uma subclasse pode ser usada onde a superclasse é esperada, sem alterar a correção do programa",
+"uma subclasse altera o comportamento esperado do contrato da superclasse, quebrando o código cliente que a utiliza",
+"duas classes implementam a mesma interface",
+"uma classe possui mais de um construtor",
+"um método é sobrecarregado com parâmetros diferentes"
+],
+"ans": 1,
+"why": "LSP: subtipo deve honrar o contrato do supertipo. O exemplo clássico da violação é Quadrado herdando de Retângulo e quebrando setLargura/setAltura."
+},
+{
+"tag": "programacao",
+"q": "Em projeto de software, a combinação desejável entre coesão e acoplamento é:",
+"alts": [
+"baixa coesão e alto acoplamento",
+"alta coesão e baixo acoplamento",
+"alta coesão e alto acoplamento",
+"baixa coesão e baixo acoplamento",
+"coesão e acoplamento são irrelevantes para a manutenibilidade"
+],
+"ans": 1,
+"why": "Alta coesão = cada módulo com propósito único e bem definido. Baixo acoplamento = módulos pouco dependentes entre si. É o mantra de design que fundamenta do SRP aos microsserviços."
+},
+{
+"tag": "programacao",
+"q": "Comparando XML e JSON como formatos de intercâmbio de dados, o XML se distingue por:",
+"alts": [
+"ser sempre mais compacto que o JSON",
+"suportar validação formal de estrutura por esquemas como XSD, além de atributos e namespaces",
+"não permitir hierarquia de elementos",
+"ser interpretado nativamente como objeto JavaScript",
+"dispensar marcação de fechamento"
+],
+"ans": 1,
+"why": "XML traz XSD, namespaces, atributos e XSLT; paga com verbosidade. JSON é mais leve e nativo do JS. A FGV pede o contraste, não o vencedor."
+},
+{
+"tag": "programacao",
+"q": "Em uma API REST, o método HTTP idempotente adequado para atualizar integralmente um recurso existente em URI conhecida é:",
+"alts": [
+"POST",
+"PUT",
+"PATCH",
+"OPTIONS",
+"HEAD"
+],
+"ans": 1,
+"why": "PUT substitui o recurso por completo e é idempotente (repetir N vezes = mesmo estado). POST cria e não é idempotente; PATCH atualiza parcialmente."
+},
+{
+"tag": "rlm",
+"q": "Um serviço teve o preço aumentado em 20% e, no mês seguinte, recebeu desconto de 20% sobre o novo valor. Em relação ao preço original, o valor final representa:",
+"alts": [
+"exatamente o preço original",
+"um aumento de 4%",
+"uma redução de 4%",
+"uma redução de 2%",
+"um aumento de 2%"
+],
+"ans": 2,
+"why": "1,20 × 0,80 = 0,96, ou seja, 96% do original: redução de 4%. Percentuais sucessivos não se anulam; a resposta 'volta ao original' é o distrator plantado."
+},
+{
+"tag": "rlm",
+"q": "Pela lei de De Morgan, a negação da proposição 'o sistema está no ar E o backup foi concluído' é:",
+"alts": [
+"o sistema não está no ar E o backup não foi concluído",
+"o sistema não está no ar OU o backup não foi concluído",
+"o sistema está no ar OU o backup foi concluído",
+"se o sistema está no ar, o backup foi concluído",
+"o backup foi concluído E o sistema não está no ar"
+],
+"ans": 1,
+"why": "¬(P∧Q) ≡ ¬P∨¬Q: nega os dois e troca E por OU. Negar mantendo o E é o erro mais comum e a primeira alternativa existe para capturá-lo."
+},
+{
+"tag": "rlm",
+"q": "A contrapositiva da proposição 'Se o candidato estudou, então foi aprovado' é:",
+"alts": [
+"se o candidato foi aprovado, então estudou",
+"se o candidato não estudou, então não foi aprovado",
+"se o candidato não foi aprovado, então não estudou",
+"o candidato estudou e não foi aprovado",
+"o candidato foi aprovado ou estudou"
+],
+"ans": 2,
+"why": "Contrapositiva de P→Q é ¬Q→¬P, e é logicamente EQUIVALENTE à original. As alternativas A (recíproca) e B (inversa) não são equivalentes: são os dois distratores clássicos."
+},
+{
+"tag": "rlm",
+"q": "Em uma progressão aritmética, o primeiro termo é 7 e a razão é 4. O décimo termo é:",
+"alts": [
+"43",
+"40",
+"47",
+"36",
+"51"
+],
+"ans": 0,
+"why": "an = a1 + (n−1)·r = 7 + 9·4 = 43. Usar n em vez de n−1 leva ao distrator 47."
+},
+{
+"tag": "rlm",
+"q": "Quantas senhas de 4 dígitos podem ser formadas usando os algarismos de 0 a 9, sem repetição de algarismos?",
+"alts": [
+"10.000",
+"6.561",
+"5.040",
+"4.096",
+"3.024"
+],
+"ans": 2,
+"why": "Sem repetição: 10×9×8×7 = 5.040. Com repetição seria 10⁴ = 10.000, o primeiro distrator. Arranjo simples A(10,4)."
+},
+{
+"tag": "rlm",
+"q": "Uma urna contém 5 bolas azuis e 3 verdes. Retirando-se uma bola ao acaso, a probabilidade de ela ser azul é:",
+"alts": [
+"3/8",
+"1/2",
+"5/8",
+"3/5",
+"5/3"
+],
+"ans": 2,
+"why": "P = favoráveis/possíveis = 5/8. O distrator 3/5 vem de dividir um grupo pelo outro em vez de pelo total; 5/3 nem é probabilidade válida (>1)."
+},
+{
+"tag": "rlm",
+"q": "Se A é uma matriz 2×3 e B é uma matriz 3×4, o produto A·B:",
+"alts": [
+"não está definido",
+"é uma matriz 2×4",
+"é uma matriz 3×3",
+"é uma matriz 4×2",
+"é uma matriz 2×3"
+],
+"ans": 1,
+"why": "Produto existe quando colunas de A = linhas de B (3=3), e o resultado herda linhas de A e colunas de B: 2×4. O edital cita problemas matriciais explicitamente."
+},
+{
+"tag": "rlm",
+"q": "Três analistas dividem uma gratificação de R$ 9.600,00 em partes proporcionais a 2, 3 e 5. A maior parte vale:",
+"alts": [
+"R$ 1.920,00",
+"R$ 2.880,00",
+"R$ 4.800,00",
+"R$ 5.200,00",
+"R$ 3.200,00"
+],
+"ans": 2,
+"why": "Soma das partes = 10; cada unidade = 960. Maior parte = 5 × 960 = R$ 4.800. Os distratores são as outras partes (1.920 e 2.880), prontos para quem lê a pergunta com pressa."
+},
+{
+"tag": "legislacao",
+"q": "Sobre as bases legais de tratamento de dados pessoais na LGPD, é correto afirmar que:",
+"alts": [
+"o consentimento é a única base legal admitida",
+"o consentimento é uma entre as dez bases legais previstas, ao lado de hipóteses como cumprimento de obrigação legal, execução de contrato e legítimo interesse",
+"o legítimo interesse dispensa qualquer avaliação ou salvaguarda",
+"dados sensíveis não podem ser tratados em nenhuma hipótese",
+"a execução de políticas públicas não constitui base legal"
+],
+"ans": 1,
+"why": "Art. 7º traz dez bases; consentimento é só uma delas. A ideia de que 'sem consentimento não pode tratar' é o mito que a banca explora."
+},
+{
+"tag": "legislacao",
+"q": "O órgão da administração pública federal responsável por zelar, implementar e fiscalizar o cumprimento da LGPD é:",
+"alts": [
+"o Ministério Público Federal",
+"a ANPD (Autoridade Nacional de Proteção de Dados)",
+"o CGI.br",
+"a Polícia Federal",
+"o CADE"
+],
+"ans": 1,
+"why": "ANPD: atuação normativa, fiscalizatória e sancionadora da LGPD. O edital do perfil 7 e a disciplina de legislação comum citam suas competências nominalmente."
+},
+{
+"tag": "legislacao",
+"q": "Entre os direitos do titular de dados pessoais garantidos pela LGPD estão:",
+"alts": [
+"apenas o direito de ser informado sobre vazamentos",
+"confirmação do tratamento, acesso, correção, anonimização, portabilidade e eliminação dos dados",
+"somente a revogação do consentimento",
+"indenização automática por qualquer tratamento",
+"exclusão de dados tratados por obrigação legal, sem exceção"
+],
+"ans": 1,
+"why": "Art. 18 lista o cardápio: confirmação, acesso, correção, anonimização/bloqueio/eliminação, portabilidade, informação sobre compartilhamento e revogação do consentimento."
+},
+{
+"tag": "legislacao",
+"q": "Na Lei de Acesso à Informação, a divulgação espontânea de informações de interesse coletivo pelos órgãos públicos, independentemente de solicitação, caracteriza a:",
+"alts": [
+"transparência passiva",
+"transparência ativa",
+"classificação sigilosa",
+"publicidade restrita",
+"accountability judicial"
+],
+"ans": 1,
+"why": "Ativa = o órgão publica por iniciativa própria (portais, dados abertos). Passiva = responde a pedidos de cidadãos. O par ativa/passiva é a distinção mais cobrada da LAI."
+},
+{
+"tag": "legislacao",
+"q": "O princípio da neutralidade de rede, previsto no Marco Civil da Internet, determina que o responsável pela transmissão deve:",
+"alts": [
+"priorizar o tráfego de clientes que paguem mais",
+"tratar de forma isonômica quaisquer pacotes de dados, sem distinção por conteúdo, origem, destino ou aplicação",
+"bloquear aplicações concorrentes",
+"reduzir a velocidade de serviços de vídeo em horários de pico",
+"monitorar o conteúdo dos pacotes para fins comerciais"
+],
+"ans": 1,
+"why": "Art. 9º: isonomia no tratamento dos pacotes. Discriminação só nas exceções técnicas regulamentadas (requisitos técnicos indispensáveis e priorização de emergência)."
+},
+{
+"tag": "legislacao",
+"q": "Quanto à guarda obrigatória de registros prevista no Marco Civil da Internet, os prazos são:",
+"alts": [
+"6 meses para registros de conexão e 1 ano para registros de acesso a aplicações",
+"1 ano para registros de conexão e 6 meses para registros de acesso a aplicações",
+"5 anos para ambos",
+"30 dias para ambos",
+"a lei não fixa prazos, deixando a critério do provedor"
+],
+"ans": 1,
+"why": "Conexão (provedor de conexão): 1 ano, art. 13. Acesso a aplicações (provedor de aplicação): 6 meses, art. 15. A inversão dos prazos é o distrator número um."
+},
+{
+"tag": "bi",
+"q": "A diferença entre sistemas OLTP e OLAP é que o OLTP:",
+"alts": [
+"é voltado à análise histórica multidimensional",
+"processa transações operacionais do dia a dia, com muitas escritas curtas, enquanto o OLAP serve à análise com consultas complexas de leitura",
+"não utiliza bancos de dados relacionais",
+"é sempre mais lento que o OLAP",
+"armazena exclusivamente dados agregados"
+],
+"ans": 1,
+"why": "OLTP = operação (INSERT/UPDATE curtos, normalizado). OLAP = análise (leituras pesadas, agregações, dimensional). O DW existe para tirar a carga analítica do transacional."
+},
+{
+"tag": "bi",
+"q": "Na modelagem dimensional, a tabela fato contém:",
+"alts": [
+"as descrições textuais de clientes e produtos",
+"as métricas numéricas do negócio (medidas) e as chaves para as dimensões",
+"apenas os metadados do ETL",
+"a hierarquia geográfica das filiais",
+"os logs de auditoria do sistema"
+],
+"ans": 1,
+"why": "Fato = medidas (valor vendido, quantidade) + FKs das dimensões. Dimensão = contexto descritivo (quem, o quê, onde, quando). Descrição textual mora na dimensão."
+},
+{
+"tag": "bi",
+"q": "Um data mart diferencia-se do data warehouse por ser:",
+"alts": [
+"um repositório de dados brutos sem tratamento",
+"um subconjunto do DW orientado a um departamento ou assunto específico, como vendas ou RH",
+"obrigatoriamente maior que o data warehouse",
+"incompatível com ferramentas OLAP",
+"um sinônimo de data lake"
+],
+"ans": 1,
+"why": "Data mart = recorte departamental do DW (ou construído de forma independente, na visão Kimball). Menor escopo, mesmo propósito analítico. Dado bruto sem tratamento é o lake."
+},
+{
+"tag": "bi",
+"q": "Data mining é definido como o processo de:",
+"alts": [
+"carregar dados das fontes para o data warehouse",
+"descobrir padrões, correlações e conhecimento não trivial em grandes volumes de dados",
+"criar cópias de segurança dos bancos analíticos",
+"normalizar tabelas relacionais",
+"cadastrar metadados de governança"
+],
+"ans": 1,
+"why": "Mineração = extração de padrões ocultos e acionáveis (associação, classificação, agrupamento). Carga é o L do ETL; mining vem depois, sobre o dado já consolidado."
+},
+{
+"tag": "bi",
+"q": "Segundo a definição clássica de Inmon, um data warehouse é uma coleção de dados:",
+"alts": [
+"orientada a aplicações, volátil e em tempo real",
+"orientada por assunto, integrada, não volátil e variável no tempo",
+"desnormalizada, temporária e departamental",
+"criptografada, distribuída e anônima",
+"operacional, transacional e normalizada"
+],
+"ans": 1,
+"why": "As quatro marcas de Inmon: subject-oriented, integrated, non-volatile, time-variant. Cai literal com frequência; memorize o quarteto."
+},
+{
+"tag": "bi",
+"q": "A abordagem ELT, em contraste com o ETL tradicional, caracteriza-se por:",
+"alts": [
+"eliminar a etapa de extração",
+"carregar os dados brutos no destino e realizar a transformação lá dentro, aproveitando o poder de processamento do repositório",
+"transformar os dados duas vezes",
+"ser incompatível com data lakes",
+"exigir ferramentas exclusivamente on-premise"
+],
+"ans": 1,
+"why": "ELT inverte: carrega cru, transforma no destino (comum em data lakes e warehouses de nuvem com processamento massivo). O edital do perfil 3 cita ETL/ELT nominalmente."
+},
+{
+"tag": "arquitetura",
+"q": "Em microsserviços, o padrão circuit breaker tem como objetivo:",
+"alts": [
+"cifrar a comunicação entre os serviços",
+"interromper temporariamente chamadas a um serviço que está falhando, evitando falhas em cascata e permitindo sua recuperação",
+"balancear a carga entre instâncias saudáveis",
+"versionar as APIs públicas",
+"registrar os serviços em um catálogo central"
+],
+"ans": 1,
+"why": "Circuit breaker 'abre o circuito' após falhas seguidas: para de chamar o serviço doente, responde rápido com fallback e tenta de novo depois. Resiliência contra cascata."
+},
+{
+"tag": "arquitetura",
+"q": "O uso de mensageria assíncrona (filas e tópicos) entre serviços proporciona principalmente:",
+"alts": [
+"acoplamento temporal forte entre produtor e consumidor",
+"desacoplamento entre produtor e consumidor, que não precisam estar disponíveis simultaneamente",
+"respostas síncronas mais rápidas",
+"eliminação da necessidade de serialização de dados",
+"consistência forte imediata entre os serviços"
+],
+"ans": 1,
+"why": "Fila = desacoplamento temporal e de carga: o produtor publica e segue a vida; o consumidor processa no seu ritmo. O preço é a consistência eventual, não imediata."
+},
+{
+"tag": "arquitetura",
+"q": "A diferença entre containers e máquinas virtuais é que os containers:",
+"alts": [
+"virtualizam o hardware completo, incluindo um sistema operacional próprio por instância",
+"compartilham o kernel do sistema operacional hospedeiro, isolando apenas processos e dependências, o que os torna mais leves",
+"exigem hipervisor tipo 1 dedicado",
+"não podem ser orquestrados em cluster",
+"são mais lentos para iniciar que as VMs"
+],
+"ans": 1,
+"why": "Container = isolamento no nível do SO, kernel compartilhado, sobe em segundos. VM = hardware virtualizado + SO completo por instância. Base conceitual de Docker e Kubernetes."
+},
+{
+"tag": "arquitetura",
+"q": "A escalabilidade horizontal de uma aplicação consiste em:",
+"alts": [
+"aumentar CPU e memória do servidor existente",
+"adicionar mais instâncias ou máquinas para dividir a carga",
+"reduzir o número de usuários simultâneos",
+"migrar o banco para o mesmo servidor da aplicação",
+"desligar serviços de monitoramento para liberar recursos"
+],
+"ans": 1,
+"why": "Horizontal = mais máquinas (scale out), caminho natural de microsserviços e nuvem. Vertical = máquina maior (scale up), com teto físico e ponto único de falha."
+},
+{
+"tag": "arquitetura",
+"q": "Na comunicação entre microsserviços, comparando REST síncrono e mensageria assíncrona, o REST síncrono:",
+"alts": [
+"dispensa que o serviço chamado esteja disponível no momento da requisição",
+"exige disponibilidade simultânea de chamador e chamado, com o cliente aguardando a resposta",
+"garante desacoplamento temporal completo",
+"não utiliza o protocolo HTTP",
+"é sempre a escolha correta para eventos de domínio"
+],
+"ans": 1,
+"why": "Síncrono = requisição-resposta em tempo real, os dois vivos ao mesmo tempo; a indisponibilidade propaga. Assíncrono tolera indisponibilidade momentânea via fila."
+},
+{
+"tag": "governanca",
+"q": "No ITIL, a distinção entre incidente e problema é que o problema:",
+"alts": [
+"é qualquer interrupção não planejada de um serviço",
+"é a causa raiz, real ou potencial, de um ou mais incidentes",
+"é sempre resolvido pelo usuário final",
+"tem prioridade menor que requisição de serviço",
+"é sinônimo de mudança emergencial"
+],
+"ans": 1,
+"why": "Incidente = interrupção/degradação a restaurar rápido. Problema = a causa por trás, investigada para eliminar recorrência. Distinção mais cobrada de ITIL em qualquer banca."
+},
+{
+"tag": "governanca",
+"q": "As quatro dimensões do gerenciamento de serviços no ITIL v4 são:",
+"alts": [
+"estratégia, desenho, transição e operação",
+"organizações e pessoas; informação e tecnologia; parceiros e fornecedores; fluxos de valor e processos",
+"planejar, fazer, checar e agir",
+"governança, gestão, auditoria e conformidade",
+"demanda, capacidade, disponibilidade e continuidade"
+],
+"ans": 1,
+"why": "As 4 dimensões do v4. A alternativa A lista estágios do ciclo de vida do ITIL v3, distrator perfeito para quem estudou a versão antiga."
+},
+{
+"tag": "governanca",
+"q": "No Kanban, a métrica lead time mede:",
+"alts": [
+"o tempo entre o início efetivo do trabalho e sua conclusão",
+"o tempo total entre a solicitação (entrada no sistema) e a entrega ao cliente",
+"a quantidade de itens em progresso",
+"a velocidade da equipe em story points",
+"o número de defeitos por entrega"
+],
+"ans": 1,
+"why": "Lead time = da solicitação à entrega (visão do cliente). Cycle time = do início do trabalho à entrega (visão da equipe). WIP é quantidade, não tempo."
+},
+{
+"tag": "governanca",
+"q": "A tripla restrição clássica do gerenciamento de projetos é composta por:",
+"alts": [
+"pessoas, processos e tecnologia",
+"escopo, tempo e custo, com impacto direto na qualidade",
+"risco, comunicação e aquisições",
+"estratégia, tática e operação",
+"início, meio e fim"
+],
+"ans": 1,
+"why": "O triângulo de ferro: mexeu em escopo, prazo ou custo, os outros dois (e a qualidade) sentem. Fundamento de PMBOK cobrado de forma direta."
+},
+{
+"tag": "governanca",
+"q": "Na notação BPMN, os eventos de início e de fim de um processo são representados, respectivamente, por:",
+"alts": [
+"retângulo e losango",
+"círculo de linha fina e círculo de linha grossa",
+"seta simples e seta dupla",
+"losango e círculo duplo",
+"retângulo arredondado e hexágono"
+],
+"ans": 1,
+"why": "Início = círculo de traço fino; fim = círculo de traço espesso; intermediário = círculo duplo. Retângulo arredondado é atividade; losango é gateway. Simbologia literal."
+},
+{
+"tag": "frontend",
+"q": "No box model do CSS, a ordem dos componentes, do interior para o exterior de um elemento, é:",
+"alts": [
+"margin, border, padding, content",
+"content, padding, border, margin",
+"content, margin, border, padding",
+"padding, content, margin, border",
+"border, content, padding, margin"
+],
+"ans": 1,
+"why": "De dentro pra fora: conteúdo, padding (respiro interno), borda, margin (respiro externo). A banca inverte padding e margin para pegar quem decora sem visualizar."
+},
+{
+"tag": "frontend",
+"q": "A técnica AJAX permite que uma página web:",
+"alts": [
+"seja recarregada integralmente a cada requisição",
+"faça requisições assíncronas ao servidor e atualize partes da página sem recarregá-la",
+"funcione sem JavaScript habilitado",
+"execute código do servidor no navegador",
+"dispense o uso do protocolo HTTP"
+],
+"ans": 1,
+"why": "AJAX = requisição assíncrona em segundo plano (XMLHttpRequest/fetch) + atualização parcial do DOM. É a fundação técnica que viabilizou as SPAs. Está nominal no edital."
+},
+{
+"tag": "frontend",
+"q": "No design responsivo, o recurso CSS que aplica estilos condicionados às características do dispositivo, como a largura da tela, é:",
+"alts": [
+"o seletor de id",
+"as media queries",
+"a propriedade z-index",
+"os pseudo-elementos ::before e ::after",
+"a diretiva @import"
+],
+"ans": 1,
+"why": "@media (max-width: 768px) {...} adapta o layout ao dispositivo. z-index é empilhamento; pseudo-elementos geram conteúdo decorativo. Responsividade entra em usabilidade/UX do edital."
+},
+{
+"tag": "frontend",
+"q": "Comparado ao React, o Angular caracteriza-se por:",
+"alts": [
+"ser apenas uma biblioteca de visualização, sem opinião sobre o restante da aplicação",
+"ser um framework completo e opinativo, escrito em TypeScript, com injeção de dependência e two-way data binding nativos",
+"não suportar componentização",
+"dispensar o uso de módulos e serviços",
+"ser mantido pela Meta"
+],
+"ans": 1,
+"why": "Angular (Google) = framework completo: DI, roteador, formulários, two-way binding, TypeScript por padrão. React (Meta) = biblioteca de UI, o resto vem do ecossistema. Os três (com Vue) estão no edital."
+},
+{
+"tag": "orfaos",
+"q": "Plataformas low-code caracterizam-se por:",
+"alts": [
+"exigir domínio avançado de linguagens compiladas",
+"permitir o desenvolvimento de aplicações por modelagem visual e configuração, com o mínimo de código manual",
+"gerar exclusivamente aplicações desktop",
+"eliminar por completo a participação de desenvolvedores profissionais",
+"serem restritas a protótipos não funcionais"
+],
+"ans": 1,
+"why": "Low-code = arrastar-soltar + configuração + pouco código para casos específicos. No-code elimina o código de vez, voltado ao usuário de negócio. Ambos nominais no edital do perfil 3."
+},
+{
+"tag": "orfaos",
+"q": "Os três Vs clássicos que caracterizam Big Data são:",
+"alts": [
+"velocidade, versão e vigência",
+"volume, velocidade e variedade",
+"valor, verdade e visibilidade",
+"virtualização, vetorização e validação",
+"volume, vazão e vulnerabilidade"
+],
+"ans": 1,
+"why": "Volume (escala), velocidade (geração/processamento) e variedade (estruturado a não estruturado). Extensões incluem veracidade e valor, mas o trio clássico é esse."
+},
+{
+"tag": "orfaos",
+"q": "No aprendizado de máquina, a diferença entre aprendizado supervisionado e não supervisionado é que o supervisionado:",
+"alts": [
+"dispensa dados de treinamento",
+"utiliza dados rotulados, com a resposta correta conhecida, para aprender a prever novos casos",
+"agrupa dados sem qualquer referência prévia",
+"funciona apenas com imagens",
+"não pode ser avaliado por métricas"
+],
+"ans": 1,
+"why": "Supervisionado = dado rotulado (classificação, regressão). Não supervisionado = sem rótulo, descobre estrutura (clustering, associação). Conceitos de IA estão no módulo geral E no específico."
+},
+{
+"tag": "orfaos",
+"q": "Em transações distribuídas, o protocolo two-phase commit (2PC) funciona por meio de:",
+"alts": [
+"execução paralela sem coordenação entre os participantes",
+"um coordenador que primeiro consulta se todos os participantes podem confirmar (prepare) e, só com unanimidade, ordena o commit",
+"votação por maioria simples entre os nós",
+"confirmação individual e independente de cada participante",
+"rollback automático a cada cinco minutos"
+],
+"ans": 1,
+"why": "2PC: fase 1 (prepare/votação) e fase 2 (commit/abort global). Basta um 'não' para abortar tudo. Transações distribuídas estão nominais no edital do perfil 3."
+}
+]

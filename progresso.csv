@@ -1,0 +1,92 @@
+data,dia,semana,foco,tag,secundario,questoes,acertos,feito
+2026-07-13,seg,1,"Eng. Software: ciclo de vida, processos, modelos",eng-software,"Portugues: interpretacao",0,0,0
+2026-07-14,ter,1,"Eng. Software: engenharia de requisitos",eng-software,"Ingles: reading comprehension",0,0,0
+2026-07-15,qua,1,"BD: modelo conceitual, logico, fisico; ER",banco-dados,"RLM: aritmetica",0,0,0
+2026-07-16,qui,1,"BD: normalizacao 1FN-3FN, integridade referencial",banco-dados,"Legislacao: LGPD cap I-II",0,0,0
+2026-07-17,sex,1,"Eng. Software: Scrum",eng-software,"Atualidades: conceitos de IA, ML",0,0,0
+2026-07-18,sab,1,"Revisao do caderno de erros da semana",revisao,"Questoes mistas",0,0,0
+2026-07-19,dom,1,"SIMULADO 1",simulado,"Correcao comentada",0,0,0
+2026-07-20,seg,2,"Eng. Software: Kanban, XP, Lean",eng-software,"Portugues: sintaxe",0,0,0
+2026-07-21,ter,2,"BD: SQL - DDL, DML, joins, subconsultas",banco-dados,"Ingles: verbos",0,0,0
+2026-07-22,qua,2,"BD: SQL avancado, agregacoes, views",banco-dados,"RLM: algebra e proporcoes",0,0,0
+2026-07-23,qui,2,"Programacao: OO - heranca, polimorfismo, encapsulamento",programacao,"Legislacao: LGPD cap III-IV",0,0,0
+2026-07-24,sex,2,"Programacao: SOLID",programacao,"Atualidades: modelos generativos e LLMs",0,0,0
+2026-07-25,sab,2,"Revisao + refazer erradas da semana 1",revisao,"Caderno de erros",0,0,0
+2026-07-26,dom,2,"SIMULADO 2",simulado,"Correcao comentada",0,0,0
+2026-07-27,seg,3,"Programacao: padroes de projeto",programacao,"Portugues: morfologia",0,0,0
+2026-07-28,ter,3,"Programacao: GRASP, clean code, SonarQube",programacao,"Ingles: pronomes e conectivos",0,0,0
+2026-07-29,qua,3,"BD: SGBD, ACID, NoSQL, bancos em memoria",banco-dados,"RLM: analise combinatoria",0,0,0
+2026-07-30,qui,3,"Eng. Software: testes - unitarios, integracao, TDD, BDD",eng-software,"Legislacao: Marco Civil",0,0,0
+2026-07-31,sex,3,"Eng. Software: testes automatizados, RPA",eng-software,"Atualidades: etica e governanca em IA",0,0,0
+2026-08-01,sab,3,"Revisao + refazer erradas das semanas 1 e 2",revisao,"Caderno de erros",0,0,0
+2026-08-02,dom,3,"SIMULADO 3",simulado,"Correcao comentada",0,0,0
+2026-08-03,seg,4,"Arquitetura: monolitica x microsservicos, camadas, SOA",arquitetura,"Portugues: pontuacao e crase",0,0,0
+2026-08-04,ter,4,"Arquitetura: hexagonal, API gateway, containers",arquitetura,"Ingles: substantivos e compostos",0,0,0
+2026-08-05,qua,4,"BD: revisita (modelagem + SQL)",banco-dados,"RLM: geometria plana",0,0,0
+2026-08-06,qui,4,"Programacao: JSON, XML, REST, Web Services, Swagger",programacao,"Legislacao: LAI",0,0,0
+2026-08-07,sex,4,"Eng. Software: revisita (requisitos + agil)",eng-software,"Atualidades",0,0,0
+2026-08-08,sab,4,"Revisao + caderno de erros acumulado",revisao,"INSCRICAO E BOLETO PAGOS?",0,0,0
+2026-08-09,dom,4,"SIMULADO 4",simulado,"Correcao comentada",0,0,0
+2026-08-10,seg,5,"Java: sintaxe, tipos, colecoes, excecoes",java,"Portugues",0,0,0
+2026-08-11,ter,5,"Java EE / Jakarta EE: EJB, servlets, container web",java,"Ingles",0,0,0
+2026-08-12,qua,5,"JPA e Hibernate: ORM, mapeamento, ciclo de vida",java,"RLM: estatistica basica",0,0,0
+2026-08-13,qui,5,"Spring: Spring Boot, injecao de dependencia, anotacoes",java,"Legislacao: revisita LGPD",0,0,0
+2026-08-14,sex,5,"Spring Cloud, JUnit, JSF, Primefaces",java,"Atualidades",0,0,0
+2026-08-15,sab,5,"Revisao pesada de Java + caderno de erros",revisao,"Caderno de erros",0,0,0
+2026-08-16,dom,5,"SIMULADO 5",simulado,"Correcao comentada",0,0,0
+2026-08-17,seg,6,"Redes: modelo OSI, camadas, encapsulamento",redes,"Portugues",0,0,0
+2026-08-18,ter,6,"Redes: TCP/IP, HTTP, DNS, SMTP, FTP, SSH",redes,"Ingles",0,0,0
+2026-08-19,qua,6,"Protocolos seguros: HTTPS, SSL/TLS, handshake, certificados",redes,"RLM: matrizes",0,0,0
+2026-08-20,qui,6,"Seguranca: criptografia simetrica/assimetrica, hash, assinatura",seguranca,"Legislacao: delitos informaticos",0,0,0
+2026-08-21,sex,6,"Seguranca de redes: firewall, VPN",redes,"Atualidades",0,0,0
+2026-08-22,sab,6,"Revisao + refazer erradas de Java",revisao,"Caderno de erros",0,0,0
+2026-08-23,dom,6,"SIMULADO 6",simulado,"Correcao comentada",0,0,0
+2026-08-24,seg,7,"Seguranca: politicas, CID, ISO 27001:2022",seguranca,"Portugues",0,0,0
+2026-08-25,ter,7,"Seguranca: ISO 27002:2022, gerencia de riscos",seguranca,"Ingles",0,0,0
+2026-08-26,qua,7,"Seguranca: controle de acesso, OAuth2, SSO",seguranca,"RLM: revisita aritmetica/algebra",0,0,0
+2026-08-27,qui,7,"Seguranca: OWASP Top 10, SDL, SAST e DAST",seguranca,"Legislacao: revisita Marco Civil e LAI",0,0,0
+2026-08-28,sex,7,"Eng. Software: revisita testes + DevOps, DevSecOps, Git",eng-software,"Atualidades",0,0,0
+2026-08-29,sab,7,"Revisao + caderno de erros",revisao,"Caderno de erros",0,0,0
+2026-08-30,dom,7,"SIMULADO 7",simulado,"Correcao comentada",0,0,0
+2026-08-31,seg,8,"BI: conceitos, arquitetura, sistemas de suporte a decisao",bi,"Portugues",0,0,0
+2026-09-01,ter,8,"BI: data warehouse, modelagem dimensional, star/snowflake",bi,"Ingles",0,0,0
+2026-09-02,qua,8,"BI: ETL e ELT, OLAP e operacoes, cubos",bi,"RLM: combinatoria e probabilidade",0,0,0
+2026-09-03,qui,8,"BI: data mining, data lake, big data",bi,"Legislacao: revisita LGPD",0,0,0
+2026-09-04,sex,8,"BD: revisita completa (eixo duplo)",banco-dados,"Atualidades",0,0,0
+2026-09-05,sab,8,"Revisao + refazer erradas de Seguranca",revisao,"Caderno de erros",0,0,0
+2026-09-06,dom,8,"SIMULADO 8",simulado,"Correcao comentada",0,0,0
+2026-09-07,seg,9,"Frontend: HTML, CSS, Ajax, padroes de frontend",frontend,"Portugues",0,0,0
+2026-09-08,ter,9,"Frontend: React, Angular, VueJS, SPA e PWA",frontend,"Ingles",0,0,0
+2026-09-09,qua,9,"Mobile: Android e iOS, low-code e no-code",frontend,"RLM: revisita geometria",0,0,0
+2026-09-10,qui,9,"UX: acessibilidade, usabilidade, CMS, portais, workflow",frontend,"Legislacao: revisao geral",0,0,0
+2026-09-11,sex,9,"Eng. Software: revisita (padroes, SOLID, arquitetura)",eng-software,"Atualidades",0,0,0
+2026-09-12,sab,9,"Revisao + caderno de erros",revisao,"Caderno de erros",0,0,0
+2026-09-13,dom,9,"SIMULADO 9",simulado,"Correcao comentada",0,0,0
+2026-09-14,seg,10,"Governanca: PMBOK, abordagens tradicional/hibrida/agil",governanca,"Portugues",0,0,0
+2026-09-15,ter,10,"Governanca: ITIL v4",governanca,"Ingles",0,0,0
+2026-09-16,qua,10,"Governanca: COBIT 2019, gestao de riscos",governanca,"RLM: simulado so de RLM",0,0,0
+2026-09-17,qui,10,"BPMN e modelagem de processos de negocio",governanca,"Legislacao: revisao geral",0,0,0
+2026-09-18,sex,10,"Metricas: Ponto de Funcao, Story Points",governanca,"Atualidades",0,0,0
+2026-09-19,sab,10,"Revisao + refazer erradas de Java e Redes",revisao,"Caderno de erros",0,0,0
+2026-09-20,dom,10,"SIMULADO 10",simulado,"Correcao comentada",0,0,0
+2026-09-21,seg,11,"Blockchain. Transacoes distribuidas",orfaos,"Portugues",0,0,0
+2026-09-22,ter,11,"Arquitetura de computadores, sistemas distribuidos",orfaos,"Ingles",0,0,0
+2026-09-23,qua,11,"Internet, extranet, intranet, portal. Servidores app/web",orfaos,"RLM",0,0,0
+2026-09-24,qui,11,"Conceitos de IA, analise de dados e big data",orfaos,"Legislacao",0,0,0
+2026-09-25,sex,11,"Padroes de desenvolvimento e reuso. UDDI. Design de software",orfaos,"Atualidades",0,0,0
+2026-09-26,sab,11,"Varredura: reler Anexo I do edital item por item",revisao,"Marcar o que ainda e desconhecido",0,0,0
+2026-09-27,dom,11,"SIMULADO 11",simulado,"Correcao comentada",0,0,0
+2026-09-28,seg,12,"Revisao dos 3 topicos com pior taxa de acerto",revisao,"Caderno de erros",0,0,0
+2026-09-29,ter,12,"Eixo duplo: revisao intensiva de Eng. de Software",eng-software,"Caderno de erros",0,0,0
+2026-09-30,qua,12,"SIMULADO 12 (meio de semana, treino de resistencia)",simulado,"Correcao comentada",0,0,0
+2026-10-01,qui,12,"Eixo duplo: revisao intensiva de BD e BI",banco-dados,"Caderno de erros",0,0,0
+2026-10-02,sex,12,"Revisao de Seguranca, Redes e Arquitetura",revisao,"Caderno de erros",0,0,0
+2026-10-03,sab,12,"Caderno de erros integral, do comeco ao fim",revisao,"Caderno de erros",0,0,0
+2026-10-04,dom,12,"SIMULADO 13",simulado,"Correcao comentada",0,0,0
+2026-10-05,seg,13,"Revisao leve: Legislacao (LGPD, LAI, Marco Civil) texto seco",revisao,"Leis",0,0,0
+2026-10-06,ter,13,"Revisao leve: Portugues (sintaxe/pontuacao) e Ingles",revisao,"Interpretacao",0,0,0
+2026-10-07,qua,13,"SIMULADO 14 - o ultimo",simulado,"Correcao comentada",0,0,0
+2026-10-08,qui,13,"Caderno de erros. Atualidades: noticias recentes",revisao,"Atualidades",0,0,0
+2026-10-09,sex,13,"Lives de revisao de vespera. PARAR conteudo novo",revisao,"Estrategia/Gran",0,0,0
+2026-10-10,sab,13,"DESCANSO. Separar documentos. Dormir cedo",descanso,"Checklist do dia da prova",0,0,0
+2026-10-11,dom,13,"*** PROVA - 13h as 17h. PORTOES FECHAM 12h30 ***",prova,"Boa sorte",0,0,0
