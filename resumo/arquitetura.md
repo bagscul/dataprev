@@ -50,13 +50,39 @@ acoplamento, contra o princípio); "monólito não pode ser distribuído" = fals
   sessão → escala horizontalmente sem afinidade de sessão.
 - **API Gateway:** ponto único de entrada dos microsserviços (roteamento,
   autenticação, rate limit, agregação).
-- **Mensageria** (Kafka, filas): comunicação **assíncrona** e desacoplada.
 - **Métodos HTTP:** GET (ler), POST (criar), **PUT (substituir inteiro)**,
   **PATCH (atualizar parcial)**, DELETE. Códigos: 200 OK, 201 Created, 204
   No Content, 400, 401, 403, 404, 500.
+- **UDDI:** diretório (legado) para **descoberta/registro** de web services
+  SOAP, junto do WSDL (contrato) e SOAP (mensagem). Trio clássico WS-*:
+  **SOAP + WSDL + UDDI**.
+- **Swagger / OpenAPI:** o **OpenAPI** é a especificação padrão para
+  **documentar e contratar APIs REST** (endpoints, parâmetros, respostas);
+  **Swagger** é o conjunto de ferramentas (Swagger UI, editor, codegen) em
+  cima dela. É o "WSDL do REST".
 
 Pegadinha: **PUT × PATCH** (substituição total × parcial); SOAP "sem contrato
-formal" contradiz o próprio SOAP (usa WSDL).
+formal" contradiz o próprio SOAP (usa WSDL); UDDI é **descoberta**, WSDL é
+**contrato**, SOAP é a **mensagem**.
+
+## 3.1 Mensageria (comunicação assíncrona)
+
+Desacopla produtor e consumidor: quem envia não espera quem processa.
+
+| Modelo | Como funciona | Exemplo |
+|---|---|---|
+| **Fila (queue)** | mensagem consumida por **um** consumidor (point-to-point) | RabbitMQ, SQS |
+| **Publish/Subscribe (tópico)** | mensagem entregue a **vários** assinantes | Kafka, SNS |
+
+- **Apache Kafka:** plataforma de **streaming** de eventos — produtores
+  publicam em **tópicos** (particionados), consumidores leem em **grupos**;
+  guarda o log de eventos (permite reprocessar). Alta vazão, escalável.
+- Benefícios: desacoplamento, absorção de picos (buffer), resiliência.
+- **Broker** é o intermediário (Kafka, RabbitMQ). Casa com **microsserviços**
+  e com o padrão **Saga** (eventos de compensação) e **Event Sourcing**.
+
+Pegadinha: fila (**um** consumidor) × tópico/pub-sub (**vários**); mensageria é
+**assíncrona** (≠ chamada REST síncrona).
 
 ## 4. Ambientes de rede corporativa
 

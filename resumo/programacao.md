@@ -38,13 +38,35 @@ equivalentes/idênticos" = falso; JSON não tem comentários nem tipo date nativ
 
 ## 3. Mobile e low-code
 
-- **Multiplataforma:** **Flutter** (linguagem **Dart**), **React Native**
-  (JS), **Xamarin** (.NET), **Ionic** (web). Nativo: **Kotlin/Java**
-  (Android), **Swift/Objective-C** (iOS).
-- **Low-code/no-code:** desenvolvimento visual, pouca ou nenhuma escrita de
-  código; acelera entrega, reduz dependência de dev.
+| Abordagem | O que é | Ferramentas / linguagem |
+|---|---|---|
+| **Nativo** | app específico para cada SO | Android: **Kotlin/Java**; iOS: **Swift/Objective-C** |
+| **Multiplataforma (cross)** | um código para vários SO | **Flutter** (Dart), **React Native** (JS), Xamarin (.NET), Ionic (web) |
+| **Híbrido** | web dentro de um contêiner nativo (WebView) | Ionic, Cordova |
+| **PWA** | web instalável, offline | ver `frontend.md` |
 
-Pegadinha: Flutter = **Dart** (a FGV troca por JS/Kotlin).
+- **Flutter = Dart** (a FGV troca por JS/Kotlin); **React Native = JavaScript**
+  (renderiza componentes nativos, ≠ WebView do híbrido).
+- Trade-off: nativo dá melhor desempenho/acesso ao hardware; cross reduz custo
+  e tempo (um código só).
+- **Low-code/no-code:** desenvolvimento visual, pouca ou nenhuma escrita de
+  código; acelera entrega e permite "citizen developers", mas limita
+  customização e pode gerar lock-in na plataforma.
+
+## 3.1 Java EE / web server-side (JSF, Primefaces)
+
+- **JSF (JavaServer Faces):** framework de UI **baseado em componentes**,
+  server-side, orientado a eventos; segue o padrão **MVC**. Ciclo de vida de
+  requisição com fases (restore view, apply values, validation, update model,
+  invoke application, render response).
+- **Primefaces:** biblioteca de **componentes ricos** para JSF (tabelas,
+  gráficos, ajax pronto).
+- **JSP/Servlet:** camada web mais antiga do Java EE (Servlet processa a
+  requisição; JSP gera a view). JSF é a evolução baseada em componentes.
+
+Pegadinha: JSF é **server-side baseado em componentes** (≠ SPA client-side como
+React); Primefaces é biblioteca de componentes **de JSF**, não framework à
+parte.
 
 ## 4. Versionamento com Git
 

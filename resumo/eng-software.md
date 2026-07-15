@@ -109,6 +109,8 @@ Pegadinha: Ponto de Função é o **objetivo e comparável**; Story Points é o
   métodos, algoritmos.
 - **Arquitetura** = decisões amplas e estruturais; **design** = decisões
   detalhadas. Não é "arquitetura só serve para projeto grande".
+- **Padrões de projeto** (Singleton, Factory, Strategy, Observer…) e **UML**
+  têm resumo próprio: [padroes-projeto](padroes-projeto.md) e [uml](uml.md).
 
 ## O que já caiu (nossas questões)
 

@@ -56,8 +56,18 @@ STF, notícias 26/06/2025.)
 | **Ultrassecreta** | 25 anos (prorrogável **uma vez**) |
 
 - Regra geral: **publicidade é a regra; sigilo é exceção.**
+- Prazos contam da **data de produção** da informação.
 - Informação sobre **violação de direitos humanos** por agente público **não**
   pode ser objeto de restrição de acesso.
+- **Transparência ativa** (o órgão publica de ofício, ex: portal) ×
+  **passiva** (o cidadão pede via e-SIC).
+
+**Decretos que o edital cita (regulamentam a LAI no Executivo federal):**
+- **Decreto 7.724/2012:** regulamenta a LAI — procedimentos de acesso, e-SIC,
+  prazos de resposta ao pedido (**20 dias**, prorrogáveis por **10**),
+  recursos, transparência ativa, competências de classificação.
+- **Decreto 7.845/2012:** procedimentos de **credenciamento de segurança** e
+  tratamento de **informação classificada** (custódia, acesso, controle).
 
 ## Delitos Informáticos (Lei 12.737/2012, art. 154-A do CP)
 

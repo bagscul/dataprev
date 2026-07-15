@@ -93,6 +93,10 @@ tabela acima — é onde os 2,5 pontos por questão se acumulam.
 [seguranca](seguranca.md) ·
 [governanca](governanca.md)
 
+**Referência de projeto/OO (dentro de Desenvolvimento de Sistemas):**
+[padroes-projeto](padroes-projeto.md) ·
+[uml](uml.md)
+
 **Gerais (Módulo I):**
 [portugues](portugues.md) ·
 [ingles](ingles.md) ·
