@@ -17,9 +17,9 @@ Lotacao: Natal/RN. 20 vagas imediatas, 13 de ampla concorrencia.
 **Tudo puxa do roteiro.** Cada dia tem dois assuntos (um especifico + um
 geral, ex: "banco-dados + rlm"). O `--hoje` cobre os dois automaticamente, e
 `--resumo hoje` / `--dica hoje` mostram o material desses blocos. Em dia de
-**revisao** o `--hoje` refaz suas erradas; em dia de **simulado**, sorteia
-questoes reais de prova; em **descanso/prova**, avisa. O `status.py` mostra o
-plano com os comandos prontos para copiar.
+**revisao** o `--hoje` refaz o que voce ainda nao fixou (repeticao espacada);
+em dia de **simulado**, dispara o simulado cronometrado; em **descanso/prova**,
+avisa. O `status.py` mostra o plano com os comandos prontos para copiar.
 
 **Atrasou? Faca um dia passado.** `./quiz.py --dia ontem` (ou `anteontem`,
 `-3`, ou `2026-07-13`) roda o plano daquele dia e **credita naquele dia**
@@ -36,11 +36,24 @@ cai em hoje.
 ```bash
 ./quiz.py                  # 10 aleatorias do banco original
 ./quiz.py java redes -n 15 # blocos especificos
-./quiz.py --hoje           # bloco previsto no roteiro para hoje
-./quiz.py --erradas        # refaz o que voce errou (originais + provas juntos)
+./quiz.py --hoje           # segue o plano do roteiro para hoje
+./quiz.py --erradas        # repeticao espacada: so o que voce ainda nao fixou
+./quiz.py --simulado       # simulado cronometrado no formato da prova (70q)
 ./quiz.py --dica java      # como a FGV cobra esse bloco (sem bloco: lista)
 ./quiz.py --stats          # desempenho acumulado por bloco
 ```
+
+**Repeticao espacada (`--erradas`).** Nao mostra tudo que voce ja errou um
+dia — mostra so o que ainda nao fixou. Uma questao sai do pool quando voce
+acerta 2x seguidas desde o ultimo erro; se errar de novo, volta. Assim voce
+nao perde tempo revisando o que ja domina.
+
+**Simulado cronometrado (`--simulado`).** 70 questoes no formato da prova
+(gerais peso 1 + especificos peso 2,5, nessa proporcao), especificos primeiro,
+SEM correcao ate o fim, com tempo na tela. No final: nota ponderada, projecao
+para os 115 pontos, o corte de eliminacao e o desempenho por bloco. As erradas
+viram material de `--erradas`. Use `-n` para um simulado menor (ex: `-n 20`).
+No roteiro, o dia de **simulado** ja dispara esse modo via `--hoje`.
 
 Voce responde com a letra; ao errar, o quiz explica por que a correta esta
 certa e por que CADA uma das outras esta errada. Ao errar, ele grava

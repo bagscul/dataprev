@@ -10,7 +10,9 @@ Uso:
     ./quiz.py --dia ontem        faz o plano de outro dia (ontem, anteontem,
                                  -3, ou AAAA-MM-DD); credita naquele dia
     ./quiz.py --pendentes        lista os dias de roteiro em aberto (atrasados)
-    ./quiz.py --erradas          refaz o que voce errou (originais + provas juntos)
+    ./quiz.py --simulado         simulado cronometrado no formato da prova (70q,
+                                 especificos 2,5x, sem feedback ate o fim)
+    ./quiz.py --erradas          repeticao espacada: so o que voce ainda nao fixou
     ./quiz.py --prova dataprev2024   questoes REAIS daquela prova (precisa gabarito)
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
     ./quiz.py --dica java        dica de banca (FGV) do bloco; --dica hoje = do dia
@@ -35,12 +37,23 @@ import json
 import random
 import sys
 import textwrap
+import time
+from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 
 import roteiro  # leitura compartilhada do plano do dia
 
 BASE = Path(__file__).parent
+
+# blocos gerais (peso 1 na prova); os demais sao especificos (peso 2,5)
+GERAIS = {"portugues", "ingles", "rlm", "atualidades", "legislacao"}
+# proporcao do edital 2026 (Modulo I = 40 questoes)
+ALVO_GERAIS = {"portugues": 12, "ingles": 12, "rlm": 5, "atualidades": 6, "legislacao": 5}
+
+
+def peso_de(tag):
+    return 1.0 if tag in GERAIS else 2.5
 BANCO = BASE / "banco.json"
 BANCO_PROVAS = BASE / "banco-provas.json"
 CSV = BASE / "progresso.csv"
@@ -110,6 +123,29 @@ def carregar_hist(quem):
 
 def salvar_hist(h, quem):
     hist_de(quem).write_text(json.dumps(h, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def erradas_pendentes(hist):
+    """Repeticao espacada (estilo Leitner): uma questao 'deve' revisao se voce
+    ja a errou ao menos uma vez E ainda nao emendou 2 acertos seguidos desde o
+    ultimo erro. Assim que voce acerta 2x seguidas, ela se aposenta; se errar
+    de novo, volta. Evita revisar eternamente o que ja foi fixado."""
+    seq = defaultdict(list)
+    for r in hist["respostas"]:
+        seq[r["id"]].append(bool(r["ok"]))
+    devidas = set()
+    for id_, outs in seq.items():
+        if all(outs):
+            continue  # nunca errou
+        streak = 0
+        for o in reversed(outs):
+            if o:
+                streak += 1
+            else:
+                break
+        if streak < 2:
+            devidas.add(id_)
+    return devidas
 
 
 def garantir_csv(quem):
@@ -351,13 +387,105 @@ def rodar(questoes, anotar=True):
     return acertos, erradas
 
 
+def montar_simulado(banco, n):
+    """Monta um simulado no formato da prova: gerais (peso 1) na proporcao do
+    edital + especificos (peso 2,5) completando, escalado para n questoes.
+    Ordena os especificos primeiro (valem 2,5x — a estrategia do roteiro)."""
+    por_tag = defaultdict(list)
+    for q in banco:
+        por_tag[q["tag"]].append(q)
+    n_ger = round(n * 40 / 70)  # 40 de 70 sao gerais na prova
+    sel, usados = [], set()
+    for tag, alvo in ALVO_GERAIS.items():
+        k = round(n_ger * alvo / 40)  # distribui os gerais pela proporcao do edital
+        pool = por_tag.get(tag, [])[:]
+        random.shuffle(pool)
+        for q in pool[:k]:
+            sel.append(q)
+            usados.add(id(q))
+    espec = [q for q in banco if q["tag"] not in GERAIS and id(q) not in usados]
+    random.shuffle(espec)
+    sel += espec[: max(0, n - len(sel))]
+    sel.sort(key=lambda q: 0 if q["tag"] not in GERAIS else 1)  # especificos 1o
+    return sel
+
+
+def rodar_simulado(questoes, minutos=240):
+    """Roda em condicoes de prova: SEM feedback por questao, cronometrado.
+    Devolve (respondidas, tempo_seg). Cada respondida: (q, ok)."""
+    letras = "ABCDE"
+    n = len(questoes)
+    print(cor(f"\n  SIMULADO — {n} questoes | tempo sugerido {minutos} min", "b"))
+    print(cor("  Sem correcao ate o fim. 'q' encerra e corrige o que voce fez.", "dim"))
+    print(cor("  Especificos primeiro; eles valem 2,5x.", "dim"))
+    inicio = time.monotonic()
+    respondidas = []
+    for i, q in enumerate(questoes, 1):
+        ordem = list(range(5))
+        random.shuffle(ordem)
+        correta_pos = ordem.index(q["ans"])
+        peso = peso_de(q["tag"])
+        etq = cor("[2,5x]", "ama") if peso == 2.5 else cor("[1,0x]", "dim")
+        restante = minutos - (time.monotonic() - inicio) / 60
+        print(f"\n  {cor(f'Q{i}/{n}', 'b')} {etq}  {cor(f'~{restante:.0f} min rest.', 'dim')}")
+        print(wrap(q["q"]))
+        print()
+        for j, oi in enumerate(ordem):
+            print(wrap(q["alts"][oi], indent=f"    {letras[j]}) "))
+        while True:
+            r = input("  > ").strip().upper()
+            if r == "Q":
+                print(cor("\n  encerrando simulado...", "dim"))
+                return respondidas, time.monotonic() - inicio
+            if r in letras:
+                break
+            print(cor("  responda A-E (ou q para encerrar)", "dim"))
+        respondidas.append((q, letras.index(r) == correta_pos))
+    return respondidas, time.monotonic() - inicio
+
+
+def corrigir_simulado(respondidas, tempo_seg, total):
+    """Mostra a nota ponderada, o tempo e o desempenho por bloco."""
+    letras = "ABCDE"
+    pontos = sum(peso_de(q["tag"]) for q, ok in respondidas if ok)
+    poss_resp = sum(peso_de(q["tag"]) for q, _ in respondidas)
+    max_total = 115.0  # a prova inteira vale 115
+    acertos = sum(1 for _, ok in respondidas if ok)
+    mm = int(tempo_seg // 60)
+
+    print(cor("\n  " + "=" * 44, "dim"))
+    print(cor(f"  RESULTADO DO SIMULADO", "b"))
+    print(f"  Respondidas: {len(respondidas)}/{total}   Tempo: {mm} min")
+    c = "verde" if acertos / max(1, len(respondidas)) >= 0.7 else "ama" if acertos / max(1, len(respondidas)) >= 0.5 else "verm"
+    print(f"  Acertos: {cor(f'{acertos}/{len(respondidas)}', c)}")
+    print(f"  Pontos (peso): {cor(f'{pontos:.1f}', c)} de {poss_resp:.1f} feitos"
+          + cor(f"  (prova inteira vale {max_total:.0f})", "dim"))
+    corte = 57.5
+    proj = pontos / poss_resp * max_total if poss_resp else 0
+    cc = "verde" if proj >= corte else "verm"
+    print(f"  Projecao p/ 115: {cor(f'{proj:.0f}', cc)}  (corte de eliminacao: {corte:.0f})")
+
+    por_tag = defaultdict(lambda: [0, 0])
+    for q, ok in respondidas:
+        por_tag[q["tag"]][0] += 1
+        por_tag[q["tag"]][1] += ok
+    print(cor("\n  Por bloco:", "b"))
+    for t, (tot, ok) in sorted(por_tag.items(), key=lambda x: x[1][1] / x[1][0]):
+        p = ok / tot * 100
+        c = "verde" if p >= 75 else "ama" if p >= 60 else "verm"
+        print(f"    {t:<16} {cor(f'{ok}/{tot}', c)}")
+    print(cor("\n  As erradas viram material de revisao (./quiz.py --erradas).", "dim"))
+    print()
+
+
 def main():
     p = argparse.ArgumentParser(add_help=False)
     p.add_argument("tags", nargs="*")
-    p.add_argument("-n", type=int, default=10)
+    p.add_argument("-n", type=int, default=None)
     p.add_argument("--hoje", action="store_true")
     p.add_argument("--dia", default=None)   # ontem, anteontem, -2, AAAA-MM-DD
     p.add_argument("--pendentes", action="store_true")
+    p.add_argument("--simulado", action="store_true")
     p.add_argument("--erradas", action="store_true")
     p.add_argument("--prova", default=None)
     p.add_argument("--quem", default="lucas")
@@ -459,12 +587,41 @@ def main():
         print()
         return
 
+    # numero de questoes: 70 no simulado, 10 no resto (a menos que -n)
+    n = a.n if a.n is not None else (70 if a.simulado else 10)
+
+    # dia de simulado no roteiro tambem dispara o modo cronometrado
+    dia_sim = None
+    if data_roteiro is not None:
+        pl = roteiro.plano_de_hoje(csv_de(quem), data_roteiro)
+        if pl["tipo"] == "simulado":
+            a.simulado = True
+            dia_sim = data_roteiro
+
+    if a.simulado:
+        base = carregar_originais() + carregar_provas()
+        sel = montar_simulado(base, n)
+        respondidas, tempo = rodar_simulado(sel)
+        if not respondidas:
+            return
+        corrigir_simulado(respondidas, tempo, len(sel))
+        agora = datetime.now().isoformat(timespec="seconds")
+        for q, ok in respondidas:
+            hist["respostas"].append({"id": q["id"], "tag": q["tag"], "ok": ok, "quando": agora})
+        salvar_hist(hist, quem)
+        acertos = sum(1 for _, ok in respondidas if ok)
+        destino = f" ({dia_sim})" if dia_sim else ""
+        r = input(f"  registrar em {csv_de(quem).name}{destino}? [S/n] ").strip().lower()
+        if r in ("", "s", "sim"):
+            registrar_no_csv(len(respondidas), acertos, quem, dia=dia_sim)
+        print()
+        return
+
     # selecao de questoes
     if a.erradas:
-        ids_erradas = {r["id"] for r in hist["respostas"] if not r["ok"]}
-        pool = [q for q in banco if q["id"] in ids_erradas]
+        pool = [q for q in banco if q["id"] in erradas_pendentes(hist)]
         if not pool:
-            print(cor("\n  nenhuma questao errada registrada. Otimo sinal.\n", "verde"))
+            print(cor("\n  nada pendente de revisao — voce fixou o que tinha errado.\n", "verde"))
             return
     elif data_roteiro is not None:
         plano = roteiro.plano_de_hoje(csv_de(quem), data_roteiro)
@@ -480,19 +637,12 @@ def main():
             print(cor("\n  Hoje e a PROVA. Boa sorte, voce se preparou pra isso.\n", "ciano"))
             return
         elif tipo == "revisao":
-            print(cor("\n  Dia de revisao: refazendo suas erradas (originais + provas).\n", "ciano"))
-            ids_erradas = {r["id"] for r in hist["respostas"] if not r["ok"]}
-            pool = [q for q in banco if q["id"] in ids_erradas]
+            print(cor("\n  Dia de revisao: refazendo o que ainda nao fixou (repeticao espacada).\n", "ciano"))
+            pool = [q for q in banco if q["id"] in erradas_pendentes(hist)]
             if not pool:
-                print(cor("  nenhuma questao errada registrada. Otimo sinal.\n", "verde"))
+                print(cor("  nada pendente de revisao — voce fixou o que tinha errado.\n", "verde"))
                 return
-        elif tipo == "simulado":
-            print(cor("\n  Dia de simulado: questoes REAIS de prova (todas).", "ciano"))
-            print(cor("  Cronometre 1 dia e faca os especificos primeiro (valem 2,5x).\n", "dim"))
-            pool = carregar_provas()
-            if not pool:
-                print(cor("  nenhuma questao de prova disponivel; use ./gabarito.py.\n", "verm"))
-                return
+        # tipo == "simulado" ja foi tratado antes (modo cronometrado)
         else:  # conteudo — os blocos do dia (especifico + geral)
             pool = [q for q in banco if q["tag"] in plano["blocos"]]
             if not pool:
@@ -510,7 +660,7 @@ def main():
         pool = banco[:]
 
     random.shuffle(pool)
-    sel = pool[: a.n]
+    sel = pool[:n]
 
     res = rodar(sel, anotar=a.anotar)
     if res is None:
