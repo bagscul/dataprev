@@ -189,6 +189,8 @@ def main():
                     "fonte": f"FGV {prova} Q{q['num']}",
                     # o PDF perdeu a figura/codigo: nao da pra responder no terminal
                     "requer_imagem": bool(REFERE_IMAGEM.search(q["q"])),
+                    # anulada e marcada a mao; preserva entre reimportacoes
+                    "anulada": anterior.get("anulada", False),
                 }
             )
         desta = [q for q in banco if q["prova"] == prova]
