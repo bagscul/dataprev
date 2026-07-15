@@ -1,0 +1,52 @@
+# legislacao — como a FGV cobra
+
+Quatro leis mandam no bloco: LGPD (13.709/2018), Marco
+Civil (12.965/2014), LAI (12.527/2011) e Crimes
+Cibernéticos (12.737/2012). A FGV cita o número e a data
+da lei no enunciado — não é decoreba de número, é
+entender competências, prazos e papéis.
+
+## O que mais cai
+- LGPD: princípios (finalidade x adequação x necessidade),
+  papéis controlador x operador, e o par ANPD x CNPD.
+- LGPD aplicada a IA: explicabilidade em decisão
+  automatizada, anonimização, scraping (visto no TJ-RJ).
+- LAI: graus de sigilo e seus prazos, e desclassificação.
+- Marco Civil: guarda de registros, sanções, e a
+  responsabilidade do provedor por conteúdo de terceiro.
+- Crimes Cibernéticos: invasão de dispositivo (art. 154-A).
+
+## Como a banca arma a pegadinha
+- Troca controlador x operador: controlador DECIDE sobre o
+  tratamento; operador EXECUTA em nome do controlador.
+- Troca ANPD x CNPD: a ANPD é autarquia federal de
+  natureza especial que FISCALIZA e APLICA sanção; o CNPD
+  é órgão CONSULTIVO — apenas propõe/sugere e dissemina
+  (no Dataprev 2024 a alternativa certa era o CNPD
+  "sugerir ações à ANPD").
+- Inverte os prazos da LAI ou o marco de contagem.
+- Multa da LGPD com número errado (vê abaixo o certo).
+- ARMADILHA DE 2026 no Marco Civil: alternativa que diz
+  que o provedor só responde APÓS ordem judicial (a
+  redação original do art. 19). Isso está desatualizado.
+- Diz que a invasão do art. 154-A exige o aparelho
+  conectado à rede — não exige (o Dataprev derrubou isso).
+
+## Como se sair melhor
+- LAI, prazos máximos contados da PRODUÇÃO da informação:
+  reservada 5 anos, secreta 15, ultrassecreta 25. Só a
+  ultrassecreta prorroga, uma única vez, por igual período.
+- LGPD, multa simples: até 2% do faturamento no Brasil no
+  último exercício, excluídos tributos, limitada a
+  R$ 50 milhões por infração. Exige processo administrativo.
+- Marco Civil art. 19 (STF, 26/06/2025 — inconstitucional
+  em parte): a regra geral virou notice-and-takedown —
+  NOTIFICAÇÃO EXTRAJUDICIAL já basta para responsabilizar
+  o provedor que não remove conteúdo ilícito. ORDEM
+  JUDICIAL só continua obrigatória para crimes contra a
+  honra. Conteúdo de risco grave (ex.: golpe, terrorismo,
+  racismo) exige atuação imediata, sob dever de cuidado.
+- LGPD, princípios que ela confunde: finalidade = fins
+  legítimos informados; adequação = compatível com esses
+  fins e o contexto; necessidade = mínimo indispensável.
+- Guarde: ANPD fiscaliza/sanciona; CNPD só aconselha.
