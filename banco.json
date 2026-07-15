@@ -3133,5 +3133,993 @@
    "3": "Confirmação individual e independente deixaria a transação inconsistente (uns commitam, outros não). O ponto do 2PC é o commit ser global e coordenado.",
    "4": "Rollback periódico por tempo não existe no protocolo. O abort ocorre quando algum participante vota 'não' ou falha, não a cada intervalo fixo."
   }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em um sistema de logging, uma equipe precisa garantir que exista uma única instância da classe de configuração compartilhada por toda a aplicação, controlando ela mesma seu ponto de acesso global. Qual padrão GoF atende diretamente a esse requisito?",
+  "alts": [
+   "Singleton",
+   "Prototype",
+   "Factory Method",
+   "Facade",
+   "Multiton distribuído"
+  ],
+  "ans": 0,
+  "why": "O Singleton garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a ela, controlando internamente sua própria instanciação. É exatamente o requisito de instância única compartilhada.",
+  "erradas": {
+   "1": "Prototype cria novos objetos por clonagem de um protótipo; ele multiplica instâncias em vez de restringir a uma só.",
+   "2": "Factory Method delega a criação de objetos a subclasses, mas não limita o número de instâncias criadas.",
+   "3": "Facade oferece uma interface simplificada para um subsistema; não trata de unicidade de instância.",
+   "4": "\"Multiton distribuído\" não é um padrão GoF; é um distrator inventado."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma aplicação de interface gráfica precisa produzir famílias inteiras de componentes relacionados (botão, caixa de seleção e menu) que sejam consistentes entre si para cada tema visual (Windows, macOS), sem que o código cliente conheça as classes concretas de cada família. Qual padrão criacional é o mais adequado?",
+  "alts": [
+   "Builder",
+   "Factory Method",
+   "Abstract Factory",
+   "Prototype",
+   "Singleton"
+  ],
+  "ans": 2,
+  "why": "Abstract Factory fornece uma interface para criar famílias de objetos relacionados ou dependentes sem especificar suas classes concretas, garantindo que produtos da mesma família (mesmo tema) sejam usados juntos.",
+  "erradas": {
+   "0": "Builder monta um único objeto complexo passo a passo; não coordena famílias de produtos relacionados.",
+   "1": "Factory Method cria um único produto por método/subclasse; não gerencia uma família consistente de vários produtos de uma vez.",
+   "3": "Prototype cria objetos por clonagem, não por composição de famílias de produtos de temas distintos.",
+   "4": "Singleton trata de unicidade de instância, não da criação de famílias de objetos."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Ao criar objetos de uma classe com muitos atributos opcionais, uma equipe quer separar o processo de construção passo a passo da representação final, permitindo que o mesmo processo produza diferentes representações e evitando construtores com dezenas de parâmetros. Qual padrão resolve isso?",
+  "alts": [
+   "Abstract Factory",
+   "Builder",
+   "Adapter",
+   "Prototype",
+   "Composite"
+  ],
+  "ans": 1,
+  "why": "O Builder separa a construção de um objeto complexo de sua representação, permitindo construir o objeto por etapas e reutilizar o mesmo processo de construção para gerar representações diferentes.",
+  "erradas": {
+   "0": "Abstract Factory cria famílias de produtos relacionados, não constrói um único objeto complexo em etapas.",
+   "2": "Adapter converte a interface de uma classe em outra esperada pelo cliente; não trata de construção passo a passo.",
+   "3": "Prototype cria objetos clonando um existente; não descreve construção incremental controlada.",
+   "4": "Composite compõe objetos em estruturas de árvore parte-todo; não é um padrão de criação."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em um editor gráfico, criar novos objetos do zero é custoso porque exige configuração pesada. A equipe decide produzir novos objetos copiando um objeto já configurado, delegando a cópia ao próprio objeto. Qual padrão criacional está sendo aplicado?",
+  "alts": [
+   "Prototype",
+   "Factory Method",
+   "Singleton",
+   "Builder",
+   "Bridge"
+  ],
+  "ans": 0,
+  "why": "O Prototype cria novos objetos copiando (clonando) uma instância protótipo existente, útil quando a criação direta é cara ou complexa e o próprio objeto sabe se duplicar.",
+  "erradas": {
+   "1": "Factory Method cria objetos via subclasses do zero, não por clonagem de uma instância existente.",
+   "2": "Singleton garante instância única; o cenário pede exatamente múltiplas cópias.",
+   "3": "Builder monta o objeto passo a passo a partir de partes, não copiando um protótipo pronto.",
+   "4": "Bridge é estrutural, separa abstração de implementação; não trata de criação por cópia."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma equipe precisa integrar uma biblioteca de terceiros cuja interface é incompatível com a interface que o código cliente já espera. Não é possível alterar a biblioteca. Qual padrão estrutural permite que as classes com interfaces incompatíveis trabalhem juntas?",
+  "alts": [
+   "Facade",
+   "Adapter",
+   "Proxy",
+   "Decorator",
+   "Mediator"
+  ],
+  "ans": 1,
+  "why": "O Adapter converte a interface de uma classe existente em outra interface que o cliente espera, permitindo que classes com interfaces incompatíveis colaborem sem alterar o código original.",
+  "erradas": {
+   "0": "Facade simplifica o acesso a um subsistema complexo criando uma interface nova de alto nível; não existe aqui incompatibilidade a ser convertida entre cliente e uma classe específica.",
+   "2": "Proxy fornece um substituto com a MESMA interface para controlar acesso; não converte interfaces incompatíveis.",
+   "3": "Decorator adiciona responsabilidades mantendo a mesma interface; não faz conversão de interface.",
+   "4": "Mediator é comportamental e centraliza a comunicação entre objetos; não adapta interfaces incompatíveis."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Antes de carregar uma imagem pesada da rede, um sistema quer inserir um objeto substituto que tenha a mesma interface do objeto real e só o instancie sob demanda (carregamento tardio), além de poder controlar o acesso a ele. Qual padrão estrutural descreve esse substituto?",
+  "alts": [
+   "Adapter",
+   "Facade",
+   "Proxy",
+   "Observer",
+   "Flyweight"
+  ],
+  "ans": 2,
+  "why": "O Proxy fornece um substituto (placeholder) com a mesma interface do objeto real para controlar o acesso a ele, permitindo comportamentos como carregamento tardio, cache ou controle de permissões.",
+  "erradas": {
+   "0": "Adapter existe para converter interfaces incompatíveis, não para substituir um objeto mantendo sua interface e controlando acesso.",
+   "1": "Facade agrega e simplifica um subsistema; não é um substituto de mesma interface de um único objeto.",
+   "3": "Observer é comportamental, trata de notificação de dependentes; não é um substituto de acesso.",
+   "4": "Flyweight compartilha estado intrínseco para economizar memória com muitos objetos; não controla acesso a um objeto real via substituto."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma equipe deseja acrescentar responsabilidades adicionais a objetos individuais de forma dinâmica, em tempo de execução, sem alterar a classe original e como alternativa flexível à criação de muitas subclasses por herança. Qual padrão estrutural é indicado?",
+  "alts": [
+   "Decorator",
+   "Composite",
+   "Adapter",
+   "Strategy",
+   "Bridge"
+  ],
+  "ans": 0,
+  "why": "O Decorator anexa responsabilidades adicionais a um objeto dinamicamente, envolvendo-o em objetos decoradores que compartilham sua interface, sendo uma alternativa flexível à extensão por herança.",
+  "erradas": {
+   "1": "Composite trata hierarquias parte-todo tratando objetos e composições uniformemente; não adiciona comportamento envolvendo um objeto.",
+   "2": "Adapter converte interfaces incompatíveis; não acrescenta responsabilidades novas.",
+   "3": "Strategy é comportamental e troca algoritmos intercambiáveis; não envolve o objeto para somar responsabilidades em runtime.",
+   "4": "Bridge separa abstração de implementação em hierarquias paralelas; não adiciona responsabilidades dinamicamente."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em um sistema de arquivos, pastas contêm arquivos e outras pastas. A equipe quer que o cliente trate um arquivo individual e um grupo de arquivos (pasta) de maneira uniforme, por meio de uma mesma interface, representando a hierarquia parte-todo. Qual padrão estrutural se aplica?",
+  "alts": [
+   "Decorator",
+   "Composite",
+   "Facade",
+   "Builder",
+   "Chain of Responsibility"
+  ],
+  "ans": 1,
+  "why": "O Composite compõe objetos em estruturas de árvore para representar hierarquias parte-todo, permitindo que o cliente trate objetos individuais (folhas) e composições (nós) de forma uniforme pela mesma interface.",
+  "erradas": {
+   "0": "Decorator adiciona responsabilidades a um objeto; não modela hierarquias parte-todo de folhas e composições.",
+   "2": "Facade dá uma interface simplificada a um subsistema; não representa recursão de árvore parte-todo.",
+   "3": "Builder é criacional, monta um objeto complexo passo a passo; não é sobre tratamento uniforme de árvore.",
+   "4": "Chain of Responsibility encadeia handlers para uma requisição; não representa composição recursiva parte-todo."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um módulo de cálculo de frete deve permitir trocar, em tempo de execução, o algoritmo usado (por transportadora, por peso ou por distância), encapsulando cada algoritmo em uma classe intercambiável, sem alterar o código cliente que os utiliza. Qual padrão comportamental é o adequado?",
+  "alts": [
+   "State",
+   "Template Method",
+   "Strategy",
+   "Command",
+   "Observer"
+  ],
+  "ans": 2,
+  "why": "O Strategy define uma família de algoritmos, encapsula cada um em uma classe separada e os torna intercambiáveis, permitindo que o algoritmo varie independentemente do cliente que o usa.",
+  "erradas": {
+   "0": "State também troca comportamento por composição, mas modela transições internas de ESTADO do objeto; aqui o cliente escolhe deliberadamente um algoritmo, sem máquina de estados.",
+   "1": "Template Method fixa o esqueleto de um algoritmo na superclasse e varia passos por herança; não permite trocar o algoritmo inteiro em runtime.",
+   "3": "Command encapsula uma requisição como objeto para parametrizar, enfileirar ou desfazer ações; não é seleção de algoritmo de cálculo.",
+   "4": "Observer trata de notificação de dependentes a mudanças de estado; não intercambia algoritmos."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em uma planilha, quando o valor de uma célula muda, todos os gráficos e fórmulas dependentes devem ser notificados e atualizados automaticamente, mantendo baixo acoplamento entre a célula (sujeito) e seus dependentes. Qual padrão comportamental define essa dependência um-para-muitos?",
+  "alts": [
+   "Observer",
+   "Mediator",
+   "Command",
+   "Strategy",
+   "Proxy"
+  ],
+  "ans": 0,
+  "why": "O Observer define uma dependência um-para-muitos de modo que, quando um objeto (sujeito) muda de estado, todos os seus dependentes (observadores) são notificados e atualizados automaticamente, com baixo acoplamento.",
+  "erradas": {
+   "1": "Mediator centraliza a comunicação entre muitos objetos que interagem entre si (muitos-para-muitos), não a notificação de dependentes de um único sujeito.",
+   "2": "Command encapsula requisições como objetos; não estabelece notificação automática de dependentes por mudança de estado.",
+   "3": "Strategy troca algoritmos intercambiáveis; não trata de propagação de mudanças de estado.",
+   "4": "Proxy é estrutural, controla acesso a um objeto; não notifica dependentes."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Uma equipe quer estruturar uma aplicação web separando os dados e regras de negócio, a apresentação exibida ao usuário e a lógica que recebe as entradas e coordena as atualizações entre ambos, em três responsabilidades distintas. Qual padrão arquitetural descreve essa separação?",
+  "alts": [
+   "MVC (Model-View-Controller)",
+   "Camadas em Cebola (Onion)",
+   "Publish-Subscribe",
+   "Facade",
+   "Repository"
+  ],
+  "ans": 0,
+  "why": "O MVC separa a aplicação em Model (dados e regras de negócio), View (apresentação) e Controller (recebe entradas e coordena Model e View), organizando responsabilidades e favorecendo a manutenção.",
+  "erradas": {
+   "1": "A arquitetura Onion organiza dependências em camadas concêntricas em torno do domínio; não define os três papéis Model/View/Controller descritos.",
+   "2": "Publish-Subscribe é um padrão de mensageria/notificação desacoplada; não descreve a tríade de apresentação/dados/controle.",
+   "3": "Facade é um padrão GoF estrutural para simplificar subsistemas; não é arquitetura de separação apresentação-dados-controle.",
+   "4": "Repository abstrai o acesso a dados; é apenas uma parte, não a separação em três camadas de apresentação descrita."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Durante a análise de responsabilidades (padrões GRASP), a equipe precisa decidir a qual classe atribuir a responsabilidade de criar objetos de outra classe. Segundo o GRASP, a responsabilidade de criar instâncias de uma classe B deve ser atribuída à classe A quando A, por exemplo, agrega, contém ou registra objetos de B. Que padrão GRASP orienta essa decisão?",
+  "alts": [
+   "Especialista na Informação (Information Expert)",
+   "Criador (Creator)",
+   "Controlador (Controller)",
+   "Polimorfismo",
+   "Indireção (Indirection)"
+  ],
+  "ans": 1,
+  "why": "O padrão GRASP Creator orienta atribuir a responsabilidade de criar instâncias de B à classe que agrega, contém, registra ou usa de perto objetos de B (ou que possui os dados de inicialização), reduzindo acoplamento na criação.",
+  "erradas": {
+   "0": "Information Expert atribui responsabilidades à classe que detém a informação necessária para cumpri-las; é um princípio geral, mas não é o específico sobre quem CRIA objetos.",
+   "2": "Controller define quem recebe e coordena eventos do sistema vindos da interface; não trata de quem instancia objetos de domínio.",
+   "3": "Polimorfismo orienta usar operações polimórficas para variar comportamento por tipo; não trata de responsabilidade de criação.",
+   "4": "Indireção atribui a um objeto intermediário a mediação entre componentes para reduzir acoplamento; não é sobre criar instâncias."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Na UML 2.x, os diagramas são organizados em duas grandes famílias: estruturais e comportamentais. Assinale a alternativa que classifica CORRETAMENTE os diagramas indicados.",
+  "alts": [
+   "O diagrama de classes é comportamental, pois modela as operações dos objetos.",
+   "O diagrama de sequência é estrutural, pois mostra a estrutura de troca de mensagens.",
+   "O diagrama de classes é estrutural e o diagrama de máquina de estados é comportamental.",
+   "O diagrama de componentes é comportamental e o de atividades é estrutural.",
+   "Todos os diagramas de interação (sequência, comunicação) são estruturais."
+  ],
+  "ans": 2,
+  "why": "Diagramas estruturais descrevem a estrutura estática do sistema (classes, componentes, objetos, implantação). Diagramas comportamentais descrevem o comportamento dinâmico. O de classes é estrutural; o de máquina de estados é comportamental.",
+  "erradas": {
+   "0": "O diagrama de classes é ESTRUTURAL; modelar operações não o torna comportamental, pois descreve a estrutura estática das classes.",
+   "1": "O diagrama de sequência é COMPORTAMENTAL (é um diagrama de interação), não estrutural.",
+   "3": "Inverte tudo: componentes é ESTRUTURAL e atividades é COMPORTAMENTAL.",
+   "4": "Diagramas de interação (sequência, comunicação) são COMPORTAMENTAIS, não estruturais."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um sistema é modelado assim: um objeto Universidade é composto por objetos Departamento, de modo que, se a Universidade for destruída, seus Departamentos deixam de existir; já um objeto Time referencia objetos Jogador, que continuam existindo mesmo que o Time seja extinto. No diagrama de classes UML, essas duas relações são representadas, respectivamente, por:",
+  "alts": [
+   "Agregação (losango vazado) entre Universidade e Departamento, e composição (losango preenchido) entre Time e Jogador.",
+   "Composição (losango preenchido) entre Universidade e Departamento, e agregação (losango vazado) entre Time e Jogador.",
+   "Herança entre Universidade e Departamento, e associação simples entre Time e Jogador.",
+   "Associação simples em ambos os casos, pois a UML não distingue níveis de posse.",
+   "Composição em ambos os casos, pois há relação todo-parte nas duas."
+  ],
+  "ans": 1,
+  "why": "Composição é a relação todo-parte forte (losango preenchido): a parte não existe sem o todo — Departamentos morrem com a Universidade. Agregação é fraca (losango vazado): a parte existe independentemente — Jogadores sobrevivem ao Time.",
+  "erradas": {
+   "0": "Inverte os losangos: o vínculo de dependência de vida (Universidade-Departamento) é composição, não agregação.",
+   "2": "Não há herança (não é relação 'é-um'); ambos são relações todo-parte.",
+   "3": "A UML DISTINGUE sim: agregação (losango vazado) e composição (losango preenchido) têm semânticas diferentes de posse.",
+   "4": "Time-Jogador é agregação, pois o Jogador existe independentemente do Time; não é composição nos dois casos."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em um diagrama de classes UML, a associação entre Pedido e ItemDePedido aparece com a multiplicidade \"1\" no lado de Pedido e \"1..*\" no lado de ItemDePedido. Qual é a interpretação CORRETA dessa multiplicidade?",
+  "alts": [
+   "Cada ItemDePedido pertence a exatamente um Pedido, e cada Pedido tem um ou mais ItemDePedido.",
+   "Cada Pedido pertence a um ou mais ItemDePedido, e cada ItemDePedido tem exatamente um Pedido.",
+   "Um Pedido pode existir sem nenhum ItemDePedido, pois \"1..*\" inclui o zero.",
+   "A notação \"1..*\" significa exatamente um item, e \"1\" significa opcional.",
+   "Ambas as multiplicidades indicam relação muitos-para-muitos."
+  ],
+  "ans": 0,
+  "why": "A multiplicidade é lida no extremo oposto: cada ItemDePedido associa-se a 1 Pedido; cada Pedido associa-se a 1..* (um ou mais) ItemDePedido. O símbolo * significa 'muitos' e 1..* significa 'pelo menos um'.",
+  "erradas": {
+   "1": "Inverte a leitura dos extremos da associação.",
+   "2": "\"1..*\" significa NO MÍNIMO um; NÃO inclui zero. Para incluir zero seria \"0..*\".",
+   "3": "\"1..*\" é 'um ou mais', não 'exatamente um'; e \"1\" é obrigatório, não opcional.",
+   "4": "Não é muitos-para-muitos; é um-para-muitos (1 para 1..*)."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Sobre os relacionamentos <<include>> e <<extend>> em diagramas de casos de uso da UML, assinale a alternativa CORRETA.",
+  "alts": [
+   "<<include>> representa comportamento opcional executado apenas sob certa condição; <<extend>> representa comportamento sempre executado.",
+   "<<include>> representa comportamento obrigatório e reutilizado, sempre executado pelo caso de uso base; <<extend>> representa comportamento opcional, executado condicionalmente em um ponto de extensão.",
+   "Ambos representam herança entre atores.",
+   "<<extend>> é usado exclusivamente para modelar tratamento de erros, nunca fluxos alternativos.",
+   "<<include>> aponta do caso de uso incluído para o caso de uso base."
+  ],
+  "ans": 1,
+  "why": "<<include>> fatora comportamento comum e obrigatório, sempre executado pelo caso base (seta do base para o incluído). <<extend>> adiciona comportamento opcional/condicional em um ponto de extensão do caso base (seta do estendente para o base).",
+  "erradas": {
+   "0": "Inverte: include é obrigatório/sempre executado; extend é opcional/condicional.",
+   "2": "Nenhum dos dois modela herança entre atores; são relações entre casos de uso.",
+   "3": "\"exclusivamente\"/\"nunca\": extend serve para qualquer fluxo opcional/alternativo, não só erros.",
+   "4": "A seta de include aponta do caso base PARA o caso incluído, não o contrário."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma equipe precisa modelar, para um caso de uso de saque em caixa eletrônico, a ordem temporal das mensagens trocadas entre o objeto Cliente, o objeto Terminal e o objeto SistemaBancario, evidenciando as linhas de vida e a sequência de chamadas e retornos. Qual diagrama UML é o mais adequado?",
+  "alts": [
+   "Diagrama de classes.",
+   "Diagrama de implantação.",
+   "Diagrama de sequência.",
+   "Diagrama de componentes.",
+   "Diagrama de casos de uso."
+  ],
+  "ans": 2,
+  "why": "O diagrama de sequência é um diagrama de interação que enfatiza a ORDEM TEMPORAL das mensagens entre objetos, usando linhas de vida (lifelines) e ativações. É ideal para mostrar chamadas e retornos ao longo do tempo.",
+  "erradas": {
+   "0": "Classes mostra estrutura estática (atributos, métodos, relações), não a ordem temporal de mensagens.",
+   "1": "Implantação mostra a distribuição física em nós de hardware, não interação temporal.",
+   "3": "Componentes mostra a organização de componentes de software, não a sequência de mensagens.",
+   "4": "Casos de uso mostra funcionalidades e atores, não a troca ordenada de mensagens internas."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Ao modelar um processo de negócio com decisões, caminhos paralelos e sincronização de fluxos de trabalho (fork/join), qual diagrama comportamental da UML é o mais indicado, sendo frequentemente comparado a um fluxograma?",
+  "alts": [
+   "Diagrama de objetos.",
+   "Diagrama de atividades.",
+   "Diagrama de pacotes.",
+   "Diagrama de composição estrutural.",
+   "Diagrama de sequência."
+  ],
+  "ans": 1,
+  "why": "O diagrama de atividades modela fluxos de controle e de trabalho, incluindo decisões (losangos), paralelismo e sincronização (barras de fork/join). É o mais parecido com um fluxograma e ideal para processos de negócio.",
+  "erradas": {
+   "0": "Objetos é estrutural: mostra instâncias e seus valores em um instante, não fluxo de trabalho.",
+   "2": "Pacotes organiza elementos em agrupamentos, não modela fluxos com decisões e paralelismo.",
+   "3": "Composição estrutural (estrutura composta) é estrutural, mostra partes internas de um classificador.",
+   "4": "Sequência enfatiza a ordem temporal de mensagens entre objetos, não fork/join de processo de negócio."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um objeto Pedido, durante seu ciclo de vida, passa pelos estados \"Aberto\", \"Pago\", \"Enviado\" e \"Entregue\", mudando de estado em resposta a eventos como \"confirmarPagamento\" ou \"despachar\". Qual diagrama UML representa exatamente esses estados e as transições disparadas por eventos?",
+  "alts": [
+   "Diagrama de máquina de estados.",
+   "Diagrama de classes.",
+   "Diagrama de casos de uso.",
+   "Diagrama de implantação.",
+   "Diagrama de componentes."
+  ],
+  "ans": 0,
+  "why": "O diagrama de máquina de estados (state machine) modela os estados possíveis de um objeto e as transições disparadas por eventos ao longo do seu ciclo de vida. É o diagrama certo para estados como Aberto, Pago e Enviado.",
+  "erradas": {
+   "1": "Classes descreve a estrutura estática do tipo Pedido, não os estados dinâmicos de uma instância.",
+   "2": "Casos de uso mostra funcionalidades e atores, não estados internos de um objeto.",
+   "3": "Implantação mostra hardware e distribuição física, sem relação com estados de objeto.",
+   "4": "Componentes mostra a organização de módulos de software, não estados e transições."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Sobre a relação de generalização (herança) no diagrama de classes UML, assinale a alternativa CORRETA.",
+  "alts": [
+   "É representada por uma linha com losango preenchido apontando para a subclasse.",
+   "É representada por uma linha com uma seta de ponta triangular vazada apontando da subclasse para a superclasse, indicando relação \"é-um\".",
+   "Indica relação todo-parte, em que a subclasse é parte da superclasse.",
+   "A subclasse não pode adicionar atributos próprios, apenas herdar os da superclasse.",
+   "É sempre representada com multiplicidade \"1..*\" nas duas pontas."
+  ],
+  "ans": 1,
+  "why": "A generalização usa uma seta de ponta triangular VAZADA que aponta da subclasse (filha) para a superclasse (pai), expressando a relação 'é-um' (is-a). A subclasse herda e pode estender/redefinir membros.",
+  "erradas": {
+   "0": "Losango preenchido é composição (todo-parte), não herança; e a seta de herança aponta para a superclasse.",
+   "2": "Herança é relação 'é-um', não todo-parte; todo-parte é agregação/composição.",
+   "3": "A subclasse PODE adicionar atributos e métodos próprios além dos herdados.",
+   "4": "Generalização não usa multiplicidade nas pontas como uma associação comum."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "No modelo de caixa (box model) do CSS, um desenvolvedor precisa aumentar o espaço INTERNO entre o conteúdo de um elemento e sua borda, sem afetar o espaçamento em relação aos elementos vizinhos. Qual propriedade ele deve usar?",
+  "alts": [
+   "margin, pois controla o espaço entre o conteúdo e a borda.",
+   "padding, pois controla o espaço entre o conteúdo e a borda do próprio elemento.",
+   "border-spacing, que define o preenchimento interno de qualquer elemento.",
+   "outline, que empurra o conteúdo para dentro da borda.",
+   "gap, que define o espaço interno entre conteúdo e borda."
+  ],
+  "ans": 1,
+  "why": "No box model, padding é o espaço INTERNO entre o conteúdo e a borda do elemento. margin é o espaço EXTERNO, entre a borda e os elementos vizinhos. Para afastar o conteúdo da borda usa-se padding.",
+  "erradas": {
+   "0": "margin é o espaço EXTERNO (entre a borda e outros elementos), não entre conteúdo e borda.",
+   "2": "border-spacing aplica-se a espaçamento entre células de tabela, não ao preenchimento interno de qualquer elemento.",
+   "3": "outline é uma linha desenhada fora da borda que não ocupa espaço no layout nem empurra o conteúdo.",
+   "4": "gap define o espaço entre itens de um contêiner flex/grid, não o espaço interno de um elemento."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Sobre o uso de HTML semântico, assinale a alternativa CORRETA.",
+  "alts": [
+   "Elementos como <header>, <nav>, <main>, <article> e <footer> não afetam acessibilidade nem SEO, servindo apenas para estilização.",
+   "Usar <div> e <span> para toda a estrutura da página é a prática recomendada por ser mais semântica que as tags específicas.",
+   "Tags semânticas descrevem o significado do conteúdo, favorecendo acessibilidade (leitores de tela), SEO e manutenção do código.",
+   "O elemento <b> é semanticamente equivalente a <strong> e ambos indicam importância ao leitor de tela.",
+   "HTML semântico exige obrigatoriamente o uso de frameworks JavaScript para funcionar."
+  ],
+  "ans": 2,
+  "why": "HTML semântico usa tags que expressam o significado do conteúdo (header, nav, main, article), o que melhora acessibilidade para leitores de tela, indexação por buscadores (SEO) e legibilidade/manutenção do código.",
+  "erradas": {
+   "0": "Tags semânticas AFETAM acessibilidade e SEO positivamente; não servem só para estilo.",
+   "1": "Abusar de <div>/<span> reduz a semântica; as tags específicas é que são mais semânticas.",
+   "3": "<b> apenas dá negrito visual sem importância semântica; <strong> indica importância e é anunciado por leitores de tela.",
+   "4": "HTML semântico é independente de JavaScript; funciona com HTML puro."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Sobre os módulos de layout Flexbox e Grid do CSS, assinale a alternativa CORRETA.",
+  "alts": [
+   "Flexbox é otimizado para layouts unidimensionais (itens ao longo de um único eixo, linha ou coluna), enquanto o CSS Grid é projetado para layouts bidimensionais (linhas e colunas simultaneamente).",
+   "Flexbox e Grid são idênticos e intercambiáveis em todos os cenários, sem qualquer diferença de propósito.",
+   "O CSS Grid é unidimensional e o Flexbox é bidimensional.",
+   "Tabelas HTML são a técnica moderna recomendada, tornando Flexbox e Grid obsoletos.",
+   "Ambos exigem obrigatoriamente media queries para funcionar."
+  ],
+  "ans": 0,
+  "why": "Flexbox foi projetado para distribuir e alinhar itens ao longo de UM eixo (uma dimensão), com quebra via flex-wrap. O CSS Grid é bidimensional, controlando linhas e colunas ao mesmo tempo. São complementares, escolhidos conforme a dimensionalidade do layout.",
+  "erradas": {
+   "1": "Não são idênticos: têm propósitos distintos (uma vs duas dimensões).",
+   "2": "Inverte: Grid é bidimensional e Flexbox é unidimensional.",
+   "3": "Tabelas servem para dados tabulares; não tornam Flexbox/Grid obsoletos.",
+   "4": "Flexbox e Grid funcionam sem media queries; estas apenas ajustam estilos por breakpoint."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Sobre a diferença entre SPA (Single Page Application) e PWA (Progressive Web App), assinale a alternativa CORRETA.",
+  "alts": [
+   "SPA e PWA são sinônimos: toda SPA é obrigatoriamente uma PWA.",
+   "Uma SPA carrega uma única página HTML e atualiza o conteúdo dinamicamente sem recarregar toda a página; uma PWA é uma aplicação web que, com Service Worker e manifest, pode ser instalável e funcionar offline.",
+   "PWA é um tipo de aplicativo nativo compilado exclusivamente para lojas de aplicativos.",
+   "SPA exige obrigatoriamente um Service Worker para funcionar.",
+   "PWA não pode ser construída sobre uma arquitetura SPA."
+  ],
+  "ans": 1,
+  "why": "SPA descreve a arquitetura em que uma única página é carregada e o conteúdo muda dinamicamente (via JavaScript/roteamento client-side) sem recarregar tudo. PWA é um conjunto de capacidades (Service Worker + Web App Manifest) que torna a web app instalável e apta a funcionar offline.",
+  "erradas": {
+   "0": "Não são sinônimos; uma SPA não é automaticamente uma PWA (precisa de SW + manifest).",
+   "2": "PWA é aplicação WEB, não app nativo compilado; roda no navegador e pode ser instalada.",
+   "3": "SPA NÃO exige Service Worker; o SW é característica de PWA, não de SPA.",
+   "4": "PWA PODE ser construída sobre SPA; as duas coisas são compatíveis."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "O Service Worker é peça central de uma PWA. Sobre ele, assinale a alternativa CORRETA.",
+  "alts": [
+   "Executa na mesma thread da interface (UI), tendo acesso direto ao DOM da página.",
+   "É um script que roda em segundo plano, separado da página, atuando como proxy entre a aplicação e a rede, permitindo cache e funcionamento offline; requer HTTPS (exceto em localhost).",
+   "Funciona apenas em conexões HTTP não seguras, sendo bloqueado em HTTPS.",
+   "Substitui o servidor backend, dispensando qualquer API remota.",
+   "Tem acesso direto ao DOM, permitindo manipular elementos da tela em tempo real."
+  ],
+  "ans": 1,
+  "why": "O Service Worker roda em uma thread separada da página, sem acesso direto ao DOM, funcionando como proxy de rede: intercepta requisições, gerencia cache e habilita offline/notificações. Por segurança, exige HTTPS (localhost é a exceção para desenvolvimento).",
+  "erradas": {
+   "0": "Roda em thread SEPARADA e NÃO tem acesso direto ao DOM.",
+   "2": "Ao contrário: exige HTTPS por segurança; não funciona apenas em HTTP.",
+   "3": "Não substitui o backend; é um proxy no cliente que pode cachear respostas, mas APIs remotas continuam necessárias.",
+   "4": "Não tem acesso direto ao DOM; comunica-se com a página via mensagens (postMessage)."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "No ecossistema JavaScript, é comum a distinção entre biblioteca e framework. Sobre React, Angular e Vue, assinale a alternativa CORRETA.",
+  "alts": [
+   "React é, por definição de seus mantenedores, uma biblioteca focada na construção de interfaces, enquanto Angular é um framework completo e opinativo.",
+   "React, Angular e Vue são todos considerados, oficialmente e sem exceção, frameworks idênticos em escopo.",
+   "Angular é uma simples biblioteca de componentes sem roteamento nem injeção de dependência próprios.",
+   "A diferença entre biblioteca e framework está apenas no nome, sem impacto na inversão de controle.",
+   "TypeScript é incompatível com Angular, que só aceita JavaScript puro."
+  ],
+  "ans": 0,
+  "why": "O React é oficialmente descrito como uma biblioteca para construir interfaces (você o chama). O Angular é um framework completo e opinativo (com roteamento, DI, etc.) que aplica inversão de controle (ele chama seu código). Vue posiciona-se como framework progressivo.",
+  "erradas": {
+   "1": "Não são idênticos: React é biblioteca; Angular e Vue são frameworks, com escopos distintos.",
+   "2": "Angular NÃO é simples biblioteca; traz roteamento, injeção de dependência e CLI próprios.",
+   "3": "A distinção envolve inversão de controle: no framework é ele que chama seu código; na biblioteca é você que a chama.",
+   "4": "Angular é construído em torno de TypeScript; é a linguagem primária recomendada, não incompatível."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Uma página web precisa buscar dados de um servidor e atualizar apenas parte do conteúdo, sem recarregar a página inteira. Que técnica/conceito descreve essa abordagem?",
+  "alts": [
+   "Ajax (Asynchronous JavaScript and XML), que permite requisições assíncronas ao servidor e atualização parcial da página.",
+   "Um redirect HTTP 302 que recarrega a página completa a cada dado buscado.",
+   "Um media query que consulta o servidor a cada resize da janela.",
+   "Server-side rendering estático, que impede qualquer atualização dinâmica no cliente.",
+   "Um Service Worker, obrigatório para qualquer requisição assíncrona funcionar."
+  ],
+  "ans": 0,
+  "why": "Ajax é a técnica de fazer requisições assíncronas ao servidor (hoje via XMLHttpRequest ou, mais comumente, fetch) e atualizar apenas parte do DOM sem recarregar a página inteira, melhorando a experiência do usuário.",
+  "erradas": {
+   "1": "Um redirect 302 recarrega a página inteira, exatamente o oposto do que se deseja.",
+   "2": "Media query aplica estilos conforme o viewport; não faz requisições ao servidor.",
+   "3": "SSR estático não é o mecanismo de atualização parcial no cliente; Ajax/fetch é.",
+   "4": "Requisições assíncronas NÃO exigem Service Worker; fetch/XHR funcionam sem ele."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Em projeto de interfaces, distingue-se UX (User Experience) de UI (User Interface). Assinale a alternativa que descreve CORRETAMENTE essa distinção.",
+  "alts": [
+   "UX e UI são exatamente a mesma coisa, e os termos podem ser usados de forma intercambiável sem qualquer distinção.",
+   "UI trata da experiência global e das emoções do usuário; UX trata apenas das cores e fontes dos botões.",
+   "UX abrange a experiência global do usuário ao interagir com o produto (fluxos, usabilidade, satisfação); UI refere-se à interface visual e aos elementos com que o usuário interage (botões, cores, tipografia, layout).",
+   "UX é responsabilidade exclusiva do backend, e UI, exclusiva do banco de dados.",
+   "UI é sempre mais importante que UX, tornando a pesquisa de usuário desnecessária."
+  ],
+  "ans": 2,
+  "why": "UX (User Experience) engloba toda a experiência do usuário com o produto: fluxos, usabilidade, pesquisa e satisfação. UI (User Interface) é a camada visual/interativa concreta: botões, cores, tipografia e layout. UI é uma parte que serve à UX.",
+  "erradas": {
+   "0": "São conceitos distintos e complementares, não intercambiáveis.",
+   "1": "Inverte as definições: a experiência global é UX; cores e fontes são UI.",
+   "3": "UX e UI são disciplinas de design de front-end/produto, não de backend ou banco de dados.",
+   "4": "\"sempre mais importante\"/pesquisa \"desnecessária\": ambas importam e a pesquisa com usuários é essencial à UX."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "As diretrizes de acessibilidade WCAG (Web Content Accessibility Guidelines) organizam-se em torno de quatro princípios. Assinale a alternativa que os apresenta CORRETAMENTE.",
+  "alts": [
+   "Rápido, Responsivo, Seguro e Escalável.",
+   "Perceptível, Operável, Compreensível e Robusto (POUR), com níveis de conformidade A, AA e AAA.",
+   "Apenas um único princípio: fornecer texto alternativo para imagens.",
+   "Portável, Original, Único e Recursivo, com um único nível de conformidade.",
+   "Os princípios se aplicam exclusivamente a usuários com deficiência visual, ignorando outras deficiências."
+  ],
+  "ans": 1,
+  "why": "A WCAG baseia-se em quatro princípios: Perceptível, Operável, Compreensível e Robusto (sigla POUR, em inglês). A conformidade tem três níveis: A (mínimo), AA (intermediário, referência comum) e AAA (mais rigoroso).",
+  "erradas": {
+   "0": "Esses termos são atributos genéricos de sistema, não os princípios da WCAG.",
+   "2": "Texto alternativo é apenas um critério (dentro de Perceptível), não o único princípio.",
+   "3": "Nomes e níveis inventados; os corretos são POUR com níveis A, AA e AAA.",
+   "4": "\"exclusivamente\" visual: a WCAG cobre deficiências visuais, auditivas, motoras, cognitivas e outras."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Um cliente pede um site institucional em que a própria equipe de comunicação (sem conhecimento de programação) possa criar, editar e publicar páginas e notícias. Qual tipo de ferramenta atende diretamente a esse requisito?",
+  "alts": [
+   "Um CMS (Content Management System), como WordPress ou Drupal, voltado à gestão de conteúdo por usuários não técnicos.",
+   "Um Service Worker, responsável por gerenciar o conteúdo editorial do site.",
+   "Uma media query, que permite editores criarem páginas visualmente.",
+   "Um transpilador TypeScript, usado para publicar notícias.",
+   "Um framework CSS como recurso obrigatório para editar conteúdo sem programar."
+  ],
+  "ans": 0,
+  "why": "Um CMS (Sistema de Gerenciamento de Conteúdo), como WordPress ou Drupal, permite que usuários não técnicos criem, editem e publiquem conteúdo por interfaces administrativas, sem escrever código, atendendo exatamente ao requisito.",
+  "erradas": {
+   "1": "Service Worker é proxy de rede/cache para PWA, não gerencia conteúdo editorial.",
+   "2": "Media query aplica estilos por viewport; não é ferramenta de gestão de conteúdo.",
+   "3": "Transpilador TypeScript converte código; nada tem a ver com publicar notícias.",
+   "4": "Framework CSS ajuda no estilo, mas não é ferramenta de edição de conteúdo por não programadores."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Sobre a relação entre os campos da Inteligência Artificial, assinale a afirmativa correta.",
+  "alts": [
+   "Aprendizado de Máquina (Machine Learning) é um campo mais amplo que engloba a Inteligência Artificial como um de seus subconjuntos.",
+   "Aprendizado Profundo (Deep Learning) é um subconjunto do Aprendizado de Máquina, que por sua vez é um subconjunto da Inteligência Artificial.",
+   "Inteligência Artificial e Aprendizado de Máquina são termos sinônimos e intercambiáveis, sem relação de continência entre eles.",
+   "Aprendizado Profundo é um campo independente que não utiliza técnicas de Aprendizado de Máquina.",
+   "Inteligência Artificial é um subconjunto do Aprendizado Profundo, especializado no uso de redes neurais."
+  ],
+  "ans": 1,
+  "why": "A relação de continência correta é IA ⊃ ML ⊃ Deep Learning: a IA é o campo mais amplo, o Aprendizado de Máquina é um subconjunto dela, e o Aprendizado Profundo (baseado em redes neurais com muitas camadas) é um subconjunto do ML.",
+  "erradas": {
+   "0": "Inverte a relação: é a IA que engloba o ML, e não o contrário.",
+   "2": "IA e ML não são sinônimos; o ML é um subconjunto (uma abordagem) da IA.",
+   "3": "O Deep Learning é justamente um subconjunto do ML, e não um campo independente dele.",
+   "4": "Inverte a hierarquia: o Deep Learning é subconjunto da IA, não o contrário."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um cientista de dados dispõe de uma base de transações rotuladas como 'fraude' ou 'legítima' e deseja treinar um modelo capaz de classificar novas transações. Já um segundo profissional possui apenas transações sem rótulo e quer descobrir grupos de comportamento semelhantes. Os paradigmas de aprendizado adequados a cada caso são, respectivamente:",
+  "alts": [
+   "aprendizado não supervisionado e aprendizado supervisionado.",
+   "aprendizado por reforço e aprendizado supervisionado.",
+   "aprendizado supervisionado e aprendizado não supervisionado.",
+   "aprendizado supervisionado e aprendizado por reforço.",
+   "aprendizado não supervisionado e aprendizado por reforço."
+  ],
+  "ans": 2,
+  "why": "Quando há dados rotulados e o objetivo é prever uma classe, usa-se aprendizado supervisionado (classificação). Sem rótulos, buscando agrupar padrões semelhantes, usa-se aprendizado não supervisionado (clustering).",
+  "erradas": {
+   "0": "Inverte os dois paradigmas: dados rotulados exigem aprendizado supervisionado.",
+   "1": "Aprendizado por reforço envolve um agente aprendendo por recompensas em interação com o ambiente, o que não descreve a classificação de transações rotuladas.",
+   "3": "O segundo caso (sem rótulos, buscando grupos) é não supervisionado, e não por reforço.",
+   "4": "O primeiro caso (dados rotulados) é supervisionado, e não não supervisionado."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Durante o treinamento de um modelo, observa-se erro muito baixo nos dados de treino, mas erro alto nos dados de teste, indicando que o modelo memorizou ruídos e particularidades da amostra e não generaliza bem. Esse fenômeno é denominado:",
+  "alts": [
+   "underfitting (subajuste), caracterizado por alto viés.",
+   "overfitting (sobreajuste), tipicamente associado à alta variância.",
+   "normalização, causada pelo excesso de dados de teste.",
+   "regularização, decorrente da falta de parâmetros no modelo.",
+   "convergência prematura do gradiente descendente."
+  ],
+  "ans": 1,
+  "why": "Erro baixo no treino e alto no teste é a assinatura clássica do overfitting (sobreajuste): o modelo se ajusta demais aos dados de treino, inclusive ao ruído, e falha em generalizar. Está associado à alta variância.",
+  "erradas": {
+   "0": "Underfitting é o oposto: erro alto tanto no treino quanto no teste (modelo simples demais, alto viés).",
+   "2": "Normalização é uma técnica de pré-processamento de escala, não um fenômeno de ajuste do modelo.",
+   "3": "Regularização é justamente uma técnica para combater o overfitting, não o fenômeno descrito.",
+   "4": "Convergência prematura não descreve o padrão de erro baixo no treino e alto no teste."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Sobre o compromisso (trade-off) entre viés (bias) e variância (variance) em modelos de aprendizado de máquina, assinale a afirmativa correta.",
+  "alts": [
+   "Modelos com alto viés tendem a ser excessivamente complexos e a sofrer overfitting.",
+   "Modelos com alta variância são pouco sensíveis aos dados de treino e sofrem underfitting.",
+   "Alto viés está associado a modelos simples demais (underfitting) e alta variância a modelos complexos demais (overfitting).",
+   "Reduzir o viés reduz sempre e invariavelmente a variância na mesma proporção.",
+   "Viés e variância são conceitos independentes que nunca influenciam o erro de generalização."
+  ],
+  "ans": 2,
+  "why": "O trade-off clássico: alto viés indica modelo simples demais, que subajusta (underfitting); alta variância indica modelo complexo demais, sensível ao ruído do treino, que sobreajusta (overfitting). O objetivo é equilibrá-los para minimizar o erro de generalização.",
+  "erradas": {
+   "0": "Inverte: alto viés está ligado a modelos simples e underfitting, não a complexidade e overfitting.",
+   "1": "Inverte: alta variância significa muita sensibilidade ao treino e overfitting, não underfitting.",
+   "3": "Há um trade-off: reduzir o viés (aumentando a complexidade) tende a aumentar a variância, não reduzi-la na mesma proporção. O 'sempre e invariavelmente' é um absoluto falso.",
+   "4": "Viés e variância são justamente as duas componentes que compõem o erro de generalização."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um classificador de e-mails de spam foi avaliado. Considerando as métricas de desempenho, é correto afirmar que:",
+  "alts": [
+   "a precisão (precision) mede a proporção de exemplos positivos reais que foram corretamente identificados pelo modelo.",
+   "a revocação/sensibilidade (recall) mede a proporção de previsões positivas que estavam efetivamente corretas.",
+   "a acurácia pode ser enganosa em bases muito desbalanceadas, sendo o F1-score uma média harmônica entre precisão e recall.",
+   "o F1-score é a média aritmética simples entre acurácia e revocação.",
+   "em bases altamente desbalanceadas, a acurácia é sempre a métrica mais confiável de desempenho."
+  ],
+  "ans": 2,
+  "why": "Em bases desbalanceadas, a acurácia engana (um modelo que prevê sempre a classe majoritária pode ter acurácia alta). O F1-score é a média harmônica entre precisão e recall, equilibrando ambas as métricas.",
+  "erradas": {
+   "0": "Essa é a definição de recall (revocação), não de precisão. Precisão = positivos corretos / total de previsões positivas.",
+   "1": "Essa é a definição de precisão, não de recall. Recall = positivos corretos / total de positivos reais.",
+   "3": "O F1-score é a média harmônica entre precisão e recall, não a média aritmética entre acurácia e revocação.",
+   "4": "É justamente o contrário: em bases desbalanceadas a acurácia é enganosa; o 'sempre' é um absoluto falso."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Os grandes modelos de linguagem (LLMs), como os da família GPT, baseiam-se predominantemente em uma arquitetura de rede neural cujo mecanismo central permite ponderar a importância relativa de diferentes partes da sequência de entrada. Essa arquitetura e esse mecanismo são, respectivamente:",
+  "alts": [
+   "Transformer e mecanismo de atenção (self-attention).",
+   "Rede Neural Convolucional (CNN) e pooling.",
+   "Rede Neural Recorrente (RNN) e retropropagação no tempo.",
+   "Máquina de Vetores de Suporte (SVM) e kernel trick.",
+   "Rede Generativa Adversarial (GAN) e mecanismo discriminador."
+  ],
+  "ans": 0,
+  "why": "Os LLMs modernos baseiam-se na arquitetura Transformer, introduzida em 2017, cujo componente central é o mecanismo de atenção (self-attention), que pondera a relevância de cada token em relação aos demais na sequência.",
+  "erradas": {
+   "1": "CNNs e pooling são típicas de visão computacional, não a base dos LLMs.",
+   "2": "RNNs precederam os Transformers no processamento de sequências, mas os LLMs atuais usam Transformers, que dispensam a recorrência.",
+   "3": "SVM é um classificador clássico de ML, não a arquitetura dos LLMs.",
+   "4": "GANs são usadas sobretudo para geração de imagens; não são a arquitetura central dos LLMs de texto."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Uma organização deseja que seu assistente baseado em LLM responda perguntas com base em documentos internos e atualizados da empresa, reduzindo respostas desatualizadas ou inventadas. A técnica que combina a recuperação de trechos relevantes de uma base de conhecimento externa com a geração de texto pelo modelo é conhecida como:",
+  "alts": [
+   "fine-tuning supervisionado completo dos pesos do modelo.",
+   "RAG (Retrieval-Augmented Generation / Geração Aumentada por Recuperação).",
+   "prompt injection defensivo.",
+   "quantização de parâmetros do modelo.",
+   "destilação de conhecimento (knowledge distillation)."
+  ],
+  "ans": 1,
+  "why": "RAG (Geração Aumentada por Recuperação) combina um componente de recuperação, que busca trechos relevantes em uma base externa, com a geração do LLM, fornecendo contexto atualizado e factual e reduzindo alucinações, sem precisar retreinar o modelo.",
+  "erradas": {
+   "0": "Fine-tuning ajusta os pesos do modelo com novos dados; é distinto de recuperar contexto externo em tempo de inferência, e não é o que a questão descreve.",
+   "2": "Prompt injection é um ataque de manipulação de prompts, não uma técnica de fundamentação em documentos.",
+   "3": "Quantização reduz a precisão numérica dos pesos para eficiência, sem relação com recuperar documentos.",
+   "4": "Destilação transfere conhecimento de um modelo grande para um menor; não descreve a recuperação de documentos externos."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "No contexto dos modelos generativos de linguagem, o termo 'alucinação' (hallucination) refere-se a:",
+  "alts": [
+   "a incapacidade técnica do modelo de processar entradas em outro idioma que não o inglês.",
+   "a geração de conteúdo que parece plausível e é apresentado com confiança, mas é factualmente incorreto ou inventado.",
+   "o consumo excessivo de energia dos data centers durante o treinamento do modelo.",
+   "a recusa do modelo em responder a perguntas sobre temas sensíveis.",
+   "a perda de dados de treinamento causada por falha de hardware."
+  ],
+  "ans": 1,
+  "why": "Alucinação é a produção, pelo LLM, de informações que soam coerentes e são apresentadas com aparente segurança, mas que são falsas, imprecisas ou fabricadas, sem correspondência com os fatos ou com as fontes.",
+  "erradas": {
+   "0": "Alucinação não trata de limitação de idioma; modelos multilíngues também alucinam.",
+   "2": "Consumo energético de data centers é uma questão de sustentabilidade, não a definição de alucinação.",
+   "3": "A recusa a temas sensíveis relaciona-se a mecanismos de segurança/moderação, não a alucinação.",
+   "4": "Perda de dados por falha de hardware é um problema de infraestrutura, não o conceito de alucinação."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um banco passou a usar um modelo de IA para aprovar crédito e observou que candidatos de determinado grupo demográfico eram sistematicamente mais reprovados, refletindo desigualdades presentes nos dados históricos usados no treinamento. Sobre viés algorítmico e governança de IA, julgue as afirmativas a seguir:\nI. O viés algorítmico pode originar-se de dados de treinamento não representativos ou que carregam preconceitos históricos.\nII. A explicabilidade (explainability) e a transparência são princípios que ajudam a identificar e mitigar decisões discriminatórias.\nIII. Um modelo, por ser automatizado e matemático, é invariavelmente neutro e imune a vieses.\nAssinale a alternativa correta.",
+  "alts": [
+   "Apenas a afirmativa I está correta.",
+   "Apenas a afirmativa III está correta.",
+   "Apenas as afirmativas I e II estão corretas.",
+   "Apenas as afirmativas II e III estão corretas.",
+   "As afirmativas I, II e III estão corretas."
+  ],
+  "ans": 2,
+  "why": "I e II estão corretas: o viés algorítmico costuma nascer de dados enviesados/não representativos, e explicabilidade e transparência são pilares da governança de IA para detectar e mitigar discriminação. A III é falsa pelo absoluto 'invariavelmente neutro': modelos herdam e podem amplificar vieses dos dados.",
+  "erradas": {
+   "0": "Incompleta: além da I, a afirmativa II também está correta.",
+   "1": "A III é falsa; o absoluto 'invariavelmente neutro e imune a vieses' contraria o próprio cenário descrito.",
+   "3": "Inclui a III, que é falsa, e omite a I, que é verdadeira.",
+   "4": "A III é falsa: automação não garante neutralidade; modelos podem reproduzir vieses dos dados."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Sobre as iniciativas de regulação da Inteligência Artificial, assinale a afirmativa correta.",
+  "alts": [
+   "O Regulamento de IA da União Europeia (AI Act) adota uma abordagem baseada em níveis de risco, chegando a proibir sistemas de risco inaceitável.",
+   "O AI Act europeu classifica todos os sistemas de IA em uma única categoria uniforme de risco, com as mesmas obrigações para todos.",
+   "No Brasil, o PL 2338/2023 rejeita expressamente qualquer classificação por risco, optando por regras idênticas a todo sistema de IA.",
+   "O AI Act europeu proíbe integralmente o desenvolvimento e uso de qualquer sistema de inteligência artificial no bloco.",
+   "O PL 2338/2023 já foi sancionado e está em vigor como lei desde 2023, com força equivalente a uma emenda constitucional."
+  ],
+  "ans": 0,
+  "why": "O AI Act da União Europeia adota abordagem baseada em risco, categorizando os sistemas (risco inaceitável, alto, limitado e mínimo) e proibindo os de risco inaceitável. O PL 2338/2023 brasileiro segue modelo semelhante, com classificação por risco.",
+  "erradas": {
+   "1": "O AI Act justamente diferencia os sistemas em várias categorias de risco, com obrigações distintas, não uma categoria única.",
+   "2": "O PL 2338/2023 adota, e não rejeita, uma classificação por níveis de risco (inclusive risco excessivo/alto).",
+   "3": "O AI Act não proíbe toda a IA; proíbe apenas os sistemas de risco inaceitável e regula os demais conforme o risco.",
+   "4": "O PL 2338/2023 não é lei em vigor: foi aprovado no Senado em 2024 e tramitava na Câmara; além disso, projeto de lei não tem status de emenda constitucional."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "A sigla ESG, cada vez mais presente em relatórios corporativos e critérios de investimento, corresponde a um conjunto de práticas que avalia o desempenho das organizações em três dimensões. Essas dimensões são:",
+  "alts": [
+   "Economia, Segurança e Governança.",
+   "Ambiental (Environmental), Social e Governança (Governance).",
+   "Eficiência, Sustentabilidade e Gestão.",
+   "Energia, Sociedade e Globalização.",
+   "Ecologia, Serviços e Gestão de riscos."
+  ],
+  "ans": 1,
+  "why": "ESG é a sigla em inglês para Environmental (Ambiental), Social e Governance (Governança), os três pilares usados para avaliar práticas de sustentabilidade, responsabilidade social e governança corporativa das organizações.",
+  "erradas": {
+   "0": "'Economia' e 'Segurança' não compõem a sigla; o E é de Environmental (Ambiental) e falta o pilar Social.",
+   "2": "Nenhum desses três termos corresponde às letras da sigla ESG.",
+   "3": "'Energia' e 'Globalização' não são os pilares; o correto é Ambiental, Social e Governança.",
+   "4": "'Ecologia' e 'Serviços' não correspondem à sigla; embora ecologia se aproxime do ambiental, os demais termos estão errados."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "A expansão da Inteligência Artificial generativa tem intensificado o debate sobre a sustentabilidade dos data centers. Sobre esse tema socioambiental, julgue as afirmativas a seguir:\nI. O treinamento e a operação de grandes modelos de IA elevam o consumo de energia elétrica e, muitas vezes, de água para resfriamento dos data centers.\nII. A transição energética para fontes renováveis é apontada como um dos caminhos para reduzir a pegada de carbono da infraestrutura de computação.\nIII. Por serem digitais, os data centers não geram qualquer impacto ambiental, sendo neutros em consumo de recursos naturais.\nAssinale a alternativa correta.",
+  "alts": [
+   "Apenas a afirmativa I está correta.",
+   "Apenas as afirmativas I e II estão corretas.",
+   "Apenas as afirmativas I e III estão corretas.",
+   "Apenas a afirmativa III está correta.",
+   "As afirmativas I, II e III estão corretas."
+  ],
+  "ans": 1,
+  "why": "I e II estão corretas: a IA generativa aumenta o consumo de energia e água (resfriamento) dos data centers, e a migração para fontes renováveis é uma das estratégias para reduzir a pegada de carbono. A III é falsa: infraestrutura digital consome energia, água e recursos, gerando impacto ambiental real.",
+  "erradas": {
+   "0": "Incompleta: a afirmativa II também está correta.",
+   "2": "Inclui a III, que é falsa (data centers geram impacto ambiental), e omite a II, que é verdadeira.",
+   "3": "A III é falsa: data centers não são ambientalmente neutros.",
+   "4": "A III é falsa; o 'não geram qualquer impacto ambiental' contraria o consumo real de energia e água."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Cloud computing always guarantees immediate financial savings for companies.",
+   "The advantages of cloud migration depend on careful planning and strategy.",
+   "Physical servers are more reliable than cloud-based systems.",
+   "IT teams should refuse to migrate their systems to the cloud.",
+   "Idle resources are the only real problem in cloud computing."
+  ],
+  "ans": 1,
+  "why": "O texto afirma que os benefícios só se concretizam quando a migração é guiada por uma estratégia clara ('the benefits materialize only when migration is guided by a clear strategy'), o que corresponde à ideia central.",
+  "erradas": {
+   "0": "O texto NEGA isso: diz que empresas esperam economia imediata, mas a realidade é mais complexa ('the reality is often more complex').",
+   "2": "O texto não compara confiabilidade; diz apenas que a nuvem reduz o fardo de manter servidores físicos.",
+   "3": "O texto não recomenda recusar a migração; recomenda planejá-la bem.",
+   "4": "Os recursos ociosos são apenas UM exemplo de problema quando falta planejamento, não 'o único' problema real."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nIn the fragment \"they never use\", the pronoun \"they\" refers to:",
+  "alts": [
+   "the companies",
+   "the physical servers",
+   "the organizations",
+   "the IT teams",
+   "the benefits"
+  ],
+  "ans": 2,
+  "why": "Em 'paying for idle resources they never use', o sujeito da oração é 'organizations' ('organizations may end up paying for idle resources they never use'). São as organizações que nunca usam os recursos.",
+  "erradas": {
+   "0": "'Companies' aparece antes, mas o sujeito imediato da frase que contém 'they' é 'organizations'.",
+   "1": "'Physical servers' são mencionados na frase seguinte, sem relação com 'idle resources'.",
+   "3": "'IT teams' só surgem depois; não são quem paga pelos recursos ociosos.",
+   "4": "'Benefits' aparecem na última frase e não realizam a ação de 'never use'."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nThe connective \"Thus\" (last sentence) introduces a:",
+  "alts": [
+   "contrast with the previous statement",
+   "conclusion drawn from what was said before",
+   "condition that must be avoided",
+   "concession against the main argument",
+   "example of a failed migration"
+  ],
+  "ans": 1,
+  "why": "'Thus' significa 'portanto/assim', introduzindo uma CONCLUSÃO que decorre dos argumentos anteriores (custos ocultos, novas habilidades exigidas).",
+  "erradas": {
+   "0": "Contraste seria expresso por 'however/but'; 'thus' indica consequência.",
+   "2": "Condição seria 'if/unless'; 'thus' não impõe condição.",
+   "3": "Concessão seria 'although/even though'; não é o caso de 'thus'.",
+   "4": "'Thus' não apresenta exemplo, e sim a conclusão geral do parágrafo."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nIn the text, the word \"burden\" is closest in meaning to:",
+  "alts": [
+   "advantage",
+   "load",
+   "profit",
+   "speed",
+   "failure"
+  ],
+  "ans": 1,
+  "why": "'Burden' significa 'fardo, carga, peso'. No contexto 'reduce the burden of maintaining physical servers', é o peso/trabalho de manter servidores, sinônimo de 'load'.",
+  "erradas": {
+   "0": "'Advantage' (vantagem) é o oposto: o fardo é algo negativo que se busca reduzir.",
+   "2": "'Profit' (lucro) não tem relação com 'burden'.",
+   "3": "'Speed' (velocidade) não corresponde ao sentido de carga/peso.",
+   "4": "'Failure' (falha) é mais forte e diferente; 'burden' é apenas o encargo de manter os servidores."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nWhat is the author's main point?",
+  "alts": [
+   "AI assistants should never be used to write code.",
+   "AI assistants are useful but still require human review.",
+   "Experienced engineers are no longer necessary in software teams.",
+   "Generated code is always free of security flaws.",
+   "Developers dislike the speed of AI coding tools."
+  ],
+  "ans": 1,
+  "why": "O texto reconhece a utilidade (aceleram o trabalho) mas insiste que 'human review remains essential' e que a IA 'does not replace the judgment of an experienced engineer'.",
+  "erradas": {
+   "0": "O texto não proíbe o uso; valoriza a rapidez, apenas alerta para revisão.",
+   "2": "É o contrário: o engenheiro experiente continua essencial ('remains essential').",
+   "3": "O texto diz que o código gerado pode conter vulnerabilidades sutis, não que é sempre seguro.",
+   "4": "Os desenvolvedores APRECIAM a rapidez ('appreciate how quickly'), não a desgostam."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nThe connective \"Nevertheless\" is used to:",
+  "alts": [
+   "add a similar idea to the previous one",
+   "introduce a contrast or reservation",
+   "give the cause of the previous statement",
+   "provide a chronological sequence",
+   "summarize the whole paragraph"
+  ],
+  "ans": 1,
+  "why": "'Nevertheless' significa 'não obstante/mesmo assim', marcando um CONTRASTE: apesar de os devs gostarem da rapidez, os especialistas alertam para riscos.",
+  "erradas": {
+   "0": "Adição seria 'moreover/also'; 'nevertheless' opõe ideias.",
+   "2": "Causa seria 'because/since'; não é o caso.",
+   "3": "Não há sequência temporal introduzida por 'nevertheless'.",
+   "4": "Não é um resumo; é uma ressalva que introduz o alerta dos especialistas."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nIn \"it does not replace the judgment\", the pronoun \"it\" refers to:",
+  "alts": [
+   "the vulnerability",
+   "the human review",
+   "the assistant",
+   "the judgment",
+   "the security flaw"
+  ],
+  "ans": 2,
+  "why": "A frase é 'the assistant accelerates the work, but it does not replace the judgment'. O sujeito é 'the assistant', ao qual 'it' se refere.",
+  "erradas": {
+   "0": "'Vulnerability' foi citada antes e não é o sujeito da oração com 'it'.",
+   "1": "'Human review' é o que é essencial, mas não é o antecedente de 'it' nesta frase.",
+   "3": "'Judgment' é o OBJETO que 'it' não substitui, não o antecedente do pronome.",
+   "4": "'Security flaw' não é o sujeito da última oração."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nAccording to the text, which statement is TRUE?",
+  "alts": [
+   "Generated code that looks correct is guaranteed to be safe.",
+   "A code suggestion can appear correct yet still hide a vulnerability.",
+   "Experts encourage developers to accept generated code without checking.",
+   "AI assistants have completely replaced human engineers.",
+   "Developers find the tools too slow to be useful."
+  ],
+  "ans": 1,
+  "why": "O texto afirma literalmente 'A suggestion may look correct and still contain a subtle vulnerability', ou seja, pode parecer correta e ainda esconder vulnerabilidade.",
+  "erradas": {
+   "0": "Contradiz o texto: parecer correto NÃO garante segurança.",
+   "2": "Os especialistas ALERTAM contra aceitar cegamente ('warn that blindly accepting... can introduce flaws').",
+   "3": "O texto diz que a IA NÃO substitui o julgamento do engenheiro.",
+   "4": "Os desenvolvedores gostam da rapidez ('appreciate how quickly'), não a acham lenta."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Remote work has reshaped the technology industry. Teams that once shared the same office now collaborate across different time zones. This shift brings clear benefits, such as access to a wider pool of talent and lower office costs. Yet it also creates challenges: communication can suffer when colleagues rarely meet in person, and junior employees may struggle to learn from senior peers. Unless companies invest in strong communication practices, these problems can quietly erode team performance.\"\n\nThe main purpose of the text is to:",
+  "alts": [
+   "prove that remote work is a complete failure",
+   "present both benefits and challenges of remote work",
+   "convince companies to abandon offices entirely",
+   "describe how to configure a video-conferencing tool",
+   "criticize junior employees for their lack of skills"
+  ],
+  "ans": 1,
+  "why": "O texto apresenta os dois lados: benefícios ('clear benefits, such as...') e desafios ('it also creates challenges'), com equilíbrio.",
+  "erradas": {
+   "0": "O texto não diz que é um fracasso total; aponta benefícios claros.",
+   "2": "Não defende abandonar escritórios; apenas menciona custos menores como um benefício.",
+   "3": "Não há instruções técnicas sobre videoconferência.",
+   "4": "Não critica os juniores; diz que eles podem ter dificuldade de aprender com os seniores remotamente."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Remote work has reshaped the technology industry. Teams that once shared the same office now collaborate across different time zones. This shift brings clear benefits, such as access to a wider pool of talent and lower office costs. Yet it also creates challenges: communication can suffer when colleagues rarely meet in person, and junior employees may struggle to learn from senior peers. Unless companies invest in strong communication practices, these problems can quietly erode team performance.\"\n\nThe word \"Unless\" in the last sentence introduces the idea that team performance will be harmed:",
+  "alts": [
+   "even if companies invest in communication practices",
+   "because companies always invest in communication practices",
+   "if companies do NOT invest in strong communication practices",
+   "after companies stop working remotely",
+   "although companies already solved these problems"
+  ],
+  "ans": 2,
+  "why": "'Unless' equivale a 'if not / a menos que'. 'Unless companies invest...' significa 'se as empresas NÃO investirem em boas práticas de comunicação', os problemas corroerão o desempenho.",
+  "erradas": {
+   "0": "'Even if' inverte o sentido; 'unless' condiciona ao NÃO investimento.",
+   "1": "'Unless' não afirma que as empresas sempre investem; é uma condição negativa.",
+   "3": "Não há referência a 'parar de trabalhar remotamente'; a condição é sobre investir em comunicação.",
+   "4": "O texto trata os problemas como potenciais, não como já resolvidos."
+  }
  }
 ]

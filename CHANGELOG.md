@@ -2,6 +2,19 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-15 (tarde) — +3 provas reais e questões novas nos temas fracos
+
+- **3 provas ALERO 2026 (FGV)** importadas com gabarito oficial e explicações
+  validadas: `cnsal-ads` (Análise e Desenvolvimento de Sistemas), `cnsal-bd`
+  (Banco de Dados), `cnsal-redes` (Infraestrutura de Redes). **+120 questões
+  reais utilizáveis.** Módulo comum (Q1-40) mantido uma vez; trivia estadual
+  de Rondônia descartada.
+- **Análise de gaps** e geração de **52 questões originais** (estilo FGV,
+  gabarito validado) para os temas fracos/zerados: Padrões de Projeto (GoF),
+  UML, frontend, atualidades/IA e inglês.
+- Banco agora: **217 originais + ~380 de prova = ~596 questões utilizáveis.**
+- `valida.py` sem erros.
+
 ## 2026-07-15 — provas, dicas, resumos e ferramentas de estudo
 
 Grande atualização. Em ordem do que foi feito:
