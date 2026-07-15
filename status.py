@@ -11,8 +11,11 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
+import roteiro  # leitura compartilhada do plano do dia
+
+BASE = Path(__file__).parent
 PROVA = date(2026, 10, 11)
-CSV = Path(__file__).parent / "progresso.csv"
+CSV = BASE / "progresso.csv"
 
 # tags que nao contam como "bloco de conteudo" para fins de revisitacao
 NAO_CONTEUDO = {"revisao", "simulado", "descanso", "prova"}
@@ -46,15 +49,41 @@ def carregar():
 
 def mostrar_hoje(linhas):
     hoje = date.today()
-    for l in linhas:
-        if l["data"] == hoje:
-            print()
-            print(cor(f"  {l['data'].strftime('%d/%m')} ({l['dia']}) — semana {l['semana']}", "bold"))
-            print(f"  {cor('Foco:', 'ciano')} {l['foco']}")
-            print(f"  {cor('Tambem:', 'ciano')} {l['secundario']}")
-            print()
-            return
-    print(cor("\n  Hoje nao esta no roteiro.\n", "dim"))
+    l = next((x for x in linhas if x["data"] == hoje), None)
+    if l is None:
+        print(cor("\n  Hoje nao esta no roteiro.\n", "dim"))
+        return
+
+    print()
+    print(cor(f"  {l['data'].strftime('%d/%m')} ({l['dia']}) — semana {l['semana']}", "bold"))
+    print(f"  {cor('Foco:', 'ciano')} {l['foco']}")
+    print(f"  {cor('Tambem:', 'ciano')} {l['secundario']}")
+
+    plano = roteiro.plano_de_hoje(CSV)
+    tipo = plano["tipo"]
+    print()
+    if tipo == "descanso":
+        print(cor("  Hoje e descanso. Recarregue as energias.", "ciano"))
+    elif tipo == "prova":
+        print(cor("  Hoje e a PROVA. Boa sorte!", "ciano"))
+    elif tipo == "revisao":
+        print(cor("  Dia de revisao:", "bold"))
+        print("    ./quiz.py --hoje        refaz suas erradas (originais + provas)")
+    elif tipo == "simulado":
+        print(cor("  Dia de simulado:", "bold"))
+        print("    ./quiz.py --hoje        questoes reais de prova, cronometre")
+    else:  # conteudo
+        print(cor("  Estudar hoje:", "bold"))
+        print("    ./quiz.py --hoje        questoes dos blocos do dia")
+        for b in plano["blocos"]:
+            atalhos = []
+            if (BASE / "resumo" / f"{b}.md").exists():
+                atalhos.append(f"--resumo {b}")
+            if (BASE / "dicas" / f"{b}.md").exists():
+                atalhos.append(f"--dica {b}")
+            extra = cor("   ./quiz.py " + " / ".join(atalhos), "dim") if atalhos else ""
+            print(f"    • {b}{extra}")
+    print()
 
 
 def painel(linhas):

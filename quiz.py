@@ -5,12 +5,13 @@ Uso:
     ./quiz.py                    10 questoes aleatorias do banco original
     ./quiz.py java               so do bloco java
     ./quiz.py java redes -n 15   15 questoes desses dois blocos
-    ./quiz.py --hoje             questoes do bloco previsto no roteiro para hoje
+    ./quiz.py --hoje             segue o plano do roteiro para hoje (todos os
+                                 blocos do dia; revisao/simulado tratados)
     ./quiz.py --erradas          refaz o que voce errou (originais + provas juntos)
     ./quiz.py --prova dataprev2024   questoes REAIS daquela prova (precisa gabarito)
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
-    ./quiz.py --dica java        dica de banca (FGV) do bloco; sem bloco, lista
-    ./quiz.py --resumo java      resumo de conteudo do bloco (edital+dicas+questoes)
+    ./quiz.py --dica java        dica de banca (FGV) do bloco; --dica hoje = do dia
+    ./quiz.py --resumo java      resumo de conteudo; --resumo hoje = do dia
     ./quiz.py --tags             inventario de blocos (os dois bancos juntos)
     ./quiz.py --stats            desempenho acumulado por bloco
     ./quiz.py --quem geys        roda como outra pessoa (progresso separado)
@@ -33,6 +34,8 @@ import sys
 import textwrap
 from datetime import date, datetime
 from pathlib import Path
+
+import roteiro  # leitura compartilhada do plano do dia
 
 BASE = Path(__file__).parent
 BANCO = BASE / "banco.json"
@@ -124,18 +127,35 @@ def garantir_csv(quem):
     return destino
 
 
-def tag_de_hoje(quem):
-    """Le o progresso e devolve a tag do dia atual, se houver."""
-    arq = csv_de(quem)
-    if not arq.exists():
-        return None
-    hoje = date.today().isoformat()
-    with open(arq, encoding="utf-8") as f:
-        for l in csv.DictReader(f):
-            if l["data"] == hoje:
-                t = l["tag"]
-                return t if t not in {"revisao", "simulado", "descanso", "prova"} else None
-    return None
+def _alvos(valor, quem):
+    """Resolve o argumento de --dica/--resumo. 'hoje' vira os blocos do plano
+    do dia; '__listar__' (sem argumento) lista; senao, o proprio bloco."""
+    if valor == "hoje":
+        plano = roteiro.plano_de_hoje(csv_de(quem))
+        if plano["blocos"]:
+            return plano["blocos"]
+        print(cor("\n  hoje nao tem bloco de conteudo no roteiro.\n", "dim"))
+        return []
+    return [valor]
+
+
+def cabecalho_plano(plano):
+    """Imprime o plano do dia e os atalhos (dica/resumo) de cada bloco."""
+    l = plano["linha"]
+    if l:
+        print(cor(f"\n  Plano de hoje — {l['data']} ({l['dia']}), semana {l['semana']}", "b"))
+        print(cor(f"    Foco:   {plano['foco']}", "dim"))
+        print(cor(f"    Também: {plano['secundario']}", "dim"))
+    for b in plano["blocos"]:
+        extras = []
+        if (BASE / "resumo" / f"{b}.md").exists():
+            extras.append(f"resumo: ./quiz.py --resumo {b}")
+        if (BASE / "dicas" / f"{b}.md").exists():
+            extras.append(f"dica: ./quiz.py --dica {b}")
+        linha = f"    • {b}"
+        if extras:
+            linha += cor("   (" + "  |  ".join(extras) + ")", "dim")
+        print(linha)
 
 
 def registrar_no_csv(qtd, acertos, quem):
@@ -347,15 +367,18 @@ def main():
         print(__doc__)
         return
 
+    quem = a.quem.strip().lower()
+
     if a.dica is not None:
-        mostrar_dica(a.dica)
+        for b in _alvos(a.dica, quem):
+            mostrar_dica(b)
         return
 
     if a.resumo is not None:
-        mostrar_resumo(a.resumo)
+        for b in _alvos(a.resumo, quem):
+            mostrar_resumo(b)
         return
 
-    quem = a.quem.strip().lower()
     if quem != "lucas":
         print(cor(f"\n  sessao de: {quem}", "ciano"))
         garantir_csv(quem)
@@ -370,8 +393,9 @@ def main():
             print(cor(f"\n  nenhuma questao utilizavel em '{a.prova}'.", "verm"))
             print(cor(f"  falta gabarito? preencha com: ./gabarito.py {a.prova} \"1-C 2-A ...\"\n", "dim"))
             return
-    elif a.erradas:
-        # refazer erradas busca nos DOIS bancos (originais + todas as provas)
+    elif a.erradas or a.hoje:
+        # erradas e o plano do dia buscam nos DOIS bancos (originais + provas),
+        # para o pool de cada bloco (inclusive portugues/ingles/etc) ser o maior
         banco = carregar_originais() + carregar_provas()
     else:
         banco = carregar_originais()
@@ -416,14 +440,37 @@ def main():
             print(cor("\n  nenhuma questao errada registrada. Otimo sinal.\n", "verde"))
             return
     elif a.hoje:
-        t = tag_de_hoje(quem)
-        if t is None:
-            print(cor("\n  hoje nao tem bloco de conteudo no roteiro (revisao/simulado?).", "dim"))
-            print(cor("  rodando 10 aleatorias de tudo.\n", "dim"))
+        plano = roteiro.plano_de_hoje(csv_de(quem))
+        cabecalho_plano(plano)
+        tipo = plano["tipo"]
+        if tipo is None:
+            print(cor("\n  hoje nao esta no roteiro; rodando 10 aleatorias.\n", "dim"))
             pool = banco[:]
-        else:
-            pool = [q for q in banco if q["tag"] == t]
-            print(cor(f"\n  bloco de hoje no roteiro: {t}", "ciano"))
+        elif tipo == "descanso":
+            print(cor("\n  Hoje e descanso no roteiro. Bom descanso!\n", "ciano"))
+            return
+        elif tipo == "prova":
+            print(cor("\n  Hoje e a PROVA. Boa sorte, voce se preparou pra isso.\n", "ciano"))
+            return
+        elif tipo == "revisao":
+            print(cor("\n  Dia de revisao: refazendo suas erradas (originais + provas).\n", "ciano"))
+            ids_erradas = {r["id"] for r in hist["respostas"] if not r["ok"]}
+            pool = [q for q in banco if q["id"] in ids_erradas]
+            if not pool:
+                print(cor("  nenhuma questao errada registrada. Otimo sinal.\n", "verde"))
+                return
+        elif tipo == "simulado":
+            print(cor("\n  Dia de simulado: questoes REAIS de prova (todas).", "ciano"))
+            print(cor("  Cronometre 1 dia e faca os especificos primeiro (valem 2,5x).\n", "dim"))
+            pool = carregar_provas()
+            if not pool:
+                print(cor("  nenhuma questao de prova disponivel; use ./gabarito.py.\n", "verm"))
+                return
+        else:  # conteudo — os blocos do dia (especifico + geral)
+            pool = [q for q in banco if q["tag"] in plano["blocos"]]
+            if not pool:
+                print(cor("\n  sem questoes para os blocos de hoje; rodando aleatorias.\n", "dim"))
+                pool = banco[:]
     elif a.tags:
         pool = [q for q in banco if q["tag"] in a.tags]
         if not pool:

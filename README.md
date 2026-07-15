@@ -6,12 +6,20 @@ Lotacao: Natal/RN. 20 vagas imediatas, 13 de ampla concorrencia.
 ## Rotina diaria
 
 ```bash
-./status.py          # o que estudar hoje + como estou
-./quiz.py --hoje     # questoes do bloco de hoje, direto no terminal
-# ... plataforma de questoes FGV, anota erros em erros/*.md ...
+./status.py          # o que estudar hoje (blocos + atalhos) + como estou
+./quiz.py --hoje     # segue o plano do dia: questoes dos blocos de hoje
+./quiz.py --resumo hoje   # resumo de conteudo dos blocos do dia
+./quiz.py --dica hoje     # dica de banca dos blocos do dia
 ./feito.sh 45 34     # questoes feitas FORA do quiz (plataforma, PDF)
 ./salvar.sh          # commit + push
 ```
+
+**Tudo puxa do roteiro.** Cada dia tem dois assuntos (um especifico + um
+geral, ex: "banco-dados + rlm"). O `--hoje` cobre os dois automaticamente, e
+`--resumo hoje` / `--dica hoje` mostram o material desses blocos. Em dia de
+**revisao** o `--hoje` refaz suas erradas; em dia de **simulado**, sorteia
+questoes reais de prova; em **descanso/prova**, avisa. O `status.py` mostra o
+plano com os comandos prontos para copiar.
 
 ## Quiz de terminal
 
