@@ -41,6 +41,12 @@ o que a FGV mais cobra, como ela arma a pegadinha e como se sair melhor.
 Quando voce filtra por um bloco (`./quiz.py java`), o quiz lembra que a dica
 existe. Os textos ficam em `dicas/<bloco>.md` — edite a vontade.
 
+**Resumo de conteudo.** `./quiz.py --resumo <bloco>` mostra o resumo do
+assunto — feito a partir do edital (Perfil 3), das dicas, da resolucao das
+questoes e de pesquisa em fontes. A visao geral da prova (pesos, estrategia,
+alertas de redes fora-do-edital e OWASP 2021 vs 2025) esta em
+`resumo/README.md`. Os arquivos ficam em `resumo/<bloco>.md`.
+
 Duvida que a explicacao do terminal nao resolve? Cole a questao no Claude
 Code (veja `CLAUDE.md`): la da pra perguntar de volta.
 

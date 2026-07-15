@@ -10,6 +10,7 @@ Uso:
     ./quiz.py --prova dataprev2024   questoes REAIS daquela prova (precisa gabarito)
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
     ./quiz.py --dica java        dica de banca (FGV) do bloco; sem bloco, lista
+    ./quiz.py --resumo java      resumo de conteudo do bloco (edital+dicas+questoes)
     ./quiz.py --tags             inventario de blocos (os dois bancos juntos)
     ./quiz.py --stats            desempenho acumulado por bloco
     ./quiz.py --quem geys        roda como outra pessoa (progresso separado)
@@ -226,6 +227,34 @@ def mostrar_dica(bloco):
     print()
 
 
+def mostrar_resumo(bloco):
+    """Imprime o resumo de conteudo (resumo/<bloco>.md) cru — sem quebra de
+    linha, para as tabelas nao desalinharem. Sem argumento, lista os blocos."""
+    resumo = BASE / "resumo"
+    if bloco == "__listar__" or not bloco:
+        disp = sorted(p.stem for p in resumo.glob("*.md")) if resumo.exists() else []
+        print(cor("\n  Resumos de conteudo disponiveis:", "b"))
+        for d in disp:
+            if d != "README":
+                print(f"    {d}")
+        print(cor("\n  uso: ./quiz.py --resumo <bloco>", "dim"))
+        print(cor("  (a visao geral esta em resumo/README.md)\n", "dim"))
+        return
+    arq = resumo / f"{bloco}.md"
+    if not arq.exists():
+        print(cor(f"\n  sem resumo para '{bloco}'. Use ./quiz.py --resumo para listar.\n", "verm"))
+        return
+    print()
+    for linha in arq.read_text(encoding="utf-8").splitlines():
+        if linha.startswith("# "):
+            print(cor("  " + linha[2:], "b"))
+        elif linha.startswith("## "):
+            print(cor("  " + linha[3:], "ciano"))
+        else:
+            print("  " + linha)
+    print()
+
+
 def rodar(questoes, anotar=True):
     total = len(questoes)
     acertos = 0
@@ -310,6 +339,7 @@ def main():
     p.add_argument("--tags", dest="listar", action="store_true")
     p.add_argument("--stats", action="store_true")
     p.add_argument("--dica", nargs="?", const="__listar__", default=None)
+    p.add_argument("--resumo", nargs="?", const="__listar__", default=None)
     p.add_argument("-h", "--help", action="store_true")
     a = p.parse_args()
 
@@ -319,6 +349,10 @@ def main():
 
     if a.dica is not None:
         mostrar_dica(a.dica)
+        return
+
+    if a.resumo is not None:
+        mostrar_resumo(a.resumo)
         return
 
     quem = a.quem.strip().lower()

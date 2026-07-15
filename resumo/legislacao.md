@@ -1,0 +1,89 @@
+# Legislação (Segurança da Informação e Proteção de Dados) — resumo
+
+> **Edital (Módulo I, 5 questões):** Lei 12.527/2011 (LAI) caps I–V + Decretos
+> 7.724 e 7.845; Lei 12.737/2012 (Delitos Informáticos) art. 2º; Lei
+> 12.965/2014 (Marco Civil) cap. II Seção I e cap. III Seções I e II; Lei
+> 13.709/2018 (LGPD) caps I, II, III, IV, VII, VIII, IX.
+> **A FGV adora prazo, competência e a distinção controlador × operador.**
+
+## ⚠️ Atualização crítica: Marco Civil, art. 19 (pós-STF, jun/2025)
+
+Em **26/06/2025** o STF (Temas 987 e 533) declarou o **art. 19
+parcialmente/progressivamente inconstitucional**. Mudou a regra de
+responsabilidade dos provedores por conteúdo de terceiros:
+
+- **Antes:** o provedor só respondia se descumprisse **ordem judicial
+  específica** de remoção (exceção: conteúdo íntimo não consentido, art. 21,
+  bastava notificação).
+- **Agora:** a regra geral passou a ser **notice-and-takedown** — a
+  **notificação extrajudicial** já pode responsabilizar o provedor pela maioria
+  dos conteúdos ilícitos. **Ordem judicial só permanece obrigatória para
+  crimes contra a honra** (calúnia, injúria, difamação).
+
+Para uma prova de 2026, saiba as duas versões e que a regra **mudou**. (Fonte:
+STF, notícias 26/06/2025.)
+
+## LGPD (Lei 13.709/2018)
+
+- **Controlador** decide sobre o tratamento (finalidade e meios);
+  **operador** trata em nome do controlador. **Encarregado (DPO)** é o canal
+  com titulares e ANPD. — a FGV troca controlador × operador.
+- **Bases legais (art. 7º):** consentimento **não** é a única; há **10** bases
+  (cumprimento de obrigação legal, execução de contrato, legítimo interesse,
+  proteção da vida, tutela da saúde, políticas públicas, etc.).
+- **Direitos do titular (art. 18):** confirmação, acesso, correção,
+  anonimização/bloqueio/eliminação, portabilidade, informação sobre
+  compartilhamento, revogação do consentimento.
+- **ANPD** (autarquia) **fiscaliza e sanciona**; o **CNPD** (Conselho) é
+  **consultivo** (propõe diretrizes). Não confunda os papéis.
+- **Sanções:** advertência; **multa simples de até 2% do faturamento**,
+  limitada a **R$ 50 milhões por infração**; publicização; bloqueio/eliminação
+  dos dados. Exige processo administrativo.
+
+## Marco Civil (Lei 12.965/2014) — guarda de registros
+
+- **Registros de conexão:** guarda obrigatória por **1 ano** (provedor de
+  conexão).
+- **Registros de acesso a aplicações:** **6 meses** (provedor de aplicação).
+- Princípios: neutralidade de rede, privacidade, liberdade de expressão.
+
+## LAI (Lei 12.527/2011) — prazos de sigilo
+
+| Classificação | Prazo máximo de restrição |
+|---|---|
+| **Reservada** | 5 anos |
+| **Secreta** | 15 anos |
+| **Ultrassecreta** | 25 anos (prorrogável **uma vez**) |
+
+- Regra geral: **publicidade é a regra; sigilo é exceção.**
+- Informação sobre **violação de direitos humanos** por agente público **não**
+  pode ser objeto de restrição de acesso.
+
+## Delitos Informáticos (Lei 12.737/2012, art. 154-A do CP)
+
+- Crime de **invasão de dispositivo informático**. **Independe** de o
+  dispositivo estar conectado à rede (a conexão não é elementar do tipo).
+- Aumento de pena conforme o sujeito passivo (autoridades) e o prejuízo.
+  (A pena exata foi alterada pela Lei 14.155/2021 — foque no conceito.)
+
+## O que já caiu (nossas questões)
+
+Controlador × operador; bases legais da LGPD; ANPD × CNPD; prazos da LAI
+(reservada/secreta/ultrassecreta); guarda de registros no Marco Civil (1 ano /
+6 meses); art. 19 e responsabilidade do provedor; invasão de dispositivo
+independe de rede. Rode `../quiz.py legislacao`.
+
+## Pegadinhas da FGV (resumo)
+
+- Trocar prazos (LAI, Marco Civil) e competências (ANPD × CNPD).
+- Dizer que consentimento é a única base legal da LGPD.
+- Cobrar o art. 19 na **redação antiga** — hoje mudou (veja o alerta acima).
+- Inverter controlador × operador.
+- Ver `../dicas/legislacao.md`.
+
+## Alta probabilidade / pesquisa extra
+
+- **GDPR** (regulamento europeu) aparece como paralelo à LGPD.
+- **Decretos 7.724 (LAI) e 7.845 (credenciamento de segurança).**
+- Atenção a **novas decisões do STF/ANPD em 2026** — legislação é o bloco que
+  mais muda; confira antes da prova.
