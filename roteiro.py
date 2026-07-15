@@ -9,7 +9,7 @@ Este modulo resolve isso num plano com a LISTA de blocos do dia.
 
 import csv
 import unicodedata
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 # tags que nao sao bloco de conteudo, e sim tipo de dia
@@ -29,6 +29,27 @@ _SECUNDARIO = {
 def _norm(s):
     s = unicodedata.normalize("NFKD", s or "")
     return "".join(c for c in s if not unicodedata.combining(c)).lower().strip()
+
+
+def resolver_data(ref, hoje=None):
+    """Converte uma referencia de dia em date. Aceita: 'hoje', 'ontem',
+    'anteontem', um deslocamento como '-1'/'-2', ou 'AAAA-MM-DD'.
+    Devolve None se nao entender."""
+    hoje = hoje or date.today()
+    if ref is None:
+        return hoje
+    r = _norm(ref)
+    fixos = {"hoje": 0, "ontem": -1, "anteontem": -2, "amanha": 1}
+    if r in fixos:
+        return hoje + timedelta(days=fixos[r])
+    try:  # deslocamento numerico: -1, -2, +1...
+        return hoje + timedelta(days=int(r))
+    except ValueError:
+        pass
+    try:  # data absoluta
+        return date.fromisoformat(r)
+    except ValueError:
+        return None
 
 
 def bloco_do_secundario(sec):
@@ -75,3 +96,19 @@ def plano_de_hoje(csv_path, hoje=None):
         blocos.append(sec)
     return {"tipo": "conteudo", "blocos": blocos, "foco": l["foco"],
             "secundario": l["secundario"], "linha": l}
+
+
+def pendentes(csv_path, hoje=None):
+    """Dias de conteudo ja passados e ainda nao marcados como feitos.
+    Devolve lista de dicts {data, dia, foco} do mais antigo ao mais novo."""
+    csv_path = Path(csv_path)
+    if not csv_path.exists():
+        return []
+    hoje = hoje or date.today()
+    atrasados = []
+    with open(csv_path, encoding="utf-8") as f:
+        for l in csv.DictReader(f):
+            d = date.fromisoformat(l["data"])
+            if d < hoje and l["feito"] != "1" and l["tag"] not in {"descanso", "prova"}:
+                atrasados.append({"data": l["data"], "dia": l["dia"], "foco": l["foco"]})
+    return atrasados

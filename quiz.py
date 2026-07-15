@@ -7,6 +7,9 @@ Uso:
     ./quiz.py java redes -n 15   15 questoes desses dois blocos
     ./quiz.py --hoje             segue o plano do roteiro para hoje (todos os
                                  blocos do dia; revisao/simulado tratados)
+    ./quiz.py --dia ontem        faz o plano de outro dia (ontem, anteontem,
+                                 -3, ou AAAA-MM-DD); credita naquele dia
+    ./quiz.py --pendentes        lista os dias de roteiro em aberto (atrasados)
     ./quiz.py --erradas          refaz o que voce errou (originais + provas juntos)
     ./quiz.py --prova dataprev2024   questoes REAIS daquela prova (precisa gabarito)
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
@@ -143,7 +146,7 @@ def cabecalho_plano(plano):
     """Imprime o plano do dia e os atalhos (dica/resumo) de cada bloco."""
     l = plano["linha"]
     if l:
-        print(cor(f"\n  Plano de hoje — {l['data']} ({l['dia']}), semana {l['semana']}", "b"))
+        print(cor(f"\n  Plano do dia — {l['data']} ({l['dia']}), semana {l['semana']}", "b"))
         print(cor(f"    Foco:   {plano['foco']}", "dim"))
         print(cor(f"    Também: {plano['secundario']}", "dim"))
     for b in plano["blocos"]:
@@ -158,25 +161,26 @@ def cabecalho_plano(plano):
         print(linha)
 
 
-def registrar_no_csv(qtd, acertos, quem):
-    """Soma o resultado da sessao ao dia de hoje no progresso da pessoa."""
+def registrar_no_csv(qtd, acertos, quem, dia=None):
+    """Soma o resultado ao dia informado (default hoje) no progresso da pessoa.
+    Recuperar um dia atrasado (--dia) credita naquele dia e o marca como feito."""
     arq = csv_de(quem)
     if not arq.exists():
         print(cor(f"  {arq.name} nao encontrado; nada registrado.", "dim"))
         return
-    hoje = date.today().isoformat()
+    alvo = (dia or date.today()).isoformat()
     with open(arq, encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
         campos = rows and list(rows[0].keys())
     achou = False
     for r in rows:
-        if r["data"] == hoje:
+        if r["data"] == alvo:
             r["questoes"] = str(int(r["questoes"]) + qtd)
             r["acertos"] = str(int(r["acertos"]) + acertos)
             r["feito"] = "1"
             achou = True
     if not achou:
-        print(cor("  hoje nao esta no roteiro; nada registrado.", "dim"))
+        print(cor(f"  {alvo} nao esta no roteiro; nada registrado.", "dim"))
         return
     with open(arq, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=campos)
@@ -352,6 +356,8 @@ def main():
     p.add_argument("tags", nargs="*")
     p.add_argument("-n", type=int, default=10)
     p.add_argument("--hoje", action="store_true")
+    p.add_argument("--dia", default=None)   # ontem, anteontem, -2, AAAA-MM-DD
+    p.add_argument("--pendentes", action="store_true")
     p.add_argument("--erradas", action="store_true")
     p.add_argument("--prova", default=None)
     p.add_argument("--quem", default="lucas")
@@ -383,6 +389,27 @@ def main():
         print(cor(f"\n  sessao de: {quem}", "ciano"))
         garantir_csv(quem)
 
+    if a.pendentes:
+        atr = roteiro.pendentes(csv_de(quem))
+        print()
+        if not atr:
+            print(cor("  Nenhum dia atrasado. Em dia com o roteiro!\n", "verde"))
+            return
+        print(cor(f"  {len(atr)} dia(s) de roteiro em aberto:", "ama"))
+        for d in atr:
+            print(f"    {d['data']} ({d['dia']})  {d['foco']}")
+        print(cor("\n  recupere um dia com: ./quiz.py --dia AAAA-MM-DD  (ou --dia ontem)\n", "dim"))
+        return
+
+    # dia-alvo do roteiro: --dia tem prioridade; senao --hoje = hoje
+    data_roteiro = None
+    if a.dia is not None:
+        data_roteiro = roteiro.resolver_data(a.dia)
+        if data_roteiro is None:
+            sys.exit(cor(f"\n  nao entendi --dia '{a.dia}'. Use: ontem, anteontem, -2, ou AAAA-MM-DD\n", "verm"))
+    elif a.hoje:
+        data_roteiro = date.today()
+
     # --- carga dos bancos (escalavel: le o que houver, sem numero fixo) ---
     if a.prova is not None:
         if a.prova != "todas" and a.prova not in provas_disponiveis():
@@ -393,7 +420,7 @@ def main():
             print(cor(f"\n  nenhuma questao utilizavel em '{a.prova}'.", "verm"))
             print(cor(f"  falta gabarito? preencha com: ./gabarito.py {a.prova} \"1-C 2-A ...\"\n", "dim"))
             return
-    elif a.erradas or a.hoje:
+    elif a.erradas or data_roteiro is not None:
         # erradas e o plano do dia buscam nos DOIS bancos (originais + provas),
         # para o pool de cada bloco (inclusive portugues/ingles/etc) ser o maior
         banco = carregar_originais() + carregar_provas()
@@ -439,12 +466,12 @@ def main():
         if not pool:
             print(cor("\n  nenhuma questao errada registrada. Otimo sinal.\n", "verde"))
             return
-    elif a.hoje:
-        plano = roteiro.plano_de_hoje(csv_de(quem))
+    elif data_roteiro is not None:
+        plano = roteiro.plano_de_hoje(csv_de(quem), data_roteiro)
         cabecalho_plano(plano)
         tipo = plano["tipo"]
         if tipo is None:
-            print(cor("\n  hoje nao esta no roteiro; rodando 10 aleatorias.\n", "dim"))
+            print(cor(f"\n  {data_roteiro} nao esta no roteiro; rodando 10 aleatorias.\n", "dim"))
             pool = banco[:]
         elif tipo == "descanso":
             print(cor("\n  Hoje e descanso no roteiro. Bom descanso!\n", "ciano"))
@@ -519,9 +546,12 @@ def main():
     salvar_hist(hist, quem)
 
     print()
-    r = input(f"  registrar em {csv_de(quem).name}? [S/n] ").strip().lower()
+    # recuperando um dia atrasado (--dia)? credita naquele dia; senao, hoje.
+    dia_reg = data_roteiro if a.dia is not None else None
+    destino = f" ({dia_reg})" if dia_reg else ""
+    r = input(f"  registrar em {csv_de(quem).name}{destino}? [S/n] ").strip().lower()
     if r in ("", "s", "sim"):
-        registrar_no_csv(total, acertos, quem)
+        registrar_no_csv(total, acertos, quem, dia=dia_reg)
     print()
 
 

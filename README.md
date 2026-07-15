@@ -21,6 +21,16 @@ geral, ex: "banco-dados + rlm"). O `--hoje` cobre os dois automaticamente, e
 questoes reais de prova; em **descanso/prova**, avisa. O `status.py` mostra o
 plano com os comandos prontos para copiar.
 
+**Atrasou? Faca um dia passado.** `./quiz.py --dia ontem` (ou `anteontem`,
+`-3`, ou `2026-07-13`) roda o plano daquele dia e **credita naquele dia**
+(marca como feito, conserta a aderencia) — nao mexe em hoje. Veja o que ficou
+em aberto com `./quiz.py --pendentes`.
+
+**Nao quer seguir o roteiro?** Estude o que quiser, quando quiser: `./quiz.py
+java redes` (blocos livres), `./quiz.py --prova tjrj2` (uma prova), `./quiz.py
+--erradas` (so seus erros). O roteiro e um atalho, nao uma amarra — o registro
+cai em hoje.
+
 ## Quiz de terminal
 
 ```bash
