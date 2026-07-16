@@ -108,6 +108,11 @@ parceiros externos autorizados.
 - **Containers (Docker) × VM:** container compartilha o **kernel** do SO
   (leve, rápido); VM tem SO convidado completo sobre um hipervisor (isola
   mais, pesa mais). **Kubernetes** orquestra containers.
+- **Hipervisor Tipo 1** (bare-metal, roda direto no hardware: ESXi, Hyper-V,
+  KVM) × **Tipo 2** (hosted, roda sobre um SO: VirtualBox, VMware Workstation).
+- **Virtualização total** (SO convidado não sabe que é virtual) ×
+  **paravirtualização** (SO convidado é modificado e coopera com o hipervisor
+  — mais rápido). **VDI** = virtualização de desktops entregues remotamente.
 
 Pegadinha: "adicionar recursos à instância" é **vertical**, jamais
 horizontal; container ≠ VM (kernel compartilhado × SO próprio).

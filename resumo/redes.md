@@ -62,6 +62,19 @@ Pegadinha: trocar a camada de um elemento (switch=2/enlace, roteador=3/rede);
 - **Roteamento:** rota estática × dinâmica (OSPF, RIP, BGP); **distância
   administrativa** desempata a fonte da rota.
 
+## 5.1 Comutação e encaminhamento (MPLS, VLAN, NAT)
+
+- **MPLS (Multiprotocol Label Switching):** encaminha por **rótulos (labels)**
+  em vez de olhar o IP de destino a cada salto — por isso é chamado de
+  **"camada 2.5"** (opera entre o enlace/L2 e a rede/L3). Cria caminhos (LSP)
+  para engenharia de tráfego e QoS.
+- **VLAN:** segmenta logicamente a camada 2 (broadcast domains separados no
+  mesmo switch físico).
+- **NAT:** traduz endereços privados ↔ público (economiza IPv4, oculta a rede
+  interna).
+
+Pegadinha: MPLS é **rótulo** ("2.5"), não roteamento IP puro; VLAN segmenta L2.
+
 ## 6. Segurança de rede (interface com Segurança da Informação)
 
 - **Firewall** (filtra tráfego), **proxy**, **VPN** (IPsec, SSL VPN).

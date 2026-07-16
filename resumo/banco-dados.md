@@ -98,6 +98,19 @@ análise" = OLAP; "transação, muitas gravações" = OLTP.
 Pegadinha: a **posição do T**. ELT aproveita o processamento do destino;
 ETL é melhor quando a transformação ocorre antes/fora.
 
+## 9. Índices e notações (apareceram nas provas)
+
+- **Índices:** **B+ Tree** (padrão, bom para faixas e alta cardinalidade),
+  **bitmap** (baixa cardinalidade, ex: sexo/status), **hash** (igualdade
+  exata). **Hashing extensível:** hash dinâmico com um **diretório** de
+  ponteiros e *global depth*; quando um bucket enche, ele faz **split** e
+  dobra o diretório se preciso — cresce sem reorganizar tudo.
+- **IDEF1X:** notação de modelagem de dados (comum em ferramentas como o
+  erwin). Relacionamento **identificador** = linha **sólida**; entidade
+  dependente = retângulo de **cantos arredondados**.
+- Administração física (tablespaces, ARIES/recuperação, backup, otimizador)
+  está em [orfaos](orfaos.md).
+
 ## O que já caiu (nossas questões)
 
 Relacional × multidimensional (OLTP/OLAP); NoSQL (disponibilidade e escala

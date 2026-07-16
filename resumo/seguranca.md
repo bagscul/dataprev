@@ -31,9 +31,16 @@
   do emissor → garante autenticidade, integridade e não repúdio.
 - **Certificado digital / ICP-Brasil:** vincula identidade a uma chave
   pública, emitido por uma AC (Autoridade Certificadora).
+- **TDE (Transparent Data Encryption):** cifra os dados **em repouso** (arquivos
+  do banco/disco) de forma transparente à aplicação — protege contra roubo do
+  arquivo físico, não contra acesso lógico autorizado.
+- **Esteganografia** ≠ criptografia: **oculta a existência** da mensagem
+  (esconde dado dentro de imagem/áudio); a criptografia oculta o **conteúdo**,
+  não o fato de haver mensagem.
 
 Pegadinha: hash não é cifra reversível; confidencialidade = cifra (não hash);
-assina-se com a **privada**, verifica-se com a **pública**.
+assina-se com a **privada**, verifica-se com a **pública**; esteganografia
+esconde a existência, cifra esconde o conteúdo.
 
 ## 3. HTTPS, SSL e TLS
 
@@ -107,6 +114,18 @@ Pegadinha: **SAST × DAST** (código parado × app rodando).
 - **IDS** (detecção): **alerta** sobre intrusão, passivo.
 - **IPS** (prevenção): **bloqueia** ativamente (inline).
 - **SIEM:** correlaciona logs/eventos para detecção e resposta.
+
+**Resposta a incidentes (NIST SP 800-61) — a ordem cai:**
+1. **Preparação** (antes de tudo: time, ferramentas, políticas).
+2. **Detecção e Análise** (identificar e entender o incidente).
+3. **Contenção, Erradicação e Recuperação** (isolar, remover a causa,
+   restaurar serviços/backups).
+4. **Atividade pós-incidente / Lições Aprendidas** (documentar, prevenir
+   recorrência — realimenta a Preparação).
+
+Pegadinha: depois de conter e erradicar vem **recuperação + lições
+aprendidas** (a etapa que "fecha" o ciclo); detecção e análise vêm **antes**
+da contenção.
 
 ## O que já caiu (nossas questões)
 
