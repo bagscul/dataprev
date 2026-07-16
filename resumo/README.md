@@ -2,9 +2,9 @@
 
 Material de estudo condensado, montado a partir de **quatro fontes**: o
 conteúdo programático do edital (Anexo I), as dicas de banca (`../dicas/`), a
-resolução das 424 questões que temos (`../banco.json` + `../banco-provas.json`)
-e pesquisa em fontes primárias (normas, docs oficiais). Um arquivo por bloco;
-este índice é o mapa estratégico.
+resolução das ~616 questões que temos (237 originais + 7 provas reais da FGV,
+em `../banco.json` + `../banco-provas.json`) e pesquisa em fontes primárias
+(normas, docs oficiais). Um arquivo por bloco; este índice é o mapa estratégico.
 
 ## Como a prova é montada (oficial, edital 2026)
 
@@ -96,6 +96,8 @@ tabela acima — é onde os 2,5 pontos por questão se acumulam.
 **Referência de projeto/OO (dentro de Desenvolvimento de Sistemas):**
 [padroes-projeto](padroes-projeto.md) ·
 [uml](uml.md)
+
+**Administração de BD e temas coringa:** [orfaos](orfaos.md)
 
 **Gerais (Módulo I):**
 [portugues](portugues.md) ·

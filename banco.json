@@ -4121,5 +4121,385 @@
    "3": "Não há referência a 'parar de trabalhar remotamente'; a condição é sobre investir em comunicação.",
    "4": "O texto trata os problemas como potenciais, não como já resolvidos."
   }
+ },
+ {
+  "tag": "java",
+  "q": "Em Java, uma aplicação lança uma exceção que estende diretamente RuntimeException. Sobre a obrigatoriedade de tratamento, é correto afirmar que:",
+  "alts": [
+   "É uma exceção checked, portanto o compilador exige try/catch ou declaração throws no método.",
+   "É uma exceção unchecked, portanto o compilador NÃO obriga tratá-la nem declará-la em throws.",
+   "É um erro (Error), fora da hierarquia de Exception, e não pode ser capturada.",
+   "Só pode ser tratada se o método a declarar explicitamente com a cláusula throws.",
+   "Herdar de RuntimeException transforma automaticamente a exceção em checked em tempo de compilação."
+  ],
+  "ans": 1,
+  "why": "Subclasses de RuntimeException (e de Error) são unchecked: o compilador não exige captura nem declaração em throws. Exceções checked são as que estendem Exception mas não RuntimeException.",
+  "erradas": {
+   "0": "Checked são as que estendem Exception sem passar por RuntimeException; RuntimeException é justamente a raiz das unchecked.",
+   "2": "RuntimeException pertence à hierarquia de Exception (Throwable > Exception > RuntimeException), não é Error, e pode ser capturada normalmente.",
+   "3": "Por ser unchecked, o tratamento é opcional; não há obrigação de declarar throws.",
+   "4": "Herdar de RuntimeException mantém a exceção unchecked; não existe conversão automática para checked."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Considere: na classe Base há o método 'int calc(int x)'. Na subclasse Deriv há 'int calc(int x, int y)' e 'long calc(int x)'. Analisando os conceitos de overload e override, assinale a afirmativa correta.",
+  "alts": [
+   "'int calc(int x, int y)' é um override de 'int calc(int x)', pois está numa subclasse.",
+   "'int calc(int x, int y)' é um overload, pois muda a lista de parâmetros; 'long calc(int x)' NÃO compila, pois difere apenas no tipo de retorno.",
+   "'long calc(int x)' é um override válido, já que o retorno covariante long é permitido sobre int.",
+   "Ambos os métodos de Deriv são overrides, pois têm o mesmo nome do método da Base.",
+   "'int calc(int x, int y)' não compila porque overload exige tipos de parâmetros diferentes, não quantidade."
+  ],
+  "ans": 1,
+  "why": "Overload distingue métodos pela lista de parâmetros (número/tipos), então calc(int,int) é sobrecarga válida. Já um método que difere apenas no tipo de retorno não é permitido: seria assinatura de override inválida, causando erro de compilação.",
+  "erradas": {
+   "0": "Mudar a lista de parâmetros caracteriza overload, não override; override exige mesma assinatura.",
+   "2": "Covariância de retorno vale apenas para tipos referência (subtipos), não entre primitivos como int e long; e mesma assinatura com retorno diferente não compila.",
+   "3": "Override exige assinatura idêntica; alterar parâmetros ou retorno descaracteriza o override.",
+   "4": "Overload pode variar tanto a quantidade quanto os tipos de parâmetros; calc(int,int) é sobrecarga válida."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Um desenvolvedor precisa de uma estrutura de Map em que a iteração sobre as chaves respeite a ordem crescente natural das chaves (ex.: ordem alfabética/numérica). Qual implementação do Java Collections Framework atende diretamente a esse requisito?",
+  "alts": [
+   "HashMap, que mantém as chaves ordenadas pelo hashCode.",
+   "LinkedHashMap, que ordena as chaves pela ordem natural.",
+   "TreeMap, que mantém as chaves ordenadas segundo a ordenação natural (ou um Comparator).",
+   "Hashtable, que garante ordenação crescente por ser sincronizada.",
+   "ArrayList, que preserva a ordem de comparação das chaves."
+  ],
+  "ans": 2,
+  "why": "TreeMap implementa NavigableMap/SortedMap e mantém as chaves ordenadas pela ordem natural (Comparable) ou por um Comparator fornecido. HashMap não garante ordem alguma; LinkedHashMap preserva ordem de inserção, não a natural.",
+  "erradas": {
+   "0": "HashMap não garante ordem nenhuma de iteração; o hashCode não implica ordenação crescente.",
+   "1": "LinkedHashMap preserva a ordem de inserção (ou de acesso), não a ordenação natural das chaves.",
+   "3": "Hashtable, assim como HashMap, não ordena as chaves; sincronização nada tem a ver com ordenação.",
+   "4": "ArrayList é uma List, não um Map; não mapeia chaves a valores."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Sobre a diferença entre ArrayList e LinkedList em Java, considerando o custo das operações, assinale a afirmativa correta.",
+  "alts": [
+   "ArrayList oferece acesso indexado get(i) em tempo constante O(1), enquanto na LinkedList esse acesso é O(n).",
+   "LinkedList oferece get(i) em O(1), pois cada nó guarda seu índice.",
+   "Ambas oferecem get(i) em O(1), pois implementam a interface List.",
+   "ArrayList tem get(i) em O(n) porque precisa percorrer o array elemento a elemento.",
+   "LinkedList é sempre mais rápida que ArrayList em todas as operações."
+  ],
+  "ans": 0,
+  "why": "ArrayList é apoiada por um array, permitindo acesso por índice em O(1). LinkedList é uma lista duplamente encadeada, então get(i) exige percorrer os nós, custando O(n).",
+  "erradas": {
+   "1": "Nós de LinkedList não armazenam índice; o acesso posicional exige percorrer a lista, sendo O(n).",
+   "2": "Implementar List não garante O(1) no acesso; a complexidade depende da estrutura interna de cada implementação.",
+   "3": "ArrayList acessa diretamente pela posição no array, em O(1), sem percorrer elemento a elemento.",
+   "4": "LinkedList não é universalmente mais rápida; em acesso aleatório é pior, e inserções no meio dependem de já ter a referência do nó."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Considere duas variáveis String a e b com o mesmo conteúdo textual, porém referenciando objetos distintos na heap. Qual a diferença entre 'a == b' e 'a.equals(b)'?",
+  "alts": [
+   "'a == b' compara o conteúdo dos caracteres; 'a.equals(b)' compara as referências de memória.",
+   "'a == b' compara as referências (identidade dos objetos); 'a.equals(b)' compara o conteúdo, retornando true por serem textualmente iguais.",
+   "Ambos comparam sempre o conteúdo e retornam o mesmo resultado.",
+   "Ambos comparam sempre as referências e retornam o mesmo resultado.",
+   "'a.equals(b)' compara referências porque String não sobrescreve equals."
+  ],
+  "ans": 1,
+  "why": "O operador == compara referências (se apontam para o mesmo objeto). String sobrescreve equals para comparar o conteúdo dos caracteres. Com objetos distintos de mesmo texto, == dá false e equals dá true.",
+  "erradas": {
+   "0": "Está invertido: == compara referências e equals (em String) compara conteúdo.",
+   "2": "== compara referências, não conteúdo; por isso podem divergir quando os objetos são distintos.",
+   "3": "equals de String compara conteúdo, não referências; os resultados podem divergir de ==.",
+   "4": "String sobrescreve equals justamente para comparar conteúdo textual, não referências."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "No princípio de projeto 'D' do SOLID (Inversão de Dependência), qual orientação está corretamente enunciada?",
+  "alts": [
+   "Módulos de alto nível devem depender de módulos de baixo nível concretos, para maior eficiência.",
+   "Módulos de alto e baixo nível devem depender de abstrações; detalhes é que devem depender de abstrações, e não o contrário.",
+   "Uma classe deve ter mais de uma responsabilidade para reduzir o número de classes.",
+   "Subtipos nunca podem substituir seus tipos base sem alterar o comportamento esperado.",
+   "Clientes devem ser forçados a depender de interfaces amplas que reúnam todos os métodos do sistema."
+  ],
+  "ans": 1,
+  "why": "A Inversão de Dependência prega que módulos de alto e baixo nível dependam de abstrações (interfaces), e que detalhes dependam de abstrações — invertendo a dependência tradicional do concreto.",
+  "erradas": {
+   "0": "É exatamente o que a DIP combate: alto nível não deve depender de implementações concretas de baixo nível.",
+   "2": "Isso viola o Single Responsibility Principle (o 'S'), que pede uma única responsabilidade por classe.",
+   "3": "Essa descrição contraria o Princípio de Substituição de Liskov (o 'L'), que exige substituibilidade sem quebrar o comportamento.",
+   "4": "Interfaces amplas violam o Interface Segregation Principle (o 'I'), que recomenda interfaces específicas e coesas."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Sobre interfaces e classes abstratas em Java (a partir do Java 8), assinale a afirmativa correta.",
+  "alts": [
+   "Uma classe pode estender (extends) múltiplas classes abstratas simultaneamente.",
+   "Interfaces não podem ter nenhum método com corpo, nem mesmo métodos default.",
+   "Uma classe pode implementar múltiplas interfaces, mas só pode estender uma única classe (abstrata ou não).",
+   "Classes abstratas não podem ter construtores nem atributos de instância.",
+   "Interfaces podem declarar atributos de instância mutáveis, iguais aos de uma classe abstrata."
+  ],
+  "ans": 2,
+  "why": "Java não tem herança múltipla de classes: uma classe estende no máximo uma classe (abstrata ou concreta), mas pode implementar várias interfaces. Desde o Java 8, interfaces admitem métodos default/static com corpo.",
+  "erradas": {
+   "0": "Java não permite herança múltipla de classes; extends aceita apenas uma superclasse.",
+   "1": "Desde o Java 8 interfaces podem ter métodos default e static com implementação (corpo).",
+   "3": "Classes abstratas podem ter construtores (chamados via super pelas subclasses) e atributos de instância.",
+   "4": "Campos declarados em interface são implicitamente public static final (constantes), não atributos de instância mutáveis."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Durante a migração de uma aplicação Java EE para Jakarta EE 9+, uma das mudanças mais impactantes no código-fonte foi:",
+  "alts": [
+   "A substituição do prefixo de pacotes 'javax.*' das APIs corporativas pelo prefixo 'jakarta.*'.",
+   "A remoção completa da JVM, substituída por um runtime proprietário da Eclipse Foundation.",
+   "A troca do prefixo 'jakarta.*' de volta para 'javax.*', revertendo o namespace.",
+   "A obrigatoriedade de reescrever todo o código de java.util e java.lang, que também mudaram de pacote.",
+   "A conversão automática de todas as classes para records, exigida pela especificação."
+  ],
+  "ans": 0,
+  "why": "Com a transferência do Java EE para a Eclipse Foundation, o Jakarta EE 9 promoveu o 'big bang' de namespace: as APIs que usavam javax.* (ex.: javax.servlet, javax.persistence) passaram para jakarta.* (jakarta.servlet, jakarta.persistence).",
+  "erradas": {
+   "1": "A JVM continua sendo a plataforma de execução; nada foi substituído por runtime proprietário.",
+   "2": "O sentido da mudança é javax.* -> jakarta.*, não o inverso.",
+   "3": "Pacotes do Java SE (java.util, java.lang) não mudaram; a troca de namespace atinge apenas as APIs corporativas (javax.* das especificações EE).",
+   "4": "A migração de namespace não obriga transformar classes em records; são coisas independentes."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Em JPA/Hibernate, uma consulta que carrega uma lista de N entidades pai e, para cada uma, dispara uma consulta adicional para buscar a coleção de filhos associada caracteriza um problema clássico de desempenho. Sobre isso, assinale a afirmativa correta.",
+  "alts": [
+   "É o problema N+1 de consultas; pode ser mitigado com fetch join (JOIN FETCH) ou @EntityGraph para carregar os filhos em menos idas ao banco.",
+   "É o problema N+1, e a única solução possível é trocar o banco relacional por um NoSQL.",
+   "Por padrão da especificação JPA, associações @OneToMany são EAGER, o que impede totalmente o problema N+1.",
+   "O problema N+1 só ocorre com FetchType.EAGER e nunca com carregamento sob demanda.",
+   "Trata-se de deadlock de transações, resolvido apenas aumentando o isolamento para SERIALIZABLE."
+  ],
+  "ans": 0,
+  "why": "O padrão N+1 (1 consulta pai + N consultas filhas) é típico e se resolve buscando as associações em uma consulta só, via JOIN FETCH (JPQL) ou @EntityGraph, reduzindo o número de round-trips ao banco.",
+  "erradas": {
+   "1": "Trocar de banco não é a única solução; JOIN FETCH, @EntityGraph e batch fetching resolvem no próprio relacional.",
+   "2": "Pela especificação JPA, @OneToMany é LAZY por padrão (não EAGER); e mesmo EAGER pode gerar N+1 dependendo da estratégia.",
+   "3": "O N+1 ocorre tipicamente com LAZY (uma query por acesso à coleção), e pode ocorrer também com EAGER sem join.",
+   "4": "Não é deadlock: é excesso de consultas SELECT; nível de isolamento não trata a quantidade de idas ao banco."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Sobre recursos modernos da linguagem Java, considerando as versões LTS, assinale a afirmativa correta.",
+  "alts": [
+   "Uma classe declarada como 'record' é mutável e serve para substituir enums.",
+   "As virtual threads (threads virtuais), voltadas a alta concorrência com bloqueio de I/O, tornaram-se recurso final (não-preview) no Java 21.",
+   "Uma classe 'sealed' permite que qualquer classe do classpath a estenda livremente.",
+   "A palavra 'var' cria variáveis sem tipo, dinamicamente tipadas como em linguagens de script.",
+   "Streams e expressões lambda foram introduzidos apenas no Java 17."
+  ],
+  "ans": 1,
+  "why": "As virtual threads foram finalizadas (recurso permanente, não-preview) no Java 21 (JEP 444), sendo o primeiro LTS com elas prontas para produção. Reduzem o custo de milhares de tarefas bloqueantes de I/O.",
+  "erradas": {
+   "0": "Um record é imutável (campos final) e voltado a agregados de dados; não substitui enums.",
+   "2": "Uma classe sealed restringe quem pode estendê-la (via cláusula permits); não é aberta a qualquer classe.",
+   "3": "var apenas infere o tipo em tempo de compilação; a variável continua estaticamente tipada, sem tipagem dinâmica.",
+   "4": "Streams e lambdas foram introduzidos no Java 8, não no Java 17."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Uma organizacao mantem simultaneamente diversos projetos e programas, alguns nao relacionados entre si, e precisa decidir quais receberao investimento de acordo com os objetivos estrategicos e a capacidade de recursos da empresa. Segundo o PMBOK, esse agrupamento de projetos, programas e operacoes gerenciado como um grupo para alcancar objetivos estrategicos denomina-se:",
+  "alts": [
+   "Programa, pois reune projetos relacionados coordenados para obter beneficios nao disponiveis se gerenciados individualmente.",
+   "Portfolio, pois reune projetos, programas, portfolios subsidiarios e operacoes gerenciados como grupo para atingir objetivos estrategicos.",
+   "Projeto, por se tratar de um esforco temporario para criar um produto, servico ou resultado exclusivo.",
+   "Escritorio de projetos (PMO), estrutura que padroniza processos e compartilha recursos entre iniciativas.",
+   "Ciclo de vida do projeto, conjunto de fases pelas quais o projeto passa do inicio ao encerramento."
+  ],
+  "ans": 1,
+  "why": "Portfolio e o agrupamento de projetos, programas, portfolios subsidiarios e operacoes gerenciado como um grupo para atingir objetivos estrategicos. Nao exige que os componentes sejam relacionados entre si; o vinculo e estrategico.",
+  "erradas": {
+   "0": "Programa e um conjunto de projetos RELACIONADOS gerenciados de forma coordenada para obter beneficios; o enunciado cita iniciativas nao relacionadas, o que caracteriza portfolio.",
+   "2": "Projeto e o esforco temporario individual, nao o agrupamento de varias iniciativas.",
+   "3": "O PMO e uma estrutura organizacional que apoia a gestao, nao o agrupamento de iniciativas em si.",
+   "4": "Ciclo de vida e a sucessao de fases de um unico projeto, nao um agrupamento estrategico."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "No PMBOK (6a edicao), os processos de gerenciamento de projeto sao organizados em grupos de processos e em areas de conhecimento. Assinale a alternativa que apresenta corretamente os cinco grupos de processos.",
+  "alts": [
+   "Iniciacao, Planejamento, Execucao, Monitoramento e Controle, e Encerramento.",
+   "Iniciacao, Planejamento, Execucao, Verificacao, e Entrega.",
+   "Escopo, Cronograma, Custos, Qualidade e Riscos.",
+   "Evaluate, Direct, Monitor, Align e Deliver.",
+   "Plan, Engage, Design, Deliver e Improve."
+  ],
+  "ans": 0,
+  "why": "Os cinco grupos de processos do PMBOK 6 sao: Iniciacao, Planejamento, Execucao, Monitoramento e Controle, e Encerramento. Nao confundir com as 10 areas de conhecimento.",
+  "erradas": {
+   "1": "Troca dois grupos: nao existem grupos 'Verificacao' e 'Entrega'; os corretos sao Monitoramento e Controle e Encerramento.",
+   "2": "Escopo, Cronograma, Custos, Qualidade e Riscos sao AREAS DE CONHECIMENTO (existem 10), nao grupos de processos.",
+   "3": "Evaluate, Direct e Monitor pertencem ao dominio de governanca EDM do COBIT 2019, nao ao PMBOK.",
+   "4": "Plan, Engage, Design, Deliver e Improve sao atividades da cadeia de valor de servico do ITIL 4, nao grupos de processos do PMBOK."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Durante a operacao de um servico, um usuario reporta que o sistema de folha de pagamento esta fora do ar, interrompendo o trabalho da equipe. Ao mesmo tempo, a equipe tecnica inicia uma investigacao para descobrir a causa raiz de uma serie de quedas recorrentes desse sistema. Segundo o ITIL 4, as praticas de gerenciamento envolvidas sao, respectivamente:",
+  "alts": [
+   "Gerenciamento de problemas e gerenciamento de incidentes.",
+   "Gerenciamento de incidentes e gerenciamento de requisicoes de servico.",
+   "Gerenciamento de incidentes e gerenciamento de problemas.",
+   "Gerenciamento de mudancas e gerenciamento de incidentes.",
+   "Gerenciamento de requisicoes de servico e gerenciamento de problemas."
+  ],
+  "ans": 2,
+  "why": "A interrupcao nao planejada (sistema fora do ar) e um incidente, tratado pelo gerenciamento de incidentes, cujo foco e restaurar o servico o mais rapido possivel. A busca da causa raiz das quedas recorrentes e gerenciamento de problemas.",
+  "erradas": {
+   "0": "Inverte os papeis: a queda atual e incidente e a investigacao da causa raiz e problema, nao o contrario.",
+   "1": "Requisicao de servico e um pedido rotineiro e planejado (ex.: novo acesso), nao a investigacao de causa raiz.",
+   "3": "Gerenciamento de mudancas trata de autorizar/controlar alteracoes, nao de restaurar um servico caido nem de investigar causa raiz.",
+   "4": "A queda em curso e incidente (nao requisicao), embora a segunda parte (problema) esteja correta."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O Sistema de Valor de Servico (SVS) do ITIL 4 tem como um de seus componentes a cadeia de valor de servico, um modelo operacional flexivel. Quantas e quais sao as atividades dessa cadeia de valor de servico?",
+  "alts": [
+   "Cinco: Planejar, Engajar, Projetar, Entregar e Melhorar.",
+   "Seis: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
+   "Sete: correspondentes aos sete principios orientadores.",
+   "Quatro: correspondentes as quatro dimensoes do gerenciamento de servicos.",
+   "Seis: Evaluate, Direct, Monitor, Align, Plan e Organize."
+  ],
+  "ans": 1,
+  "why": "A cadeia de valor de servico do ITIL 4 possui seis atividades interconectadas: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
+  "erradas": {
+   "0": "Sao seis atividades, nao cinco; falta 'Obter/construir' e a lista mistura nomes incorretos.",
+   "2": "Os sete principios orientadores sao outro componente do SVS, distintos das seis atividades da cadeia de valor.",
+   "3": "As quatro dimensoes (organizacoes/pessoas, informacao/tecnologia, parceiros/fornecedores, fluxos de valor/processos) nao sao as atividades da cadeia de valor.",
+   "4": "Evaluate/Direct/Monitor e Align/Plan/Organize sao dominios do COBIT 2019, nao atividades do ITIL 4."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Os sete principios orientadores do ITIL 4 sao recomendacoes que guiam a organizacao em qualquer circunstancia. Um deles orienta a nao iniciar algo do zero sem antes considerar o que ja esta disponivel e pode ser aproveitado. Esse principio e:",
+  "alts": [
+   "Foco no valor.",
+   "Comece de onde voce esta.",
+   "Progrida iterativamente com feedback.",
+   "Mantenha simples e pratico.",
+   "Otimize e automatize."
+  ],
+  "ans": 1,
+  "why": "'Comece de onde voce esta' (Start where you are) orienta a avaliar e reaproveitar o que ja existe antes de descartar tudo e reconstruir do zero.",
+  "erradas": {
+   "0": "'Foco no valor' orienta que tudo o que a organizacao faz deve gerar valor para as partes interessadas, nao trata de reaproveitar o existente.",
+   "2": "'Progrida iterativamente com feedback' trata de dividir o trabalho em partes menores e usar retornos, nao de aproveitar o que ja existe.",
+   "3": "'Mantenha simples e pratico' orienta eliminar etapas sem valor, nao aproveitar o existente.",
+   "4": "'Otimize e automatize' trata de maximizar o valor do trabalho humano e tecnologico, nao de reusar o que ja ha."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O COBIT 2019 faz uma distincao central entre governanca e gestao. Sobre essa distincao, assinale a alternativa correta.",
+  "alts": [
+   "Governanca e gestao sao sinonimos no COBIT 2019, ambos executados pela alta direcao.",
+   "A governanca avalia, dirige e monitora (EDM), sendo responsabilidade do conselho; a gestao planeja, constroi, executa e monitora as atividades alinhadas a direcao definida pela governanca.",
+   "A gestao avalia, dirige e monitora, enquanto a governanca planeja, constroi e executa as operacoes.",
+   "Governanca e gestao pertencem ao mesmo dominio unico do COBIT 2019, chamado APO.",
+   "A governanca e composta pelos dominios APO, BAI, DSS e MEA, e a gestao pelo dominio EDM."
+  ],
+  "ans": 1,
+  "why": "No COBIT 2019, a governanca (dominio EDM: Evaluate, Direct, Monitor) e responsabilidade do conselho e assegura que as necessidades das partes interessadas sejam avaliadas para definir objetivos; a gestao (APO, BAI, DSS, MEA) planeja, constroi, executa e monitora as atividades em alinhamento com a direcao da governanca.",
+  "erradas": {
+   "0": "O COBIT 2019 separa explicitamente governanca de gestao; nao sao sinonimos.",
+   "2": "Inverte os papeis: quem avalia/dirige/monitora e a governanca (EDM); a gestao planeja/constroi/executa.",
+   "3": "APO e um dos quatro dominios de GESTAO, nao um dominio unico que engloba governanca e gestao.",
+   "4": "Inverte: a governanca corresponde ao dominio EDM; a gestao corresponde a APO, BAI, DSS e MEA."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O modelo central do COBIT 2019 organiza seus objetivos de governanca e gestao em dominios. Assinale a alternativa que apresenta corretamente o numero de dominios e sua composicao entre governanca e gestao.",
+  "alts": [
+   "Quatro dominios, todos de gestao: APO, BAI, DSS e MEA.",
+   "Cinco dominios: um de governanca (EDM) e quatro de gestao (APO, BAI, DSS e MEA).",
+   "Cinco dominios: dois de governanca (EDM e MEA) e tres de gestao (APO, BAI e DSS).",
+   "Seis dominios: EDM, APO, BAI, DSS, MEA e PO.",
+   "Cinco dominios de governanca, sem dominios de gestao, totalizando 40 objetivos."
+  ],
+  "ans": 1,
+  "why": "O COBIT 2019 possui cinco dominios: o de governanca EDM (Evaluate, Direct, Monitor) e quatro de gestao APO, BAI, DSS e MEA, totalizando 40 objetivos de governanca e gestao.",
+  "erradas": {
+   "0": "Sao cinco dominios, nao quatro; falta o dominio de governanca EDM.",
+   "2": "MEA (Monitor, Evaluate, Assess) e dominio de GESTAO, nao de governanca; ha apenas um dominio de governanca (EDM).",
+   "3": "Nao existe um sexto dominio; 'PO' era do COBIT 4.1, nao do COBIT 2019.",
+   "4": "Os 40 objetivos distribuem-se entre 1 dominio de governanca e 4 de gestao; nao sao cinco dominios de governanca."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Em um modelo de processo BPMN, uma equipe precisa representar que, apos o registro de um pedido, o fluxo deve seguir por apenas UM entre dois caminhos, dependendo de o cliente ser ou nao cadastrado. Qual elemento BPMN representa adequadamente essa decisao exclusiva baseada em condicao?",
+  "alts": [
+   "Gateway paralelo (AND), que divide o fluxo em caminhos executados simultaneamente.",
+   "Gateway exclusivo (XOR), que direciona o fluxo para apenas um dos caminhos com base em uma condicao.",
+   "Gateway inclusivo (OR), que pode ativar um ou mais caminhos ao mesmo tempo.",
+   "Evento de inicio, que apenas dispara o comeco do processo.",
+   "Fluxo de mensagem, que representa a troca de mensagens entre participantes distintos."
+  ],
+  "ans": 1,
+  "why": "O gateway exclusivo (XOR) avalia condicoes e encaminha o fluxo por exatamente um caminho de saida, sendo o adequado para uma decisao mutuamente exclusiva (cadastrado ou nao).",
+  "erradas": {
+   "0": "O gateway paralelo (AND) ativa TODOS os caminhos ao mesmo tempo, sem avaliar condicao; nao serve para escolher apenas um.",
+   "2": "O gateway inclusivo (OR) pode ativar varios caminhos simultaneamente conforme multiplas condicoes verdadeiras, nao apenas um exclusivo.",
+   "3": "Evento de inicio apenas dispara o processo; nao toma decisoes de roteamento.",
+   "4": "Fluxo de mensagem conecta participantes diferentes (pools), nao decide caminhos internos de um mesmo processo."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Sobre os elementos de conexao no BPMN, considere a diferenca entre fluxo de sequencia e fluxo de mensagem. Assinale a alternativa correta.",
+  "alts": [
+   "O fluxo de sequencia (linha solida com seta preenchida) conecta atividades dentro de um mesmo processo/pool, definindo a ordem de execucao; o fluxo de mensagem (linha tracejada) representa a comunicacao entre participantes de pools distintos.",
+   "O fluxo de sequencia conecta pools diferentes, e o fluxo de mensagem conecta atividades dentro do mesmo pool.",
+   "Ambos representam apenas a comunicacao entre pools distintos, diferindo somente na cor.",
+   "O fluxo de mensagem define a ordem interna das atividades de uma raia, e o fluxo de sequencia liga eventos de inicio e fim de pools diferentes.",
+   "Fluxo de sequencia e fluxo de mensagem sao termos equivalentes e podem ser usados de forma intercambiavel."
+  ],
+  "ans": 0,
+  "why": "No BPMN, o fluxo de sequencia (linha solida) ordena as atividades dentro de um mesmo processo/pool; o fluxo de mensagem (linha tracejada) representa a troca de mensagens entre participantes de pools diferentes.",
+  "erradas": {
+   "1": "Inverte os conceitos: sequencia e interno ao pool; mensagem e entre pools distintos.",
+   "2": "Nao diferem 'somente na cor': tem semanticas distintas (ordem interna x comunicacao entre pools).",
+   "3": "Inverte novamente os papeis dos dois tipos de fluxo.",
+   "4": "Nao sao equivalentes; representam relacoes semanticas diferentes e nao sao intercambiaveis."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Uma equipe adota Scrum e Kanban de forma combinada. Sobre os fundamentos desses metodos e do Lean, assinale a alternativa correta.",
+  "alts": [
+   "No Scrum, o Product Owner e responsavel por gerenciar a equipe e remover impedimentos tecnicos do dia a dia.",
+   "O Kanban limita o trabalho em progresso (WIP) para melhorar o fluxo, enquanto o Scrum organiza o trabalho em Sprints de duracao fixa (timebox).",
+   "O Scrum define quatro papeis obrigatorios: Product Owner, Scrum Master, Gerente de Projeto e a equipe de desenvolvimento.",
+   "O Kanban exige, obrigatoriamente, Sprints com duracao fixa e uma reuniao de planejamento de Sprint.",
+   "No Lean, aumentar o desperdicio (muda) e uma pratica recomendada para acelerar a entrega de valor."
+  ],
+  "ans": 1,
+  "why": "O Kanban foca em visualizar o fluxo e limitar o trabalho em progresso (WIP) para melhorar o fluxo continuo; o Scrum organiza o trabalho em Sprints de duracao fixa (timebox). As afirmacoes descrevem corretamente cada metodo.",
+  "erradas": {
+   "0": "O Product Owner cuida do valor do produto e do Product Backlog; remover impedimentos e apoiar o time e papel do Scrum Master (que e um lider servidor, nao 'gerente').",
+   "2": "O Scrum define tres responsabilidades: Product Owner, Scrum Master e Developers; nao existe o papel de 'Gerente de Projeto'.",
+   "3": "O Kanban NAO exige Sprints nem timebox fixo; trabalha com fluxo continuo, ao contrario do Scrum.",
+   "4": "O Lean busca ELIMINAR o desperdicio (muda), nao aumenta-lo."
+  }
  }
 ]

@@ -2,6 +2,18 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-16 — auditoria das novas, reforço de blocos e resumo de órfãos
+
+- **Auditoria independente das 72 questões originais novas** (as 52 + 20 de
+  reforço): cada uma resolvida do zero contra fonte. **Zero gabaritos errados.**
+- **Reforço dos blocos mais magros:** +10 Java e +10 Governança (originais,
+  validadas). Java 19→29, Governança 18→28.
+- **`resumo/orfaos.md`** (novo): administração de BD (DBA) — ARIES/WAL,
+  tablespaces, backup incremental×diferencial, otimizador — que o resumo de
+  banco-dados (focado em modelagem/SQL) não detalhava, + temas coringa.
+- **Dicas de padrões-projeto e UML** (antes só tinham resumo).
+- Contagens atualizadas: **237 originais + 7 provas reais = ~616 utilizáveis.**
+
 ## 2026-07-15 (tarde) — +3 provas reais e questões novas nos temas fracos
 
 - **3 provas ALERO 2026 (FGV)** importadas com gabarito oficial e explicações

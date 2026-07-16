@@ -62,10 +62,10 @@ a mesma errada duas vezes nao vira duas anotacoes). Para nao gravar, use
 `--sem-anotar`. No fim mostra os conteudos da sessao e registra no
 progresso.csv (entao nao use ./feito.sh para as questoes do quiz).
 
-165 questoes originais em estilo FGV, cobrindo os blocos na proporcao
-da prova de 2024. As explicacoes ja vem gravadas no banco: o quiz roda
-offline, sem chave de API e sem custo — entao qualquer pessoa com o repo
-roda no terminal dela.
+237 questoes originais em estilo FGV (todas com gabarito auditado contra
+fonte) + questoes reais de 7 provas da FGV = **~616 questoes utilizaveis**.
+As explicacoes ja vem gravadas no banco: o quiz roda offline, sem chave de
+API e sem custo — entao qualquer pessoa com o repo roda no terminal dela.
 
 **Dicas de banca.** `./quiz.py --dica <bloco>` mostra, para aquele assunto,
 o que a FGV mais cobra, como ela arma a pegadinha e como se sair melhor.
