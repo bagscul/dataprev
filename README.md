@@ -72,6 +72,11 @@ o que a FGV mais cobra, como ela arma a pegadinha e como se sair melhor.
 Quando voce filtra por um bloco (`./quiz.py java`), o quiz lembra que a dica
 existe. Os textos ficam em `dicas/<bloco>.md` — edite a vontade.
 
+**Técnica de prova (leia primeiro).** `./quiz.py --dica tecnica-fgv` é o guia
+TRANSVERSAL: como atacar qualquer questão da FGV — ler o comando, reconhecer
+os padrões de distrator (absolutos, inversao de conceitos, a "quase certa"),
+eliminar, e gerir o tempo. Destilado da resolucao de ~500 questoes reais.
+
 **Resumo de conteudo.** `./quiz.py --resumo <bloco>` mostra o resumo do
 assunto — feito a partir do edital (Perfil 3), das dicas, da resolucao das
 questoes e de pesquisa em fontes. A visao geral da prova (pesos, estrategia,
