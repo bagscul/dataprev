@@ -1,0 +1,268 @@
+\chapter{Java}
+\label{cap:java}
+
+\begin{edital}
+Java (versão 6+), JavaEE (6+), JakartaEE, JPA (2+), frameworks JUnit,
+Hibernate, JSF, Primefaces, Spring/SpringCloud/SpringBoot. É a linguagem-base
+do perfil.
+\end{edital}
+\peso{MÉDIO --- na amostra de provas, Java concentrou-se no TJ-RJ (Analista de
+Sistemas); caiu pouco na Dataprev 2024. Mas está no edital: estude os pares
+que a FGV adora inverter.}
+
+\section{Exceções: checked $\times$ unchecked}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Checked (verificada)} & \textbf{Unchecked (não verificada)} \\
+\midrule
+Superclasse & \texttt{Exception} (não \texttt{RuntimeException}) & \texttt{RuntimeException} \\
+Compilador & \textbf{exige} try-catch \textbf{ou} \texttt{throws} & não exige \\
+Exemplos & \texttt{IOException}, \texttt{SQLException} & \texttt{NullPointerException}, \texttt{ArrayIndexOutOfBounds}, \texttt{IllegalArgument} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Pegadinha nº 1 do bloco: trocar os exemplos. \texttt{NullPointerException} é
+\textbf{unchecked} (estende \texttt{RuntimeException}); \texttt{IOException}
+é \textbf{checked}. Absoluto a descartar: ``unchecked exige throws
+obrigatório'' --- é o contrário.
+\end{pegadinha}
+
+\section{Polimorfismo: overload $\times$ override}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Overload (sobrecarga)} & \textbf{Override (sobrescrita)} \\
+\midrule
+Onde & mesma classe & subclasse \\
+Assinatura & \textbf{muda} (parâmetros diferentes) & \textbf{igual} à do pai \\
+Resolução & compile-time (estática) & runtime (dinâmica) \\
+Anotação & --- & \texttt{@Override} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Overload = mesmo nome, assinatura diferente; override = mesma assinatura na
+subclasse. Sobrescrever \textbf{não} viola Liskov por si só.
+\end{pegadinha}
+
+\section{OO e SOLID}
+
+Pilares: abstração, encapsulamento, herança, polimorfismo.
+
+\begin{center}
+\begin{tabular}{@{}p{1.2cm}p{9.6cm}@{}}
+\toprule
+\textbf{Letra} & \textbf{Princípio} \\
+\midrule
+S & Single Responsibility --- uma responsabilidade por classe \\
+O & Open/Closed --- aberta a extensão, fechada a modificação \\
+L & \textbf{Liskov} --- subtipo substitui o tipo base sem quebrar o programa \\
+I & Interface Segregation --- interfaces pequenas e específicas \\
+D & Dependency Inversion --- depender de abstração, não de implementação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Não confundir \textbf{ISP} (interface enxuta) com \textbf{SRP} (uma
+responsabilidade) --- são os dois princípios que a FGV mais troca no SOLID.
+Liskov: a subclasse pode sobrescrever, desde que continue substituível.
+\end{pegadinha}
+
+\section{Coleções (Collections)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{3.8cm}p{4cm}@{}}
+\toprule
+\textbf{Interface} & \textbf{Implementações} & \textbf{Característica} \\
+\midrule
+\texttt{List} & \texttt{ArrayList}, \texttt{LinkedList} & ordenada, permite duplicatas \\
+\texttt{Set} & \texttt{HashSet}, \texttt{TreeSet}, \texttt{LinkedHashSet} & sem duplicatas \\
+\texttt{Map} & \texttt{HashMap}, \texttt{TreeMap}, \texttt{LinkedHashMap} & chave-valor \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{ArrayList} (array dinâmico, acesso O(1) por índice) $\times$
+\textbf{LinkedList} (lista ligada, inserção/remoção O(1) no meio se já tem o
+nó). \texttt{HashMap} (sem ordem) $\times$ \texttt{LinkedHashMap} (ordem de
+inserção) $\times$ \texttt{TreeMap} (ordenado). \texttt{getOrDefault} retorna
+o \textbf{default} se a chave não existe --- não lança exceção nem retorna
+erro HTTP. \texttt{==} compara \textbf{referência}; \texttt{.equals()}
+compara \textbf{conteúdo}.
+
+\section{JVM, JPA e JavaEE}
+
+\begin{itemize}
+\item \textbf{JVM:} executa bytecode; \textbf{heap} (objetos),
+\textbf{garbage collection} (libera memória sem referência); ferramentas de
+monitoramento (\texttt{jconsole}, \texttt{jps}, \texttt{jstack}).
+\item \textbf{JPA} (especificação de persistência) $\times$
+\textbf{Hibernate} (implementação ORM). \texttt{EAGER} $\times$
+\texttt{LAZY} (carregamento antecipado $\times$ sob demanda). Problema
+\textbf{N+1} (uma consulta por relação): resolve com \texttt{LAZY} +
+\texttt{JOIN FETCH} na consulta.
+\item \textbf{JavaEE/JakartaEE:} EJB, JPA, JMS, JSF; \textbf{Jakarta} é a
+continuação do JavaEE sob a Eclipse Foundation (namespace \texttt{jakarta.*}
+em vez de \texttt{javax.*}).
+\item \textbf{JSF/Primefaces:} framework de UI server-side baseado em
+componentes.
+\end{itemize}
+
+\begin{pegadinha}
+JPA N+1: o distrator oferece EAGER em tudo ou ``deixar o JPA decidir'' como
+solução --- a resposta certa é \textbf{LAZY + JOIN FETCH} na consulta que
+precisa da relação.
+\end{pegadinha}
+
+\section{Recursos modernos (Java 17/21 LTS)}
+
+\begin{itemize}
+\item \textbf{Sealed / non-sealed / final:} uma classe \textbf{sealed}
+exige subclasses declaradas (\texttt{permits}, ou no mesmo arquivo), e cada
+subtipo deve ser \texttt{final}, \texttt{sealed} ou \texttt{non-sealed}.
+\texttt{non-sealed} reabre a hierarquia.
+\item \textbf{Threads virtuais (Project Loom)} $\times$ threads de
+plataforma: milhares de \textbf{virtuais} compartilham uma \textbf{carrier
+thread} de plataforma (não é uma-para-uma). Brilham em cenários I/O-bound.
+\item \texttt{record}, \texttt{var}, switch expressions, pattern matching.
+\item \textbf{Streams e lambdas} (Java 8+): programação funcional em
+coleções.
+\end{itemize}
+
+\begin{pegadinha}
+Sealed: o distrator diz que \texttt{final} ``não pode estender sealed''
+(pode) ou inventa erro de escopo; o erro real costuma ser uma sealed
+\textbf{sem nenhuma subclasse permitida}. Threads virtuais: o distrator diz
+que cada virtual equivale a uma de plataforma (consumo linear) ou que o
+número de threads de plataforma limita o de virtuais --- é o contrário:
+muitas virtuais, poucas carriers.
+\end{pegadinha}
+
+\section{Leitura ativa de código em Java}
+\label{sec:leitura-ativa-java}
+
+Java é a linguagem onde a FGV mais gosta de esconder o erro \textbf{dentro}
+de uma estrutura que parece correta à primeira vista --- um \texttt{try-catch}
+que compila mas nunca captura a exceção certa, um escopo de variável que
+parece visível mas não é, um \texttt{synchronized} que quebra a promessa da
+thread virtual. Aplique o protocolo de leitura ativa do Capítulo
+\ref{cap:programacao} (Seção \ref{sec:leitura-ativa-programacao}): releia
+linha a linha, sem assumir.
+
+\subsection{Checked/unchecked disfarçadas em try-catch}
+
+\begin{conceito}[O que a FGV esconde no bloco try-catch]
+\begin{itemize}
+\item \textbf{Ordem dos catch:} um \texttt{catch (Exception e)} \textbf{antes}
+de um \texttt{catch (IOException e)} \textbf{não compila} --- o catch mais
+genérico precisa vir \textbf{por último}. A FGV mostra um trecho ``quase
+certo'' com a ordem trocada e pergunta o que acontece: é \textbf{erro de
+compilação}, não exceção não tratada em runtime.
+\item \textbf{Catch que não cobre o tipo lançado:} um método declara
+\texttt{throws SQLException} mas o bloco só tem
+\texttt{catch (RuntimeException e)} --- isso \textbf{não compila}, porque
+\texttt{SQLException} é \textbf{checked} e exige tratamento explícito ou
+propagação com \texttt{throws} no método chamador.
+\item \textbf{finally que engole a exceção:} um \texttt{return} dentro do
+bloco \texttt{finally} \textbf{sobrescreve} qualquer exceção lançada no
+\texttt{try}/\texttt{catch} --- a exceção original se perde silenciosamente.
+É pegadinha clássica de ``qual valor o método retorna''.
+\item \textbf{Multi-catch:} \texttt{catch (IOException | SQLException e)}
+exige que as duas exceções \textbf{não tenham relação de herança entre si}
+(uma não pode ser subtipo da outra) --- senão não compila.
+\end{itemize}
+\end{conceito}
+
+\begin{pegadinha}
+O distrator típico apresenta um bloco try-catch com a ordem dos \texttt{catch}
+invertida (genérico antes do específico) e afirma que ele ``compila e
+funciona normalmente'' --- \textbf{falso}, é erro de compilação. Outro
+distrator: dizer que uma exceção \textbf{checked} lançada dentro de um método
+\texttt{void} sem \texttt{throws} e sem try-catch ``é ignorada em runtime''
+--- também falso, isso \textbf{não compila}. Erro de compilação e exceção em
+runtime são coisas diferentes; a FGV testa se você distingue as duas.
+\end{pegadinha}
+
+\subsection{Escopo de variável --- a pegadinha silenciosa}
+
+\begin{itemize}
+\item \textbf{Shadowing (sombreamento):} uma variável local com o
+\textbf{mesmo nome} de um atributo da classe \textbf{esconde} o atributo
+dentro do método --- \texttt{this.atributo} continua acessível, mas
+\texttt{atributo} sozinho refere-se à variável local. Enunciado que usa o
+mesmo nome dos dois lados é sinal de alerta.
+\item \textbf{Variável efetivamente final em lambda/classe anônima:} uma
+variável local usada dentro de uma lambda ou classe anônima precisa ser
+\textbf{final ou efetivamente final} (nunca reatribuída depois da
+inicialização) --- código que reatribui essa variável depois de criar a
+lambda \textbf{não compila}.
+\item \textbf{Escopo de bloco em \texttt{for}:} uma variável declarada
+\textbf{dentro} do \texttt{for} (\texttt{for (int i = 0; ...)}) não existe
+fora dele --- usá-la depois do laço é erro de compilação, não um valor
+residual do último loop.
+\end{itemize}
+
+\begin{pegadinha}
+A FGV declara uma variável dentro de um bloco (\texttt{if}, \texttt{for},
+\texttt{try}) e depois faz o código ``usá-la'' fora do bloco na alternativa
+--- isso é erro de compilação (variável fora de escopo), não um valor
+qualquer. Não confunda com JavaScript, onde \texttt{var} vaza escopo de
+função --- em Java o escopo é sempre de \textbf{bloco}.
+\end{pegadinha}
+
+\subsection{Armadilhas de threads virtuais}
+
+\begin{conceito}[Pinning --- quando a thread virtual não é tão leve assim]
+Uma thread virtual roda sobre uma \textbf{carrier thread} de plataforma. Se o
+código dentro de um bloco \texttt{synchronized} faz uma chamada
+\textbf{bloqueante} (I/O, banco de dados), a thread virtual pode ficar
+\textbf{presa (pinned)} à carrier em vez de liberá-la --- isso derruba
+justamente a vantagem de escala das threads virtuais, porque agora uma
+operação bloqueante ocupa uma carrier inteira. Na prática, o cenário de risco
+é: \texttt{synchronized} + chamada bloqueante \textbf{dentro} do bloco
+sincronizado, sob alta concorrência.
+\end{conceito}
+
+\begin{pegadinha}
+O distrator diz que threads virtuais ``eliminam totalmente qualquer
+preocupação com bloqueio ou concorrência'' --- \textbf{falso}: o cenário
+clássico de \texttt{synchronized} + I/O bloqueante ainda pode prender a
+thread virtual à sua carrier, anulando o ganho de escala. Outro distrator
+troca a causa: dizer que o problema é ``excesso de memória'' (é
+concorrência/pinning, não memória). Threads virtuais reduzem o \textbf{custo
+de criar} threads, não eliminam todo cuidado com seções críticas.
+\end{pegadinha}
+
+\begin{jacaiu}
+Checked $\times$ unchecked; overload $\times$ override; Liskov (SOLID);
+coleções (\texttt{ArrayList}/\texttt{LinkedList}/\texttt{HashMap});
+\texttt{==} $\times$ \texttt{equals}; sealed classes; threads virtuais e
+pinning; JPA N+1 (TJ-RJ); leitura de REST controller
+(\texttt{@RestController}, \texttt{@GetMapping}, \texttt{@PathVariable}) e
+comportamento de \texttt{Map}/\texttt{HashMap} (\texttt{getOrDefault});
+Spring Cloud Eureka (atributo \texttt{lease-expiration}); Hibernate Envers
+(auditoria via Revision Listener); ordem de catch e exceção engolida por
+\texttt{finally}; escopo de variável em bloco. Rode \texttt{./quiz.py java}.
+\end{jacaiu}
+
+\begin{comosair}
+Par para decorar: checked (\texttt{Exception}, verificada em compilação,
+trata ou declara \texttt{throws}) $\times$ unchecked (\texttt{RuntimeException},
+não obriga tratamento); overload (mesmo nome, assinatura diferente,
+compile-time) $\times$ override (mesma assinatura na subclasse, runtime,
+\texttt{@Override}). N+1: LAZY para não carregar cedo + JOIN FETCH quando
+precisar da relação numa consulta só. Em leitura de código, execute
+mentalmente linha a linha e confie na semântica da API (\texttt{getOrDefault}
+$\to$ default). Gatilhos de distrator: ``sempre'', ``independentemente da
+carga'', ``equivale a uma de plataforma''. Nomes de atributo/config (Eureka
+\texttt{lease-expiration}, Envers Revision Listener): a FGV troca por nomes
+plausíveis (\texttt{heartbeat-interval}, interceptor, filtro) --- decore o
+nome exato.
+\end{comosair}

@@ -1,0 +1,166 @@
+\chapter{Business Intelligence (BI)}
+\label{cap:bi}
+
+\begin{edital}
+Conceitos, fundamentos, técnicas e métodos de BI; sistemas de suporte à
+decisão (SSD) e gestão de conteúdo; arquitetura e aplicações de data
+warehouse com ETL e OLAP; data warehouse e data mining; visualização (BD
+individuais e cubos); mapeamento das fontes de dados; arquitetura de BI.
+\end{edital}
+\peso{MÉDIO --- costuma cair junto com Banco de Dados.}
+
+\section{O que é BI}
+
+Conjunto de conceitos e ferramentas para transformar \textbf{dado} em
+\textbf{informação} e apoiar a \textbf{tomada de decisão}. Pirâmide clássica:
+dado $\to$ informação $\to$ conhecimento $\to$ inteligência/sabedoria.
+
+\section{Data Warehouse (DW)}
+
+Repositório central de dados \textbf{integrados, históricos e orientados a
+assunto}, para análise (não para transação). Características de Inmon:
+\textbf{orientado a assunto, integrado, não volátil, variante no tempo}.
+
+\begin{itemize}
+\item \textbf{Data Mart:} recorte departamental do DW.
+\item \textbf{DW $\times$ Data Lake:} DW guarda dado \textbf{tratado e
+modelado} (schema-on-write); Lake guarda dado \textbf{bruto} estruturado e
+não estruturado (schema-on-read).
+\item \textbf{Staging area:} área intermediária onde o ETL trata os dados.
+\item \textbf{Lakehouse:} une a governança do DW com a flexibilidade do
+Lake. Camadas típicas: \textbf{Bronze} (bruto) $\to$ \textbf{Silver} (limpo)
+$\to$ \textbf{Gold} (dimensional, pronto para BI). Machine Learning consome o
+bruto; BI consome o Gold.
+\end{itemize}
+
+\begin{pegadinha}
+Não diga que o Data Lake ``substitui'' o DW, nem que ele guarda só dado
+estruturado. Lakehouse é o que combina os dois --- não é sinônimo de nenhum
+dos dois isoladamente.
+\end{pegadinha}
+
+\section{ETL --- a ponte para o DW}
+
+\textbf{Extract $\to$ Transform $\to$ Load.} Objetivo principal: extrair de
+várias fontes, transformar em formato padronizado e consistente, e carregar
+no DW. \textbf{Não é} ``criar dashboards'' nem ``treinar modelo de ML'' ---
+isso vem depois, como consumo do dado já carregado. ETL $\times$ ELT: ver
+Capítulo \ref{cap:banco-dados} (a posição do T é a mesma pegadinha).
+
+\section{OLAP e modelagem dimensional}
+
+OLAP (analítico) $\times$ OLTP (transacional): ver Capítulo
+\ref{cap:banco-dados}.
+
+\textbf{Cubo:} dados organizados em \textbf{dimensões} (tempo, produto,
+local) e \textbf{métricas/fatos} (vendas, quantidade).
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{8.6cm}@{}}
+\toprule
+\textbf{Operação OLAP} & \textbf{O que faz} \\
+\midrule
+Drill-down & desce ao detalhe (ano $\to$ mês $\to$ dia) \\
+Roll-up (drill-up) & sobe à agregação \\
+Slice & fatia \textbf{uma} dimensão (fixa um valor) \\
+Dice & subcubo --- filtro em \textbf{várias} dimensões e valores \\
+Pivot (rotate) & gira a visão \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{conceito}[Star Schema $\times$ Snowflake Schema]
+\textbf{Star Schema:} uma tabela fato + dimensões \textbf{desnormalizadas}.
+Menos joins, mais rápido para BI --- é o padrão recomendado por Kimball.
+
+\textbf{Snowflake Schema:} dimensões \textbf{normalizadas} em várias tabelas.
+Mais joins, mais lento, mas economiza espaço e ajuda integridade.
+\end{conceito}
+
+\begin{pegadinha}
+Star $\times$ Snowflake invertido: a FGV chama de ``estrela'' a dimensão
+normalizada em várias tabelas (isso é floco de neve/Snowflake), ou diz que
+Snowflake é o padrão recomendado por Kimball (é o Star). Também drill-down
+$\leftrightarrow$ roll-up e OLAP $\leftrightarrow$ OLTP invertidos.
+\end{pegadinha}
+
+\subsection{Tipos de fato e dimensão}
+
+\begin{itemize}
+\item \textbf{Fato aditivo:} soma em \textbf{todas} as dimensões (ex.:
+vendas).
+\item \textbf{Fato semiaditivo:} \textbf{não} soma em todas as dimensões,
+tipicamente não soma no tempo (ex.: saldo, estoque).
+\item \textbf{Fato não aditivo:} razão/percentual, nunca soma.
+\item \textbf{Dimensão degenerada:} atributo de identificação (ex.: nº do
+pedido) que fica na tabela fato, sem dimensão própria.
+\end{itemize}
+
+\begin{pegadinha}
+A banca troca semiaditivo por aditivo --- lembre que semiaditivo tipicamente
+\textbf{não} soma no eixo do tempo (saldo bancário de hoje não é a soma dos
+saldos anteriores).
+\end{pegadinha}
+
+\section{Sistemas de Suporte à Decisão (SSD/DSS)}
+
+Apoiam gestores em problemas \textbf{estruturados, semiestruturados e não
+estruturados} --- oferecem flexibilidade para vários contextos. Não são ``só
+para problemas estruturados'' nem ``só não estruturados''.
+
+\section{Mapeamento de fontes de dados (boas práticas)}
+
+\begin{itemize}
+\item \textbf{Fazer:} entrevistar stakeholders, analisar sistemas
+existentes, avaliar \textbf{qualidade} e adequação do dado, documentar fontes
+(governança). Referência: \textbf{DAMA-DMBOK}, dados mestres e de
+referência.
+\item \textbf{NÃO fazer:} coletar \textbf{tudo sem discriminação}, incluindo
+dados inconsistentes/irrelevantes ``para maximizar quantidade'' --- essa é a
+prática \textbf{não recomendada} que a FGV pede como resposta.
+\end{itemize}
+
+\section{Data Mining e visualização}
+
+\textbf{Data Mining:} descobrir padrões em grandes volumes (classificação,
+agrupamento/clustering, associação, regressão).
+
+\textbf{Regras de associação:} \textbf{suporte} = frequência do conjunto no
+total de transações; \textbf{confiança} = força da implicação A$\to$B. A FGV
+confunde os dois.
+
+\textbf{Dashboards e relatórios interativos:} camada de visualização (Power
+BI --- com recurso de \textit{drillthrough} entre páginas ---, Qlik, etc.).
+
+\begin{jacaiu}
+ETL como ponte/objetivo (extrair-transformar-carregar); SSD para os três
+tipos de problema; prática não recomendada no mapeamento de fontes (coletar
+tudo sem discriminar); relacional $\times$ multidimensional; ETL $\times$
+ELT; Star $\times$ Snowflake em cenário de varejo/DW; dice (filtro múltiplo)
+$\times$ slice; DW $\times$ Data Lake $\times$ Lakehouse (camadas
+Bronze/Silver/Gold); suporte $\times$ confiança em regras de associação. Rode
+\texttt{./quiz.py bi}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{Kimball} (bottom-up, data marts) $\times$ \textbf{Inmon}
+(top-down, DW corporativo).
+\item \textbf{Self-service BI} e \textbf{storytelling com dados} (aparece no
+Perfil 1).
+\item \textbf{KPI $\times$ métrica:} KPI é indicador-chave atrelado a um
+objetivo.
+\item Absolutos a descartar: ``ferramentas de BI são incompatíveis com
+tabelas normalizadas'', ``3FN maximiza performance de agregação no DW'' ---
+falso; 3FN é para OLTP, não para o DW analítico.
+\end{itemize}
+
+\begin{comosair}
+Decore o par Kimball: Star = 1 fato + dimensões planas (desnormalizadas) =
+menos joins = mais rápido para BI. Snowflake = dimensões normalizadas = mais
+joins = mais lento, porém economiza espaço. OLAP dice = filtro em MÚLTIPLAS
+dimensões; slice = filtro em UMA. Camadas do Lakehouse: Bronze (bruto) $\to$
+Silver (limpo) $\to$ Gold (dimensional para BI). Gatilho de erro: ``sempre'',
+``obrigatório'', ``incompatível'', ``3FN no DW'' --- desconfie.
+\end{comosair}

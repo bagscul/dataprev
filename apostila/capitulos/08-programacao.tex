@@ -1,0 +1,244 @@
+\chapter{Programação}
+\label{cap:programacao}
+
+\begin{edital}
+Desenvolvimento em Java/JavaEE/JakartaEE/JPA/JavaScript; frameworks JUnit,
+Hibernate, JSF, Primefaces, Spring, Spring Cloud, Spring Boot; mobile
+(Android/iOS); low-code/no-code; análise estática (clean code, SonarQube);
+padrões XML, XSLT, UDDI, REST, JSON; DevOps; Git; codificação (transacional,
+analítico, mobile, API); reuso; blockchain. (Java em si tem capítulo próprio:
+Capítulo \ref{cap:java}.)
+\end{edital}
+\peso{MÉDIO-ALTO.}
+
+\section{Ecossistema Spring (cai muito)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{8.6cm}@{}}
+\toprule
+\textbf{Framework} & \textbf{Papel} \\
+\midrule
+Spring & contêiner de inversão de controle (IoC) e injeção de dependência \\
+Spring Boot & Spring com autoconfiguração e servidor embutido; elimina config manual e boilerplate \\
+Spring Cloud & ferramentas para sistemas distribuídos/microsserviços (config, discovery, gateway) \\
+Hibernate & ORM (mapeamento objeto-relacional), implementa JPA \\
+JUnit & framework de testes de unidade \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Spring Boot \textbf{não exige} config manual de servidor (embute Tomcat) e
+não exige Tomcat/JBoss standalone; ``Spring só serve monólito'' é falso.
+Hibernate é \textbf{ORM/persistência}, não é framework de teste. JUnit é
+teste, \textbf{não} é ORM. Spring Cloud = distribuído; Spring Boot = app
+individual --- a FGV troca os papéis do ecossistema numa frase só.
+\end{pegadinha}
+
+\section{Formatos de dados: XML, JSON, XSLT}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{XML} & \textbf{JSON} \\
+\midrule
+Estrutura & marcação com tags, verboso & pares chave-valor, leve \\
+Uso hoje & legado, config, SOAP & \textbf{APIs web}, transporte leve \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{XSLT:} linguagem que \textbf{transforma XML} em outro formato (HTML,
+XML, texto). \textbf{Não} transforma JSON. \textbf{REST} usa JSON
+tipicamente; \textbf{SOAP} usa XML.
+
+\begin{pegadinha}
+``XSLT transforma JSON'' = falso (é XML); ``XML e JSON são
+equivalentes/idênticos'' = falso; JSON não tem comentários nem tipo date
+nativo.
+\end{pegadinha}
+
+\section{Mobile e low-code}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{3.4cm}p{4.4cm}@{}}
+\toprule
+\textbf{Abordagem} & \textbf{O que é} & \textbf{Ferramentas / linguagem} \\
+\midrule
+Nativo & app específico para cada SO & Android: \textbf{Kotlin/Java}; iOS: \textbf{Swift/Objective-C} \\
+Multiplataforma & um código para vários SO & \textbf{Flutter (Dart)}, \textbf{React Native (JS)}, Xamarin (.NET), Ionic (web) \\
+Híbrido & web dentro de contêiner nativo (WebView) & Ionic, Cordova \\
+PWA & web instalável, offline & ver Capítulo \ref{cap:frontend} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Flutter = Dart} (a FGV troca por JS/Kotlin); \textbf{React Native =
+JavaScript} (renderiza componentes nativos, diferente do WebView do
+híbrido). Trade-off: nativo dá melhor desempenho/acesso ao hardware; cross
+reduz custo e tempo (um código só).
+
+\textbf{Low-code/no-code:} desenvolvimento visual, pouca ou nenhuma escrita
+de código; acelera entrega e permite ``citizen developers'', mas limita
+customização e pode gerar \textit{lock-in} na plataforma.
+
+\begin{pegadinha}
+Pares mobile que a FGV inverte: Dart$\to$Flutter, Kotlin$\to$Android,
+Swift$\to$iOS. Distrator de definição decorada: pede o framework Dart e
+oferece React Native (JS), Xamarin (C\#) ou Ionic --- nenhum é Dart.
+\end{pegadinha}
+
+\section{Java EE / web server-side (JSF, Primefaces)}
+
+\textbf{JSF (JavaServer Faces):} framework de UI \textbf{baseado em
+componentes}, server-side, orientado a eventos; segue o padrão \textbf{MVC}.
+Ciclo de vida de requisição com fases (restore view, apply values,
+validation, update model, invoke application, render response).
+
+\textbf{Primefaces:} biblioteca de \textbf{componentes ricos} para JSF
+(tabelas, gráficos, ajax pronto).
+
+\textbf{JSP/Servlet:} camada web mais antiga do Java EE (Servlet processa a
+requisição; JSP gera a view). JSF é a evolução baseada em componentes.
+
+\begin{pegadinha}
+JSF é \textbf{server-side baseado em componentes} (diferente de SPA
+client-side como React); Primefaces é biblioteca de componentes \textbf{de
+JSF}, não framework à parte.
+\end{pegadinha}
+
+\section{Versionamento com Git}
+
+\textbf{Git é distribuído:} cada clone tem o histórico completo (diferente
+do SVN, que é centralizado e lida mal com binários). Conceitos: commit,
+branch, merge, \texttt{git pull}/\texttt{push}, \texttt{git clone}, merge
+$\times$ rebase, staging area. GitLab CI usa variáveis e pipelines.
+
+\section{Qualidade de código}
+
+\textbf{Clean Code:} nomes claros, funções curtas, baixo acoplamento.
+
+\textbf{SonarQube:} análise \textbf{estática} (sem executar) --- code
+smells, bugs, vulnerabilidades, dívida técnica, cobertura.
+
+DevOps/CI-CD, reuso e padrões de projeto permeiam este bloco (ver Capítulos
+\ref{cap:eng-software} e \ref{cap:arquitetura}).
+
+\section{Blockchain}
+
+\textbf{Cadeia de blocos} encadeados por \textbf{hash do bloco anterior}
+(imutável). Cada bloco: hash anterior, timestamp, dados/transações, nonce,
+raiz de Merkle. \textbf{O saldo das carteiras NÃO é armazenado no bloco} ---
+é derivado do histórico de transações (UTXO no Bitcoin). Descentralizado,
+consenso (PoW/PoS), contratos inteligentes (Ethereum).
+
+\begin{pegadinha}
+Pergunta clássica: ``o que NÃO é armazenado no bloco'' $\to$ resposta:
+\textbf{saldo das carteiras} (é calculado a partir do histórico, não
+guardado diretamente).
+\end{pegadinha}
+
+\section{Python aplicado a dados (visto em prova de TI recente)}
+
+\begin{itemize}
+\item \textbf{NumPy:} \texttt{view()} compartilha buffer (\texttt{.base}
+aponta para o original) $\times$ \texttt{copy()} cria cópia independente
+(\texttt{.base = None}). Alterar antes do \texttt{view()} reflete no view.
+Shape de vetor 1-D termina em vírgula: \texttt{(3,)}, não \texttt{(3,1)}.
+\item \textbf{matplotlib.pyplot:} parâmetro \texttt{explode} destaca fatia
+da pizza.
+\item \textbf{PHP 8:} funções de sessão (\texttt{session\_start},
+\texttt{session\_destroy}, \texttt{session\_regenerate\_id}).
+\end{itemize}
+
+\begin{pegadinha}
+NumPy: a FGV inverte \texttt{view}/\texttt{copy} --- diz que \texttt{copy}
+compartilha base ou que \texttt{view} tem \texttt{base None}; ou erra o
+shape do array 1-D.
+\end{pegadinha}
+
+\section{Leitura ativa de código --- técnica transversal}
+\label{sec:leitura-ativa-programacao}
+
+A FGV não para na terminologia: em Programação ela mostra um trecho pequeno
+de código (Python, SQL, JS, config) e pergunta a \textbf{saída} ou o
+\textbf{efeito}. Quem só decorou conceito trava aqui --- o antídoto é
+\textbf{rodar o código mentalmente}, linha a linha, como um interpretador,
+anotando o estado das variáveis num rascunho.
+
+\begin{conceito}[Protocolo de leitura ativa]
+\begin{enumerate}
+\item \textbf{Não leia por cima.} Releia a linha inteira antes de assumir o
+que ela faz --- a FGV muda \emph{um} parâmetro, \emph{um} operador ou
+\emph{um} índice em relação ao que ``pareceria óbvio''.
+\item \textbf{Anote o estado.} Para cada variável relevante, escreva o valor
+depois de cada linha executada --- não confie na memória depois da terceira
+linha.
+\item \textbf{Desconfie de referência $\times$ cópia.} É a armadilha mais
+comum em qualquer linguagem: duas variáveis apontam para o \textbf{mesmo}
+objeto/array, e mudar uma ``muda'' a outra --- ou o contrário, quando a
+API/linguagem faz cópia.
+\item \textbf{Confirme contra a assinatura real da função/método}, não
+contra o que você acha que ela deveria fazer.
+\end{enumerate}
+\end{conceito}
+
+\textbf{Exemplo resolvido (NumPy --- referência $\times$ cópia):}
+
+\begin{center}
+\begin{tabular}{@{}p{5.4cm}p{5.4cm}@{}}
+\toprule
+\textbf{Código} & \textbf{Execução mental} \\
+\midrule
+\texttt{a = np.array([1,2,3])} & \texttt{a} = [1,2,3] (original) \\
+\texttt{b = a.view()} & \texttt{b} \textbf{compartilha} o buffer de \texttt{a}; \texttt{b.base is a} \\
+\texttt{a[0] = 99} & muda o buffer compartilhado \\
+\texttt{print(b[0])} & imprime \textbf{99} (reflete, pois é view) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Se a segunda linha fosse \texttt{b = a.copy()}, \texttt{b[0]} continuaria
+\textbf{1} depois de alterar \texttt{a[0]} --- porque \texttt{copy()} rompe o
+vínculo com o buffer original. A pegadinha da FGV é exatamente trocar
+\texttt{view} por \texttt{copy} no enunciado e esperar que você não perceba a
+diferença de comportamento.
+
+\begin{comosair}[Como treinar leitura ativa]
+Toda vez que uma questão do quiz trouxer código, resista ao impulso de ler a
+alternativa primeiro. Pegue papel, simule a execução, chegue a um valor, e só
+depois compare com as alternativas --- isso elimina o efeito ``parece
+certo''. Vale para Python, SQL, Java (Capítulo \ref{cap:java}) e
+HTML/CSS/JS (Capítulo \ref{cap:frontend}): é a mesma disciplina em qualquer
+linguagem.
+\end{comosair}
+
+\begin{jacaiu}
+Spring/Spring Cloud/Spring Boot/Hibernate/JUnit (papéis); XML/XSLT/JSON;
+Flutter (Dart); blockchain (o que não fica no bloco); SPA $\times$ PWA (ver
+Capítulo \ref{cap:frontend}); NumPy \texttt{view} $\times$ \texttt{copy};
+Kotlin/Swift; leitura de código pequeno em geral. Rode \texttt{./quiz.py
+programacao}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{Confluent Kafka} (mensageria/streaming): tópicos,
+produtores/consumidores --- ver Capítulo \ref{cap:arquitetura}.
+\item \textbf{API/Swagger (OpenAPI):} documenta e contrata REST; Swagger UI.
+\item \textbf{RPA} (UiPath, Automation Anywhere): automação de tarefas de
+interface.
+\item \textbf{IA/LLM} entrou no edital --- ver Capítulo \ref{cap:atualidades}
+para os fundamentos.
+\end{itemize}
+
+\begin{comosair}
+Fixe uma frase por framework: Boot = configura e sobe sozinho (servidor
+embarcado); Cloud = distribuído/service discovery; Hibernate =
+objeto$\leftrightarrow$tabela; JUnit = testa; Spring = container/injeção.
+Nativo mobile: Kotlin/Android, Swift/iOS (Objective-C e Java são os antigos).
+Multiplataforma Dart = Flutter. Gatilhos: ``exclusivamente'', ``sempre'',
+``estritamente equivalentes'', ``elimina a necessidade''. Em questão de
+código, leia linha a linha --- a FGV muda um parâmetro só.
+\end{comosair}

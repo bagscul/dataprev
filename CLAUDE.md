@@ -19,6 +19,40 @@ de engenharia de software genérico.
   o enunciado/gabarito se não tiver sido colado, mas não trave a explicação
   por falta disso.
 
+## Estilo de questão ao gerar para `banco.json`
+
+Sempre que gerar questões novas para `banco.json`, siga este padrão (destilado
+comparando as 237 questões originais com os lotes gerados depois — é o
+resultado de já ter testado os dois estilos neste repositório):
+
+- **Formato do enunciado conforme o tipo de questão:**
+  - Conceitual/direta (definição, comparação de par): termine o comando com
+    `:` e escreva as alternativas como continuação em **minúscula** da mesma
+    frase (padrão clássico FGV). Ex.: `"A diferença entre X e Y é que:"` →
+    `"x faz isso, enquanto y faz aquilo"`.
+  - Cenário/aplicação (IA aplicada, legislação, leitura de código, julgamento
+    de afirmativas I/II/III): pode usar comando explícito (`"Assinale a
+    alternativa correta"`) com alternativas em frases completas e
+    maiúsculas — também é formato real da FGV para esse tipo de item. Não
+    infle o cenário além do necessário para sustentar a pegadinha.
+- **Alternativas:** concisas, uma ideia por alternativa, sem repetir a
+  íntegra do cenário. Pelo menos uma "quase certa" (acerta a primeira
+  metade, erra no detalhe final) quando fizer sentido para o tema.
+- **`why` (por que a certa é certa):** 1–3 frases, analítico e direto. Pode
+  citar o comportamento da banca (`"a FGV troca X por Y"`), sem repetir o
+  que já vai em `erradas`.
+- **`erradas` (por que cada errada é errada) — o ponto mais importante:**
+  explique o erro de forma natural e **varie a abertura de cada frase**
+  (não repita o mesmo molde tipo `"Distrator X:"` em todas as alternativas
+  da mesma questão — isso soa mecânico e não é como a FGV comenta gabarito).
+  Nomeie o mecanismo quando ajudar (absoluto, inversão de par, extrapolação,
+  troca de número/ordem, contradição interna, distrator inventado), mas
+  tecido dentro da explicação, não como rótulo fixo repetido. Os mecanismos
+  catalogados estão em `dicas/tecnica-fgv.md` e no Apêndice B da apostila
+  (`apostila/capitulos/20-glossario-pegadinhas.tex`).
+- **Depois de gerar, sempre rode `./valida.py`** antes de considerar a
+  questão pronta.
+
 ## Caderno de erros — registrar sempre
 
 Depois de explicar, **sempre** proponha (ou já edite direto, se o bloco for

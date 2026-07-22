@@ -2,6 +2,27 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-22 — apostila definitiva em PDF + 22 questões novas (IA, leitura ativa, Marco Civil)
+
+- **`apostila/` (novo):** apostila definitiva em LaTeX, compilada em
+  `apostila/main.pdf` (87 páginas) — 21 capítulos cobrindo os dois módulos da
+  prova, montados a partir do roteiro, dos resumos, das dicas de banca e do
+  banco de questões. Cada capítulo tem ficha do edital, peso esperado, e
+  caixas de conceito/pegadinha/como-se-sair-melhor/o-que-já-caiu. Apêndices:
+  mapa de pesos e glossário de ~70 pares que a FGV inverte.
+- **Reforço de conteúdo na apostila:** IA aplicada a negócios/políticas
+  públicas e interseção IA×ESG (Cap. 18); seções de "Leitura Ativa de
+  Código" em Programação, Java e Frontend (Caps. 9–11); atualização crítica
+  do Marco Civil art. 19 pós-STF (jun/2025) com tabela antes/depois e caixa
+  dedicada de distratores (Cap. 19).
+- **`banco.json`: +22 questões originais** (237 → 259) nos mesmos três
+  temas: IA aplicada/viés algorítmico/ESG (`atualidades`), leitura ativa de
+  código em CSS/JS/React/Java (`frontend`, `java`), e a mudança do art. 19
+  do Marco Civil (`legislacao`). Todas validadas com `./valida.py`.
+- **`CLAUDE.md`:** nova seção "Estilo de questão ao gerar para banco.json",
+  destilando o padrão de questão mais próximo da FGV (formato do enunciado,
+  como variar a abertura de cada `erradas` sem virar molde repetitivo).
+
 ## 2026-07-16 — auditoria das novas, reforço de blocos e resumo de órfãos
 
 - **Auditoria independente das 72 questões originais novas** (as 52 + 20 de

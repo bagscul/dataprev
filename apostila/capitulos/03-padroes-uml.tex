@@ -1,0 +1,237 @@
+\chapter{Padrões de Projeto e UML}
+\label{cap:padroes-uml}
+
+\begin{edital}
+``Padrões de projeto'', ``design de software'', ``padrões de desenvolvimento
+e reuso'', ``análise e projeto orientados a objetos''. UML não está listada
+com todas as letras no edital do Perfil 3 (aparece explícita no Perfil 2), mas
+é vizinha direta desses itens e a FGV cobra com frequência em provas de TI.
+\end{edital}
+\peso{ALTA PROBABILIDADE --- a FGV dá um cenário (``preciso garantir uma única
+instância...'', ``preciso criar objetos sem acoplar à classe concreta...'') e
+pergunta qual padrão resolve. Decore o gatilho de cada um, não só o nome.}
+
+\section{Padrões de Projeto (Design Patterns / GoF)}
+
+O enunciado descreve um \textbf{problema de design} e você identifica o
+padrão que o resolve. A chave é reconhecer a \textbf{intenção} (o ``para
+quê'') de cada padrão. Os padrões GoF se dividem em três grupos.
+
+\subsection{Criacionais (como criar objetos)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho no enunciado)} \\
+\midrule
+Singleton & garantir \textbf{uma única instância} e ponto global de acesso (``apenas uma conexão/configuração no sistema todo'') \\
+Factory Method & delegar a criação a subclasses; criar objeto \textbf{sem acoplar à classe concreta} (``decidir em runtime qual objeto criar'') \\
+Abstract Factory & criar \textbf{famílias} de objetos relacionados sem especificar classes concretas (``kit de UI para Windows e Mac'') \\
+Builder & construir objeto complexo \textbf{passo a passo}, separando construção da representação (``montar um objeto com muitos parâmetros opcionais'') \\
+Prototype & criar novos objetos \textbf{clonando} um protótipo (``copiar um objeto existente em vez de criar do zero'') \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+\textbf{Factory Method} (uma criação, via herança) $\times$ \textbf{Abstract
+Factory} (famílias de produtos, via composição) --- a FGV troca os dois.
+Singleton = \textbf{uma} instância, nunca ``mais de uma quando necessário''.
+\end{pegadinha}
+
+\subsection{Estruturais (como compor objetos/classes)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho)} \\
+\midrule
+Adapter & fazer interfaces \textbf{incompatíveis} trabalharem juntas (``adaptar uma API legada à nova'') \\
+Facade & interface \textbf{simplificada} para um subsistema complexo (``uma fachada única para vários serviços'') \\
+Proxy & um \textbf{substituto} que controla acesso ao objeto real (lazy load, cache, segurança) \\
+Decorator & adicionar responsabilidades a um objeto \textbf{dinamicamente}, sem herança (``empilhar comportamentos em runtime'') \\
+Composite & tratar objetos individuais e composições \textbf{de forma uniforme} (árvore parte-todo) \\
+Bridge & separar \textbf{abstração} da \textbf{implementação} para variarem independentes \\
+Flyweight & compartilhar objetos para economizar memória (muitos objetos semelhantes) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+\textbf{Adapter} (compatibiliza o que já existe) $\times$ \textbf{Facade}
+(simplifica um subsistema) $\times$ \textbf{Decorator} (adiciona
+comportamento) --- os três se confundem na estrutura, mas a intenção é
+diferente. \textbf{Proxy} controla \textbf{acesso}; \textbf{Decorator}
+acrescenta \textbf{função}.
+\end{pegadinha}
+
+\subsection{Comportamentais (como objetos interagem)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho)} \\
+\midrule
+Strategy & família de algoritmos \textbf{intercambiáveis}, escolhidos em runtime (``trocar a regra de cálculo sem if gigante'') \\
+Observer & notificar automaticamente \textbf{dependentes} quando o estado muda (publish-subscribe, eventos) \\
+Command & encapsular uma \textbf{requisição como objeto} (undo/redo, fila de operações) \\
+State & mudar o comportamento conforme o \textbf{estado interno} (``o objeto age diferente conforme sua situação'') \\
+Template Method & definir o \textbf{esqueleto} de um algoritmo, deixando passos para subclasses \\
+Iterator & percorrer uma coleção \textbf{sem expor sua estrutura} \\
+Chain of Responsibility & passar a requisição por uma \textbf{cadeia} de handlers até alguém tratar \\
+Mediator & centralizar a comunicação entre objetos (reduz acoplamento N-para-N) \\
+Memento & capturar/restaurar o estado de um objeto (snapshot) \\
+Visitor & adicionar operações a uma estrutura sem alterar as classes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+\textbf{Strategy} (troca o algoritmo) $\times$ \textbf{State} (troca conforme
+o estado) --- parecidos na estrutura, diferentes na intenção.
+\textbf{Observer} é o padrão de eventos/notificação; não confundir com
+Mediator (que centraliza a comunicação, não notifica mudança de estado).
+\end{pegadinha}
+
+\subsection{GRASP}
+
+O edital cita GRASP no Perfil 2, mas o conceito permeia o Perfil 3. São
+princípios (não ``caixas de código'') para decidir \textbf{qual classe recebe
+qual responsabilidade}: Information Expert, Creator, Controller, Low
+Coupling, High Cohesion, Polymorphism, Pure Fabrication, Indirection,
+Protected Variations.
+
+\subsection{Padrões arquiteturais (não são GoF, mas caem)}
+
+\begin{itemize}
+\item \textbf{MVC} (Model-View-Controller): separa dados, apresentação e
+controle.
+\item \textbf{MVVM / MVP}: variações com binding/presenter.
+\item \textbf{DAO / Repository}: isola o acesso a dados.
+\item \textbf{DTO}: objeto para transportar dados entre camadas.
+\item \textbf{Front Controller}, Singleton de configuração --- aparecem em
+Java EE.
+\end{itemize}
+
+\subsection{Reuso e anti-padrões}
+
+\textbf{Reuso:} herança (``é-um'') $\times$ \textbf{composição} (``tem-um'')
+--- prefira composição (\emph{favor composition over inheritance}). Também:
+bibliotecas, frameworks, componentes.
+
+\textbf{Anti-padrões:} God Object (classe que faz tudo), Spaghetti Code,
+Golden Hammer (usar sempre a mesma solução), Copy-Paste. A FGV pergunta ``qual
+é o anti-padrão'' ou ``qual prática viola SOLID''.
+
+\begin{comosair}
+\begin{enumerate}
+\item Leia a \textbf{intenção}, não a implementação. O enunciado descreve o
+problema; case com o ``para quê'' das tabelas acima.
+\item Memorize os pares confundíveis: Factory Method $\times$ Abstract
+Factory; Adapter $\times$ Facade $\times$ Decorator; Strategy $\times$ State;
+Proxy $\times$ Decorator.
+\item Ligue ao SOLID: Strategy e Template Method concretizam o Open/Closed;
+Dependency Inversion aparece em Factory/Abstract Factory.
+\end{enumerate}
+Os mais cobrados pela FGV: \textbf{Singleton, Factory Method/Abstract
+Factory, Strategy, Observer, Adapter, Facade, Decorator, MVC.} O Spring usa
+Singleton (beans), Factory, Proxy (AOP), Template Method (JdbcTemplate),
+Observer (eventos) --- ligar padrão a framework ajuda a fixar.
+\end{comosair}
+
+\section{UML}
+\label{sec:uml}
+
+\subsection{Os 14 diagramas em 2 famílias}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.6cm}p{6.4cm}@{}}
+\toprule
+\textbf{Família} & \textbf{Foca em} & \textbf{Diagramas principais} \\
+\midrule
+Estruturais & estrutura estática & \textbf{Classe}, Objeto, Componente, Implantação (deployment), Pacote, Estrutura composta, Perfil \\
+Comportamentais & comportamento dinâmico & \textbf{Caso de uso}, \textbf{Sequência}, \textbf{Atividade}, \textbf{Estado} (máquina de estados), Comunicação, Interação geral, Tempo \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A FGV troca estrutural $\leftrightarrow$ comportamental. \textbf{Classe} é
+estrutural; \textbf{sequência, atividade, estado, caso de uso} são
+comportamentais. Nunca o contrário.
+\end{pegadinha}
+
+\subsection{Diagrama de Classes (o mais cobrado)}
+
+Mostra classes, atributos, métodos e relacionamentos:
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{4.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Relacionamento} & \textbf{Significado} & \textbf{Notação} \\
+\midrule
+Associação & ligação entre classes & linha \\
+Agregação & todo-parte \textbf{fraca} (a parte vive sem o todo) & losango \textbf{vazio} \\
+Composição & todo-parte \textbf{forte} (a parte morre com o todo) & losango \textbf{cheio} \\
+Herança / Generalização & é-um (subtipo) & seta triângulo vazio \\
+Dependência & usa temporariamente & seta tracejada \\
+Realização & implementa interface & tracejada + triângulo \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Multiplicidade:} \texttt{1}, \texttt{0..1}, \texttt{1..*}, \texttt{*}
+(muitos). \textbf{Visibilidade:} \texttt{+} público, \texttt{-} privado,
+\texttt{\#} protegido, \texttt{\~{}} pacote.
+
+\begin{pegadinha}
+Pegadinha central do bloco: \textbf{agregação} (losango vazio, parte
+independente) $\times$ \textbf{composição} (losango cheio, parte dependente).
+A FGV inverte qual dos dois ``morre com o todo''.
+\end{pegadinha}
+
+\subsection{Casos de Uso (requisitos funcionais)}
+
+Ator (boneco), caso de uso (elipse), fronteira do sistema.
+
+\begin{itemize}
+\item \textbf{«include»}: comportamento \textbf{sempre} incluído
+(obrigatório).
+\item \textbf{«extend»}: comportamento \textbf{opcional/condicional}.
+\end{itemize}
+
+\begin{pegadinha}
+\textbf{include} (sempre executa) $\times$ \textbf{extend} (às vezes executa)
+--- a FGV inverte esse par com frequência.
+\end{pegadinha}
+
+\subsection{Sequência (interação no tempo)}
+
+Linhas de vida (objetos no topo), mensagens trocadas na ordem temporal (de
+cima para baixo), barras de ativação. Mensagem síncrona (seta cheia) $\times$
+assíncrona (seta aberta) $\times$ retorno (tracejada).
+
+\subsection{Atividade e Estado}
+
+\textbf{Atividade:} fluxo de trabalho/algoritmo --- nós de ação, decisão
+(losango), bifurcação/junção (barra, paralelismo), início/fim. Parecido com
+fluxograma; usado para modelar processos.
+
+\textbf{Máquina de estados:} os estados de um objeto e as transições
+disparadas por eventos (o objeto reage diferente conforme o estado --- casa
+com o padrão de projeto State).
+
+\begin{comosair}
+\begin{enumerate}
+\item Decore a família de cada diagrama (estrutural $\times$
+comportamental) --- é a pegadinha mais comum.
+\item No diagrama de classes, memorize agregação $\times$ composição (vazio
+$\times$ cheio) e as multiplicidades.
+\item Caso de uso: include (obrigatório) $\times$ extend (opcional).
+\item Ligue ao resto: caso de uso $\leftrightarrow$ requisitos funcionais;
+classes $\leftrightarrow$ OO/SOLID; estado $\leftrightarrow$ padrão State.
+\end{enumerate}
+Diagramas mais cobrados: \textbf{Classe, Caso de Uso, Sequência, Atividade.}
+Deployment e Componente aparecem em questões de arquitetura (Capítulo
+\ref{cap:arquitetura}).
+\end{comosair}

@@ -1,0 +1,170 @@
+\chapter{Gestão e Governança de TI}
+\label{cap:governanca}
+
+\begin{edital}
+Gerenciamento de projetos (conceitos, áreas, projetos/programas/portfólio;
+abordagens tradicional, híbrida e ágil --- Scrum, Lean, Kanban; Guia Scrum);
+processos e grupos de processos; gestão de riscos; ITIL v4; COBIT 2019;
+gestão e modelagem de processos com BPMN.
+\end{edital}
+\peso{MÉDIO --- ITIL 4, COBIT 2019 e PMBOK 7ª são o tripé. A FGV monta um
+mini-cenário (``a analista Patrícia...'', ``a empresa Y...'') e pede qual
+prática, domínio ou princípio se aplica. Quem decorou definição solta erra;
+quem sabe a que domínio/fase cada coisa pertence acerta.}
+
+\section{Gerenciamento de projetos (PMBOK)}
+
+\begin{itemize}
+\item \textbf{Projeto $\times$ programa $\times$ portfólio:} projeto =
+esforço temporário com resultado único; \textbf{programa} = grupo de
+projetos relacionados; \textbf{portfólio} = conjunto de programas/projetos
+alinhados à estratégia.
+\item \textbf{PMBOK 6:} 5 \textbf{grupos de processos} (Iniciação,
+Planejamento, Execução, Monitoramento e Controle, Encerramento) $\times$ 10
+\textbf{áreas de conhecimento} (integração, escopo, cronograma, custo,
+qualidade, recursos, comunicação, riscos, aquisições, partes interessadas).
+\item \textbf{PMBOK 7:} mudou para \textbf{princípios e domínios de
+desempenho} (foco em valor e resultados, menos prescritivo). Os \textbf{12
+princípios} incluem foco em valor, pensamento sistêmico, ser um
+administrador zeloso (\textit{steward}), liderança, qualidade.
+\item \textbf{Abordagens:} \textbf{tradicional/preditiva} (escopo fixo,
+cascata), \textbf{ágil/adaptativa}, e \textbf{híbrida} (combina as duas
+conforme a necessidade).
+\end{itemize}
+
+\begin{pegadinha}
+Híbrido = \textbf{combinar} ágil + tradicional (nunca ``só ágil'' nem ``só
+cascata''); não confundir grupo de processos (5, do PMBOK 6) com área de
+conhecimento (10) nem com princípio (12, do PMBOK 7 --- que \textbf{não} é
+baseado em processos). No PMBOK 7, a banca oferece um princípio plausível mas
+não o do cenário: mudança de escopo por feedback = \textbf{foco em valor};
+sistema que evolui e se integra ao ambiente = \textbf{pensamento sistêmico};
+cuidado ético com o produto = \textbf{administrador zeloso}.
+\end{pegadinha}
+
+\section{Scrum, Kanban, Lean (ágil)}
+
+\textbf{Scrum:} framework com Sprints time-boxed; papéis, eventos, artefatos
+(ver Capítulo \ref{cap:eng-software}). O Guia Scrum é citado no edital.
+
+\textbf{Kanban:} fluxo contínuo, limita WIP, sem sprints.
+
+\textbf{Lean:} eliminar desperdício, maximizar valor.
+
+\begin{comosair}
+Ágil: mudança tardia é bem-vinda e se prioriza no backlog --- nunca
+``suspender o projeto'' ou ``cobrar taxa sem discutir'' (distratores
+clássicos da FGV para esse cenário).
+\end{comosair}
+
+\section{ITIL 4 (gerenciamento de serviços)}
+
+Foco em \textbf{cocriação de valor} por meio de serviços.
+
+\begin{itemize}
+\item \textbf{Sistema de Valor de Serviço (SVS):} como os componentes
+trabalham juntos para gerar valor. Inclui: princípios orientadores,
+governança, cadeia de valor de serviço, práticas e melhoria contínua.
+\item \textbf{7 princípios orientadores:} focar no valor; começar de onde
+se está; progredir iterativamente com feedback; colaborar e promover
+visibilidade; pensar e trabalhar de forma holística; manter simples e
+prático; otimizar e automatizar.
+\item \textbf{4 dimensões:} (1) organizações e pessoas; (2) informação e
+tecnologia; (3) parceiros e fornecedores; (4) fluxos de valor e processos.
+\item \textbf{Cadeia de valor de serviço (6 atividades):} Planejar,
+Melhorar, Engajar, Desenhar e transicionar, Obter/construir, Entregar e
+suportar.
+\item \textbf{34 práticas} em 3 grupos: \textbf{gerais} (ex.: gestão de
+risco, gestão de projeto), \textbf{de serviço} (ex.: gerenciamento de
+incidentes, gestão de mudança/\textit{change enablement}, gerenciamento de
+problemas, central de serviços), \textbf{técnicas} (ex.: desenvolvimento de
+software, gestão de implantação).
+\end{itemize}
+
+\begin{pegadinha}
+Incidente (\textbf{restaurar serviço}) $\times$ problema (\textbf{causa-raiz})
+$\times$ requisição de serviço --- a FGV troca esses três conceitos. ITIL 4
+fala em \textbf{práticas} (não ``processos'' como o ITIL v3). A banca também
+troca o propósito de práticas parecidas: gerência de infraestrutura e
+plataforma (monitorar/prover as soluções tecnológicas) $\times$ gerência de
+liberação (mover para produção) $\times$ central de serviços (ponto de
+contato).
+\end{pegadinha}
+
+\section{COBIT 2019 (governança de TI)}
+
+Distingue \textbf{governança} (avaliar, dirigir, monitorar --- responsabilidade
+do conselho) de \textbf{gestão} (planejar, construir, executar, monitorar ---
+responsabilidade da diretoria).
+
+\begin{itemize}
+\item \textbf{40 objetivos de governança e gestão} em \textbf{5 domínios:}
+\begin{itemize}
+\item \textbf{EDM} --- Evaluate, Direct and Monitor (\textbf{governança}).
+\item \textbf{APO} --- Align, Plan and Organize (gestão).
+\item \textbf{BAI} --- Build, Acquire and Implement (gestão).
+\item \textbf{DSS} --- Deliver, Service and Support (gestão).
+\item \textbf{MEA} --- Monitor, Evaluate and Assess (gestão).
+\end{itemize}
+\item \textbf{Fatores de desenho (design factors)} e \textbf{componentes do
+sistema de governança.} Princípios: sistema de governança feito sob medida;
+holístico; dinâmico; distingue governança de gestão; etc.
+\end{itemize}
+
+\begin{pegadinha}
+\textbf{EDM é governança}; APO/BAI/DSS/MEA são \textbf{gestão} --- a FGV troca
+o domínio ou atribui um objetivo ao domínio errado. No MPU, ``especificar e
+priorizar requisitos com base na experiência do usuário'' era \textbf{BAI},
+não APO nem DSS. Lembre também que o COBIT define \textbf{componentes} para
+construir/sustentar um sistema de governança (gabarito no TJ-RJ) --- não uma
+``estratégia de TI'' nem um ``inventário de ativos''.
+\end{pegadinha}
+
+\section{BPMN (modelagem de processos)}
+
+Notação para processos de negócio. Elementos-chave:
+
+\begin{itemize}
+\item \textbf{Eventos} (círculos): início (borda fina), intermediário
+(borda dupla), fim (borda grossa).
+\item \textbf{Atividades} (retângulos arredondados): tarefas e
+subprocessos.
+\item \textbf{Gateways} (losangos): decisões/desvios (exclusivo XOR,
+paralelo AND, inclusivo OR).
+\item \textbf{Raias (pools/lanes):} quem executa (papéis/organizações).
+\item \textbf{Fluxos:} de sequência (sólido) $\times$ de mensagem
+(tracejado).
+\end{itemize}
+
+\begin{pegadinha}
+Troca do símbolo pelo espessura da borda (início$\leftrightarrow$fim) ou
+gateway $\times$ atividade. No CBOK/BPMN, cuidado com \textit{swim
+lanes}/\textit{handoffs} e gateway exclusivo $\times$ paralelo.
+\end{pegadinha}
+
+\begin{jacaiu}
+Ágil híbrida (combinar); Scrum Master e eventos; Kanban (fluxo contínuo);
+ITIL 4 (dimensões, SVS); COBIT (domínios); BPMN (símbolos); lead time
+$\times$ cycle time; PMBOK 7 (princípios). Rode \texttt{./quiz.py
+governanca}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{ITIL 4} ainda é o vigente; fique atento ao vocabulário novo
+(práticas, SVS, cocriação de valor).
+\item \textbf{COBIT 2019} usa ``objetivos de governança e gestão'' (não
+``processos'' do COBIT 5).
+\item \textbf{Gestão de riscos (ISO 31000):} identificar, analisar, avaliar,
+tratar, monitorar.
+\end{itemize}
+
+\begin{comosair}
+COBIT: fixe o mapa dos 5 domínios e a linha divisória governança (EDM)
+$\times$ gestão (APO/BAI/DSS/MEA). ITIL 4: memorize o ``propósito'' de cada
+prática numa frase --- a FGV cobra exatamente essa frase. PMBOK 7: memorize
+os 12 princípios pelo nome; associe cada cenário a UM princípio, não a uma
+fase. Trocas de quantidade a decorar: 5 domínios COBIT, 4 dimensões ITIL, 5
+grupos de processos PMBOK 6, 12 princípios PMBOK 7.
+\end{comosair}

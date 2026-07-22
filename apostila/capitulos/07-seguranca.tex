@@ -1,0 +1,227 @@
+\chapter{Segurança da Informação}
+\label{cap:seguranca}
+
+\begin{edital}
+Políticas e procedimentos de segurança; ISO/IEC 27001:2022 e 27002:2022;
+confidencialidade, integridade e disponibilidade; mecanismos de segurança
+(controle de acesso, OAuth2, SSO); gestão de riscos (ameaça, vulnerabilidade,
+impacto); SDL e OWASP Top 10; análise estática e dinâmica de código (SAST e
+DAST). Também: HTTPS, SSL/TLS.
+\end{edital}
+\peso{ALTO.}
+
+\section{Tríade CIA (a base de tudo)}
+
+\begin{itemize}
+\item \textbf{Confidencialidade:} só quem tem direito acessa/\textbf{vê}
+(cifra, controle de acesso).
+\item \textbf{Integridade:} dado \textbf{íntegro}, não é alterado
+indevidamente (hash, assinatura).
+\item \textbf{Disponibilidade:} \textbf{acessível} quando necessário
+(redundância, backup).
+\item Complementos: autenticidade, não repúdio, legalidade.
+\end{itemize}
+
+\begin{pegadinha}
+Mapeie o verbo do cenário: ``restringir quem vê'' é confidencialidade, não
+integridade; ``ficar no ar'' é disponibilidade; ``alteração indevida'' é
+integridade. A FGV troca a associação cenário $\to$ princípio.
+\end{pegadinha}
+
+\section{Criptografia}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Simétrica} & \textbf{Assimétrica (chave pública)} \\
+\midrule
+Chaves & uma chave secreta compartilhada & par: pública + privada \\
+Velocidade & rápida & lenta \\
+Uso & cifrar volume de dados & troca de chave, assinatura \\
+Exemplos & AES, DES/3DES & RSA, ECC \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Hash} (MD5, SHA-256): resumo de tamanho fixo,
+\textbf{unidirecional}; garante \textbf{integridade}, não confidencialidade
+(não ``descriptografa''). MD5 e SHA-1 são considerados fracos.
+\item \textbf{Assinatura digital:} hash do documento cifrado com a
+\textbf{chave privada} do emissor $\to$ garante autenticidade, integridade e
+não repúdio.
+\item \textbf{Certificado digital / ICP-Brasil:} vincula identidade a uma
+chave pública, emitido por uma AC (Autoridade Certificadora).
+\item \textbf{TDE (Transparent Data Encryption):} cifra os dados \textbf{em
+repouso} (arquivos do banco/disco) de forma transparente à aplicação ---
+protege contra roubo do arquivo físico, não contra acesso lógico autorizado.
+\item \textbf{Esteganografia} $\neq$ criptografia: \textbf{oculta a
+existência} da mensagem (esconde dado dentro de imagem/áudio); a
+criptografia oculta o \textbf{conteúdo}, não o fato de haver mensagem.
+\end{itemize}
+
+\begin{pegadinha}
+Hash não é cifra reversível; confidencialidade vem de cifra (não de hash);
+assina-se com a chave \textbf{privada}, verifica-se com a \textbf{pública};
+esteganografia esconde a existência, cifra esconde o conteúdo. HMAC (chave
+simétrica) garante autenticidade e integridade --- não confidencialidade.
+\end{pegadinha}
+
+\section{HTTPS, SSL e TLS}
+
+\textbf{HTTPS = HTTP sobre TLS/SSL.} Garante confidencialidade + integridade
++ autenticação do servidor.
+
+\textbf{TLS substitui o SSL:} corrige vulnerabilidades das versões antigas
+do SSL. SSL está obsoleto; TLS 1.2/1.3 é o atual.
+
+\begin{pegadinha}
+Nunca ``SSL é mais seguro/moderno que TLS'' (é o contrário: TLS sucedeu e
+corrigiu o SSL) nem tratar os dois como intercambiáveis.
+\end{pegadinha}
+
+\section{Controle de acesso}
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{8.2cm}@{}}
+\toprule
+\textbf{Política} & \textbf{Base da decisão} \\
+\midrule
+DAC (discricionário) & dono do recurso concede acesso \\
+MAC (mandatório) & \textbf{rótulos de segurança} comparados com autorizações; regra central, o usuário não decide \\
+RBAC (por papéis) & acesso via papéis/funções \\
+ABAC (por atributos) & atributos de usuário/recurso/contexto \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Menor privilégio:} só o acesso necessário (ex.: gerente de RH acessa
+só o que precisa).
+
+\textbf{OAuth2:} protocolo de \textbf{autorização} delegada (tokens);
+\textbf{diferente} de autenticação. \textbf{OpenID Connect (OIDC)} (sobre
+OAuth2) é quem faz autenticação --- claims do ID Token: \textbf{iat} (issued
+at, emissão), \textbf{exp} (expiração), \textbf{sub} (subject, identificador
+do usuário), \textbf{jti} (id do token).
+
+\textbf{SSO (Single Sign-On):} um login para vários sistemas.
+
+\begin{pegadinha}
+MAC = rótulos e classificações impostos pelo sistema (o usuário \emph{não}
+decide); DAC = o proprietário concede; RBAC = permissões por função/cargo. A
+FGV descreve rótulos comparados a autorizações (isso é MAC) e oferece
+``discricionário'' como pegadinha. OAuth2 é autorização, \textbf{não}
+autenticação. Nos claims do OIDC, a banca pede um e oferece os outros ---
+decore os quatro.
+\end{pegadinha}
+
+\section{OWASP Top 10 --- 2021 e 2025 (leia os dois)}
+
+O edital aponta para o projeto OWASP sem fixar ano. A Dataprev 2024 cobrou o
+\textbf{2021}; o \textbf{2025} saiu em novembro de 2025. Saber os dois cobre
+qualquer recorte que a prova use.
+
+\begin{center}
+\begin{tabular}{@{}p{1.3cm}p{5.3cm}p{5.3cm}@{}}
+\toprule
+\# & \textbf{Top 10:2021} & \textbf{Top 10:2025} \\
+\midrule
+1 & Broken Access Control & Broken Access Control (absorveu SSRF) \\
+2 & Cryptographic Failures & Security Misconfiguration (subiu de 5º) \\
+3 & Injection (SQLi; \textbf{XSS absorvido aqui}) & Software Supply Chain Failures (novo) \\
+4 & Insecure Design (novo em 2021) & Cryptographic Failures (caiu para 4º) \\
+5 & Security Misconfiguration & Injection (caiu para 5º) \\
+6 & Vulnerable and Outdated Components & --- \\
+7 & Identification and Authentication Failures & --- \\
+8 & Software and Data Integrity Failures & --- \\
+9 & Security Logging and Monitoring Failures & --- \\
+10 & Server-Side Request Forgery (SSRF) & Mishandling of Exceptional Conditions (novo) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A Dataprev 2024 descreveu ``injeção'' citando SQL $\to$ categoria
+\textbf{Injection}; lembre que desde 2021 \textbf{XSS entrou em Injection}
+(era categoria própria até 2017). A banca mistura itens que \textbf{não} são
+da lista OWASP web --- ``proteção da cadeia de suprimentos'', ``ambiente de
+engenharia'', ``treinamento operacional'' são de CI/CD e SSDF, não OWASP. Se
+a prova disser ``2025'', troque o ranking conforme a tabela acima.
+\end{pegadinha}
+
+\section{Desenvolvimento seguro}
+
+\begin{itemize}
+\item \textbf{SDL (Security Development Lifecycle):} segurança em todo o
+ciclo.
+\item \textbf{SAST (estática):} analisa o \textbf{código-fonte} sem
+executar (caixa-branca).
+\item \textbf{DAST (dinâmica):} testa a \textbf{aplicação em execução}
+(caixa-preta).
+\item \textbf{IAST:} combina os dois em runtime instrumentado.
+\item \textbf{DevSecOps:} segurança automatizada no pipeline CI/CD.
+\end{itemize}
+
+\begin{pegadinha}
+\textbf{SAST $\times$ DAST}: código parado $\times$ app rodando. Não
+inverta.
+\end{pegadinha}
+
+\section{Detecção e resposta}
+
+\textbf{IDS} (detecção): \textbf{alerta} sobre intrusão, passivo. \textbf{IPS}
+(prevenção): \textbf{bloqueia} ativamente (inline). \textbf{SIEM:}
+correlaciona logs/eventos para detecção e resposta.
+
+\textbf{Resposta a incidentes (NIST SP 800-61) --- a ordem cai:}
+\begin{enumerate}
+\item \textbf{Preparação} (antes de tudo: time, ferramentas, políticas).
+\item \textbf{Detecção e Análise} (identificar e entender o incidente).
+\item \textbf{Contenção, Erradicação e Recuperação} (isolar, remover a
+causa, restaurar serviços/backups).
+\item \textbf{Atividade pós-incidente / Lições Aprendidas} (documentar,
+prevenir recorrência --- realimenta a Preparação).
+\end{enumerate}
+
+\begin{pegadinha}
+Depois de conter e erradicar vem \textbf{recuperação + lições aprendidas} (a
+etapa que ``fecha'' o ciclo); detecção e análise vêm \textbf{antes} da
+contenção --- a FGV embaralha essa ordem.
+\end{pegadinha}
+
+\begin{jacaiu}
+Controle de acesso mandatório (rótulos); OWASP Top 10:2021 (identificar
+categoria válida); X.800 mecanismos de segurança (específicos $\times$
+disseminados); SSL $\times$ TLS; tríade CIA; IDS $\times$ IPS; SAST $\times$
+DAST; modelo de responsabilidade compartilhada em nuvem; HMAC em webhook
+(autenticidade + integridade). Rode \texttt{./quiz.py seguranca}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{ISO/IEC 27002:2022:} \textbf{93 controles} em \textbf{4
+temas} --- organizacionais (37), pessoas (8), físicos (14), tecnológicos
+(34). A 27001:2022 é o \textbf{SGSI} (requisitos, Anexo A); a 27002 é o
+\textbf{guia de controles}. Trabalho remoto = pessoas; mídia de
+armazenamento = física; criptografia = tecnológica; políticas =
+organizacional.
+\item \textbf{NIST Cybersecurity Framework 1.1:} funções Identify, Protect,
+Detect, Respond, Recover (o 2.0 acrescentou \textbf{Govern}).
+\item \textbf{Gestão de risco (ISO 27005/31000):} risco = f(ameaça,
+vulnerabilidade, impacto); tratamento: mitigar, transferir, aceitar, evitar.
+\item \textbf{STRIDE} (modelagem de ameaças): Spoofing, Tampering,
+Repudiation, Information disclosure, Denial of service, Elevation of
+privilege.
+\end{itemize}
+
+\begin{comosair}
+CIA: Confidencialidade = quem VÊ; Integridade = dado ÍNTEGRO; Disponibilidade
+= ACESSÍVEL. Controle de acesso, decore a frase-chave: MAC = rótulos impostos
+pelo sistema; DAC = o proprietário concede; RBAC = permissões por
+função/cargo. OWASP Top 10:2021, âncoras seguras: A01 Broken Access Control,
+A03 Injection, A10 SSRF. Se a opção falar em ``cadeia de
+suprimentos/pipeline/treinamento'', é distrator de outro framework. Gatilho
+geral: ``sempre isento'', ``SSL mais seguro'', claim trocado --- releia com
+calma.
+\end{comosair}

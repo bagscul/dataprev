@@ -1,0 +1,114 @@
+\chapter{Como usar esta apostila}
+
+Este material foi montado a partir de quatro fontes do repositório de estudo: o
+conteúdo programático do edital (Anexo I, Perfil 3), as dicas de banca
+(\texttt{dicas/}), a resolução das questões do banco (\texttt{banco.json} +
+provas reais da FGV em \texttt{banco-provas.json}) e pesquisa em fontes
+primárias. A ideia é que ela funcione como par do quiz de terminal: leia o
+capítulo do bloco antes de resolver as questões daquele assunto, e volte a ele
+quando errar algo que não entendeu.
+
+\section*{Como a prova é montada (edital 2026)}
+\addcontentsline{toc}{section}{Como a prova é montada (edital 2026)}
+
+Prova objetiva, \textbf{11/10/2026, 13h--17h}, 70 questões, 5 alternativas,
+uma correta. Portões fecham 12h30. Sem consulta. Questão com duas marcações ou
+nenhuma vale zero.
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{5.2cm}rrr@{}}
+\toprule
+\textbf{Módulo} & \textbf{Disciplina} & \textbf{Questões} & \textbf{Peso} & \textbf{Pontos} \\
+\midrule
+I --- Gerais & Língua Portuguesa & 12 & 1 & 12 \\
+I --- Gerais & Língua Inglesa & 12 & 1 & 12 \\
+I --- Gerais & Raciocínio Lógico Matemático & 5 & 1 & 5 \\
+I --- Gerais & Atualidades e Inteligência Artificial & 6 & 1 & 6 \\
+I --- Gerais & Legislação (Segurança da Informação e Proteção de Dados) & 5 & 1 & 5 \\
+\textbf{II --- Específicos} & \textbf{Conhecimentos Específicos} & \textbf{30} & \textbf{2,5} & \textbf{75} \\
+\midrule
+& \textbf{Total} & \textbf{70} & & \textbf{115} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{conceito}[A prova se decide no Módulo II]
+30 questões a 2,5 pontos cada = 75 dos 115 pontos (\textbf{65\% da nota}).
+Errar um específico custa 2,5$\times$ errar um geral. A eliminação exige no
+mínimo 57,5 pontos --- isso é o piso legal, não a meta. Desenvolvimento de
+Software foi o perfil mais concorrido em 2024 (6.257 inscritos de 23.423), então
+a nota de corte real tende a ser bem mais alta que o piso.
+\end{conceito}
+
+\section*{Onde a prova provavelmente se concentra}
+\addcontentsline{toc}{section}{Onde a prova provavelmente se concentra}
+
+Estimativa a partir da Dataprev 2024 e da ênfase do edital 2026 --- use como
+guia de prioridade, não como garantia.
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{2.8cm}p{6.7cm}@{}}
+\toprule
+\textbf{Bloco} & \textbf{Peso esperado} & \textbf{Por quê} \\
+\midrule
+Engenharia de Software & muito alto & Maior bloco em 2024 (${\sim}$10 questões). Requisitos, ágil, testes, ponto de função caem sempre. \\
+Banco de Dados & alto & Eixo duplo com Eng. Software. No MPU superou tudo. SQL, normalização, NoSQL. \\
+Arquitetura de Software & alto & Microsserviços, REST$\times$SOAP, nuvem, containers, hexagonal. \\
+Segurança & alto & ISO 27001/27002:2022, OWASP, OAuth2/SSO, SAST/DAST. \\
+Programação & médio-alto & Spring, XML/JSON/REST, DevOps, Git, mobile, low-code. \\
+BI & médio & DW, OLAP, ETL, data mining --- costuma vir junto com BD. \\
+Governança & médio & ITIL 4, COBIT 2019, Scrum/Kanban, BPMN. \\
+Frontend & médio & SPA$\times$PWA, React/Angular/Vue, HTTPS/TLS. \\
+Java & médio & Linguagem-base do edital, mas caiu pouco na amostra. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}[Dois alertas que valem pontos]
+\textbf{1. Redes cai mesmo fora do edital do Perfil 3.} Redes de Computadores
+está nos Perfis 2 e 5, não no 3. Ainda assim a Dataprev 2024 trouxe ${\sim}$3
+questões de redes (OSI, protocolo, segurança de rede) para Desenvolvimento de
+Software. Ignorar isso custou 7,5 pontos em 2024 --- ver Capítulo de Redes.
+
+\textbf{2. OWASP: 2021 vs.\ 2025.} A Dataprev 2024 cobrou o OWASP Top 10:2021.
+Mas em novembro de 2025 saiu o OWASP Top 10:2025, com mudanças grandes
+(Security Misconfiguration subiu para A02, ``Software Supply Chain Failures''
+entrou como A03, SSRF foi absorvido em A01, surgiu A10 ``Mishandling of
+Exceptional Conditions''). O edital 2026 aponta para a página do projeto sem
+fixar ano --- saiba as duas listas.
+\end{pegadinha}
+
+\section*{IA entrou nas gerais (novidade 2026)}
+\addcontentsline{toc}{section}{IA entrou nas gerais (novidade 2026)}
+
+A disciplina antes chamada ``Atualidades'' agora é \textbf{``Atualidades e
+Inteligência Artificial''} (6 questões) e o edital pede fundamentos de IA:
+conceitos, aprendizado de máquina, modelos generativos e de linguagem (LLMs),
+e ética, governança e privacidade em IA. Conteúdo novo e de retorno alto ---
+ver o capítulo de Atualidades.
+
+\section*{Como usar este material no seu ciclo de estudo}
+\addcontentsline{toc}{section}{Como usar este material no seu ciclo de estudo}
+
+\begin{enumerate}
+\item \textbf{Leia o capítulo do bloco} antes de atacar as questões dele.
+\item \textbf{Resolva as questões:} \texttt{./quiz.py <bloco>} (ou
+\texttt{--prova} para as provas reais da FGV).
+\item \textbf{Veja a dica de banca dentro do capítulo} --- os quadros
+vermelhos (``Como a FGV arma a pegadinha'') resumem o padrão de distrator.
+\item \textbf{Revise o que errou:} os erros vão automaticamente para
+\texttt{erros/<bloco>.md}; use \texttt{./quiz.py --erradas} para repetição
+espaçada.
+\end{enumerate}
+
+Ordem de prioridade sugerida: comece pelos blocos ``muito alto''/``alto'' da
+tabela acima --- é onde os 2,5 pontos por questão se acumulam. O Apêndice A
+tem o mapa completo de pesos, e o Apêndice B consolida todos os pares que a
+FGV inverte, capítulo por capítulo, num glossário único de revisão rápida.
+
+\begin{comosair}[Regra de ouro para estudar com esta apostila]
+Não decore definição solta. Cada capítulo tem uma caixa azul de
+\emph{conceito}, uma vermelha de \emph{pegadinha} e uma verde de \emph{como se
+sair melhor}. Se você souber reproduzir as três de cabeça para um bloco, está
+pronto para fazer as questões dele no quiz sem abrir a apostila.
+\end{comosair}

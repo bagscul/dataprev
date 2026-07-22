@@ -1,0 +1,177 @@
+\chapter{Redes de Computadores}
+\label{cap:redes}
+
+\begin{pegadinha}[Fora do edital do Perfil 3, mas cai --- não pule este capítulo]
+Redes de Computadores \textbf{não está} no conteúdo do Perfil 3 (está nos
+Perfis 2 e 5). O edital do Perfil 3 só cita HTTPS e SSL/TLS. Mesmo assim, a
+\textbf{Dataprev 2024 trouxe ${\sim}$3 questões de redes} para Desenvolvimento
+de Software (modelo OSI, protocolo, segurança de rede). Ignorar isso custou
+7,5 pontos. Estude o essencial abaixo --- é ponto barato e seguro.
+\end{pegadinha}
+
+\section{Modelos de referência}
+
+\textbf{OSI (7 camadas)} --- de baixo para cima:
+
+\begin{center}
+\begin{tabular}{@{}p{0.6cm}p{2.2cm}p{4cm}p{3cm}@{}}
+\toprule
+\# & \textbf{Camada} & \textbf{Função} & \textbf{Exemplos} \\
+\midrule
+1 & Física & bits no meio & cabos, sinais \\
+2 & Enlace & quadros, MAC & switch, Ethernet \\
+3 & Rede & pacotes, IP, roteamento & roteador, IP \\
+4 & Transporte & fim a fim, portas & TCP, UDP \\
+5 & Sessão & diálogo, checkpoints & --- \\
+6 & Apresentação & formato, cifra, compressão & TLS (discutível) \\
+7 & Aplicação & serviços ao usuário & HTTP, DNS, SMTP \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{TCP/IP (4 camadas):} Acesso à Rede, Internet (IP), Transporte
+(TCP/UDP), Aplicação.
+
+\begin{pegadinha}
+Modelo OSI é cobrado por \textbf{função}, não por número: o cenário descreve
+o comportamento e pede a camada. Ex.: ``checkpoints no fluxo + controle de
+diálogo (simplex/half/full-duplex)'' = camada de \textbf{Sessão} --- não
+Transporte, Enlace ou Apresentação, que são os distratores comuns. Troca
+clássica de elemento por camada: switch = 2 (enlace), roteador = 3 (rede).
+\end{pegadinha}
+
+\section{Equipamentos}
+
+\textbf{Hub} (camada 1, burro, repete para todos) $\times$ \textbf{Switch}
+(camada 2, usa MAC, comuta para a porta certa) $\times$ \textbf{Roteador}
+(camada 3, usa IP, interliga redes). Existe switch L3 (roteia), mas o par
+clássico cobrado é switch=2, roteador=3.
+
+\section{TCP $\times$ UDP}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{TCP} & \textbf{UDP} \\
+\midrule
+Conexão & orientado a conexão (handshake 3 vias) & sem conexão \\
+Confiabilidade & garante entrega e ordem & não garante \\
+Uso & web, e-mail, transferência & streaming, DNS, VoIP \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+O \textbf{three-way handshake} do TCP \textbf{sincroniza números de
+sequência} (SYN / SYN-ACK / ACK). Os distratores dizem que ele ``autentica
+dispositivos'', ``negocia segurança'' ou ``controla fluxo'' --- nenhum dos
+três é o papel do handshake. Handshake existe \textbf{só no TCP}.
+\end{pegadinha}
+
+\section{Protocolos e portas}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.4cm}p{6.2cm}@{}}
+\toprule
+\textbf{Protocolo} & \textbf{Porta} & \textbf{Função} \\
+\midrule
+HTTP & 80 & web \\
+HTTPS & 443 & web seguro (TLS) \\
+FTP & 21 (20 dados) & transferência \\
+SSH & 22 & acesso remoto seguro \\
+SMTP & 25 & envio de e-mail \\
+DNS & 53 & nomes $\to$ IP \\
+POP3 / IMAP & 110 / 143 & leitura de e-mail \\
+DHCP & 67/68 & IP automático \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{Observação:} porta específica não apareceu na amostra de provas
+reais analisadas; a FGV preferiu raciocínio de rota, camada e ACL. Está no
+edital, mas priorize os padrões desta seção.
+
+\section{Endereçamento e roteamento IP}
+
+\textbf{IPv4:} 32 bits. Faixas privadas (RFC 1918): 10.0.0.0/8,
+172.16.0.0/12, 192.168.0.0/16. \textbf{IPv6:} 128 bits; prefixo de sub-rede
+típico /64.
+
+\textbf{Roteamento:} rota estática $\times$ dinâmica (OSPF, RIP, BGP).
+\textbf{Distância administrativa} (Cisco) desempata a fonte da rota:
+conectada 0, estática 1, OSPF 110, RIP 120 --- \textbf{menor} vence. Com duas
+rotas default, ganha a estática (1) sobre OSPF (110).
+
+\begin{pegadinha}
+Absolutos em roteamento denunciam o distrator: ``OSPF SEMPRE tem prioridade
+sobre rota estática'', ``roteador faz load balancing AUTOMÁTICO'', ``descarta
+por rotas conflitantes''. A regra real é determinística: menor distância
+administrativa vence, sempre.
+\end{pegadinha}
+
+\subsection{ACL Cisco e wildcard mask}
+
+Wildcard mask = inverso da máscara; bit \textbf{0} = ``tem que bater'', bit
+\textbf{1} = ``ignora''. Para casar só endereços ímpares, o bit menos
+significativo do octeto precisa estar fixo em 1 $\to$ wildcard
+\texttt{0.0.0.254} (deixa livres os demais bits, fixa o último). Confira
+montando os bits, não de cor.
+
+\subsection{MPLS, VLAN, NAT}
+
+\begin{itemize}
+\item \textbf{MPLS (Multiprotocol Label Switching):} encaminha por
+\textbf{rótulos (labels)} em vez de olhar o IP de destino a cada salto ---
+por isso é chamado de \textbf{``camada 2.5''} (entre enlace/L2 e rede/L3).
+Cria caminhos (LSP) para engenharia de tráfego e QoS.
+\item \textbf{VLAN:} segmenta logicamente a camada 2 (broadcast domains
+separados no mesmo switch físico).
+\item \textbf{NAT:} traduz endereços privados $\leftrightarrow$ público
+(economiza IPv4, oculta a rede interna).
+\end{itemize}
+
+\begin{pegadinha}
+MPLS é \textbf{rótulo} (``2.5''), não roteamento IP puro; VLAN segmenta
+\textbf{L2}. Não confundir os três termos entre si.
+\end{pegadinha}
+
+\section{Tipos de rede corporativa}
+
+Internet (pública global) $\times$ intranet (interna) $\times$ extranet
+(acesso controlado a parceiros/clientes externos) $\times$ portal (ponto
+único de acesso) --- ver também Capítulo \ref{cap:arquitetura}.
+
+\begin{pegadinha}
+Inverter intranet/extranet/Internet: chamar intranet de ``rede pública
+global'', extranet de ``só interna'', Internet de ``rede restrita'' --- os
+três papéis trocados são o distrator clássico.
+\end{pegadinha}
+
+\section{Segurança de rede (interface com Segurança da Informação)}
+
+\textbf{Firewall} (filtra tráfego), \textbf{proxy}, \textbf{VPN} (IPsec, SSL
+VPN). \textbf{IDS} (detecta/alerta) $\times$ \textbf{IPS} (bloqueia) --- ver
+Capítulo \ref{cap:seguranca}. \textbf{SSL $\times$ TLS $\times$ HTTPS} e
+\textbf{X.800} (mecanismos de segurança OSI) também são fronteira com
+segurança.
+
+\begin{pegadinha}
+``SSL mais seguro/moderno que TLS'' está \textbf{invertido} --- TLS sucedeu e
+corrigiu o SSL.
+\end{pegadinha}
+
+\begin{jacaiu}
+Camada OSI de sessão (checkpoints); switch $\times$ roteador $\times$ hub;
+TCP $\times$ UDP; portas; RFC 1918; IPv6 128 bits; roteamento estático
+$\times$ OSPF (distância administrativa); ACL Cisco (wildcard mask). Rode
+\texttt{./quiz.py redes}.
+\end{jacaiu}
+
+\begin{comosair}
+Não vale estudar redes com a profundidade dos Perfis 2/5. Cubra:
+OSI/TCP-IP, equipamentos por camada, TCP$\times$UDP, portas comuns, IP
+público$\times$privado, IDS$\times$IPS. Isso resolve o padrão histórico da
+FGV para o perfil de desenvolvimento com pouco tempo investido. OSI de cima
+pra baixo, para decorar rápido: Aplicação, Apresentação, Sessão, Transporte,
+Rede, Enlace, Física.
+\end{comosair}

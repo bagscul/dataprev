@@ -1,0 +1,252 @@
+\chapter{Atualidades e Inteligência Artificial}
+\label{cap:atualidades}
+
+\begin{edital}
+(1) Tópicos atuais de segurança, transportes, política, economia, sociedade,
+educação, saúde, cultura, tecnologia, energia, relações internacionais,
+desenvolvimento sustentável e ecologia; (2) Inteligência Artificial:
+fundamentos e aplicações --- conceitos de IA, aprendizado de máquina, modelos
+generativos e de linguagem (LLMs), ética, governança e privacidade em IA.
+\end{edital}
+\peso{6 questões, peso 1 --- NOVO em 2026: a disciplina ganhou o bloco de IA.
+IA saiu do específico e entrou nas gerais.}
+
+\section{Parte 1 --- Atualidades (viés socioambiental)}
+
+Na Dataprev 2024 foram 5 questões (Q31--Q35) e o viés é claríssimo:
+\textbf{SOCIOAMBIENTAL}. Sustentabilidade, meio ambiente, ESG, desigualdade,
+proteção de dados aparecem quase sempre. A FGV costuma cobrar no formato
+\textbf{julgar afirmativas} (V/F, ``está correto o que se afirma em I, II,
+III'').
+
+Temas concretos vistos nas provas FGV do edital:
+
+\begin{itemize}
+\item Fóruns/cúpulas internacionais (G20 no Brasil, presidência rotativa,
+``Mundo Justo e Planeta Sustentável'', combate às desigualdades).
+\item Impacto ambiental da tecnologia (consumo de energia de data centers,
+pegada de carbono do digital --- já caiu na Dataprev 2024, ${\sim}$2\% da
+eletricidade mundial no texto-base).
+\item Art.\ 225 da Constituição (direito ao meio ambiente equilibrado),
+racismo ambiental, justiça socioambiental.
+\item Proteção de dados / LGPD aplicada a caso real (uso indevido de dados
+de consumidores, publicidade direcionada).
+\item No MPU: A3P, Política Nacional sobre Mudança do Clima (Lei
+12.187/2009), Protocolo de Quioto, mudanças climáticas (enchentes RS,
+incêndios) --- mesma pegada verde.
+\end{itemize}
+
+\begin{pegadinha}
+Item com \textbf{absoluto} ou termo radical é quase sempre falso: ``todos os
+avanços tecnológicos representam INVARIAVELMENTE benefícios para o meio
+ambiente'' --- o ``invariavelmente'' já entrega que é falso. Item que mantém
+``a lógica de consumo do atual modelo econômico'' e ainda promete ``justiça
+social para todos'' é contradição plantada; desenvolvimento sustentável pede
+mudar o modelo. Item com dado numérico inflado/inventado (``data centers =
+metade do consumo dos ecossistemas digitais'' quando o texto disse
+${\sim}$2\% da eletricidade mundial) --- confira o número contra o
+texto-base. Item ``bonzinho'' mas falso: destino de dados ``para pesquisas
+que democratizam remédios baratos'' soa nobre, mas não é o que a denúncia
+trata (uso indevido/comercialização) --- a banca usa a alternativa
+moralmente simpática como isca. O item verdadeiro costuma ser o mais
+moderado e alinhado ao senso socioambiental.
+\end{pegadinha}
+
+\begin{comosair}
+Trate como prova de interpretação: a maioria das respostas está no
+\textbf{próprio texto-base}. Releia antes de julgar cada item. Marque como
+falso todo item com ``sempre, nunca, apenas, invariavelmente,
+exclusivamente, todos''. Desconfie de item que contradiz o consenso ESG
+(sustentável = mudar consumo, incluir os vulneráveis, reduzir emissões).
+Julgue item por item e só então escolha a combinação; se dois itens você tem
+certeza, as combinações de resposta já eliminam metade das opções. Acompanhe:
+cúpulas do Brasil (G20, COP/clima), LGPD/ANPD em casos noticiados, energia e
+IA/data centers, desigualdade.
+\end{comosair}
+
+\section{Parte 2 --- Fundamentos de IA (novo, alto retorno)}
+
+\subsection{Conceitos}
+
+\begin{itemize}
+\item \textbf{IA:} sistemas que executam tarefas que exigiriam inteligência
+humana.
+\item \textbf{Machine Learning (ML):} subcampo em que o sistema
+\textbf{aprende de dados} e melhora com a experiência, sem ser
+explicitamente programado.
+\item \textbf{Deep Learning:} ML com \textbf{redes neurais profundas}
+(muitas camadas).
+\item Relação: IA $\supset$ ML $\supset$ Deep Learning.
+\end{itemize}
+
+\subsection{Tipos de aprendizado}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.6cm}p{2.4cm}p{2.7cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Dados} & \textbf{Objetivo} & \textbf{Exemplos} \\
+\midrule
+Supervisionado & rotulados & prever rótulo & classificação, regressão \\
+Não supervisionado & sem rótulo & achar estrutura & clustering (K-Means), associação, PCA \\
+Por reforço & recompensa / punição & política ótima & agentes, jogos \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Supervisionado usa dados \textbf{rotulados}; não supervisionado, \textbf{sem
+rótulo}. A FGV troca os dois. ``Aprende com os dados e melhora ao longo do
+tempo'' = \textbf{redes neurais/ML}, não lógica booleana nem programação
+linear.
+\end{pegadinha}
+
+\subsection{Modelos generativos e LLMs}
+
+\begin{itemize}
+\item \textbf{Modelos generativos:} geram conteúdo novo (texto, imagem)
+aprendido da distribuição dos dados.
+\item \textbf{LLM (Large Language Model):} modelo de linguagem treinado em
+texto massivo (arquitetura \textbf{Transformer}, mecanismo de
+\textbf{atenção}); gera/entende linguagem. Ex.: família GPT, Claude, Gemini.
+\item \textbf{RAG (Retrieval-Augmented Generation):} combina o LLM com
+busca em base externa para respostas mais atuais e fundamentadas.
+\item \textbf{Alucinação:} o modelo gera resposta plausível porém
+incorreta.
+\item \textbf{Prompt, fine-tuning, embeddings} são conceitos recorrentes.
+\end{itemize}
+
+\subsection{Ética, governança e privacidade em IA}
+
+\begin{itemize}
+\item \textbf{Viés algorítmico} (dados enviesados $\to$ decisão injusta),
+transparência/explicabilidade, responsabilização.
+\item \textbf{Privacidade:} IA e LGPD (dados pessoais em treino e
+inferência).
+\item \textbf{Regulação:} discussões de marco legal da IA (Brasil PL
+2338/2023; \textbf{AI Act} europeu, baseado em risco).
+\end{itemize}
+
+\subsection{IA aplicada a negócios e políticas públicas --- como a FGV cobra}
+
+O edital não pede só a teoria (redes neurais, tipos de aprendizado): ele pede
+\textbf{fundamentos e aplicações}. Isso significa que a FGV pode enquadrar a
+mesma pergunta técnica dentro de um \textbf{cenário} --- um órgão público, um
+banco, uma prefeitura --- e cobrar se o candidato reconhece o conceito por
+trás da situação descrita. É o mesmo estilo de pegadinha por cenário que já
+aparece em Governança (Capítulo \ref{cap:governanca}) e em Segurança
+(Capítulo \ref{cap:seguranca}), agora aplicado a IA.
+
+\begin{conceito}[Padrões de cenário que a FGV usa]
+\begin{itemize}
+\item \textbf{Triagem/priorização de atendimento} (fila de posto de saúde,
+concessão de benefício social, análise de currículos): pede se o modelo é
+\textbf{classificação supervisionada} (rótulo conhecido: aprovado/negado,
+prioritário/não) e se há \textbf{direito a explicação/revisão humana} da
+decisão automatizada.
+\item \textbf{Detecção de fraude ou anomalia} (glosa de conta pública,
+fraude em benefício, transação bancária suspeita): em geral
+\textbf{não supervisionado} ou semissupervisionado, porque o padrão fraudulento
+muda com o tempo (concept drift) e casos rotulados são raros.
+\item \textbf{Chatbot/atendimento ao cidadão} com LLM: cenário testa se você
+sabe que a resposta pode \textbf{alucinar} e que, por isso, decisão que afeta
+direito do cidadão exige \textbf{validação humana}, não a resposta do modelo
+sozinha.
+\item \textbf{Concessão de crédito, seguro ou benefício por score
+algorítmico}: cenário clássico de \textbf{viés algorítmico} --- se o dado de
+treino reflete desigualdade histórica (ex.: bairro, gênero, raça
+correlacionados a inadimplência passada), o modelo \textbf{reproduz e
+amplifica} essa desigualdade, mesmo sem usar o atributo sensível diretamente
+(proxy discriminatório).
+\end{itemize}
+\end{conceito}
+
+\textbf{Base legal que ancora esses cenários (LGPD, art.\ 20):} o titular tem
+direito a \textbf{solicitar revisão} de decisões tomadas unicamente com base
+em tratamento automatizado que afetem seus interesses, incluindo decisões
+destinadas a definir o seu perfil pessoal, profissional, de consumo e de
+crédito. A FGV cruza esse artigo com IA quando o cenário é score de crédito,
+RH automatizado ou benefício público.
+
+\begin{pegadinha}[Como a FGV arma a pegadinha em cenários de IA aplicada]
+\begin{itemize}
+\item O cenário descreve um sistema que \textbf{decide sozinho, sem qualquer
+revisão humana}, e a alternativa correta chama isso de boa prática ---
+\textbf{descarte}: LGPD garante revisão humana de decisão automatizada
+relevante.
+\item ``O modelo de IA é neutro porque não usa o atributo raça/gênero
+diretamente'' --- \textbf{falso}: variáveis \textbf{proxy} (CEP, escola,
+histórico de consumo) podem recriar o viés indiretamente. Ignorar isso é o
+distrator clássico de ``neutralidade tecnológica''.
+\item Confundir \textbf{explicabilidade} (o modelo consegue justificar a
+decisão de forma compreensível a humanos) com \textbf{acurácia} (o modelo
+acerta muito) --- um modelo pode ser muito acurado e pouco explicável (caixa-preta), e o edital cobra exatamente essa tensão.
+\item Tratar chatbot/LLM em atendimento público como fonte \textbf{definitiva
+e infalível} de informação --- ignora o risco de alucinação, que é
+justamente o ponto que a banca quer que você saiba mitigar (revisão humana,
+RAG com fonte oficial, escopo restrito).
+\end{itemize}
+\end{pegadinha}
+
+\subsection{Interseção IA $\times$ ESG: energia, governança e regulação}
+
+A FGV gosta de cruzar o bloco de IA com o viés socioambiental da Parte 1
+deste capítulo --- é a interseção mais provável do bloco ``Atualidades e IA''
+em 2026, porque une os dois assuntos que a banca mais repete.
+
+\begin{conceito}[O que sustenta esse cenário]
+\begin{itemize}
+\item \textbf{Consumo de energia dos data centers:} a maior fatia da energia
+de um data center vai para a \textbf{infraestrutura de TI} (processamento,
+${\sim}$metade do consumo) e para o \textbf{resfriamento/ar-condicionado}
+(a segunda maior fatia) --- refrigeração é, depois do próprio processamento,
+o maior custo energético de treinar/rodar modelos de IA em escala.
+\item \textbf{PUE (Power Usage Effectiveness):} métrica-padrão de eficiência
+energética de data center (energia total consumida $\div$ energia usada só
+pela TI). Regulações recentes (ex.: diretiva europeia) já fixam metas
+numéricas de PUE para novos data centers --- quanto mais próximo de 1,0,
+mais eficiente.
+\item \textbf{Matriz energética:} boa parte da energia elétrica que alimenta
+data centers no mundo ainda vem de fontes fósseis --- por isso a expansão
+acelerada de IA pressiona diretamente as metas de descarbonização (o mesmo
+tema de mudança climática que já caiu em Atualidades).
+\item \textbf{Governança:} reguladores discutem exigir que empresas
+\textbf{divulguem publicamente} o impacto ambiental (energia, água,
+emissões) de produtos e serviços baseados em IA --- transparência como
+instrumento de política pública, não só como boa vontade corporativa.
+\end{itemize}
+\end{conceito}
+
+\begin{pegadinha}
+O texto-base cita um número (ex.: ``X\% da energia global'', ``Y milhões de
+toneladas de CO$_2$'') e a alternativa \textbf{infla ou distorce esse
+número} --- releia o texto-base antes de julgar, nunca confie no número de
+memória. Também é comum a alternativa afirmar que ``a infraestrutura de IA
+usa MAJORITARIAMENTE energia limpa/renovável'' --- trate como distrator
+otimista, salvo se o próprio texto-base afirmar isso explicitamente. E cuidado
+com a armadilha inversa: dizer que IA é ``incompatível com sustentabilidade''
+também é absoluto demais --- o texto costuma apresentar o dilema (benefício
+tecnológico \emph{e} custo ambiental), não um veredito fechado.
+\end{pegadinha}
+
+\begin{jacaiu}
+Redes neurais como o que ``aprende com dados e melhora''; supervisionado
+$\times$ não supervisionado; viés-variância, regularização L1/L2,
+over/underfitting; concept drift $\times$ data drift; MLOps; métrica MAE
+(nas provas de IA do TJ-RJ); sustentabilidade e data centers (Dataprev); viés
+algorítmico em decisão automatizada; direito à revisão humana (LGPD, art.\
+20). Rode \texttt{./quiz.py atualidades}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{Métricas de ML:} classificação (acurácia, precisão, recall,
+F1, matriz de confusão); regressão (MAE, RMSE, R\textsuperscript{2}).
+\item \textbf{Overfitting} (decora o treino, vai mal em dados novos)
+$\times$ \textbf{underfitting} (simples demais); combate: regularização,
+validação cruzada, mais dados.
+\item \textbf{Viés $\times$ variância:} trade-off central.
+\item Acompanhe notícias de IA e regulação de 2026 --- é conteúdo vivo, e
+esta disciplina recompensa quem está atualizado na véspera, não quem
+estudou em julho.
+\end{itemize}

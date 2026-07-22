@@ -1,0 +1,234 @@
+\chapter{Arquitetura de Software}
+\label{cap:arquitetura}
+
+\begin{edital}
+Arquitetura de software; interoperabilidade; arquitetura e linguagem
+orientada a serviços; web services; mensageria; API, Swagger; arquitetura
+orientada a objetos; aplicações para ambiente web; servidor de aplicações
+$\times$ servidor web; internet/extranet/intranet/portal; arquitetura
+hexagonal; microsserviços (orquestração e API gateway); containers;
+transações distribuídas.
+\end{edital}
+\peso{ALTO --- nuvem, REST$\times$SOAP, microsserviços e containers são
+recorrentes.}
+
+\section{Servidor web $\times$ servidor de aplicação}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Servidor web} & \textbf{Servidor de aplicação} \\
+\midrule
+Função & atende HTTP, serve conteúdo estático/dinâmico & executa \textbf{lógica de negócio}, integra com BD \\
+Exemplos & Apache, NGINX & JBoss/WildFly, WebLogic, Tomcat (parcial) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A FGV troca os papéis (``servidor web processa lógica de negócio''). O
+\textbf{web} recebe a requisição HTTP; o \textbf{de aplicação} roda a regra
+de negócio.
+\end{pegadinha}
+
+\section{Estilos de arquitetura}
+
+\begin{conceito}[Do monólito aos microsserviços]
+\begin{itemize}
+\item \textbf{Monolítica:} tudo num artefato único, implantado junto.
+Simples de começar; acopla e dificulta escalar partes isoladas.
+\item \textbf{Cliente-servidor, N camadas, P2P, barramento de mensagens.}
+\item \textbf{SOA (orientada a serviços):} serviços reutilizáveis, contrato
+explícito, baixo acoplamento, interoperabilidade. Web services são a
+tecnologia comum.
+\item \textbf{Microsserviços:} serviços pequenos, autônomos,
+\textbf{implantáveis independentemente}, cada um com \textbf{seu próprio
+banco} (não compartilham base --- isso reduz acoplamento). Comunicação leve
+(REST/mensageria).
+\item \textbf{Arquitetura hexagonal (Ports \& Adapters):} separa a
+\textbf{lógica de negócio} do mundo externo por \textbf{portas} (interfaces)
+e \textbf{adaptadores}; permite trocar UI/BD/serviços sem tocar no núcleo.
+\end{itemize}
+\end{conceito}
+
+\begin{pegadinha}
+``Microsserviços compartilham o mesmo banco'' = \textbf{falso} (aumenta
+acoplamento, contra o princípio). ``Monólito não pode ser distribuído'' =
+falso. Baixo acoplamento significa que mudança em um serviço \textbf{não}
+obriga mudança no outro --- se a alternativa disser que ``se reflete
+diretamente'', descarte.
+\end{pegadinha}
+
+\section{Integração: REST $\times$ SOAP, Web Services}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{REST} & \textbf{SOAP} \\
+\midrule
+Estilo & arquitetural, sobre HTTP & protocolo baseado em XML \\
+Formato & JSON (comum), leve & XML (envelope), verboso \\
+Contrato & OpenAPI/Swagger & WSDL \\
+Estado & \textbf{stateless} & pode ter padrões WS-* \\
+Vantagem & leve, escala, independe de plataforma & contratos formais, WS-Security \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item \textbf{REST é stateless:} cada requisição carrega tudo; o servidor
+não guarda sessão $\to$ escala horizontalmente sem afinidade de sessão. Cache
+fica no \textbf{cliente}.
+\item \textbf{API Gateway:} ponto único de entrada dos microsserviços
+(roteamento, autenticação, rate limit, agregação).
+\item \textbf{Métodos HTTP:} GET (ler), POST (criar), \textbf{PUT
+(substituir inteiro)}, \textbf{PATCH (atualizar parcial)}, DELETE. Códigos:
+200 OK, 201 Created, 204 No Content, 400, 401, 403, 404, 500.
+\item \textbf{UDDI:} diretório (legado) para \textbf{descoberta/registro} de
+web services SOAP, junto do WSDL (contrato) e SOAP (mensagem). Trio clássico
+WS-*: \textbf{SOAP + WSDL + UDDI}.
+\item \textbf{Swagger / OpenAPI:} o \textbf{OpenAPI} é a especificação
+padrão para \textbf{documentar e contratar APIs REST} (endpoints,
+parâmetros, respostas); \textbf{Swagger} é o conjunto de ferramentas (Swagger
+UI, editor, codegen) em cima dela. É ``o WSDL do REST''.
+\end{itemize}
+
+\begin{pegadinha}
+\textbf{PUT $\times$ PATCH} (substituição total $\times$ parcial); dizer que
+SOAP não tem contrato formal contradiz o próprio SOAP (que usa WSDL); UDDI é
+\textbf{descoberta}, WSDL é \textbf{contrato}, SOAP é a \textbf{mensagem} ---
+não misture os três papéis.
+\end{pegadinha}
+
+\subsection{Mensageria (comunicação assíncrona)}
+
+Desacopla produtor e consumidor: quem envia não espera quem processa.
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{4.6cm}p{3cm}@{}}
+\toprule
+\textbf{Modelo} & \textbf{Como funciona} & \textbf{Exemplo} \\
+\midrule
+Fila (queue) & mensagem consumida por \textbf{um} consumidor (point-to-point) & RabbitMQ, SQS \\
+Publish/Subscribe (tópico) & mensagem entregue a \textbf{vários} assinantes & Kafka, SNS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Apache Kafka:} plataforma de \textbf{streaming} de eventos ---
+produtores publicam em \textbf{tópicos} (particionados), consumidores leem
+em \textbf{grupos}; guarda o log de eventos (permite reprocessar). Alta
+vazão, escalável.
+
+Benefícios da mensageria: desacoplamento, absorção de picos (buffer),
+resiliência. O \textbf{broker} é o intermediário (Kafka, RabbitMQ). Casa com
+\textbf{microsserviços} e com os padrões \textbf{Saga} (eventos de
+compensação) e \textbf{Event Sourcing}.
+
+\begin{pegadinha}
+Fila (\textbf{um} consumidor) $\times$ tópico/pub-sub (\textbf{vários}) ---
+não inverta. Mensageria é \textbf{assíncrona} (diferente da chamada REST
+síncrona).
+\end{pegadinha}
+
+\section{Ambientes de rede corporativa}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9cm}@{}}
+\toprule
+\textbf{Termo} & \textbf{Alcance} \\
+\midrule
+Internet & rede pública global \\
+Intranet & rede interna da organização (só funcionários) \\
+Extranet & acesso controlado a parceiros/clientes externos autorizados \\
+Portal & ponto único que centraliza informação/serviços \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Trocar intranet$\leftrightarrow$extranet$\leftrightarrow$internet. Extranet =
+interno \textbf{+} parceiros externos autorizados (o meio-termo).
+\end{pegadinha}
+
+\section{Nuvem e escalabilidade}
+
+\begin{itemize}
+\item \textbf{Modelos de serviço:} \textbf{IaaS} (infra), \textbf{PaaS}
+(plataforma), \textbf{SaaS} (software pronto). Regra: quanto mais ``as a
+Service'', menos você gerencia.
+\item \textbf{Modelos de implantação:} privada, pública, híbrida.
+\item \textbf{Escalabilidade horizontal (scale out):} \textbf{adicionar
+instâncias/nós}.
+\item \textbf{Escalabilidade vertical (scale up):} \textbf{adicionar
+recursos à instância} existente (mais CPU/RAM).
+\item \textbf{Elasticidade:} ajustar capacidade automaticamente conforme a
+demanda. \textbf{Cloud bursting:} estende para nuvem pública no pico de
+demanda.
+\item \textbf{Containers (Docker) $\times$ VM:} container compartilha o
+\textbf{kernel} do SO (leve, rápido); VM tem SO convidado completo sobre um
+hipervisor (isola mais, pesa mais). \textbf{Kubernetes} orquestra containers.
+\item \textbf{Hipervisor Tipo 1} (bare-metal, roda direto no hardware: ESXi,
+Hyper-V, KVM) $\times$ \textbf{Tipo 2} (hosted, roda sobre um SO: VirtualBox,
+VMware Workstation).
+\item \textbf{Virtualização total} (SO convidado não sabe que é virtual)
+$\times$ \textbf{paravirtualização} (SO convidado é modificado e coopera com
+o hipervisor --- mais rápido). \textbf{VDI} = virtualização de desktops
+entregues remotamente.
+\end{itemize}
+
+\begin{pegadinha}
+``Adicionar recursos à instância'' é sempre \textbf{vertical}, jamais
+horizontal. Container $\neq$ VM (kernel compartilhado $\times$ SO próprio). Em
+questões de custo-benefício, some a capacidade das novas instâncias e compare
+o preço antes de decidir entre escalar vertical ou horizontal.
+\end{pegadinha}
+
+\section{Transações distribuídas}
+
+\begin{itemize}
+\item \textbf{2PC (Two-Phase Commit):} coordenador + participantes; exige
+\textbf{unanimidade} (todos confirmam) para commit. Bloqueante.
+\item \textbf{Saga:} sequência de transações locais com \textbf{compensação}
+em caso de falha (padrão para microsserviços).
+\end{itemize}
+
+\begin{jacaiu}
+Servidor web $\times$ de aplicação; SOA e web services (baixo acoplamento,
+REST); arquitetura hexagonal $\times$ microsserviços (não compartilham
+banco); internet/extranet/intranet/portal; escalabilidade horizontal $\times$
+vertical (com cálculo de custo-benefício); REST stateless; container $\times$
+VM; API gateway; taints/tolerations no Kubernetes; cloud bursting; 2PC
+$\times$ Raft. Rode \texttt{./quiz.py arquitetura}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{12-Factor App} (boas práticas de app nativa de nuvem).
+\item \textbf{DDD (Domain-Driven Design):} \textbf{Aggregate} (fronteira de
+consistência, protege invariantes --- não expõe referência a cada entidade
+interna), \textbf{Repository} (coleção/persistência do agregado, não instancia
+por métodos externos), \textbf{Factory} (criação), \textbf{Ubiquitous
+Language} (vocabulário comum domínio$\leftrightarrow$código), eventos de
+domínio \textbf{imutáveis} (fato passado). Casou com microsserviços no TJ-RJ e
+no MPU.
+\item \textbf{Service mesh} (Istio) $\times$ API gateway: mesh cuida da
+comunicação serviço-a-serviço (leste-oeste); gateway cuida da entrada
+(norte-sul).
+\item \textbf{IaC (Infraestrutura como Código):} Terraform, Ansible ---
+provisiona ambiente de forma declarativa e versionada.
+\item \textbf{Kubernetes:} taints/tolerations, distribuições
+RKE1/RKE2/K3s/EKS, Rancher.
+\item \textbf{Armazenamento de objetos:} flat namespace, API REST.
+\item \textbf{Fundamentos de SO que a FGV cobra como ``arquitetura'':}
+paginação/memória virtual, E/S bloqueante, troca de contexto.
+\end{itemize}
+
+\begin{comosair}
+Vertical = SCALE UP (uma máquina maior); horizontal = SCALE OUT (mais
+máquinas). REST: stateless, cache no cliente, interface uniforme, escala
+porque o servidor não guarda sessão. SOAP: contrato WSDL/XML, mais pesado,
+estilo RPC. Gatilhos de distrator neste bloco: ``sempre'', ``exclusivamente'',
+``elimina a necessidade de'', ``idêntico ao''.
+\end{comosair}

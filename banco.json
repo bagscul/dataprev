@@ -4501,5 +4501,423 @@
    "3": "O Kanban NAO exige Sprints nem timebox fixo; trabalha com fluxo continuo, ao contrario do Scrum.",
    "4": "O Lean busca ELIMINAR o desperdicio (muda), nao aumenta-lo."
   }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Uma prefeitura implementou um sistema de triagem automatizada para priorizar a concessão de determinado benefício social. O modelo foi treinado com dados históricos de concessões anteriores, que incluíam, entre outras variáveis, o CEP do requerente. Verificou-se que o CEP está fortemente correlacionado a bairros historicamente marginalizados, e o modelo passou a negar o benefício a esses bairros com frequência maior que a média, mesmo sem utilizar diretamente atributos como raça ou renda. Assinale a alternativa correta sobre esse cenário.",
+  "alts": [
+   "O modelo é tecnicamente neutro, pois não utiliza nenhum atributo sensível (como raça ou renda) diretamente em seu treinamento.",
+   "O CEP funciona como variável proxy de atributos sensíveis, e o modelo pode reproduzir e amplificar desigualdades históricas mesmo sem usar o atributo diretamente.",
+   "Como o sistema é automatizado, o cidadão prejudicado não tem base legal para contestar a decisão, pois a LGPD só se aplica a decisões tomadas por humanos.",
+   "O problema ocorre exclusivamente porque o modelo utilizado é de aprendizado não supervisionado, que por definição desconsidera variáveis sensíveis.",
+   "Esse tipo de viés só pode ser eliminado retreinando o modelo com um conjunto de dados perfeitamente balanceado, o que sempre garante decisões justas."
+  ],
+  "ans": 1,
+  "why": "O CEP é um exemplo clássico de variável proxy: mesmo sem usar o atributo sensível diretamente, ele carrega correlação forte com raça/renda por causa da segregação urbana histórica, e o modelo aprende e reproduz esse padrão. É o cenário-chave de viés algorítmico em IA aplicada a políticas públicas.",
+  "erradas": {
+   "0": "Distrator de falsa neutralidade tecnológica (extrapolação): o enunciado já descreve o próprio mecanismo do proxy — dizer que o modelo é 'neutro' porque não usa o atributo diretamente ignora exatamente essa correlação indireta que a questão está descrevendo.",
+   "2": "Distrator absoluto/contradição legal: a LGPD (art. 20) garante ao titular o direito de solicitar revisão de decisões tomadas unicamente com base em tratamento automatizado que afetem seus interesses — a automação não retira esse direito, pelo contrário, é o motivo dele existir.",
+   "3": "Distrator por inversão de conceito: classificar 'conceder ou negar benefício' é problema de classificação supervisionada (rótulo conhecido), não não supervisionada; além disso, não supervisionado não 'desconsidera variáveis sensíveis' por definição — a alternativa mistura dois conceitos errados.",
+   "4": "Distrator absoluto: 'sempre garante decisões justas' é o tipo de promessa categórica que a FGV usa como armadilha — balancear dados reduz o risco de viés, mas não o elimina nem garante justiça de forma automática."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um texto-base afirma que a infraestrutura de datacenters que sustenta o treinamento de modelos de Inteligência Artificial responde por parcela crescente do consumo elétrico mundial, sendo a maior fatia dessa energia consumida pelo processamento (infraestrutura de TI), seguida de perto pelos sistemas de resfriamento. O texto cita ainda iniciativas de governança, como metas regulatórias de eficiência energética (métrica PUE) e exigências de transparência sobre o impacto ambiental de produtos baseados em IA. Com base nesse texto-base, assinale a afirmativa correta.",
+  "alts": [
+   "A métrica PUE (Power Usage Effectiveness) mede a proporção de energia consumida exclusivamente pelo resfriamento em relação à energia usada pela TI, e quanto maior o PUE, mais eficiente é o datacenter.",
+   "A infraestrutura de IA já opera, em sua maioria, com fontes de energia limpa e renovável, tornando o debate sobre impacto ambiental pouco relevante para o setor.",
+   "O PUE relaciona a energia total consumida pelo datacenter com a energia usada apenas pela infraestrutura de TI, e valores mais próximos de 1,0 indicam maior eficiência energética.",
+   "Como o resfriamento consome mais energia do que o próprio processamento, ele é a única variável relevante em metas de eficiência energética de datacenters.",
+   "Iniciativas regulatórias de transparência ambiental para produtos de IA são incompatíveis com o avanço tecnológico do setor, por isso nenhum país as adotou até o momento."
+  ],
+  "ans": 2,
+  "why": "PUE = energia total do datacenter dividida pela energia usada só pela TI. Quanto mais próximo de 1,0, mais eficiente (menos energia 'desperdiçada' fora do processamento). É a métrica-padrão citada em diretivas recentes de eficiência energética de datacenters.",
+  "erradas": {
+   "0": "Distrator por inversão ('quase certa'): a alternativa erra o denominador e ainda inverte a conclusão final — PUE mais ALTO significa MENOS eficiência (mais energia gasta fora da TI), não mais eficiência.",
+   "1": "Distrator de extrapolação otimista: o texto-base não afirma isso — pelo contrário, destaca o crescimento do consumo e a necessidade de governança, o que seria desnecessário se a matriz já fosse majoritariamente limpa.",
+   "3": "Distrator por extrapolação + inversão: o texto-base diz que o processamento é a maior fatia e o resfriamento a segunda maior — a alternativa inverte essa ordem e ainda generaliza para 'única variável relevante', o que o texto não sustenta.",
+   "4": "Distrator absoluto: 'nenhum país' é uma generalização categórica facilmente falseável — o próprio texto-base menciona que essas iniciativas regulatórias existem."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um órgão público implementa um assistente virtual baseado em um modelo de linguagem (LLM) para responder dúvidas de cidadãos sobre prazos e requisitos de um benefício, substituindo parte do atendimento humano de primeiro nível. Durante testes, o assistente forneceu, de forma fluente e convincente, um prazo de recurso administrativo que não constava em nenhuma norma vigente. Assinale a alternativa que trata corretamente desse cenário.",
+  "alts": [
+   "O episódio caracteriza uma alucinação do modelo — uma resposta plausível e bem articulada, porém factualmente incorreta —, por isso decisões ou informações que afetem direitos do cidadão não devem se basear apenas na resposta do modelo, sem validação humana ou consulta à fonte oficial.",
+   "Como o LLM foi treinado com grande volume de dados, suas respostas são estatisticamente confiáveis o suficiente para dispensar qualquer revisão humana em atendimento ao cidadão.",
+   "O erro só pode ser evitado utilizando um modelo de aprendizado não supervisionado, já que esses modelos, por definição, não geram texto livre.",
+   "Esse tipo de erro é exclusivo de arquiteturas antigas de Inteligência Artificial e já foi completamente eliminado nos modelos comerciais mais recentes.",
+   "A técnica de RAG (Retrieval-Augmented Generation) garante, de forma definitiva, que o modelo nunca mais cometerá esse tipo de erro, pois passa a responder apenas com base em documentos oficiais."
+  ],
+  "ans": 0,
+  "why": "Alucinação é quando o LLM gera uma resposta fluente e coerente, porém sem lastro factual. Em atendimento público que afeta direito do cidadão, a mitigação correta é validação humana e/ou RAG com fonte oficial — nunca confiar cegamente na resposta do modelo.",
+  "erradas": {
+   "1": "Distrator absoluto: volume de dados de treino não garante confiabilidade factual da resposta — é exatamente o tipo de alucinação descrito no enunciado que desmente essa alternativa.",
+   "2": "Distrator por inversão/confusão de conceito: LLMs geram texto livre por natureza (são modelos generativos); a alternativa também erra ao vincular o problema ao tipo de aprendizado, que não é o mecanismo da alucinação.",
+   "3": "Distrator absoluto: alucinação é um problema estrutural de LLMs, presente inclusive nos modelos mais recentes, não uma falha 'exclusiva de arquiteturas antigas já eliminada'.",
+   "4": "Alternativa 'quase certa': RAG de fato reduz o risco de alucinação ao ancorar a resposta em documentos reais, mas dizer que 'garante, de forma definitiva' e 'nunca mais' é um absoluto que a técnica não sustenta — RAG mitiga, não elimina o risco."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Considerando o debate atual sobre sustentabilidade e o papel da tecnologia, avalie as afirmativas a seguir:\nI. O avanço tecnológico, de modo geral, produz impactos ambientais tanto positivos (eficiência, monitoramento climático) quanto negativos (consumo energético, descarte eletrônico), sem que se possa afirmar um veredito absoluto em qualquer direção.\nII. Iniciativas de transparência ambiental corporativa, como a divulgação do impacto de datacenters, são compatíveis com o avanço do setor de tecnologia.\nIII. O desenvolvimento sustentável, por definição, exige apenas o aprimoramento da eficiência técnica das tecnologias já existentes, sem qualquer mudança nos padrões de consumo.\nEstá correto o que se afirma em:",
+  "alts": [
+   "I, apenas",
+   "II, apenas",
+   "I e II, apenas",
+   "I, II e III",
+   "III, apenas"
+  ],
+  "ans": 2,
+  "why": "I e II refletem o consenso ESG (nem só bônus nem só ônus da tecnologia; transparência ambiental é compatível com avanço tecnológico). III é falsa: desenvolvimento sustentável pressupõe mudança de padrões de consumo, não só eficiência técnica — é a pegadinha clássica de 'manter a lógica atual e prometer sustentabilidade'.",
+  "erradas": {
+   "0": "Incompleta: descarta II, que também é afirmativa verdadeira e sustentada pelo consenso ESG sobre governança tecnológica.",
+   "1": "Incompleta: descarta I, afirmativa verdadeira e moderada (nem absoluto positivo nem negativo) sobre o papel da tecnologia.",
+   "3": "Inclui III, que é falsa: é o distrator clássico de 'manter a lógica de consumo atual e ainda assim ser sustentável' — desenvolvimento sustentável exige mudança de padrão de consumo, não só eficiência técnica.",
+   "4": "Contém apenas a afirmativa falsa (III) e descarta as duas verdadeiras (I e II)."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Considere o trecho a seguir:\n\nHTML:\n<div class=\"card\" data-status=\"pendente\">Solicitação</div>\n\nCSS:\n.card {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid #333;\n  margin: 10px;\n}\n.card::after {\n  content: attr(data-status);\n  font-weight: bold;\n}\n\nAssinale a alternativa correta sobre a renderização desse trecho.",
+  "alts": [
+   "A largura total ocupada visualmente pela caixa, sem contar a margem, é de 250px, pois padding e border se somam ao width definido.",
+   "Por causa de box-sizing: border-box, o valor de width (200px) já inclui o padding e a borda, então a caixa ocupa exatamente 200px de largura (sem contar a margem), restando menos de 200px para o conteúdo interno.",
+   "O texto \"pendente\" aparecerá literalmente como a string \"data-status\" após o texto \"Solicitação\", pois content: attr(x) imprime o nome do atributo, não o seu valor.",
+   "O pseudo-elemento ::after não será exibido, pois pseudo-elementos exigem uma classe adicional no HTML além da declaração no CSS.",
+   "Como a margem está definida como 10px, ela conta para o tamanho da própria caixa, fazendo a largura visual do elemento \"card\" aumentar para 210px."
+  ],
+  "ans": 1,
+  "why": "box-sizing: border-box faz width incluir padding e border. Assim, mesmo com padding: 20px e border: 5px, a caixa ocupa exatamente 200px de largura total (fora a margem) — o conteúdo interno é que fica menor (200 − 2×20 − 2×5 = 150px). content: attr(data-status) imprime o VALOR do atributo ('pendente'), não o nome dele.",
+  "erradas": {
+   "0": "Distrator por inversão do box model: essa conta (200 + padding + border = 250px) é a regra do box-sizing PADRÃO (content-box), não do border-box declarado no CSS. Com border-box, width já inclui padding e border.",
+   "2": "Distrator clássico de attr(): content: attr(x) imprime o VALOR do atributo x ('pendente'), não a string com o nome do atributo ('data-status').",
+   "3": "Distrator inventado: pseudo-elementos como ::after funcionam apenas com a declaração CSS associada ao seletor (aqui, .card::after) — não exigem nenhuma classe adicional no HTML.",
+   "4": "Distrator por confusão de conceito: margin é espaço EXTERNO ao redor do elemento; ele não soma ao tamanho do próprio elemento (isso é papel de padding/border), apenas afasta os elementos vizinhos."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Considere o componente React a seguir:\n\nfunction Contador() {\n  const [cliques, setCliques] = useState(0);\n  function aoClicar() {\n    setCliques(cliques + 1);\n    setCliques(cliques + 1);\n  }\n  return <button onClick={aoClicar}>{cliques}</button>;\n}\n\nSobre o comportamento desse código ao clicar uma vez no botão, assinale a alternativa correta.",
+  "alts": [
+   "A cada clique no botão, o valor de 'cliques' é incrementado em 2, pois há duas chamadas a setCliques dentro de aoClicar.",
+   "Como as duas chamadas a setCliques usam o mesmo valor de 'cliques' lido no início do evento, o contador avança apenas 1 por clique, e não 2; para acumular corretamente seria necessário usar a forma funcional setCliques(c => c + 1) nas duas chamadas.",
+   "Usar o índice do array como key em elementos de lista é sempre a prática recomendada pelo React, independentemente de a lista poder ser reordenada.",
+   "O React re-renderiza a lista inteira do DOM real a cada atualização de estado, recriando todos os elementos do zero, sem qualquer otimização.",
+   "setCliques é executado de forma síncrona, então, ao inspecionar a variável 'cliques' imediatamente após a primeira chamada de setCliques dentro de aoClicar, seu valor já estará atualizado."
+  ],
+  "ans": 1,
+  "why": "useState é assíncrono e em lote (batched) dentro do mesmo handler de evento: as duas chamadas 'setCliques(cliques + 1)' leem o mesmo valor 'antigo' de cliques capturado no fechamento (closure) daquela renderização, então o resultado final avança só 1, não 2. Para acumular corretamente dentro do mesmo evento, usa-se a forma funcional c => c + 1, que sempre recebe o valor mais atualizado.",
+  "erradas": {
+   "0": "Distrator 'quase certo': parece lógico que duas chamadas somem 2, mas ambas leem o mesmo valor de 'cliques' do escopo da função (closure), não o valor já incrementado pela primeira chamada — típica pegadinha de estado assíncrono.",
+   "2": "Distrator absoluto: usar o índice como key só é seguro para listas estáticas que nunca reordenam, inserem ou removem itens no meio; em listas dinâmicas, é a prática desaconselhada.",
+   "3": "Distrator por contradição com a reconciliação: o React usa o Virtual DOM para calcular a diferença entre a árvore antiga e a nova, aplicando só as mudanças necessárias no DOM real — não recria tudo do zero a cada render.",
+   "4": "Distrator absoluto/inversão: setState/useState é assíncrono e em lote (batched) dentro do mesmo handler; o valor da variável de estado só reflete a atualização na PRÓXIMA renderização, nunca imediatamente após a chamada na mesma execução."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Analise o método Java a seguir:\n\npublic int calcular(int a, int b) {\n    try {\n        return a / b;\n    } catch (ArithmeticException e) {\n        return -1;\n    } finally {\n        return 99;\n    }\n}\n\nAo ser chamado com calcular(10, 0), o método:",
+  "alts": [
+   "Lança uma ArithmeticException não tratada, pois o bloco finally impede a execução do catch.",
+   "Retorna -1, pois a divisão por zero aciona o catch, e o finally apenas executa uma ação extra sem alterar o valor de retorno.",
+   "Retorna 99, pois o return dentro do bloco finally sobrescreve qualquer retorno ou exceção definidos no try/catch.",
+   "Não compila, pois não é permitido haver um return dentro de um bloco finally em Java.",
+   "Retorna 0, valor padrão de int, pois o finally invalida o resultado calculado no catch sem fornecer um substituto válido."
+  ],
+  "ans": 2,
+  "why": "Um return (ou uma exceção lançada) dentro do bloco finally sobrescreve qualquer valor de retorno ou exceção pendente do try/catch. Aqui, a divisão por zero aciona o catch (que 'tentaria' retornar -1), mas o finally executa depois e seu return 99 prevalece — o método sempre retorna 99, independentemente do que aconteceu no try/catch.",
+  "erradas": {
+   "0": "Distrator invertido: o finally não impede a execução do catch — o catch roda normalmente; o que acontece é que o return do finally sobrescreve o resultado do catch depois.",
+   "1": "Distrator 'quase certo': está correto até a metade (a divisão por zero aciona o catch), mas erra no final — o finally não é 'só uma ação extra'; um return dentro dele sobrescreve o valor que viria do catch.",
+   "3": "Distrator inventado: o código compila normalmente. Ter um return dentro de finally é uma prática desaconselhada (pode mascarar exceções), mas é sintaticamente válida em Java.",
+   "4": "Distrator sem fundamento técnico: Java não 'invalida o resultado' recorrendo a um valor padrão nesse cenário — o valor retornado é exatamente o que o return do finally especifica (99)."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Sobre a responsabilidade civil dos provedores de aplicações de internet por danos decorrentes de conteúdo gerado por terceiros, à luz do entendimento do STF fixado em 26/06/2025 (Temas 987 e 533), assinale a alternativa correta.",
+  "alts": [
+   "O provedor de aplicações de internet somente pode ser responsabilizado civilmente por danos decorrentes de conteúdo gerado por terceiros se, após ordem judicial específica, não tomar as providências para tornar indisponível o conteúdo apontado como infringente.",
+   "Como regra geral, a notificação extrajudicial do usuário prejudicado já é suficiente para responsabilizar civilmente o provedor que, ciente do conteúdo ilícito, deixa de removê-lo; a exigência de ordem judicial prévia permanece apenas para os casos de crimes contra a honra.",
+   "A decisão do STF extinguiu por completo, para todo e qualquer conteúdo, a exigência de ordem judicial prévia, inclusive para os crimes contra a honra.",
+   "A alteração da responsabilidade dos provedores decorreu da edição de uma nova lei pelo Congresso Nacional, que revogou expressamente o art. 19 do Marco Civil da Internet.",
+   "O novo entendimento equivale a um regime de censura prévia, no qual o provedor deve analisar e aprovar o conteúdo antes de permitir sua publicação pelos usuários."
+  ],
+  "ans": 1,
+  "why": "Em 26/06/2025, o STF (Temas 987 e 533) declarou o art. 19 parcial e progressivamente inconstitucional. A regra geral passou a ser notice-and-takedown: notificação extrajudicial já basta para responsabilizar o provedor pela maioria dos conteúdos ilícitos. A exigência de ordem judicial permanece apenas para os crimes contra a honra (calúnia, injúria, difamação).",
+  "erradas": {
+   "0": "Distrator da lei antiga: essa é a redação ORIGINAL do art. 19, que exigia ordem judicial específica como regra geral. Era a regra até 25/06/2025 — hoje essa exigência é a EXCEÇÃO (só para crimes contra a honra), não mais a regra geral. É o distrator mais provável da prova para quem estudou por material desatualizado.",
+   "2": "Distrator por superextrapolação/absoluto: o STF não extinguiu a exigência de ordem judicial para todo e qualquer conteúdo — ela continua obrigatória especificamente para os crimes contra a honra.",
+   "3": "Distrator de instrumento/fonte: a mudança veio de uma decisão do STF em controle de constitucionalidade (recursos extraordinários com repercussão geral), não de uma lei nova aprovada pelo Congresso. A própria tese vale até que o Congresso venha a legislar sobre o tema.",
+   "4": "Distrator de terminologia: o regime de notice-and-takedown é uma reação a uma notificação sobre conteúdo já publicado — não é análise/aprovação prévia à publicação, o que caracterizaria censura prévia."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Um usuário publica em uma rede social um vídeo que incita atos de violência contra um grupo específico e configura, em tese, crime contra a ordem democrática. Um terceiro identifica o conteúdo e envia uma notificação extrajudicial à plataforma, solicitando a remoção. À luz do entendimento do STF sobre o art. 19 do Marco Civil (pós-26/06/2025), assinale a alternativa correta.",
+  "alts": [
+   "A plataforma só pode ser responsabilizada se deixar de remover o conteúdo após ordem judicial específica, já que esse é o único critério previsto para qualquer tipo de conteúdo ilícito.",
+   "Por se tratar de conteúdo de risco especialmente grave (incitação à violência/ordem democrática), a plataforma deve agir de forma proativa, sob dever de cuidado, indo além da simples reação à notificação extrajudicial.",
+   "Como se trata de conteúdo gerado por terceiro, e não pela própria plataforma, ela está isenta de qualquer responsabilidade civil, independentemente de notificação ou gravidade do conteúdo.",
+   "A situação se enquadra na exceção dos crimes contra a honra, de modo que só ordem judicial específica poderia responsabilizar a plataforma.",
+   "A notificação extrajudicial é irrelevante nesse caso, pois somente o Ministério Público pode notificar validamente uma plataforma sobre conteúdo ilícito."
+  ],
+  "ans": 1,
+  "why": "Conteúdo de risco grave (crime contra a ordem democrática, terrorismo, incitação à violência/racismo) exige atuação proativa e imediata do provedor, sob dever de cuidado — é o nível mais alto de exigência dentro do novo regime, acima até da simples resposta a notificação extrajudicial que vale para o conteúdo ilícito geral.",
+  "erradas": {
+   "0": "Distrator da lei antiga: exigir ordem judicial como critério ÚNICO para qualquer conteúdo é exatamente a regra que deixou de valer como regra geral a partir de 26/06/2025.",
+   "2": "Distrator absoluto: a plataforma pode, sim, ser responsabilizada por conteúdo de terceiro sob o novo regime, especialmente diante de notificação (ou, neste caso, mesmo sem notificação, dado o dever de cuidado).",
+   "3": "Distrator por inversão de categoria: a exceção de ordem judicial obrigatória vale para crimes contra a honra (calúnia, injúria, difamação) — incitação à violência/crime contra a ordem democrática é tratado como conteúdo de risco grave, com regime ainda mais rígido (atuação proativa), não mais brando.",
+   "4": "Distrator inventado: não há essa restrição de legitimidade — qualquer terceiro prejudicado ou ciente do conteúdo ilícito pode notificar extrajudicialmente a plataforma."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Determinado usuário publica conteúdo que, em tese, configura crime de difamação contra outra pessoa física. Segundo o entendimento fixado pelo STF em 2025 sobre o art. 19 do Marco Civil, para que a plataforma seja civilmente responsabilizada por não remover esse conteúdo específico, é necessário que:",
+  "alts": [
+   "Haja apenas notificação extrajudicial da vítima, aplicando-se a regra geral de notice-and-takedown, sem necessidade de ordem judicial.",
+   "Haja ordem judicial específica determinando a remoção, pois os crimes contra a honra (calúnia, injúria e difamação) são a exceção que preserva a exigência de decisão judicial.",
+   "A plataforma seja notificada simultaneamente pela vítima e por uma autoridade pública, sendo insuficiente a notificação de apenas uma das partes.",
+   "Não há mais qualquer hipótese, após a decisão do STF, em que a exigência de ordem judicial permaneça válida no ordenamento brasileiro.",
+   "A exigência dependa exclusivamente do número de visualizações que o conteúdo tenha alcançado antes da notificação."
+  ],
+  "ans": 1,
+  "why": "Crimes contra a honra (calúnia, injúria, difamação) são a única categoria que preserva a exigência de ordem judicial específica após a decisão do STF de 2025 — é a exceção dentro da nova regra geral de notice-and-takedown.",
+  "erradas": {
+   "0": "Distrator por inversão: aplicar a regra geral (notificação extrajudicial basta) a um crime contra a honra é o erro clássico — essa categoria é justamente a exceção que mantém a exigência de ordem judicial.",
+   "2": "Distrator inventado: a decisão do STF não criou esse requisito de dupla notificação simultânea.",
+   "3": "Distrator absoluto/contraditório: a própria tese fixada preserva expressamente a exigência de ordem judicial para os crimes contra a honra — dizer que 'não há mais qualquer hipótese' contradiz o núcleo da decisão.",
+   "4": "Distrator inventado: número de visualizações não é critério legal ou jurisprudencial para essa exigência."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Sobre a decisão do STF que tratou da constitucionalidade do art. 19 do Marco Civil da Internet (Temas 987 e 533), julgada em 26/06/2025, assinale a alternativa correta.",
+  "alts": [
+   "O STF declarou o art. 19 totalmente inconstitucional, retirando-o por completo do ordenamento jurídico, por unanimidade dos votos.",
+   "O STF declarou o art. 19 parcial e progressivamente inconstitucional, por maioria de votos, e a tese fixada continua vigente até que o Congresso Nacional legisle especificamente sobre o tema.",
+   "A decisão do STF é meramente uma recomendação ao Congresso Nacional, sem efeito vinculante imediato sobre o Poder Judiciário ou as plataformas.",
+   "A tese fixada pelo STF perde a validade automaticamente após 12 meses, mesmo que o Congresso não tenha legislado sobre o tema.",
+   "A decisão trata exclusivamente de conteúdo relacionado a crimes contra a honra, não alcançando os demais tipos de conteúdo ilícito gerado por terceiros."
+  ],
+  "ans": 1,
+  "why": "O STF, por 8 votos a 3, declarou o art. 19 parcial e progressivamente inconstitucional (não total, não por unanimidade). A tese fixada em repercussão geral tem efeito vinculante imediato e vale até que o Congresso Nacional legisle especificamente sobre o tema — não é mera recomendação nem tem prazo de validade automático.",
+  "erradas": {
+   "0": "Distrator por troca de número/absoluto: a inconstitucionalidade foi parcial e progressiva (não total) e o placar foi 8 a 3 (não unanimidade).",
+   "2": "Distrator de efeito jurídico: decisão em repercussão geral tem efeito vinculante imediato sobre casos análogos — não é uma simples recomendação sem força normativa.",
+   "3": "Distrator inventado: não há prazo automático de 12 meses; a tese vale até que o Congresso legisle especificamente sobre o tema, sem prazo prefixado.",
+   "4": "Distrator por inversão de escopo: é exatamente o contrário — crimes contra a honra são a exceção que preserva a regra antiga; a decisão do STF trata da regra geral para os demais conteúdos ilícitos."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "O chamado 'viés algorítmico' em sistemas de Inteligência Artificial ocorre quando:",
+  "alts": [
+   "o modelo é intencionalmente programado para discriminar um grupo específico de pessoas",
+   "dados de treino refletem desigualdades históricas (direta ou indiretamente, via variáveis proxy) e o modelo aprende e reproduz esse padrão em suas decisões",
+   "o modelo utiliza aprendizado por reforço em vez de aprendizado supervisionado",
+   "a explicabilidade do modelo é maior do que sua acurácia",
+   "o conjunto de dados de treino é grande demais para caber em memória"
+  ],
+  "ans": 1,
+  "why": "Viés algorítmico não exige intenção nem atributo sensível explícito: basta o dado de treino carregar, mesmo indiretamente via proxy, um padrão histórico de desigualdade para o modelo reproduzi-lo e até amplificá-lo.",
+  "erradas": {
+   "0": "Intenção não é elemento do conceito: o viés costuma ser não intencional, herdado dos dados, não uma discriminação programada deliberadamente.",
+   "2": "O tipo de aprendizado (reforço, supervisionado etc.) não é, por si, a causa do viés; o problema está na composição dos dados de treino, não no paradigma escolhido.",
+   "3": "Confunde dois eixos distintos: explicabilidade (o quanto a decisão é compreensível) e viés (se a decisão reproduz desigualdade) não têm relação direta de causa entre si.",
+   "4": "Volume de dados incompatível com a memória é problema de infraestrutura/engenharia, não a definição de viés algorítmico."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Uma empresa utiliza um sistema de triagem automatizada de currículos, treinado com o histórico de contratações dos últimos dez anos, para pré-selecionar candidatos a vagas técnicas. Observou-se que o sistema atribui pontuação menor a currículos que mencionam licença-maternidade ou hiatos de carreira associados a cuidado familiar. Assinale a alternativa correta.",
+  "alts": [
+   "Como o sistema não utiliza o atributo 'sexo' como variável de entrada, ele não pode ser responsabilizado por qualquer forma de discriminação indireta.",
+   "O histórico de contratações reproduz um padrão social preexistente, e o sistema aprendeu a associar esse padrão (hiato por cuidado familiar) a menor pontuação, ainda que 'sexo' nunca tenha sido usado como variável — configurando viés algorítmico indireto.",
+   "Esse tipo de resultado só seria considerado problemático se o sistema utilizasse aprendizado por reforço.",
+   "Como a triagem é apenas uma etapa preliminar de um processo com decisão humana final, o candidato não tem qualquer direito de solicitar explicação sobre os critérios do sistema.",
+   "A única forma de corrigir esse tipo de viés é interromper definitivamente o uso de qualquer sistema automatizado de triagem em processos seletivos."
+  ],
+  "ans": 1,
+  "why": "'Hiato de carreira por cuidado familiar' é, na prática, um proxy correlacionado a gênero. O modelo pode aprender esse padrão histórico e reproduzi-lo mesmo sem usar 'sexo' diretamente — é viés algorítmico indireto, o mesmo mecanismo do CEP em cenários de política pública.",
+  "erradas": {
+   "0": "Repete a falsa premissa de neutralidade: não usar o atributo sensível diretamente não impede que uma variável correlacionada (proxy) recrie o mesmo efeito discriminatório.",
+   "2": "O tipo de aprendizado não é o que determina a existência do viés; o histórico de dados enviesado produz o mesmo problema independentemente do paradigma de treinamento.",
+   "3": "Mesmo como etapa preliminar, tratamento automatizado que afeta o candidato está sujeito ao direito de revisão previsto na LGPD (art. 20); uma etapa humana posterior não elimina esse direito na fase automatizada.",
+   "4": "É desproporcional: mitigar viés passa por auditoria, ajuste de dados de treino e revisão humana — suspender todo uso de automação é solução extrema não exigida pela legislação."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "A abordagem 'baseada em risco' adotada por marcos regulatórios de Inteligência Artificial, como o AI Act europeu, consiste em:",
+  "alts": [
+   "proibir integralmente qualquer aplicação de IA em setores considerados sensíveis, como saúde e segurança pública",
+   "aplicar o mesmo conjunto de exigências regulatórias a todo e qualquer sistema de IA, independentemente de sua finalidade",
+   "graduar as exigências regulatórias (transparência, supervisão humana, auditoria) conforme o nível de risco que a aplicação de IA representa para direitos e segurança das pessoas",
+   "delegar toda a responsabilidade regulatória exclusivamente aos desenvolvedores dos modelos, isentando quem os aplica em produtos finais",
+   "substituir integralmente a legislação de proteção de dados pessoais já existente em cada país"
+  ],
+  "ans": 2,
+  "why": "Regulação baseada em risco classifica aplicações de IA por nível de risco e escalona as exigências conforme essa classificação: quanto mais risco, mais obrigação de transparência, supervisão humana e auditoria.",
+  "erradas": {
+   "0": "Proibição total e automática de setores inteiros não é o modelo baseado em risco; a abordagem gradua exigências, não veta setores por completo.",
+   "1": "É o oposto do princípio: tratar todo sistema de IA da mesma forma anula a própria lógica de graduação por risco.",
+   "3": "A responsabilidade regulatória tipicamente se distribui entre quem desenvolve e quem aplica/opera o sistema, não é exclusiva de uma das partes.",
+   "4": "Regulação de IA e legislação de proteção de dados (como a LGPD) coexistem e se complementam; uma não substitui a outra."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Um texto-base afirma que parte relevante da energia elétrica que abastece datacenters no mundo ainda provém de fontes fósseis, e que a expansão acelerada da Inteligência Artificial pressiona as metas de descarbonização assumidas por diversos países. Avalie as afirmativas a seguir:\nI. A expansão do uso de IA é, em alguma medida, tensionada pelas metas climáticas, na proporção em que sua infraestrutura ainda depende de matriz energética parcialmente fóssil.\nII. Por se tratar de tecnologia estratégica, a expansão de datacenters de IA está isenta de qualquer meta ou regulação de eficiência energética em todos os países.\nIII. Medidas como metas de eficiência energética (ex.: PUE) e maior uso de fontes renováveis são compatíveis com a continuidade do avanço tecnológico do setor.\nEstá correto o que se afirma em:",
+  "alts": [
+   "I, apenas",
+   "I e III, apenas",
+   "II, apenas",
+   "I, II e III",
+   "II e III, apenas"
+  ],
+  "ans": 1,
+  "why": "I decorre diretamente do texto-base (tensão entre expansão de IA e metas climáticas por causa da matriz ainda fóssil). III reflete o consenso ESG: eficiência energética e renováveis convivem com o avanço tecnológico. II é absoluta e falsa: o texto não afirma isenção 'em todos os países' — cita justamente a existência de metas.",
+  "erradas": {
+   "0": "Incompleta: descarta III, que também decorre do consenso ESG e não contradiz o texto-base.",
+   "2": "Contém apenas a afirmativa falsa e absoluta (II) e descarta a única sustentada diretamente pelo texto (I).",
+   "3": "Inclui II: 'isenta... em todos os países' é a generalização categórica que o texto-base não sustenta — ele cita justamente a existência de metas regulatórias.",
+   "4": "Descarta I, a afirmativa mais diretamente extraída do texto-base, e mantém II, que é falsa."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Mesmo antes da decisão do STF de 2025 sobre o art. 19 do Marco Civil, já havia uma hipótese em que a simples notificação extrajudicial (sem exigência de ordem judicial) bastava para responsabilizar o provedor por conteúdo de terceiro. Essa hipótese, prevista no art. 21 da mesma lei, refere-se a:",
+  "alts": [
+   "conteúdo que configure crime contra a honra, como calúnia e difamação",
+   "conteúdo de cunho sexual ou de nudez envolvendo a pessoa exposta, divulgado sem seu consentimento",
+   "qualquer conteúdo que a própria plataforma julgue ofensivo à sua política interna de uso",
+   "conteúdo que verse sobre crítica a autoridades públicas",
+   "conteúdo protegido por direitos autorais de terceiros"
+  ],
+  "ans": 1,
+  "why": "O art. 21 do Marco Civil já prevê, desde a redação original, que basta notificação para responsabilizar o provedor que não remove cena de nudez ou ato sexual de caráter privado divulgado sem consentimento. É a exceção histórica que, após 2025, se tornou o modelo geral (notice-and-takedown) para a maioria dos conteúdos ilícitos.",
+  "erradas": {
+   "0": "Crimes contra a honra são justamente a categoria que continua exigindo ordem judicial após 2025 — o oposto da exceção do art. 21.",
+   "2": "Política interna da própria plataforma não é o fundamento legal do art. 21; a hipótese é especificamente conteúdo íntimo não consentido, definida em lei, não a critério discricionário da empresa.",
+   "3": "Crítica a autoridades públicas não é a hipótese do art. 21 e, em regra, é conteúdo protegido pela liberdade de expressão.",
+   "4": "Direitos autorais têm regramento próprio, fora do art. 21, e não é a hipótese aqui tratada."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Um consumidor publica, em uma plataforma de avaliações, um comentário que afirma falsamente que determinado estabelecimento comercial pratica fraude contra clientes, atribuindo o fato a seu proprietário, pessoa identificada nominalmente. O proprietário se sente pessoalmente ofendido e solicita a remoção diretamente à plataforma, por notificação extrajudicial, alegando calúnia. Sobre a responsabilização da plataforma nesse cenário, é correto afirmar que:",
+  "alts": [
+   "a simples notificação extrajudicial do proprietário já é suficiente para responsabilizar a plataforma, pois se aplica a regra geral de notice-and-takedown",
+   "por se tratar, em tese, de calúnia (crime contra a honra), a responsabilização da plataforma depende de ordem judicial específica, não bastando a notificação extrajudicial do ofendido",
+   "a plataforma nunca pode ser responsabilizada por comentários de consumidores, independentemente do conteúdo ou da gravidade",
+   "a responsabilização depende exclusivamente de o comentário ter recebido determinado número mínimo de curtidas ou compartilhamentos",
+   "a plataforma deve remover o comentário automaticamente sempre que houver qualquer discordância entre consumidor e estabelecimento, mesmo sem notificação"
+  ],
+  "ans": 1,
+  "why": "Calúnia é crime contra a honra — categoria que, mesmo após a decisão do STF de 2025, continua exigindo ordem judicial específica para responsabilizar a plataforma. A simples notificação do ofendido não basta nesse caso, embora baste para a maioria dos outros conteúdos ilícitos.",
+  "erradas": {
+   "0": "Aplica a regra geral (notificação basta) a um caso que se enquadra na exceção dos crimes contra a honra — troca justamente a categoria que exige tratamento diferenciado.",
+   "2": "Absoluto sem fundamento: a plataforma pode, sim, ser responsabilizada, inclusive por comentário de consumidor, quando descumpre a regra aplicável ao caso (geral ou de crime contra a honra).",
+   "3": "Não existe esse critério de engajamento (curtidas/compartilhamentos) na legislação ou na tese do STF — é critério inventado.",
+   "4": "Descreve remoção automática por mera discordância, sem notificação ou apuração — não corresponde nem ao regime geral nem à exceção de crimes contra a honra."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Sobre o regime de responsabilidade civil dos provedores de aplicações de internet por conteúdo de terceiros, após a decisão do STF de 26/06/2025 sobre o art. 19 do Marco Civil, avalie as afirmativas a seguir:\nI. Para a maioria dos conteúdos ilícitos, a notificação extrajudicial do interessado já é suficiente para responsabilizar civilmente o provedor que não age.\nII. Para os crimes contra a honra (calúnia, injúria, difamação), a exigência de ordem judicial específica foi preservada.\nIII. Para conteúdo de risco especialmente grave (ex.: incitação ao terrorismo ou à violência), o provedor deve agir de forma proativa, sem esperar notificação.\nEstá correto o que se afirma em:",
+  "alts": [
+   "I, apenas",
+   "I e II, apenas",
+   "I, II e III",
+   "II e III, apenas",
+   "III, apenas"
+  ],
+  "ans": 2,
+  "why": "As três afirmativas descrevem corretamente os três níveis do regime pós-2025: regra geral (notice-and-takedown), exceção de ordem judicial (crimes contra a honra) e dever de atuação proativa (conteúdo de risco grave). Nenhuma contém absoluto ou inversão.",
+  "erradas": {
+   "0": "Incompleta: descarta II e III, que também descrevem corretamente partes do regime vigente.",
+   "1": "Incompleta: descarta III, que corresponde ao dever de atuação proativa para conteúdo de risco grave, também parte do regime atual.",
+   "3": "Incompleta: descarta I, a regra geral que estrutura todo o novo regime — sem ela, II e III perdem o contexto de exceção/gradação.",
+   "4": "Contém apenas uma das três camadas corretas do regime, descartando a regra geral (I) e a exceção de ordem judicial (II)."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "O julgamento do STF que resultou na nova interpretação do art. 19 do Marco Civil (Temas 987 e 533) foi proferido em sede de:",
+  "alts": [
+   "ação direta de inconstitucionalidade (ADI), com efeito restrito às partes do processo",
+   "recursos extraordinários com repercussão geral reconhecida, cuja tese fixada vincula o julgamento de casos análogos",
+   "medida provisória editada pelo próprio STF, com vigência de 60 dias",
+   "súmula vinculante editada previamente pelo STF, apenas reafirmada no julgamento de 2025",
+   "consulta popular promovida pelo Congresso Nacional, referendada posteriormente pelo STF"
+  ],
+  "ans": 1,
+  "why": "Os Temas 987 e 533 foram julgados como recursos extraordinários com repercussão geral — instrumento que, uma vez fixada a tese, vincula o julgamento de casos análogos em todo o país, e não apenas as partes do processo original.",
+  "erradas": {
+   "0": "ADI tem legitimados específicos para propositura e efeito de natureza diferente; o caso foi julgado como recurso extraordinário com repercussão geral, não ADI.",
+   "2": "O STF não edita medida provisória — instrumento exclusivo do Poder Executivo.",
+   "3": "Não havia súmula vinculante prévia sobre o tema sendo apenas 'reafirmada'; a tese foi fixada nesse próprio julgamento de 2025.",
+   "4": "Não houve consulta popular nesse processo; a mudança decorreu de julgamento de recursos extraordinários pelo próprio Judiciário."
+  }
+ },
+ {
+  "tag": "java",
+  "q": "Considere o trecho Java a seguir:\n\nMap<String, Integer> mapa = new HashMap<>();\nmapa.put(\"b\", 2);\nmapa.put(\"a\", 1);\nmapa.put(\"c\", 3);\n\nMap<String, Integer> ordenado = new TreeMap<>(mapa);\n\nfor (String chave : ordenado.keySet()) {\n    System.out.print(chave);\n}\n\nAssinale a alternativa correta sobre a saída desse código.",
+  "alts": [
+   "A saída é \"bac\", pois o TreeMap preserva a ordem original de inserção do HashMap.",
+   "A saída é \"abc\", pois o TreeMap ordena as chaves segundo sua ordem natural, independentemente da ordem de inserção no HashMap de origem.",
+   "O código não compila, pois não é possível construir um TreeMap a partir de um HashMap.",
+   "A saída é imprevisível, pois HashMap e TreeMap não podem coexistir na mesma estrutura de dados.",
+   "A saída é \"cba\", pois o TreeMap inverte a ordem de inserção do HashMap original."
+  ],
+  "ans": 1,
+  "why": "TreeMap ordena as chaves pela ordem natural (aqui, ordem alfabética de String) ou por um Comparator fornecido — não pela ordem de inserção do HashMap usado para construí-lo. HashMap, por sua vez, não garante nenhuma ordem específica de iteração.",
+  "erradas": {
+   "0": "Confunde as duas estruturas: preservar ordem de inserção é característica de LinkedHashMap, não de TreeMap nem de HashMap.",
+   "2": "O construtor TreeMap(Map<K,V> m) existe justamente para criar um TreeMap ordenado a partir de outro Map, incluindo um HashMap.",
+   "3": "Um TreeMap pode ser construído a partir de qualquer Map (incluindo HashMap); a saída é perfeitamente previsível — é a ordem alfabética das chaves.",
+   "4": "Inverte a lógica de ordenação: o TreeMap ordena em ordem natural crescente por padrão (a, b, c), não em ordem inversa."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Considere o trecho de JavaScript a seguir:\n\nconst funcoes = [];\nfor (var i = 0; i < 3; i++) {\n  funcoes.push(function () { console.log(i); });\n}\nfuncoes[0]();\nfuncoes[1]();\nfuncoes[2]();\n\nAssinale a alternativa correta sobre a saída desse código.",
+  "alts": [
+   "Imprime 0, 1 e 2, nessa ordem, pois cada função criada dentro do laço captura o valor de i no momento em que foi definida.",
+   "Imprime 3, 3 e 3, pois var tem escopo de função (não de bloco), então todas as funções compartilham a mesma variável i, cujo valor final após o laço é 3.",
+   "O código não compila, pois não é permitido criar funções dentro de um laço for em JavaScript.",
+   "Imprime 0, 0 e 0, pois cada função sempre reinicia i para seu valor inicial ao ser chamada.",
+   "O comportamento seria idêntico se var fosse substituído por let, já que ambas as palavras-chave têm exatamente o mesmo escopo em JavaScript."
+  ],
+  "ans": 1,
+  "why": "var não tem escopo de bloco — é a mesma variável i em todas as iterações do laço, compartilhada por todas as funções criadas. Quando as funções são finalmente chamadas, o laço já terminou e i vale 3. Se o código usasse let (escopo de bloco), cada iteração criaria uma nova ligação de i, e a saída seria 0, 1, 2.",
+  "erradas": {
+   "0": "É o comportamento esperado se a variável fosse declarada com let (escopo de bloco), não com var — a pegadinha está exatamente em ignorar essa diferença de escopo.",
+   "2": "Criar funções (closures) dentro de um laço é uma prática comum e válida em JavaScript.",
+   "3": "Confunde o momento de leitura da variável: a função não 'reinicia' i — ela lê o valor atual de i no momento em que é chamada, e como i é compartilhada e o laço já terminou, esse valor é 3 nas três chamadas.",
+   "4": "Inversão do conceito central da questão: var tem escopo de função; let tem escopo de bloco — essa diferença é o que muda o resultado entre os dois casos."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Considere o HTML e CSS a seguir:\n\nHTML: <p id=\"aviso\" class=\"destaque\">Atenção</p>\n\nCSS:\n#aviso { color: blue; }\n.destaque { color: red; }\np { color: green; }\n\nAssinale a alternativa correta sobre a cor em que o texto \"Atenção\" será exibido.",
+  "alts": [
+   "Verde, pois a última regra declarada no CSS sempre prevalece sobre as anteriores, independentemente do seletor utilizado.",
+   "Vermelho, pois seletores de classe têm especificidade maior que seletores de id em CSS.",
+   "Azul, pois o seletor de id (#aviso) tem especificidade maior que o seletor de classe (.destaque) e que o seletor de elemento (p), prevalecendo sobre os demais.",
+   "Verde, pois seletores de elemento (tag) têm prioridade sobre seletores de classe e de id por serem mais genéricos e abrangentes.",
+   "A cor final é indefinida, pois há conflito entre três regras aplicáveis ao mesmo elemento, e o navegador não aplica nenhuma delas nesse caso."
+  ],
+  "ans": 2,
+  "why": "A especificidade do CSS segue a ordem id > classe > elemento (tag). Um seletor de id (#aviso) tem especificidade maior que um seletor de classe (.destaque) e que um seletor de elemento (p), então color: blue prevalece, independentemente da ordem em que as regras foram declaradas no arquivo.",
+  "erradas": {
+   "0": "A ordem de declaração só decide empate quando a especificidade dos seletores é igual; aqui os seletores têm especificidades diferentes, e a maior (id) vence, não a ordem de escrita.",
+   "1": "Inverte a hierarquia de especificidade: id tem especificidade maior que classe, não o contrário.",
+   "3": "Inverte a hierarquia completamente: seletor de elemento (tag) é o de menor especificidade entre os três, não o de maior prioridade.",
+   "4": "CSS sempre resolve conflitos de especificidade de forma determinística — não há 'cor indefinida'; o navegador aplica a regra de maior especificidade (aqui, a do id)."
+  }
  }
 ]

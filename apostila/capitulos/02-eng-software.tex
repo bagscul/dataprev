@@ -1,0 +1,249 @@
+\chapter{Engenharia de Software}
+\label{cap:eng-software}
+
+\begin{edital}
+Engenharia de requisitos (classificação, processo, técnicas de elicitação);
+testes (unitários, integração, ágeis, usabilidade, automatizados, TDD, ciclo
+de vida, RPA); metodologias ágeis (Scrum, Kanban, XP); padrões de
+desenvolvimento e reuso; codificação; Ponto de Função e Story Points; DevOps;
+design de software.
+\end{edital}
+\peso{MUITO ALTO --- foi o maior bloco da Dataprev 2024 (${\sim}$10 questões).
+É metade do ``eixo duplo'' da FGV em TI (a outra metade é Banco de Dados).}
+
+\section{Ciclo de vida e modelos de processo}
+
+\begin{conceito}[Os modelos clássicos]
+\begin{itemize}
+\item \textbf{Cascata (waterfall):} fases sequenciais estritas, sem
+sobreposição, requisitos congelados no início. Adequado quando os requisitos
+são \textbf{estáveis e bem compreendidos}. Rígido a mudanças.
+\item \textbf{Incremental:} entrega em incrementos que somam funcionalidade
+ao longo do tempo.
+\item \textbf{Iterativo:} refina o mesmo produto em ciclos sucessivos.
+\item \textbf{Espiral (Boehm):} iterativo + \textbf{análise de risco} a cada
+volta da espiral.
+\item \textbf{Prototipação:} constrói um protótipo (às vezes descartável)
+para validar requisitos com o cliente.
+\item \textbf{Ágil:} iterativo-incremental, com entregas curtas e adaptação
+contínua a mudanças.
+\end{itemize}
+\end{conceito}
+
+\begin{pegadinha}
+O enunciado descreve ``fases sequenciais, requisitos congelados'' $\to$ é
+\textbf{cascata}, nunca incremental nem ágil. Esse é o distrator clássico de
+abertura do bloco.
+\end{pegadinha}
+
+\section{Engenharia de requisitos}
+
+O par que mais cai no bloco inteiro (Dataprev, MPU e TJ-RJ todos cobraram):
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{5.4cm}p{5cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{O que descreve} & \textbf{Exemplo} \\
+\midrule
+\textbf{Funcional (RF)} & O QUE o sistema faz (uma função, um comportamento) & ``emitir saldo da conta'' \\
+\textbf{Não funcional (RNF)} & COMO / QUÃO BEM (qualidade, restrição) & ``saldo em tempo real'', desempenho, segurança, usabilidade \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Regra prática:} ``em tempo real'', ``seguro'', ``rápido'',
+``disponível'' $\to$ sempre \textbf{não funcional}.
+
+\textbf{Processo:} elicitação $\to$ análise $\to$ especificação $\to$
+validação $\to$ gerenciamento. A \textbf{elicitação} (levantamento) usa:
+entrevista, questionário, \textbf{brainstorming}, workshop, observação,
+prototipação, análise de documentos.
+
+\begin{pegadinha}
+A FGV afirma que ``brainstorming é técnica inadequada, use só entrevista
+formal'' --- isso é \textbf{falso}; brainstorming é técnica legítima de
+elicitação. Outro distrator comum: dizer que o requisito surge \emph{depois}
+da implementação (a ordem certa é elicitar antes de codificar).
+\end{pegadinha}
+
+\begin{jacaiu}
+A FGV também pede para \textbf{contar} quantos RF e quantos RNF há num
+enunciado longo, e para classificar o tipo de RNF (usabilidade, desempenho,
+produto, organizacional, externo). Ao ler, marque cada verbo de ação (RF) e
+cada ``deve ser rápido/seguro/exportável'' (RNF).
+\end{jacaiu}
+
+\section{Metodologias ágeis}
+
+\begin{conceito}[Scrum --- é framework, não metodologia]
+Trabalho organizado em \textbf{Sprints} de tamanho fixo (time-boxed).
+
+\textbf{Papéis/accountabilities:} \textbf{Product Owner} (valor e Product
+Backlog), \textbf{Scrum Master} (remove impedimentos, serve ao time, \emph{não
+manda}), \textbf{Developers}.
+
+\textbf{Eventos:} Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint
+Retrospective.
+
+\textbf{Artefatos:} Product Backlog, Sprint Backlog, Increment.
+
+\begin{itemize}
+\item \textbf{Sprint Review = produto} (inspeciona o incremento com
+stakeholders).
+\item \textbf{Sprint Retrospective = processo} (o que melhorar no jeito de
+trabalhar do time).
+\item No Daily, com risco à Sprint, o Scrum Master \textbf{facilita a
+solução do time} --- não redistribui tarefas sozinho, nem assume a tarefa do
+desenvolvedor.
+\end{itemize}
+\end{conceito}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9.8cm}@{}}
+\toprule
+\textbf{Framework} & \textbf{Ideia central} \\
+\midrule
+Kanban & Fluxo contínuo, \textbf{sem sprints fechadas}; limita WIP (trabalho em progresso); entrega conforme conclui. \\
+XP (Extreme Programming) & Práticas de engenharia: programação em par, TDD, integração contínua, refatoração, cliente presente. \\
+Lean & Eliminar desperdício, otimizar o fluxo de valor. \\
+Ágil híbrido & Combina práticas ágeis com métodos tradicionais. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Kanban \textbf{não} tem sprint --- o distrator clássico é ``Kanban organiza o
+trabalho em sprints''. Scrum \textbf{tem} time-box; Kanban é fluxo contínuo.
+\end{pegadinha}
+
+\begin{jacaiu}
+Sprint Planning prioriza pela \textbf{capacidade real da equipe}, nunca por
+pressão externa. Mudança tardia de escopo: trata-se com o PO, ajustando o
+backlog --- nunca ``recusar por comprometer o plano'' nem ``suspender o
+projeto''.
+\end{jacaiu}
+
+\section{Testes}
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{9.2cm}@{}}
+\toprule
+\textbf{Nível/tipo} & \textbf{O que verifica} \\
+\midrule
+Unitário & menor unidade isolada (função/método) \\
+Integração & interação entre módulos/componentes \\
+Sistema & o sistema completo \\
+Aceitação & atende ao cliente/requisito \\
+Usabilidade & experiência/interface intuitiva \\
+Regressão & mudança não quebrou o que já funcionava \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{conceito}[TDD e BDD]
+\textbf{TDD (Test-Driven Development):} escreve o \textbf{teste antes} do
+código (ciclo red $\to$ green $\to$ refactor). Foco em design e cobertura.
+
+\textbf{BDD (Behavior-Driven Development):} evolução do TDD, especifica
+comportamento em linguagem acessível ao negócio (Gherkin: Dado-Quando-Então).
+
+\textbf{Caixa-preta} (sem ver o código, só entrada/saída) $\times$
+\textbf{caixa-branca} (baseado na estrutura interna/código).
+
+\textbf{RPA (Robotic Process Automation):} automatiza tarefas repetitivas de
+interface (robôs de software) --- \textbf{não é teste}.
+\end{conceito}
+
+\section{Mensuração: Ponto de Função $\times$ Story Points}
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{4.7cm}p{4.7cm}@{}}
+\toprule
+& \textbf{Ponto de Função (APF)} & \textbf{Story Points} \\
+\midrule
+Natureza & \textbf{objetiva}, padronizada (IFPUG) & \textbf{relativa/subjetiva}, do time \\
+Independe do time? & sim & não (calibrado por time) \\
+Bom para & contrato de escopo fechado, comparação entre projetos & estimativa ágil interna \\
+Baseado em & funções do sistema (EE, SE, CE, ALI, AIE) & esforço/complexidade percebidos \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A FGV troca os dois: diz que Story Point é objetivo/padronizável entre times,
+ou que serve a contrato de escopo fechado --- é o contrário. Ponto de Função é
+o objetivo e comparável; Story Points é o relativo do time.
+\end{pegadinha}
+
+\begin{comosair}[Classificando telas em APF]
+\begin{itemize}
+\item Tela que \textbf{ENTRA} e grava dado $\to$ \textbf{EE} (Entrada
+Externa).
+\item Tela que só \textbf{mostra dado processado/calculado} $\to$
+\textbf{SE} (Saída Externa).
+\item Tela que só \textbf{consulta e exibe sem cálculo} $\to$ \textbf{CE}
+(Consulta Externa).
+\item Grupo lógico de dados \textbf{mantido dentro} do sistema $\to$
+\textbf{ALI} (Arquivo Lógico Interno).
+\item Referência externa só \textbf{lida} (não mantida) $\to$ \textbf{AIE}
+(Arquivo de Interface Externa).
+\end{itemize}
+\end{comosair}
+
+\section{DevOps e entrega}
+
+\begin{itemize}
+\item \textbf{CI (Integração Contínua):} integra e testa o código com
+frequência (a cada commit).
+\item \textbf{CD (Entrega/Implantação Contínua):} leva a nova versão à
+produção rapidamente, com mínima interrupção. ``Fornecer rapidamente nova
+versão em produção'' = \textbf{CD}, não CI.
+\item \textbf{DevOps} une desenvolvimento e operações; \textbf{DevSecOps}
+injeta segurança no pipeline.
+\end{itemize}
+
+\section{Design de software}
+
+\begin{itemize}
+\item \textbf{Design de alto nível} = estrutura geral, módulos e sua
+interação (próximo da arquitetura). \textbf{Design de baixo nível} = detalhe
+de funções, métodos, algoritmos.
+\item \textbf{Arquitetura} = decisões amplas e estruturais; \textbf{design} =
+decisões detalhadas. Não é verdade que ``arquitetura só serve para projeto
+grande''.
+\item Padrões de projeto e UML têm capítulo próprio (Capítulo
+\ref{cap:padroes-uml}).
+\end{itemize}
+
+\begin{jacaiu}
+Cascata $\times$ incremental; Sprint Review $\times$ Retrospective; requisito
+funcional $\times$ não funcional (cenário do ``saldo em tempo real'');
+brainstorming como elicitação válida; papel do Scrum Master no Daily e no
+Sprint Planning; metodologia ágil para mudança frequente (XP/Scrum/Kanban); CD
+no DevOps; Ponto de Função $\times$ Story Points; design alto $\times$ baixo
+nível; níveis de teste + TDD; ágil híbrido. Rode \texttt{./quiz.py
+eng-software}.
+\end{jacaiu}
+
+\begin{pegadinha}[Resumo dos pares que a FGV inverte neste bloco]
+Review$\leftrightarrow$Retro, funcional$\leftrightarrow$não funcional,
+PF$\leftrightarrow$Story Points, cascata$\leftrightarrow$incremental,
+TDD$\leftrightarrow$BDD, alto$\leftrightarrow$baixo nível. Absolutos
+(``sempre'', ``exclusivamente'', ``apenas'', ``impossível'') quase sempre
+marcam o distrator. E cuidado com distorcer o papel do Scrum Master: ele
+facilita e serve, nunca comanda nem executa a tarefa do desenvolvedor.
+\end{pegadinha}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{Scrum Guide 2020:} usa ``accountabilities'' (não ``papéis'');
+removeu a figura do ``time de desenvolvimento'' como subgrupo --- hoje é um
+\textbf{Scrum Team} único com Developers. Sprint Goal, Product Goal,
+Definition of Done.
+\item \textbf{Clean Code / SonarQube} (no edital): análise \textbf{estática}
+de código (sem executar) para dívida técnica, code smells, cobertura.
+\item \textbf{MVP, design thinking, UX} aparecem no edital do Perfil 1 mas
+permeiam o Perfil 3; MVP = menor versão que entrega valor e valida uma
+hipótese.
+\end{itemize}

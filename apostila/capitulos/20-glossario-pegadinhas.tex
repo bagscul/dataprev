@@ -1,0 +1,95 @@
+\chapter{Glossário de pares que a FGV inverte}
+
+Revisão de última hora: uma tabela única com os pares conceituais que a FGV
+troca de lugar em cada bloco. Se você reconhece os dois lados de cada linha
+sem pensar, a maior fatia dos distratores da prova deixa de funcionar. A
+coluna ``bloco'' remete ao capítulo com o detalhe.
+
+\begin{longtable}{@{}p{3.3cm}p{6.1cm}p{2.6cm}@{}}
+\toprule
+\textbf{Par invertido} & \textbf{Regra para não errar} & \textbf{Bloco} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Par invertido} & \textbf{Regra para não errar} & \textbf{Bloco} \\
+\midrule
+\endhead
+Cascata $\times$ Incremental/Ágil & fases sequenciais + requisitos congelados = cascata & Eng.\ Software \\
+Requisito funcional $\times$ não funcional & RF = o que faz; RNF = qualidade/restrição (``em tempo real'' é RNF) & Eng.\ Software \\
+Sprint Review $\times$ Retrospective & Review = produto; Retro = processo & Eng.\ Software \\
+Scrum $\times$ Kanban & Scrum tem sprint (time-box); Kanban não tem sprint & Eng.\ Software \\
+Ponto de Função $\times$ Story Points & PF = objetivo/comparável; SP = relativo do time & Eng.\ Software \\
+TDD $\times$ BDD & TDD = teste antes, foco em design; BDD = linguagem de negócio (Gherkin) & Eng.\ Software \\
+CI $\times$ CD & CI integra/testa; CD leva a produção & Eng.\ Software \\
+Design alto $\times$ baixo nível & alto = estrutura/módulos; baixo = função/algoritmo & Eng.\ Software \\
+Factory Method $\times$ Abstract Factory & Method = um produto via herança; Abstract = famílias via composição & Padrões \\
+Adapter $\times$ Facade $\times$ Decorator & Adapter compatibiliza; Facade simplifica; Decorator adiciona função & Padrões \\
+Strategy $\times$ State & Strategy troca algoritmo; State troca conforme estado interno & Padrões \\
+Agregação $\times$ Composição & losango vazio (independente) $\times$ cheio (morre com o todo) & UML \\
+Include $\times$ Extend & include = sempre; extend = opcional & UML \\
+Estrutural $\times$ Comportamental (UML) & Classe = estrutural; Sequência/Atividade/Estado/Caso de Uso = comportamental & UML \\
+Servidor web $\times$ de aplicação & web = HTTP; aplicação = lógica de negócio & Arquitetura \\
+REST $\times$ SOAP & REST stateless/JSON; SOAP contrato WSDL/XML & Arquitetura \\
+PUT $\times$ PATCH & PUT substitui inteiro; PATCH atualiza parcial & Arquitetura \\
+Fila $\times$ Tópico (pub/sub) & fila = um consumidor; tópico = vários & Arquitetura \\
+Escalar vertical $\times$ horizontal & vertical = mais recurso na instância; horizontal = mais instâncias & Arquitetura \\
+Container $\times$ VM & container compartilha kernel; VM tem SO completo & Arquitetura \\
+Hipervisor Tipo 1 $\times$ Tipo 2 & Tipo 1 bare-metal; Tipo 2 sobre SO hospedeiro & Arquitetura / Órfãos \\
+Intranet $\times$ Extranet $\times$ Internet & intranet = interna; extranet = + parceiros externos; internet = pública & Arquitetura / Redes \\
+OLTP $\times$ OLAP & OLTP = transacional/linha; OLAP = analítico/cubo & Banco de Dados / BI \\
+TRUNCATE $\times$ DELETE & TRUNCATE é DDL, auto-commit; DELETE é DML, WHERE + rollback & Banco de Dados \\
+ETL $\times$ ELT & ETL transforma antes de carregar; ELT transforma no destino & Banco de Dados / BI \\
+Star Schema $\times$ Snowflake & Star = desnormalizado/rápido; Snowflake = normalizado/mais joins & BI \\
+Semiaditivo $\times$ Aditivo & semiaditivo não soma no tempo (saldo/estoque) & BI \\
+Suporte $\times$ Confiança & suporte = frequência do conjunto; confiança = força de A$\to$B & BI \\
+Drill-down $\times$ Roll-up & down = mais detalhe; up = mais agregação & BI \\
+Slice $\times$ Dice & slice = uma dimensão; dice = várias & BI \\
+Confidencialidade $\times$ Integridade $\times$ Disponibilidade & ver = confid.; íntegro = integridade; acessível = disponibilidade & Segurança \\
+Simétrica $\times$ Assimétrica & simétrica = uma chave, rápida; assimétrica = par de chaves, lenta & Segurança \\
+Hash $\times$ Cifra reversível & hash é unidirecional, não descriptografa & Segurança \\
+SSL $\times$ TLS & TLS sucedeu e corrigiu o SSL (nunca o contrário) & Segurança \\
+DAC $\times$ MAC $\times$ RBAC & DAC = dono decide; MAC = rótulos do sistema; RBAC = por papel & Segurança \\
+Autenticação $\times$ Autorização (OAuth2) & OAuth2 = autorização; OIDC = autenticação & Segurança \\
+SAST $\times$ DAST & SAST = código parado; DAST = app rodando & Segurança \\
+IDS $\times$ IPS & IDS alerta (passivo); IPS bloqueia (ativo) & Segurança \\
+Spring Boot $\times$ Spring Cloud & Boot = app individual; Cloud = distribuído/microsserviços & Programação \\
+Hibernate $\times$ JUnit & Hibernate = ORM; JUnit = teste de unidade & Programação \\
+XSLT sobre XML $\times$ JSON & XSLT só transforma XML, nunca JSON & Programação \\
+Flutter (Dart) $\times$ outros frameworks & Flutter = Dart; React Native = JS; Xamarin = C\# & Programação / Frontend \\
+Kotlin/Android $\times$ Swift/iOS & não trocar a linguagem nativa de cada SO & Programação / Frontend \\
+Checked $\times$ Unchecked (Java) & checked = Exception, exige throws/catch; unchecked = RuntimeException & Java \\
+Overload $\times$ Override & overload = mesma classe, assinatura diferente; override = subclasse, mesma assinatura & Java \\
+ISP $\times$ SRP (SOLID) & ISP = interface enxuta; SRP = uma responsabilidade & Java \\
+Thread virtual $\times$ de plataforma & muitas virtuais compartilham uma carrier de plataforma & Java \\
+SPA $\times$ PWA & Service Worker/offline/instalável são da PWA, não da SPA & Frontend \\
+Padding $\times$ Margin & padding = interno; margin = externo & Frontend \\
+React $\times$ Angular & React = biblioteca (JS/JSX); Angular = framework completo (TypeScript) & Frontend \\
+Governança $\times$ Gestão (COBIT) & EDM = governança; APO/BAI/DSS/MEA = gestão & Governança \\
+Incidente $\times$ Problema (ITIL) & incidente = restaurar serviço; problema = causa-raiz & Governança \\
+Grupo de processos $\times$ Área de conhecimento (PMBOK 6) & 5 grupos $\times$ 10 áreas --- não confundir com os 12 princípios do PMBOK 7 & Governança \\
+Modelo OSI por camada & sessão = diálogo/checkpoints; transporte = portas/TCP-UDP & Redes \\
+TCP $\times$ UDP & TCP = conexão/confiável; UDP = sem conexão/rápido & Redes \\
+Distância administrativa (Cisco) & menor vence: conectada 0, estática 1, OSPF 110, RIP 120 & Redes \\
+MPLS $\times$ roteamento IP & MPLS = rótulo (``camada 2.5''), não olha IP a cada salto & Redes \\
+AD $\times$ DBA & AD = negócio/conceitual; DBA = técnico/físico & Órfãos \\
+Incremental $\times$ Diferencial (backup) & incremental = desde o último qualquer; diferencial = desde o último full & Órfãos \\
+Analysis $\to$ Redo $\to$ Undo (ARIES) & essa é a ordem; a banca inverte Redo/Undo & Órfãos \\
+Bitmap $\times$ B+ Tree (índices) & bitmap = baixa cardinalidade; B+ Tree = alta cardinalidade/faixas & Banco de Dados / Órfãos \\
+Supervisionado $\times$ Não supervisionado & supervisionado = dados rotulados; não supervisionado = sem rótulo & Atualidades / Órfãos \\
+Data drift $\times$ Concept drift & data drift = muda a entrada; concept drift = muda a relação entrada$\to$saída & Órfãos \\
+L1 (Lasso) $\times$ L2 (Ridge) & L1 zera coeficientes; L2 encolhe sem zerar & Órfãos \\
+Overfitting $\times$ Underfitting & overfitting decora o treino; regularização combate overfitting & Atualidades / Órfãos \\
+Contrapositiva $\times$ Recíproca & só a contrapositiva ($\lnot q \to \lnot p$) é equivalente a $p \to q$ & RLM \\
+Negação de ``todo''/``algum'' & nega ``todo A é B'' com ``algum A não é B'' & RLM \\
+Controlador $\times$ Operador (LGPD) & controlador decide; operador executa em nome dele & Legislação \\
+ANPD $\times$ CNPD & ANPD fiscaliza/sanciona; CNPD só é consultivo & Legislação \\
+\bottomrule
+\end{longtable}
+
+\begin{comosair}[Como usar esta tabela na reta final]
+Não releia a apostila inteira na última semana --- releia esta tabela. Para
+cada linha que você hesitar, volte ao capítulo indicado na terceira coluna e
+releia só a caixa vermelha (``Como a FGV arma a pegadinha'') daquele
+assunto. Depois volte ao quiz: \texttt{./quiz.py --erradas} filtra
+exatamente as questões em que você ainda tropeça nesses pares.
+\end{comosair}

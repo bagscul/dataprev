@@ -1,0 +1,170 @@
+\chapter{Órfãos --- Administração de BD e Temas Coringa}
+\label{cap:orfaos}
+
+\begin{conceito}[O que é este capítulo]
+Bloco ``coringa'' do quiz: o que não encaixa nos outros capítulos. Na
+prática, a maior parte das questões daqui é \textbf{administração de banco de
+dados (DBA)} e \textbf{administração de dados} --- conteúdo do edital
+(``noções de administração de dados e de banco de dados; backup, restauração;
+otimização de performance'') que o capítulo de Banco de Dados, focado em
+modelagem/SQL, não detalha. O resto são temas avulsos: arquitetura de
+computadores, informática, sistemas de informação, IA/ML e blockchain. Nas
+provas recentes a FGV vem carregando em IA/ML e cloud --- trate como tema
+quente.
+\end{conceito}
+
+\section{Administração de Dados $\times$ Administração de Banco de Dados}
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Administração de Dados (AD)} & \textbf{Administração de BD (DBA)} \\
+\midrule
+Foco & \textbf{negócio/lógico}: o dado como recurso corporativo & \textbf{técnico/físico}: o SGBD funcionando \\
+Faz & modelagem conceitual, políticas, governança, dicionário de dados & instalação, tuning, backup, segurança, disponibilidade \\
+Papel & estratégico, independe de SGBD & operacional, ligado ao produto (Oracle, etc.) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+AD é conceitual/negócio; DBA é físico/operacional. A FGV troca os dois papéis
+entre si.
+\end{pegadinha}
+
+\section{Recuperação e transações (ARIES)}
+
+\textbf{ARIES} (protocolo de recuperação da maioria dos SGBDs) usa
+\textbf{WAL} (Write-Ahead Logging --- o log vai para disco \textbf{antes} do
+dado) e três fases na recuperação após falha, \textbf{nesta ordem}:
+
+\begin{enumerate}
+\item \textbf{Analysis} (Análise): reconstrói o estado a partir do último
+checkpoint.
+\item \textbf{Redo} (Refazer): reaplica \textbf{todas} as operações
+registradas (até as de transações que não commitaram) --- ``repeating
+history''.
+\item \textbf{Undo} (Desfazer): desfaz as transações que não commitaram.
+\end{enumerate}
+
+WAL garante a durabilidade (D do ACID) sem gravar o dado imediatamente.
+
+\begin{pegadinha}
+Ordem Analysis $\to$ Redo $\to$ Undo --- a FGV inverte Redo/Undo.
+\end{pegadinha}
+
+\section{Armazenamento físico e desempenho}
+
+\begin{itemize}
+\item \textbf{Tablespace} (Oracle) / filegroup: unidade lógica de
+armazenamento que agrupa objetos em arquivos físicos. Separa dados, índices,
+temporário.
+\item \textbf{Índices} (B+ Tree, bitmap, hash): aceleram busca ao custo de
+escrita. Bitmap é bom para \textbf{baixa cardinalidade} (poucos valores
+distintos); B+ Tree para alta cardinalidade e faixas.
+\item \textbf{Otimizador de consultas (query optimizer):} escolhe o
+\textbf{plano de execução} (ordem de joins, uso de índice). Planos ruins
+geralmente vêm de \textbf{estatísticas desatualizadas} --- atualizar
+estatísticas costuma resolver.
+\item \textbf{Particionamento} (horizontal/sharding, vertical): divide
+tabela grande para escalar e melhorar desempenho.
+\end{itemize}
+
+\section{Backup e recuperação}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{8.4cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{O que copia} \\
+\midrule
+Completo (full) & tudo \\
+Incremental & só o que mudou \textbf{desde o último backup (de qualquer tipo)} \\
+Diferencial & tudo que mudou \textbf{desde o último backup completo} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{RPO} (Recovery Point Objective): quanto de dado se aceita perder
+(janela). \textbf{RTO} (Recovery Time Objective): em quanto tempo o serviço
+volta. Backup \textbf{quente} (online, banco no ar) $\times$ \textbf{frio}
+(offline).
+
+\begin{pegadinha}
+Incremental (desde o último \textbf{qualquer}) $\times$ diferencial (desde o
+último \textbf{completo}) --- a diferencial cresce até o próximo full. A FGV
+troca essa definição com frequência.
+\end{pegadinha}
+
+\section{Segurança e acesso no SGBD}
+
+\textbf{GRANT/REVOKE} (DCL), \textbf{roles/papéis} (RBAC), \textbf{views}
+para restringir colunas, \textit{row-level security}, auditoria. Princípio do
+\textbf{menor privilégio}: por exemplo, o gerente de RH acessa só o que
+precisa.
+
+\section{Temas coringa genuínos}
+
+\begin{itemize}
+\item \textbf{Arquitetura de computadores:} CPU (Unidade de Controle
+$\times$ ULA), ciclo de instrução (busca-decodifica-executa), pipeline,
+memória (registrador $\to$ cache $\to$ RAM $\to$ disco, mais rápida e cara no
+topo), sistemas de numeração (binário, octal, hexadecimal --- conversão dígito
+a dígito).
+\item \textbf{Noções de informática:} pacote office, sistemas de arquivos,
+atalhos.
+\item \textbf{Sistemas de informação:} SIG, SPT (transacional), SAD/SSD
+(decisão), ERP, CRM, SCM --- o nível gerencial que cada um atende.
+\item \textbf{Blockchain:} ver Capítulo \ref{cap:programacao}.
+\end{itemize}
+
+\section{IA/ML (tema quente neste bloco)}
+
+\begin{itemize}
+\item \textbf{Supervisionado} $\times$ \textbf{não supervisionado}
+$\times$ \textbf{semissupervisionado.} Supervisionado usa dados
+\textbf{rotulados} (classificação/regressão); não supervisionado acha
+estrutura \textbf{sem rótulo} (clusterização/associação). A FGV inverte
+``rotulado'' entre os dois.
+\item \textbf{Overfitting} (decora o treino, vai mal em dados novos) $\times$
+\textbf{underfitting} (modelo simples demais). Regularização combate
+\textbf{overfitting}.
+\item \textbf{Regularização:} \textbf{L1 (Lasso)} zera coeficientes e faz
+seleção de atributos; \textbf{L2 (Ridge)} encolhe sem zerar. A banca troca os
+dois.
+\item \textbf{Concept drift} (muda a relação entrada$\to$saída, o próprio
+conceito alvo) $\times$ \textbf{data drift} (muda a distribuição da
+\textbf{entrada}). Fácil de trocar.
+\item \textbf{Métricas:} MAE = erro médio absoluto (regressão); F1 = média
+harmônica de precisão e recall; ROC/AUC = capacidade de separar classes
+variando o limiar.
+\item \textbf{Redes neurais} (ativação sigmoide) e CNN; \textbf{LLM/IA
+generativa:} RAG, agentes, engenharia de prompt, ética e explicabilidade ---
+ver também Capítulo \ref{cap:atualidades}.
+\item Em cenário de IA em produção, ``monitorar drift'' e deploy
+blue-green/canário são as respostas típicas de \textbf{MLOps}. Não confundir
+IA generativa (cria conteúdo) com IA discriminativa (classifica/prediz).
+\end{itemize}
+
+\begin{pegadinha}
+Inverter hipervisor: \textbf{Tipo 1} (bare-metal) roda direto no hardware;
+\textbf{Tipo 2} roda sobre um SO hospedeiro; \textbf{contêiner} compartilha o
+kernel do host (não virtualiza hardware). Troca internet/intranet/extranet:
+intranet = interna; extranet = estende a intranet a parceiros externos.
+\end{pegadinha}
+
+\begin{jacaiu}
+Muita questão ``órfã'' é DBA disfarçado --- se o cenário fala em backup,
+tablespace, plano de execução, log/recuperação, é administração de BD.
+Memorize os pares: AD $\times$ DBA, incremental $\times$ diferencial, RPO
+$\times$ RTO, ordem do ARIES, bitmap $\times$ B+ Tree, rotulado $\times$ não
+rotulado, data $\times$ concept drift, L1 $\times$ L2, Tipo 1 $\times$ Tipo
+2, over $\times$ underfitting. Rode \texttt{./quiz.py orfaos} --- mistura DBA,
+administração de dados, processos e temas avulsos que caíram nas provas
+reais.
+\end{jacaiu}
+
+\begin{comosair}
+Monte flashcards dos pares que a FGV inverte neste bloco (listados acima) e
+revise-os isolados dos outros capítulos --- é o jeito mais rápido de fixar um
+bloco que mistura tantos assuntos diferentes.
+\end{comosair}

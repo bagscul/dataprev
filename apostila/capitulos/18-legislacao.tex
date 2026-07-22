@@ -1,0 +1,212 @@
+\chapter{Legislação --- Segurança da Informação e Proteção de Dados}
+\label{cap:legislacao}
+
+\begin{edital}
+Lei 12.527/2011 (LAI) caps.\ I--V + Decretos 7.724 e 7.845; Lei 12.737/2012
+(Delitos Informáticos) art.\ 2º; Lei 12.965/2014 (Marco Civil) cap.\ II Seção
+I e cap.\ III Seções I e II; Lei 13.709/2018 (LGPD) caps.\ I, II, III, IV,
+VII, VIII, IX.
+\end{edital}
+\peso{5 questões, peso 1. A FGV adora prazo, competência e a distinção
+controlador $\times$ operador. Ela cita o número e a data da lei no
+enunciado --- não é decoreba de número, é entender competências, prazos e
+papéis.}
+
+\begin{pegadinha}[Atualização crítica --- Marco Civil, art.\ 19, pós-STF jun/2025]
+Em \textbf{26/06/2025} o STF mudou a regra de responsabilidade dos provedores
+por conteúdo de terceiros --- é a atualização legislativa mais provável de
+cair em 2026 e tem seção própria mais adiante neste capítulo (ver
+Seção \ref{sec:marco-civil}). Não decore a redação antiga do art.\ 19 como se
+ainda vigesse: hoje a regra geral é \textbf{notice-and-takedown}.
+\end{pegadinha}
+
+\section{LGPD (Lei 13.709/2018)}
+
+\begin{itemize}
+\item \textbf{Controlador} decide sobre o tratamento (finalidade e meios);
+\textbf{operador} trata em nome do controlador. \textbf{Encarregado (DPO)} é
+o canal com titulares e ANPD.
+\item \textbf{Bases legais (art.\ 7º):} consentimento \textbf{não} é a
+única; há \textbf{10} bases (cumprimento de obrigação legal, execução de
+contrato, legítimo interesse, proteção da vida, tutela da saúde, políticas
+públicas, etc.).
+\item \textbf{Direitos do titular (art.\ 18):} confirmação, acesso,
+correção, anonimização/bloqueio/eliminação, portabilidade, informação sobre
+compartilhamento, revogação do consentimento.
+\item \textbf{ANPD} (autarquia) \textbf{fiscaliza e sanciona}; o
+\textbf{CNPD} (Conselho) é \textbf{consultivo} (propõe diretrizes, sugere
+ações à ANPD). Não confunda os papéis.
+\item \textbf{Sanções:} advertência; \textbf{multa simples de até 2\% do
+faturamento} no Brasil no último exercício, excluídos tributos, limitada a
+\textbf{R\$ 50 milhões por infração}; publicização; bloqueio/eliminação dos
+dados. Exige processo administrativo.
+\item \textbf{LGPD aplicada a IA:} explicabilidade em decisão automatizada,
+anonimização, scraping (visto no TJ-RJ).
+\end{itemize}
+
+\begin{pegadinha}
+Troca \textbf{controlador $\times$ operador}: controlador \textbf{decide}
+sobre o tratamento; operador \textbf{executa} em nome do controlador. Troca
+\textbf{ANPD $\times$ CNPD}: a ANPD é autarquia federal de natureza especial
+que fiscaliza e aplica sanção; o CNPD é órgão consultivo --- apenas
+propõe/sugere e dissemina (no Dataprev 2024 a alternativa certa era o CNPD
+``sugerir ações à ANPD''). Dizer que consentimento é a única base legal da
+LGPD é falso --- há 10 bases.
+\end{pegadinha}
+
+\section{Marco Civil (Lei 12.965/2014)}
+\label{sec:marco-civil}
+
+\subsection{Guarda de registros}
+
+\begin{itemize}
+\item \textbf{Registros de conexão:} guarda obrigatória por \textbf{1 ano}
+(provedor de conexão).
+\item \textbf{Registros de acesso a aplicações:} \textbf{6 meses} (provedor
+de aplicação).
+\item Princípios: neutralidade de rede, privacidade, liberdade de
+expressão.
+\end{itemize}
+
+\subsection{Art.\ 19 --- responsabilidade dos provedores (atualização crítica pós-STF, jun/2025)}
+
+O art.\ 19 do Marco Civil trata de quando uma plataforma/provedor responde
+civilmente por conteúdo \textbf{gerado por terceiros} (posts, comentários,
+vídeos de usuários). Até 2025, a redação original condicionava essa
+responsabilidade ao descumprimento de \textbf{ordem judicial específica} de
+remoção. Isso \textbf{mudou}.
+
+\begin{conceito}[O que o STF decidiu --- Temas 987 e 533, 26/06/2025]
+Em \textbf{26/06/2025}, o STF julgou dois recursos extraordinários com
+repercussão geral (\textbf{Tema 987} e \textbf{Tema 533}) e, por
+\textbf{8 votos a 3}, declarou o \textbf{art.\ 19 parcial e
+progressivamente inconstitucional}. A tese fixada vale \textbf{a partir do
+julgamento} e continua valendo \textbf{até que o Congresso legisle} sobre o
+tema especificamente --- ou seja, é a regra vigente \textbf{agora}, não uma
+proposta.
+\end{conceito}
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Antes (redação original)} & \textbf{Agora (pós-STF, 26/06/2025)} \\
+\midrule
+Regra geral & provedor só responde se descumprir \textbf{ordem judicial específica} de remoção & regra geral virou \textbf{notice-and-takedown}: \textbf{notificação extrajudicial} já pode responsabilizar o provedor \\
+Conteúdo íntimo não consentido (art.\ 21) & já bastava notificação (exceção histórica) & continua bastando notificação (a exceção virou a regra geral) \\
+Crimes contra a honra (calúnia, injúria, difamação) & exigia ordem judicial & \textbf{continua exigindo ordem judicial} --- é a única categoria que preserva a regra antiga \\
+Conteúdo de risco grave (crime contra o Estado/ordem democrática, terrorismo, incitação ao racismo, conteúdo que ponha em risco a vida) & tratamento igual ao geral & exige atuação \textbf{proativa e imediata} do provedor, sob dever de cuidado --- não espera nem notificação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Em resumo: o Marco Civil deixou de exigir ordem judicial como regra --- a
+\textbf{notificação extrajudicial} (do usuário prejudicado, de terceiro ou de
+autoridade) já é suficiente para obrigar o provedor a agir na maioria dos
+casos. A \textbf{ordem judicial permanece obrigatória apenas para os crimes
+contra a honra}, e para conteúdo de risco grave o provedor deve agir de
+forma \textbf{proativa}, sem esperar sequer notificação.
+
+\begin{pegadinha}[Como a FGV vai usar a lei antiga como distrator]
+A partir de 2026, espere que a banca ofereça a redação \textbf{original} do
+art.\ 19 como se ainda fosse a regra --- e essa alternativa vai \textbf{soar
+correta} para quem estudou por material desatualizado. Reconheça o padrão:
+
+\begin{itemize}
+\item \textbf{Distrator típico:} ``o provedor de aplicações de internet só
+pode ser responsabilizado civilmente por danos decorrentes de conteúdo
+gerado por terceiros se, após \textbf{ordem judicial específica}, não tomar
+as providências para tornar indisponível o conteúdo apontado como
+infringente'' --- isso era a regra \textbf{até 25/06/2025}. Hoje é
+\textbf{a exceção} (vale só para crimes contra a honra), não mais a regra
+geral. Se a alternativa não mencionar nenhuma ressalva de data ou de tipo de
+crime, desconfie.
+\item \textbf{Distrator inverso (superextrapolação):} dizer que ``o STF
+extinguiu totalmente a exigência de ordem judicial'' --- também
+\textbf{falso}: a ordem judicial \textbf{continua obrigatória} para calúnia,
+injúria e difamação. A regra não é absoluta em nenhuma das duas direções.
+\item \textbf{Distrator de terminologia:} chamar o novo regime de
+``censura prévia'' --- é \textbf{notice-and-takedown} (reação a notificação
+sobre conteúdo já publicado), não filtragem antes da publicação.
+\item \textbf{Distrator de data/instrumento:} atribuir a mudança a uma
+\textbf{lei nova do Congresso} --- foi uma \textbf{decisão do STF em controle
+de constitucionalidade} (Temas 987 e 533), com efeito \textbf{até que} o
+Congresso legisle sobre o tema; não confundir instância nem data.
+\end{itemize}
+\end{pegadinha}
+
+\section{LAI (Lei 12.527/2011) --- prazos de sigilo}
+
+\begin{center}
+\begin{tabular}{@{}p{4cm}p{6cm}@{}}
+\toprule
+\textbf{Classificação} & \textbf{Prazo máximo de restrição} \\
+\midrule
+Reservada & 5 anos \\
+Secreta & 15 anos \\
+Ultrassecreta & 25 anos (prorrogável \textbf{uma vez}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Regra geral: \textbf{publicidade é a regra; sigilo é exceção.} Prazos contam
+da \textbf{data de produção} da informação. Informação sobre
+\textbf{violação de direitos humanos} por agente público \textbf{não} pode
+ser objeto de restrição de acesso. \textbf{Transparência ativa} (o órgão
+publica de ofício, ex.: portal) $\times$ \textbf{passiva} (o cidadão pede via
+e-SIC).
+
+\textbf{Decretos que o edital cita} (regulamentam a LAI no Executivo
+federal):
+
+\begin{itemize}
+\item \textbf{Decreto 7.724/2012:} regulamenta a LAI --- procedimentos de
+acesso, e-SIC, prazos de resposta ao pedido (\textbf{20 dias}, prorrogáveis
+por \textbf{10}), recursos, transparência ativa, competências de
+classificação.
+\item \textbf{Decreto 7.845/2012:} procedimentos de \textbf{credenciamento
+de segurança} e tratamento de \textbf{informação classificada} (custódia,
+acesso, controle).
+\end{itemize}
+
+\begin{pegadinha}
+Inverter prazos (LAI, Marco Civil) e competências (ANPD $\times$ CNPD).
+\end{pegadinha}
+
+\section{Delitos Informáticos (Lei 12.737/2012, art.\ 154-A do CP)}
+
+Crime de \textbf{invasão de dispositivo informático}. \textbf{Independe} de
+o dispositivo estar conectado à rede (a conexão não é elementar do tipo).
+Aumento de pena conforme o sujeito passivo (autoridades) e o prejuízo. (A
+pena exata foi alterada pela Lei 14.155/2021 --- foque no conceito.)
+
+\begin{pegadinha}
+Dizer que a invasão do art.\ 154-A exige o aparelho conectado à rede é
+\textbf{falso} --- o Dataprev derrubou exatamente essa alternativa.
+\end{pegadinha}
+
+\begin{jacaiu}
+Controlador $\times$ operador; bases legais da LGPD; ANPD $\times$ CNPD;
+prazos da LAI (reservada/secreta/ultrassecreta); guarda de registros no
+Marco Civil (1 ano / 6 meses); art.\ 19 e responsabilidade do provedor;
+invasão de dispositivo independe de rede. Rode \texttt{./quiz.py
+legislacao}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{GDPR} (regulamento europeu) aparece como paralelo à LGPD.
+\item Atenção a novas decisões do STF/ANPD em 2026 --- legislação é o bloco
+que mais muda; confira antes da prova.
+\end{itemize}
+
+\begin{comosair}
+LAI, prazos máximos contados da produção da informação: reservada 5 anos,
+secreta 15, ultrassecreta 25. Só a ultrassecreta prorroga, uma única vez,
+por igual período. LGPD, multa simples: até 2\% do faturamento no Brasil no
+último exercício, excluídos tributos, limitada a R\$ 50 milhões por
+infração. Marco Civil art.\ 19 (STF, 26/06/2025): regra geral virou
+notice-and-takedown --- notificação extrajudicial já basta, exceto para
+crimes contra a honra (ordem judicial). Guarde: ANPD fiscaliza/sanciona;
+CNPD só aconselha.
+\end{comosair}

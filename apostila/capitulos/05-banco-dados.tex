@@ -1,0 +1,221 @@
+\chapter{Banco de Dados}
+\label{cap:banco-dados}
+
+\begin{edital}
+Modelagem (conceitual, lógica, física); abordagem relacional e
+multidimensional; normalização; integridade referencial; metadados;
+modelagem dimensional; SQL, DDL, DML; SGBD; propriedades de BD; NoSQL; banco
+em memória; data lakes/big data; dados estruturados e não estruturados;
+avaliação de modelos; ETL/ELT.
+\end{edital}
+\peso{ALTO --- metade do ``eixo duplo'' com Engenharia de Software; no MPU
+2025 foi o bloco que mais caiu.}
+
+\section{Modelagem em três níveis}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+\textbf{Nível} & \textbf{O que é} & \textbf{Artefato} \\
+\midrule
+Conceitual & visão de negócio, independe de SGBD & Modelo Entidade-Relacionamento (MER/DER) \\
+Lógico & estrutura no modelo escolhido (relacional) & tabelas, chaves, tipos genéricos \\
+Físico & implementação no SGBD específico & DDL, índices, particionamento \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Ordem correta: conceitual $\to$ lógico $\to$ físico. A FGV inverte a ordem ou
+troca o artefato de cada nível.
+\end{pegadinha}
+
+\section{Modelo relacional e integridade}
+
+\begin{itemize}
+\item \textbf{Chave primária (PK):} identifica unicamente a tupla; não nula,
+única.
+\item \textbf{Chave estrangeira (FK):} referencia a PK de outra (ou da
+mesma) tabela.
+\item \textbf{Integridade referencial:} toda FK aponta para uma PK
+existente (ou é nula). Ações: CASCADE, SET NULL, RESTRICT/NO ACTION.
+\item \textbf{Integridade de entidade:} PK não pode ser nula.
+\item \textbf{Álgebra relacional:} seleção ($\sigma$) = \texttt{WHERE} =
+filtra \textbf{linhas}; projeção ($\pi$) = filtra \textbf{colunas}.
+\end{itemize}
+
+\section{Normalização (formas normais)}
+
+\begin{center}
+\begin{tabular}{@{}p{2cm}p{9.4cm}@{}}
+\toprule
+\textbf{FN} & \textbf{Elimina} \\
+\midrule
+1FN & atributos multivalorados / não atômicos (cada célula um valor) \\
+2FN & dependência parcial da chave (só relevante com PK composta) \\
+3FN & dependência transitiva (atributo que depende de outro não-chave) \\
+FNBC (BCNF) & anomalia quando há mais de uma chave candidata sobreposta \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Ordem: 1FN $\to$ 2FN $\to$ 3FN $\to$ BCNF. Normalizar reduz redundância;
+\textbf{desnormalizar de propósito} (ex.: Data Warehouse) é aceitável por
+desempenho de leitura --- objetivo é leitura, nunca escrita.
+
+\section{SQL: DDL $\times$ DML $\times$ DCL $\times$ TCL}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4cm}p{4.5cm}@{}}
+\toprule
+\textbf{Sublinguagem} & \textbf{Comandos} & \textbf{Observação} \\
+\midrule
+DDL (definição) & CREATE, ALTER, \textbf{DROP, TRUNCATE} & TRUNCATE é DDL (não DML), auto-commit \\
+DML (manipulação) & SELECT, INSERT, UPDATE, DELETE & DELETE é DML e pode ter WHERE + rollback \\
+DCL (controle) & GRANT, REVOKE & permissões \\
+TCL (transação) & COMMIT, ROLLBACK, SAVEPOINT & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+\textbf{TRUNCATE (DDL) $\times$ DELETE (DML)}; \texttt{UNION} remove
+duplicatas / \texttt{UNION ALL} mantém; \texttt{WHERE} filtra linhas /
+\texttt{HAVING} filtra grupos após \texttt{GROUP BY}; \texttt{JOIN} sem
+\texttt{ON} vira produto cartesiano. Ordem de execução lógica: FROM $\to$
+WHERE $\to$ GROUP BY $\to$ HAVING $\to$ SELECT $\to$ ORDER BY. Leia palavra
+por palavra os comandos SQL da questão --- a FGV troca uma cláusula só
+(LIMIT/OFFSET, DISTINCT, ILIKE, NOT EXISTS por JOIN comum) e testa leitura de
+código.
+\end{pegadinha}
+
+\section{Propriedades ACID (transações)}
+
+\begin{itemize}
+\item \textbf{A}tomicidade: tudo ou nada.
+\item \textbf{C}onsistência: leva o banco de um estado válido a outro.
+\item \textbf{I}solamento: transações concorrentes não interferem.
+\item \textbf{D}urabilidade: efeito confirmado persiste (mesmo após falha).
+\end{itemize}
+
+\section{Relacional $\times$ Multidimensional (OLTP $\times$ OLAP)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.4cm}@{}}
+\toprule
+& \textbf{OLTP (transacional)} & \textbf{OLAP (analítico)} \\
+\midrule
+Uso & operações do dia a dia & apoio à decisão / análise \\
+Escrita/leitura & muitas escritas curtas & leitura pesada, agregação \\
+Modelo & relacional normalizado & multidimensional (cubos) \\
+Estrutura & tabelas & dimensões e métricas/fatos \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Pegadinha central do bloco: a FGV troca OLTP$\leftrightarrow$OLAP. ``Cubos,
+dimensões, agregação, análise'' = OLAP; ``transação, muitas gravações'' =
+OLTP. Nunca ``relacional é usado em OLAP e multidimensional em OLTP''.
+\end{pegadinha}
+
+\section{NoSQL e novos armazenamentos}
+
+\begin{itemize}
+\item \textbf{NoSQL:} alta disponibilidade e \textbf{escalabilidade
+horizontal}; costuma relaxar ACID (modelo \textbf{BASE}: Basically
+Available, Soft state, Eventual consistency). Tipos: \textbf{chave-valor}
+(Redis), \textbf{documento} (MongoDB), \textbf{colunar} (Cassandra),
+\textbf{grafo} (Neo4j, nós e arestas). Não é ``sempre grafo'' nem ``segue
+ACID estritamente''; não substitui ERP/CRM transacional por padrão.
+\item \textbf{Teorema CAP:} em sistema distribuído, escolha 2 de 3 ---
+\textbf{C}onsistency, \textbf{A}vailability, \textbf{P}artition tolerance.
+Com partição (P inevitável em rede), decide-se entre C e A. Cenário de
+registro oficial/consistência crítica (sentença, transação) $\to$ CP.
+\item \textbf{Banco em memória} (in-memory, ex.: Redis): baixa latência.
+\item \textbf{Data Lake $\times$ Data Warehouse $\times$ Lakehouse:} Lake
+guarda dado bruto (schema-on-read, estruturado e não estruturado); DW guarda
+dado tratado e modelado (schema-on-write); Lakehouse combina os dois.
+\end{itemize}
+
+\begin{pegadinha}
+Absolutos denunciam o distrator: ``NoSQL segue ESTRITAMENTE ACID'', ``NoSQL
+usa SEMPRE modelo relacional'', ``dados SEMPRE em grafos'', ``desnormalização
+é requisito OBRIGATÓRIO''. A FGV adora ``sempre/apenas/nunca/estritamente'' ---
+quase sempre é a alternativa errada. No teorema CAP, desconfie de cenários que
+priorizam disponibilidade/velocidade (AP) quando o contexto pede consistência
+crítica (deveria ser CP).
+\end{pegadinha}
+
+\section{ETL $\times$ ELT}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.3cm}p{4.3cm}@{}}
+\toprule
+& \textbf{ETL} & \textbf{ELT} \\
+\midrule
+Ordem & Extrai $\to$ \textbf{Transforma} $\to$ Carrega & Extrai $\to$ Carrega $\to$ \textbf{Transforma} \\
+Transformação & antes de carregar (fora do destino) & depois, no próprio destino \\
+Bom para & DW tradicional & destino com muito poder de processamento (nuvem, big data) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A pegadinha é a \textbf{posição do T}. ELT aproveita o processamento do
+destino (bom para grande volume); ETL é melhor quando a transformação ocorre
+antes/fora. Cuidado com a alternativa que inverte quem transforma antes/depois
+do carregamento, ou que diz que ELT é melhor para volume pequeno (é o
+contrário).
+\end{pegadinha}
+
+\section{Índices e notações}
+
+\begin{itemize}
+\item \textbf{Índices:} \textbf{B+ Tree} (padrão, bom para faixas e alta
+cardinalidade), \textbf{bitmap} (baixa cardinalidade, ex.: sexo/status),
+\textbf{hash} (igualdade exata). \textbf{Hashing extensível:} hash dinâmico
+com um \textbf{diretório} de ponteiros e \textit{global depth}; quando um
+bucket enche, ele faz \textbf{split} e dobra o diretório se preciso --- cresce
+sem reorganizar tudo.
+\item \textbf{IDEF1X:} notação de modelagem de dados (comum em ferramentas
+como o erwin). Relacionamento \textbf{identificador} = linha \textbf{sólida};
+entidade dependente = retângulo de \textbf{cantos arredondados}.
+\item Administração física (tablespaces, ARIES/recuperação, backup,
+otimizador) está no Capítulo \ref{cap:orfaos} (Órfãos).
+\end{itemize}
+
+\begin{jacaiu}
+Relacional $\times$ multidimensional (OLTP/OLAP); NoSQL (disponibilidade e
+escala horizontal); ETL $\times$ ELT (identificar a incorreta); ETL como
+ponte para o DW; normalização 1FN-3FN; integridade referencial;
+TRUNCATE/DELETE; teorema CAP; Star $\times$ Snowflake; desnormalização em DW;
+Data Warehouse $\times$ Data Lake $\times$ Lakehouse; JOIN vs.\ NOT EXISTS;
+DISTINCT; VIEW como tabela virtual; GRANT de privilégios; SAVEPOINT/ROLLBACK
+TO; Crow's Foot $\to$ DDL; chave surrogada. Rode \texttt{./quiz.py
+banco-dados} e \texttt{./quiz.py bi}.
+\end{jacaiu}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{SGBD do edital:} Oracle 19c, MySQL, PostgreSQL, MongoDB,
+MS-SQL Server 2019.
+\item \textbf{Modelagem dimensional (Kimball):} \textbf{Star Schema} (uma
+tabela fato + dimensões desnormalizadas, mais rápido) $\times$
+\textbf{Snowflake} (dimensões normalizadas, menos redundância, mais joins)
+--- detalhe completo no Capítulo \ref{cap:bi} (BI).
+\item \textbf{Big Data --- 5 V:} Volume, Velocidade, Variedade, Veracidade,
+Valor.
+\item \textbf{MongoDB:} query, \texttt{\$size}, coleção/documento (vs.\
+tabela/linha do MySQL); \textbf{banco orientado a grafos} tem nós e arestas.
+\end{itemize}
+
+\begin{comosair}
+Memorize lado a lado: OLTP = transacional, normalizado, escrita, linha; OLAP
+= analítico, dimensional, leitura, cubo/agregação. ETL = transforma ANTES (DW
+tradicional); ELT = carrega e transforma no destino (nuvem, grande volume).
+Desnormalização = menos joins, mais espaço, risco de anomalia de atualização
+--- serve à leitura, não à escrita. NoSQL: BASE, alta disponibilidade e
+escalabilidade horizontal; ruim para ERP/CRM fortemente relacional.
+\end{comosair}

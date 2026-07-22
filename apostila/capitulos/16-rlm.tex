@@ -1,0 +1,157 @@
+\chapter{Raciocínio Lógico Matemático}
+\label{cap:rlm}
+
+\begin{edital}
+Estruturas lógicas; lógica de argumentação (analogias, inferências,
+deduções, conclusões); lógica sentencial (proposições, tabelas-verdade,
+equivalências, diagramas); lógica de primeira ordem; raciocínio lógico
+envolvendo problemas aritméticos, geométricos e matriciais.
+\end{edital}
+\peso{5 questões, peso 1.}
+
+\begin{pegadinha}[Duas frentes: matemática E lógica formal --- não leia só uma]
+Cuidado com uma leitura só. A \textbf{Dataprev 2024} foi quase toda
+\textbf{conta} --- por isso a fama de ``RLM da FGV é matemática''. Mas o
+\textbf{edital 2026} lista a lógica formal com peso próprio: estruturas
+lógicas, lógica de argumentação, lógica sentencial e \textbf{lógica de
+primeira ordem} (itens 1--4), e só no item 5 os ``problemas aritméticos,
+geométricos e matriciais''. São só 5 questões, então não dá para prever o
+mix --- \textbf{não pule a lógica formal apostando no padrão de 2024.} Cubra
+as duas frentes.
+\end{pegadinha}
+
+\begin{center}
+\begin{tabular}{@{}p{5cm}p{2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Assunto} & \textbf{Prioridade} & \textbf{O que revisar} \\
+\midrule
+Porcentagem / aumentos sucessivos & altíssima & fator multiplicativo (1,30 $\times$ 1,10), desconto, lucro \\
+Razão e proporção / regra de três & alta & direta e inversa, divisão proporcional \\
+Análise combinatória & alta & arranjo, combinação, permutação, princípio multiplicativo \\
+Médias e estatística & alta & média simples, ponderada, mediana, moda \\
+Lógica: equivalências e argumentação & alta (edital 2026) & condicional, contrapositiva, De Morgan, validade \\
+PA / PG & média & termo geral, soma \\
+Geometria plana & média & área, perímetro, Pitágoras \\
+Matrizes & média & operações, determinante \\
+Diagramas lógicos / quantificadores & média & todo/algum/nenhum, primeira ordem \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Ferramentas mínimas de matemática}
+
+\begin{itemize}
+\item \textbf{Aumentos sucessivos:} multiplique os fatores. +30\% depois
++10\% $\to$ 1,30 $\times$ 1,10 = 1,43 $\to$ aumento total \textbf{43\%} (não
+40\%). Taxa média mensal: raiz, $\approx$ \textbf{19,6\%} (entre 19\% e
+20\%).
+\item \textbf{Divisão proporcional:} reparte na razão das partes (ex.:
+prejuízo proporcional ao capital investido).
+\item \textbf{Média ponderada:} $\Sigma(\text{nota} \times \text{peso}) /
+\Sigma(\text{pesos})$. Colocar a menor nota no maior peso derruba a média ---
+cuidado com ``necessariamente''.
+\item \textbf{Combinação} $C(n,p) = n!/[p!(n-p)!]$ (ordem não importa)
+$\times$ \textbf{arranjo} $A(n,p)$ (ordem importa). Grafo completo de $n$
+vértices tem $C(n,2)$ arestas.
+\end{itemize}
+
+\section{Lógica formal (não subestime)}
+
+\textbf{Conectivos e tabela-verdade:}
+
+\begin{center}
+\begin{tabular}{@{}p{4.2cm}p{1.6cm}p{4.2cm}@{}}
+\toprule
+\textbf{Conectivo} & \textbf{Símbolo} & \textbf{Falso quando} \\
+\midrule
+Conjunção ``e'' & $p \land q$ & ao menos um é falso \\
+Disjunção ``ou'' & $p \lor q$ & ambos falsos \\
+Condicional ``se...então'' & $p \to q$ & \textbf{V $\to$ F} (só nesse caso) \\
+Bicondicional ``se e somente se'' & $p \leftrightarrow q$ & valores diferentes \\
+Disjunção exclusiva ``ou...ou'' & $p \oplus q$ & valores iguais \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Equivalências que a FGV cobra:}
+
+\begin{itemize}
+\item \textbf{Contrapositiva:} $p \to q \equiv \lnot q \to \lnot p$. ``Se é
+fã então assiste'' $\equiv$ ``se \textbf{não} assiste então \textbf{não} é
+fã''. (A recíproca $q \to p$ \textbf{não} é equivalente.)
+\item \textbf{Condicional como disjunção:} $p \to q \equiv \lnot p \lor q$.
+\item \textbf{Negação da condicional:} $\lnot(p \to q) \equiv p \land \lnot
+q$.
+\item \textbf{De Morgan:} $\lnot(p \land q) \equiv \lnot p \lor \lnot q$;
+$\lnot(p \lor q) \equiv \lnot p \land \lnot q$.
+\end{itemize}
+
+\textbf{Argumentação (validade):} um argumento é \textbf{válido} se, sempre
+que as premissas forem verdadeiras, a conclusão também for.
+
+\begin{itemize}
+\item \textbf{Modus ponens:} $p \to q, p \vdash q$ (válido).
+\item \textbf{Modus tollens:} $p \to q, \lnot q \vdash \lnot p$ (válido).
+\item \textbf{Falácias:} afirmar o consequente ($p \to q, q \vdash p$) e
+negar o antecedente ($p \to q, \lnot p \vdash \lnot q$) são
+\textbf{inválidas} --- a FGV usa como pegadinha.
+\item \textbf{Silogismo hipotético:} $p \to q, q \to r \vdash p \to r$.
+\end{itemize}
+
+\textbf{Quantificadores / primeira ordem e diagramas:} ``Todo A é B'',
+``Algum A é B'', ``Nenhum A é B''.
+
+\begin{itemize}
+\item Negações: negar ``todo A é B'' $\to$ ``\textbf{algum} A \textbf{não} é
+B''; negar ``algum A é B'' $\to$ ``\textbf{nenhum} A é B''. A FGV adora a
+negação errada do quantificador.
+\item \textbf{Diagramas lógicos} (círculos de Euler/Venn): resolvem
+``todo/algum/nenhum'' desenhando os conjuntos e testando o que
+\textbf{necessariamente} decorre --- não o que ``pode ser''.
+\end{itemize}
+
+\begin{pegadinha}[Pegadinha recorrente de lógica]
+Confundir \textbf{equivalência} com \textbf{implicação}, marcar a
+\textbf{recíproca} como equivalente, ou negar quantificador trocando ``todo''
+por ``nenhum'' (o certo é ``algum não'').
+\end{pegadinha}
+
+\begin{pegadinha}
+\textbf{Nas de matemática:} cada alternativa errada é o resultado de um erro
+de conta específico --- esqueceu de somar o peso, inverteu
+numerador/denominador, contou o caso duplicado, somou as taxas em vez de
+multiplicar. Refaça com calma; o distrator ``quase certo'' vem de um passo
+omitido.
+
+\textbf{Nas de lógica:} troca equivalência por implicação, marca a
+recíproca como equivalente, nega o quantificador errado (``todo''$\to$
+``nenhum'' em vez de ``algum não''), ou apresenta uma falácia (afirmar o
+consequente) como argumento válido.
+\end{pegadinha}
+
+\begin{jacaiu}
+Divisão proporcional (prejuízo); média ponderada com pesos por bimestre;
+sistema com soma e soma dos quadrados; equivalência da condicional
+(contrapositiva); grafo/estradas (combinação); aumentos sucessivos e taxa
+média. Rode \texttt{./quiz.py rlm}.
+\end{jacaiu}
+
+\begin{comosair}
+Chegue com as fórmulas na ponta: $C(n,2)=n(n-1)/2$; média ponderada =
+$\Sigma(\text{nota}\times\text{peso})/\Sigma\text{pesos}$;
+$(a+b)^2=a^2+2ab+b^2$; taxa acumulada = produto dos fatores. Em porcentagem
+sucessiva, \textbf{sempre multiplique} fatores; nunca some percentuais.
+Estime a ordem de grandeza antes de marcar: isso elimina o distrator
+``redondo'' plantado pela banca. Não gaste tempo demais numa questão de
+conta pesada --- são só ${\sim}$6 no total; garanta as de porcentagem, média
+e combinatória, que são as mais recorrentes.
+\end{comosair}
+
+\section{Alta probabilidade / pesquisa extra}
+
+\begin{itemize}
+\item \textbf{Probabilidade} básica (casos favoráveis / possíveis) pode
+aparecer.
+\item Treine \textbf{velocidade}: são 5 questões valendo 1 ponto cada ---
+não gaste tempo demais numa; os específicos valem 2,5$\times$.
+\end{itemize}

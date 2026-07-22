@@ -1,0 +1,110 @@
+\chapter{Técnica de prova FGV --- como atacar qualquer questão}
+
+Guia transversal, válido para todas as matérias, destilado da resolução de
+${\sim}$500 questões reais da FGV em 7 provas. Os capítulos por assunto dizem
+\emph{o que} cada matéria cobra; este guia diz \emph{como} atacar a questão
+na hora da prova. Leia-o primeiro e volte a ele na última semana.
+
+\section{Leia o comando antes de tudo}
+
+O comando é a última linha do enunciado. O erro número um em prova é responder
+o oposto do que foi pedido.
+
+\begin{itemize}
+\item \textbf{``Assinale a correta''} $\times$ \textbf{``assinale a
+INCORRETA / a que NÃO...''} --- a FGV usa muito o comando negativo. Circule o
+``incorreta''/``não'' no papel antes de ler as alternativas.
+\item \textbf{``Julgue as afirmativas I, II, III''} $\to$ resolva cada item
+isolado como V/F, depois case com a alternativa (``I e II apenas'', ``I, II e
+III'', etc.). Uma afirmativa falsa derruba toda alternativa que a inclua ---
+use isso para eliminar em bloco.
+\item \textbf{Sequência (V) (F) (F)}: mesma lógica. Acertar 1 ou 2 itens já
+elimina metade das alternativas.
+\end{itemize}
+
+\section{Os padrões de distrator da FGV (o coração do método)}
+
+A FGV constrói a alternativa errada de poucas formas. Reconhecê-las é meio
+caminho andado.
+
+\begin{pegadinha}[Os seis padrões de distrator]
+\begin{enumerate}
+\item \textbf{Absolutos.} ``sempre'', ``nunca'', ``exclusivamente'',
+``apenas'', ``todo'', ``invariavelmente'', ``impossível'', ``garante''. No
+mundo técnico quase nada é absoluto --- a alternativa com absoluto é quase
+sempre o distrator.
+\item \textbf{Inversão de conceitos.} Troca dois conceitos do mesmo par:
+OLTP$\leftrightarrow$OLAP, PUT$\leftrightarrow$PATCH,
+agregação$\leftrightarrow$composição, checked$\leftrightarrow$unchecked,
+controlador$\leftrightarrow$operador, governança$\leftrightarrow$gestão,
+IDS$\leftrightarrow$IPS, SAST$\leftrightarrow$DAST, TCP$\leftrightarrow$UDP,
+incidente$\leftrightarrow$problema, Factory$\leftrightarrow$Abstract Factory.
+Se você domina o par lado a lado, a inversão salta aos olhos.
+\item \textbf{A ``quase certa''.} Acerta a primeira metade e erra a segunda
+(``X é um índice bitmap, adequado para \emph{alta} cardinalidade'' --- bitmap
+é para \emph{baixa}). Leia a alternativa inteira; a FGV esconde o erro no
+fim.
+\item \textbf{Extrapolação (interpretação).} Em português/inglês, o distrator
+diz mais do que o texto diz, ou inverte a tese do autor. Se não está
+sustentado no texto, é distrator --- não importa se é verdade no mundo real.
+\item \textbf{Troca de número.} ``5 domínios do COBIT'', ``4 dimensões do
+ITIL'', ``3 formas normais'', ``camada 7 do OSI''. A FGV troca o número.
+Decore as quantidades.
+\item \textbf{Troca de ordem.} Fases do ARIES (Analysis $\to$ Redo $\to$
+Undo), ciclo de vida, camadas, formas normais. O distrator embaralha a
+sequência.
+\item \textbf{Contradição interna.} ``SOAP sem contrato formal'' (SOAP usa
+WSDL), ``microsserviço com banco único compartilhado'' (contra o princípio).
+A alternativa se contradiz --- descarte.
+\end{enumerate}
+\end{pegadinha}
+
+\section{Estratégia de resolução}
+
+\begin{enumerate}
+\item \textbf{Elimine primeiro os absolutos e as contradições internas} ---
+costumam sumir 2 alternativas de cara.
+\item \textbf{Compare as 2 que sobraram.} A FGV quase sempre deixa uma
+``quase certa'' como pegadinha final; a diferença está num detalhe (uma
+palavra, a segunda metade da frase, um número).
+\item \textbf{Volte ao enunciado} e confirme a escolhida contra o que foi
+pedido (o cenário e o comando), não contra sua memória solta.
+\item \textbf{Interpretação:} volte ao trecho exato. Nunca responda ``pelo
+que faz sentido''; responda pelo que o texto afirma.
+\end{enumerate}
+
+\section{Gestão de tempo (4h, 70 questões)}
+
+\begin{comosair}[Ritmo de prova]
+\begin{itemize}
+\item \textbf{Específicos primeiro.} Valem 2,5$\times$ (75 dos 115 pontos).
+Comece por eles com a cabeça fresca; deixe português/inglês/RLM para depois.
+\item \textbf{Não trave.} Marque a questão difícil, siga, volte no fim. Uma
+questão de RLM não vale mais que uma de eng.\ de software --- e costuma
+custar mais tempo.
+\item \textbf{Ritmo de referência:} ${\sim}$3 min por questão em média.
+Treine com \texttt{./quiz.py --simulado} (cronometrado, sem feedback até o
+fim).
+\end{itemize}
+\end{comosair}
+
+\section{Regras de ouro}
+
+\begin{itemize}
+\item \textbf{Filtro travado em FGV.} Cada banca tem uma gramática de
+pegadinha própria; reflexo de CESPE ou de outra banca atrapalha aqui.
+\item \textbf{Cartão de resposta:} questão com duas marcações ou nenhuma =
+zero. Confira. Reserve tempo para preencher com calma.
+\item \textbf{Não mude resposta no chute.} Só troque se tiver um motivo
+concreto (releu e viu o erro), não por insegurança de última hora.
+\item \textbf{Anulada acontece.} Se a questão parecer ter duas certas ou
+nenhuma, marque a ``menos errada'' e siga --- não perca tempo brigando com
+ela.
+\end{itemize}
+
+\section{Depois de cada simulado}
+
+Toda questão errada vira material de revisão: \texttt{./quiz.py --erradas}
+(repetição espaçada) e a anotação automática em \texttt{erros/<bloco>.md}. O
+caderno de erros é o material principal de revisão nas duas últimas semanas
+antes da prova.
