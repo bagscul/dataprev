@@ -195,8 +195,8 @@ Bloco que em 2024 caiu dentro de "Programação", com 4 questões. Não é perif
 | Seg 14/09 | **Governança:** gerenciamento de projetos (PMBOK), tradicional, híbrido e ágil. **Português** |
 | Ter 15/09 | **Governança:** ITIL v4 — conceitos, estrutura, objetivos. **Inglês** |
 | Qua 16/09 | **Governança:** COBIT 2019, gestão de riscos. **RLM:** simulado só de RLM |
-| Qui 17/09 | **BPMN** e modelagem de processos de negócio. **Legislação:** revisão geral |
-| Sex 18/09 | **Métricas:** Ponto de Função, Story Points. **Atualidades** |
+| Qui 17/09 | **BPMN** e modelagem de processos de negócio + **Métricas:** Ponto de Função, Story Points. **Legislação:** revisão geral |
+| Sex 18/09 | **Arquitetura (revisita):** microsserviços, REST×SOAP, containers, hexagonal, API gateway, transações distribuídas. **Atualidades** |
 | Sáb 19/09 | Revisão + refazer erradas de Java e Redes |
 | **Dom 20/09** | **Simulado 10** + correção |
 
