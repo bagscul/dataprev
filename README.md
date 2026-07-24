@@ -40,7 +40,8 @@ cai em hoje.
 ./quiz.py --erradas        # repeticao espacada: so o que voce ainda nao fixou
 ./quiz.py --simulado       # simulado cronometrado no formato da prova (70q)
 ./quiz.py --dica java      # como a FGV cobra esse bloco (sem bloco: lista)
-./quiz.py --stats          # desempenho acumulado por bloco
+./quiz.py --apostila java  # aponta o capitulo da apostila desse bloco
+./quiz.py --stats          # desempenho por bloco + causa do erro (conceitual/leitura)
 ```
 
 **Repeticao espacada (`--erradas`).** Nao mostra tudo que voce ja errou um
@@ -76,6 +77,19 @@ existe. Os textos ficam em `dicas/<bloco>.md` — edite a vontade.
 TRANSVERSAL: como atacar qualquer questão da FGV — ler o comando, reconhecer
 os padrões de distrator (absolutos, inversao de conceitos, a "quase certa"),
 eliminar, e gerir o tempo. Destilado da resolucao de ~500 questoes reais.
+
+**Apostila.** `./quiz.py --apostila <bloco>` (ou `--apostila hoje`) aponta o
+capitulo da apostila (`apostila/main.pdf`) daquele assunto — no espirito de
+`--dica`/`--resumo`, mas como a apostila e PDF ele indica onde ler, nao imprime
+o conteudo. Ao errar no quiz, o caderno de erros ja recebe a referencia do
+capitulo automaticamente.
+
+**Causa do erro (`--stats`).** Ao errar, o quiz pergunta em uma tecla se foi
+erro **conceitual** (nao sabia o conteudo) ou de **leitura/armadilha** (sabia e
+caiu na construcao) — Enter pula. O `--stats` separa as duas causas por bloco e
+recomenda o caminho certo: erro conceitual manda **reler a apostila + fazer mais
+questoes** (nao adianta tecnica se falta conteudo); erro de leitura aponta os
+**sete padroes de distrator** (`--dica tecnica-fgv`).
 
 **Resumo de conteudo.** `./quiz.py --resumo <bloco>` mostra o resumo do
 assunto — feito a partir do edital (Perfil 3), das dicas, da resolucao das

@@ -17,6 +17,7 @@ Uso:
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
     ./quiz.py --dica java        dica de banca (FGV) do bloco; --dica hoje = do dia
     ./quiz.py --resumo java      resumo de conteudo; --resumo hoje = do dia
+    ./quiz.py --apostila java    aponta o capitulo da apostila; --apostila hoje = do dia
     ./quiz.py --tags             inventario de blocos (os dois bancos juntos)
     ./quiz.py --stats            desempenho acumulado por bloco
     ./quiz.py --quem geys        roda como outra pessoa (progresso separado)
@@ -54,6 +55,50 @@ ALVO_GERAIS = {"portugues": 12, "ingles": 12, "rlm": 5, "atualidades": 6, "legis
 
 def peso_de(tag):
     return 1.0 if tag in GERAIS else 2.5
+
+
+# Mapa bloco -> capitulo da apostila (apostila/main.pdf). O numero IMPRESSO do
+# capitulo = numero do arquivo + 1 (00-como-usar e o Cap. 1). padroes-projeto e
+# uml nao sao tags do banco, mas caem juntos no Cap. 4 (03-padroes-uml), que e
+# separado de arquitetura (Cap. 5) — ficam aqui para o --apostila responder.
+APOSTILA = {
+    "eng-software": (3, "02-eng-software.tex", "Engenharia de Software"),
+    "padroes-projeto": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
+    "uml": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
+    "arquitetura": (5, "04-arquitetura.tex", "Arquitetura de Software"),
+    "banco-dados": (6, "05-banco-dados.tex", "Banco de Dados"),
+    "bi": (7, "06-bi.tex", "Business Intelligence (BI)"),
+    "seguranca": (8, "07-seguranca.tex", "Segurança da Informação"),
+    "programacao": (9, "08-programacao.tex", "Programação"),
+    "java": (10, "09-java.tex", "Java"),
+    "frontend": (11, "10-frontend.tex", "Frontend"),
+    "governanca": (12, "11-governanca.tex", "Gestão e Governança de TI"),
+    "redes": (13, "12-redes.tex", "Redes de Computadores"),
+    "orfaos": (14, "13-orfaos.tex", "Órfãos — Administração de BD e Temas Coringa"),
+    "portugues": (15, "14-portugues.tex", "Língua Portuguesa"),
+    "ingles": (16, "15-ingles.tex", "Língua Inglesa"),
+    "rlm": (17, "16-rlm.tex", "Raciocínio Lógico Matemático"),
+    "atualidades": (18, "17-atualidades.tex", "Atualidades e Inteligência Artificial"),
+    "legislacao": (19, "18-legislacao.tex", "Legislação — Segurança da Informação e Proteção de Dados"),
+}
+
+
+def ref_apostila(q):
+    """Referencia curta da apostila para uma questao, no formato do caderno de
+    erros: 'Apostila Cap. N §X' quando a questao traz o campo opcional
+    'apostila' (ex. '§3.4'), senao 'Apostila Cap. N — Titulo'. Devolve '' se o
+    bloco nao estiver mapeado."""
+    info = APOSTILA.get(q.get("tag"))
+    if not info:
+        return ""
+    cap, _arq, titulo = info
+    sec = str(q.get("apostila", "")).strip()
+    if sec:
+        sec = sec if sec.startswith("§") else f"§{sec}"
+        return f"Apostila Cap. {cap} {sec}"
+    return f"Apostila Cap. {cap} — {titulo}"
+
+
 BANCO = BASE / "banco.json"
 BANCO_PROVAS = BASE / "banco-provas.json"
 CSV = BASE / "progresso.csv"
@@ -250,16 +295,39 @@ def anotar_erro(q, marcou, correta):
     letras = "ABCDE"
     correcao = q.get("why", "").strip() or f"a correta era {letras[correta]}: {q['alts'][correta]}"
     fonte = q.get("fonte") or "quiz local"
+    ref = ref_apostila(q)
+    linha_ref = f"- {ref}\n" if ref else ""
 
     entrada = (
         f"\n## {_titulo_erro(q)} {marcador}\n"
         f"- **Errei:** marquei {letras[marcou]}, a correta era {letras[correta]}\n"
         f"- **E:** {correcao}\n"
+        f"{linha_ref}"
         f"- {fonte} | {date.today():%d/%m}\n"
     )
     with open(arq, "a", encoding="utf-8") as f:
         f.write(entrada)
     print(cor(f"  anotado em erros/{q['tag']}.md", "dim"))
+
+
+def mostrar_apostila(bloco):
+    """Aponta o capitulo/secao da apostila (apostila/main.pdf) do bloco. Sem
+    argumento, lista os blocos mapeados. A apostila e PDF: o comando indica
+    onde ler, nao imprime o conteudo (diferente de --dica/--resumo)."""
+    if bloco == "__listar__" or not bloco:
+        print(cor("\n  Apostila — capitulos por bloco (apostila/main.pdf):", "b"))
+        for b, (cap, _arq, titulo) in sorted(APOSTILA.items(), key=lambda x: x[1][0]):
+            print(f"    Cap. {cap:>2}  {b:<16} {cor(titulo, 'dim')}")
+        print(cor("\n  uso: ./quiz.py --apostila <bloco>   (--apostila hoje = do dia)\n", "dim"))
+        return
+    info = APOSTILA.get(bloco)
+    if not info:
+        print(cor(f"\n  sem capitulo mapeado para '{bloco}'. Use ./quiz.py --apostila para listar.\n", "verm"))
+        return
+    cap, arq, titulo = info
+    print(cor(f"\n  {bloco} → Apostila Cap. {cap} — {titulo}", "b"))
+    print(cor(f"    fonte: apostila/capitulos/{arq}", "dim"))
+    print(cor(f"    abra:  apostila/main.pdf  (Cap. {cap})\n", "dim"))
 
 
 def mostrar_dica(bloco):
@@ -315,10 +383,31 @@ def mostrar_resumo(bloco):
     print()
 
 
+def perguntar_causa():
+    """Ao errar, captura a CAUSA do erro numa tecla (opcional): conceitual (nao
+    sabia o conteudo) vs. armadilha (sabia e caiu na construcao). Enter pula.
+    Devolve 'conceitual', 'armadilha' ou None. A causa e da TENTATIVA, nao da
+    questao — vai como campo opcional no historico."""
+    prompt = cor("  causa do erro? [c]onceitual (nao sabia) / [l]eitura (sabia, caí) / Enter pula: ", "dim")
+    while True:
+        try:
+            r = input(prompt).strip().lower()
+        except EOFError:
+            return None
+        if r == "":
+            return None
+        if r in ("c", "conceitual"):
+            return "conceitual"
+        if r in ("l", "leitura", "armadilha", "a"):
+            return "armadilha"
+        print(cor("  responda c, l ou Enter", "dim"))
+
+
 def rodar(questoes, anotar=True):
     total = len(questoes)
     acertos = 0
     erradas = []
+    causas = {}   # id_da_questao -> 'conceitual' | 'armadilha' (so as erradas com resposta)
     letras = "ABCDE"
 
     print()
@@ -380,11 +469,15 @@ def rodar(questoes, anotar=True):
                     marca = cor(" <- sua", "verm") if i == escolhida else ""
                     print(wrap(texto, indent=f"      {letras[i]}) ") + marca)
 
-        if not certo and anotar:
-            anotar_erro(q, escolhida, correta_pos)
+        if not certo:
+            causa = perguntar_causa()
+            if causa:
+                causas[q["id"]] = causa
+            if anotar:
+                anotar_erro(q, escolhida, correta_pos)
         print()
 
-    return acertos, erradas
+    return acertos, erradas, causas
 
 
 def montar_simulado(banco, n):
@@ -494,6 +587,7 @@ def main():
     p.add_argument("--stats", action="store_true")
     p.add_argument("--dica", nargs="?", const="__listar__", default=None)
     p.add_argument("--resumo", nargs="?", const="__listar__", default=None)
+    p.add_argument("--apostila", nargs="?", const="__listar__", default=None)
     p.add_argument("-h", "--help", action="store_true")
     a = p.parse_args()
 
@@ -511,6 +605,11 @@ def main():
     if a.resumo is not None:
         for b in _alvos(a.resumo, quem):
             mostrar_resumo(b)
+        return
+
+    if a.apostila is not None:
+        for b in _alvos(a.apostila, quem):
+            mostrar_apostila(b)
         return
 
     if quem != "lucas":
@@ -571,19 +670,59 @@ def main():
 
     if a.stats:
         from collections import defaultdict
-        d = defaultdict(lambda: [0, 0])
+        # por bloco: [total, acertos, erros conceituais, erros de leitura]
+        d = defaultdict(lambda: [0, 0, 0, 0])
         for r in hist["respostas"]:
             d[r["tag"]][0] += 1
             d[r["tag"]][1] += r["ok"]
+            if not r["ok"]:
+                causa = r.get("causa")  # opcional: dados antigos nao tem
+                if causa == "conceitual":
+                    d[r["tag"]][2] += 1
+                elif causa == "armadilha":
+                    d[r["tag"]][3] += 1
         print()
         if not d:
             print(cor("  nenhuma sessao registrada ainda.\n", "dim"))
             return
         print(cor("  Desempenho acumulado no quiz", "b"))
-        for t, (tot, ok) in sorted(d.items(), key=lambda x: x[1][1] / x[1][0]):
+        for t, (tot, ok, conc, arm) in sorted(d.items(), key=lambda x: x[1][1] / x[1][0]):
             pct = ok / tot * 100
             c = "verde" if pct >= 75 else "ama" if pct >= 60 else "verm"
-            print(f"    {t:<16} {cor(f'{pct:>3.0f}%', c)}  ({ok}/{tot})")
+            errs = tot - ok
+            sem = errs - conc - arm  # erros sem causa marcada (pulou / dado antigo)
+            partes = []
+            if conc:
+                partes.append(cor(f"{conc} conceitual", "verm"))
+            if arm:
+                partes.append(cor(f"{arm} leitura", "ama"))
+            if sem:
+                partes.append(cor(f"{sem} ?", "dim"))
+            cauda = ("   erros: " + " · ".join(partes)) if partes else ""
+            print(f"    {t:<16} {cor(f'{pct:>3.0f}%', c)}  ({ok}/{tot}){cauda}")
+
+        # Trava anti-vicio: a recomendacao depende da CAUSA. Erro majoritariamente
+        # conceitual = falta conteudo -> mandar reler a apostila e fazer mais
+        # questoes, SEM falar de tecnica de eliminacao (senao vira muleta pra nao
+        # estudar). So quando o erro e de leitura/armadilha os sete padroes de
+        # distrator entram em cena. Empate pende pro lado conteudo (mais seguro).
+        recs = []
+        for t, (tot, ok, conc, arm) in d.items():
+            if conc == 0 and arm == 0:
+                continue  # sem causa marcada: nada a recomendar
+            if conc >= arm:
+                cap = APOSTILA.get(t, (None,))[0]
+                onde = f"Apostila Cap. {cap}" if cap else "o resumo do bloco"
+                recs.append((conc + arm, "verm", t,
+                             f"erros mais CONCEITUAIS → releia {onde} + mais questões de {t}"))
+            else:
+                recs.append((conc + arm, "ama", t,
+                             "erros mais de LEITURA → treine os 7 padrões de distrator: "
+                             "./quiz.py --dica tecnica-fgv (Cap. 2)"))
+        if recs:
+            print(cor("\n  Onde focar (pela causa do erro):", "b"))
+            for _peso, c, t, msg in sorted(recs, key=lambda x: -x[0]):
+                print(f"    {cor(t, c)}: {msg}")
         print()
         return
 
@@ -665,7 +804,7 @@ def main():
     res = rodar(sel, anotar=a.anotar)
     if res is None:
         return
-    acertos, erradas = res
+    acertos, erradas, causas = res
     total = len(sel)
     pct = acertos / total * 100
 
@@ -690,9 +829,10 @@ def main():
     # persiste historico para --erradas e --stats
     agora = datetime.now().isoformat(timespec="seconds")
     for q in sel:
-        hist["respostas"].append(
-            {"id": q["id"], "tag": q["tag"], "ok": q["id"] not in ids_err, "quando": agora}
-        )
+        rec = {"id": q["id"], "tag": q["tag"], "ok": q["id"] not in ids_err, "quando": agora}
+        if q["id"] in causas:  # causa e opcional: so as erradas em que voce respondeu
+            rec["causa"] = causas[q["id"]]
+        hist["respostas"].append(rec)
     salvar_hist(hist, quem)
 
     print()

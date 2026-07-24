@@ -13,12 +13,20 @@ Avisos (nao bloqueiam): questao usavel sem explicacao ('why'/'erradas'); o
 quiz ainda roda, so nao mostra o comentario.
 """
 
+import collections
 import json
+import re
 import sys
+import unicodedata
 from pathlib import Path
 
 BASE = Path(__file__).parent
 C = {"r": "\033[0m", "verde": "\033[32m", "verm": "\033[31m", "ama": "\033[33m", "b": "\033[1m"}
+
+# Vocabulario do campo opcional 'status' (auditoria Bloco V). Ausencia = 'ok'
+# implicito (questao nao marcada). Presente, tem que ser um destes valores.
+STATUS_VALIDOS = {"ok", "revisar", "ambigua", "distrator-fraco",
+                  "explicacao-fraca", "estilo-divergente"}
 
 
 def cor(t, c):
@@ -57,6 +65,20 @@ def checar_questao(q, rotulo, usavel):
         if not er:
             avisos.append(f"{rotulo}: usavel mas sem 'erradas' (idem)")
 
+    # campo opcional 'apostila' (secao do capitulo, ex. '§3.4') — se presente,
+    # tem que ser texto nao-vazio; ausencia e ok (degrada pra Cap. N no quiz).
+    ap = q.get("apostila")
+    if ap is not None and (not isinstance(ap, str) or not ap.strip()):
+        avisos.append(f"{rotulo}: campo 'apostila' presente mas vazio/invalido (esperado ex. '§3.4')")
+
+    # campo opcional 'status' (marcacao da auditoria, Bloco V) — se presente,
+    # tem que ser um dos valores permitidos; ausencia e ok (equivale a 'ok', sem
+    # marcacao). Nao bloqueia o quiz; so sinaliza valor fora do vocabulario.
+    st = q.get("status")
+    if st is not None and st not in STATUS_VALIDOS:
+        avisos.append(f"{rotulo}: campo 'status' = {st!r} invalido "
+                      f"(esperado {sorted(STATUS_VALIDOS)} ou ausente)")
+
     # questao que nao entra no sorteio nao pode machucar o aluno: problema
     # estrutural nela (ex: figura perdida na extracao) vira aviso, nao erro.
     if not usavel:
@@ -64,9 +86,90 @@ def checar_questao(q, rotulo, usavel):
     return erros, avisos
 
 
+# --- Checagens 8.1 (vazamento de forma) — avisos automaticos, nao bloqueiam.
+# Miram questoes novas geradas por IA: um gerador que "vaza a forma" faz a
+# correta ser sempre a mais longa, poe absoluto so no distrator, ou concentra
+# o gabarito numa posicao. Rodam so no banco.json (o banco-provas e real). ---
+ABS_TERMOS = ["sempre", "nunca", "exclusivamente", "apenas", "somente", "todo",
+              "toda", "todos", "todas", "invariavelmente", "garante", "garantem",
+              "impossivel", "estritamente", "jamais", "qualquer"]
+
+
+def _norm(s):
+    s = unicodedata.normalize("NFD", str(s).lower())
+    return "".join(c for c in s if unicodedata.category(c) != "Mn")
+
+
+def _tem_absoluto(s):
+    t = _norm(s)
+    return any(re.search(r"\b" + re.escape(a) + r"\b", t) for a in ABS_TERMOS)
+
+
+def avisos_forma(banco):
+    """Retorna avisos de forma (nao bloqueiam) sobre o banco original."""
+    n = len(banco)
+    if not n:
+        return []
+    linhas = []
+    dist = collections.Counter(q.get("ans") for q in banco if isinstance(q.get("ans"), int))
+    if dist:
+        k = max(dist, key=dist.get)
+        if dist[k] / n > 0.35:
+            linhas.append(f"gabarito concentrado em '{'ABCDE'[k]}': {dist[k]}/{n} "
+                          f"({dist[k]/n*100:.0f}%) — embaralhe a posicao da correta")
+    mais_longa = 0
+    ratio_alta, abs_so_distr = [], []
+    for i, q in enumerate(banco):
+        alts, a = q.get("alts"), q.get("ans")
+        if not (isinstance(alts, list) and len(alts) == 5 and isinstance(a, int)):
+            continue
+        cl = len(alts[a])
+        wl = [len(x) for j, x in enumerate(alts) if j != a]
+        if wl and cl > max(wl):
+            mais_longa += 1
+        if wl and cl / (sum(wl) / len(wl)) >= 1.8:
+            ratio_alta.append(i)
+        if not _tem_absoluto(alts[a]) and any(_tem_absoluto(x) for j, x in enumerate(alts) if j != a):
+            abs_so_distr.append(i)
+    if mais_longa / n > 0.30:
+        linhas.append(f"correta e a mais longa em {mais_longa}/{n} ({mais_longa/n*100:.0f}%) "
+                      f"— alongue distratores ou encurte a correta (esperado ~20%)")
+    if ratio_alta:
+        ex = ", ".join(f"#{i}" for i in ratio_alta[:8]) + (" ..." if len(ratio_alta) > 8 else "")
+        linhas.append(f"correta >=1.8x a media das erradas em {len(ratio_alta)} questao(oes): {ex}")
+    if len(abs_so_distr) / n > 0.15:
+        ex = ", ".join(f"#{i}" for i in abs_so_distr[:8]) + (" ..." if len(abs_so_distr) > 8 else "")
+        linhas.append(f"termo absoluto SO em distrator em {len(abs_so_distr)}/{n} "
+                      f"({len(abs_so_distr)/n*100:.0f}%): {ex}")
+    return linhas
+
+
+CAUSAS_VALIDAS = {"conceitual", "armadilha"}
+
+
+def checar_historico():
+    """Checagem leve dos historico*.json (progresso do quiz por pessoa). O campo
+    'causa' e OPCIONAL (so nas erradas em que a pessoa respondeu); dados antigos
+    nao tem e isso e normal. So avisa (nao bloqueia) se uma 'causa' gravada tiver
+    valor fora de {conceitual, armadilha}."""
+    avisos = []
+    for h in sorted(BASE.glob("historico*.json")):
+        try:
+            dados = json.loads(h.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as e:
+            avisos.append(f"{h.name}: nao consegui ler ({e})")
+            continue
+        for i, r in enumerate(dados.get("respostas", [])):
+            causa = r.get("causa")
+            if causa is not None and causa not in CAUSAS_VALIDAS:
+                avisos.append(f"{h.name} resposta #{i}: causa={causa!r} invalida "
+                              f"(esperado {sorted(CAUSAS_VALIDAS)} ou ausente)")
+    return avisos
+
+
 def main():
     strict = "--strict" in sys.argv
-    erros, avisos = [], []
+    erros, avisos, avisos_f = [], [], []
     n_orig = n_prova = n_usaveis = 0
 
     # banco original
@@ -80,6 +183,7 @@ def main():
             erros += e
             avisos += a
             n_usaveis += 1
+        avisos_f = avisos_forma(banco)
     else:
         avisos.append("banco.json nao existe")
 
@@ -103,6 +207,9 @@ def main():
             if usavel:
                 n_usaveis += 1
 
+    # progresso do quiz (opcional): so avisa se 'causa' vier com valor invalido
+    avisos += checar_historico()
+
     print()
     print(cor(f"  banco.json: {n_orig} questoes | banco-provas.json: {n_prova} questoes", "b"))
     print(f"  utilizaveis no quiz: {n_usaveis}")
@@ -119,7 +226,11 @@ def main():
             print("   ", x)
         if len(avisos) > 15:
             print(f"    ... e mais {len(avisos) - 15}")
-    if not erros and not avisos:
+    if avisos_f:
+        print(cor(f"  {len(avisos_f)} aviso(s) de forma (banco.json) — nao bloqueiam, miram questoes novas:", "ama"))
+        for x in avisos_f:
+            print("   ", x)
+    if not erros and not avisos and not avisos_f:
         print(cor("  tudo integro.", "verde"))
     print()
 

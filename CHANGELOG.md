@@ -2,6 +2,77 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-24 (noite) — auditoria do banco: gabarito, estilo e ferramentas
+
+- **Gabarito reembaralhado (Bloco I):** a posição da correta estava concentrada
+  (era B ≈ 71%); agora A–E ≈ 20% cada. Três `why` posicionais reescritos.
+- **`valida.py` — checagens de forma (`avisos_forma`):** avisa (sem bloquear)
+  quando o banco de questões geradas vaza a forma — correta sempre a mais longa,
+  termo absoluto só no distrator, gabarito concentrado numa posição.
+- **`cobertura.py` (novo):** cruza os subtópicos da apostila (`\section`/
+  `\subsection`) com o texto dos dois bancos e aponta buracos de cobertura.
+- **Auditoria de estilo e explicações (Bloco V):** as 259 questões originais
+  foram lidas contra fonte — **zero gabaritos errados**, explicações fortes.
+  Medida a divergência de estilo vs. as provas reais da FGV (enunciado ~⅓ do
+  tamanho; definição direta demais nos lotes antigos; comando negativo
+  sub-representado). Quatro questões reforçadas: **#57** (Marco Civil — enunciado
+  agora explicita "redação original do art. 19", desambiguando do regime
+  pós-STF), **#33** (tríade CID), **#162** (3 Vs do Big Data) e **#205** (ESG)
+  tiveram distratores de enchimento trocados por "quase-certas" ancoradas em
+  erro conceitual real.
+- **`valida.py` — campo opcional `status`:** marcação de auditoria por questão
+  (`ok`/`revisar`/`ambigua`/`distrator-fraco`/`explicacao-fraca`/
+  `estilo-divergente`), validada sem bloquear.
+- **`CONTRIBUINDO-QUESTOES.md` (novo):** guia obrigatório para toda questão nova
+  — ancoragem em fonte primária, distrator ancorado em erro real, proibição dos
+  vazamentos de forma, trava anti-vício e proporção de cenário calibrada.
+- **`.gitignore`:** passa a ignorar os artefatos de build do LaTeX
+  (`.aux`/`.log`/`.toc` etc.).
+
+## 2026-07-24 (tarde) — calibração do roteiro e da apostila (auditoria, Bloco IV)
+
+- **Roteiro calibrado aos pesos (Semana 10):** Governança 5→4 dias, Arquitetura
+  2→3. Arquitetura era o único bloco ranqueado "alto" no Apêndice A com
+  alocação mínima (empatada com Redes, que está fora do edital). BPMN +
+  métricas (PF/Story Points) foram fundidos num dia; a sexta virou revisita de
+  Arquitetura. Prazo intacto: plano de 13 semanas, em dia (11 restantes).
+  Redes mantida no mínimo (não zerada); Java preservado por gargalo pessoal.
+- **Cap. 18 (IA) — aviso de incerteza de FORMATO:** caixa no início do capítulo
+  deixando claro que é o único sem calibração em provas anteriores da FGV (IA
+  entrou no edital só em 2026). Enquadrado como incerteza de formato, não de
+  valor: recomenda dominar fundamentos em vez de antecipar o desenho da questão.
+- **Cap. 4 (Arquitetura) — bloco final vira síntese:** o "Como se sair melhor"
+  repetia quase literalmente as caixas de escalabilidade/REST/SOAP; reescrito
+  como síntese operacional curta que preserva o único conteúdo novo (gatilhos
+  de distrator) e remete às caixas vermelhas. O bloco análogo de Banco de Dados
+  foi avaliado e **mantido** (funciona como flashcard de fixação dos 4 pares).
+- **Cap. 2 (Técnica FGV):** título da caixa corrigido de "seis" para "sete"
+  padrões de distrator — a enumeração já listava os sete (o 7º, contradição
+  interna, já estava lá); só o rótulo estava defasado.
+- PDF recompilado (87 páginas).
+
+## 2026-07-24 — quiz ligado à apostila + estatística de erro por causa
+
+- **`--apostila <bloco>` (novo):** aponta o capítulo da apostila
+  (`apostila/main.pdf`) do bloco, no molde de `--dica`/`--resumo` (aceita
+  `--apostila hoje`; sem argumento, lista os capítulos). Mapa `tag→capítulo`
+  (número impresso = arquivo + 1). `padroes-projeto`/`uml` caem no Cap. 4,
+  separado de `arquitetura` (Cap. 5).
+- **Referência da apostila no caderno de erros:** ao errar, a entrada
+  automática em `erros/<bloco>.md` passa a trazer `Apostila Cap. N`. Novo campo
+  **opcional** `apostila` na questão (ex. `"§10.5"`) refina para `Cap. N §X`;
+  sem ele, degrada para `Cap. N — Título`.
+- **Estatística de erro por causa:** ao errar, o quiz captura em uma tecla se o
+  erro foi **conceitual** (não sabia) ou de **leitura/armadilha** (sabia e caiu)
+  — gravado como campo opcional `causa` no `historico.json` (a causa é da
+  tentativa, não da questão). O `--stats` mostra as duas colunas por bloco.
+- **Trava anti-vício no `--stats`:** erro majoritariamente conceitual num bloco
+  manda **reler a Apostila Cap. N + mais questões** e NÃO menciona técnica de
+  eliminação; só o erro de leitura aponta os sete padrões de distrator (Cap. 2).
+- **`valida.py`:** valida `apostila` como campo opcional e faz checagem leve dos
+  `historico*.json` (avisa, sem bloquear, `causa` com valor inválido). Dados
+  antigos sem os campos novos continuam válidos.
+
 ## 2026-07-22 — apostila definitiva em PDF + 22 questões novas (IA, leitura ativa, Marco Civil)
 
 - **`apostila/` (novo):** apostila definitiva em LaTeX, compilada em

@@ -21,6 +21,11 @@ de engenharia de software genérico.
 
 ## Estilo de questão ao gerar para `banco.json`
 
+> Guia completo do processo (ancoragem em fonte primária, distrator ancorado em
+> erro real, proibição dos vazamentos de forma, trava anti-vício, calibração de
+> estilo vs. provas reais): **`CONTRIBUINDO-QUESTOES.md`**. O resumo do estilo
+> está abaixo.
+
 Sempre que gerar questões novas para `banco.json`, siga este padrão (destilado
 comparando as 237 questões originais com os lotes gerados depois — é o
 resultado de já ter testado os dois estilos neste repositório):
