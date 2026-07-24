@@ -1,3 +1,12 @@
 __pycache__/
 *.swp
 *.bak
+
+# LaTeX build artifacts (apostila/)
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
