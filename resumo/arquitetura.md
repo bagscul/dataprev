@@ -90,6 +90,22 @@ corresponde aos três tiers — MVC é organização, não implantação.
 - **UDDI:** diretório (legado) para **descoberta/registro** de web services
   SOAP, junto do WSDL (contrato) e SOAP (mensagem). Trio clássico WS-*:
   **SOAP + WSDL + UDDI**.
+- **Os elementos do WSDL** (a FGV mostra um trecho e pergunta o que falta ou o
+  que é inválido), do abstrato para o concreto:
+
+  | Elemento | O que declara |
+  |---|---|
+  | `<wsdl:types>` | os **tipos de dado** usados (em XML Schema) |
+  | `<wsdl:message>` | as **mensagens** trocadas (na 2.0 some, absorvido pelos tipos) |
+  | `<wsdl:portType>` | as **operações** disponíveis — a interface **abstrata** (chamado `interface` na 2.0) |
+  | `<wsdl:binding>` | **como** as operações trafegam: protocolo e formato concretos (SOAP/HTTP) |
+  | `<wsdl:service>` | o **serviço**, que agrupa uma ou mais `<wsdl:port>` |
+  | `<wsdl:port>` | o **endereço** (URL) onde o binding está publicado |
+
+  Guarde a espinha: **portType = o quê** (abstrato) · **binding = como**
+  (protocolo) · **service/port = onde** (endereço). O distrator troca essas
+  três camadas de lugar — dizer que o `binding` informa a URL, ou que o
+  `service` lista as operações.
 - **Swagger / OpenAPI:** o **OpenAPI** é a especificação padrão para
   **documentar e contratar APIs REST** (endpoints, parâmetros, respostas);
   **Swagger** é o conjunto de ferramentas (Swagger UI, editor, codegen) em
@@ -114,6 +130,14 @@ Desacopla produtor e consumidor: quem envia não espera quem processa.
 - Benefícios: desacoplamento, absorção de picos (buffer), resiliência.
 - **Broker** é o intermediário (Kafka, RabbitMQ). Casa com **microsserviços**
   e com o padrão **Saga** (eventos de compensação) e **Event Sourcing**.
+- **RabbitMQ — garantia de entrega, nas duas pontas.** Do **produtor** para o
+  broker: ***publisher confirms*** — o broker devolve um `ack` dizendo que
+  assumiu a mensagem (sem isso, o `publish` é "atirar e esquecer" e a mensagem
+  pode se perder antes de ser gravada). Do broker para o **consumidor**:
+  ***consumer acknowledgements*** — a mensagem só sai da fila quando o
+  consumidor confirma o processamento. Para sobreviver a um restart do broker é
+  preciso o trio: **fila durável**, **mensagem persistente** e **confirmação**.
+  Nenhum dos três sozinho resolve, e é exatamente aí que o distrator mora.
 
 Pegadinha: fila (**um** consumidor) × tópico/pub-sub (**vários**); mensageria é
 **assíncrona** (≠ chamada REST síncrona).
@@ -216,11 +240,25 @@ Rode `../quiz.py arquitetura`.
 ## Alta probabilidade / pesquisa extra
 
 - **12-Factor App** (boas práticas de app nativa de nuvem).
-- **DDD (Domain-Driven Design):** bounded context, agregados, Repository,
-  Factory, Ubiquitous Language, eventos de domínio imutáveis. Caiu no **MPU
-  2025** (gabarito: o *Aggregate* garante a consistência das mudanças num
-  modelo de associações complexas) e no **TJ-RJ 2** (gabarito: eventos de
-  domínio são ordinariamente imutáveis, por registrarem algo já ocorrido).
+- **DDD (Domain-Driven Design)** — modelar o software a partir do **domínio**,
+  em conversa com o especialista de negócio. Os blocos que a banca cobra:
+
+  | Bloco | O que é — e o erro que a FGV insere |
+  |---|---|
+  | **Aggregate** | **fronteira de consistência**: um conjunto de objetos tratado como unidade, com uma **raiz** que é o único ponto de entrada. Ele **protege invariantes** e **não expõe** referência a cada entidade interna — o distrator diz o contrário |
+  | **Repository** | dá acesso ao agregado **como se fosse uma coleção**, escondendo a persistência. Não é "retornar classes para o cliente instanciar por métodos externos" |
+  | **Factory** | encapsula a **criação** de objeto/agregado complexo — criação, não estratégia de armazenamento |
+  | **Entidade × Objeto de Valor** | entidade tem **identidade** que persiste no tempo; objeto de valor é definido **só pelos seus atributos** e é intercambiável |
+  | **Ubiquitous Language** | **vocabulário único** entre domínio e código: o termo do negócio vira o nome da classe. Não é "expressar o modelo como fábricas encapsuladas por objetos de valor" |
+  | **Bounded context** | a **fronteira** dentro da qual um termo tem um significado só; contextos diferentes podem usar a mesma palavra com sentidos distintos |
+  | **Eventos de domínio** | registram **algo que já aconteceu** — por isso são **imutáveis** |
+
+  Caiu no **MPU 2025** (gabarito: o *Aggregate* garante a consistência das
+  mudanças num modelo de associações complexas) e no **TJ-RJ 2** (gabarito:
+  eventos de domínio são ordinariamente imutáveis, por registrarem algo já
+  ocorrido). Note o padrão: nas duas, os distratores eram os **outros blocos
+  com o papel adulterado** — vale ler cada alternativa perguntando "esse bloco
+  faz mesmo isso?".
 - **Service mesh** (Istio) × API gateway: mesh cuida da comunicação
   serviço-a-serviço (leste-oeste); gateway cuida da entrada (norte-sul).
 - **IaC (Infraestrutura como Código):** Terraform, Ansible — provisiona

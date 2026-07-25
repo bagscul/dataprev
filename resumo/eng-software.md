@@ -81,6 +81,24 @@ contrário). E a contagem: **cinco** níveis no CMMI, **sete** no MPS.BR.
 
 Regra: "em tempo real", "seguro", "rápido", "disponível" → **não funcional**.
 
+**Os tipos de RNF** (a FGV pede o tipo, não só "é não funcional"):
+
+| Tipo | Do que trata | Exemplo de enunciado |
+|---|---|---|
+| **De produto** | qualidade do software em si | desempenho, usabilidade, confiabilidade, portabilidade |
+| **Organizacional** | política/processo da **casa** | "deve seguir o padrão de codificação do órgão", "entregar em Java" |
+| **Externo** | o que vem de **fora** da organização | legislação (LGPD), interoperabilidade com outro órgão, norma do setor |
+
+Usabilidade, desempenho e segurança são **de produto**; regra interna de
+processo é **organizacional**; exigência legal é **externa**.
+
+**Contar RF e RNF num enunciado longo** é item recorrente. Método: leia frase a
+frase e marque **cada verbo de ação do sistema** ("emitir", "cadastrar",
+"calcular", "permitir que o usuário…") como **RF**; marque cada "deve ser
+rápido/seguro/disponível/exportável/compatível" como **RNF**. Uma frase pode
+conter os dois. Cuidado com a frase que só descreve o contexto do negócio — ela
+não é requisito nenhum e infla a contagem de quem lê no automático.
+
 **Processo:** elicitação → análise → especificação → validação →
 gerenciamento. **Elicitação** (levantamento) usa: entrevista, questionário,
 **brainstorming**, workshop, observação, prototipação, análise de documentos.
@@ -197,6 +215,22 @@ que a banca oferece como se fosse um dos quatro tipos.
 Pegadinha: Ponto de Função é o **objetivo e comparável**; Story Points é o
 **relativo do time**. A FGV troca os dois.
 
+**Decodificando EE / SE / CE / ALI / AIE** — a banca dá telas e pede a
+classificação. Os cinco tipos de função se dividem em dois grupos:
+
+| Sigla | Nome | Como reconhecer na tela |
+|---|---|---|
+| **EE** | Entrada Externa | a tela **recebe dado e grava** (inclui, altera, exclui) |
+| **SE** | Saída Externa | a tela **mostra dado processado/calculado** (relatório com totalização, gráfico) |
+| **CE** | Consulta Externa | a tela **só consulta e exibe**, sem cálculo nem dado derivado |
+| **ALI** | Arquivo Lógico Interno | grupo lógico de dados **mantido dentro** do sistema |
+| **AIE** | Arquivo de Interface Externa | grupo lógico **só lido**, mantido por **outro** sistema |
+
+As três primeiras são **funções de transação**; as duas últimas, **funções de
+dados**. O corte que decide a questão: **SE × CE** — se há **cálculo, soma ou
+dado derivado**, é **SE**; se é leitura pura, é **CE**. E **ALI × AIE**: quem
+**mantém** o dado? Se é o próprio sistema, ALI; se é outro, AIE.
+
 ## 6. DevOps e entrega
 
 - **CI (Integração Contínua):** integra e testa o código com frequência.
@@ -215,6 +249,27 @@ Pegadinha: Ponto de Função é o **objetivo e comparável**; Story Points é o
   detalhadas. Não é "arquitetura só serve para projeto grande".
 - **Padrões de projeto** (Singleton, Factory, Strategy, Observer…) e **UML**
   têm resumo próprio: [padroes-projeto](padroes-projeto.md) e [uml](uml.md).
+
+## 8. Vizinhos do bloco (aparecem no edital, raros na amostra)
+
+- **BPMN** (Business Process Model and Notation): notação de **processo de
+  negócio**, não de software. **Raias/*swim lanes*** dividem quem faz o quê, e
+  a passagem de uma raia para outra é um ***handoff***. O losango é
+  ***gateway***: **exclusivo** (XOR — segue **um** caminho) × **paralelo**
+  (AND — segue **todos**) × inclusivo (OR — um ou mais). Não confundir com o
+  losango da UML, que é **nó de decisão** ([uml](uml.md)).
+- **CBOK** (*Common Body of Knowledge*, da ABPMP): o corpo de conhecimento de
+  **BPM** — gerenciamento de processos como disciplina (modelagem, análise,
+  desenho, medição, transformação, governança).
+- **SNAP** (*Software Non-functional Assessment Process*): mede o tamanho do
+  que a **APF não conta** — o **não funcional**. É **complementar** ao Ponto de
+  Função, não substituto: PF mede a funcionalidade, SNAP mede o restante.
+- **GitLab CI:** o pipeline é declarado no arquivo **`.gitlab-ci.yml`**, na
+  raiz do repositório. Ele define ***stages*** (etapas em ordem) e ***jobs***
+  (o que roda em cada etapa); jobs do mesmo *stage* rodam em **paralelo**, e um
+  *stage* só começa quando o anterior termina. Variáveis podem vir do arquivo
+  ou da configuração do projeto — as **protegidas/mascaradas** servem a
+  segredo, e é aí que a banca cutuca.
 
 ## O que já caiu (nossas questões)
 

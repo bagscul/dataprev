@@ -89,6 +89,20 @@ Pegadinhas: **TRUNCATE (DDL) × DELETE (DML)**; `UNION` remove duplicatas /
 `GROUP BY`; `JOIN` sem `ON` vira produto cartesiano; ordem de execução
 lógica: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.
 
+**Cláusulas que a FGV troca uma por outra:**
+
+- **`DISTINCT`** elimina **linhas repetidas** do resultado — atua sobre a linha
+  inteira projetada, não sobre uma coluna só.
+- **`LIMIT n`** devolve no máximo `n` linhas; **`OFFSET k`** **pula** as `k`
+  primeiras. Então `LIMIT 10 OFFSET 20` traz as linhas **21 a 30** — é a
+  paginação. Sem `ORDER BY`, o resultado não tem ordem garantida, e a banca
+  explora isso. (Em Oracle/SQL Server o equivalente é `OFFSET … FETCH NEXT`.)
+- **Anti-join** = trazer as linhas de A que **não têm** correspondente em B.
+  Três formas equivalentes: `NOT EXISTS (subconsulta)`, `LEFT JOIN … WHERE
+  b.chave IS NULL`, e `NOT IN` — mas **`NOT IN` quebra com `NULL`** na
+  subconsulta (o resultado vira vazio), então prefira `NOT EXISTS`. O
+  `JOIN` comum faz o **oposto**: traz só quem **tem** correspondente.
+
 ### 4.1 VIEW, GRANT e o controle da transação
 
 **VIEW (visão):** uma **tabela virtual** — é a consulta guardada com nome, não
@@ -214,6 +228,22 @@ análise" = OLAP; "transação, muitas gravações" = OLTP.
   consistency). Tipos: **chave-valor** (Redis), **documento** (MongoDB),
   **colunar** (Cassandra), **grafo** (Neo4j). Não é "sempre grafo" nem "segue
   ACID estritamente"; não substitui ERP/CRM transacional por padrão.
+- **MongoDB — o vocabulário que a FGV pede que você traduza:**
+
+  | Relacional (MySQL) | MongoDB |
+  |---|---|
+  | banco (*database*) | banco (*database*) |
+  | **tabela** | ***collection*** (coleção) |
+  | **linha/registro** | ***document*** (documento, em BSON) |
+  | **coluna** | **campo** (*field*) |
+  | *join* | documento **aninhado** ou `$lookup` |
+
+  Consulta é um **documento de critérios**: `db.alunos.find({ curso: "TI" })`.
+  Operadores começam com `$` — `$gt`, `$in`, `$set` e o **`$size`**, que filtra
+  **pelo número de elementos de um array**: `{ notas: { $size: 3 } }` traz quem
+  tem **exatamente três** notas. Cuidado: `$size` é contagem **exata**, não
+  aceita comparação (`$gt`) direta; e não confundir com o `$size` do estágio de
+  agregação, que *projeta* o tamanho em vez de filtrar.
 - **Teorema CAP:** em sistema distribuído, escolha 2 de 3 —
   **C**onsistency, **A**vailability, **P**artition tolerance. Com partição
   (P inevitável em rede), decide-se entre C e A.

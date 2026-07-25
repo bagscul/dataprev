@@ -2,6 +2,54 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — desfeita a inversão de camada (auditoria, Bloco VII/ITEM 7 · P2)
+
+Em quatro blocos, conteúdo existia só em `dicas/` — a camada **rasa** — e
+faltava no `resumo/`, a **profunda**, invertendo o modelo dica ⊂ resumo ⊂
+apostila. Tudo promovido para o `resumo/`. Nenhum `.tex` tocado, logo sem
+recompilação.
+
+- **Engenharia de Software.** **Decodificação de EE/SE/CE/ALI/AIE** — o resumo
+  só listava as siglas dentro da tabela de Ponto de Função, e a banca dá telas
+  pedindo a classificação: entrou a tabela com o gatilho de cada uma e os dois
+  cortes que decidem a questão (**SE × CE** pela existência de cálculo; **ALI ×
+  AIE** por quem *mantém* o dado). **Tipos de RNF** (produto, organizacional,
+  externo) com exemplo de enunciado para cada. **Como contar RF e RNF** num
+  texto longo, incluindo a armadilha da frase que só descreve contexto e não é
+  requisito nenhum. E uma seção de vizinhos do edital: **BPMN** (raias,
+  *handoff*, gateway exclusivo × paralelo — com a remissão ao losango da UML,
+  que é outra coisa), **CBOK**, **SNAP** (mede o não funcional, é
+  *complementar* à APF, não substituta) e **GitLab CI** (`.gitlab-ci.yml`,
+  *stages* × *jobs*, variáveis protegidas).
+- **Banco de Dados.** **`LIMIT`/`OFFSET`** com a conta da paginação (`LIMIT 10
+  OFFSET 20` = linhas 21–30) e o alerta de que sem `ORDER BY` não há ordem
+  garantida; **`DISTINCT`** atuando sobre a linha inteira; **anti-join** nas
+  três formas equivalentes, com o motivo de preferir `NOT EXISTS` (o `NOT IN`
+  quebra com `NULL`); e **MongoDB** com a tabela de tradução do vocabulário
+  (tabela→*collection*, linha→*document*) e o operador **`$size`**, que filtra
+  por número **exato** de elementos de um array.
+- **Segurança.** **Os quatro *claims* do OIDC** em tabela (`iat`, `exp`, `sub`,
+  `jti`) — a apostila mandava decorar os quatro, o resumo não os trazia —, com
+  o par que se confunde (`sub` = quem é o usuário; `jti` = qual é o token). O
+  **mapeamento dos 4 temas da 27002:2022 a exemplos concretos**: o resumo tinha
+  só a contagem (37/8/14/34), e a questão dá um controle e pede o tema — com o
+  critério que separa *pessoas* de *organizacional*. E o **SSDF** (NIST SP
+  800-218) com seus quatro grupos, explicando por que "cadeia de suprimentos",
+  "ambiente de engenharia" e "treinamento" aparecem como distrator em questão
+  de OWASP.
+- **Arquitetura.** **DDD detalhado** em tabela, bloco a bloco, cada linha
+  trazendo *o erro que a FGV insere* — porque nas duas provas em que o tema
+  caiu os distratores eram os outros blocos com o papel adulterado. **RabbitMQ:
+  *publisher confirms*** (produtor→broker) × ***consumer acknowledgements***
+  (broker→consumidor), e o trio necessário para sobreviver a um restart (fila
+  durável + mensagem persistente + confirmação), já que nenhum dos três sozinho
+  resolve. **Elementos do WSDL** em tabela, com a espinha que resolve o item:
+  `portType` = **o quê**, `binding` = **como**, `service`/`port` = **onde**.
+- Três itens da lista original do P2 já haviam sido resolvidos pelo P3 —
+  **HMAC**, **VIEW** e **chave surrogada** — e dois pelo P1/P3 —
+  **RKE/K3s/Rancher** e **armazenamento de objetos**. Conferidos antes de
+  escrever, para não duplicar.
+
 ## 2026-07-25 — o que era citado mas nunca ensinado (auditoria, Bloco VII/ITEM 7 · P3)
 
 Conceitos que apareciam na lista "o que já caiu" — ou seja, **anunciados como

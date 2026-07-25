@@ -76,7 +76,19 @@ possui. O corte: chave *simétrica* → autenticidade + integridade; chave
 
 - **Menor privilégio:** só o acesso necessário.
 - **OAuth2:** protocolo de **autorização** delegada (tokens); ≠ autenticação.
-  **OpenID Connect** (sobre OAuth2) faz autenticação.
+  **OpenID Connect** (sobre OAuth2) faz autenticação, e entrega o **ID Token**
+  (um JWT). **Decore os quatro *claims*** — a banca pede um e oferece os
+  outros:
+
+  | *Claim* | Significado |
+  |---|---|
+  | **`iat`** | *issued at* — quando o token foi **emitido** |
+  | **`exp`** | *expiration* — quando **expira** |
+  | **`sub`** | *subject* — o **identificador do usuário** |
+  | **`jti`** | *JWT ID* — identificador **único do token** |
+
+  Os dois que mais se confundem: `sub` diz **quem é o usuário**, `jti` diz
+  **qual é o token**. E `iat` (emissão) × `exp` (expiração).
 - **SSO (Single Sign-On):** um login para vários sistemas.
 
 Pegadinha: MAC = **rótulos** e regra central; DAC = dono decide. OAuth2 é
@@ -214,7 +226,28 @@ negócio. Rode `../quiz.py seguranca`.
 
 - **ISO/IEC 27002:2022:** **93 controles** em **4 temas** — organizacionais
   (37), pessoas (8), físicos (14), tecnológicos (34). A 27001:2022 é o
-  **SGSI** (requisitos, Anexo A); a 27002 é o **guia de controles**.
+  **SGSI** (requisitos, Anexo A); a 27002 é o **guia de controles**. A questão
+  não pede o número: dá um **exemplo de controle** e pede o tema. Mapeie assim:
+
+  | Exemplo no enunciado | Tema |
+  |---|---|
+  | política de segurança, gestão de ativos, contrato com fornecedor, resposta a incidente | **Organizacional** |
+  | **trabalho remoto**, triagem/contratação, conscientização e treinamento, processo disciplinar | **Pessoas** |
+  | **mídia de armazenamento**, perímetro e entrada, mesa limpa, cabeamento, descarte de equipamento | **Físico** |
+  | **criptografia**, cópia de segurança, registro de logs, gestão de vulnerabilidade técnica, código seguro | **Tecnológico** |
+
+  A confusão que a banca monta é entre **pessoas** e **organizacional**: se o
+  controle recai sobre **o comportamento de um indivíduo** (trabalho remoto,
+  treinamento), é *pessoas*; se é **regra/estrutura da organização** (política,
+  contrato), é *organizacional*.
+- **SSDF (NIST SP 800-218,** *Secure Software Development Framework***):**
+  práticas de desenvolvimento seguro organizadas em **quatro grupos** —
+  **PO** (*Prepare the Organization*), **PS** (*Protect the Software*), **PW**
+  (*Produce Well-Secured Software*) e **RV** (*Respond to Vulnerabilities*). É
+  o framework que trata de **cadeia de suprimentos, ambiente de engenharia e
+  treinamento** — itens que a FGV oferece como distrator em questão de **OWASP
+  Top 10**, que é lista de **vulnerabilidades web**, não de práticas de
+  processo.
 - **NIST Cybersecurity Framework 1.1:** funções Identify, Protect, Detect,
   Respond, Recover (o 2.0 acrescentou **Govern**).
 - **Gestão de risco (ISO 27005/31000):** risco = f(ameaça, vulnerabilidade,
