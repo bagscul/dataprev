@@ -119,6 +119,21 @@ responsabilidade): os dois falam em "pequeno e específico", mas um trata de
 3. **Ligue ao SOLID:** Strategy e Template Method concretizam o Open/Closed;
    Dependency Inversion aparece em Factory/Abstract Factory.
 
+## O que já caiu (nossas questões)
+
+23 questões filtráveis por `../quiz.py padroes-projeto`. Os cinco criacionais
+em cenário (Singleton para instância única de configuração e de *logging*;
+Abstract Factory para famílias de componentes; Builder com muitos atributos
+opcionais; Prototype quando criar do zero é caro; Factory Method); Adapter para
+biblioteca de terceiros com interface incompatível; Proxy como substituto de
+imagem pesada; Decorator para responsabilidade dinâmica; Composite em árvore de
+pastas e arquivos; Facade acionando vários subsistemas em sequência; Strategy
+trocando o cálculo de frete em runtime; Observer na planilha que recalcula
+dependentes; Template Method nas etapas compartilhadas; Command na fila com
+desfazer; Chain of Responsibility nas validações sucessivas; State no pedido
+que muda de comportamento por estágio; a **classificação dos 23** em três
+famílias; MVC; e GRASP (a qual classe cabe a responsabilidade).
+
 ## Alta probabilidade / pesquisa extra
 
 - Os mais cobrados pela FGV: **Singleton, Factory Method/Abstract Factory,

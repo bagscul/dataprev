@@ -69,6 +69,15 @@ Pegadinha: **include** (sempre executa) × **extend** (às vezes).
 4. Ligue ao resto: caso de uso ↔ requisitos funcionais; classes ↔ OO/SOLID;
    estado ↔ padrão State (`padroes-projeto.md`).
 
+## O que já caiu (nossas questões)
+
+10 questões filtráveis por `../quiz.py uml`. As duas famílias na UML 2.x;
+composição × agregação; multiplicidade em diagrama de classes; `<<include>>` ×
+`<<extend>>`; sequência para a ordem temporal das mensagens; atividade para
+decisão, paralelismo e sincronização; máquina de estados no ciclo de vida do
+objeto; generalização (direção da seta); componentes × implantação; realização
+de interface.
+
 ## Alta probabilidade / pesquisa extra
 
 - Diagramas mais cobrados: **Classe, Caso de Uso, Sequência, Atividade.**

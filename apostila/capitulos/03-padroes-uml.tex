@@ -170,6 +170,22 @@ Singleton (beans), Factory, Proxy (AOP), Template Method (JdbcTemplate),
 Observer (eventos) --- ligar padrão a framework ajuda a fixar.
 \end{comosair}
 
+\begin{jacaiu}
+\textbf{Padrões (23 questões, subtag \texttt{padroes-projeto}):} os cinco
+criacionais em cenário (Singleton para instância única de configuração e de
+\emph{logging}; Abstract Factory para famílias de componentes; Builder com
+muitos atributos opcionais; Prototype quando criar do zero é caro; Factory
+Method); Adapter para biblioteca de terceiros com interface incompatível;
+Proxy como substituto de imagem pesada; Decorator para responsabilidade
+dinâmica; Composite em árvore de pastas e arquivos; Facade acionando vários
+subsistemas em sequência; Strategy trocando o cálculo de frete em runtime;
+Observer na planilha que recalcula dependentes; Template Method nas etapas
+compartilhadas; Command na fila com desfazer; Chain of Responsibility nas
+validações sucessivas; State no pedido que muda de comportamento por estágio;
+a \textbf{classificação dos 23} em três famílias; MVC; e GRASP (a qual classe
+cabe a responsabilidade). Rode \texttt{./quiz.py padroes-projeto}.
+\end{jacaiu}
+
 \section{UML}
 \label{sec:uml}
 
@@ -266,3 +282,13 @@ Diagramas mais cobrados: \textbf{Classe, Caso de Uso, Sequência, Atividade.}
 Deployment e Componente aparecem em questões de arquitetura (Capítulo
 \ref{cap:arquitetura}).
 \end{comosair}
+
+\begin{jacaiu}
+\textbf{UML (10 questões, subtag \texttt{uml}):} as duas famílias na UML 2.x;
+composição $\times$ agregação; multiplicidade em diagrama de classes;
+\texttt{<<include>>} $\times$ \texttt{<<extend>>}; sequência para a ordem
+temporal das mensagens; atividade para decisão, paralelismo e sincronização;
+máquina de estados no ciclo de vida do objeto; generalização (direção da
+seta); componentes $\times$ implantação; realização de interface. Rode
+\texttt{./quiz.py uml}.
+\end{jacaiu}
