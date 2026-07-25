@@ -51,11 +51,20 @@ trecho exato de cada pergunta. Não responda por "o que faz sentido no mundo",
 e sim **pelo que o texto afirma**. Cuidado com "only/always/never" nas opções
 de verdadeiro-falso.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Ideia principal do texto (guia de carreira em TI); referência do pronome
-*her*; conector *thus* (efeito); *and* ≈ *moreover*; *should* (sugestão);
-*browse*/*rate* como verbo × substantivo; referência de *it* (impressora).
+**Em prova real da FGV:** ideia principal do texto (guia de carreira em TI);
+referência do pronome *her*; conector *thus* (efeito); *and* ≈ *moreover*;
+*should* (sugestão); *browse*/*rate* como verbo × substantivo; referência de
+*it* (impressora) — **Dataprev 2024** (Q13–Q24). Vale notar: a Dataprev 2024 é
+a **única prova do corpus com Língua Inglesa** — MPU, TJ-RJ e ALERO 2026 não
+têm o bloco. Toda a calibração de estilo vem dessas 12 questões.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): textos técnicos sobre nuvem, IA na programação, trabalho remoto,
+*phishing* e IA no setor público, com o mesmo desenho — ideia principal,
+referência, conectivo e vocabulário em contexto.
+
 Rode `../quiz.py ingles`.
 
 ## Pontos de atenção / pesquisa extra

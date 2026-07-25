@@ -203,14 +203,34 @@ intranet = interna; extranet = estende a intranet a parceiros externos.
 \end{pegadinha}
 
 \begin{jacaiu}
-Muita questão ``órfã'' é DBA disfarçado --- se o cenário fala em backup,
-tablespace, plano de execução, log/recuperação, é administração de BD.
-Memorize os pares: AD $\times$ DBA, incremental $\times$ diferencial, RPO
-$\times$ RTO, ordem do ARIES, bitmap $\times$ B+ Tree, rotulado $\times$ não
-rotulado, data $\times$ concept drift, L1 $\times$ L2, Tipo 1 $\times$ Tipo
-2, over $\times$ underfitting. Rode \texttt{./quiz.py orfaos} --- mistura DBA,
-administração de dados, processos e temas avulsos que caíram nas provas
-reais.
+\textbf{Em prova real da FGV:} este é o bloco com \textbf{mais} questões
+reais no corpus (56), e a maioria esmagadora é \textbf{DBA}. \textbf{ARIES e
+WAL}; \textbf{otimizador de consultas} (estimativa de custo e planos ruins
+por estatísticas desatualizadas); \textbf{B+ Tree} (eficiência e fator de
+ramificação) e \textbf{hashing extensível}; \textbf{índice \emph{clustered}};
+\textbf{tablespaces}; \textbf{backup} de sistema crítico; \textbf{views e
+menor privilégio} (esconder a coluna de salário); \textbf{trigger} $\times$
+\textbf{procedure} $\times$ \textbf{function}; \textbf{2PC} em banco
+distribuído; \textbf{connection pooling}; \textbf{NoSQL chave-valor} para
+cache de sessão; \textbf{XML Schema} no SGBD; \textbf{Administração de Dados
+$\times$ DBA} (ciclo de vida do dado, metadados, foco reativo $\to$
+proativo) --- \textbf{ALERO 2026}. No \textbf{MPU}, o mesmo rótulo pegou
+gestão de processos e estrutura organizacional; no \textbf{cnsal-ads},
+engenharia de software (RUP, cascata, casos de uso, ponto de função).
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): blockchain pelo encadeamento de hash; RPA; low-code; servidor web
+$\times$ servidor de aplicação; os Vs do Big Data; supervisionado $\times$
+não supervisionado; intranet $\times$ extranet.
+
+Regra prática: muita questão ``órfã'' é DBA disfarçado --- se o cenário fala
+em backup, tablespace, plano de execução ou log/recuperação, é administração
+de BD. Memorize os pares: AD $\times$ DBA, incremental $\times$ diferencial,
+RPO $\times$ RTO, ordem do ARIES, bitmap $\times$ B+ Tree, rotulado $\times$
+não rotulado, data $\times$ concept drift, L1 $\times$ L2, Tipo 1 $\times$
+Tipo 2, over $\times$ underfitting.
+
+Rode \texttt{./quiz.py orfaos}.
 \end{jacaiu}
 
 \begin{comosair}

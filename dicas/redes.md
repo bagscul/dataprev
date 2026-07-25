@@ -13,6 +13,11 @@
 - ACL Cisco e máscara curinga (wildcard mask) — cálculo de
   bits para casar hosts específicos (ex.: último octeto
   ímpar).
+- Sub-rede: dado "no máximo N hosts", achar a máscara. Hosts
+  utilizáveis = 2^h - 2 (tira rede e broadcast); 30 hosts =
+  /27 = 255.255.255.224. Escolha a MENOR sub-rede que comporta.
+- IPv6, notação simplificada: some os zeros à esquerda de cada
+  grupo e troque UMA única sequência de grupos nulos por "::".
 - Tipos de rede: Internet x intranet x extranet x portal
   (nível de acesso e público-alvo).
 - SSL x TLS x HTTPS (fronteira com segurança), e a divisão de

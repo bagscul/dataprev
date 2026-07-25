@@ -151,12 +151,29 @@ prazo (permite as duas).
 - Aumento de pena conforme o sujeito passivo (autoridades) e o prejuízo.
   (A pena exata foi alterada pela Lei 14.155/2021 — foque no conceito.)
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Controlador × operador; bases legais da LGPD; ANPD × CNPD; prazos da LAI
-(reservada/secreta/ultrassecreta); guarda de registros no Marco Civil (1 ano /
-6 meses); art. 19 e responsabilidade do provedor; invasão de dispositivo
-independe de rede. Rode `../quiz.py legislacao`.
+**Em prova real da FGV:** **ANPD × CNPD** — o gabarito foi justamente "o CNPD
+tem atribuição de *sugerir ações* a serem realizadas pela ANPD";
+**classificação na LAI** (nomes dos graus, decisão *vinculada* a balizas,
+acesso automático findo o prazo, desclassificação *e* redução de prazo);
+**sanções administrativas da LGPD** (parâmetros de dosimetria, destino da
+arrecadação das multas); **sanções do Marco Civil** (advertência com prazo
+para adoção de medidas); **invasão de dispositivo** do art. 154-A — não exige
+conexão à rede, e o aumento de pena varia com o sujeito passivo — **Dataprev
+2024**. **Princípio da adequação** (o enunciado descreve "compatível com os
+fins informados, de acordo com o contexto"); **explicabilidade da decisão
+automatizada**, com a redação do art. 20; **IA generativa × LGPD**, incluindo
+raspagem da web — **TJ-RJ**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): controlador × operador; as dez bases legais; dado pessoal sensível;
+os prazos numéricos da LAI (5/15/25); transparência ativa × passiva; guarda de
+registros no Marco Civil (1 ano / 6 meses); neutralidade de rede; e todo o
+regime do art. 19 pós-STF de 26/06/2025 (notice-and-takedown, exceção dos
+crimes contra a honra, dever proativo, repercussão geral).
+
+Rode `../quiz.py legislacao`.
 
 ## Pegadinhas da FGV (resumo)
 

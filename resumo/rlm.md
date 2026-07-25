@@ -123,12 +123,28 @@ Pegadinha recorrente: confundir **equivalência** com **implicação**, marcar a
   em vez de "algum não"), ou apresenta uma **falácia** (afirmar o consequente)
   como argumento válido.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Divisão proporcional (prejuízo); média ponderada com pesos por bimestre;
-sistema com soma e soma dos quadrados; equivalência da condicional
-(contrapositiva); grafo/estradas (combinação); aumentos sucessivos e taxa
-média. Rode `../quiz.py rlm`.
+**Em prova real da FGV:** divisão proporcional (repartir prejuízo na razão do
+capital investido); média ponderada com pesos por bimestre; sistema com soma e
+soma dos quadrados (produtos notáveis); **equivalência da condicional**
+(contrapositiva); grafo/estradas por combinação C(n,2); aumentos sucessivos e
+taxa média — **Dataprev 2024** (Q25–Q30). Porcentagem e lucro; contagem em
+fila; **lógica proposicional encadeada** e argumentação a partir de
+declarações; **permutação com restrição** (probabilidade); **soma de PA**;
+**geometria plana** (perímetro × comprimento de um retângulo); sistemas de
+equações e razão — **ALERO 2026** (11 questões).
+
+Repare: a ALERO 2026 desmente a leitura de que "RLM da FGV é só conta" —
+**lógica formal e argumentação apareceram lá**, e o edital 2026 da Dataprev as
+coloca em quatro dos cinco itens. É a razão do alerta que abre este resumo.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): De Morgan; negação de quantificador; PA pelo termo geral; juros
+simples × compostos; produto de matrizes; inclusão-exclusão; mediana/moda;
+desvio padrão; Pitágoras.
+
+Rode `../quiz.py rlm`.
 
 ## Alta probabilidade / pesquisa extra
 

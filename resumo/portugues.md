@@ -82,12 +82,25 @@ questões "assinale a **incorreta**", leia com atenção redobrada ao comando.
 alternativa contra o trecho — não decida por "impressão". O que não está
 sustentado no texto é distrator.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Análise sintática de frase curta ("É preciso estar atento e forte");
-adjunto adnominal; regência verbal; concordância nominal; interpretação de
-verso (Pessoa, Gonzaga); justificativa da vírgula; discurso direto. Rode
-`../quiz.py portugues`.
+**Em prova real da FGV:** análise sintática de frase curta ("É preciso estar
+atento e forte"); adjunto adnominal; regência verbal; concordância nominal;
+interpretação de verso (Fernando Pessoa, Luiz Gonzaga); justificativa da
+vírgula; discurso direto — **Dataprev 2024** (Q1–Q12). Pleonasmo em reescrita;
+reescrever *mudando* ou *mantendo* o sentido; processos de coesão para evitar
+repetição; referência de termo de ligação; oração adjetiva trocada por termo
+equivalente; apassivação; **colocação pronominal** ("Dê-me" × "Me dá");
+**regência de *assistir*** — **MPU**. Português é o maior bloco de todas as
+provas do corpus (67 questões reais entre Dataprev, MPU e TJ-RJ), sempre
+**interpretação + gramática aplicada**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): crase; concordância *verbal* dos impessoais; *por que* / *porque* /
+*por quê* / *porquê*; conjunção concessiva substituível ("embora" → "ainda
+que").
+
+Rode `../quiz.py portugues`.
 
 ## Pontos de atenção / pesquisa extra
 

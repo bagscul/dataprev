@@ -109,6 +109,39 @@ por rotas conflitantes''. A regra real é determinística: menor distância
 administrativa vence, sempre.
 \end{pegadinha}
 
+\subsection{Sub-redes: máscara $\times$ hosts utilizáveis}
+
+A conta é sempre a mesma: com $h$ bits sobrando para host,
+\textbf{hosts utilizáveis} $= 2^h - 2$ (descontam-se o endereço de
+\textbf{rede} e o de \textbf{broadcast}). O prefixo $/n$ deixa $h = 32 - n$.
+
+\begin{center}
+\begin{tabular}{@{}p{1.6cm}p{3.6cm}p{2.2cm}p{3cm}@{}}
+\toprule
+\textbf{Prefixo} & \textbf{Máscara} & \textbf{Bits de host} & \textbf{Hosts utilizáveis} \\
+\midrule
+/24 & 255.255.255.0 & 8 & 254 \\
+/25 & 255.255.255.128 & 7 & 126 \\
+/26 & 255.255.255.192 & 6 & 62 \\
+/27 & 255.255.255.224 & 5 & \textbf{30} \\
+/28 & 255.255.255.240 & 4 & 14 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O enunciado costuma dar a necessidade (``no máximo 30 hosts'') e pedir a
+máscara: procure a \textbf{menor} sub-rede que \textbf{comporta} o número
+pedido --- 30 hosts cabem em /27 exatamente, então /26 (62) desperdiça e /28
+(14) não cabe.
+
+\textbf{IPv6 --- notação simplificada.} Duas regras, nesta ordem: (1) apague
+os \textbf{zeros à esquerda} de cada grupo (\texttt{0DB8} $\to$
+\texttt{DB8}, \texttt{0001} $\to$ \texttt{1}); (2) substitua \textbf{uma
+única} sequência de grupos inteiramente nulos por \texttt{::} --- só uma vez
+no endereço, senão fica ambíguo. Assim
+\texttt{2001:0DB8:0000:0000:0000:0000:FE00:0001} vira
+\texttt{2001:DB8::FE00:1}.
+
 \subsection{ACL Cisco e wildcard mask}
 
 Wildcard mask = inverso da máscara; bit \textbf{0} = ``tem que bater'', bit
@@ -221,10 +254,28 @@ descrição do \textbf{Telnet}.
 \end{pegadinha}
 
 \begin{jacaiu}
-Camada OSI de sessão (checkpoints); switch $\times$ roteador $\times$ hub;
-TCP $\times$ UDP; portas; RFC 1918; IPv6 128 bits; roteamento estático
-$\times$ OSPF (distância administrativa); ACL Cisco (wildcard mask). Rode
-\texttt{./quiz.py redes}.
+\textbf{Em prova real da FGV:} camada OSI \textbf{por função} --- sessão e
+\emph{checkpoints} na retomada de uma transferência interrompida ---,
+\textbf{rota estática $\times$ OSPF} pela distância administrativa e
+\textbf{ACL Cisco com wildcard mask}; ainda volume anômalo de handshakes TCP
+(SYN flood) --- \textbf{TJ-RJ}. Camada OSI para \textbf{diagnosticar} falha
+entre servidor e switch; \textbf{switch $\times$ roteador $\times$
+hub/repetidor}; \textbf{TCP $\times$ UDP} (entrega ordenada e garantida);
+\textbf{RFC 1918 e NAT}; \textbf{IPv6} (abreviação do endereço);
+\textbf{cálculo de sub-rede} a partir de um /24; \textbf{MPLS}; meio físico,
+topologia e Wi-Fi; \textbf{SSH substituindo o Telnet} ---
+\textbf{ALERO 2026}. \textbf{Internet $\times$ intranet $\times$ extranet
+$\times$ portal} e \textbf{X.800} (mecanismos de segurança do modelo OSI) ---
+\textbf{Dataprev 2024}.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): \textbf{número de porta específico} (80/443, DNS 53, DHCP) --- veja
+a observação da Seção de protocolos, a FGV preferiu raciocínio de rota,
+camada e ACL; o \textbf{handshake híbrido do TLS}; \textbf{firewall stateful
+$\times$ stateless}; e \textbf{VLAN} como segmentação de domínio de
+broadcast.
+
+Rode \texttt{./quiz.py redes}.
 \end{jacaiu}
 
 \begin{comosair}

@@ -141,6 +141,27 @@ resolve no reflexo errado:
   **mínimo** de código manual — *no-code* elimina o código de vez. Nenhum dos
   dois "dispensa desenvolvedor profissional": esse absoluto é o distrator.
 
+## O que já caiu
+
+**Em prova real da FGV:** este é o bloco com **mais** questões reais no corpus
+(56), e a maioria esmagadora é **DBA**. **ARIES e WAL**; **otimizador de
+consultas** (estimativa de custo e planos ruins por estatísticas
+desatualizadas); **B+ Tree** (eficiência e fator de ramificação) e **hashing
+extensível**; **índice *clustered***; **tablespaces**; **backup** de sistema
+crítico; **views e menor privilégio** (esconder a coluna de salário);
+**trigger × procedure × function**; **2PC** em banco distribuído;
+**connection pooling**; **NoSQL chave-valor** para cache de sessão; **XML
+Schema** no SGBD; **Administração de Dados × DBA** (ciclo de vida do dado,
+metadados, foco reativo → proativo) — **ALERO 2026**. No **MPU**, o mesmo
+rótulo pegou gestão de processos e estrutura organizacional; no
+**cnsal-ads**, engenharia de software (RUP, cascata, casos de uso, ponto de
+função).
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): blockchain pelo encadeamento de hash; RPA; low-code; servidor web ×
+servidor de aplicação; os Vs do Big Data; supervisionado × não supervisionado;
+intranet × extranet.
+
 ## Como se sair melhor
 
 - Muita questão "órfã" é DBA disfarçado — se o cenário fala em backup,

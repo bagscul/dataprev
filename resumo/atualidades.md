@@ -183,14 +183,32 @@ Pegadinhas:
   absoluto demais. O texto costuma apresentar o **dilema** (benefício
   tecnológico *e* custo ambiental), não um veredito fechado.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Redes neurais como o que "aprende com dados e melhora"; supervisionado × não
-supervisionado; viés-variância, regularização L1/L2, over/underfitting; concept
-drift × data drift; MLOps; métrica MAE (nas provas de IA do TJ-RJ);
-sustentabilidade e data centers (Dataprev); viés algorítmico em decisão
-automatizada; direito à revisão humana (LGPD, art. 20). Rode
-`../quiz.py atualidades`.
+**Em prova real da FGV:** **supervisionado × não supervisionado** (duas
+questões, uma de associação tipo-técnica); **viés × variância** com
+**regularização Lasso/L1** e over/underfitting; **concept drift × data drift**
+num modelo de *churn* degradando em produção; **MLOps** num *pipeline* ponta a
+ponta de detecção de fraude; **MAE** para prever tempo de tramitação
+(regressão); **CNN** e camadas de convolução; plataforma baseada em **LLM**
+para análise documental — **TJ-RJ** (9 questões de IA). **Cúpula do G20 no
+Brasil** ("Mundo Justo e Planeta Sustentável"); **impacto ambiental do
+digital** e consumo de data centers; **art. 225 da Constituição** e racismo
+ambiental; **LGPD em caso real** (tratamento indevido de dados de
+consumidores); **cidade-esponja** — **Dataprev 2024** (Q31–Q35). No **MPU**, a
+mesma pegada verde em outro formato (A3P, Política Nacional sobre Mudança do
+Clima, Protocolo de Quioto).
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): a hierarquia IA ⊃ ML ⊃ Deep Learning; LLM e Transformer; RAG;
+alucinação; **viés algorítmico** em decisão automatizada (o "viés" que caiu no
+TJ-RJ é o *estatístico* do trade-off, conceito diferente); **direito à revisão
+humana** da LGPD, art. 20 — a explicabilidade do art. 20 caiu, mas no bloco de
+**Legislação** do TJ-RJ, não aqui; a abordagem baseada em risco do AI Act e o
+PL 2338/2023; ESG por extenso; PUE e matriz energética de data center;
+métricas de classificação.
+
+Rode `../quiz.py atualidades`.
 
 ## Pegadinhas da FGV (resumo)
 

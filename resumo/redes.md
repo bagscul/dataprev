@@ -62,7 +62,30 @@ Pegadinha: trocar a camada de um elemento (switch=2/enlace, roteador=3/rede);
 - **Roteamento:** rota estática × dinâmica (OSPF, RIP, BGP); **distância
   administrativa** desempata a fonte da rota.
 
-## 5.1 Comutação e encaminhamento (MPLS, VLAN, NAT)
+### 5.1 Sub-redes: máscara × hosts utilizáveis
+
+Com **h** bits sobrando para host, **hosts utilizáveis = 2ʰ − 2** (descontam-se
+o endereço de **rede** e o de **broadcast**). O prefixo /n deixa h = 32 − n.
+
+| Prefixo | Máscara | Bits de host | Hosts utilizáveis |
+|---|---|---|---|
+| /24 | 255.255.255.0 | 8 | 254 |
+| /25 | 255.255.255.128 | 7 | 126 |
+| /26 | 255.255.255.192 | 6 | 62 |
+| /27 | 255.255.255.224 | 5 | **30** |
+| /28 | 255.255.255.240 | 4 | 14 |
+
+O enunciado dá a necessidade ("no máximo 30 hosts") e pede a máscara: procure
+a **menor** sub-rede que **comporta** o número — 30 cabem em /27 exatamente;
+/26 (62) desperdiça e /28 (14) não cabe.
+
+**IPv6 — notação simplificada.** Duas regras, nesta ordem: (1) apague os
+**zeros à esquerda** de cada grupo (`0DB8` → `DB8`, `0001` → `1`); (2)
+substitua **uma única** sequência de grupos inteiramente nulos por `::` — só
+uma vez, senão fica ambíguo. Assim
+`2001:0DB8:0000:0000:0000:0000:FE00:0001` → `2001:DB8::FE00:1`.
+
+## 5.2 Comutação e encaminhamento (MPLS, VLAN, NAT)
 
 - **MPLS (Multiprotocol Label Switching):** encaminha por **rótulos (labels)**
   em vez de olhar o IP de destino a cada salto — por isso é chamado de
@@ -131,11 +154,26 @@ autentica o **servidor**, por certificado) ou que "dispensa certificados". Em
 SSH, o distrator inverte o motivo — "é mais rápido por não usar criptografia"
 descreve o **Telnet**.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Camada OSI de sessão (checkpoints); switch × roteador × hub; TCP × UDP;
-portas; RFC 1918; IPv6 128 bits; roteamento estático × OSPF (distância
-administrativa); ACL Cisco (wildcard mask). Rode `../quiz.py redes`.
+**Em prova real da FGV:** camada OSI **por função** — sessão e *checkpoints*
+na retomada de transferência interrompida —, **rota estática × OSPF** pela
+distância administrativa, **ACL Cisco com wildcard mask** e volume anômalo de
+handshakes TCP (SYN flood) — **TJ-RJ**. Camada OSI para **diagnosticar** falha
+entre servidor e switch; **switch × roteador × hub/repetidor**; **TCP × UDP**
+(entrega ordenada e garantida); **RFC 1918 e NAT**; **IPv6** (abreviação do
+endereço); **cálculo de sub-rede** a partir de um /24; **MPLS**; meio físico,
+topologia e Wi-Fi; **SSH substituindo o Telnet** — **ALERO 2026**. **Internet
+× intranet × extranet × portal** e **X.800** (mecanismos de segurança do
+modelo OSI) — **Dataprev 2024**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): **número de porta específico** (80/443, DNS 53, DHCP) — veja a
+observação da seção 4, a FGV preferiu raciocínio de rota, camada e ACL; o
+**handshake híbrido do TLS**; **firewall stateful × stateless**; e **VLAN**
+como segmentação de domínio de broadcast.
+
+Rode `../quiz.py redes`.
 
 ## Estratégia
 
