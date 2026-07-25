@@ -75,7 +75,20 @@ Pegadinha: trocar a camada de um elemento (switch=2/enlace, roteador=3/rede);
 
 Pegadinha: MPLS é **rótulo** ("2.5"), não roteamento IP puro; VLAN segmenta L2.
 
-## 6. Segurança de rede (interface com Segurança da Informação)
+## 6. Tipos de rede corporativa
+
+| Tipo | Quem acessa |
+|---|---|
+| **Internet** | rede **pública global**, aberta |
+| **Intranet** | rede **interna** da organização, restrita a quem está dentro |
+| **Extranet** | acesso **controlado a externos** (parceiros, fornecedores, clientes) |
+| **Portal** | ponto **único de acesso** que agrega serviços e sistemas |
+
+Pegadinha: inverter os três papéis é o distrator clássico — chamar intranet de
+"rede pública global", extranet de "só interna", Internet de "rede restrita".
+A extranet é o meio-termo: **externo, mas autorizado**. Ver `arquitetura.md`.
+
+## 7. Segurança de rede (interface com Segurança da Informação)
 
 - **Firewall** (filtra tráfego), **proxy**, **VPN** (IPsec, SSL VPN).
 - **IDS** (detecta/alerta) × **IPS** (bloqueia). Ver `seguranca.md`.

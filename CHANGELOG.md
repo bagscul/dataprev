@@ -2,6 +2,33 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — detector de drift entre as camadas (auditoria, Bloco VII/ITEM 5)
+
+- **`valida.py` passa a avisar quando as camadas saem de sincronia** (apostila →
+  resumo → dicas → banco). A repetição entre elas é intencional; o que não pode é
+  uma camada avançar e a outra ficar para trás. Três checagens, nenhuma bloqueia:
+  1. **seção nova na apostila sem eco no `resumo/` do bloco** — varre os
+     `\section` dos 18 capítulos contra o resumo correspondente (o Cap. 4 aponta
+     para `padroes-projeto` e `uml`);
+  2. **fato canônico que sumiu de uma camada** — tabela declarativa
+     `FATOS_CANONICOS` com 18 entradas (data do STF 26/06/2025, OWASP 2021, ISO
+     27002:2022, COBIT 2019, ITIL 4, números das leis, RFC 1918, Java 17/21…).
+     A camada esperada é **declarada por fato**, não universal: o corte de 57,5
+     não pertence às dicas, a data da prova não pertence ao banco;
+  3. **contagem de questões declarada no README × banco real.**
+- **Três descompassos encontrados e corrigidos:**
+  - `resumo/redes.md` não tinha a seção **"Tipos de rede corporativa"** que existe
+    na apostila — entrou o quadro Internet × intranet × extranet × portal, com a
+    inversão dos três papéis, que é o distrator clássico;
+  - **os 23 padrões do GoF** (5 criacionais, 7 estruturais, 11 comportamentais)
+    não apareciam em nenhuma camada de estudo — o Cap. 4 listava as três famílias
+    sem nunca dizer o número, que a FGV cobra direto. Acrescentado na apostila e
+    no `resumo/padroes-projeto.md`; PDF recompilado (87 páginas);
+  - `README.md` e `resumo/README.md` ainda diziam **"237 questões originais /
+    ~616 utilizáveis"** — hoje são 336 e ~715. É exatamente o tipo de defasagem
+    que a checagem 3 passa a pegar sozinha.
+- Custo: +0,2 s no `./valida.py`. Detector **silencioso** depois das correções.
+
 ## 2026-07-25 — subtags, limiares de forma e acentuação (auditoria, Bloco VII/2-4)
 
 - **Subtags (`sub`) — o Cap. 4 deixa de ser cego ao filtro do quiz.** Padrões de

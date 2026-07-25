@@ -230,6 +230,124 @@ def avisos_forma(banco, janela=JANELA_PADRAO):
     return linhas
 
 
+# --- Detector de drift entre as camadas (apostila -> resumo -> dicas -> banco).
+# A repeticao entre as camadas e INTENCIONAL (repeticao espacada: dica c resumo
+# c apostila). O que nao pode e uma camada avancar e a outra ficar para tras.
+# Duas checagens, as duas so avisam:
+#   A) secao nova na apostila sem eco no resumo do bloco;
+#   B) fato canonico (data, versao, numero de norma) que sumiu de uma camada.
+#
+# Linha de base de B: a camada esperada e onde o fato ESTAVA quando a checagem
+# foi escrita, nao "tem que estar em todas". Presenca universal seria errada (o
+# corte de 57,5 nao pertence as dicas; a data da prova nao pertence ao banco) e
+# encheria a saida de ruido. Assim o aviso so acende quando o fato SOME.
+CAMADAS = ("apostila", "resumo", "dicas", "banco")
+
+FATOS_CANONICOS = [
+    # (nome, regex ja normalizada/sem acento, camadas onde deve aparecer)
+    ("STF art. 19 (26/06/2025)", r"26/06/2025|26 de junho de 2025", CAMADAS),
+    ("OWASP Top 10 2021", r"owasp top 10\D{0,12}2021|top 10 de 2021", CAMADAS),
+    ("ISO/IEC 27002:2022", r"27002:?\s*2022|27002 de 2022|revisao de 2022 da iso/iec 27002",
+     ("apostila", "resumo", "banco")),
+    ("COBIT 2019", r"cobit\s*2019", CAMADAS),
+    ("ITIL 4", r"itil\s*v?4", CAMADAS),
+    ("LGPD 13.709/2018", r"13\.?709", CAMADAS),
+    ("Marco Civil 12.965/2014", r"12\.?965", CAMADAS),
+    ("LAI 12.527/2011", r"12\.?527", CAMADAS),
+    ("Lei 12.737/2012 (delitos informaticos)", r"12\.?737", CAMADAS),
+    ("RFC 1918 (faixas privadas)", r"rfc\s*1918", ("apostila", "resumo", "banco")),
+    ("23 padroes GoF", r"23 padr|vinte e tres padr", ("apostila", "resumo", "banco")),
+    ("14 diagramas UML", r"14 diagramas|catorze diagramas", ("apostila", "resumo")),
+    ("Scrum Guide", r"scrum guide", ("apostila", "resumo", "banco")),
+    ("COBIT: 40 objetivos", r"40 objetivos", ("apostila", "resumo", "banco")),
+    ("Java 17/21 LTS", r"java\s*(17|21)", CAMADAS),
+    ("data da prova (11/10/2026)", r"11/10/2026", ("apostila", "resumo")),
+    ("total de 115 pontos", r"\b115\b", ("apostila", "resumo", "dicas")),
+    ("corte de eliminacao (57,5)", r"57,5", ("apostila", "resumo")),
+]
+
+# capitulo da apostila -> resumo(s) que deveriam ecoar suas secoes
+CAP_RESUMO = {
+    "02-eng-software": ["eng-software"],
+    "03-padroes-uml": ["padroes-projeto", "uml"],
+    "04-arquitetura": ["arquitetura"], "05-banco-dados": ["banco-dados"],
+    "06-bi": ["bi"], "07-seguranca": ["seguranca"], "08-programacao": ["programacao"],
+    "09-java": ["java"], "10-frontend": ["frontend"], "11-governanca": ["governanca"],
+    "12-redes": ["redes"], "13-orfaos": ["orfaos"], "14-portugues": ["portugues"],
+    "15-ingles": ["ingles"], "16-rlm": ["rlm"], "17-atualidades": ["atualidades"],
+    "18-legislacao": ["legislacao"],
+}
+
+
+def _texto_camadas():
+    """Concatena e normaliza o texto de cada camada. Camada ausente vira ''."""
+    def ler(paths):
+        out = []
+        for p in paths:
+            try:
+                out.append(p.read_text(encoding="utf-8"))
+            except OSError:
+                pass
+        return _norm(" ".join(out))
+    banco = BASE / "banco.json"
+    return {
+        "apostila": ler(sorted((BASE / "apostila" / "capitulos").glob("*.tex"))),
+        "resumo": ler(sorted((BASE / "resumo").glob("*.md"))),
+        "dicas": ler(sorted((BASE / "dicas").glob("*.md"))),
+        "banco": ler([banco]),
+    }
+
+
+def avisos_drift():
+    """Avisos (nao bloqueiam) de descompasso entre apostila, resumo, dicas e
+    banco. Silencioso quando as camadas estao em dia."""
+    linhas = []
+    caps = BASE / "apostila" / "capitulos"
+    if not caps.is_dir():
+        return linhas
+    texto = _texto_camadas()
+
+    # A) secao da apostila sem eco no resumo do bloco
+    for cap, blocos in sorted(CAP_RESUMO.items()):
+        tex = caps / f"{cap}.tex"
+        if not tex.exists():
+            continue
+        alvo = _norm(" ".join((BASE / "resumo" / f"{b}.md").read_text(encoding="utf-8")
+                              for b in blocos
+                              if (BASE / "resumo" / f"{b}.md").exists()))
+        if not alvo:
+            continue
+        for m in re.finditer(r"\\section\{([^{}]*)\}", tex.read_text(encoding="utf-8")):
+            titulo = re.sub(r"\\[a-zA-Z]+|[{}$]", " ", m.group(1))
+            titulo = re.sub(r"\([^)]*\)", "", titulo).strip()
+            palavras = [w for w in re.findall(r"[A-Za-zÀ-ÿ][\w\-]{4,}", titulo)]
+            if palavras and not any(_norm(w) in alvo for w in palavras):
+                linhas.append(f"[drift] apostila {cap}: secao '{titulo[:44]}' "
+                              f"sem eco em resumo/{'|'.join(blocos)}.md")
+
+    # B) fato canonico que sumiu de uma camada
+    for nome, padrao, esperadas in FATOS_CANONICOS:
+        sumiu = [c for c in esperadas if not re.search(padrao, texto.get(c, ""))]
+        if sumiu:
+            linhas.append(f"[drift] fato canonico '{nome}' sumiu de: {', '.join(sumiu)}")
+
+    # C) contagem de questoes declarada no README x banco real
+    try:
+        n = len(json.loads((BASE / "banco.json").read_text(encoding="utf-8")))
+    except (OSError, json.JSONDecodeError):
+        n = None
+    if n:
+        for doc in (BASE / "README.md", BASE / "resumo" / "README.md"):
+            if not doc.exists():
+                continue
+            txt = doc.read_text(encoding="utf-8")
+            m = re.search(r"(\d{3,4})\s+quest[oõ]es originais", txt)
+            if m and int(m.group(1)) != n:
+                linhas.append(f"[drift] {doc.name} diz '{m.group(1)} questoes "
+                              f"originais', mas banco.json tem {n}")
+    return linhas
+
+
 CAUSAS_VALIDAS = {"conceitual", "armadilha"}
 
 
@@ -266,7 +384,7 @@ def _arg_janela(argv):
 def main():
     strict = "--strict" in sys.argv
     janela = _arg_janela(sys.argv)
-    erros, avisos, avisos_f = [], [], []
+    erros, avisos, avisos_f, avisos_d = [], [], [], []
     n_orig = n_prova = n_usaveis = 0
 
     # banco original
@@ -307,6 +425,9 @@ def main():
     # progresso do quiz (opcional): so avisa se 'causa' vier com valor invalido
     avisos += checar_historico()
 
+    # drift entre apostila, resumo, dicas e banco (nao bloqueia)
+    avisos_d = avisos_drift()
+
     print()
     print(cor(f"  banco.json: {n_orig} questoes | banco-provas.json: {n_prova} questoes", "b"))
     print(f"  utilizaveis no quiz: {n_usaveis}")
@@ -327,11 +448,15 @@ def main():
         print(cor(f"  {len(avisos_f)} aviso(s) de forma (banco.json) — nao bloqueiam, miram questoes novas:", "ama"))
         for x in avisos_f:
             print("   ", x)
-    if not erros and not avisos and not avisos_f:
+    if avisos_d:
+        print(cor(f"  {len(avisos_d)} aviso(s) de drift entre as camadas — nao bloqueiam:", "ama"))
+        for x in avisos_d:
+            print("   ", x)
+    if not erros and not avisos and not avisos_f and not avisos_d:
         print(cor("  tudo integro.", "verde"))
     print()
 
-    if erros or (strict and (avisos or avisos_f)):
+    if erros or (strict and (avisos or avisos_f or avisos_d)):
         sys.exit(1)
 
 

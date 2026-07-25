@@ -10,7 +10,9 @@
 
 O enunciado descreve um **problema de design** e você identifica o padrão que
 o resolve. A chave é reconhecer a **intenção** (o "para quê") de cada padrão.
-Os padrões GoF (Gang of Four) se dividem em 3 grupos.
+O catálogo GoF (Gang of Four) reúne **23 padrões**, divididos em 3 grupos:
+**criacionais** (5), **estruturais** (7) e **comportamentais** (11) — o número
+e a classificação em três grupos são cobrados diretamente.
 
 ## 1. Criacionais (como criar objetos)
 
