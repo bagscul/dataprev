@@ -31,6 +31,12 @@ C = {"r": "\033[0m", "verde": "\033[32m", "verm": "\033[31m", "ama": "\033[33m",
 STATUS_VALIDOS = {"ok", "revisar", "ambigua", "distrator-fraco",
                   "explicacao-fraca", "estilo-divergente"}
 
+# Vocabulario do campo opcional 'sub' (subtag). A 'tag' continua sendo o BLOCO
+# (roteiro, progresso.csv, peso do simulado, erros/<tag>.md, --stats, historico);
+# a 'sub' e so recorte de estudo para o filtro do quiz, e pode faltar.
+SUB_VALIDAS = {"padroes-projeto", "uml", "java-moderno", "git-devops",
+               "leitura-codigo"}
+
 
 def cor(t, c):
     return f"{C[c]}{t}{C['r']}"
@@ -77,6 +83,18 @@ def checar_questao(q, rotulo, usavel):
     # campo opcional 'status' (marcacao da auditoria, Bloco V) — se presente,
     # tem que ser um dos valores permitidos; ausencia e ok (equivale a 'ok', sem
     # marcacao). Nao bloqueia o quiz; so sinaliza valor fora do vocabulario.
+    # campo opcional 'sub' (subtag) — lista de strings do vocabulario fechado.
+    # Nao substitui a 'tag': so acrescenta um recorte para o filtro do quiz.
+    sub = q.get("sub")
+    if sub is not None:
+        if not isinstance(sub, list) or not all(isinstance(s, str) for s in sub):
+            avisos.append(f"{rotulo}: campo 'sub' deve ser lista de strings (ex. ['uml'])")
+        else:
+            fora = sorted(set(sub) - SUB_VALIDAS)
+            if fora:
+                avisos.append(f"{rotulo}: subtag {fora} fora do vocabulario "
+                              f"(esperado {sorted(SUB_VALIDAS)})")
+
     st = q.get("status")
     if st is not None and st not in STATUS_VALIDOS:
         avisos.append(f"{rotulo}: campo 'status' = {st!r} invalido "

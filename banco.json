@@ -362,6 +362,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Um sistema precisa garantir que exista uma única instância de uma classe de configuração, com ponto de acesso global. O padrão de projeto adequado é:",
   "alts": [
    "Observer",
@@ -381,6 +384,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "O padrão de projeto que permite converter a interface de uma classe existente em outra interface esperada pelo cliente, viabilizando o trabalho conjunto de classes incompatíveis, é o:",
   "alts": [
    "Facade",
@@ -1236,6 +1242,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Sobre DevOps, o conceito de integração contínua (CI) consiste em:",
   "alts": [
    "integrar os servidores de produção e de homologação em uma única máquina, para simplificar a operação da equipe",
@@ -1255,6 +1264,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "git-devops"
+  ],
   "q": "No Git, o comando que cria uma cópia local de um repositório remoto completo, incluindo todo o histórico, é:",
   "alts": [
    "git pull",
@@ -1521,6 +1533,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "git-devops"
+  ],
   "q": "O conceito de DevSecOps propõe que a segurança:",
   "alts": [
    "seja responsabilidade exclusiva do time de infraestrutura",
@@ -2262,6 +2277,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "O padrão de projeto em que um objeto notifica automaticamente seus dependentes sobre mudanças de estado, estabelecendo relação um-para-muitos com baixo acoplamento, é o:",
   "alts": [
    "Singleton",
@@ -2281,6 +2299,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "O padrão Strategy é indicado quando se deseja:",
   "alts": [
    "definir uma família de algoritmos intercambiáveis, selecionáveis em tempo de execução",
@@ -2300,6 +2321,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "O padrão Factory Method propõe:",
   "alts": [
    "que todos os objetos sejam sempre reutilizados a partir de um pool de instâncias previamente alocado",
@@ -2832,6 +2856,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "git-devops"
+  ],
   "q": "A diferença entre containers e máquinas virtuais é que os containers:",
   "alts": [
    "compartilham o kernel do sistema operacional hospedeiro, isolando apenas processos e dependências",
@@ -3136,6 +3163,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Em um sistema de logging, uma equipe precisa garantir que exista uma única instância da classe de configuração compartilhada por toda a aplicação, controlando ela mesma seu ponto de acesso global. Qual padrão GoF atende diretamente a esse requisito?",
   "alts": [
    "Facade",
@@ -3155,6 +3185,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Uma aplicação de interface gráfica precisa produzir famílias inteiras de componentes relacionados (botão, caixa de seleção e menu) que sejam consistentes entre si para cada tema visual (Windows, macOS), sem que o código cliente conheça as classes concretas de cada família. Qual padrão criacional é o mais adequado?",
   "alts": [
    "Prototype",
@@ -3174,6 +3207,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Ao criar objetos de uma classe com muitos atributos opcionais, uma equipe quer separar o processo de construção passo a passo da representação final, permitindo que o mesmo processo produza diferentes representações e evitando construtores com dezenas de parâmetros. Qual padrão resolve isso?",
   "alts": [
    "Abstract Factory",
@@ -3193,6 +3229,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Em um editor gráfico, criar novos objetos do zero é custoso porque exige configuração pesada. A equipe decide produzir novos objetos copiando um objeto já configurado, delegando a cópia ao próprio objeto. Qual padrão criacional está sendo aplicado?",
   "alts": [
    "Prototype",
@@ -3212,6 +3251,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Uma equipe precisa integrar uma biblioteca de terceiros cuja interface é incompatível com a interface que o código cliente já espera. Não é possível alterar a biblioteca. Qual padrão estrutural permite que as classes com interfaces incompatíveis trabalhem juntas?",
   "alts": [
    "Mediator",
@@ -3231,6 +3273,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Antes de carregar uma imagem pesada da rede, um sistema quer inserir um objeto substituto que tenha a mesma interface do objeto real e só o instancie sob demanda (carregamento tardio), além de poder controlar o acesso a ele. Qual padrão estrutural descreve esse substituto?",
   "alts": [
    "Facade",
@@ -3250,6 +3295,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Uma equipe deseja acrescentar responsabilidades adicionais a objetos individuais de forma dinâmica, em tempo de execução, sem alterar a classe original e como alternativa flexível à criação de muitas subclasses por herança. Qual padrão estrutural é indicado?",
   "alts": [
    "Strategy",
@@ -3269,6 +3317,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Em um sistema de arquivos, pastas contêm arquivos e outras pastas. A equipe quer que o cliente trate um arquivo individual e um grupo de arquivos (pasta) de maneira uniforme, por meio de uma mesma interface, representando a hierarquia parte-todo. Qual padrão estrutural se aplica?",
   "alts": [
    "Facade",
@@ -3288,6 +3339,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Um módulo de cálculo de frete deve permitir trocar, em tempo de execução, o algoritmo usado (por transportadora, por peso ou por distância), encapsulando cada algoritmo em uma classe intercambiável, sem alterar o código cliente que os utiliza. Qual padrão comportamental é o adequado?",
   "alts": [
    "Template Method",
@@ -3307,6 +3361,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Em uma planilha, quando o valor de uma célula muda, todos os gráficos e fórmulas dependentes devem ser notificados e atualizados automaticamente, mantendo baixo acoplamento entre a célula (sujeito) e seus dependentes. Qual padrão comportamental define essa dependência um-para-muitos?",
   "alts": [
    "Command",
@@ -3326,6 +3383,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Uma equipe quer estruturar uma aplicação web separando os dados e regras de negócio, a apresentação exibida ao usuário e a lógica que recebe as entradas e coordena as atualizações entre ambos, em três responsabilidades distintas. Qual padrão arquitetural descreve essa separação?",
   "alts": [
    "Repository (Repositório de Dados)",
@@ -3345,6 +3405,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Durante a análise de responsabilidades (padrões GRASP), a equipe precisa decidir a qual classe atribuir a responsabilidade de criar objetos de outra classe. Segundo o GRASP, a responsabilidade de criar instâncias de uma classe B deve ser atribuída à classe A quando A, por exemplo, agrega, contém ou registra objetos de B. Que padrão GRASP orienta essa decisão?",
   "alts": [
    "Indireção (Indirection)",
@@ -3364,6 +3427,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Na UML 2.x, os diagramas são organizados em duas grandes famílias: estruturais e comportamentais. Assinale a alternativa que classifica CORRETAMENTE os diagramas indicados.",
   "alts": [
    "O diagrama de classes é comportamental, pois modela as operações dos objetos.",
@@ -3383,6 +3449,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Um sistema é modelado assim: um objeto Universidade é composto por objetos Departamento, de modo que, se a Universidade for destruída, seus Departamentos deixam de existir; já um objeto Time referencia objetos Jogador, que continuam existindo mesmo que o Time seja extinto. No diagrama de classes UML, essas duas relações são representadas, respectivamente, por:",
   "alts": [
    "Composição em ambos os casos, pois há relação todo-parte nas duas.",
@@ -3402,6 +3471,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Em um diagrama de classes UML, a associação entre Pedido e ItemDePedido aparece com a multiplicidade \"1\" no lado de Pedido e \"1..*\" no lado de ItemDePedido. Qual é a interpretação CORRETA dessa multiplicidade?",
   "alts": [
    "A notação \"1..*\" significa exatamente um item, e \"1\" significa opcional.",
@@ -3421,6 +3493,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Sobre os relacionamentos <<include>> e <<extend>> em diagramas de casos de uso da UML, assinale a alternativa CORRETA.",
   "alts": [
    "Ambos representam relações de herança entre os atores do sistema.",
@@ -3440,6 +3515,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Uma equipe precisa modelar, para um caso de uso de saque em caixa eletrônico, a ordem temporal das mensagens trocadas entre o objeto Cliente, o objeto Terminal e o objeto SistemaBancario, evidenciando as linhas de vida e a sequência de chamadas e retornos. Qual diagrama UML é o mais adequado?",
   "alts": [
    "Diagrama de sequência.",
@@ -3459,6 +3537,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Ao modelar um processo de negócio com decisões, caminhos paralelos e sincronização de fluxos de trabalho (fork/join), qual diagrama comportamental da UML é o mais indicado, sendo frequentemente comparado a um fluxograma?",
   "alts": [
    "Diagrama de atividades.",
@@ -3478,6 +3559,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Um objeto Pedido, durante seu ciclo de vida, passa pelos estados \"Aberto\", \"Pago\", \"Enviado\" e \"Entregue\", mudando de estado em resposta a eventos como \"confirmarPagamento\" ou \"despachar\". Qual diagrama UML representa exatamente esses estados e as transições disparadas por eventos?",
   "alts": [
    "Diagrama de casos de uso.",
@@ -3497,6 +3581,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Sobre a relação de generalização (herança) no diagrama de classes UML, assinale a alternativa CORRETA.",
   "alts": [
    "Indica relação todo-parte, em que a subclasse é parte da superclasse.",
@@ -4238,6 +4325,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
   "q": "Sobre interfaces e classes abstratas em Java (a partir do Java 8), assinale a afirmativa correta.",
   "alts": [
    "Interfaces não podem ter nenhum método com corpo, nem mesmo os métodos default do Java 8.",
@@ -4257,6 +4347,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
   "q": "Durante a migração de uma aplicação Java EE para Jakarta EE 9+, uma das mudanças mais impactantes no código-fonte foi:",
   "alts": [
    "A troca do prefixo 'jakarta.*' de volta para 'javax.*', revertendo o namespace.",
@@ -4295,6 +4388,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
   "q": "Sobre recursos modernos da linguagem Java, considerando as versões LTS, assinale a afirmativa correta.",
   "alts": [
    "A palavra-chave 'var' cria variáveis sem tipo definido, dinamicamente tipadas como nas linguagens de script.",
@@ -4580,6 +4676,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o trecho a seguir:\n\nHTML:\n<div class=\"card\" data-status=\"pendente\">Solicitação</div>\n\nCSS:\n.card {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid #333;\n  margin: 10px;\n}\n.card::after {\n  content: attr(data-status);\n  font-weight: bold;\n}\n\nAssinale a alternativa correta sobre a renderização desse trecho.",
   "alts": [
    "Por causa de box-sizing: border-box, o width (200px) já inclui padding e borda, então a caixa ocupa exatamente 200px de largura, restando menos que isso para o conteúdo.",
@@ -4599,6 +4698,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o componente React a seguir:\n\nfunction Contador() {\n  const [cliques, setCliques] = useState(0);\n  function aoClicar() {\n    setCliques(cliques + 1);\n    setCliques(cliques + 1);\n  }\n  return <button onClick={aoClicar}>{cliques}</button>;\n}\n\nSobre o comportamento desse código ao clicar uma vez no botão, assinale a alternativa correta.",
   "alts": [
    "setCliques é executado de forma síncrona, então, ao inspecionar a variável 'cliques' logo após a primeira chamada dentro de aoClicar, seu valor já estará atualizado para o novo número, permitindo usá-lo no restante da função.",
@@ -4618,6 +4720,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Analise o método Java a seguir:\n\npublic int calcular(int a, int b) {\n    try {\n        return a / b;\n    } catch (ArithmeticException e) {\n        return -1;\n    } finally {\n        return 99;\n    }\n}\n\nAo ser chamado com calcular(10, 0), o método:",
   "alts": [
    "Lança uma ArithmeticException não tratada, pois o bloco finally impede a execução do catch.",
@@ -4865,6 +4970,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o trecho Java a seguir:\n\nMap<String, Integer> mapa = new HashMap<>();\nmapa.put(\"b\", 2);\nmapa.put(\"a\", 1);\nmapa.put(\"c\", 3);\n\nMap<String, Integer> ordenado = new TreeMap<>(mapa);\n\nfor (String chave : ordenado.keySet()) {\n    System.out.print(chave);\n}\n\nAssinale a alternativa correta sobre a saída desse código.",
   "alts": [
    "A saída é imprevisível, pois HashMap e TreeMap não podem coexistir na mesma estrutura de dados.",
@@ -4884,6 +4992,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o trecho de JavaScript a seguir:\n\nconst funcoes = [];\nfor (var i = 0; i < 3; i++) {\n  funcoes.push(function () { console.log(i); });\n}\nfuncoes[0]();\nfuncoes[1]();\nfuncoes[2]();\n\nAssinale a alternativa correta sobre a saída desse código.",
   "alts": [
    "O código não compila, pois não é permitido criar funções dentro de um laço for em JavaScript.",
@@ -4903,6 +5014,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o HTML e CSS a seguir:\n\nHTML: <p id=\"aviso\" class=\"destaque\">Atenção</p>\n\nCSS:\n#aviso { color: blue; }\n.destaque { color: red; }\np { color: green; }\n\nAssinale a alternativa correta sobre a cor em que o texto \"Atenção\" será exibido.",
   "alts": [
    "Vermelho, pois seletores de classe têm especificidade maior que seletores de id em CSS.",
@@ -5340,6 +5454,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Um módulo de emissão de relatórios precisa acionar, em sequência, os subsistemas de autenticação, consulta, formatação e envio. Para que o cliente faça uma única chamada, sem conhecer a ordem nem as dependências internas, a equipe cria uma classe que expõe um método simples e coordena os quatro subsistemas. Esse é o padrão:",
   "alts": [
    "Adapter, que converte a interface de uma classe existente naquela que o cliente espera encontrar",
@@ -5359,6 +5476,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Três relatórios compartilham a mesma sequência de etapas — abrir a fonte, extrair, formatar e fechar —, variando apenas a forma de extrair e de formatar. A equipe define na superclasse um método que fixa a ordem das etapas e deixa duas delas para as subclasses implementarem. O padrão aplicado e o mecanismo usado são:",
   "alts": [
    "Strategy, por herança: cada subclasse redefine o algoritmo inteiro de geração do relatório",
@@ -5378,6 +5498,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Um editor precisa registrar cada operação do usuário em uma fila, permitir desfazer a última e repetir operações a partir de um histórico. Para isso, cada operação passa a ser encapsulada em um objeto próprio, com método de execução. O padrão adotado é:",
   "alts": [
    "Observer, pois cada operação notifica automaticamente os componentes interessados na mudança",
@@ -5397,6 +5520,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Uma requisição de reembolso passa por validações sucessivas — valor, alçada e disponibilidade orçamentária — e cada tratador decide se a resolve ou a repassa ao próximo. A equipe quer poder inserir e remover tratadores sem alterar quem dispara a requisição. O padrão adequado é:",
   "alts": [
    "Chain of Responsibility, em que a requisição percorre uma cadeia até que um tratador a atenda",
@@ -5416,6 +5542,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "O catálogo GoF organiza os 23 padrões de projeto em criacionais, estruturais e comportamentais. Assinale a opção que NÃO corresponde a um padrão comportamental.",
   "alts": [
    "Iterator, que percorre os elementos de uma coleção sem expor a representação interna dela",
@@ -5435,6 +5564,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "padroes-projeto"
+  ],
   "q": "Um objeto Pedido muda de comportamento conforme avança pelos estágios 'aberto', 'pago' e 'enviado', e é ele próprio que decide a transição para o estágio seguinte. Comparando os padrões State e Strategy nesse caso, é correto afirmar que:",
   "alts": [
    "os dois são intercambiáveis, uma vez que compartilham a mesma estrutura de classes e a mesma intenção",
@@ -5454,6 +5586,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Uma equipe precisa documentar, de um lado, em quais servidores e contêineres cada artefato executável será instalado e, de outro, como os módulos de software se relacionam por meio de interfaces providas e requeridas. Os diagramas da UML adequados a cada necessidade são, respectivamente:",
   "alts": [
    "diagrama de componentes e diagrama de implantação",
@@ -5473,6 +5608,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "uml"
+  ],
   "q": "Em um diagrama de classes da UML, a classe PagamentoPix implementa a interface MeioDePagamento e, em outro ponto do modelo, a classe Relatorio usa temporariamente um objeto Formatador recebido como parâmetro de método. As notações que representam esses dois relacionamentos são, respectivamente:",
   "alts": [
    "linha cheia com triângulo vazado e linha cheia com losango preenchido",
@@ -5853,6 +5991,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Uma desenvolvedora trabalha na branch feature e quer incorporar a ela as alterações mais recentes de main antes de abrir o pull request, mantendo o histórico da feature linear, sem um commit de junção. O comando adequado e o efeito produzido são:",
   "alts": [
    "git merge main, que une as duas linhas de desenvolvimento criando um commit de junção",
@@ -5872,6 +6013,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Depois de editar um arquivo que já estava versionado, uma pessoa executa git commit -m \"ajuste\" e percebe que a alteração não entrou no commit criado. A explicação e a correção são:",
   "alts": [
    "a alteração não foi levada à área de stage, e é preciso um git add antes do commit",
@@ -5891,6 +6035,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Antes de retomar o trabalho, uma pessoa quer ver o que os colegas enviaram ao repositório remoto, sem alterar ainda os arquivos da sua cópia de trabalho. O comando adequado e o motivo são:",
   "alts": [
    "git pull, porque ele consulta o remoto e exibe as diferenças encontradas",
@@ -5910,6 +6057,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o trecho de Python a seguir:\n\nvendas = {\"alfa\": 120, \"beta\": 340, \"gama\": 250}\nmaior = max(vendas, key=vendas.get)\nprint(maior, vendas[maior])\n\nA saída produzida é:",
   "alts": [
    "gama 250",
@@ -5929,6 +6079,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "leitura-codigo"
+  ],
   "q": "Considere o trecho de Python a seguir:\n\nnums = [4, 8, 15, 16, 23, 42]\nprint(nums[1:4])\nprint(sum(n for n in nums if n % 2 == 0))\n\nAs duas saídas são, respectivamente:",
   "alts": [
    "[8, 15, 16, 23] e 70",
@@ -5948,6 +6101,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Uma equipe automatizou seu pipeline: a cada push, o código é compilado e os testes são executados; passando nos testes, um pacote validado fica pronto para produção, mas a subida efetiva depende de aprovação manual de um responsável. Essa configuração caracteriza:",
   "alts": [
    "integração contínua e entrega contínua (continuous delivery)",
@@ -5967,6 +6123,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "git-devops"
+  ],
   "q": "Ao migrar para contêineres, uma equipe precisa, primeiro, empacotar a aplicação com suas dependências em uma imagem e, depois, manter várias réplicas em execução, substituindo automaticamente as que falharem. As ferramentas típicas para cada uma dessas necessidades são, respectivamente:",
   "alts": [
    "Kubernetes e Docker",
@@ -6286,6 +6445,116 @@
    "1": "O pronome indefinido negativo 'ninguém' também exerce atração: o correto seria 'Ninguém me avisou'.",
    "2": "O advérbio 'quando', como as demais palavras interrogativas e relativas, puxa o pronome para antes do verbo: 'Quando me chamaram'.",
    "3": "A norma-padrão não admite pronome átono abrindo período; a forma adequada seria 'Parece-me que o prazo venceu'."
+  }
+ },
+ {
+  "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
+  "q": "Uma aplicação atende milhares de requisições simultâneas que passam a maior parte do tempo bloqueadas, aguardando resposta do banco de dados e de APIs externas. A equipe avalia trocar as threads de plataforma por threads virtuais (Java 21). Sobre essa escolha, assinale a alternativa correta.",
+  "alts": [
+   "As threads virtuais são gerenciadas pela JVM e, ao bloquear em E/S, liberam a thread do sistema operacional que as carregava.",
+   "As threads virtuais executam em paralelo real em mais núcleos do que a máquina possui, multiplicando a vazão de cálculo do processo.",
+   "O ganho aparece sobretudo em tarefas limitadas por CPU, em que o processamento ocupa o núcleo por períodos longos.",
+   "Cada thread virtual corresponde a uma thread do sistema operacional, com o mesmo custo de criação e troca de contexto.",
+   "Por serem gerenciadas pela JVM, elas dispensam estruturas de sincronização quando compartilham estado mutável entre si."
+  ],
+  "ans": 0,
+  "why": "A thread virtual é escalonada pela JVM sobre um pequeno conjunto de threads do sistema operacional (as carrier threads). Quando ela bloqueia em E/S, é desmontada do carregador, que fica livre para outra tarefa — daí o ganho em carga de trabalho dominada por espera.",
+  "erradas": {
+   "1": "Paralelismo real continua limitado pelo número de núcleos. Threads virtuais aumentam a concorrência, isto é, quantas tarefas ficam em andamento, não a capacidade de cálculo simultâneo.",
+   "2": "Em tarefa limitada por CPU o núcleo já fica ocupado e não há espera a aproveitar; o benefício das threads virtuais aparece justamente no oposto, no código que passa o tempo bloqueado.",
+   "3": "É a definição da thread de plataforma. A thread virtual é barata de criar e de trocar exatamente por não ter uma thread do sistema operacional dedicada a ela.",
+   "4": "Concorrência sobre estado mutável continua exigindo sincronização. O modelo de memória do Java não muda por a thread ser virtual."
+  }
+ },
+ {
+  "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
+  "q": "Ao migrar uma aplicação para threads virtuais no Java 21, uma equipe mantém as seções críticas dentro de blocos synchronized e continua submetendo as tarefas a um pool fixo de threads. Sobre essas duas decisões, é correto afirmar que:",
+  "alts": [
+   "o bloco synchronized é o mecanismo recomendado nesse caso, pois threads virtuais não operam com ReentrantLock",
+   "manter o pool fixo é o uso indicado, já que criar uma thread virtual custa o mesmo que criar uma de plataforma",
+   "nenhuma das duas afeta o desempenho, porque a JVM reescreve automaticamente o código bloqueante da aplicação",
+   "as duas escolhas são exigidas para assegurar a visibilidade das alterações compartilhadas entre as threads virtuais da aplicação",
+   "bloquear dentro de synchronized pode prender a thread virtual ao seu carregador, e o pool fixo anula o ganho do modelo"
+  ],
+  "ans": 4,
+  "why": "No Java 21, bloquear dentro de um bloco synchronized fixa (pinning) a thread virtual à carrier thread, que deixa de ser liberada. E o modelo pressupõe uma thread virtual por tarefa: limitá-las a um pool fixo devolve o gargalo que a migração pretendia eliminar.",
+  "erradas": {
+   "0": "A recomendação é a inversa: substituir synchronized por ReentrantLock nas seções que bloqueiam, justamente porque o lock não prende a thread virtual ao carregador.",
+   "1": "Thread virtual é barata de criar, e é isso que sustenta o modelo de uma por tarefa. O pool existia para reaproveitar um recurso caro, que deixou de ser caro.",
+   "2": "A JVM não reescreve o código da aplicação. O desmonte da thread acontece nos pontos de bloqueio que a biblioteca padrão instrumenta, e o pinning ocorre onde isso não é possível.",
+   "3": "Visibilidade entre threads é garantida pelo modelo de memória do Java e pelos mecanismos de sincronização, não pelo uso de pool nem pela escolha entre synchronized e lock."
+  }
+ },
+ {
+  "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
+  "q": "Uma equipe declara \"record Ponto(int x, int y) { }\" para representar um par de coordenadas imutável. Sobre os records do Java, assinale a alternativa correta.",
+  "alts": [
+   "O record pode estender outra classe, desde que ela seja abstrata e esteja no mesmo pacote.",
+   "O compilador gera o construtor canônico, os métodos de acesso, equals, hashCode e toString.",
+   "Os componentes declarados no cabeçalho podem ser reatribuídos depois da construção do objeto.",
+   "É preciso declarar campos de instância adicionais para armazenar os componentes do record.",
+   "O record é implicitamente abstrato, cabendo às subclasses definir o comportamento de cada componente."
+  ],
+  "ans": 1,
+  "why": "O record é um portador de dados transparente: a partir dos componentes do cabeçalho, o compilador deriva o construtor canônico, os acessadores, equals, hashCode e toString, e torna os campos finais.",
+  "erradas": {
+   "0": "Todo record estende implicitamente java.lang.Record e, por isso, não pode estender outra classe. Implementar interfaces, sim, é permitido.",
+   "2": "Os componentes viram campos finais: uma vez construído, o objeto não muda. Imutabilidade é a razão de ser do record.",
+   "3": "Declarar os campos é justamente o que o record dispensa — os componentes do cabeçalho já são os campos, gerados pelo compilador.",
+   "4": "Record é implicitamente final, o oposto de abstrato: não pode ser estendido nem serve de base para hierarquia."
+  }
+ },
+ {
+  "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
+  "q": "Para que o compilador possa verificar a exaustividade de um switch sobre tipos, uma equipe declara \"sealed interface Forma permits Circulo, Retangulo\". Sobre classes e interfaces seladas (Java 17), é correto afirmar que:",
+  "alts": [
+   "classes do mesmo pacote podem implementar Forma, bastando que sejam declaradas públicas",
+   "a cláusula permits pode ser omitida quando os subtipos estão declarados em outro arquivo-fonte",
+   "cada subtipo permitido deve ser declarado como final, sealed ou non-sealed",
+   "a classe selada substitui o modificador final, uma vez que impede por completo a herança",
+   "a selagem só produz efeito em tempo de execução, sem influência sobre a verificação do compilador"
+  ],
+  "ans": 2,
+  "why": "A selagem só é útil se a hierarquia for fechada de ponta a ponta: por isso cada subtipo permitido tem de declarar se encerra a herança (final), se a continua fechando (sealed) ou se a reabre explicitamente (non-sealed).",
+  "erradas": {
+   "0": "É exatamente o que a selagem impede: só os tipos listados em permits podem implementar a interface, e ser público não muda isso.",
+   "1": "A regra é a inversa: o permits pode ser omitido quando os subtipos estão no mesmo arquivo-fonte, situação em que o compilador os infere.",
+   "3": "Selado e final não se confundem. O final proíbe qualquer herança; o sealed permite herança, mas apenas pelos tipos autorizados.",
+   "4": "O ganho é de compilação: é o compilador que valida quem pode herdar e que reconhece o switch como exaustivo."
+  }
+ },
+ {
+  "tag": "java",
+  "sub": [
+   "java-moderno"
+  ],
+  "q": "Sobre recursos de sintaxe introduzidos nas versões recentes do Java, assinale a alternativa correta.",
+  "alts": [
+   "A palavra-chave var torna a variável de tipo dinâmico, o que lhe permite receber valores de tipos diferentes.",
+   "O var pode ser usado em atributos de instância e em parâmetros de método, além das variáveis locais.",
+   "O bloco de texto (text block), delimitado por três aspas, aceita conteúdo de uma única linha.",
+   "O var infere o tipo da variável local em tempo de compilação, e esse tipo permanece fixo depois disso.",
+   "A expressão switch com seta (->) ainda exige break ao final de cada ramo para evitar o fall-through."
+  ],
+  "ans": 3,
+  "why": "O var é inferência de tipo, não tipagem dinâmica: o compilador deduz o tipo a partir do inicializador e o fixa ali. O Java continua estaticamente tipado.",
+  "erradas": {
+   "0": "Confundir inferência com tipagem dinâmica é o erro mais comum do tema. Depois de inferido, o tipo não muda, e atribuir valor incompatível não compila.",
+   "1": "O var vale só para variáveis locais (e para parâmetros de lambda). Em atributo de instância ou parâmetro de método, não compila.",
+   "2": "O bloco de texto existe justamente para conteúdo de várias linhas, como JSON e SQL embutidos, sem concatenação nem escapes de quebra.",
+   "4": "A forma com seta executa apenas o ramo correspondente e não propaga para os seguintes — é ela que elimina a necessidade do break."
   }
  }
 ]

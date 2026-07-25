@@ -124,6 +124,7 @@ resposta.
 ```json
 {
   "tag": "<bloco>",
+  "sub": ["uml"],               // opcional (subtag)
   "q": "<enunciado>",
   "alts": ["<a>", "<b>", "<c>", "<d>", "<e>"],
   "ans": 0,
@@ -136,3 +137,15 @@ resposta.
 
 `ans` é 0–4; as chaves de `erradas` são os índices das 4 alternativas que **não**
 são o gabarito. Blocos (`tag`) disponíveis: os mesmos de `erros/`.
+
+### Campo `sub` (subtag) — recorte de estudo, não bloco
+
+`sub` é uma **lista opcional** que dá um recorte transversal à questão sem tirá-la
+do bloco. Vocabulário fechado (validado por `valida.py`, sem bloquear):
+`padroes-projeto`, `uml`, `java-moderno`, `git-devops`, `leitura-codigo`.
+
+A `tag` **continua sendo o bloco** e é ela que alimenta o roteiro, o
+`progresso.csv`, o peso do simulado (geral × específico), o `erros/<tag>.md`, o
+`--stats` e o `historico.json`. A `sub` só afeta o **filtro do quiz**
+(`./quiz.py uml`) e o `--dica`/`--resumo`/`--apostila`. Por isso nunca troque a
+`tag` de uma questão para criar um recorte: acrescente `sub`.

@@ -2,6 +2,38 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — subtags, limiares de forma e acentuação (auditoria, Bloco VII/2-4)
+
+- **Subtags (`sub`) — o Cap. 4 deixa de ser cego ao filtro do quiz.** Padrões de
+  projeto e UML tinham `dicas/`, `resumo/` e capítulo próprio, mas nenhuma questão
+  filtrável: `./quiz.py padroes-projeto` não devolvia nada. Agora `./quiz.py uml`,
+  `padroes-projeto`, `java-moderno`, `git-devops` e `leitura-codigo` funcionam.
+  **58 questões marcadas; nenhuma trocou de `tag`** — a subtag é um campo novo e
+  opcional, porque a `tag` alimenta o roteiro, o `progresso.csv`, o peso do
+  simulado, o `erros/<tag>.md`, o `--stats` e o `historico.json`.
+- **`banco.json`: 331 → 336.** Cinco questões de Java moderno (threads virtuais e
+  suas duas armadilhas — *pinning* em `synchronized` e pool fixo —, `record`,
+  `sealed`/`permits`, `var`/text block/`switch` com seta), para a subtag
+  `java-moderno` nascer com 8 questões em vez de 3.
+- **`dicas/` e `resumo/` novos** para `java-moderno`, `git-devops` e
+  `leitura-codigo` (os outros dois já existiam), fechando o `--dica`/`--resumo`
+  dessas subtags.
+- **Limiares de forma do `valida.py` por escopo.** O limiar global único era cego
+  a regressão: com o banco em 3%, um lote de 60 questões 100% enviesadas levava o
+  global a 18% — silencioso. Agora são três escopos: global (0,25/0,08/0,30), por
+  bloco com n≥12 (0,35/0,25/0,45) e janela das 30 últimas (0,30/0,20/0,45), mais
+  a flag `--novas N`. O ponto de detecção caiu de "nunca" para **12 questões**.
+  `--strict` passou a incluir os avisos de forma no código de saída (portão
+  pré-commit); sem ele, nada bloqueia o quiz.
+- **Índices do `valida.py` agora são 1-based**, alinhados a como as questões são
+  referidas no resto do repositório. As referências herdadas do Bloco VI estavam
+  deslocadas em −1.
+- **Acentuação normalizada nas questões #228–#237** (governança: PMBOK, ITIL 4,
+  COBIT 2019, BPMN, Scrum/Kanban), que tinham sido escritas sem acento nenhum.
+  Passe mecânico com trava dupla: `strip_accents(novo)` tem de devolver o texto
+  anterior campo a campo, e o comprimento de cada alternativa não pode mudar — o
+  que garante que nenhum vazamento de forma foi reintroduzido.
+
 ## 2026-07-25 — questões para os buracos de cobertura (auditoria, Bloco VII/ITEM 1)
 
 - **banco.json: 259 → 331 questões.** Cinco lotes gerados a partir do relatório de

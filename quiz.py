@@ -51,6 +51,10 @@ BASE = Path(__file__).parent
 GERAIS = {"portugues", "ingles", "rlm", "atualidades", "legislacao"}
 # proporcao do edital 2026 (Modulo I = 40 questoes)
 ALVO_GERAIS = {"portugues": 12, "ingles": 12, "rlm": 5, "atualidades": 6, "legislacao": 5}
+# subtags: recorte transversal do campo opcional 'sub'. NAO sao blocos — nao
+# entram no roteiro, no progresso.csv nem no peso do simulado; servem so para
+# filtrar questoes ('./quiz.py uml') e para --dica/--resumo/--apostila.
+SUBTAGS = {"padroes-projeto", "uml", "java-moderno", "git-devops", "leitura-codigo"}
 
 
 def peso_de(tag):
@@ -58,13 +62,17 @@ def peso_de(tag):
 
 
 # Mapa bloco -> capitulo da apostila (apostila/main.pdf). O numero IMPRESSO do
-# capitulo = numero do arquivo + 1 (00-como-usar e o Cap. 1). padroes-projeto e
-# uml nao sao tags do banco, mas caem juntos no Cap. 4 (03-padroes-uml), que e
-# separado de arquitetura (Cap. 5) — ficam aqui para o --apostila responder.
+# capitulo = numero do arquivo + 1 (00-como-usar e o Cap. 1). As SUBTAGS
+# (padroes-projeto, uml, java-moderno, git-devops, leitura-codigo) entram aqui
+# tambem: nao sao blocos do roteiro, mas o --apostila e o --dica respondem por
+# elas. padroes-projeto e uml caem no Cap. 4, separado de arquitetura (Cap. 5).
 APOSTILA = {
     "eng-software": (3, "02-eng-software.tex", "Engenharia de Software"),
     "padroes-projeto": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
     "uml": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
+    "java-moderno": (10, "09-java.tex", "Java — recursos modernos (17/21 LTS)"),
+    "git-devops": (9, "08-programacao.tex", "Versionamento com Git e DevOps"),
+    "leitura-codigo": (9, "08-programacao.tex", "Leitura ativa de código"),
     "arquitetura": (5, "04-arquitetura.tex", "Arquitetura de Software"),
     "banco-dados": (6, "05-banco-dados.tex", "Banco de Dados"),
     "bi": (7, "06-bi.tex", "Business Intelligence (BI)"),
@@ -317,7 +325,8 @@ def mostrar_apostila(bloco):
     if bloco == "__listar__" or not bloco:
         print(cor("\n  Apostila — capitulos por bloco (apostila/main.pdf):", "b"))
         for b, (cap, _arq, titulo) in sorted(APOSTILA.items(), key=lambda x: x[1][0]):
-            print(f"    Cap. {cap:>2}  {b:<16} {cor(titulo, 'dim')}")
+            marca = cor(" (subtag)", "dim") if b in SUBTAGS else ""
+            print(f"    Cap. {cap:>2}  {b:<16} {cor(titulo, 'dim')}{marca}")
         print(cor("\n  uso: ./quiz.py --apostila <bloco>   (--apostila hoje = do dia)\n", "dim"))
         return
     info = APOSTILA.get(bloco)
@@ -665,6 +674,13 @@ def main():
         for t, n in sorted(c.items()):
             tem_dica = "" if (BASE / "dicas" / f"{t}.md").exists() else cor("  (sem dica)", "dim")
             print(f"  {t:<16} {n} questoes{tem_dica}")
+        # subtags: recorte transversal, nao sao blocos do roteiro nem do simulado
+        sub = Counter(s for q in tudo for s in q.get("sub", []))
+        if sub:
+            print(cor("\n  subtags (recorte de estudo; a questao continua no bloco dela):", "dim"))
+            for t, n in sorted(sub.items()):
+                tem_dica = "" if (BASE / "dicas" / f"{t}.md").exists() else cor("  (sem dica)", "dim")
+                print(f"  {t:<16} {n} questoes{tem_dica}")
         print(f"\n  total: {len(tudo)}  |  dica de banca: ./quiz.py --dica <bloco>\n")
         return
 
@@ -788,7 +804,9 @@ def main():
                 print(cor("\n  sem questoes para os blocos de hoje; rodando aleatorias.\n", "dim"))
                 pool = banco[:]
     elif a.tags:
-        pool = [q for q in banco if q["tag"] in a.tags]
+        # aceita bloco (tag) e subtag (campo opcional 'sub'): './quiz.py uml'
+        alvo = set(a.tags)
+        pool = [q for q in banco if q["tag"] in alvo or alvo & set(q.get("sub", []))]
         if not pool:
             print(cor(f"\n  nenhuma questao com tags {a.tags}. Use --tags para listar.\n", "verm"))
             return
