@@ -85,7 +85,7 @@ substitua **uma única** sequência de grupos inteiramente nulos por `::` — s�
 uma vez, senão fica ambíguo. Assim
 `2001:0DB8:0000:0000:0000:0000:FE00:0001` → `2001:DB8::FE00:1`.
 
-## 5.2 Comutação e encaminhamento (MPLS, VLAN, NAT)
+### 5.2 Comutação e encaminhamento (MPLS, VLAN, NAT)
 
 - **MPLS (Multiprotocol Label Switching):** encaminha por **rótulos (labels)**
   em vez de olhar o IP de destino a cada salto — por isso é chamado de
