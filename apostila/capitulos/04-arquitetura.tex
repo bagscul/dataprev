@@ -40,7 +40,13 @@ Simples de começar; acopla e dificulta escalar partes isoladas.
 \item \textbf{Cliente-servidor, N camadas, P2P, barramento de mensagens.}
 \item \textbf{SOA (orientada a serviços):} serviços reutilizáveis, contrato
 explícito, baixo acoplamento, interoperabilidade. Web services são a
-tecnologia comum.
+tecnologia comum. O barramento dessa arquitetura é o \textbf{ESB (Enterprise
+Service Bus)}: o intermediário que \textbf{roteia}, \textbf{transforma}
+(converte formato/protocolo entre sistemas que não se falam) e
+\textbf{orquestra} as mensagens trocadas entre os serviços. Concentra a
+inteligência da integração --- o que simplifica o cliente e, em troca, cria um
+ponto único de falha e de gargalo. É a diferença de filosofia para os
+microsserviços, que preferem canais burros e serviços espertos.
 \item \textbf{Microsserviços:} serviços pequenos, autônomos,
 \textbf{implantáveis independentemente}, cada um com \textbf{seu próprio
 banco} (não compartilham base --- isso reduz acoplamento). Comunicação leve
@@ -56,7 +62,37 @@ e \textbf{adaptadores}; permite trocar UI/BD/serviços sem tocar no núcleo.
 acoplamento, contra o princípio). ``Monólito não pode ser distribuído'' =
 falso. Baixo acoplamento significa que mudança em um serviço \textbf{não}
 obriga mudança no outro --- se a alternativa disser que ``se reflete
-diretamente'', descarte.
+diretamente'', descarte. Num item que descreve ``o barramento que intermedeia,
+roteia e transforma mensagens entre serviços'', a resposta é \textbf{ESB} ---
+os distratores costumam ser siglas de outras prateleiras (ETL move dados para
+o DW, CDN entrega conteúdo estático, DNS resolve nome, VPN faz túnel).
+\end{pegadinha}
+
+\subsection{Camadas lógicas (layers) $\times$ camadas físicas (tiers)}
+
+Duas coisas diferentes que a tradução para o português funde em ``camada'':
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{8.6cm}@{}}
+\toprule
+\textbf{Layer (lógica)} & como as \textbf{responsabilidades} do software estão organizadas: apresentação, negócio, persistência \\
+\textbf{Tier (física)} & em \textbf{quantos nós} o software está implantado: máquinas, processos, servidores \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uma coisa não obriga a outra: uma aplicação pode ter \textbf{três layers e um
+único tier} --- as três responsabilidades separadas no código, tudo rodando no
+mesmo processo, e a aplicação continua \textbf{monolítica}. O inverso também
+existe: cliente-servidor em dois tiers pode manter apresentação e negócio bem
+separados logicamente.
+
+\begin{pegadinha}
+A troca clássica é definir layer como ``distribuição entre máquinas'' e tier
+como ``agrupamento de responsabilidades'' --- está invertido. O absoluto
+também cai: ``três camadas lógicas são \textbf{necessariamente} implantadas em
+três nós físicos''. E o MVC \textbf{não} corresponde a três tiers: é padrão de
+organização (apresentação), não de implantação.
 \end{pegadinha}
 
 \section{Integração: REST $\times$ SOAP, Web Services}
@@ -165,6 +201,21 @@ recursos à instância} existente (mais CPU/RAM).
 \item \textbf{Elasticidade:} ajustar capacidade automaticamente conforme a
 demanda. \textbf{Cloud bursting:} estende para nuvem pública no pico de
 demanda.
+\item \textbf{Serverless / FaaS (Function as a Service):} o código é
+publicado como \textbf{função} e o provedor executa por \textbf{evento}. Não
+significa ``sem servidor'' --- significa que o \textbf{cliente não gerencia}
+servidor. Características cobradas: escala \textbf{de zero} a muitas execuções
+conforme os eventos; \textbf{cobrança pelo tempo e pelos recursos consumidos}
+(não por instância parada); execução \textbf{sem estado} entre invocações (o
+estado vai para armazenamento externo); \textbf{cold start}, a latência maior
+na primeira invocação após um período ocioso; e \textbf{limite de tempo por
+execução}, o que o desaconselha para processamento longo e contínuo.
+\item \textbf{Balanceador de carga $\times$ CDN:} atacam gargalos
+\textbf{diferentes} e por isso se somam. O \textbf{balanceador} reparte as
+requisições entre as instâncias da aplicação --- resolve \textbf{sobrecarga de
+processamento}. A \textbf{CDN} replica o conteúdo \textbf{estático} em pontos
+de presença espalhados e o entrega do nó mais próximo --- resolve
+\textbf{latência geográfica}.
 \item \textbf{Containers (Docker) $\times$ VM:} container compartilha o
 \textbf{kernel} do SO (leve, rápido); VM tem SO convidado completo sobre um
 hipervisor (isola mais, pesa mais). \textbf{Kubernetes} orquestra containers.
@@ -182,6 +233,19 @@ entregues remotamente.
 horizontal. Container $\neq$ VM (kernel compartilhado $\times$ SO próprio). Em
 questões de custo-benefício, some a capacidade das novas instâncias e compare
 o preço antes de decidir entre escalar vertical ou horizontal.
+
+Em \textbf{serverless}, cada distrator nega uma característica: ``não há
+servidor, o código roda no dispositivo que dispara o evento'' (há servidor, do
+provedor); ``o estado da execução anterior permanece'' (é sem estado); ``a
+latência da primeira invocação é igual à das demais'' (ignora o \emph{cold
+start}); ``remove o limite de tempo por execução'' (o limite existe --- é
+justamente o que desaconselha processamento longo).
+
+Em \textbf{balanceador $\times$ CDN}, a inversão é trocar os papéis (``a CDN
+distribui as requisições dinâmicas e o balanceador replica o estático na
+borda'') ou declarar um dispensável/redundante. Guie-se pelo sintoma:
+``instâncias sobrecarregadas'' $\to$ balanceador; ``lentidão para usuários
+distantes / arquivos estáticos'' $\to$ CDN.
 \end{pegadinha}
 
 \section{Transações distribuídas}

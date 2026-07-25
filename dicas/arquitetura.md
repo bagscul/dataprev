@@ -5,7 +5,14 @@
   instância) x horizontal (mais instâncias) com conta de
   custo-benefício; cloud bursting (estende para nuvem pública
   no pico); cloud-native x híbrida (trade-offs). Muito
-  recorrente nas provas recentes (TJ-RJ).
+  recorrente nas provas recentes (TJ-RJ). Também serverless/
+  FaaS (escala de zero, cobrança por tempo consumido, sem
+  estado, cold start, limite de tempo) e o par balanceador de
+  carga x CDN.
+- Camadas lógicas (layers) x camadas físicas (tiers) — o
+  português funde as duas em "camada" e a banca explora isso.
+- ESB (Enterprise Service Bus): o barramento da SOA, que
+  roteia, transforma e orquestra mensagens entre serviços.
 - Estilos e integração: cliente-servidor, REST (vantagens/
   desvantagens: sem estado no servidor, cache no cliente,
   interface uniforme) x SOAP/WSDL; SOA e Web Services com
@@ -43,6 +50,20 @@
   armazenamento. Aggregate protege invariantes, não expõe.
 - Escalabilidade: chama "adicionar recursos à instância" de
   horizontal, ou "adicionar instâncias" de vertical.
+- Layers x tiers: define layer como "distribuição entre
+  máquinas" e tier como "agrupamento de responsabilidades" —
+  invertido. Ou usa o absoluto "três camadas lógicas são
+  NECESSARIAMENTE três nós físicos". Ou casa MVC com tiers.
+- Serverless: cada distrator nega uma característica — "não
+  há servidor" (há, do provedor), "o estado permanece entre
+  chamadas" (é sem estado), "a primeira invocação tem a mesma
+  latência" (ignora o cold start), "não há limite de tempo por
+  execução" (há, e é o que o desaconselha para job longo).
+- Balanceador x CDN: troca os papéis (diz que a CDN distribui
+  requisição dinâmica e o balanceador replica estático na
+  borda) ou declara um dos dois redundante.
+- ESB: oferece siglas de outra prateleira — ETL, CDN, DNS,
+  VPN — para o item que descreve o barramento da SOA.
 
 ## Como se sair melhor
 - Vertical = SCALE UP (uma máquina maior); horizontal = SCALE
@@ -60,5 +81,12 @@
 - Baixo acoplamento = mudança em um serviço NÃO obriga mudança
   no outro. Se a alternativa vende "reflete diretamente",
   descarte.
+- Layer = responsabilidade no CÓDIGO; tier = nó onde RODA.
+  Três layers cabem num tier só, e a aplicação segue
+  monolítica.
+- Balanceador x CDN, guie-se pelo sintoma do enunciado:
+  "instâncias sobrecarregadas" → balanceador; "lentidão para
+  usuário distante / arquivo estático" → CDN. São gargalos
+  diferentes, então somam.
 - Gatilhos: "sempre", "exclusivamente", "elimina a necessidade
   de", "idêntico ao".

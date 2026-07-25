@@ -26,6 +26,12 @@ O **web** recebe a requisição HTTP; o **de aplicação** roda a regra de negó
 - **Cliente-servidor, N camadas, P2P, barramento de mensagens.**
 - **SOA (orientada a serviços):** serviços reutilizáveis, contrato explícito,
   baixo acoplamento, interoperabilidade. Web services são a tecnologia comum.
+  O barramento dessa arquitetura é o **ESB (Enterprise Service Bus)**: o
+  intermediário que **roteia**, **transforma** (converte formato/protocolo
+  entre sistemas que não se falam) e **orquestra** as mensagens entre os
+  serviços. Concentra a inteligência da integração — e, em troca, vira ponto
+  único de falha. É a diferença de filosofia para os microsserviços, que
+  preferem canais burros e serviços espertos.
 - **Microsserviços:** serviços pequenos, autônomos, **implantáveis
   independentemente**, cada um com **seu próprio banco** (não compartilham
   base — isso reduz acoplamento). Comunicação leve (REST/mensageria).
@@ -35,6 +41,29 @@ O **web** recebe a requisição HTTP; o **de aplicação** roda a regra de negó
 
 Pegadinhas: "microsserviços compartilham o mesmo banco" = **falso** (aumenta
 acoplamento, contra o princípio); "monólito não pode ser distribuído" = falso.
+Num item que descreve "o barramento que intermedeia, roteia e transforma
+mensagens entre serviços", a resposta é **ESB** — os distratores são siglas de
+outras prateleiras (ETL move dados para o DW, CDN entrega estático, DNS
+resolve nome, VPN faz túnel).
+
+### 2.1 Camadas lógicas (layers) × camadas físicas (tiers)
+
+Duas coisas diferentes que o português funde em "camada":
+
+| | O que descreve |
+|---|---|
+| **Layer** (lógica) | como as **responsabilidades** do software estão organizadas: apresentação, negócio, persistência |
+| **Tier** (física) | em **quantos nós** o software está implantado: máquinas, processos, servidores |
+
+Uma não obriga a outra: dá para ter **três layers em um único tier** — as três
+responsabilidades separadas no código, tudo no mesmo processo, e a aplicação
+segue **monolítica**. O inverso também: cliente-servidor em dois tiers pode
+manter apresentação e negócio bem separados logicamente.
+
+Pegadinhas: definir layer como "distribuição entre máquinas" e tier como
+"agrupamento de responsabilidades" (invertido); o absoluto "três camadas
+lógicas são **necessariamente** implantadas em três nós"; e dizer que o MVC
+corresponde aos três tiers — MVC é organização, não implantação.
 
 ## 3. Integração: REST × SOAP, Web Services
 
@@ -105,6 +134,20 @@ parceiros externos autorizados.
 - **Escalabilidade vertical (scale up):** **adicionar recursos à instância**
   existente (mais CPU/RAM).
 - **Elasticidade:** ajustar capacidade automaticamente conforme a demanda.
+  **Cloud bursting:** estende para a nuvem pública no pico.
+- **Serverless / FaaS (Function as a Service):** o código é publicado como
+  **função** e o provedor a executa **por evento**. Não é "sem servidor" — é o
+  **cliente que não gerencia** servidor. O que se cobra: escala **de zero** a
+  muitas execuções conforme os eventos; **cobrança pelo tempo e pelos recursos
+  consumidos**; execução **sem estado** entre invocações (estado vai para fora);
+  **cold start** (latência maior na primeira invocação após ociosidade); e
+  **limite de tempo por execução**, que o desaconselha para processamento longo
+  e contínuo.
+- **Balanceador de carga × CDN:** atacam gargalos **diferentes** e por isso se
+  somam. O **balanceador** reparte requisições entre as instâncias (resolve
+  **sobrecarga de processamento**); a **CDN** replica o conteúdo **estático**
+  em pontos de presença e entrega do nó mais próximo (resolve **latência
+  geográfica**).
 - **Containers (Docker) × VM:** container compartilha o **kernel** do SO
   (leve, rápido); VM tem SO convidado completo sobre um hipervisor (isola
   mais, pesa mais). **Kubernetes** orquestra containers.
@@ -116,6 +159,15 @@ parceiros externos autorizados.
 
 Pegadinha: "adicionar recursos à instância" é **vertical**, jamais
 horizontal; container ≠ VM (kernel compartilhado × SO próprio).
+
+Em **serverless**, cada distrator nega uma característica: "não há servidor, o
+código roda no dispositivo que dispara o evento" (há servidor, do provedor);
+"o estado da execução anterior permanece" (é sem estado); "a latência da
+primeira invocação é igual às demais" (ignora o cold start); "remove o limite
+de tempo por execução" (o limite existe). Em **balanceador × CDN**, a inversão
+troca os papéis ou declara um deles redundante — guie-se pelo sintoma:
+"instâncias sobrecarregadas" → balanceador; "lentidão para usuários distantes
+/ arquivos estáticos" → CDN.
 
 ## 6. Transações distribuídas
 
@@ -130,7 +182,9 @@ Servidor web × de aplicação; SOA e web services (baixo acoplamento, REST);
 arquitetura hexagonal × microsserviços (não compartilham banco); internet/
 extranet/intranet/portal; escalabilidade horizontal × vertical (com cálculo
 de custo-benefício); REST stateless; container × VM; API gateway; taints/
-tolerations no Kubernetes; cloud bursting; 2PC × Raft. Rode `../quiz.py arquitetura`.
+tolerations no Kubernetes; cloud bursting; 2PC × Raft; ESB como barramento da
+SOA; layers × tiers; serverless/FaaS; balanceador × CDN.
+Rode `../quiz.py arquitetura`.
 
 ## Pegadinhas da FGV (resumo)
 
