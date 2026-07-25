@@ -44,6 +44,25 @@ Pegadinha: confundir **ISP** (interface enxuta) com **SRP** (uma
 responsabilidade). Liskov: a subclasse pode sobrescrever, desde que continue
 substituível.
 
+## 3.1 Interface × classe abstrata
+
+| | Classe abstrata | Interface |
+|---|---|---|
+| Construtor | **tem** | **não tem** |
+| Atributo de instância | tem (com estado) | só `public static final` (constante) |
+| Herança múltipla | **não** (estende uma só) | **sim** (implementa várias) |
+| Método concreto | sim, desde sempre | sim, a partir do Java 8 (`default`/`static`) |
+| Palavra-chave | `extends` | `implements` |
+
+Regra de bolso: **estende uma** classe, **implementa várias** interfaces.
+Classe abstrata quando há estado/comportamento comuns; interface quando o que
+importa é o contrato.
+
+Pegadinha: desde o Java 8 a interface tem método `default` **com corpo** —
+"interface não pode ter implementação" virou falso, e a FGV usa essa
+desatualização como distrator. O que a interface continua **não** tendo é
+**construtor** e **atributo de instância**.
+
 ## 4. Coleções (Collections)
 
 | Interface | Implementações | Característica |
@@ -58,6 +77,19 @@ substituível.
   (ordenado). `getOrDefault` retorna o default se a chave não existe.
 - `==` compara **referência**; `.equals()` compara **conteúdo**.
 
+### String: imutabilidade
+
+`String` é **imutável** — toda "alteração" (`+`, `concat`, `replace`,
+`toUpperCase`) devolve **objeto novo**. Em concatenação intensiva use
+**`StringBuilder`** (mutável, não sincronizado) ou `StringBuffer` (mutável e
+sincronizado, mais lento). Literais iguais compartilham o *string pool*
+(`"a" == "a"` → true), mas `new String("a") == "a"` → **false**; conteúdo é
+sempre `.equals()`.
+
+Pegadinha: "String é mutável porque posso reatribuir a variável" — o que muda
+é a **referência**, não o objeto. E a FGV inverte `StringBuilder` (rápido, não
+sincronizado) × `StringBuffer` (thread-safe, mais lento).
+
 ## 5. JVM, JPA e JavaEE
 
 - **JVM:** executa bytecode; **heap** (objetos), **garbage collection**
@@ -70,11 +102,41 @@ substituível.
   JavaEE sob a Eclipse Foundation (namespace `jakarta.*` em vez de `javax.*`).
 - **JSF/Primefaces:** framework de UI server-side baseado em componentes.
 
-## O que já caiu (nossas questões)
+### Anotações que a FGV cobra pelo nome
 
-Checked × unchecked; overload × override; Liskov (SOLID); coleções
-(ArrayList/LinkedList/HashMap); `==` × `equals`; sealed classes, virtual
-threads, JPA N+1 (TJ-RJ). Rode `../quiz.py java`.
+- **Spring (estereótipos):** `@Component` (bean genérico), `@Service` (regra
+  de negócio), **`@Repository`** (acesso a dados + **tradução automática de
+  exceções** de persistência), `@Controller`/`@RestController` (camada web),
+  `@Autowired` (injeta a dependência).
+- **JPA:** **`@Entity` + `@Id`** é o par **mínimo** para uma entidade
+  persistente (com `@GeneratedValue` para geração da chave); `@Table`/`@Column`
+  renomeiam; **`@ManyToOne`** = muitos daqui para **um** de lá (lado dono, com
+  a FK), `@OneToMany` é o inverso (com `mappedBy`), mais `@OneToOne` e
+  `@ManyToMany`.
+
+Pegadinha: trocar o estereótipo pela camada errada (`@Service` no DAO) e
+inverter a cardinalidade do `@ManyToOne`; ou inventar anotação plausível
+(`@Persistent`, `@PrimaryKey`). O papel de cada **framework** do ecossistema
+Spring está em `programacao.md`.
+
+## O que já caiu
+
+**Em prova real da FGV:** classes `sealed` (o erro estava na subclasse
+`sealed` *sem* `permits`) — **MPU**; threads virtuais sobre a *carrier*, JPA
+N+1 (`FetchType.LAZY` + `JOIN FETCH`), leitura de REST controller
+(`@RestController`, `@GetMapping`, `@PathVariable`) com `getOrDefault`, Spring
+Cloud Eureka (`lease-expiration`) e Hibernate Envers (Revision Listener) —
+**TJ-RJ**. Liskov caiu na Dataprev 2024 e no MPU, mas como item de
+**Engenharia de Software**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): checked × unchecked; overload × override; interface × classe
+abstrata; coleções (ArrayList/LinkedList/TreeMap); `==` × `equals`; `String`
+imutável e `StringBuilder`; anotações de Spring e JPA; `record` e `var`;
+*pinning*; ordem de catch e exceção engolida por `finally`; escopo de variável
+em bloco.
+
+Rode `../quiz.py java` e `../quiz.py java-moderno`.
 
 ## Pegadinhas da FGV (resumo)
 

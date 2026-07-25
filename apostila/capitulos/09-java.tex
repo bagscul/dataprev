@@ -46,9 +46,17 @@ Anotação & --- & \texttt{@Override} \\
 \end{tabular}
 \end{center}
 
+\textbf{A assinatura é o nome + a lista de parâmetros --- o tipo de retorno
+não entra nela.} Logo, dois métodos no mesmo escopo que diferem
+\textbf{apenas no retorno} (\texttt{int calc(int x)} e
+\texttt{long calc(int x)}) \textbf{não compilam}: não é overload, é
+declaração duplicada.
+
 \begin{pegadinha}
 Overload = mesmo nome, assinatura diferente; override = mesma assinatura na
-subclasse. Sobrescrever \textbf{não} viola Liskov por si só.
+subclasse. Sobrescrever \textbf{não} viola Liskov por si só. E o distrator
+recorrente é apresentar a mudança \textbf{só no tipo de retorno} como se
+fosse sobrecarga válida --- é erro de compilação.
 \end{pegadinha}
 
 \section{OO e SOLID}
@@ -75,6 +83,36 @@ responsabilidade) --- são os dois princípios que a FGV mais troca no SOLID.
 Liskov: a subclasse pode sobrescrever, desde que continue substituível.
 \end{pegadinha}
 
+\section{Interface $\times$ classe abstrata}
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{4.2cm}p{4.2cm}@{}}
+\toprule
+& \textbf{Classe abstrata} & \textbf{Interface} \\
+\midrule
+Construtor & \textbf{tem} & \textbf{não tem} \\
+Atributo de instância & tem (com estado) & só \texttt{public static final} (constante) \\
+Herança múltipla & \textbf{não} --- só uma classe pode ser estendida & \textbf{sim} --- várias podem ser implementadas \\
+Método concreto & sim, desde sempre & sim, a partir do Java 8 (\texttt{default} e \texttt{static}) \\
+Palavra-chave & \texttt{extends} & \texttt{implements} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Regra de bolso: uma classe \textbf{estende uma} classe (abstrata ou não) e
+\textbf{implementa várias} interfaces. Use classe abstrata quando há
+\textbf{estado e comportamento comuns} a compartilhar; interface quando o que
+importa é o \textbf{contrato}.
+
+\begin{pegadinha}
+Desde o Java 8 a interface tem métodos \texttt{default} com corpo --- então
+``interface não pode ter implementação'' virou \textbf{falso}, e a FGV usa
+essa desatualização como distrator. O que a interface continua \textbf{não}
+tendo é \textbf{construtor} e \textbf{atributo de instância}: é por aí que se
+separam as duas. Outro distrator: dizer que Java tem herança múltipla de
+\textbf{classes} (não tem --- só de \textbf{tipo}, via interfaces).
+\end{pegadinha}
+
 \section{Coleções (Collections)}
 
 \begin{center}
@@ -96,6 +134,28 @@ inserção) $\times$ \texttt{TreeMap} (ordenado). \texttt{getOrDefault} retorna
 o \textbf{default} se a chave não existe --- não lança exceção nem retorna
 erro HTTP. \texttt{==} compara \textbf{referência}; \texttt{.equals()}
 compara \textbf{conteúdo}.
+
+\subsection{String: imutabilidade e \texttt{StringBuilder}}
+
+\texttt{String} é \textbf{imutável}: toda ``alteração''
+(\texttt{concat}, \texttt{+}, \texttt{replace}, \texttt{toUpperCase})
+devolve um \textbf{objeto novo} e deixa o original intacto. Por isso
+concatenação dentro de laço cria um objeto descartado por iteração --- em
+concatenação intensiva use \textbf{\texttt{StringBuilder}} (mutável, não
+sincronizado) ou \texttt{StringBuffer} (mutável e sincronizado, mais lento).
+
+Literais iguais compartilham o \textbf{\textit{string pool}}, então
+\texttt{"a" == "a"} costuma dar \texttt{true}; já
+\texttt{new String("a") == "a"} dá \texttt{false}, porque o \texttt{new}
+força um objeto fora do pool. Comparação de conteúdo é sempre
+\texttt{.equals()}.
+
+\begin{pegadinha}
+``\texttt{String} é mutável porque posso reatribuir a variável'' ---
+\textbf{falso}: o que muda é a \textbf{referência}, não o objeto. E cuidado
+com o par \texttt{StringBuilder} (não sincronizado, mais rápido) $\times$
+\texttt{StringBuffer} (sincronizado, thread-safe): a FGV inverte os dois.
+\end{pegadinha}
 
 \section{JVM, JPA e JavaEE}
 
@@ -121,6 +181,47 @@ solução --- a resposta certa é \textbf{LAZY + JOIN FETCH} na consulta que
 precisa da relação.
 \end{pegadinha}
 
+\subsection{Anotações que a FGV cobra pelo nome}
+
+O papel de cada framework do ecossistema Spring está no Capítulo
+\ref{cap:programacao}; aqui ficam as anotações que aparecem em item de
+leitura de código.
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{8cm}@{}}
+\toprule
+\textbf{Anotação} & \textbf{Papel} \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Spring --- estereótipos de componente}}\\
+\texttt{@Component} & bean genérico gerenciado pelo contêiner \\
+\texttt{@Service} & camada de regra de negócio \\
+\texttt{@Repository} & camada de \textbf{acesso a dados}; acrescenta a \textbf{tradução automática de exceções} de persistência para a hierarquia do Spring \\
+\texttt{@Controller} / \texttt{@RestController} & camada web; o \texttt{@Rest\-Controller} já embute \texttt{@ResponseBody} \\
+\texttt{@Autowired} & injeta a dependência \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{JPA --- mapeamento objeto-relacional}}\\
+\texttt{@Entity} & marca a classe como entidade persistente \\
+\texttt{@Id} & identifica a chave primária (com \texttt{@GeneratedValue} para geração automática) \\
+\texttt{@Table} / \texttt{@Column} & renomeiam tabela e coluna (opcionais) \\
+\texttt{@ManyToOne} & \textbf{muitos} registros desta entidade para \textbf{um} da outra (é o lado dono, com a chave estrangeira) \\
+\texttt{@OneToMany} & o inverso; costuma vir com \texttt{mappedBy} \\
+\texttt{@OneToOne}, \texttt{@ManyToMany} & um-para-um e muitos-para-muitos \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{O par mínimo para uma entidade JPA é \texttt{@Entity} +
+\texttt{@Id}} --- todo o resto é opcional.
+
+\begin{pegadinha}
+A FGV troca o \textbf{estereótipo} pela camada errada (\texttt{@Service} no
+DAO, \texttt{@Repository} na regra de negócio) e inverte a
+\textbf{cardinalidade}: \texttt{@ManyToOne} lê-se do lado de cá para o lado
+de lá (\textbf{muitos} pedidos para \textbf{um} cliente). Distrator de
+anotação inventada também é comum (\texttt{@Persistent},
+\texttt{@PrimaryKey}, \texttt{@DataAccess}) --- decore o nome exato.
+\end{pegadinha}
+
 \section{Recursos modernos (Java 17/21 LTS)}
 
 \begin{itemize}
@@ -131,10 +232,54 @@ subtipo deve ser \texttt{final}, \texttt{sealed} ou \texttt{non-sealed}.
 \item \textbf{Threads virtuais (Project Loom)} $\times$ threads de
 plataforma: milhares de \textbf{virtuais} compartilham uma \textbf{carrier
 thread} de plataforma (não é uma-para-uma). Brilham em cenários I/O-bound.
-\item \texttt{record}, \texttt{var}, switch expressions, pattern matching.
 \item \textbf{Streams e lambdas} (Java 8+): programação funcional em
 coleções.
 \end{itemize}
+
+\subsection{\texttt{var}, \texttt{record} e \texttt{switch} como expressão}
+
+\textbf{\texttt{var} (Java 10):} infere o tipo da variável \textbf{local} a
+partir do inicializador, em \textbf{tempo de compilação} --- e o tipo
+\textbf{fica fixo} depois disso. Java continua estaticamente tipado. Exige
+inicializador (\texttt{var x;} não compila) e não vale para atributo de
+instância, parâmetro de método nem retorno.
+
+\textbf{\texttt{record} (Java 16):} classe de dados imutável declarada pelo
+cabeçalho --- \texttt{record Ponto(int x, int y) \{ \}}. O compilador gera:
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{7.4cm}@{}}
+\toprule
+\textbf{Gerado} & \textbf{Observação} \\
+\midrule
+construtor canônico & pode ser sobrescrito (forma compacta) para validar \\
+métodos de acesso & \texttt{p.x()}, \texttt{p.y()} --- \textbf{sem} \texttt{get} \\
+\texttt{equals} / \texttt{hashCode} & comparam componente a componente \\
+\texttt{toString} & formato \texttt{Ponto[x=1, y=2]} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os campos são \textbf{finais}. O record é implicitamente \texttt{final} e já
+estende \texttt{java.lang.Record}, logo \textbf{não pode estender outra
+classe} --- mas \textbf{pode implementar interfaces}. Não aceita campo de
+instância adicional (só estático).
+
+\textbf{\texttt{switch} como expressão (Java 14)} devolve valor e, na forma
+com seta (\texttt{->}), executa \textbf{só} o ramo correspondente: acabou o
+\texttt{break} e acabou o \textit{fall-through} (use \texttt{yield} em bloco
+com chaves). \textbf{Blocos de texto (Java 15)}, delimitados por
+\texttt{"""}, servem a conteúdo de várias linhas (JSON, SQL, HTML) sem
+concatenação nem \texttt{\textbackslash n} manual.
+
+\begin{pegadinha}
+``\texttt{var} torna a variável de tipo dinâmico'' --- \textbf{falso}:
+depois de inferido, atribuir valor incompatível é erro de compilação.
+``O \texttt{record} gera \emph{getters} no padrão \texttt{getX()}'' ---
+falso, o acessor chama-se \texttt{x()}. E \texttt{sealed} \textbf{não} é
+sinônimo de \texttt{final}: o \texttt{final} proíbe herança, o
+\texttt{sealed} permite herança só pelos tipos autorizados.
+\end{pegadinha}
 
 \begin{pegadinha}
 Sealed: o distrator diz que \texttt{final} ``não pode estender sealed''
@@ -241,15 +386,26 @@ de criar} threads, não eliminam todo cuidado com seções críticas.
 \end{pegadinha}
 
 \begin{jacaiu}
-Checked $\times$ unchecked; overload $\times$ override; Liskov (SOLID);
-coleções (\texttt{ArrayList}/\texttt{LinkedList}/\texttt{HashMap});
-\texttt{==} $\times$ \texttt{equals}; sealed classes; threads virtuais e
-pinning; JPA N+1 (TJ-RJ); leitura de REST controller
-(\texttt{@RestController}, \texttt{@GetMapping}, \texttt{@PathVariable}) e
-comportamento de \texttt{Map}/\texttt{HashMap} (\texttt{getOrDefault});
-Spring Cloud Eureka (atributo \texttt{lease-expiration}); Hibernate Envers
-(auditoria via Revision Listener); ordem de catch e exceção engolida por
-\texttt{finally}; escopo de variável em bloco. Rode \texttt{./quiz.py java}.
+\textbf{Em prova real da FGV:} classes \texttt{sealed} (o erro estava na
+subclasse \texttt{sealed} \emph{sem} \texttt{permits}) --- \textbf{MPU};
+threads virtuais sobre a \textit{carrier}, JPA N+1 (\texttt{FetchType.LAZY} +
+\texttt{JOIN FETCH}), leitura de REST controller (\texttt{@RestController},
+\texttt{@GetMapping}, \texttt{@PathVariable}) com \texttt{getOrDefault},
+Spring Cloud Eureka (atributo \texttt{lease-expiration}) e Hibernate Envers
+(auditoria via Revision Listener) --- \textbf{TJ-RJ}. Liskov caiu na Dataprev
+2024 e no MPU, mas como item de \textbf{Engenharia de Software} (Capítulo
+\ref{cap:eng-software}).
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): checked $\times$ unchecked; overload $\times$ override; interface
+$\times$ classe abstrata; coleções
+(\texttt{ArrayList}/\texttt{LinkedList}/\texttt{TreeMap}); \texttt{==}
+$\times$ \texttt{equals}; \texttt{String} imutável e \texttt{StringBuilder};
+anotações de Spring e JPA; \texttt{record} e \texttt{var}; \textit{pinning};
+ordem de catch e exceção engolida por \texttt{finally}; escopo de variável em
+bloco.
+
+Rode \texttt{./quiz.py java} e \texttt{./quiz.py java-moderno}.
 \end{jacaiu}
 
 \begin{comosair}
