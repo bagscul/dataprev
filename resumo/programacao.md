@@ -74,6 +74,8 @@ parte.
   centralizado).
 - Conceitos: commit, branch, merge, `git pull`/`push`, `git clone`,
   merge × rebase, staging area.
+- **Comandos por efeito, CI/CD e contêineres estão em `git-devops.md`** — é o
+  recorte transversal do tema (`../quiz.py git-devops`).
 
 ## 5. Qualidade de código
 
@@ -133,12 +135,19 @@ Pegadinhas: inverter `view`/`copy` (dizer que `copy` compartilha a base, ou que
 índice final; alternativa que traz a **chave certa com o valor errado** no
 `max` com `key=`.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Spring/Spring Cloud/Spring Boot/Hibernate/JUnit (papéis); XML/XSLT/JSON;
-Flutter (Dart); blockchain (o que não fica no bloco); SPA × PWA (ver
-`frontend.md`); NumPy view × copy; Kotlin/Swift; Python — `max(dic, key=)` e
-fatiamento com fim exclusivo. Rode `../quiz.py programacao`.
+**Em prova real da FGV:** papéis de Spring/Spring Cloud/Spring Boot/Hibernate/
+JUnit, XML/XSLT/JSON, Flutter (Dart), blockchain (o que *não* fica no bloco) e
+SPA × PWA — **Dataprev 2024**; Kotlin/Swift, NumPy `view` × `copy` e o
+`explode` do matplotlib — **MPU**; funções de sessão do PHP 8 — **TJ-RJ**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): `max(dic, key=)` e fatiamento em Python; comandos do Git
+(`add`/`fetch`/`rebase`); entrega × implantação contínua; Docker × Kubernetes;
+estrutura do JSON; REST (201 Created, `PUT` idempotente).
+
+Rode `../quiz.py programacao` e `../quiz.py git-devops`.
 
 ## Pegadinhas da FGV (resumo)
 

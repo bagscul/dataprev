@@ -107,12 +107,94 @@ client-side como React); Primefaces é biblioteca de componentes \textbf{de
 JSF}, não framework à parte.
 \end{pegadinha}
 
-\section{Versionamento com Git}
+\section{Versionamento com Git e DevOps}
+\label{sec:git-devops}
 
 \textbf{Git é distribuído:} cada clone tem o histórico completo (diferente
-do SVN, que é centralizado e lida mal com binários). Conceitos: commit,
-branch, merge, \texttt{git pull}/\texttt{push}, \texttt{git clone}, merge
-$\times$ rebase, staging area. GitLab CI usa variáveis e pipelines.
+do SVN, que é centralizado e lida mal com binários). GitLab CI usa variáveis
+e pipelines.
+
+\begin{conceito}[As três áreas --- onde mora quase toda pegadinha de Git]
+\begin{center}
+diretório de trabalho $\xrightarrow{\texttt{git add}}$ \textbf{stage}
+(index) $\xrightarrow{\texttt{git commit}}$ repositório local
+$\xrightarrow{\texttt{git push}}$ remoto
+\end{center}
+O \texttt{commit} grava \textbf{o que está no stage}: editar um arquivo já
+versionado e commitar \textbf{sem} \texttt{git add} não inclui a alteração
+--- o commit sai vazio daquela mudança, sem erro nenhum.
+\end{conceito}
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{8.4cm}@{}}
+\toprule
+\textbf{Comando} & \textbf{O que faz} \\
+\midrule
+\texttt{git clone} & cria a cópia local inicial de um repositório remoto \\
+\texttt{git add} & leva a alteração para o stage \\
+\texttt{git commit} & grava no repositório local o que está no stage \\
+\texttt{git fetch} & traz referências e objetos do remoto \textbf{sem} tocar na cópia de trabalho \\
+\texttt{git pull} & \texttt{fetch} + integração automática (merge ou rebase) \\
+\texttt{git push} & envia commits locais ao remoto \\
+\texttt{git merge} & une duas linhas criando um \textbf{commit de junção} \\
+\texttt{git rebase} & \textbf{reaplica} os commits sobre outra base; histórico linear \\
+\texttt{git revert} & cria um commit novo que \textbf{anula} outro (seguro em branch pública) \\
+\texttt{git reset -{}-hard} & move a branch e \textbf{descarta} alterações locais \\
+\texttt{git cherry-pick} & copia \textbf{commits escolhidos} para a branch atual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Regra de ouro do rebase:} ele reescreve commits (novos
+identificadores). Não use em branch já compartilhada --- é a razão de a banca
+chamá-lo de ``perigoso''.
+
+\textbf{Fluxos:} branch por funcionalidade + \textit{pull request};
+\textbf{Git Flow} (\texttt{main}, \texttt{develop}, \texttt{feature/*},
+\texttt{release/*}, \texttt{hotfix/*}); \textbf{trunk-based} (integrações
+curtas e frequentes no tronco, casa melhor com integração contínua).
+
+\subsection{CI, CD e CD --- o trio que a FGV mais troca}
+
+\begin{center}
+\begin{tabular}{@{}p{4.4cm}p{6.8cm}@{}}
+\toprule
+\textbf{Prática} & \textbf{Onde termina} \\
+\midrule
+\textbf{Integração contínua} (CI) & integra e \textbf{testa} a cada push \\
+\textbf{Entrega contínua} (\textit{delivery}) & artefato \textbf{sempre pronto} para produção; a subida depende de \textbf{aprovação manual} \\
+\textbf{Implantação contínua} (\textit{deployment}) & o artefato aprovado vai a produção \textbf{automaticamente} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Entrega contínua \textbf{pressupõe} integração contínua.
+\textbf{DevOps:} cultura de aproximar desenvolvimento e operação (automação,
+medição, responsabilidade compartilhada pelo que está em produção).
+\textbf{DevSecOps:} segurança deslocada para a \textbf{esquerda}
+(\textit{shift left}), no pipeline desde o início --- não como auditoria
+final.
+
+\subsection{Contêineres}
+
+\textbf{Docker} constrói (a partir do \texttt{Dockerfile}) e executa a
+\textbf{imagem}, que empacota aplicação + dependências. \textbf{Docker
+Compose} orquestra vários contêineres em \textbf{um host} (tipicamente
+desenvolvimento). \textbf{Kubernetes} orquestra em \textbf{cluster}: mantém
+réplicas, reinicia o que falha, distribui carga, faz \textit{rolling update}
+--- detalhes de arquitetura no Capítulo \ref{cap:arquitetura}.
+
+\begin{pegadinha}
+Inversão de par é o padrão do tema: \texttt{merge}$\leftrightarrow$\texttt{rebase},
+\texttt{fetch}$\leftrightarrow$\texttt{pull},
+delivery$\leftrightarrow$deployment, Docker$\leftrightarrow$Kubernetes. Se o
+enunciado disser ``\textbf{sem alterar a cópia de trabalho}'', é
+\texttt{fetch}; se disser que a subida a produção \textbf{espera aprovação
+humana}, é \textit{delivery}, não \textit{deployment}. Outro desenho: a
+alternativa descreve corretamente o efeito de um comando, mas dá o
+\textbf{nome de outro} --- leia a justificativa antes de aceitar o nome.
+Absoluto plantado: ``o \texttt{pull} nunca altera arquivos''.
+\end{pegadinha}
 
 \section{Qualidade de código}
 
@@ -121,8 +203,25 @@ $\times$ rebase, staging area. GitLab CI usa variáveis e pipelines.
 \textbf{SonarQube:} análise \textbf{estática} (sem executar) --- code
 smells, bugs, vulnerabilidades, dívida técnica, cobertura.
 
-DevOps/CI-CD, reuso e padrões de projeto permeiam este bloco (ver Capítulos
-\ref{cap:eng-software} e \ref{cap:arquitetura}).
+\begin{conceito}[O que este bloco cobra e mora em outro capítulo]
+O edital de Programação puxa conteúdo que está desenvolvido fora daqui ---
+se você errou uma questão deste bloco sobre um destes temas, é para lá que
+deve ir:
+\begin{itemize}
+\item \textbf{SOLID} (SRP, OCP, Liskov, ISP, DIP) e \textbf{orientação a
+objetos} (herança, polimorfismo, sobrescrita): Capítulo \ref{cap:java}.
+\item \textbf{Os 23 padrões GoF} (Singleton, Adapter, Observer, Strategy,
+Factory Method\ldots) e o par \textbf{alta coesão $\times$ baixo
+acoplamento}: Capítulo \ref{cap:padroes-uml}.
+\item \textbf{REST na prática} --- métodos HTTP (GET, POST, \textbf{PUT}
+substitui inteiro, \textbf{PATCH} parcial, DELETE), códigos de resposta
+(200, \textbf{201 Created}, 204, 400, 401, 403, 404, 500) e
+\textbf{idempotência} (GET, PUT e DELETE repetidos deixam o servidor no
+mesmo estado; POST, não): Capítulo \ref{cap:arquitetura}.
+\item \textbf{Reuso, testes e ciclo de vida:} Capítulo
+\ref{cap:eng-software}.
+\end{itemize}
+\end{conceito}
 
 \section{Blockchain}
 
@@ -138,7 +237,7 @@ Pergunta clássica: ``o que NÃO é armazenado no bloco'' $\to$ resposta:
 guardado diretamente).
 \end{pegadinha}
 
-\section{Python aplicado a dados (visto em prova de TI recente)}
+\section{Python aplicado a dados (cobrado no MPU)}
 
 \begin{itemize}
 \item \textbf{NumPy:} \texttt{view()} compartilha buffer (\texttt{.base}
@@ -147,15 +246,34 @@ aponta para o original) $\times$ \texttt{copy()} cria cópia independente
 Shape de vetor 1-D termina em vírgula: \texttt{(3,)}, não \texttt{(3,1)}.
 \item \textbf{matplotlib.pyplot:} parâmetro \texttt{explode} destaca fatia
 da pizza.
-\item \textbf{PHP 8:} funções de sessão (\texttt{session\_start},
-\texttt{session\_destroy}, \texttt{session\_regenerate\_id}).
 \end{itemize}
+
+\textbf{Dicionário:} \texttt{max(dic)} compara as \textbf{chaves};
+\texttt{max(dic, key=dic.get)} compara os \textbf{valores} e devolve a
+\textbf{chave} vencedora --- nunca o valor. O \texttt{key=} de
+\texttt{max}/\texttt{min}/\texttt{sorted} diz por onde \textbf{comparar},
+jamais o que devolver.
+
+\textbf{Listas:} o fatiamento \texttt{lista[a:b]} inclui \texttt{a} e
+\textbf{exclui} \texttt{b} --- \texttt{nums[1:4]} devolve \textbf{três}
+elementos (conte \texttt{b - a}). Índice negativo conta do fim
+(\texttt{-1} é o último). Compreensão e expressão geradora com filtro:
+\texttt{sum(n for n in nums if n \% 2 == 0)} soma só os que passam no filtro.
 
 \begin{pegadinha}
 NumPy: a FGV inverte \texttt{view}/\texttt{copy} --- diz que \texttt{copy}
 compartilha base ou que \texttt{view} tem \texttt{base None}; ou erra o
-shape do array 1-D.
+shape do array 1-D. No \texttt{max} com \texttt{key=}, oferece a alternativa
+com a \textbf{chave certa e o valor errado} (ou devolve o valor máximo no
+lugar da chave). No fatiamento, monta a alternativa que \textbf{inclui} o
+índice final --- é um elemento a mais, e passa despercebido.
 \end{pegadinha}
+
+\subsection{PHP 8 --- funções de sessão}
+
+Não é Python, mas cai no mesmo tipo de item (``qual função faz X''):
+\texttt{session\_start}, \texttt{session\_destroy},
+\texttt{session\_regenerate\_id}.
 
 \section{Leitura ativa de código --- técnica transversal}
 \label{sec:leitura-ativa-programacao}
@@ -214,11 +332,20 @@ linguagem.
 \end{comosair}
 
 \begin{jacaiu}
-Spring/Spring Cloud/Spring Boot/Hibernate/JUnit (papéis); XML/XSLT/JSON;
-Flutter (Dart); blockchain (o que não fica no bloco); SPA $\times$ PWA (ver
-Capítulo \ref{cap:frontend}); NumPy \texttt{view} $\times$ \texttt{copy};
-Kotlin/Swift; leitura de código pequeno em geral. Rode \texttt{./quiz.py
-programacao}.
+\textbf{Em prova real da FGV:} papéis de Spring/Spring Cloud/Spring
+Boot/Hibernate/JUnit, XML/XSLT/JSON, Flutter (Dart), blockchain (o que
+\emph{não} fica no bloco) e SPA $\times$ PWA --- \textbf{Dataprev 2024};
+Kotlin/Swift, NumPy \texttt{view} $\times$ \texttt{copy} e o
+\texttt{explode} do matplotlib --- \textbf{MPU}; funções de sessão do PHP 8
+--- \textbf{TJ-RJ}.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): \texttt{max(dic, key=)} e fatiamento em Python; comandos do Git
+(\texttt{add}/\texttt{fetch}/\texttt{rebase}); entrega $\times$ implantação
+contínua; Docker $\times$ Kubernetes; estrutura do JSON; REST (201 Created,
+\texttt{PUT} idempotente).
+
+Rode \texttt{./quiz.py programacao} e \texttt{./quiz.py git-devops}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}
@@ -238,7 +365,10 @@ Fixe uma frase por framework: Boot = configura e sobe sozinho (servidor
 embarcado); Cloud = distribuído/service discovery; Hibernate =
 objeto$\leftrightarrow$tabela; JUnit = testa; Spring = container/injeção.
 Nativo mobile: Kotlin/Android, Swift/iOS (Objective-C e Java são os antigos).
-Multiplataforma Dart = Flutter. Gatilhos: ``exclusivamente'', ``sempre'',
-``estritamente equivalentes'', ``elimina a necessidade''. Em questão de
-código, leia linha a linha --- a FGV muda um parâmetro só.
+Multiplataforma Dart = Flutter. Em Git/DevOps, pergunte \textbf{quem faz o
+quê}: quem cria commit, quem toca a cópia de trabalho, quem vai ao remoto,
+quem decide subir para produção --- a resposta quase sempre se resolve nessa
+separação, sem precisar da sintaxe. Gatilhos: ``exclusivamente'',
+``sempre'', ``estritamente equivalentes'', ``elimina a necessidade''. Em
+questão de código, leia linha a linha --- a FGV muda um parâmetro só.
 \end{comosair}
