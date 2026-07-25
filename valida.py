@@ -4,8 +4,11 @@ questoes (geradas em banco.json, ou de prova via ./importar_provas.py) para
 garantir que o quiz nao vai quebrar nem servir questao capenga.
 
 Uso:
-    ./valida.py            valida os dois bancos
-    ./valida.py --strict   idem, mas sai com erro se houver QUALQUER aviso
+    ./valida.py             valida os dois bancos
+    ./valida.py --strict    idem, mas sai com erro se houver QUALQUER aviso
+                            (inclusive os de forma) — serve de portao pre-commit
+    ./valida.py --novas 40  mede o vazamento de forma nas 40 ultimas questoes
+                            (padrao: 30), para conferir um lote recem-adicionado
 
 Erros (bloqueiam): estrutura quebrada — sem enunciado, sem 5 alternativas,
 ans fora de 0-4, chaves de 'erradas' que nao batem com o gabarito.
@@ -105,42 +108,107 @@ def _tem_absoluto(s):
     return any(re.search(r"\b" + re.escape(a) + r"\b", t) for a in ABS_TERMOS)
 
 
-def avisos_forma(banco):
-    """Retorna avisos de forma (nao bloqueiam) sobre o banco original."""
-    n = len(banco)
-    if not n:
-        return []
-    linhas = []
-    dist = collections.Counter(q.get("ans") for q in banco if isinstance(q.get("ans"), int))
-    if dist:
-        k = max(dist, key=dist.get)
-        if dist[k] / n > 0.35:
-            linhas.append(f"gabarito concentrado em '{'ABCDE'[k]}': {dist[k]}/{n} "
-                          f"({dist[k]/n*100:.0f}%) — embaralhe a posicao da correta")
-    mais_longa = 0
-    ratio_alta, abs_so_distr = [], []
-    for i, q in enumerate(banco):
+# Limiar por ESCOPO. O global e so rede de seguranca: numa banca de 5 alternativas
+# sem nivelamento, a correta e a mais longa ~20% das vezes por acaso (alvo declarado
+# no CONTRIBUINDO-QUESTOES.md), entao limiar global abaixo disso acenderia aviso em
+# banco saudavel. Quem pega REGRESSAO e o escopo pequeno: um lote novo enviesado se
+# dilui na media de centenas de questoes (60 questoes 100% enviesadas entrando num
+# banco de 331 levam o global a so 18%), mas salta na janela recente e no bloco.
+LIMIARES = {
+    "global": {"longa": 0.25, "abs": 0.08, "gab": 0.30},
+    "bloco":  {"longa": 0.35, "abs": 0.25, "gab": 0.45},
+    "janela": {"longa": 0.30, "abs": 0.20, "gab": 0.45},
+}
+JANELA_PADRAO = 30   # questao nova e sempre anexada ao fim: as N ultimas = lote recente
+BLOCO_MIN = 12       # bloco menor que isso nao e medido (flutuacao domina o sinal)
+RATIO_LIM = 1.7      # correta / media das erradas, por questao
+RATIO_MOSTRA = 5
+
+
+def _metricas(itens):
+    """itens = [(indice_no_banco, questao)]. Retorna None se nao houver questao
+    mensuravel; senao (n, frac_mais_longa, frac_abs_so_distrator, (letra, n_letra),
+    [indices mais longos], [indices com absoluto so no distrator], [(ratio, i)])."""
+    n = 0
+    mais_longa, abs_so, ratios = [], [], []
+    dist = collections.Counter()
+    for i, q in itens:
         alts, a = q.get("alts"), q.get("ans")
         if not (isinstance(alts, list) and len(alts) == 5 and isinstance(a, int)):
             continue
+        n += 1
+        dist[a] += 1
         cl = len(alts[a])
         wl = [len(x) for j, x in enumerate(alts) if j != a]
-        if wl and cl > max(wl):
-            mais_longa += 1
-        if wl and cl / (sum(wl) / len(wl)) >= 1.8:
-            ratio_alta.append(i)
+        if not wl:
+            continue
+        if cl > max(wl):
+            mais_longa.append(i)
+        ratios.append((cl / (sum(wl) / len(wl)), i))
         if not _tem_absoluto(alts[a]) and any(_tem_absoluto(x) for j, x in enumerate(alts) if j != a):
-            abs_so_distr.append(i)
-    if mais_longa / n > 0.30:
-        linhas.append(f"correta e a mais longa em {mais_longa}/{n} ({mais_longa/n*100:.0f}%) "
-                      f"— alongue distratores ou encurte a correta (esperado ~20%)")
-    if ratio_alta:
-        ex = ", ".join(f"#{i}" for i in ratio_alta[:8]) + (" ..." if len(ratio_alta) > 8 else "")
-        linhas.append(f"correta >=1.8x a media das erradas em {len(ratio_alta)} questao(oes): {ex}")
-    if len(abs_so_distr) / n > 0.15:
-        ex = ", ".join(f"#{i}" for i in abs_so_distr[:8]) + (" ..." if len(abs_so_distr) > 8 else "")
-        linhas.append(f"termo absoluto SO em distrator em {len(abs_so_distr)}/{n} "
-                      f"({len(abs_so_distr)/n*100:.0f}%): {ex}")
+            abs_so.append(i)
+    if not n:
+        return None
+    k = max(dist, key=dist.get)
+    return n, len(mais_longa) / n, len(abs_so) / n, (k, dist[k]), mais_longa, abs_so, ratios
+
+
+def _exemplos(indices, quantos=6):
+    ex = ", ".join(f"#{i}" for i in indices[:quantos])
+    return ex + (" ..." if len(indices) > quantos else "")
+
+
+def _checa_escopo(itens, lim, rotulo):
+    """Aplica os tres limiares de forma a um escopo (banco, bloco ou janela)."""
+    m = _metricas(itens)
+    if m is None:
+        return []
+    n, f_longa, f_abs, (k, n_k), i_longa, i_abs, _ = m
+    linhas = []
+    if n_k / n > lim["gab"]:
+        linhas.append(f"[{rotulo}] gabarito concentrado em '{'ABCDE'[k]}': {n_k}/{n} "
+                      f"({n_k/n*100:.0f}%) — embaralhe a posicao da correta")
+    if f_longa > lim["longa"]:
+        linhas.append(f"[{rotulo}] correta e a mais longa em {len(i_longa)}/{n} "
+                      f"({f_longa*100:.0f}%) — alongue distratores ou encurte a correta "
+                      f"(esperado ~20%): {_exemplos(i_longa)}")
+    if f_abs > lim["abs"]:
+        linhas.append(f"[{rotulo}] termo absoluto SO em distrator em {len(i_abs)}/{n} "
+                      f"({f_abs*100:.0f}%): {_exemplos(i_abs)}")
+    return linhas
+
+
+def avisos_forma(banco, janela=JANELA_PADRAO):
+    """Retorna avisos de forma (nao bloqueiam) sobre o banco original, em tres
+    escopos: banco inteiro, cada bloco com n>=BLOCO_MIN e a janela das ultimas
+    'janela' questoes (o lote recem-adicionado)."""
+    # indice 1-based: e como as questoes sao referidas em todo o resto do repo
+    # (#227-#236, #166-#185), e o aviso serve justamente para ir editar a questao
+    itens = list(enumerate(banco, 1))
+    if not itens:
+        return []
+    linhas = _checa_escopo(itens, LIMIARES["global"], "banco")
+
+    por_tag = collections.defaultdict(list)
+    for i, q in itens:
+        por_tag[q.get("tag", "?")].append((i, q))
+    for tag in sorted(por_tag):
+        if len(por_tag[tag]) >= BLOCO_MIN:
+            linhas += _checa_escopo(por_tag[tag], LIMIARES["bloco"], f"bloco {tag}")
+
+    if janela and len(itens) > janela:
+        linhas += _checa_escopo(itens[-janela:], LIMIARES["janela"],
+                                f"ultimas {janela}")
+
+    # ratio individual: sempre medido no banco inteiro, so as piores
+    m = _metricas(itens)
+    if m:
+        altos = sorted((r for r in m[6] if r[0] >= RATIO_LIM), reverse=True)
+        if altos:
+            ex = ", ".join(f"#{i} ({r:.1f}x)" for r, i in altos[:RATIO_MOSTRA])
+            resto = " ..." if len(altos) > RATIO_MOSTRA else ""
+            linhas.append(f"correta >={RATIO_LIM}x a media das erradas em "
+                          f"{len(altos)} questao(oes): {ex}{resto}")
     return linhas
 
 
@@ -167,8 +235,19 @@ def checar_historico():
     return avisos
 
 
+def _arg_janela(argv):
+    """Le '--novas N' (escopa a janela recente nas N ultimas questoes)."""
+    if "--novas" in argv:
+        i = argv.index("--novas")
+        if i + 1 < len(argv) and argv[i + 1].isdigit():
+            return int(argv[i + 1])
+        print(cor("  --novas exige um numero (ex: --novas 40); usando o padrao", "ama"))
+    return JANELA_PADRAO
+
+
 def main():
     strict = "--strict" in sys.argv
+    janela = _arg_janela(sys.argv)
     erros, avisos, avisos_f = [], [], []
     n_orig = n_prova = n_usaveis = 0
 
@@ -178,12 +257,12 @@ def main():
         banco = json.loads(bo.read_text(encoding="utf-8"))
         n_orig = len(banco)
         vistos = set()
-        for i, q in enumerate(banco):
+        for i, q in enumerate(banco, 1):   # 1-based, igual aos avisos de forma
             e, a = checar_questao(q, f"banco.json #{i} [{q.get('tag','?')}]", usavel=True)
             erros += e
             avisos += a
             n_usaveis += 1
-        avisos_f = avisos_forma(banco)
+        avisos_f = avisos_forma(banco, janela=janela)
     else:
         avisos.append("banco.json nao existe")
 
@@ -234,7 +313,7 @@ def main():
         print(cor("  tudo integro.", "verde"))
     print()
 
-    if erros or (strict and avisos):
+    if erros or (strict and (avisos or avisos_f)):
         sys.exit(1)
 
 
