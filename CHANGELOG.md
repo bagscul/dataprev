@@ -2,6 +2,54 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — material para as 15 questões órfãs (auditoria, Bloco VII/ITEM 7 · P1)
+
+O achado de maior impacto da varredura do Grupo A: **15 questões do banco cujo
+assunto não existia no capítulo do próprio bloco**. Ao errar, o quiz manda ler
+o capítulo — e o capítulo não cobria o tema. Escrito o conteúdo nas **três
+camadas** (apostila, resumo e dicas), sem criar nenhuma questão nova e sem
+tocar no `banco.json`.
+
+- **Engenharia de Software (Cap. 3), 6 tópicos.** Seção nova **"Maturidade de
+  processo: CMMI e MPS.BR"** (os cinco níveis por estágios, com o 3 = Definido
+  e a medição quantitativa só no 4; as duas representações, por estágios ×
+  contínua; e os sete níveis do MPS.BR **de G até A**, contra o distrator que
+  faz a escala começar no A). **Modelo V** pareando fase e nível de teste
+  (requisitos ↔ aceitação, arquitetural ↔ integração). Seção nova
+  **"Manutenção de software"** com os quatro tipos da ISO/IEC 14764 e o
+  critério que resolve a questão: a **causa** da alteração — troca de versão do
+  SGBD é **adaptativa**, não corretiva. **Cobertura de caixa-branca**
+  (comandos × decisões × caminhos, e a regra de que 100% de decisões implica
+  100% de comandos, nunca o contrário, com o caso do `if` sem `else`).
+  **Testes de desempenho** (carga × estresse × volume, mais fumaça na tabela de
+  níveis). E os **três compromissos do Scrum Guide 2020** pareados com os três
+  artefatos — os nomes já apareciam soltos em "alta probabilidade", sem nunca
+  serem chamados de compromissos nem ligados aos artefatos, que é exatamente o
+  que a questão cobra.
+- **Banco de Dados (Cap. 6), 3 tópicos.** Subseção **"Do MER para o
+  relacional"** (1:1, 1:N com FK no lado N, **N:M por tabela associativa**) e
+  **entidade fraca × entidade associativa** (chave do proprietário + chave
+  parcial). Seção nova **"Concorrência: níveis de isolamento"**, logo depois do
+  ACID — o "I" estava lá sem desdobramento: os três fenômenos e a tabela dos
+  quatro níveis do padrão SQL, com o trade-off isolamento × concorrência.
+  Subseção **gatilho × procedimento armazenado** (quem dispara: o SGBD por
+  evento × a aplicação por chamada).
+- **Arquitetura (Cap. 5), 4 tópicos.** **ESB** finalmente explicado — "barramento
+  de mensagens" estava na lista de estilos desde sempre, a sigla nunca. Subseção
+  **layers × tiers** (três camadas lógicas cabem num nó físico só, e a aplicação
+  segue monolítica). **Serverless/FaaS** (escala de zero, cobrança por consumo,
+  sem estado, *cold start*, limite de tempo por execução — cada distrator da
+  questão nega uma dessas). E **balanceador × CDN** como gargalos diferentes que
+  se somam.
+- **Segurança (Cap. 8), 1 tópico.** Seção nova **"Continuidade de negócio: RTO ×
+  RPO"**. O par existia **só** em `orfaos`, mas a questão é etiquetada
+  `seguranca` — quem errava era mandado para o capítulo errado. Entrou com
+  MTBF/MTTR/SLA (as siglas vizinhas que a banca oferece junto) e um ponteiro
+  cruzado em `resumo/orfaos.md`, para as duas camadas não divergirem depois.
+- PDF recompilado: **88 → 97 páginas**, sem nenhum *overfull*. `./valida.py`
+  segue nos dois avisos pré-existentes, e o detector de drift ficou silencioso —
+  toda seção nova da apostila entrou com eco no `resumo/` correspondente.
+
 ## 2026-07-25 — Interpreter e OWASP 2025 (auditoria, Bloco VII/ITEM 7 · P0)
 
 - **Faltava o Interpreter.** A apostila e o resumo afirmavam "comportamentais
