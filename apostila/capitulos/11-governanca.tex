@@ -26,7 +26,13 @@ qualidade, recursos, comunicação, riscos, aquisições, partes interessadas).
 \item \textbf{PMBOK 7:} mudou para \textbf{princípios e domínios de
 desempenho} (foco em valor e resultados, menos prescritivo). Os \textbf{12
 princípios} incluem foco em valor, pensamento sistêmico, ser um
-administrador zeloso (\textit{steward}), liderança, qualidade.
+administrador zeloso (\textit{steward}), liderança, qualidade, adaptação
+(\textit{tailoring}) e \textbf{adaptabilidade e resiliência}.
+\item \textbf{Tripla restrição} (``triângulo de ferro''): \textbf{escopo},
+\textbf{tempo} e \textbf{custo} --- os três se condicionam, e mexer em um
+força ajuste nos outros. A \textbf{qualidade} é o que sofre o impacto direto
+quando se aperta os três (em algumas formulações ela entra como quarto
+vértice, junto com risco e recursos).
 \item \textbf{Abordagens:} \textbf{tradicional/preditiva} (escopo fixo,
 cascata), \textbf{ágil/adaptativa}, e \textbf{híbrida} (combina as duas
 conforme a necessidade).
@@ -47,9 +53,57 @@ cuidado ético com o produto = \textbf{administrador zeloso}.
 \textbf{Scrum:} framework com Sprints time-boxed; papéis, eventos, artefatos
 (ver Capítulo \ref{cap:eng-software}). O Guia Scrum é citado no edital.
 
+\textbf{Os time-boxes que a FGV cobra pelo número} (Sprint de um mês):
+
+\begin{center}
+\begin{tabular}{@{}p{4.4cm}p{2.2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Evento} & \textbf{Duração máx.} & \textbf{Quem conduz / para quê} \\
+\midrule
+\textbf{Daily Scrum} & \textbf{15 min} & os \textbf{Developers}, todo dia, para inspecionar o progresso rumo à \textbf{Meta da Sprint} e adaptar o plano \\
+Sprint Planning & 8 h & o time todo, no início da Sprint \\
+Sprint Review & 4 h & time + stakeholders, sobre o incremento \\
+Sprint Retrospective & 3 h & o time, sobre o \emph{processo} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os 15 min da Daily são \textbf{fixos}, independentemente do tamanho da
+Sprint; os demais são proporcionais (os valores acima valem para Sprint de um
+mês e encolhem em Sprints menores).
+
 \textbf{Kanban:} fluxo contínuo, limita WIP, sem sprints.
 
+\begin{conceito}[Lead time $\times$ cycle time --- o par de métricas do Kanban]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{8.4cm}@{}}
+\toprule
+\textbf{Métrica} & \textbf{O que mede} \\
+\midrule
+\textbf{Lead time} & da \textbf{solicitação} (entrada no sistema, sob a ótica do cliente) até a \textbf{entrega}. Inclui o tempo em fila. \\
+\textbf{Cycle time} & do \textbf{início do trabalho} até a entrega. É um \textbf{trecho} do lead time. \\
+\textbf{Throughput} & \textbf{quantidade} de itens entregues por período (não é tempo). \\
+\bottomrule
+\end{tabular}
+\end{center}
+Logo, \textbf{lead time $\geq$ cycle time} sempre --- a diferença entre os
+dois é exatamente o tempo que o item passou \textbf{esperando} para ser
+puxado. Reduzir o WIP é o que encurta a fila e, com ela, o lead time (Lei de
+Little).
+\end{conceito}
+
 \textbf{Lean:} eliminar desperdício, maximizar valor.
+
+\begin{pegadinha}
+Inversão de par clássica: dar ao \textbf{lead time} a definição do
+\textbf{cycle time} (``do começo do trabalho até a entrega''). A âncora é a
+palavra \textbf{solicitação}: se o enunciado conta o tempo a partir do
+\textbf{pedido do cliente}, é lead time. Outro distrator troca tempo por
+quantidade --- ``itens entregues por semana'' é \textbf{throughput}, não lead
+time. E ``o Kanban limita o WIP'' $\times$ ``o Scrum organiza em Sprints de
+duração fixa'' é a distinção que a banca pede quando o cenário combina os
+dois métodos.
+\end{pegadinha}
 
 \begin{comosair}
 Ágil: mudança tardia é bem-vinda e se prioriza no backlog --- nunca
@@ -143,10 +197,25 @@ lanes}/\textit{handoffs} e gateway exclusivo $\times$ paralelo.
 \end{pegadinha}
 
 \begin{jacaiu}
-Ágil híbrida (combinar); Scrum Master e eventos; Kanban (fluxo contínuo);
-ITIL 4 (dimensões, SVS); COBIT (domínios); BPMN (símbolos); lead time
-$\times$ cycle time; PMBOK 7 (princípios). Rode \texttt{./quiz.py
-governanca}.
+\textbf{Em prova real da FGV:} o domínio \textbf{BAI} do COBIT 2019
+(``especificar e priorizar requisitos com base na experiência do usuário'')
+--- \textbf{MPU}; a aplicação do COBIT 2019 como framework para
+\textbf{definir os componentes} de um sistema de governança, e o
+\textbf{propósito} da prática ITIL de gerenciamento de infraestrutura e
+plataforma (monitorar as soluções tecnológicas) --- \textbf{TJ-RJ}; os
+princípios do \textbf{PMBOK 7} aplicados a cenário --- \textit{adaptação e
+resiliência} e \textit{pensamento sistêmico} --- \textbf{TJ-RJ}.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): ágil híbrida (combinar); eventos do Scrum e o time-box de
+\textbf{15 min} da Daily; Kanban (fluxo contínuo, limite de WIP);
+\textbf{lead time} $\times$ cycle time; tripla restrição; ITIL 4 (4
+dimensões, SVS, 6 atividades da cadeia de valor, 7 princípios,
+incidente $\times$ problema); os 5 domínios do COBIT; símbolos do BPMN;
+os 5 grupos de processos do PMBOK 6; projeto $\times$ programa $\times$
+portfólio.
+
+Rode \texttt{./quiz.py governanca}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}
