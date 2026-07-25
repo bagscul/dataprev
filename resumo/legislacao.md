@@ -47,6 +47,41 @@ STF, notícias 26/06/2025.)
 - **Sanções:** advertência; **multa simples de até 2% do faturamento**,
   limitada a **R$ 50 milhões por infração**; publicização; bloqueio/eliminação
   dos dados. Exige processo administrativo.
+- **LGPD aplicada a IA:** explicabilidade em decisão automatizada (art. 20),
+  anonimização, *scraping* — os três já cobrados no TJ-RJ.
+
+### Princípios (art. 6º) — o trio que a FGV confunde
+
+São **dez**: finalidade, adequação, necessidade, livre acesso, qualidade dos
+dados, transparência, segurança, prevenção, não discriminação, e
+responsabilização e prestação de contas. Três são o alvo preferido da banca,
+porque parecem sinônimos e não são:
+
+| Princípio | O que exige |
+|---|---|
+| **Finalidade** | propósitos **legítimos, específicos e explícitos**, **informados ao titular**, sem tratamento posterior incompatível |
+| **Adequação** | **compatibilidade** do tratamento com as finalidades informadas, **conforme o contexto** |
+| **Necessidade** | tratamento **limitado ao mínimo** indispensável para a finalidade (pertinente, proporcional, não excessivo) |
+
+Âncora pela palavra-chave: **finalidade** = *para quê* (e avisou);
+**adequação** = *combina com* o que foi avisado; **necessidade** = *o mínimo*.
+
+Pegadinha: no TJ-RJ a FGV descreveu literalmente "o tratamento seja
+**compatível com os fins informados ao titular, de acordo com o contexto**" e
+ofereceu finalidade, prevenção, **adequação**, necessidade e transparência —
+gabarito **adequação**. Quem decorou só "finalidade" errou, porque a palavra
+"fins" está no enunciado de propósito.
+
+### Decisão automatizada (art. 20)
+
+O titular tem direito a **solicitar revisão** de decisões tomadas
+**unicamente** com base em tratamento automatizado que afetem seus
+interesses, incluindo as destinadas a definir perfil pessoal, profissional, de
+consumo e de crédito. O **controlador deve fornecer informações claras e
+adequadas sobre os critérios e procedimentos** usados na decisão, observados
+os segredos comercial e industrial — é a base legal da **explicabilidade** em
+IA, e ancora todos os cenários de IA aplicada do bloco de
+[atualidades](atualidades.md).
 
 ## Marco Civil (Lei 12.965/2014) — guarda de registros
 
@@ -84,6 +119,24 @@ perigoso: soa técnico, mas é discriminação **por aplicação**, fora do §1�
 - **Transparência ativa** (o órgão publica de ofício, ex: portal) ×
   **passiva** (o cidadão pede via e-SIC).
 
+**Desclassificação e reavaliação.** A classificação **não é definitiva nem
+discricionária**:
+- **Findo o prazo** (ou consumado o evento do termo final), a informação
+  torna-se **automaticamente** de acesso público — **não** é preciso
+  procedimento próprio nem decisão específica para liberar.
+- A lei permite **desclassificar** **e também reduzir o prazo**. A reavaliação
+  cabe à **autoridade classificadora ou a autoridade hierarquicamente
+  superior**, **de ofício ou mediante provocação**.
+- Classificar é ato vinculado a balizas legais (grau, prazo máximo,
+  competência por autoridade), não escolha livre do agente.
+
+Pegadinha: na Dataprev 2024 os distratores da LAI foram exatamente esses —
+trocar os nomes dos graus ("ultrassigilosas, sigilosas ou reservadas"), dizer
+que classificar é **discricionário** "porquanto a lei não prevê balizas",
+exigir "procedimento próprio e decisão específica" para o acesso findo o prazo
+(é automático) e afirmar que a lei permite desclassificar **mas não** reduzir
+prazo (permite as duas).
+
 **Decretos que o edital cita (regulamentam a LAI no Executivo federal):**
 - **Decreto 7.724/2012:** regulamenta a LAI — procedimentos de acesso, e-SIC,
   prazos de resposta ao pedido (**20 dias**, prorrogáveis por **10**),
@@ -108,6 +161,8 @@ independe de rede. Rode `../quiz.py legislacao`.
 ## Pegadinhas da FGV (resumo)
 
 - Trocar prazos (LAI, Marco Civil) e competências (ANPD × CNPD).
+- Trocar os princípios entre si — "fins informados" puxa para finalidade, mas
+  quem fala em *compatibilidade* e *contexto* é a **adequação**.
 - Dizer que consentimento é a única base legal da LGPD.
 - Cobrar o art. 19 na **redação antiga** — hoje mudou (veja o alerta acima).
 - Inverter controlador × operador.

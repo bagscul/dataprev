@@ -79,7 +79,36 @@ Pegadinha: incremental (desde o último **qualquer**) × diferencial (desde o
 - **Sistemas de informação:** SIG, SPT (transacional), SAD/SSD (decisão),
   ERP, CRM, SCM — o nível gerencial que cada um atende.
 
-## 7. Onde cada tema coringa está detalhado
+## 7. IA/ML (tema quente neste bloco)
+
+Nas provas recentes a FGV vem carregando em IA/ML e cloud — trate como tema
+quente. Os fundamentos de IA (hierarquia IA ⊃ ML ⊃ Deep Learning, tipos de
+aprendizado, LLM/RAG/alucinação, ética e regulação) estão em
+[atualidades](atualidades.md); aqui ficam os pares operacionais que caem
+etiquetados como `orfaos`.
+
+- **Supervisionado × não supervisionado × semissupervisionado.** Supervisionado
+  usa dados **rotulados** (classificação, regressão); não supervisionado acha
+  estrutura **sem rótulo** (clusterização, associação). A FGV inverte
+  "rotulado" entre os dois.
+- **Overfitting** (decora o treino, vai mal em dados novos) × **underfitting**
+  (modelo simples demais). A **regularização combate o overfitting**.
+- **Regularização: L1 (Lasso)** zera coeficientes e faz seleção de atributos;
+  **L2 (Ridge)** encolhe sem zerar. A banca troca os dois. Caiu no TJ-RJ.
+- **Concept drift** (muda a relação entrada→saída, o próprio conceito alvo) ×
+  **data drift** (muda a distribuição da **entrada**). Fácil de trocar, e os
+  dois caíram no TJ-RJ.
+- **Métricas:** MAE = erro médio absoluto (regressão, caiu no TJ-RJ); F1 =
+  média **harmônica** de precisão e recall; ROC/AUC = capacidade de separar
+  classes variando o limiar. O detalhe de precisão × recall e da acurácia
+  enganosa em base desbalanceada está em [atualidades](atualidades.md).
+- **Redes neurais** (ativação sigmoide) e **CNN**; **LLM/IA generativa**: RAG,
+  agentes, engenharia de prompt, ética e explicabilidade.
+- **MLOps:** em cenário de IA em produção, "monitorar drift" e deploy
+  blue-green/canário são as respostas típicas. Não confundir IA **generativa**
+  (cria conteúdo) com **discriminativa** (classifica/prediz).
+
+## 8. Onde cada tema coringa está detalhado
 
 Este é o bloco mais transversal do material: como o quiz aponta o capítulo
 pela **tag** da questão, tudo que é `orfaos` cai aqui — mesmo quando o
@@ -117,7 +146,8 @@ resolve no reflexo errado:
 - Muita questão "órfã" é DBA disfarçado — se o cenário fala em backup,
   tablespace, plano de execução, log/recuperação, é administração de BD.
 - Memorize os pares: AD × DBA, incremental × diferencial, RPO × RTO, ordem do
-  ARIES, bitmap × B+ Tree.
+  ARIES, bitmap × B+ Tree, rotulado × não rotulado, data × concept drift,
+  L1 × L2, Tipo 1 × Tipo 2, over × underfitting.
 
 ## Rode as questões
 
