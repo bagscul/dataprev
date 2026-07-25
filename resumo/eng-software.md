@@ -22,6 +22,54 @@
 Pegadinha clássica: o enunciado descreve "fases sequenciais, requisitos
 congelados" → é **cascata**, não incremental nem ágil.
 
+**Modelo V — cada fase tem o seu teste.** Variação do cascata que **espelha**
+construção e verificação: o ramo descendente vai do requisito ao código, o
+ascendente sobe testando, e cada nível confere o que foi decidido no nível
+equivalente do outro lado.
+
+| Fase (ramo descendente) | Nível de teste que a verifica |
+|---|---|
+| Requisitos do usuário | **Teste de aceitação** |
+| Especificação do sistema | Teste de sistema |
+| Projeto arquitetural (módulos e interfaces) | **Teste de integração** |
+| Projeto detalhado (algoritmos) | Teste de unidade |
+| Codificação | (vértice do V) |
+
+A lógica é "quem definiu, confere": o que foi **acordado com o usuário** é
+conferido na **aceitação**; o que foi decidido no **projeto arquitetural** — a
+divisão em módulos e suas interfaces — é conferido na **integração**.
+Pegadinha: requisito nunca casa com teste de unidade (unidade verifica o
+**projeto detalhado**), nem codificação com aceitação. Na dúvida, use as
+pontas: requisito ↔ aceitação em cima, código ↔ unidade embaixo.
+
+## 1.1 Maturidade de processo: CMMI e MPS.BR
+
+Avaliam **quão maduro é o processo** da organização — não a qualidade de um
+produto. **CMMI, representação por estágios** (a que a banca cobra):
+
+| Nº | Nível | O que caracteriza |
+|---|---|---|
+| 1 | Inicial | imprevisível, reativo, dependente de heróis |
+| 2 | Gerenciado | gerenciado **por projeto** (planejado, monitorado) |
+| 3 | **Definido** | processo **padronizado na organização**, não projeto a projeto |
+| 4 | Gerenciado Quantitativamente | processo **medido e controlado por estatística** |
+| 5 | Em Otimização | melhoria contínua a partir da medição |
+
+**As duas representações:** *por estágios* dá um número de **maturidade** à
+organização inteira (a escala acima); *contínua* dá um nível de **capacidade**
+a cada área de processo isolada, que podem evoluir em ritmos diferentes.
+
+**MPS.BR** (modelo brasileiro, MR-MPS-SW): sete níveis identificados por
+letras, **de G até A** — G (Parcialmente Gerenciado), F (Gerenciado), E
+(Parcialmente Definido), D (Largamente Definido), C (Definido), B (Gerenciado
+Quantitativamente), A (Em Otimização). Evolui-se **de G para A**: G é o ponto
+de partida, A é o topo.
+
+Pegadinhas: dizer que o **nível 3 é o Gerenciado** (é o **Definido**);
+inverter o topo, pondo Gerenciado depois de Definido (acima do 3 vem
+**Gerenciado Quantitativamente**); afirmar que o MPS.BR **começa no A** (é o
+contrário). E a contagem: **cinco** níveis no CMMI, **sete** no MPS.BR.
+
 ## 2. Engenharia de requisitos
 
 **Classificação (o par que mais cai):**
@@ -51,6 +99,18 @@ A FGV afirma que "brainstorming é inadequado, use só entrevista formal" — é
   - **Retrospective = processo** (o que melhorar no jeito de trabalhar).
   - No Daily, com risco à Sprint, o Scrum Master **facilita a solução do
     time**, não redistribui tarefas sozinho nem assume a tarefa.
+  - **Compromissos (Scrum Guide 2020):** cada artefato tem um **compromisso**
+    associado, que lhe dá foco e permite medir progresso — três pares fixos:
+
+    | Artefato | Compromisso | O que ele fixa |
+    |---|---|---|
+    | Product Backlog | **Meta do Produto** (Product Goal) | objetivo de longo prazo |
+    | Sprint Backlog | **Meta da Sprint** (Sprint Goal) | objetivo único da Sprint |
+    | Increment | **Definition of Done** | padrão de qualidade do "pronto" |
+
+    A banca mantém os nomes certos e **embaralha as ligações**. Guie-se pelo
+    horizonte: produto → Product Backlog; Sprint → Sprint Backlog; "pronto" →
+    Incremento.
 - **Kanban:** **fluxo contínuo**, sem sprints fechadas; limita WIP (trabalho
   em progresso); entrega conforme conclui.
 - **XP (Extreme Programming):** práticas de engenharia — programação em par,
@@ -71,6 +131,32 @@ sprints"); Scrum **tem** time-box.
 | **Aceitação** | atende ao cliente/requisito |
 | **Usabilidade** | experiência/interface intuitiva |
 | **Regressão** | mudança não quebrou o que já funcionava |
+| **Fumaça (smoke)** | verificação rápida e superficial das funções principais |
+
+**Testes de desempenho** — os três se confundem porque todos "sobrecarregam";
+o que muda é **até onde** se vai:
+
+- **Carga (load):** o volume de uso **esperado em produção**.
+- **Estresse (stress):** vai **além** do previsto até achar o **ponto de
+  ruptura** e ver como o sistema quebra (e se recupera).
+- **Volume:** muita **massa de dados** armazenada, não muitos usuários.
+
+Pegadinha: "ultrapassar o previsto até deixar de responder" = **estresse**; o
+gatilho é a palavra *além/ultrapassa*. Carga é a quase-certa oferecida nesse
+cenário.
+
+**Cobertura de caixa-branca** — quanto do código os testes exercitam:
+
+- **Comandos** (*statement*): cada linha executada ao menos uma vez.
+- **Decisões** (ramos/*branch*): cada decisão avaliada **como verdadeira e
+  como falsa**.
+- **Caminhos:** cada combinação de caminhos — o mais forte, em geral inviável.
+
+Força crescente: comandos < decisões < caminhos. **100% de decisões implica
+100% de comandos; a recíproca é falsa.** O caso-teste da banca é o `if` **sem
+else**: com `if (a > 10) { x = 1; }` e um único caso `a = 20`, comandos ficam
+em **100%** e decisões em **50%**, porque a condição nunca foi avaliada como
+falsa — ainda que não exista `else` escrito.
 
 - **TDD (Test-Driven Development):** escreve o **teste antes** do código
   (red → green → refactor). Foco em design e cobertura.
@@ -80,6 +166,24 @@ sprints"); Scrum **tem** time-box.
   (baseado na estrutura interna/código).
 - **RPA (Robotic Process Automation):** automatiza tarefas repetitivas de
   interface (robôs de software), não é teste.
+
+## 4.1 Manutenção de software
+
+Classificação clássica (ISO/IEC 14764) do que se faz **depois de entregue**. O
+critério é a **causa** da alteração, não o momento nem o tamanho:
+
+| Tipo | Causa da alteração |
+|---|---|
+| **Corretiva** | **corrigir defeito** já detectado (erro relatado, falha em produção) |
+| **Adaptativa** | acompanhar **mudança do ambiente**: SO, SGBD, plataforma, hardware, legislação |
+| **Perfectiva** | **melhorar** o que já funciona: desempenho, manutenibilidade, requisito novo |
+| **Preventiva** | corrigir **falha latente** antes que ela se manifeste |
+
+Pegadinha: atualização obrigatória do SGBD, sem defeito relatado e sem
+funcionalidade nova, é **adaptativa** — a causa é o **ambiente**. Não é
+corretiva (não há defeito), nem perfectiva (não melhora nada), nem preventiva
+(não antecipa falha latente). "Evolutiva" é rótulo de fora dessa classificação
+que a banca oferece como se fosse um dos quatro tipos.
 
 ## 5. Mensuração: Ponto de Função × Story Points
 
@@ -119,7 +223,10 @@ não funcional (cenário do saldo em tempo real); brainstorming como elicitaçã
 válida; Scrum Master no Daily e no Sprint Planning (capacidade do time);
 metodologia ágil para mudança frequente (XP/Scrum/Kanban); CD no DevOps;
 Ponto de Função × Story Points; design alto × baixo nível; testes I/II/III/IV
-+ TDD; ágil híbrido. Rode `../quiz.py eng-software`.
++ TDD; ágil híbrido; CMMI por estágios (nível 3 = Definido) e MPS.BR; modelo V
+(requisitos ↔ aceitação, arquitetural ↔ integração); tipos de manutenção
+(adaptativa na troca de SGBD); cobertura de comandos × decisões; estresse ×
+carga; os três compromissos do Scrum. Rode `../quiz.py eng-software`.
 
 ## Pegadinhas da FGV (resumo)
 

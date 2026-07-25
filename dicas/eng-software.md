@@ -18,7 +18,17 @@
   Lean x Cascata.
 - Testes: unitário x integração x TDD (teste antes) x
   usabilidade; testes automatizados servem à integração
-  contínua e reduzem retrabalho de regressão.
+  contínua e reduzem retrabalho de regressão. Também:
+  cobertura de comandos x decisões (caixa-branca) e os
+  testes de desempenho — carga x estresse x volume.
+- Maturidade de processo: CMMI por estágios (cinco níveis,
+  o 3 é o Definido) e MPS.BR (sete letras, de G até A).
+- Modelo V: parear fase de desenvolvimento com nível de
+  teste. Tipos de manutenção: corretiva, adaptativa,
+  perfectiva, preventiva.
+- Scrum Guide 2020: os três COMPROMISSOS pareados com os
+  três artefatos (Product Backlog/Meta do Produto, Sprint
+  Backlog/Meta da Sprint, Incremento/Definition of Done).
 - BPMN/CBOK: swim lanes/handoffs, gateways exclusivo x
   paralelo. UML: agregação composta. SNAP (medição não
   funcional). SVN x Git (binários). GitLab CI (variáveis,
@@ -40,6 +50,22 @@
   precisa ser alterado".
 - Elicitação: chama brainstorming de "técnica inadequada" ou
   diz que requisito vem DEPOIS da implementação.
+- CMMI: diz que o nível 3 é o "Gerenciado" (é o Definido),
+  inverte o topo (acima do 3 vem Gerenciado QUANTITATIVAMENTE,
+  depois Em Otimização) ou afirma que o MPS.BR começa no A —
+  começa no G. Cuidado com "a escala tem quatro níveis".
+- Modelo V: embaralha os pares — casa requisito com teste de
+  UNIDADE (unidade verifica o projeto detalhado) ou
+  codificação com aceitação.
+- Manutenção: chama de corretiva a troca de versão do SGBD
+  (não há defeito: é ADAPTATIVA, a causa é o ambiente), ou
+  oferece "evolutiva", que está fora da classificação.
+- Cobertura: diz que comandos e decisões são equivalentes, ou
+  que num if sem else um caso verdadeiro já fecha os dois.
+- Estresse x carga: oferece "carga" no cenário que fala em
+  ULTRAPASSAR o previsto — carga fica DENTRO do esperado.
+- Compromissos do Scrum: mantém os nomes certos e troca as
+  ligações (Definition of Done colada ao Product Backlog).
 
 ## Como se sair melhor
 - Decore o par: RF = função/comportamento; RNF = qualidade
@@ -54,5 +80,16 @@
   executa; PO prioriza; time estima e se compromete pela
   capacidade. Mudança de escopo → backlog + PO, nunca "recusar
   por comprometer o plano".
+- Modelo V, na dúvida use as pontas: em cima requisito ↔
+  aceitação; embaixo código ↔ unidade. O meio se resolve por
+  eliminação (arquitetural ↔ integração).
+- Manutenção: pergunte QUAL A CAUSA. Defeito = corretiva;
+  ambiente mudou = adaptativa; melhoria = perfectiva; falha
+  que ainda não aconteceu = preventiva.
+- Cobertura: 100% de decisões IMPLICA 100% de comandos, nunca
+  o contrário. Comandos < decisões < caminhos.
+- Compromissos do Scrum, pelo horizonte: produto (longo prazo)
+  → Product Backlog; a Sprint → Sprint Backlog; o "pronto" →
+  Incremento.
 - Gatilhos de distrator: "sempre", "apenas", "exclusivamente",
   "nunca precisa alterar", "após a implementação".

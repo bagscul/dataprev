@@ -36,6 +36,82 @@ O enunciado descreve ``fases sequenciais, requisitos congelados'' $\to$ é
 abertura do bloco.
 \end{pegadinha}
 
+\begin{conceito}[Modelo V --- cada fase tem o seu teste]
+Variação do cascata que \textbf{espelha} construção e verificação: o ramo
+descendente vai do requisito ao código, o ascendente sobe testando, e cada
+nível de teste confere o que foi decidido no nível equivalente do outro lado.
+
+\begin{center}
+\begin{tabular}{@{}p{6cm}p{5.6cm}@{}}
+\toprule
+\textbf{Fase (ramo descendente)} & \textbf{Nível de teste que a verifica} \\
+\midrule
+Requisitos do usuário & \textbf{Teste de aceitação} \\
+Especificação do sistema & Teste de sistema \\
+Projeto arquitetural (módulos e interfaces) & \textbf{Teste de integração} \\
+Projeto detalhado (algoritmos) & Teste de unidade \\
+Codificação & (vértice do V) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A lógica é ``quem definiu, confere'': o que foi \textbf{acordado com o
+usuário} é conferido na \textbf{aceitação}; o que foi decidido no
+\textbf{projeto arquitetural} --- a divisão em módulos e suas interfaces ---
+é conferido na \textbf{integração}.
+\end{conceito}
+
+\begin{pegadinha}
+A FGV embaralha os pares do V. Requisito nunca casa com teste de unidade
+(unidade verifica o \textbf{projeto detalhado}), e codificação nunca casa com
+aceitação. Se estiver em dúvida, use as pontas: a de cima é sempre
+requisito $\leftrightarrow$ aceitação; a de baixo, código $\leftrightarrow$
+unidade.
+\end{pegadinha}
+
+\section{Maturidade de processo: CMMI e MPS.BR}
+
+Modelos que avaliam \textbf{quão maduro é o processo} da organização --- não
+a qualidade de um produto específico.
+
+\textbf{CMMI --- representação por estágios} (a que a banca cobra): cinco
+níveis de maturidade da organização inteira.
+
+\begin{center}
+\begin{tabular}{@{}p{1cm}p{3.6cm}p{7.2cm}@{}}
+\toprule
+\textbf{Nº} & \textbf{Nível} & \textbf{O que caracteriza} \\
+\midrule
+1 & Inicial & processo imprevisível, reativo, dependente de heróis \\
+2 & Gerenciado & gerenciado \textbf{por projeto} (planejado, monitorado) \\
+3 & \textbf{Definido} & processo \textbf{padronizado no âmbito da organização}, e não projeto a projeto \\
+4 & Gerenciado Quantitativamente & processo \textbf{medido e controlado por estatística} \\
+5 & Em Otimização & melhoria contínua a partir da medição \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{As duas representações:} \emph{por estágios} dá um número de
+\textbf{maturidade} à organização (os cinco níveis acima); \emph{contínua} dá
+um nível de \textbf{capacidade} a cada área de processo isolada, permitindo
+evoluir umas antes das outras.
+
+\textbf{MPS.BR} (modelo brasileiro, MR-MPS-SW): mesma ideia, escala própria
+com \textbf{sete níveis identificados por letras, de G até A} --- G
+(Parcialmente Gerenciado), F (Gerenciado), E (Parcialmente Definido), D
+(Largamente Definido), C (Definido), B (Gerenciado Quantitativamente), A (Em
+Otimização). Evolui-se \textbf{de G para A}: o G é o ponto de partida e o A é
+o topo.
+
+\begin{pegadinha}
+Três trocas prontas: (i) dizer que o \textbf{nível 3 é o Gerenciado} --- ele é
+o \textbf{Definido}; (ii) inverter a ordem do topo, pondo o Gerenciado depois
+do Definido --- acima do 3 vem \textbf{Gerenciado Quantitativamente} e só
+então Em Otimização; (iii) afirmar que o MPS.BR \textbf{começa no A}. É o
+contrário: começa no G. Cuidado também com ``a escala tem quatro níveis'' ---
+são \textbf{cinco} no CMMI e \textbf{sete} no MPS.BR.
+\end{pegadinha}
+
 \section{Engenharia de requisitos}
 
 O par que mais cai no bloco inteiro (Dataprev, MPU e TJ-RJ todos cobraram):
@@ -87,6 +163,22 @@ Retrospective.
 
 \textbf{Artefatos:} Product Backlog, Sprint Backlog, Increment.
 
+\textbf{Compromissos (Scrum Guide 2020):} cada artefato tem um
+\textbf{compromisso} associado, que lhe dá foco e permite medir progresso.
+São três pares fixos:
+
+\begin{center}
+\begin{tabular}{@{}p{4.2cm}p{4.4cm}p{4cm}@{}}
+\toprule
+\textbf{Artefato} & \textbf{Compromisso} & \textbf{O que ele fixa} \\
+\midrule
+Product Backlog & \textbf{Meta do Produto} (Product Goal) & o objetivo de longo prazo \\
+Sprint Backlog & \textbf{Meta da Sprint} (Sprint Goal) & o objetivo único da Sprint \\
+Increment & \textbf{Definition of Done} & o padrão de qualidade do ``pronto'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+
 \begin{itemize}
 \item \textbf{Sprint Review = produto} (inspeciona o incremento com
 stakeholders).
@@ -114,6 +206,12 @@ Lean & Eliminar desperdício, otimizar o fluxo de valor. \\
 \begin{pegadinha}
 Kanban \textbf{não} tem sprint --- o distrator clássico é ``Kanban organiza o
 trabalho em sprints''. Scrum \textbf{tem} time-box; Kanban é fluxo contínuo.
+Nos \textbf{compromissos}, a banca mantém os nomes certos e \textbf{embaralha
+as ligações}: Definition of Done é do \textbf{Incremento} (nunca do Product
+Backlog nem do Sprint Backlog), e a Meta do Produto é do \textbf{Product
+Backlog} (nunca do Incremento). Guie-se pelo horizonte: produto (longo prazo)
+$\to$ Product Backlog; Sprint $\to$ Sprint Backlog; ``pronto'' $\to$
+Incremento.
 \end{pegadinha}
 
 \begin{jacaiu}
@@ -136,9 +234,86 @@ Sistema & o sistema completo \\
 Aceitação & atende ao cliente/requisito \\
 Usabilidade & experiência/interface intuitiva \\
 Regressão & mudança não quebrou o que já funcionava \\
+Fumaça (smoke) & verificação rápida e superficial das funções principais \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\begin{conceito}[Testes de desempenho --- carga, estresse, volume]
+Os três se confundem porque todos ``sobrecarregam'' o sistema. O que muda é
+\textbf{até onde} se vai:
+
+\begin{itemize}
+\item \textbf{Carga (load):} roda o volume de uso \textbf{esperado em
+produção} e observa se o sistema aguenta o previsto.
+\item \textbf{Estresse (stress):} vai \textbf{além} do previsto, aumentando
+até achar o \textbf{ponto de ruptura} --- e como o sistema se comporta ao
+quebrar (e ao se recuperar).
+\item \textbf{Volume:} muita \textbf{massa de dados} armazenada, não muitos
+usuários simultâneos.
+\end{itemize}
+\end{conceito}
+
+\begin{pegadinha}
+``Ultrapassar o previsto até o sistema deixar de responder'' é
+\textbf{estresse}; ``comportar-se bem no volume contratado'' é \textbf{carga}.
+A FGV oferece carga como quase-certa em cenário de estresse --- o gatilho é a
+palavra \textbf{além/ultrapassa}. Volume é massa de \textbf{dados}, não de
+usuários.
+\end{pegadinha}
+
+\begin{conceito}[Cobertura de caixa-branca]
+Critérios que medem \textbf{quanto do código} os testes exercitam:
+
+\begin{itemize}
+\item \textbf{Comandos} (instruções/\emph{statement}): cada linha executada
+ao menos uma vez.
+\item \textbf{Decisões} (ramos/\emph{branch}): cada decisão avaliada
+\textbf{como verdadeira e como falsa}.
+\item \textbf{Caminhos:} cada combinação de caminhos pelo código --- o mais
+forte e, em geral, inviável de atingir por completo.
+\end{itemize}
+
+Força crescente: comandos $<$ decisões $<$ caminhos. \textbf{100\% de decisões
+implica 100\% de comandos; a recíproca é falsa.}
+\end{conceito}
+
+\begin{pegadinha}
+O caso-teste da banca é o \texttt{if} \textbf{sem else}. Com
+\texttt{if (a > 10) \{ x = 1; \}} e um único caso \texttt{a = 20}, todas as
+linhas rodam --- \textbf{comandos em 100\%} --- mas a condição nunca foi
+avaliada como falsa, então \textbf{decisões fica em 50\%}, ainda que não
+exista bloco \texttt{else} escrito. Nunca aceite que os dois critérios são
+equivalentes.
+\end{pegadinha}
+
+\section{Manutenção de software}
+
+Classificação clássica (ISO/IEC 14764) do que se faz com o software
+\textbf{depois de entregue}. O critério é a \textbf{causa} da alteração, não o
+momento nem o tamanho:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.4cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Causa da alteração} \\
+\midrule
+Corretiva & \textbf{corrigir defeito} já detectado (erro relatado, falha em produção) \\
+Adaptativa & acompanhar \textbf{mudança do ambiente}: sistema operacional, SGBD, plataforma, hardware, legislação \\
+Perfectiva & \textbf{melhorar} o que já funciona: desempenho, manutenibilidade, requisito novo pedido pelo usuário \\
+Preventiva & corrigir \textbf{falha latente} antes que ela se manifeste (reduzir risco futuro) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Atualização obrigatória do banco de dados, sem defeito relatado e sem
+funcionalidade nova, é \textbf{adaptativa} --- a causa é o \textbf{ambiente}.
+Não é corretiva (não há defeito a corrigir), não é perfectiva (não se melhora
+nada) e não é preventiva (não se antecipa falha latente alguma). Cuidado
+também com ``evolutiva'', rótulo de fora dessa classificação que a banca
+oferece como se fosse um dos quatro tipos.
+\end{pegadinha}
 
 \begin{conceito}[TDD e BDD]
 \textbf{TDD (Test-Driven Development):} escreve o \textbf{teste antes} do
