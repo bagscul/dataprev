@@ -94,11 +94,51 @@ parte.
 Pegadinha 2024: "o que **não** é armazenado no bloco" = **saldo das
 carteiras** (é calculado, não guardado).
 
+## 7. Python aplicado a dados
+
+O bloco não é só Java: a FGV mostra um trecho curto de Python e pergunta a
+**saída**. A técnica de resolver está em `leitura-codigo.md`; o conteúdo é este.
+
+**NumPy — referência × cópia (a armadilha central):**
+
+| | `a.view()` | `a.copy()` |
+|---|---|---|
+| Buffer | **compartilha** o de `a` | **independente** |
+| `.base` | aponta para o array original | **`None`** |
+| Alterar `a[0]` depois | **reflete** no view | não reflete |
+
+- Shape de vetor 1-D termina em vírgula: **`(3,)`**, não `(3,1)`.
+
+**Dicionário:**
+
+- `max(dic)` compara as **chaves**; `max(dic, key=dic.get)` compara os
+  **valores** e devolve a **chave** vencedora (não o valor).
+
+**Listas:**
+
+- Fatiamento `lista[a:b]` inclui `a` e **exclui** `b` — `nums[1:4]` devolve
+  três elementos.
+- Índice negativo conta do fim; `-1` é o último.
+- Compreensão e expressão geradora: `sum(n for n in nums if n % 2 == 0)` soma
+  só os que passam no filtro.
+
+**Gráficos:** em `matplotlib.pyplot`, o parâmetro **`explode`** destaca (afasta)
+uma fatia da pizza.
+
+**PHP 8** (não é Python, mas cai no mesmo tipo de item de função): funções de
+sessão — `session_start`, `session_destroy`, `session_regenerate_id`.
+
+Pegadinhas: inverter `view`/`copy` (dizer que `copy` compartilha a base, ou que
+`view` tem `.base = None`); errar o shape do 1-D; fatiamento que "inclui" o
+índice final; alternativa que traz a **chave certa com o valor errado** no
+`max` com `key=`.
+
 ## O que já caiu (nossas questões)
 
 Spring/Spring Cloud/Spring Boot/Hibernate/JUnit (papéis); XML/XSLT/JSON;
 Flutter (Dart); blockchain (o que não fica no bloco); SPA × PWA (ver
-`frontend.md`); NumPy view × copy; Kotlin/Swift. Rode `../quiz.py programacao`.
+`frontend.md`); NumPy view × copy; Kotlin/Swift; Python — `max(dic, key=)` e
+fatiamento com fim exclusivo. Rode `../quiz.py programacao`.
 
 ## Pegadinhas da FGV (resumo)
 

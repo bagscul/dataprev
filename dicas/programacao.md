@@ -16,6 +16,10 @@
   (compartilha buffer, .base aponta para o original) x copy()
   (cópia independente, .base = None); matplotlib.pyplot
   (parâmetro explode destaca fatia da pizza).
+- Python puro em trecho curto: max(dic) compara CHAVES x
+  max(dic, key=dic.get) compara VALORES e devolve a chave;
+  fatiamento lista[a:b] exclui b; compreensão e expressão
+  geradora com filtro (sum(n for n in nums if ...)).
 - PHP 8: funções de sessão (session_start, session_destroy,
   session_regenerate_id). Conceitos de IA (redes neurais como
   o que "aprende com dados"), blockchain (o que o bloco
@@ -33,6 +37,10 @@
 - NumPy: inverte view/copy — diz que copy compartilha base ou
   que view tem base None; ou erra o shape (array 1-D é
   (3,), não (3,1)).
+- Em max com key=, oferece a alternativa com a chave CERTA e o
+  valor ERRADO (ou o inverso: devolve o valor máximo no lugar
+  da chave). No fatiamento, monta a alternativa que INCLUI o
+  índice final — é um elemento a mais, e passa despercebido.
 - Distrator de definição decorada: pede o framework Dart e
   oferece React Native (JS), Xamarin (C#), Ionic — que não são
   Dart.
@@ -45,6 +53,10 @@
 - NumPy: copy() = independente, .base None; view() = mesma
   memória, .base é o array-fonte; alterar antes do view()
   reflete no view. Shape de vetor 1-D termina em vírgula: (3,).
+- Fatiamento: conte b - a para saber QUANTOS elementos saem
+  ([1:4] = 3). O key= no max/min/sorted diz por onde COMPARAR,
+  nunca o que devolver — o retorno continua sendo o elemento
+  (a chave, no caso do dicionário).
 - Nativo mobile: Kotlin/Android, Swift/iOS (Objective-C e Java
   são os antigos). Multiplataforma Dart = Flutter.
 - SPA = sem reload, roda no navegador; PWA = instalável, cache/

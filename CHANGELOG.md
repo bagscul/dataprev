@@ -2,6 +2,49 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — IA aplicada, ESG e Python para dados nas camadas (auditoria, Bloco VII/ITEM 6)
+
+- **Buraco que o detector de drift do ITEM 5 não pegava.** A checagem 1 varre só
+  `\section{}` da apostila; conteúdo que mora em `\subsection` fica invisível a
+  ela. Foi assim que estes quatro descompassos passaram — todos encontrados na
+  leitura manual, não pela ferramenta.
+- **`resumo/atualidades.md` (92 → 157 linhas).** Duas seções novas:
+  - **"IA aplicada — os cenários que a FGV monta"**: o edital pede *fundamentos
+    e aplicações*, e o material só tinha fundamento. Tabela dos quatro cenários
+    (triagem/priorização → classificação supervisionada; detecção de fraude →
+    não supervisionado + concept drift; chatbot com LLM → alucinação e validação
+    humana; score algorítmico → viés que reproduz desigualdade histórica),
+    ancorada no **art. 20 da LGPD** (revisão de decisão automatizada), mais as
+    quatro pegadinhas do formato — decisão sem revisão humana vendida como boa
+    prática, "neutro porque não usa raça/gênero" (ignora as variáveis **proxy**),
+    explicabilidade trocada por acurácia, e LLM como fonte infalível;
+  - **"Interseção IA × ESG"**: fatia de TI × resfriamento no consumo do data
+    center, **PUE** (energia total ÷ energia da TI, quanto mais perto de 1,0
+    melhor), dependência de matriz fóssil e a discussão de divulgação obrigatória
+    do impacto ambiental, com três pegadinhas — o número inflado em relação ao
+    texto-base e os dois absolutos simétricos ("usa majoritariamente energia
+    limpa" × "IA é incompatível com sustentabilidade").
+- **`dicas/atualidades.md` (64 → 124 linhas).** O mesmo conteúdo destilado nas
+  quatro seções que a dica já tinha, e um **aviso de calibração**: IA é o único
+  conteúdo do repositório sem lastro em prova passada da FGV — a banca nunca
+  cobrou IA na Dataprev antes de 2026. O que se diz sobre o *formato* dos itens
+  de IA é **projeção, não histórico observado**; a aposta é item introdutório
+  (definição, tipos de aprendizado, viés, alucinação), porque pegadinha
+  sofisticada a banca só monta depois de anos calibrando o tema.
+- **`resumo/programacao.md` (116 → 156 linhas).** Seção 7, **"Python aplicado a
+  dados"** — o bloco não é só Java, e o resumo não tinha nada de Python: NumPy
+  `view` × `copy` em tabela (buffer compartilhado × independente, `.base`
+  apontando para o original × `None`), shape 1-D `(3,)`, `max(dic)` (compara
+  chaves) × `max(dic, key=dic.get)` (compara valores, devolve a chave),
+  fatiamento com fim exclusivo, compreensão × expressão geradora e o `explode`
+  do matplotlib. **PHP 8** ficou com rótulo próprio, fora do Python.
+- **`dicas/programacao.md` (54 → 66 linhas).** `max` com e sem `key=` e
+  fatiamento, com as duas armadilhas correspondentes: a alternativa com a chave
+  certa e o valor errado, e a que inclui o índice final do fatiamento.
+- Nada removido: as duas deleções do diff são reflow de linhas de "o que já
+  caiu" que ganharam itens. `./valida.py` silencioso (só os dois avisos
+  pré-existentes: `mpu Q41` e as 9 questões de forma herdadas).
+
 ## 2026-07-25 — detector de drift entre as camadas (auditoria, Bloco VII/ITEM 5)
 
 - **`valida.py` passa a avisar quando as camadas saem de sincronia** (apostila →
