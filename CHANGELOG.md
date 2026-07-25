@@ -58,6 +58,38 @@ Também acertei duas contagens da auditoria: `banco-dados` tem **25** questões
 reais (não 24) e `seguranca` tem **38** (o 43 era pré-retag, antes de os cinco
 itens de LGPD/LAI virarem `legislacao`).
 
+### Os três resíduos, fechados na sequência
+
+- **Retag: 11 questões de arquitetura de _computadores_ saíram de
+  `arquitetura`.** Deixá-las ali inflava o bloco em 32% e distorcia a leitura
+  do que a FGV cobra de arquitetura de _software_: **34 → 23** questões reais.
+  Foram para `orfaos` (**57 → 68** — de quebra, o "56" que a caixa declarava
+  também estava errado). Trocada só a `tag`, por `(prova, num)`; o `id` do
+  histórico é `prova:num`, então nada no progresso depende disso.
+- **52 alternativas carregavam o rodapé do PDF.** Fui atrás do aviso do
+  `mpu Q41` e o que apareceu foi um defeito sistemático da importação: o
+  extrator emenda o rodapé da página seguinte na **última** alternativa. Junto
+  vinham cabeçalhos de seção e, em três casos, o enunciado **inteiro** da prova
+  discursiva — a alternativa E da `tjrj2 Q70` tinha 1322 caracteres, dos quais
+  98 eram a alternativa. Importa além da sujeira: alternativa poluída fica
+  muito mais longa que as irmãs, que é o mesmo vazamento de forma caçado no
+  Bloco VI, agora do lado das provas reais — as que servem de padrão-ouro de
+  estilo quando geramos questão nova.
+- **O `mpu Q41` continua fora do sorteio, e está certo.** As cinco alternativas
+  são símbolos BPMN; conferi no PDF e as linhas "(A)" a "(E)" são vazias lá
+  também. Não há texto a restaurar — o que dava para limpar era o rodapé. O
+  aviso do `valida.py` é a descrição correta de uma questão que depende de
+  imagem, não um defeito.
+- **Aviso de forma: 9 questões → 1.** As 8 questões cuja correta era ≥1,7× a
+  média das erradas foram niveladas **por baixo** (enriquecer o distrator-âncora,
+  nunca encurtar a correta): #73, #189, #81, #152, #110, #44, #55 e #49. A #41
+  (drill-down) fica como está — é falso positivo preservado de propósito, do
+  tipo "nomeie o termo", em que a correta é maior só porque a palavra é maior.
+
+**Novo baseline do `./valida.py --strict`:** ainda sai **1**, agora com dois
+avisos, ambos intencionais — o `mpu Q41` (questão de imagem) e a #41 (falso
+positivo preservado).
+
 ## 2026-07-25 (madrugada) — varredura do GRUPO C (auditoria, ITEM 7 · P0–P4)
 
 Sete blocos varridos contra as 112 questões que os alimentam: **legislação,
