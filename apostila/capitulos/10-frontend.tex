@@ -21,8 +21,31 @@ saída. Não dá para decorar só conceito; treine ler snippet.}
 \textbf{padding} (interno, dentro da borda) $\to$ \textbf{border} $\to$
 \textbf{margin} (externo, fora da borda).
 
-\textbf{Responsividade:} media queries, unidades relativas (\%, em, rem,
-vw/vh), layouts flexíveis (Flexbox, Grid).
+\textbf{Responsividade:} \textbf{media queries} (aplicam estilo conforme a
+característica do dispositivo, tipicamente a largura da tela), unidades
+relativas (\%, em, rem, vw/vh), layouts flexíveis.
+
+\textbf{Flexbox $\times$ Grid:} o \textbf{Flexbox} é
+\textbf{unidimensional} --- distribui itens ao longo de \textbf{um} eixo por
+vez (linha \emph{ou} coluna). O \textbf{Grid} é \textbf{bidimensional} ---
+define linhas \textbf{e} colunas ao mesmo tempo. Um não substitui o outro:
+Grid para a estrutura da página, Flexbox para alinhar o conteúdo dentro de
+cada área.
+
+\textbf{Especificidade dos seletores} (quem vence quando duas regras
+declaram a mesma propriedade): \texttt{id} (100) $>$ classe / atributo /
+pseudoclasse (10) $>$ elemento (1). A ordem de declaração no arquivo só
+desempata \textbf{especificidades iguais} --- não vence uma especificidade
+maior. (\texttt{!important} passa por cima de tudo, e por isso é
+desaconselhado.)
+
+\textbf{\texttt{@import} $\times$ \texttt{<link>}:} os dois trazem uma folha
+de estilo externa, mas o \texttt{@import} é resolvido \textbf{dentro do CSS}
+e em série (bloqueia o carregamento em cascata), enquanto o \texttt{<link>}
+no HTML permite download em paralelo --- por isso \texttt{<link>} é a prática
+recomendada. \texttt{@import} \textbf{não} é mecanismo de responsividade (é
+distrator recorrente em questão de media query, embora aceite condição de
+mídia).
 
 \begin{pegadinha}
 \textbf{padding $\times$ margin} (interno $\times$ externo) é o par que a
@@ -32,7 +55,11 @@ FGV mais inverte no bloco. Em CSS, some as regras com cuidado:
 \texttt{content: attr(x)} imprime o \textbf{valor} do atributo \texttt{x}.
 Resolva no papel, elemento por elemento: aplique o pseudo-elemento, resolva o
 \texttt{attr()}, e só então aplique a direção do flex --- a pegadinha está
-exatamente na soma dos três.
+exatamente na soma dos três. Outras duas inversões do bloco: dizer que
+``a \textbf{última} regra declarada sempre vence'' (só vence entre
+especificidades \textbf{iguais} --- o seletor de \texttt{id} ganha do de
+classe mesmo declarado antes) e trocar \textbf{Flexbox} por \textbf{Grid}
+(uni $\times$ bidimensional).
 \end{pegadinha}
 
 \section{SPA $\times$ PWA (o coração deste bloco)}
@@ -54,6 +81,14 @@ Depende de & JS no navegador & recursos web progressivos \\
 
 \textbf{PWA:} usa \textbf{Service Worker} para \textbf{cache, offline e
 notificações}, e pode ser \textbf{instalada} no dispositivo como app nativo.
+
+O \textbf{Service Worker} é um script que roda \textbf{em segundo plano},
+separado da página, como \textbf{proxy} entre a aplicação e a rede --- é daí
+que vêm o cache e o funcionamento offline. Não tem acesso direto ao DOM e
+\textbf{exige HTTPS} (só \texttt{localhost} é exceção), justamente porque
+interceptar requisições em conexão não cifrada seria um vetor de ataque. O
+\textbf{manifest} (\texttt{manifest.json}) é o outro pilar: nome, ícones e
+modo de exibição que permitem a \textbf{instalação}.
 
 \begin{pegadinha}
 \textbf{Service Worker é da PWA}, não requisito de SPA --- a alternativa que
@@ -97,8 +132,21 @@ JSON.
 (interface)}: UX é a experiência toda; UI é a camada visual.
 \item \textbf{Usabilidade} (Nielsen): eficiência, eficácia, satisfação,
 facilidade de aprendizado, prevenção de erros.
-\item \textbf{Acessibilidade:} \textbf{WCAG} (W3C) --- POUR: perceptível,
-operável, compreensível, robusto; no Brasil, \textbf{eMAG} para governo.
+\item \textbf{Acessibilidade:} \textbf{WCAG} (W3C) --- quatro princípios
+\textbf{POUR}: perceptível, operável, compreensível, robusto. Cada critério
+de sucesso tem um \textbf{nível de conformidade}: \textbf{A} (mínimo),
+\textbf{AA} (o exigido na maioria das normas e contratos públicos) e
+\textbf{AAA} (máximo, nem sempre alcançável no site inteiro). No Brasil,
+\textbf{eMAG} para governo.
+\item \textbf{ARIA} (\textit{Accessible Rich Internet Applications}):
+conjunto de atributos --- \texttt{role}, \texttt{aria-label},
+\texttt{aria-hidden}, \texttt{aria-live} --- que acrescenta \textbf{semântica}
+a elementos \textbf{dinâmicos} ou construídos sem tag nativa, para que
+leitores de tela anunciem função, nome e estado. \textbf{Regra número um do
+ARIA: não usar ARIA.} Se existe elemento HTML nativo com a semântica certa
+(\texttt{<button>}, \texttt{<nav>}, \texttt{<label>}), use o nativo --- o
+ARIA é complemento para o que o HTML não cobre, e ARIA mal aplicado piora a
+acessibilidade em vez de melhorar.
 \item \textbf{Arquitetura de informação:} organização e navegação do
 conteúdo.
 \item \textbf{CMS} (sistema de gestão de conteúdo): cria/gerencia conteúdo
@@ -169,6 +217,41 @@ numa regra isolada. Resolva cada camada separadamente antes de somar o
 resultado --- não tente ``visualizar direto''.
 \end{pegadinha}
 
+\subsection{Escopo e closures em JavaScript}
+
+\begin{conceito}[O item clássico do laço com \texttt{var}]
+\texttt{var} tem escopo de \textbf{função} (não de bloco) e sofre
+\textit{hoisting}: é içada para o topo da função. Num laço, isso significa
+que existe \textbf{uma única} variável, compartilhada por todas as funções
+criadas dentro dele --- quando elas forem executadas, todas leem o valor
+\textbf{final}.
+
+\begin{center}
+\begin{tabular}{@{}p{5.4cm}p{5.4cm}@{}}
+\toprule
+\textbf{Código} & \textbf{Saída} \\
+\midrule
+\texttt{for (var i = 0; i < 3; i++)} \newline \texttt{\ \ fs.push(() => console.log(i));} & \textbf{3, 3, 3} --- um \texttt{i} só, que vale 3 ao fim do laço \\
+\texttt{for (let i = 0; i < 3; i++)} \newline \texttt{\ \ fs.push(() => console.log(i));} & \textbf{0, 1, 2} --- \texttt{let} cria uma variável \textbf{por iteração} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\texttt{let} e \texttt{const} (ES6) têm escopo de \textbf{bloco};
+\texttt{const} impede a \textbf{reatribuição} da variável, mas \textbf{não}
+congela o objeto --- \texttt{const obj = \{\}; obj.x = 1;} é válido.
+E \texttt{==} faz \textbf{coerção de tipo} (\texttt{"1" == 1} é
+\texttt{true}); \texttt{===} compara valor \textbf{e} tipo.
+
+\begin{pegadinha}
+A alternativa que diz que o laço com \texttt{var} imprime \textbf{0, 1, 2} é
+o distrator número um --- ela descreve o comportamento do \texttt{let}. O
+inverso também aparece: atribuir a \texttt{let} o vazamento de escopo que é
+do \texttt{var}. E não confunda com Java, onde o escopo é \textbf{sempre} de
+bloco (Capítulo \ref{cap:java}).
+\end{pegadinha}
+
 \subsection{Renderização no React}
 
 \begin{itemize}
@@ -204,13 +287,22 @@ diferença) com o \textbf{DOM real} do navegador é outro distrator recorrente.
 \end{pegadinha}
 
 \begin{jacaiu}
-SPA $\times$ PWA (Service Worker, offline, instalável); box model (padding
-$\times$ margin, \texttt{box-sizing}); \texttt{@import} e responsividade;
-frameworks (React $\times$ Angular); leitura de HTML+CSS prevendo a
-renderização (pseudo-elementos, \texttt{content}, \texttt{attr()},
-\texttt{flex-direction}); função certa do React (\texttt{createPortal});
-\texttt{key} em listas e \texttt{useState} assíncrono/batched. Rode
-\texttt{./quiz.py frontend}.
+\textbf{Em prova real da FGV:} leitura de HTML+CSS prevendo a renderização
+(pseudo-elementos, \texttt{content}, \texttt{attr()},
+\texttt{flex-direction}), a função certa do React
+(\texttt{createPortal}, para renderizar fora da hierarquia normal do DOM) e
+WCAG na prática (associar rótulos aos campos, princípio \textbf{operável})
+--- \textbf{MPU}; SPA $\times$ PWA, com Service Worker/offline/instalável ---
+\textbf{Dataprev 2024}.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): box model (padding $\times$ margin, \texttt{box-sizing});
+especificidade de seletores; \texttt{Flexbox} $\times$ \texttt{Grid}; media
+queries; escopo de \texttt{var} $\times$ \texttt{let} em laço; frameworks
+(React $\times$ Angular); \texttt{key} em listas e \texttt{useState}
+assíncrono/\textit{batched}; ARIA; UX $\times$ UI; Ajax; CMS.
+
+Rode \texttt{./quiz.py frontend} e \texttt{./quiz.py leitura-codigo}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}

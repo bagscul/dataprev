@@ -12,11 +12,22 @@
   `article`, `section`, `footer`).
 - **CSS:** apresentação. **Box model:** content → **padding** (interno,
   dentro da borda) → **border** → **margin** (externo, fora da borda).
-- **Responsividade:** media queries, unidades relativas (%, em, rem, vw/vh),
-  layouts flexíveis (Flexbox, Grid).
+- **Responsividade:** **media queries** (estilo conforme a característica do
+  dispositivo, tipicamente a largura da tela), unidades relativas (%, em, rem,
+  vw/vh), layouts flexíveis.
+- **Flexbox × Grid:** Flexbox é **unidimensional** (um eixo por vez, linha *ou*
+  coluna); Grid é **bidimensional** (linhas *e* colunas). Grid para a estrutura
+  da página, Flexbox para alinhar dentro de cada área.
+- **Especificidade:** `id` (100) > classe/atributo/pseudoclasse (10) >
+  elemento (1). A ordem de declaração só desempata especificidades **iguais**.
+- **`@import` × `<link>`:** os dois trazem CSS externo, mas o `@import` é
+  resolvido dentro do CSS e em série (bloqueia a cascata); `<link>` baixa em
+  paralelo e é o recomendado. **`@import` não é mecanismo de responsividade** —
+  é distrator recorrente em questão de media query.
 
 Pegadinha: **padding × margin** (interno × externo) é o par que a FGV mais
-inverte.
+inverte. Duas outras: "a última regra declarada sempre vence" (só entre
+especificidades iguais) e trocar Flexbox por Grid.
 
 ## 2. SPA × PWA (o coração deste bloco)
 
@@ -30,6 +41,11 @@ inverte.
   Angular, Vue).
 - **PWA:** usa **Service Worker** para **cache, offline e notificações**, e
   pode ser **instalada** no dispositivo como app nativo.
+- **Service Worker:** script que roda **em segundo plano**, separado da
+  página, como **proxy** entre a aplicação e a rede. Não acessa o DOM
+  diretamente e **exige HTTPS** (só `localhost` é exceção). O **manifest**
+  (`manifest.json`) é o outro pilar — nome, ícones e modo de exibição que
+  permitem a instalação.
 
 Pegadinhas: **Service Worker é da PWA**, não requisito de SPA; "SPA instala no
 SO como nativo" é característica de **PWA**; SPA/PWA não "dependem
@@ -43,7 +59,10 @@ exclusivamente de framework" (dá para fazer com JS puro).
 | Linguagem | JS/JSX | TypeScript | JS |
 
 Pegadinha: a FGV troca React↔Angular (biblioteca × framework completo) e
-atribui TypeScript ao React.
+atribui TypeScript ao React. Em item de React, cuidado com nomes
+inventados/parecidos (`preRender`, `preloadModule`) no lugar de
+**`createPortal`** — a função certa para renderizar um componente **fora da
+hierarquia normal do DOM** (caiu no MPU).
 
 ## 4. Ajax e comunicação
 
@@ -56,16 +75,34 @@ atribui TypeScript ao React.
   toda; UI é a camada visual.
 - **Usabilidade** (Nielsen): eficiência, eficácia, satisfação, facilidade de
   aprendizado, prevenção de erros.
-- **Acessibilidade:** **WCAG** (W3C) — perceptível, operável, compreensível,
-  robusto; no Brasil, **eMAG** para governo.
+- **Acessibilidade:** **WCAG** (W3C) — quatro princípios **POUR**:
+  perceptível, operável, compreensível, robusto. Níveis de conformidade **A**
+  (mínimo), **AA** (o exigido na maioria das normas e contratos públicos) e
+  **AAA** (máximo). No Brasil, **eMAG** para governo.
+- **ARIA** (*Accessible Rich Internet Applications*): atributos (`role`,
+  `aria-label`, `aria-hidden`, `aria-live`) que dão **semântica** a elementos
+  **dinâmicos** ou sem tag nativa, para o leitor de tela anunciar função, nome
+  e estado. **Regra nº 1 do ARIA: não usar ARIA** — havendo elemento HTML
+  nativo com a semântica certa (`<button>`, `<nav>`, `<label>`), use o nativo.
 - **Arquitetura de informação:** organização e navegação do conteúdo.
 - **CMS (sistema de gestão de conteúdo):** cria/gerencia conteúdo sem código
   (WordPress, portais corporativos, workflow editorial).
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-SPA × PWA (Service Worker, offline, instalável); box model (padding × margin);
-`@import` e responsividade; frameworks (React × Angular). Rode `../quiz.py frontend`.
+**Em prova real da FGV:** leitura de HTML+CSS prevendo a renderização
+(pseudo-elementos, `content`, `attr()`, `flex-direction`), a função certa do
+React (`createPortal`) e WCAG na prática (associar rótulos aos campos,
+princípio **operável**) — **MPU**; SPA × PWA, com Service
+Worker/offline/instalável — **Dataprev 2024**.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): box model (padding × margin, `box-sizing`); especificidade de
+seletores; Flexbox × Grid; media queries; escopo de `var` × `let` em laço;
+frameworks (React × Angular); `key` em listas e `useState`
+assíncrono/*batched*; ARIA; UX × UI; Ajax; CMS.
+
+Rode `../quiz.py frontend` e `../quiz.py leitura-codigo`.
 
 ## Pegadinhas da FGV (resumo)
 
