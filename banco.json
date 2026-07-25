@@ -4314,192 +4314,192 @@
  },
  {
   "tag": "governanca",
-  "q": "Uma organizacao mantem simultaneamente diversos projetos e programas, alguns nao relacionados entre si, e precisa decidir quais receberao investimento de acordo com os objetivos estrategicos e a capacidade de recursos da empresa. Segundo o PMBOK, esse agrupamento de projetos, programas e operacoes gerenciado como um grupo para alcancar objetivos estrategicos denomina-se:",
+  "q": "Uma organização mantém simultaneamente diversos projetos e programas, alguns não relacionados entre si, e precisa decidir quais receberão investimento de acordo com os objetivos estratégicos e a capacidade de recursos da empresa. Segundo o PMBOK, esse agrupamento de projetos, programas e operações gerenciado como um grupo para alcançar objetivos estratégicos denomina-se:",
   "alts": [
-   "Escritorio de projetos (PMO), estrutura que padroniza processos e compartilha recursos entre iniciativas.",
-   "Ciclo de vida do projeto, conjunto de fases pelas quais o projeto passa do inicio ao encerramento.",
-   "Programa, pois reune projetos relacionados e coordenados entre si para obter beneficios nao disponiveis se fossem gerenciados individualmente.",
-   "Projeto, por se tratar de um esforco temporario para criar um produto, servico ou resultado exclusivo.",
-   "Portfolio, pois reune projetos, programas, portfolios subsidiarios e operacoes gerenciados como grupo para atingir objetivos estrategicos."
+   "Escritório de projetos (PMO), estrutura que padroniza processos e compartilha recursos entre iniciativas.",
+   "Ciclo de vida do projeto, conjunto de fases pelas quais o projeto passa do início ao encerramento.",
+   "Programa, pois reúne projetos relacionados e coordenados entre si para obter benefícios não disponíveis se fossem gerenciados individualmente.",
+   "Projeto, por se tratar de um esforço temporário para criar um produto, serviço ou resultado exclusivo.",
+   "Portfólio, pois reúne projetos, programas, portfólios subsidiários e operações gerenciados como grupo para atingir objetivos estratégicos."
   ],
   "ans": 4,
-  "why": "Portfolio e o agrupamento de projetos, programas, portfolios subsidiarios e operacoes gerenciado como um grupo para atingir objetivos estrategicos. Nao exige que os componentes sejam relacionados entre si; o vinculo e estrategico.",
+  "why": "Portfólio é o agrupamento de projetos, programas, portfólios subsidiários e operações gerenciado como um grupo para atingir objetivos estratégicos. Não exige que os componentes sejam relacionados entre si; o vínculo é estratégico.",
   "erradas": {
-   "0": "O PMO e uma estrutura organizacional que apoia a gestao, nao o agrupamento de iniciativas em si.",
-   "1": "Ciclo de vida e a sucessao de fases de um unico projeto, nao um agrupamento estrategico.",
-   "2": "Programa e um conjunto de projetos RELACIONADOS gerenciados de forma coordenada para obter beneficios; o enunciado cita iniciativas nao relacionadas, o que caracteriza portfolio.",
-   "3": "Projeto e o esforco temporario individual, nao o agrupamento de varias iniciativas."
+   "0": "O PMO é uma estrutura organizacional que apoia a gestão, não o agrupamento de iniciativas em si.",
+   "1": "Ciclo de vida é a sucessão de fases de um único projeto, não um agrupamento estratégico.",
+   "2": "Programa é um conjunto de projetos RELACIONADOS gerenciados de forma coordenada para obter benefícios; o enunciado cita iniciativas não relacionadas, o que caracteriza portfólio.",
+   "3": "Projeto é o esforço temporário individual, não o agrupamento de várias iniciativas."
   }
  },
  {
   "tag": "governanca",
-  "q": "No PMBOK (6a edicao), os processos de gerenciamento de projeto sao organizados em grupos de processos e em areas de conhecimento. Assinale a alternativa que apresenta corretamente os cinco grupos de processos.",
+  "q": "No PMBOK (6a edição), os processos de gerenciamento de projeto são organizados em grupos de processos e em áreas de conhecimento. Assinale a alternativa que apresenta corretamente os cinco grupos de processos.",
   "alts": [
    "Evaluate, Direct, Monitor, Align e Deliver.",
    "Escopo, Cronograma, Custos, Qualidade e Riscos.",
-   "Iniciacao, Planejamento, Execucao, Verificacao, Controle de Qualidade e Entrega.",
-   "Iniciacao, Planejamento, Execucao, Monitoramento e Controle, e Encerramento.",
+   "Iniciação, Planejamento, Execução, Verificação, Controle de Qualidade e Entrega.",
+   "Iniciação, Planejamento, Execução, Monitoramento e Controle, e Encerramento.",
    "Plan, Engage, Design, Deliver e Improve."
   ],
   "ans": 3,
-  "why": "Os cinco grupos de processos do PMBOK 6 sao: Iniciacao, Planejamento, Execucao, Monitoramento e Controle, e Encerramento. Nao confundir com as 10 areas de conhecimento.",
+  "why": "Os cinco grupos de processos do PMBOK 6 são: Iniciação, Planejamento, Execução, Monitoramento e Controle, e Encerramento. Não confundir com as 10 áreas de conhecimento.",
   "erradas": {
-   "0": "Evaluate, Direct e Monitor pertencem ao dominio de governanca EDM do COBIT 2019, nao ao PMBOK.",
-   "1": "Escopo, Cronograma, Custos, Qualidade e Riscos sao AREAS DE CONHECIMENTO (existem 10), nao grupos de processos.",
-   "2": "Troca dois grupos: nao existem grupos 'Verificacao' e 'Entrega'; os corretos sao Monitoramento e Controle e Encerramento.",
-   "4": "Plan, Engage, Design, Deliver e Improve sao atividades da cadeia de valor de servico do ITIL 4, nao grupos de processos do PMBOK."
+   "0": "Evaluate, Direct e Monitor pertencem ao domínio de governança EDM do COBIT 2019, não ao PMBOK.",
+   "1": "Escopo, Cronograma, Custos, Qualidade e Riscos são ÁREAS DE CONHECIMENTO (existem 10), não grupos de processos.",
+   "2": "Troca dois grupos: não existem grupos 'Verificação' e 'Entrega'; os corretos são Monitoramento e Controle e Encerramento.",
+   "4": "Plan, Engage, Design, Deliver e Improve são atividades da cadeia de valor de serviço do ITIL 4, não grupos de processos do PMBOK."
   }
  },
  {
   "tag": "governanca",
-  "q": "Durante a operacao de um servico, um usuario reporta que o sistema de folha de pagamento esta fora do ar, interrompendo o trabalho da equipe. Ao mesmo tempo, a equipe tecnica inicia uma investigacao para descobrir a causa raiz de uma serie de quedas recorrentes desse sistema. Segundo o ITIL 4, as praticas de gerenciamento envolvidas sao, respectivamente:",
+  "q": "Durante a operação de um serviço, um usuário reporta que o sistema de folha de pagamento está fora do ar, interrompendo o trabalho da equipe. Ao mesmo tempo, a equipe técnica inicia uma investigação para descobrir a causa raiz de uma série de quedas recorrentes desse sistema. Segundo o ITIL 4, as práticas de gerenciamento envolvidas são, respectivamente:",
   "alts": [
    "Gerenciamento de problemas e gerenciamento de incidentes.",
    "Gerenciamento de incidentes e gerenciamento de problemas.",
-   "Gerenciamento de incidentes e gerenciamento de requisicoes de servico.",
-   "Gerenciamento de mudancas e gerenciamento de incidentes.",
-   "Gerenciamento de requisicoes de servico e gerenciamento de problemas."
+   "Gerenciamento de incidentes e gerenciamento de requisições de serviço.",
+   "Gerenciamento de mudanças e gerenciamento de incidentes.",
+   "Gerenciamento de requisições de serviço e gerenciamento de problemas."
   ],
   "ans": 1,
-  "why": "A interrupcao nao planejada (sistema fora do ar) e um incidente, tratado pelo gerenciamento de incidentes, cujo foco e restaurar o servico o mais rapido possivel. A busca da causa raiz das quedas recorrentes e gerenciamento de problemas.",
+  "why": "A interrupção não planejada (sistema fora do ar) é um incidente, tratado pelo gerenciamento de incidentes, cujo foco é restaurar o serviço o mais rápido possível. A busca da causa raiz das quedas recorrentes é gerenciamento de problemas.",
   "erradas": {
-   "0": "Inverte os papeis: a queda atual e incidente e a investigacao da causa raiz e problema, nao o contrario.",
-   "2": "Requisicao de servico e um pedido rotineiro e planejado (ex.: novo acesso), nao a investigacao de causa raiz.",
-   "3": "Gerenciamento de mudancas trata de autorizar/controlar alteracoes, nao de restaurar um servico caido nem de investigar causa raiz.",
-   "4": "A queda em curso e incidente (nao requisicao), embora a segunda parte (problema) esteja correta."
+   "0": "Inverte os papéis: a queda atual é incidente e a investigação da causa raiz é problema, não o contrário.",
+   "2": "Requisição de serviço é um pedido rotineiro e planejado (ex.: novo acesso), não a investigação de causa raiz.",
+   "3": "Gerenciamento de mudanças trata de autorizar/controlar alterações, não de restaurar um serviço caído nem de investigar causa raiz.",
+   "4": "A queda em curso é incidente (não requisição), embora a segunda parte (problema) esteja correta."
   }
  },
  {
   "tag": "governanca",
-  "q": "O Sistema de Valor de Servico (SVS) do ITIL 4 tem como um de seus componentes a cadeia de valor de servico, um modelo operacional flexivel. Quantas e quais sao as atividades dessa cadeia de valor de servico?",
+  "q": "O Sistema de Valor de Serviço (SVS) do ITIL 4 tem como um de seus componentes a cadeia de valor de serviço, um modelo operacional flexível. Quantas e quais são as atividades dessa cadeia de valor de serviço?",
   "alts": [
    "Seis: Evaluate, Direct, Monitor, Align, Plan e Organize, herdadas do COBIT.",
-   "Quatro: uma atividade para cada uma das quatro dimensoes do gerenciamento de servicos definidas pelo ITIL 4.",
+   "Quatro: uma atividade para cada uma das quatro dimensões do gerenciamento de serviços definidas pelo ITIL 4.",
    "Seis: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
    "Cinco: Planejar, Engajar, Projetar, Entregar e Melhorar.",
-   "Sete: correspondentes aos sete principios orientadores."
+   "Sete: correspondentes aos sete princípios orientadores."
   ],
   "ans": 2,
-  "why": "A cadeia de valor de servico do ITIL 4 possui seis atividades interconectadas: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
+  "why": "A cadeia de valor de serviço do ITIL 4 possui seis atividades interconectadas: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
   "erradas": {
-   "0": "Evaluate/Direct/Monitor e Align/Plan/Organize sao dominios do COBIT 2019, nao atividades do ITIL 4.",
-   "1": "As quatro dimensoes (organizacoes/pessoas, informacao/tecnologia, parceiros/fornecedores, fluxos de valor/processos) nao sao as atividades da cadeia de valor.",
-   "3": "Sao seis atividades, nao cinco; falta 'Obter/construir' e a lista mistura nomes incorretos.",
-   "4": "Os sete principios orientadores sao outro componente do SVS, distintos das seis atividades da cadeia de valor."
+   "0": "Evaluate/Direct/Monitor e Align/Plan/Organize são domínios do COBIT 2019, não atividades do ITIL 4.",
+   "1": "As quatro dimensões (organizações/pessoas, informação/tecnologia, parceiros/fornecedores, fluxos de valor/processos) não são as atividades da cadeia de valor.",
+   "3": "São seis atividades, não cinco; falta 'Obter/construir' e a lista mistura nomes incorretos.",
+   "4": "Os sete princípios orientadores são outro componente do SVS, distintos das seis atividades da cadeia de valor."
   }
  },
  {
   "tag": "governanca",
-  "q": "Os sete principios orientadores do ITIL 4 sao recomendacoes que guiam a organizacao em qualquer circunstancia. Um deles orienta a nao iniciar algo do zero sem antes considerar o que ja esta disponivel e pode ser aproveitado. Esse principio e:",
+  "q": "Os sete princípios orientadores do ITIL 4 são recomendações que guiam a organização em qualquer circunstância. Um deles orienta a não iniciar algo do zero sem antes considerar o que já está disponível e pode ser aproveitado. Esse princípio é:",
   "alts": [
    "Progrida iterativamente com feedback.",
-   "Mantenha simples e pratico.",
+   "Mantenha simples e prático.",
    "Otimize e automatize.",
-   "Comece de onde voce esta.",
+   "Comece de onde você está.",
    "Foco no valor."
   ],
   "ans": 3,
-  "why": "'Comece de onde voce esta' (Start where you are) orienta a avaliar e reaproveitar o que ja existe antes de descartar tudo e reconstruir do zero.",
+  "why": "'Comece de onde você está' (Start where you are) orienta a avaliar e reaproveitar o que já existe antes de descartar tudo e reconstruir do zero.",
   "erradas": {
-   "0": "'Progrida iterativamente com feedback' trata de dividir o trabalho em partes menores e usar retornos, nao de aproveitar o que ja existe.",
-   "1": "'Mantenha simples e pratico' orienta eliminar etapas sem valor, nao aproveitar o existente.",
-   "2": "'Otimize e automatize' trata de maximizar o valor do trabalho humano e tecnologico, nao de reusar o que ja ha.",
-   "4": "'Foco no valor' orienta que tudo o que a organizacao faz deve gerar valor para as partes interessadas, nao trata de reaproveitar o existente."
+   "0": "'Progrida iterativamente com feedback' trata de dividir o trabalho em partes menores e usar retornos, não de aproveitar o que já existe.",
+   "1": "'Mantenha simples e prático' orienta eliminar etapas sem valor, não aproveitar o existente.",
+   "2": "'Otimize e automatize' trata de maximizar o valor do trabalho humano e tecnológico, não de reusar o que já há.",
+   "4": "'Foco no valor' orienta que tudo o que a organização faz deve gerar valor para as partes interessadas, não trata de reaproveitar o existente."
   }
  },
  {
   "tag": "governanca",
-  "q": "O COBIT 2019 faz uma distincao central entre governanca e gestao. Sobre essa distincao, assinale a alternativa correta.",
+  "q": "O COBIT 2019 faz uma distinção central entre governança e gestão. Sobre essa distinção, assinale a alternativa correta.",
   "alts": [
-   "A governanca avalia, dirige e monitora (EDM) e cabe ao conselho; a gestao planeja, constroi, executa e monitora, alinhada a direcao definida.",
-   "Governanca e gestao pertencem ao mesmo dominio unico do COBIT 2019, chamado APO.",
-   "Governanca e gestao sao sinonimos no COBIT 2019, ambos executados pela alta direcao.",
-   "A gestao avalia, dirige e monitora, enquanto a governanca planeja, constroi, executa e monitora as operacoes cotidianas de TI da organizacao.",
-   "A governanca e composta pelos dominios APO, BAI, DSS e MEA, e a gestao pelo dominio EDM."
+   "A governança avalia, dirige e monitora (EDM) e cabe ao conselho; a gestão planeja, constrói, executa e monitora, alinhada à direção definida.",
+   "Governança e gestão pertencem ao mesmo domínio único do COBIT 2019, chamado APO.",
+   "Governança e gestão são sinônimos no COBIT 2019, ambos executados pela alta direção.",
+   "A gestão avalia, dirige e monitora, enquanto a governança planeja, constrói, executa e monitora as operações cotidianas de TI da organização.",
+   "A governança é composta pelos domínios APO, BAI, DSS e MEA, e a gestão pelo domínio EDM."
   ],
   "ans": 0,
-  "why": "No COBIT 2019, a governanca (dominio EDM: Evaluate, Direct, Monitor) e responsabilidade do conselho e assegura que as necessidades das partes interessadas sejam avaliadas para definir objetivos; a gestao (APO, BAI, DSS, MEA) planeja, constroi, executa e monitora as atividades em alinhamento com a direcao da governanca.",
+  "why": "No COBIT 2019, a governança (domínio EDM: Evaluate, Direct, Monitor) é responsabilidade do conselho e assegura que as necessidades das partes interessadas sejam avaliadas para definir objetivos; a gestão (APO, BAI, DSS, MEA) planeja, constrói, executa e monitora as atividades em alinhamento com a direção da governança.",
   "erradas": {
-   "1": "APO e um dos quatro dominios de GESTAO, nao um dominio unico que engloba governanca e gestao.",
-   "2": "O COBIT 2019 separa explicitamente governanca de gestao; nao sao sinonimos.",
-   "3": "Inverte os papeis: quem avalia/dirige/monitora e a governanca (EDM); a gestao planeja/constroi/executa.",
-   "4": "Inverte: a governanca corresponde ao dominio EDM; a gestao corresponde a APO, BAI, DSS e MEA."
+   "1": "APO é um dos quatro domínios de GESTÃO, não um domínio único que engloba governança e gestão.",
+   "2": "O COBIT 2019 separa explicitamente governança de gestão; não são sinônimos.",
+   "3": "Inverte os papéis: quem avalia/dirige/monitora é a governança (EDM); a gestão planeja/constrói/executa.",
+   "4": "Inverte: a governança corresponde ao domínio EDM; a gestão corresponde a APO, BAI, DSS e MEA."
   }
  },
  {
   "tag": "governanca",
-  "q": "O modelo central do COBIT 2019 organiza seus objetivos de governanca e gestao em dominios. Assinale a alternativa que apresenta corretamente o numero de dominios e sua composicao entre governanca e gestao.",
+  "q": "O modelo central do COBIT 2019 organiza seus objetivos de governança e gestão em domínios. Assinale a alternativa que apresenta corretamente o número de domínios e sua composição entre governança e gestão.",
   "alts": [
-   "Cinco dominios: dois de governanca (EDM e MEA) e tres de gestao (APO, BAI e DSS).",
-   "Cinco dominios: um de governanca (EDM) e quatro de gestao (APO, BAI, DSS e MEA).",
-   "Cinco dominios de governanca, sem dominios de gestao, totalizando 40 objetivos.",
-   "Quatro dominios de gestao: APO, BAI, DSS e MEA.",
-   "Seis dominios: EDM, APO, BAI, DSS, MEA e PO."
+   "Cinco domínios: dois de governança (EDM e MEA) e três de gestão (APO, BAI e DSS).",
+   "Cinco domínios: um de governança (EDM) e quatro de gestão (APO, BAI, DSS e MEA).",
+   "Cinco domínios de governança, sem domínios de gestão, totalizando 40 objetivos.",
+   "Quatro domínios de gestão: APO, BAI, DSS e MEA.",
+   "Seis domínios: EDM, APO, BAI, DSS, MEA e PO."
   ],
   "ans": 1,
-  "why": "O COBIT 2019 possui cinco dominios: o de governanca EDM (Evaluate, Direct, Monitor) e quatro de gestao APO, BAI, DSS e MEA, totalizando 40 objetivos de governanca e gestao.",
+  "why": "O COBIT 2019 possui cinco domínios: o de governança EDM (Evaluate, Direct, Monitor) e quatro de gestão APO, BAI, DSS e MEA, totalizando 40 objetivos de governança e gestão.",
   "erradas": {
-   "0": "MEA (Monitor, Evaluate, Assess) e dominio de GESTAO, nao de governanca; ha apenas um dominio de governanca (EDM).",
-   "2": "Os 40 objetivos distribuem-se entre 1 dominio de governanca e 4 de gestao; nao sao cinco dominios de governanca.",
-   "3": "Sao cinco dominios, nao quatro; falta o dominio de governanca EDM.",
-   "4": "Nao existe um sexto dominio; 'PO' era do COBIT 4.1, nao do COBIT 2019."
+   "0": "MEA (Monitor, Evaluate, Assess) é domínio de GESTÃO, não de governança; há apenas um domínio de governança (EDM).",
+   "2": "Os 40 objetivos distribuem-se entre 1 domínio de governança e 4 de gestão; não são cinco domínios de governança.",
+   "3": "São cinco domínios, não quatro; falta o domínio de governança EDM.",
+   "4": "Não existe um sexto domínio; 'PO' era do COBIT 4.1, não do COBIT 2019."
   }
  },
  {
   "tag": "governanca",
-  "q": "Em um modelo de processo BPMN, uma equipe precisa representar que, apos o registro de um pedido, o fluxo deve seguir por apenas UM entre dois caminhos, dependendo de o cliente ser ou nao cadastrado. Qual elemento BPMN representa adequadamente essa decisao exclusiva baseada em condicao?",
+  "q": "Em um modelo de processo BPMN, uma equipe precisa representar que, após o registro de um pedido, o fluxo deve seguir por apenas UM entre dois caminhos, dependendo de o cliente ser ou não cadastrado. Qual elemento BPMN representa adequadamente essa decisão exclusiva baseada em condição?",
   "alts": [
    "Fluxo de mensagem, que representa a troca de mensagens entre participantes de pools distintos do processo.",
    "Gateway paralelo (AND), que divide o fluxo em caminhos executados simultaneamente.",
    "Gateway inclusivo (OR), que pode ativar um ou mais caminhos ao mesmo tempo.",
-   "Gateway exclusivo (XOR), que direciona o fluxo para apenas um dos caminhos com base em uma condicao.",
-   "Evento de inicio, que apenas dispara o comeco do processo."
+   "Gateway exclusivo (XOR), que direciona o fluxo para apenas um dos caminhos com base em uma condição.",
+   "Evento de início, que apenas dispara o começo do processo."
   ],
   "ans": 3,
-  "why": "O gateway exclusivo (XOR) avalia condicoes e encaminha o fluxo por exatamente um caminho de saida, sendo o adequado para uma decisao mutuamente exclusiva (cadastrado ou nao).",
+  "why": "O gateway exclusivo (XOR) avalia condições e encaminha o fluxo por exatamente um caminho de saída, sendo o adequado para uma decisão mutuamente exclusiva (cadastrado ou não).",
   "erradas": {
-   "0": "Fluxo de mensagem conecta participantes diferentes (pools), nao decide caminhos internos de um mesmo processo.",
-   "1": "O gateway paralelo (AND) ativa TODOS os caminhos ao mesmo tempo, sem avaliar condicao; nao serve para escolher apenas um.",
-   "2": "O gateway inclusivo (OR) pode ativar varios caminhos simultaneamente conforme multiplas condicoes verdadeiras, nao apenas um exclusivo.",
-   "4": "Evento de inicio apenas dispara o processo; nao toma decisoes de roteamento."
+   "0": "Fluxo de mensagem conecta participantes diferentes (pools), não decide caminhos internos de um mesmo processo.",
+   "1": "O gateway paralelo (AND) ativa TODOS os caminhos ao mesmo tempo, sem avaliar condição; não serve para escolher apenas um.",
+   "2": "O gateway inclusivo (OR) pode ativar vários caminhos simultaneamente conforme múltiplas condições verdadeiras, não apenas um exclusivo.",
+   "4": "Evento de início apenas dispara o processo; não toma decisões de roteamento."
   }
  },
  {
   "tag": "governanca",
-  "q": "Sobre os elementos de conexao no BPMN, considere a diferenca entre fluxo de sequencia e fluxo de mensagem. Assinale a alternativa correta.",
+  "q": "Sobre os elementos de conexão no BPMN, considere a diferença entre fluxo de sequência e fluxo de mensagem. Assinale a alternativa correta.",
   "alts": [
-   "O fluxo de sequencia (linha solida) conecta atividades no mesmo pool, definindo a ordem de execucao; o fluxo de mensagem (linha tracejada) liga participantes de pools distintos.",
-   "Fluxo de sequencia e fluxo de mensagem sao termos equivalentes e podem ser usados de forma intercambiavel.",
-   "O fluxo de mensagem define a ordem interna das atividades de uma raia, ao passo que o fluxo de sequencia liga os eventos de inicio e de fim de pools diferentes entre si, sem ordem.",
-   "O fluxo de sequencia conecta pools diferentes, e o fluxo de mensagem conecta atividades dentro do mesmo pool.",
-   "Ambos representam a comunicacao entre pools distintos, diferindo na cor da linha."
+   "O fluxo de sequência (linha sólida) conecta atividades no mesmo pool, definindo a ordem de execução; o fluxo de mensagem (linha tracejada) liga participantes de pools distintos.",
+   "Fluxo de sequência e fluxo de mensagem são termos equivalentes e podem ser usados de forma intercambiável.",
+   "O fluxo de mensagem define a ordem interna das atividades de uma raia, ao passo que o fluxo de sequência liga os eventos de início e de fim de pools diferentes entre si, sem ordem.",
+   "O fluxo de sequência conecta pools diferentes, e o fluxo de mensagem conecta atividades dentro do mesmo pool.",
+   "Ambos representam a comunicação entre pools distintos, diferindo na cor da linha."
   ],
   "ans": 0,
-  "why": "No BPMN, o fluxo de sequencia (linha solida) ordena as atividades dentro de um mesmo processo/pool; o fluxo de mensagem (linha tracejada) representa a troca de mensagens entre participantes de pools diferentes.",
+  "why": "No BPMN, o fluxo de sequência (linha sólida) ordena as atividades dentro de um mesmo processo/pool; o fluxo de mensagem (linha tracejada) representa a troca de mensagens entre participantes de pools diferentes.",
   "erradas": {
-   "1": "Nao sao equivalentes; representam relacoes semanticas diferentes e nao sao intercambiaveis.",
-   "2": "Inverte novamente os papeis dos dois tipos de fluxo.",
-   "3": "Inverte os conceitos: sequencia e interno ao pool; mensagem e entre pools distintos.",
-   "4": "Nao diferem 'somente na cor': tem semanticas distintas (ordem interna x comunicacao entre pools)."
+   "1": "Não são equivalentes; representam relações semânticas diferentes e não são intercambiáveis.",
+   "2": "Inverte novamente os papéis dos dois tipos de fluxo.",
+   "3": "Inverte os conceitos: sequência é interno ao pool; mensagem é entre pools distintos.",
+   "4": "Não diferem 'somente na cor': têm semânticas distintas (ordem interna x comunicação entre pools)."
   }
  },
  {
   "tag": "governanca",
-  "q": "Uma equipe adota Scrum e Kanban de forma combinada. Sobre os fundamentos desses metodos e do Lean, assinale a alternativa correta.",
+  "q": "Uma equipe adota Scrum e Kanban de forma combinada. Sobre os fundamentos desses métodos e do Lean, assinale a alternativa correta.",
   "alts": [
-   "No Lean, aumentar o desperdicio (muda) e uma pratica recomendada para acelerar a entrega de valor ao cliente.",
-   "No Scrum, o Product Owner e responsavel por gerenciar a equipe e remover impedimentos tecnicos do dia a dia.",
-   "O Kanban limita o trabalho em progresso (WIP) para melhorar o fluxo, enquanto o Scrum organiza o trabalho em Sprints de duracao fixa (timebox).",
-   "O Scrum define quatro papeis obrigatorios: Product Owner, Scrum Master, Gerente de Projeto e a equipe de desenvolvimento do produto entregue ao cliente.",
-   "O Kanban exige, obrigatoriamente, Sprints com duracao fixa e uma reuniao de planejamento a cada ciclo."
+   "No Lean, aumentar o desperdício (muda) é uma prática recomendada para acelerar a entrega de valor ao cliente.",
+   "No Scrum, o Product Owner é responsável por gerenciar a equipe e remover impedimentos técnicos do dia a dia.",
+   "O Kanban limita o trabalho em progresso (WIP) para melhorar o fluxo, enquanto o Scrum organiza o trabalho em Sprints de duração fixa (timebox).",
+   "O Scrum define quatro papéis obrigatórios: Product Owner, Scrum Master, Gerente de Projeto e a equipe de desenvolvimento do produto entregue ao cliente.",
+   "O Kanban exige, obrigatoriamente, Sprints com duração fixa e uma reunião de planejamento a cada ciclo."
   ],
   "ans": 2,
-  "why": "O Kanban foca em visualizar o fluxo e limitar o trabalho em progresso (WIP) para melhorar o fluxo continuo; o Scrum organiza o trabalho em Sprints de duracao fixa (timebox). As afirmacoes descrevem corretamente cada metodo.",
+  "why": "O Kanban foca em visualizar o fluxo e limitar o trabalho em progresso (WIP) para melhorar o fluxo contínuo; o Scrum organiza o trabalho em Sprints de duração fixa (timebox). As afirmações descrevem corretamente cada método.",
   "erradas": {
-   "0": "O Lean busca ELIMINAR o desperdicio (muda), nao aumenta-lo.",
-   "1": "O Product Owner cuida do valor do produto e do Product Backlog; remover impedimentos e apoiar o time e papel do Scrum Master (que e um lider servidor, nao 'gerente').",
-   "3": "O Scrum define tres responsabilidades: Product Owner, Scrum Master e Developers; nao existe o papel de 'Gerente de Projeto'.",
-   "4": "O Kanban NAO exige Sprints nem timebox fixo; trabalha com fluxo continuo, ao contrario do Scrum."
+   "0": "O Lean busca ELIMINAR o desperdício (muda), não aumentá-lo.",
+   "1": "O Product Owner cuida do valor do produto e do Product Backlog; remover impedimentos e apoiar o time é papel do Scrum Master (que é um líder servidor, não 'gerente').",
+   "3": "O Scrum define três responsabilidades: Product Owner, Scrum Master e Developers; não existe o papel de 'Gerente de Projeto'.",
+   "4": "O Kanban NÃO exige Sprints nem timebox fixo; trabalha com fluxo contínuo, ao contrário do Scrum."
   }
  },
  {
