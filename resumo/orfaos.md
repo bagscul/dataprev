@@ -78,7 +78,39 @@ Pegadinha: incremental (desde o último **qualquer**) × diferencial (desde o
 - **Noções de informática:** pacote office, sistemas de arquivos, atalhos.
 - **Sistemas de informação:** SIG, SPT (transacional), SAD/SSD (decisão),
   ERP, CRM, SCM — o nível gerencial que cada um atende.
-- **Blockchain:** ver [programacao](programacao.md).
+
+## 7. Onde cada tema coringa está detalhado
+
+Este é o bloco mais transversal do material: como o quiz aponta o capítulo
+pela **tag** da questão, tudo que é `orfaos` cai aqui — mesmo quando o
+conteúdo mora, com razão, em outro lugar. Use este mapa.
+
+| Tema | Onde está |
+|---|---|
+| Blockchain (hash do bloco anterior, raiz de Merkle, *nonce*, imutabilidade encadeada) | [programacao](programacao.md) |
+| Servidor web × servidor de aplicação | [arquitetura](arquitetura.md) |
+| 2PC (two-phase commit) e o contraste com Raft | [arquitetura](arquitetura.md) |
+| Virtualização: hipervisor Tipo 1 × Tipo 2 × contêiner | [arquitetura](arquitetura.md) |
+| SO: paginação/memória virtual, E/S bloqueante, troca de contexto | [arquitetura](arquitetura.md) |
+| Low-code / no-code | [programacao](programacao.md) |
+| RPA (Robotic Process Automation) | [eng-software](eng-software.md) e [programacao](programacao.md) |
+| Os Vs do Big Data | [banco-dados](banco-dados.md) |
+| Internet × intranet × extranet × portal | [redes](redes.md) |
+| IA generativa, LLM, RAG, ética e regulação | [atualidades](atualidades.md) |
+
+Três valem uma frase aqui, porque são o que a questão cobra e o candidato
+resolve no reflexo errado:
+
+- **2PC:** um **coordenador** pergunta a todos os participantes se podem
+  confirmar (fase *prepare*) e só ordena o *commit* com **unanimidade** — um
+  único "não" aborta tudo. Não é maioria simples (isso é consenso, tipo Raft)
+  nem confirmação independente de cada nó.
+- **RPA:** software que **imita o usuário** (clique, digitação, leitura de
+  tela) em tarefas digitais repetitivas e **baseadas em regras**. Não é IA,
+  não é robô físico, não substitui banco de dados.
+- **Low-code:** desenvolvimento por **modelagem visual e configuração**, com o
+  **mínimo** de código manual — *no-code* elimina o código de vez. Nenhum dos
+  dois "dispensa desenvolvedor profissional": esse absoluto é o distrator.
 
 ## Como se sair melhor
 

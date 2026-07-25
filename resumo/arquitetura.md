@@ -16,8 +16,18 @@
 | Função | atende HTTP, serve conteúdo estático/dinâmico | executa **lógica de negócio**, integra com BD |
 | Exemplos | Apache, NGINX | JBoss/WildFly, WebLogic, Tomcat (parcial) |
 
+No mundo Java a distinção fica literal: o servidor de aplicação implementa a
+especificação **Java EE/Jakarta EE** completa — traz o **container web**
+(Servlet/JSP) **e mais** o **container EJB** para os componentes de negócio,
+além de transações distribuídas, JMS e injeção de dependência. O Tomcat é
+servidor web + container web, mas não é servidor de aplicação completo: não
+tem container EJB.
+
 Pegadinha: a FGV troca os papéis ("servidor web processa lógica de negócio").
 O **web** recebe a requisição HTTP; o **de aplicação** roda a regra de negócio.
+Outros distratores do par: o de aplicação "é **sempre** mais leve" (é o
+oposto), "dispensa a JVM" (roda sobre ela), "não suporta HTTP" (suporta — ele
+contém o container web). O "sempre" já entrega o primeiro.
 
 ## 2. Estilos de arquitetura
 

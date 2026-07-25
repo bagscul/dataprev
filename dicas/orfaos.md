@@ -40,6 +40,21 @@ FGV vem carregando em IA/ML e cloud; trate como tema quente.
   qual deles a regularização combate (é o overfitting).
 
 ## Como se sair melhor
+- Este bloco é transversal: o quiz aponta o capítulo pela TAG,
+  então tudo que é "orfaos" cai no Cap. 14 mesmo quando o
+  conteúdo mora em outro lugar. O Cap. 14 (e o
+  resumo/orfaos.md) tem um MAPA de onde cada tema coringa está
+  detalhado — blockchain e low-code no Cap. 9, servidor de
+  aplicação/2PC/hipervisor/memória virtual no Cap. 5, Vs do Big
+  Data no Cap. 6, RPA nos Caps. 3 e 9, IA generativa no Cap. 18.
+- 2PC: coordenador pergunta na fase PREPARE e só manda commit
+  com UNANIMIDADE — um "não" aborta tudo. Maioria simples é
+  consenso (Raft), não commit atômico.
+- RPA imita o USUÁRIO (clique, digitação, leitura de tela) em
+  tarefa repetitiva e baseada em REGRAS. Não é IA nem robô
+  físico. Low-code é modelagem visual com o MÍNIMO de código —
+  no-code é que elimina o código; nenhum dos dois dispensa
+  desenvolvedor profissional (esse absoluto é o distrator).
 - Monte flashcards de PARES que a FGV inverte: rotulado x
   não rotulado, data x concept drift, L1 x L2, Tipo 1 x
   Tipo 2, over x underfitting, intranet x extranet.

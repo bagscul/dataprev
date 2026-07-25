@@ -25,10 +25,22 @@ Exemplos & Apache, NGINX & JBoss/WildFly, WebLogic, Tomcat (parcial) \\
 \end{tabular}
 \end{center}
 
+No mundo Java a distinção fica literal: o servidor de aplicação implementa a
+especificação \textbf{Java EE/Jakarta EE} completa --- ele traz o
+\textbf{container web} (Servlet/JSP) \textbf{e mais} o \textbf{container EJB}
+para os componentes de negócio, além de transações distribuídas, JMS e
+injeção de dependência. O Tomcat, por isso, é servidor web + container web,
+mas não é servidor de aplicação completo: não tem container EJB.
+
 \begin{pegadinha}
 A FGV troca os papéis (``servidor web processa lógica de negócio''). O
 \textbf{web} recebe a requisição HTTP; o \textbf{de aplicação} roda a regra
 de negócio.
+
+Outros distratores do par: dizer que o servidor de aplicação ``é sempre mais
+leve'' (é o oposto --- ele carrega containers a mais), que ``dispensa a JVM''
+(roda sobre ela) ou que ``não suporta HTTP'' (suporta; ele contém o container
+web). O ``sempre'' já entrega o primeiro.
 \end{pegadinha}
 
 \section{Estilos de arquitetura}

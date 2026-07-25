@@ -114,7 +114,57 @@ a dígito).
 atalhos.
 \item \textbf{Sistemas de informação:} SIG, SPT (transacional), SAD/SSD
 (decisão), ERP, CRM, SCM --- o nível gerencial que cada um atende.
-\item \textbf{Blockchain:} ver Capítulo \ref{cap:programacao}.
+\end{itemize}
+
+\section{Onde cada tema coringa está detalhado}
+
+Este é o capítulo mais transversal do material: como o quiz aponta o capítulo
+pela \textbf{tag} da questão, tudo que é \texttt{orfaos} cai aqui --- mesmo
+quando o conteúdo mora, com razão, em outro capítulo. Use este mapa em vez de
+procurar de página em página.
+
+\begin{center}
+\begin{tabular}{@{}p{4.4cm}p{6.6cm}@{}}
+\toprule
+\textbf{Tema} & \textbf{Onde está} \\
+\midrule
+Blockchain (hash do bloco anterior, raiz de Merkle, \emph{nonce},
+imutabilidade encadeada) & Capítulo \ref{cap:programacao} \\
+Servidor web $\times$ servidor de aplicação & Capítulo \ref{cap:arquitetura},
+primeira seção \\
+2PC (two-phase commit) e o contraste com Raft & Capítulo
+\ref{cap:arquitetura} \\
+Virtualização: hipervisor Tipo 1 $\times$ Tipo 2 $\times$ contêiner &
+Capítulo \ref{cap:arquitetura} \\
+Sistema operacional: paginação/memória virtual, E/S bloqueante, troca de
+contexto & Capítulo \ref{cap:arquitetura} \\
+Low-code / no-code & Capítulo \ref{cap:programacao} \\
+RPA (Robotic Process Automation) & Capítulos \ref{cap:eng-software} e
+\ref{cap:programacao} \\
+Os Vs do Big Data & Capítulo \ref{cap:banco-dados} \\
+Internet $\times$ intranet $\times$ extranet $\times$ portal & Capítulo
+\ref{cap:redes} (e a pegadinha neste capítulo) \\
+IA generativa, LLM, RAG, ética e regulação & Capítulo \ref{cap:atualidades} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Três desses valem uma frase aqui, porque são exatamente o que a questão
+cobra e o candidato costuma resolver no reflexo errado:
+
+\begin{itemize}
+\item \textbf{2PC:} um \textbf{coordenador} pergunta a todos os participantes
+se podem confirmar (fase \emph{prepare}) e só ordena o \emph{commit} com
+\textbf{unanimidade} --- um único ``não'' aborta a transação inteira. Não é
+maioria simples (isso é consenso, tipo Raft), nem confirmação independente de
+cada nó.
+\item \textbf{RPA:} software que \textbf{imita o usuário} (clique, digitação,
+leitura de tela) em tarefas digitais repetitivas e \textbf{baseadas em
+regras}. Não é IA, não é robô físico, não substitui banco de dados.
+\item \textbf{Low-code:} desenvolvimento por \textbf{modelagem visual e
+configuração}, com o \textbf{mínimo} de código manual --- \emph{no-code}
+elimina o código de vez. Nenhum dos dois ``dispensa desenvolvedor
+profissional'': esse absoluto é o distrator.
 \end{itemize}
 
 \section{IA/ML (tema quente neste bloco)}

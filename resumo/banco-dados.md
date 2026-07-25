@@ -304,4 +304,9 @@ Rode `../quiz.py banco-dados` e `../quiz.py bi`.
 - **Modelagem dimensional (Kimball):** **Star Schema** (uma tabela fato +
   dimensões desnormalizadas, mais rápido) × **Snowflake** (dimensões
   normalizadas, menos redundância, mais joins).
-- **Big Data — 5 V:** Volume, Velocidade, Variedade, Veracidade, Valor.
+- **Big Data — os Vs.** O trio **clássico** (Gartner, 2001) é **Volume,
+  Velocidade e Variedade**. **Veracidade** e **Valor** são **extensões**
+  posteriores (daí os modelos "4V" e "5V"), assim como **Variabilidade**.
+  Pegadinha: trocar um membro do trio por um V de extensão — "volume,
+  velocidade e valor" ou "volume, variedade e veracidade" são as "quase
+  certas".
