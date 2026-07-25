@@ -182,6 +182,46 @@ executar (caixa-branca).
 inverta.
 \end{pegadinha}
 
+\section{Continuidade de negócio: RTO $\times$ RPO}
+
+Os dois objetivos que o plano de continuidade fixa para cada serviço crítico.
+Guardar a distinção pela \textbf{unidade do que se perde}:
+
+\begin{center}
+\begin{tabular}{@{}p{1.6cm}p{4.4cm}p{6cm}@{}}
+\toprule
+\textbf{Sigla} & \textbf{Nome} & \textbf{O que limita} \\
+\midrule
+\textbf{RTO} & Recovery \textbf{Time} Objective & \textbf{TEMPO}: quanto o serviço pode ficar indisponível até ser restabelecido \\
+\textbf{RPO} & Recovery \textbf{Point} Objective & \textbf{DADO}: até que ponto no passado se aceita perder informação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+É o \textbf{RPO} que determina a \textbf{frequência do backup}: aceitar perder
+no máximo 15 minutos de dado obriga a proteger os dados a cada 15 minutos. Já
+o RTO cobra da infraestrutura de recuperação (redundância, sítio alternativo,
+tempo de restauração).
+
+\textbf{As siglas vizinhas que a banca oferece junto:}
+\begin{itemize}
+\item \textbf{MTBF} (Mean Time Between Failures): tempo \textbf{médio entre}
+falhas sucessivas --- métrica de \emph{confiabilidade}, não objetivo de plano.
+\item \textbf{MTTR} (Mean Time To Repair): tempo \textbf{médio de reparo}.
+\item \textbf{SLA} (Service Level Agreement): o \textbf{acordo} de nível de
+serviço --- compromisso contratual, não a métrica em si.
+\end{itemize}
+
+\begin{pegadinha}
+O cenário dá dois números na ordem ``pode ficar fora X, pode perder Y'' e a
+alternativa \textbf{inverte as siglas} (RPO de 4 horas, RTO de 15 minutos).
+Ancore em uma letra: \textbf{T} de RTO é \textbf{Tempo}; \textbf{P} de RPO é
+\textbf{Ponto} no tempo (\emph{dado}). Os distratores de MTBF/MTTR/SLA
+descrevem médias observadas e compromisso contratual --- nenhum é objetivo
+definido por diretoria em plano de continuidade. Backup incremental $\times$
+diferencial está no Cap.~\ref{cap:orfaos}.
+\end{pegadinha}
+
 \section{Detecção e resposta}
 
 \textbf{IDS} (detecção): \textbf{alerta} sobre intrusão, passivo. \textbf{IPS}

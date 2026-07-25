@@ -25,6 +25,9 @@
 - Cripto/integridade: HMAC em webhook (autenticidade +
   integridade da mensagem). Simétrica x assimétrica,
   hash x cifra.
+- Continuidade de negócio: RTO (tempo fora do ar) x RPO
+  (dado que se aceita perder), com MTBF/MTTR/SLA como
+  siglas vizinhas oferecidas junto.
 
 ## Como a banca arma a pegadinha
 - OWASP 2021: mistura itens que NÃO são da lista web —
@@ -54,6 +57,10 @@
 - LGPD: distratores com isenção condicionada ("desde que...")
   ou observância parcial; costuma ser total observância.
 - SSL "mais seguro que TLS" (invertido).
+- RTO x RPO: o cenário dá os dois números na ordem "fica
+  fora X, perde Y" e a alternativa INVERTE as siglas. Ou
+  oferece MTBF/MTTR (médias observadas) e SLA (acordo
+  contratual) como se fossem objetivos de plano.
 
 ## Como se sair melhor
 - CIA: Confidencialidade = quem VÊ; Integridade = dado
@@ -70,6 +77,10 @@
   Misconfiguration (subiu de 5º), A03 Software Supply Chain
   Failures e A10 Mishandling of Exceptional Conditions (as
   duas novas). O topo não muda de dono; o que muda é o resto.
+- RTO x RPO, ancore numa letra: o T de RTO é TEMPO (quanto
+  o serviço fica fora); o P de RPO é PONTO no tempo, ou
+  seja, DADO. É o RPO que dita de quanto em quanto tempo o
+  backup roda.
 - ISO 27001:2022 tem 4 categorias de controle:
   organizacional, PESSOAL, FÍSICA, TECNOLÓGICA. Trabalho
   remoto = pessoal; mídia de armazenamento = física;

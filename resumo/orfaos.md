@@ -52,8 +52,12 @@ Pegadinha: ordem Analysis → Redo → Undo (a FGV inverte Redo/Undo).
 | **Incremental** | só o que mudou **desde o último backup (de qualquer tipo)** |
 | **Diferencial** | tudo que mudou **desde o último backup completo** |
 
-- **RPO** (Recovery Point Objective): quanto de dado se aceita perder (janela).
+- **RPO** (Recovery Point Objective): quanto de dado se aceita perder (janela)
+  — é ele que determina a frequência do backup.
 - **RTO** (Recovery Time Objective): em quanto tempo o serviço volta.
+- O par completo, com MTBF/MTTR/SLA e a pegadinha da inversão, está em
+  [seguranca](seguranca.md#61-continuidade-de-negócio-rto--rpo) — as questões
+  de RTO/RPO estão etiquetadas como `seguranca`, não como `orfaos`.
 - Backup **quente** (online, banco no ar) × **frio** (offline).
 
 Pegadinha: incremental (desde o último **qualquer**) × diferencial (desde o

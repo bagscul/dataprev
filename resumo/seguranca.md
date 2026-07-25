@@ -112,6 +112,33 @@ que diz 2021. Se a prova disser "2025", troque o ranking conforme a tabela.
 
 Pegadinha: **SAST × DAST** (código parado × app rodando).
 
+## 6.1 Continuidade de negócio: RTO × RPO
+
+Os dois objetivos que o plano de continuidade fixa para cada serviço crítico.
+Guarde pela **unidade do que se perde**:
+
+| Sigla | Nome | O que limita |
+|---|---|---|
+| **RTO** | Recovery **Time** Objective | **TEMPO**: quanto o serviço pode ficar indisponível até ser restabelecido |
+| **RPO** | Recovery **Point** Objective | **DADO**: até que ponto no passado se aceita perder informação |
+
+É o **RPO** que determina a **frequência do backup**: aceitar perder no máximo
+15 minutos de dado obriga a proteger os dados a cada 15 minutos. O RTO cobra da
+infraestrutura de recuperação (redundância, sítio alternativo, restauração).
+
+**As siglas vizinhas que a banca oferece junto:**
+
+- **MTBF** (Mean Time Between Failures): tempo **médio entre** falhas —
+  métrica de confiabilidade, não objetivo de plano.
+- **MTTR** (Mean Time To Repair): tempo **médio de reparo**.
+- **SLA** (Service Level Agreement): o **acordo** de nível de serviço —
+  compromisso contratual, não a métrica em si.
+
+Pegadinha: o cenário dá dois números na ordem "pode ficar fora X, pode perder
+Y" e a alternativa **inverte as siglas**. Ancore numa letra: **T** de RTO é
+**Tempo**; **P** de RPO é **Ponto** no tempo (*dado*). Backup incremental ×
+diferencial está em [orfaos](orfaos.md).
+
 ## 7. Detecção e resposta
 
 - **IDS** (detecção): **alerta** sobre intrusão, passivo.
