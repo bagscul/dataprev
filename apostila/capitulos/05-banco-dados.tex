@@ -2,14 +2,24 @@
 \label{cap:banco-dados}
 
 \begin{edital}
-Modelagem (conceitual, lógica, física); abordagem relacional e
-multidimensional; normalização; integridade referencial; metadados;
-modelagem dimensional; SQL, DDL, DML; SGBD; propriedades de BD; NoSQL; banco
-em memória; data lakes/big data; dados estruturados e não estruturados;
-avaliação de modelos; ETL/ELT.
+\textbf{Atenção ao recorte:} o Perfil 3 \emph{não tem} ``Banco de Dados''
+como disciplina. O assunto entra por duas portas: \textbf{Inteligência de
+Negócios} (``arquitetura e aplicações de \emph{data warehouse} com ETL e
+OLAP'', ``\emph{data warehouse} e \emph{data mining}'', ``visualização de
+dados: BD individuais e cubos'') e o item 20 de Desenvolvimento de Sistemas
+(``Conceitos de Inteligência Artificial, \textbf{Análise de Dados} e Big
+Data'').
+
+A lista fechada --- modelagem e normalização, arquitetura, estrutura de
+dados, SQL (ANSI), administração de dados, backup/restauração, engenharia de
+dados/Big Data --- e os \textbf{SGBD nomeados} (Oracle 19C, MySQL,
+PostgreSQL, MongoDB, MS-SQL Server 2019) estão no \textbf{Perfil 2}. Estudamos
+assim mesmo porque a \textbf{FGV cobrou banco de dados no Perfil 3 da Dataprev
+2024} --- do mesmo jeito que cobrou redes, que também não está no perfil.
 \end{edital}
-\peso{ALTO --- metade do ``eixo duplo'' com Engenharia de Software; no MPU
-2025 foi o bloco que mais caiu.}
+\peso{ALTO \textbf{por evidência de prova}, não por peso de edital --- metade
+do ``eixo duplo'' com Engenharia de Software; no MPU 2025 foi o bloco que mais
+caiu.}
 
 \section{Modelagem em três níveis}
 
@@ -306,8 +316,11 @@ banco-dados} e \texttt{./quiz.py bi}.
 \section{Alta probabilidade / pesquisa extra}
 
 \begin{itemize}
-\item \textbf{SGBD do edital:} Oracle 19c, MySQL, PostgreSQL, MongoDB,
-MS-SQL Server 2019.
+\item \textbf{SGBD nomeados no edital:} Oracle 19C, MySQL, PostgreSQL,
+MongoDB, MS-SQL Server 2019 --- item \textbf{7.1 do Perfil 2}, não do 3.
+Nenhuma questão deve depender de sintaxe proprietária de um deles; o que pode
+vir para nós é o \textbf{conceito} (SQL ANSI, o par relacional $\times$
+documento).
 \item \textbf{Modelagem dimensional (Kimball):} \textbf{Star Schema} (uma
 tabela fato + dimensões desnormalizadas, mais rápido) $\times$
 \textbf{Snowflake} (dimensões normalizadas, menos redundância, mais joins)

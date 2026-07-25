@@ -113,8 +113,15 @@ Vantagem & leve, escala, independe de plataforma & contratos formais, WS-Securit
 
 \begin{itemize}
 \item \textbf{REST é stateless:} cada requisição carrega tudo; o servidor
-não guarda sessão $\to$ escala horizontalmente sem afinidade de sessão. Cache
-fica no \textbf{cliente}.
+não guarda \textbf{estado de sessão} $\to$ escala horizontalmente sem
+afinidade de sessão.
+\item \textbf{\emph{Cacheable} é outra restrição:} a resposta se declara
+cacheável ou não, e quem a guarda pode ser o \textbf{cliente} \emph{ou} um
+\textbf{intermediário} --- proxy, gateway, CDN. Cache no caminho é
+\textbf{permitido} pelo REST; é justamente o que deixa uma CDN servir o
+conteúdo estático de um nó próximo do usuário (Seção \ref{sec:nuvem}). Não
+confunda: o que não pode ficar no servidor é o \textbf{estado da sessão}, não
+o cache.
 \item \textbf{API Gateway:} ponto único de entrada dos microsserviços
 (roteamento, autenticação, rate limit, agregação).
 \item \textbf{Métodos HTTP:} GET (ler), POST (criar), \textbf{PUT
@@ -188,6 +195,7 @@ interno \textbf{+} parceiros externos autorizados (o meio-termo).
 \end{pegadinha}
 
 \section{Nuvem e escalabilidade}
+\label{sec:nuvem}
 
 \begin{itemize}
 \item \textbf{Modelos de serviço:} \textbf{IaaS} (infra), \textbf{PaaS}
@@ -275,8 +283,10 @@ consistência, protege invariantes --- não expõe referência a cada entidade
 interna), \textbf{Repository} (coleção/persistência do agregado, não instancia
 por métodos externos), \textbf{Factory} (criação), \textbf{Ubiquitous
 Language} (vocabulário comum domínio$\leftrightarrow$código), eventos de
-domínio \textbf{imutáveis} (fato passado). Casou com microsserviços no TJ-RJ e
-no MPU.
+domínio \textbf{imutáveis} (fato passado). Caiu no \textbf{MPU 2025} (o
+gabarito era o \emph{Aggregate} garantindo a consistência das mudanças num
+modelo de associações complexas) e no \textbf{TJ-RJ 2} (gabarito: eventos de
+domínio são ordinariamente imutáveis, por registrarem algo já ocorrido).
 \item \textbf{Service mesh} (Istio) $\times$ API gateway: mesh cuida da
 comunicação serviço-a-serviço (leste-oeste); gateway cuida da entrada
 (norte-sul).

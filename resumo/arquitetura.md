@@ -76,7 +76,12 @@ corresponde aos três tiers — MVC é organização, não implantação.
 | Vantagem | leve, escala, independe de plataforma | contratos formais, WS-Security |
 
 - **REST é stateless:** cada requisição carrega tudo; o servidor não guarda
-  sessão → escala horizontalmente sem afinidade de sessão.
+  **estado de sessão** → escala horizontalmente sem afinidade de sessão.
+- ***Cacheable* é outra restrição:** a resposta se declara cacheável ou não, e
+  quem a guarda pode ser o **cliente** *ou* um **intermediário** — proxy,
+  gateway, CDN. Cache no caminho é **permitido** pelo REST; é o que deixa uma
+  CDN servir o estático de um nó próximo do usuário. Não confunda: o que não
+  pode ficar no servidor é o **estado da sessão**, não o cache.
 - **API Gateway:** ponto único de entrada dos microsserviços (roteamento,
   autenticação, rate limit, agregação).
 - **Métodos HTTP:** GET (ler), POST (criar), **PUT (substituir inteiro)**,
@@ -198,8 +203,11 @@ Rode `../quiz.py arquitetura`.
 ## Alta probabilidade / pesquisa extra
 
 - **12-Factor App** (boas práticas de app nativa de nuvem).
-- **DDD (Domain-Driven Design):** bounded context, agregados — casou com
-  microsserviços no TJ-RJ.
+- **DDD (Domain-Driven Design):** bounded context, agregados, Repository,
+  Factory, Ubiquitous Language, eventos de domínio imutáveis. Caiu no **MPU
+  2025** (gabarito: o *Aggregate* garante a consistência das mudanças num
+  modelo de associações complexas) e no **TJ-RJ 2** (gabarito: eventos de
+  domínio são ordinariamente imutáveis, por registrarem algo já ocorrido).
 - **Service mesh** (Istio) × API gateway: mesh cuida da comunicação
   serviço-a-serviço (leste-oeste); gateway cuida da entrada (norte-sul).
 - **IaC (Infraestrutura como Código):** Terraform, Ansible — provisiona

@@ -1,12 +1,22 @@
 # Banco de Dados — resumo (Perfil 3)
 
-> **Edital (Perfil 3):** modelagem (conceitual, lógica, física); abordagem
-> relacional e multidimensional; normalização; integridade referencial;
-> metadados; modelagem dimensional; SQL, DDL, DML; SGBD; propriedades de BD;
-> NoSQL; banco em memória; data lakes/big data; dados estruturados e não
-> estruturados; avaliação de modelos; ETL/ELT.
-> **Peso esperado: ALTO.** Metade do "eixo duplo" com Eng. de Software; no
-> MPU 2025 foi o bloco que mais caiu.
+> **Atenção ao recorte:** o Perfil 3 **não tem "Banco de Dados" como
+> disciplina**. O assunto entra por duas portas: **Inteligência de Negócios**
+> ("arquitetura e aplicações de *data warehouse* com ETL e OLAP", "*data
+> warehouse* e *data mining*", "visualização de dados: BD individuais e
+> cubos") e o item 20 de Desenvolvimento de Sistemas ("Conceitos de
+> Inteligência Artificial, **Análise de Dados** e Big Data").
+>
+> A lista fechada — modelagem e normalização, arquitetura, estrutura de dados,
+> SQL (ANSI), administração de dados, backup/restauração, engenharia de
+> dados/Big Data — e os **SGBD nomeados** (Oracle 19C, MySQL, PostgreSQL,
+> MongoDB, MS-SQL Server 2019) estão no **Perfil 2**. Estudamos assim mesmo
+> porque a **FGV cobrou banco de dados no Perfil 3 da Dataprev 2024** — do
+> mesmo jeito que cobrou redes, que também não está no perfil.
+>
+> **Peso esperado: ALTO por evidência de prova**, não por peso de edital.
+> Metade do "eixo duplo" com Eng. de Software; no MPU 2025 foi o bloco que
+> mais caiu.
 
 ## 1. Modelagem em três níveis
 
@@ -199,8 +209,10 @@ Rode `../quiz.py banco-dados` e `../quiz.py bi`.
 
 ## Alta probabilidade / pesquisa extra
 
-- **SGBD do edital:** Oracle 19c, MySQL, PostgreSQL, MongoDB, MS-SQL Server
-  2019 (aparecem no Perfil 2; conceitos podem vir no 3).
+- **SGBD nomeados no edital:** Oracle 19C, MySQL, PostgreSQL, MongoDB, MS-SQL
+  Server 2019 — item **7.1 do Perfil 2**, não do 3. Nenhuma questão deve
+  depender de sintaxe proprietária de um deles; o que pode vir para nós é o
+  **conceito** (SQL ANSI, o par relacional × documento).
 - **Modelagem dimensional (Kimball):** **Star Schema** (uma tabela fato +
   dimensões desnormalizadas, mais rápido) × **Snowflake** (dimensões
   normalizadas, menos redundância, mais joins).

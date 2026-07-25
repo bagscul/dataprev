@@ -14,8 +14,8 @@
 - ESB (Enterprise Service Bus): o barramento da SOA, que
   roteia, transforma e orquestra mensagens entre serviços.
 - Estilos e integração: cliente-servidor, REST (vantagens/
-  desvantagens: sem estado no servidor, cache no cliente,
-  interface uniforme) x SOAP/WSDL; SOA e Web Services com
+  desvantagens: sem estado de sessão no servidor, respostas
+  cacheáveis, interface uniforme) x SOAP/WSDL; SOA e Web Services com
   baixo acoplamento e interoperabilidade; hexagonal (portas e
   adaptadores) x microsserviços x monólito.
 - DDD: Aggregates (garantem consistência das mudanças),
@@ -39,8 +39,12 @@
   = detalhe/método — o distrator troca as definições.
 - REST: atribui a ele características de SOAP/RPC (sessão no
   servidor, estado por cliente, XML/WSDL) ou diz que cache
-  "mantém dados atualizados". REST é stateless; estado fica no
-  cliente.
+  "mantém dados atualizados". REST é stateless: o ESTADO DE
+  SESSÃO é que não fica no servidor.
+- Cache: o distrator diz que em REST o cache "fica só no
+  cliente". A restrição cacheable admite cache em
+  INTERMEDIÁRIOS (proxy, gateway, CDN) — é exatamente o que
+  permite a CDN existir.
 - SOA/baixo acoplamento: distrator diz que mudança em um
   serviço "se reflete diretamente no outro" (isso é ALTO
   acoplamento) ou propõe SOAP sem contrato / monólito.
@@ -69,8 +73,9 @@
 - Vertical = SCALE UP (uma máquina maior); horizontal = SCALE
   OUT (mais máquinas). Na conta de custo, some capacidade das
   novas instâncias e compare o preço.
-- REST: stateless, cache no cliente, interface uniforme,
-  escala porque o servidor não guarda sessão. SOAP: contrato
+- REST: stateless, respostas cacheáveis (no cliente OU em
+  intermediários), interface uniforme, escala porque o
+  servidor não guarda estado de sessão. SOAP: contrato
   WSDL/XML, mais pesado, RPC. WSDL válido tem <wsdl:service>/
   <wsdl:port>/<wsdl:binding>.
 - DDD lado a lado: Aggregate = fronteira de consistência;
