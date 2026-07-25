@@ -132,6 +132,17 @@ com remissão a partir de banco de dados.
 **Garantia:** `./importar_provas.py` sobre o banco atual devolve o arquivo
 **byte-idêntico**, e as 432 questões batem com o PDF em `q`, `alts` e `tag`.
 
+**Aviso que veio junto: volume de material ≠ peso de prova.** O primeiro
+reflexo ao ver `banco-dados` em 59 é estudar mais BD. A distribuição por prova
+diz o contrário — **28 das 59** vêm de uma prova só, a da ALERO para o perfil
+*Banco de Dados*, e **17 das 38** de segurança vêm da ALERO de *Redes*. Fora
+das provas de outro perfil, BD cai para 30 e segurança para 19. Já
+**engenharia de software é o único bloco forte em _todas_ as provas** (13 / 9 /
+10 / 7) — não depende de nenhuma. As caixas dos três blocos passaram a dizer
+isso explicitamente, e a Dataprev 2024 continua sendo a referência de peso: BD
+e BI somaram 4 questões, segurança 3. **O roteiro não muda** — a conclusão nº 1
+já tratava engenharia de software e BD como eixo duplo, sem eleger vencedor.
+
 ## 2026-07-25 (madrugada) — varredura do GRUPO C (auditoria, ITEM 7 · P0–P4)
 
 Sete blocos varridos contra as 112 questões que os alimentam: **legislação,

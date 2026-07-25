@@ -273,8 +273,11 @@ dado derivado**, é **SE**; se é leitura pura, é **CE**. E **ALI × AIE**: que
 
 ## O que já caiu
 
-**Em prova real da FGV: 39 questões**, o segundo bloco específico mais pesado do
-corpus, atrás só de banco de dados. Requisito funcional × não
+**Em prova real da FGV: 39 questões — e é o bloco específico mais bem
+distribuído do corpus**, o único que aparece forte em *todas* as provas (13 na
+ALERO, 9 na Dataprev, 10 no MPU, 7 no TJ-RJ). Outros blocos têm total maior por
+causa de uma prova de perfil diferente; este não depende de nenhuma. É o bloco
+mais confiável para investir tempo. Requisito funcional × não
 funcional no cenário do saldo em tempo real, com **brainstorming** como
 elicitação válida; **Scrum Master no Daily**; **Sprint Planning** pela
 capacidade do time; metodologia ágil para mudança frequente (Scrum, com

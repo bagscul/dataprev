@@ -304,9 +304,16 @@ fases; **otimizador** de consultas e estatísticas desatualizadas;
 **tablespaces**; ***connection pooling***; **XML Schema** e XQuery no SGBD;
 **backup** com RPO/RTO; **Administração de Dados × DBA**; **JDBC/ODBC**;
 **dicionário de dados**; e **sharding**. Com elas, banco de dados salta de 25
-para **59** questões reais — é o **maior bloco específico do corpus**. O
-conteúdo de administração física continua sendo ensinado em
-[orfaos](orfaos.md).
+para **59** questões reais. O conteúdo de administração física continua sendo
+ensinado em [orfaos](orfaos.md).
+
+**Não leia esse 59 como peso de prova.** **28 das 59** vêm de uma prova só — a
+da ALERO para o perfil *Banco de Dados*, que não é o nosso. Nas provas mais
+próximas de desenvolvimento, banco de dados fica em **30**, atrás de engenharia
+de software (39). O número grande mede *material de treino disponível*, não a
+chance de cair: na Dataprev 2024, banco de dados e BI somaram **4** questões.
+Estude como pilar — é o eixo duplo com engenharia de software —, mas sem
+inflar.
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): **níveis de isolamento** e os fenômenos que cada um admite (leitura

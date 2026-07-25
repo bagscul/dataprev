@@ -208,9 +208,11 @@ da contenção.
 
 ## O que já caiu
 
-**Em prova real da FGV:** 38 questões — o terceiro bloco específico mais
-pesado, atrás de banco de dados (59) e engenharia de software (39) —, e a lista
-abaixo é quase toda verdadeira. Controle de acesso
+**Em prova real da FGV:** 38 questões, e a lista abaixo é quase toda
+verdadeira. Cuidado com esse total: **17 das 38** saíram de uma prova só, a da
+ALERO para o perfil *Redes*, e puxam o bloco para o lado de rede (*malware*,
+DDoS, VPN, proxy, NGFW). Nas provas mais próximas de desenvolvimento, segurança
+fica em **19** — na Dataprev 2024 foram **4**. Controle de acesso
 **mandatório** (comparação de rótulos); **OWASP Top 10:2021**, identificar a
 categoria válida (gabarito: SSRF, o A10 — as demais alternativas descreviam
 *práticas*, não vulnerabilidades); **X.800** (mecanismo específico ×
