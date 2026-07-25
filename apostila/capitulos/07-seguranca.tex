@@ -67,6 +67,32 @@ esteganografia esconde a existência, cifra esconde o conteúdo. HMAC (chave
 simétrica) garante autenticidade e integridade --- não confidencialidade.
 \end{pegadinha}
 
+\begin{conceito}[HMAC e o cenário do \emph{webhook}]
+\textbf{HMAC} (\emph{Hash-based Message Authentication Code}) é hash
+\textbf{combinado a uma chave secreta compartilhada}. Como só quem tem a
+chave produz o código, ele entrega \textbf{integridade} (a mensagem não foi
+alterada) \emph{e} \textbf{autenticidade} (veio de quem tem a chave). O que
+ele \textbf{não} entrega: \textbf{confidencialidade} --- a mensagem viaja
+legível --- nem \textbf{não repúdio}, porque a chave é \emph{simétrica} e as
+duas pontas conseguem gerar o mesmo código.
+
+\textbf{O cenário que a FGV monta:} um sistema externo envia um
+\emph{webhook} (uma chamada HTTP de notificação) e é preciso garantir que a
+requisição veio mesmo do parceiro e não foi adulterada no caminho. A resposta
+é assinar o corpo com \textbf{HMAC} usando um segredo combinado entre os dois,
+e o receptor recalcular e comparar. Hash puro não serve (qualquer um
+recalcula); cifrar o corpo resolveria confidencialidade, que não é o problema.
+\end{conceito}
+
+\begin{pegadinha}
+As duas armadilhas do HMAC: vendê-lo como garantia de
+\textbf{confidencialidade} (não é --- não há cifra do conteúdo) e como
+garantia de \textbf{não repúdio} (não é --- para isso é preciso
+\textbf{assinatura digital} com chave \emph{privada}, que só o emissor
+possui). Guarde o corte: chave \emph{simétrica} $\to$ autenticidade +
+integridade; chave \emph{privada} $\to$ acrescenta o não repúdio.
+\end{pegadinha}
+
 \section{HTTPS, SSL e TLS}
 
 \textbf{HTTPS = HTTP sobre TLS/SSL.} Garante confidencialidade + integridade
@@ -182,6 +208,39 @@ executar (caixa-branca).
 inverta.
 \end{pegadinha}
 
+\section{X.800 --- a arquitetura de segurança OSI}
+
+Recomendação da ITU-T que dá o \textbf{vocabulário} de segurança usado por
+normas e por bancas. Divide o assunto em três: \emph{ataques}, \emph{serviços}
+e \emph{mecanismos}. O que a FGV cobra é a divisão dos \textbf{mecanismos}.
+
+\textbf{Os cinco serviços de segurança:} autenticação, controle de acesso,
+confidencialidade, integridade e \textbf{não repúdio} (a disponibilidade
+aparece como categoria adicional).
+
+\textbf{Mecanismos --- e o corte que a banca pede:}
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{8.6cm}@{}}
+\toprule
+\textbf{Específicos} \newline (ligados a uma camada e a um serviço) & cifração (\emph{encipherment}), assinatura digital, controle de acesso, integridade de dados, troca de autenticação, \textbf{preenchimento de tráfego} (\emph{traffic padding}), controle de roteamento e \textbf{notarização} \\
+\addlinespace
+\textbf{Disseminados} \newline (\emph{pervasive}, não específicos de camada) & funcionalidade confiável, \textbf{rótulos de segurança}, detecção de eventos, \textbf{trilha de auditoria} de segurança e recuperação de segurança \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A troca é sempre entre as duas colunas: oferecer \textbf{trilha de auditoria}
+ou \textbf{rótulo de segurança} como mecanismo ``específico'' (são
+\textbf{disseminados}), ou \textbf{cifração}/\textbf{notarização} como
+``disseminado'' (são \textbf{específicos}). O critério é: mecanismo específico
+implementa \emph{um serviço} numa \emph{camada}; disseminado é de gestão, vale
+para o sistema inteiro. Note que \textbf{preenchimento de tráfego} e
+\textbf{controle de roteamento} costumam surpreender --- são específicos, e
+servem à confidencialidade do \emph{fluxo}, não do conteúdo.
+\end{pegadinha}
+
 \section{Continuidade de negócio: RTO $\times$ RPO}
 
 Os dois objetivos que o plano de continuidade fixa para cada serviço crítico.
@@ -249,7 +308,8 @@ Controle de acesso mandatório (rótulos); OWASP Top 10:2021 (identificar
 categoria válida); X.800 mecanismos de segurança (específicos $\times$
 disseminados); SSL $\times$ TLS; tríade CIA; IDS $\times$ IPS; SAST $\times$
 DAST; modelo de responsabilidade compartilhada em nuvem; HMAC em webhook
-(autenticidade + integridade). Rode \texttt{./quiz.py seguranca}.
+(autenticidade + integridade); RTO $\times$ RPO na continuidade de negócio.
+Rode \texttt{./quiz.py seguranca}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}

@@ -54,6 +54,16 @@
   "quanto mais isolamento, mais concorrência".
 - Trigger x procedure: atribui ao procedimento o disparo
   automático pelo SGBD, ou ao gatilho a chamada por CALL.
+- VIEW: diz que ela ARMAZENA os dados fisicamente — isso é a
+  materialized view; a visão comum é virtual e sempre atual.
+- GRANT: classifica como DDL. É DCL.
+- ROLLBACK TO: diz que ENCERRA a transação ou desfaz tudo —
+  ele volta ao savepoint e a transação segue aberta.
+- Crow's Foot: lê a cardinalidade do lado ERRADO da linha. O
+  símbolo vale para a entidade que ele TOCA.
+- Chave surrogada: chama de chave estrangeira ou diz que ela
+  dispensa a chave natural (não dispensa — o campo de negócio
+  fica na tabela, em geral com UNIQUE).
 
 ## Como se sair melhor
 - Memorize lado a lado: OLTP = transacional, normalizado,

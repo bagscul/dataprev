@@ -54,6 +54,13 @@
   armazenamento. Aggregate protege invariantes, não expõe.
 - Escalabilidade: chama "adicionar recursos à instância" de
   horizontal, ou "adicionar instâncias" de vertical.
+- 2PC x Raft: troca "unanimidade" (2PC) por "maioria" (Raft),
+  ou diz que o 2PC tolera a falha do coordenador — não tolera,
+  ele bloqueia. São problemas DIFERENTES: 2PC é commit
+  atômico, Raft é consenso sobre a ordem das operações.
+- Taint x toleration: inverte quem carrega o quê (o taint é do
+  NÓ, a toleration é do POD) ou trata tolerar como ATRAIR —
+  quem atrai é node affinity/nodeSelector.
 - Layers x tiers: define layer como "distribuição entre
   máquinas" e tier como "agrupamento de responsabilidades" —
   invertido. Ou usa o absoluto "três camadas lógicas são

@@ -37,10 +37,25 @@
 - **Esteganografia** ≠ criptografia: **oculta a existência** da mensagem
   (esconde dado dentro de imagem/áudio); a criptografia oculta o **conteúdo**,
   não o fato de haver mensagem.
+- **HMAC** (*Hash-based Message Authentication Code*): hash **combinado a uma
+  chave secreta compartilhada**. Como só quem tem a chave produz o código, ele
+  entrega **integridade** *e* **autenticidade**. Não entrega
+  **confidencialidade** (a mensagem viaja legível) nem **não repúdio** (a
+  chave é *simétrica* — as duas pontas geram o mesmo código).
+
+**HMAC no cenário do *webhook*.** Um sistema externo envia uma chamada HTTP de
+notificação e é preciso garantir que veio mesmo do parceiro e não foi
+adulterada. Resposta: assinar o corpo com **HMAC** usando um segredo combinado,
+e o receptor recalcular e comparar. Hash puro não serve (qualquer um
+recalcula); cifrar o corpo resolveria confidencialidade, que não é o problema.
 
 Pegadinha: hash não é cifra reversível; confidencialidade = cifra (não hash);
 assina-se com a **privada**, verifica-se com a **pública**; esteganografia
-esconde a existência, cifra esconde o conteúdo.
+esconde a existência, cifra esconde o conteúdo. No HMAC, as duas armadilhas
+são vendê-lo como **confidencialidade** e como **não repúdio** — para o não
+repúdio é preciso **assinatura digital** com chave *privada*, que só o emissor
+possui. O corte: chave *simétrica* → autenticidade + integridade; chave
+*privada* → acrescenta o não repúdio.
 
 ## 3. HTTPS, SSL e TLS
 
@@ -112,6 +127,28 @@ que diz 2021. Se a prova disser "2025", troque o ranking conforme a tabela.
 
 Pegadinha: **SAST × DAST** (código parado × app rodando).
 
+## 5.1 X.800 — a arquitetura de segurança OSI
+
+Recomendação da ITU-T que dá o **vocabulário** de segurança usado por normas e
+por bancas. Divide o assunto em **ataques**, **serviços** e **mecanismos** — e
+o que a FGV cobra é a divisão dos mecanismos.
+
+**Os cinco serviços:** autenticação, controle de acesso, confidencialidade,
+integridade e **não repúdio** (disponibilidade entra como categoria adicional).
+
+| Mecanismos | Quais são |
+|---|---|
+| **Específicos** (ligados a uma camada e a um serviço) | cifração (*encipherment*), assinatura digital, controle de acesso, integridade de dados, troca de autenticação, **preenchimento de tráfego** (*traffic padding*), controle de roteamento, **notarização** |
+| **Disseminados** (*pervasive*, não específicos de camada) | funcionalidade confiável, **rótulos de segurança**, detecção de eventos, **trilha de auditoria** de segurança, recuperação de segurança |
+
+Pegadinha: a troca é sempre entre as duas colunas — oferecer **trilha de
+auditoria** ou **rótulo de segurança** como "específico" (são
+**disseminados**), ou **cifração**/**notarização** como "disseminado" (são
+**específicos**). O critério: específico implementa *um serviço* numa
+*camada*; disseminado é de gestão e vale para o sistema inteiro.
+**Preenchimento de tráfego** e **controle de roteamento** surpreendem — são
+específicos, e servem à confidencialidade do *fluxo*, não do conteúdo.
+
 ## 6.1 Continuidade de negócio: RTO × RPO
 
 Os dois objetivos que o plano de continuidade fixa para cada serviço crítico.
@@ -160,8 +197,10 @@ da contenção.
 ## O que já caiu (nossas questões)
 
 Controle de acesso mandatório (rótulos); OWASP Top 10:2021 (categoria válida);
-X.800 mecanismos de segurança; SSL × TLS; tríade CIA; IDS × IPS; SAST × DAST;
-modelo de responsabilidade compartilhada em nuvem. Rode `../quiz.py seguranca`.
+X.800 mecanismos de segurança (específicos × disseminados); SSL × TLS; tríade
+CIA; IDS × IPS; SAST × DAST; modelo de responsabilidade compartilhada em nuvem;
+HMAC em webhook (autenticidade + integridade); RTO × RPO na continuidade de
+negócio. Rode `../quiz.py seguranca`.
 
 ## Pegadinhas da FGV (resumo)
 

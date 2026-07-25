@@ -20,8 +20,14 @@
 - ISO/IEC 27001:2022 — categoria de cada controle.
 - OpenID Connect (OIDC): claims do ID Token (iat, exp, sub,
   jti). Autenticação x autorização.
-- X.800 — mecanismos de segurança OSI (específicos x
-  disseminados).
+- X.800 — mecanismos de segurança OSI. ESPECÍFICOS (ligados a
+  uma camada e a um serviço): cifração, assinatura digital,
+  controle de acesso, integridade de dados, troca de
+  autenticação, preenchimento de tráfego, controle de
+  roteamento, notarização. DISSEMINADOS (de gestão, valem para
+  o sistema todo): funcionalidade confiável, rótulos de
+  segurança, detecção de eventos, trilha de auditoria,
+  recuperação de segurança.
 - Cripto/integridade: HMAC em webhook (autenticidade +
   integridade da mensagem). Simétrica x assimétrica,
   hash x cifra.
@@ -57,6 +63,13 @@
 - LGPD: distratores com isenção condicionada ("desde que...")
   ou observância parcial; costuma ser total observância.
 - SSL "mais seguro que TLS" (invertido).
+- X.800: troca as duas colunas — oferece trilha de auditoria
+  ou rótulo de segurança como mecanismo ESPECÍFICO (são
+  disseminados), ou cifração/notarização como DISSEMINADO
+  (são específicos).
+- HMAC: vende como confidencialidade (não cifra o conteúdo) ou
+  como não repúdio (a chave é simétrica — as duas pontas geram
+  o mesmo código; não repúdio exige assinatura com a privada).
 - RTO x RPO: o cenário dá os dois números na ordem "fica
   fora X, perde Y" e a alternativa INVERTE as siglas. Ou
   oferece MTBF/MTTR (médias observadas) e SLA (acordo

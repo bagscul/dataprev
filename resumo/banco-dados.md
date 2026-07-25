@@ -89,7 +89,63 @@ Pegadinhas: **TRUNCATE (DDL) × DELETE (DML)**; `UNION` remove duplicatas /
 `GROUP BY`; `JOIN` sem `ON` vira produto cartesiano; ordem de execução
 lógica: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.
 
-### 4.1 Código no servidor: gatilho × procedimento armazenado
+### 4.1 VIEW, GRANT e o controle da transação
+
+**VIEW (visão):** uma **tabela virtual** — é a consulta guardada com nome, não
+os dados copiados. Consultar a visão executa o `SELECT` por trás dela, então o
+resultado é **sempre atual**. Serve para simplificar consulta complexa e para
+**restringir acesso** (expõe só as colunas/linhas permitidas, e o `GRANT` vai
+sobre ela em vez da tabela). Visão **simples** costuma aceitar atualização;
+visão com `JOIN`, agregação ou `DISTINCT`, não. A ***materialized view*** é a
+exceção que confirma a regra: essa *sim* armazena o resultado em disco e
+precisa ser atualizada.
+
+**GRANT/REVOKE (DCL):** `GRANT SELECT, INSERT ON tabela TO usuario` concede;
+`REVOKE` retira. Com `WITH GRANT OPTION`, quem recebeu pode **repassar** o
+privilégio a terceiros — detalhe que a banca gosta de cobrar. **GRANT é DCL**,
+não DDL nem DML.
+
+**SAVEPOINT e ROLLBACK TO (TCL):** `SAVEPOINT nome` marca um ponto **dentro**
+da transação; `ROLLBACK TO nome` desfaz só o que veio **depois** da marca — e a
+transação **continua aberta**, sem `COMMIT` nem `ROLLBACK` total. É desfazer
+parcial.
+
+Pegadinhas: dizer que a **visão armazena os dados** fisicamente (isso é a
+*materialized view*); classificar **GRANT como DDL** (é **DCL**); e afirmar que
+o `ROLLBACK TO` **encerra** a transação ou desfaz tudo (ele volta ao *savepoint*
+e a transação segue viva).
+
+### 4.2 Notações do MER e chave surrogada
+
+**Crow's Foot (pé de galinha):** a notação de cardinalidade mais usada em
+ferramenta. Lê-se **no ponto onde a linha encosta na entidade**, e cada lado
+traz *dois* símbolos — o de fora é o **máximo**, o de dentro é o **mínimo**:
+
+| Símbolo | Leitura |
+|---|---|
+| Traço (barra) | exatamente **um** (mínimo 1 / máximo 1) |
+| Círculo (*o*) | **zero** — opcional |
+| Pé de galinha (três riscos) | **muitos** |
+| Círculo + pé de galinha | **zero ou muitos** |
+| Traço + pé de galinha | **um ou muitos** (obrigatório) |
+
+Tradução para DDL: o lado com **pé de galinha** é o lado **N**, e é nele que
+entra a **FK**; o **círculo** indica participação opcional → FK aceita `NULL`;
+o **traço**, participação obrigatória → `NOT NULL`.
+
+**Chave surrogada** (substituta/artificial): chave primária **sem significado
+de negócio**, gerada pelo sistema (sequência, *identity*, UUID), em oposição à
+**chave natural**, que vem do domínio (CPF, matrícula). É estável (o dado de
+negócio pode mudar), curta e uniforme para *join*. Padrão em **Data
+Warehouse**, onde também permite guardar **versões históricas** da mesma
+entidade (dimensão de mudança lenta) — detalhe em [bi](bi.md).
+
+Pegadinhas: chave surrogada **não é** FK nem chave composta, e não dispensa a
+chave natural (o campo de negócio continua na tabela, em geral com `UNIQUE`).
+Em Crow's Foot, a inversão clássica é ler a cardinalidade **do lado errado** da
+linha — o símbolo vale para a entidade que ele *toca*.
+
+### 4.3 Código no servidor: gatilho × procedimento armazenado
 
 | | **Gatilho (trigger)** | **Procedimento armazenado** |
 |---|---|---|
@@ -196,8 +252,10 @@ Relacional × multidimensional (OLTP/OLAP); NoSQL (disponibilidade e escala
 horizontal); ETL × ELT (a incorreta); ETL como ponte para o DW; normalização
 1FN-3FN; integridade referencial; TRUNCATE/DELETE; teorema CAP; Star ×
 Snowflake; desnormalização em DW; Data Warehouse × Data Lake × Lakehouse;
-N:M resolvido por tabela associativa; entidade fraca; níveis de isolamento e
-os fenômenos que cada um admite; gatilho × procedimento armazenado.
+JOIN vs. NOT EXISTS; DISTINCT; VIEW como tabela virtual; GRANT de privilégios;
+SAVEPOINT/ROLLBACK TO; Crow's Foot → DDL; chave surrogada; N:M resolvido por
+tabela associativa; entidade fraca; níveis de isolamento e os fenômenos que
+cada um admite; gatilho × procedimento armazenado.
 Rode `../quiz.py banco-dados` e `../quiz.py bi`.
 
 ## Pegadinhas da FGV (resumo)

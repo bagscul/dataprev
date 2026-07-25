@@ -139,6 +139,79 @@ por palavra os comandos SQL da questão --- a FGV troca uma cláusula só
 código.
 \end{pegadinha}
 
+\subsection{VIEW, GRANT e o controle da transação}
+
+\textbf{VIEW (visão):} uma \textbf{tabela virtual} --- é a consulta guardada
+com nome, não os dados copiados. Consultar a visão executa o \texttt{SELECT}
+que está por trás dela, então o resultado é \textbf{sempre atual}. Serve para
+simplificar consulta complexa e para \textbf{restringir acesso} (a visão expõe
+só as colunas/linhas permitidas, e o \texttt{GRANT} é dado sobre ela em vez da
+tabela). Visão \textbf{simples} costuma aceitar atualização; visão com
+\texttt{JOIN}, agregação ou \texttt{DISTINCT}, não. A
+\textbf{\emph{materialized view}} é a exceção que confirma a regra: essa
+\emph{sim} armazena o resultado em disco e precisa ser atualizada.
+
+\textbf{GRANT/REVOKE (DCL):} \texttt{GRANT SELECT, INSERT ON tabela TO
+usuario} concede; \texttt{REVOKE} retira. Com \texttt{WITH GRANT OPTION}, quem
+recebeu pode repassar o privilégio a terceiros --- detalhe que a banca gosta
+de cobrar. \textbf{GRANT é DCL}, não DDL nem DML.
+
+\textbf{SAVEPOINT e ROLLBACK TO (TCL):} o \texttt{SAVEPOINT nome} marca um
+ponto \textbf{dentro} da transação; \texttt{ROLLBACK TO nome} desfaz só o que
+veio \textbf{depois} daquela marca --- e a transação \textbf{continua aberta},
+sem \texttt{COMMIT} nem \texttt{ROLLBACK} total. É desfazer parcial.
+
+\begin{pegadinha}
+Três trocas prontas: dizer que a \textbf{visão armazena os dados}
+fisicamente (isso é a \emph{materialized view}; a visão comum é virtual);
+classificar \textbf{GRANT como DDL} (é \textbf{DCL}); e afirmar que o
+\texttt{ROLLBACK TO} \textbf{encerra} a transação ou desfaz tudo --- ele
+volta ao \emph{savepoint} e a transação segue viva.
+\end{pegadinha}
+
+\subsection{Notações do MER e chave surrogada}
+
+\textbf{Crow's Foot (pé de galinha):} a notação de cardinalidade mais usada em
+ferramenta. Lê-se \textbf{no ponto onde a linha encosta na entidade}, e cada
+lado traz \emph{dois} símbolos --- o de fora é o \textbf{máximo}, o de dentro
+é o \textbf{mínimo}:
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{7.4cm}@{}}
+\toprule
+\textbf{Símbolo} & \textbf{Leitura} \\
+\midrule
+Traço (\emph{barra}) & exatamente \textbf{um} (mínimo 1 / máximo 1) \\
+Círculo (\emph{o}) & \textbf{zero} --- opcional \\
+Pé de galinha (três riscos) & \textbf{muitos} \\
+Círculo + pé de galinha & \textbf{zero ou muitos} \\
+Traço + pé de galinha & \textbf{um ou muitos} (obrigatório) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Daí a tradução para DDL: o lado com \textbf{pé de galinha} é o lado
+\textbf{N}, e é nele que entra a \textbf{FK}; o círculo indica participação
+\textbf{opcional} $\to$ a FK aceita \texttt{NULL}; o traço indica participação
+\textbf{obrigatória} $\to$ \texttt{NOT NULL}.
+
+\textbf{Chave surrogada (substituta/artificial):} chave primária
+\textbf{sem significado de negócio}, gerada pelo sistema (sequência,
+\emph{identity}, UUID), em oposição à \textbf{chave natural}, que vem do
+domínio (CPF, matrícula). Vantagens: é estável (o dado de negócio pode mudar
+--- CPF corrigido, matrícula reemitida), curta e uniforme para \emph{join}. É
+padrão em \textbf{Data Warehouse}, onde ela também permite guardar
+\textbf{versões históricas} da mesma entidade de negócio (dimensão de
+mudança lenta) --- detalhe no Capítulo \ref{cap:bi}.
+
+\begin{pegadinha}
+Chave surrogada \textbf{não é} chave estrangeira nem chave composta, e não
+dispensa a chave natural: o campo de negócio continua na tabela, em geral com
+restrição \texttt{UNIQUE}. Em Crow's Foot, a inversão clássica é ler a
+cardinalidade \textbf{do lado errado} da linha --- o símbolo vale para a
+entidade que ele \emph{toca}.
+\end{pegadinha}
+
 \subsection{Código no servidor: gatilho $\times$ procedimento armazenado}
 
 \begin{center}
@@ -309,7 +382,9 @@ ponte para o DW; normalização 1FN-3FN; integridade referencial;
 TRUNCATE/DELETE; teorema CAP; Star $\times$ Snowflake; desnormalização em DW;
 Data Warehouse $\times$ Data Lake $\times$ Lakehouse; JOIN vs.\ NOT EXISTS;
 DISTINCT; VIEW como tabela virtual; GRANT de privilégios; SAVEPOINT/ROLLBACK
-TO; Crow's Foot $\to$ DDL; chave surrogada. Rode \texttt{./quiz.py
+TO; Crow's Foot $\to$ DDL; chave surrogada; N:M resolvido por tabela
+associativa; entidade fraca; níveis de isolamento e os fenômenos que cada um
+admite; gatilho $\times$ procedimento armazenado. Rode \texttt{./quiz.py
 banco-dados} e \texttt{./quiz.py bi}.
 \end{jacaiu}
 

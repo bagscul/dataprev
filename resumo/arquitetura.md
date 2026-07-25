@@ -180,6 +180,19 @@ troca os papéis ou declara um deles redundante — guie-se pelo sintoma:
   **unanimidade** (todos confirmam) para commit. Bloqueante.
 - **Saga:** sequência de transações locais com **compensação** em caso de
   falha (padrão para microsserviços).
+- **Raft:** algoritmo de **consenso** — resolve problema *diferente* do 2PC.
+  Não pergunta "todos aceitam efetivar esta transação?", e sim "em que
+  **sequência de operações** este grupo de réplicas concorda?". Funciona por
+  **eleição de líder** (o líder ordena e replica o *log*) e decide por
+  **maioria** (quórum), o que o torna **tolerante a falhas**: sobrevive à
+  queda da minoria, inclusive do líder, substituído por nova eleição. É o que
+  sustenta o *etcd* (e, por tabela, o Kubernetes).
+
+Pegadinha — **2PC × Raft** é o par do bloco: o 2PC é *commit atômico*, exige
+**unanimidade** e **bloqueia** se o coordenador cair (ponto único de falha); o
+Raft é *consenso*, decide por **maioria** e **continua funcionando** com a
+minoria fora. Trocar "unanimidade" por "maioria" de um para o outro é o
+distrator pronto, e "o 2PC tolera a falha do coordenador" é falso.
 
 ## O que já caiu (nossas questões)
 
@@ -212,3 +225,13 @@ Rode `../quiz.py arquitetura`.
   serviço-a-serviço (leste-oeste); gateway cuida da entrada (norte-sul).
 - **IaC (Infraestrutura como Código):** Terraform, Ansible — provisiona
   ambiente de forma declarativa e versionada.
+- **Kubernetes — *taint* × *toleration*:** o par de **repulsão**, e funciona
+  ao contrário do que o nome sugere. O **taint** vai no **nó** e *afasta* pods
+  ("não me escalone nada, a menos que aceite esta marca"); a **toleration** vai
+  no **pod** e diz "eu *tolero* essa marca", tornando-o *elegível* àquele nó.
+  Serve para reservar nós especiais (GPU, banco, nó mestre). Cuidado: tolerar
+  **não é atrair** — o pod que tolera *pode* ir para lá, não *tem* que ir; quem
+  atrai é *node affinity*/*nodeSelector*. Distribuições: RKE1/RKE2/K3s/EKS,
+  Rancher.
+- **Armazenamento de objetos:** *flat namespace* (sem hierarquia de pastas
+  real), acesso por API REST.
