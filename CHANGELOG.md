@@ -2,6 +2,52 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — o que era citado mas nunca ensinado (auditoria, Bloco VII/ITEM 7 · P3)
+
+Conceitos que apareciam na lista "o que já caiu" — ou seja, **anunciados como
+cobrados** — sem nunca terem sido explicados no corpo do texto. Todos foram
+**ensinados**, nenhum removido da lista.
+
+- **Raft** (Cap. 5 e resumo): existia só como "2PC × Raft". Entrou como o que
+  é — algoritmo de **consenso**, que resolve problema *diferente* do 2PC: não
+  pergunta "todos aceitam efetivar?", e sim "em que **sequência de operações**
+  este grupo de réplicas concorda?". Eleição de líder, decisão por **maioria**,
+  tolerância a falha (sobrevive à queda do líder). Com o par explícito: o 2PC
+  exige **unanimidade** e **bloqueia** se o coordenador cai; o Raft decide por
+  **maioria** e continua de pé.
+- **X.800** (Cap. 8 e resumo): citado em três camadas, definido em nenhuma.
+  Entrou a arquitetura de segurança OSI com os cinco serviços e, sobretudo, o
+  corte que a banca cobra — mecanismos **específicos** (cifração, assinatura,
+  controle de acesso, integridade, troca de autenticação, preenchimento de
+  tráfego, controle de roteamento, notarização) × **disseminados**
+  (funcionalidade confiável, rótulos, detecção de eventos, trilha de auditoria,
+  recuperação).
+- **HMAC em *webhook*** (resumo de segurança): o resumo não tinha **nenhuma**
+  menção a HMAC, embora a apostila e a dica tivessem. Entrou com o cenário
+  inteiro e as duas armadilhas: HMAC **não** dá confidencialidade nem **não
+  repúdio** (chave simétrica — as duas pontas geram o mesmo código).
+- ***Taint* × *toleration*** (Cap. 5 e resumo): estavam numa lista de tópicos,
+  sem explicação. O par funciona ao contrário do que o nome sugere — o **taint**
+  é do **nó** e afasta pods; a **toleration** é do **pod** e o torna *elegível*.
+  E tolerar **não é atrair**: quem atrai é *node affinity*.
+- **VIEW, GRANT, SAVEPOINT/ROLLBACK TO, Crow's Foot e chave surrogada** (Cap. 6
+  e resumo): cinco itens anunciados na lista do bloco de maior peso e nunca
+  desenvolvidos. Entraram duas subseções — uma de VIEW (virtual × *materialized*),
+  GRANT (é **DCL**, com `WITH GRANT OPTION`) e `ROLLBACK TO` (desfaz parcial, a
+  transação **continua aberta**); outra com a tabela de símbolos do **Crow's
+  Foot** e sua tradução para DDL (pé de galinha = lado N = FK; círculo = `NULL`;
+  traço = `NOT NULL`) e a **chave surrogada** × chave natural.
+- **Cloud bursting** já havia sido resolvido no ITEM 6/P1 — verificado, sem ação.
+- **As duas listas "já caiu" foram sincronizadas.** A da apostila era mais rica
+  em banco de dados e segurança; a do resumo, mais rica em eng. de software e
+  arquitetura — **este segundo descompasso foi introduzido pelo próprio P1**,
+  que acrescentou os tópicos novos só no `resumo/`. Agora as duas dizem o mesmo.
+- **O Cap. 4 ganhou lista "já caiu", que não existia em camada nenhuma.**
+  Montada a partir das **33 questões reais** filtráveis por subtag (23
+  `padroes-projeto` + 10 `uml`), listando o cenário de cada uma — não uma
+  estimativa. Era o único capítulo marcado ALTA PROBABILIDADE sem esse bloco.
+- PDF recompilado: **97 → 100 páginas**, zero *overfull*.
+
 ## 2026-07-25 — seis imprecisões, duas delas factuais (auditoria, Bloco VII/ITEM 7 · P4)
 
 - **"Cache fica no cliente" estava errado, e o P1 tinha acabado de piorar o
