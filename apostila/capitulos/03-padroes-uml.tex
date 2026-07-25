@@ -129,6 +129,31 @@ bibliotecas, frameworks, componentes.
 Golden Hammer (usar sempre a mesma solução), Copy-Paste. A FGV pergunta ``qual
 é o anti-padrão'' ou ``qual prática viola SOLID''.
 
+\begin{conceito}[SOLID --- os cinco, para consultar aqui]
+Os princípios aparecem \textbf{com todas as letras no edital do Perfil 2}
+(item 16) e são a linguagem em que a banca cobra ``qual prática viola'' e
+``que princípio o padrão X concretiza''. O tratamento completo, com as
+armadilhas de Java, está no Capítulo \ref{cap:java}; aqui fica o essencial
+para ligar padrão a princípio sem sair do capítulo:
+
+\begin{itemize}
+\item \textbf{S} --- \emph{Single Responsibility}: uma responsabilidade (um
+motivo para mudar) por classe.
+\item \textbf{O} --- \emph{Open/Closed}: aberta à \textbf{extensão}, fechada à
+\textbf{modificação}.
+\item \textbf{L} --- \emph{Liskov}: o subtipo substitui o tipo base sem
+quebrar o programa.
+\item \textbf{I} --- \emph{Interface Segregation}: interfaces pequenas e
+específicas, em vez de uma interface gorda.
+\item \textbf{D} --- \emph{Dependency Inversion}: depender de
+\textbf{abstração}, não de implementação concreta.
+\end{itemize}
+
+O par que a FGV inverte é \textbf{ISP} (interface enxuta) $\times$
+\textbf{SRP} (uma responsabilidade) --- os dois falam em ``pequeno e
+específico'', mas um trata de \emph{interface} e o outro de \emph{classe}.
+\end{conceito}
+
 \begin{comosair}
 \begin{enumerate}
 \item Leia a \textbf{intenção}, não a implementação. O enunciado descreve o

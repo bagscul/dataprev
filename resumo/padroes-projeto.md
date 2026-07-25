@@ -89,6 +89,27 @@ Polymorphism, Pure Fabrication, Indirection, Protected Variations.
   Hammer (usar sempre a mesma solução), Copy-Paste. A FGV usa "qual é o
   anti-padrão" ou "qual prática viola SOLID".
 
+### SOLID — os cinco, para consultar aqui
+
+Aparecem **com todas as letras no edital do Perfil 2** (item 16) e são a
+linguagem em que a banca cobra "qual prática viola" e "que princípio o padrão X
+concretiza". O tratamento completo, com as armadilhas de Java, está em
+[java](java.md#3-oo-e-solid); aqui fica o essencial para ligar padrão a
+princípio sem sair do assunto:
+
+- **S** – *Single Responsibility*: uma responsabilidade (um motivo para mudar)
+  por classe.
+- **O** – *Open/Closed*: aberta à **extensão**, fechada à **modificação**.
+- **L** – *Liskov*: o subtipo substitui o tipo base sem quebrar o programa.
+- **I** – *Interface Segregation*: interfaces pequenas e específicas, em vez
+  de uma interface gorda.
+- **D** – *Dependency Inversion*: depender de **abstração**, não de
+  implementação concreta.
+
+O par que a FGV inverte é **ISP** (interface enxuta) × **SRP** (uma
+responsabilidade): os dois falam em "pequeno e específico", mas um trata de
+*interface* e o outro de *classe*.
+
 ## Como se sair melhor
 
 1. **Leia a intenção, não a implementação.** O enunciado descreve o problema;
