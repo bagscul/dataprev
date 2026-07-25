@@ -13,7 +13,7 @@ como gabarito de proporção.
 | Língua Inglesa | 13–24 |
 | Raciocínio Lógico Matemático | 25–30 |
 | Atualidades | 31–35 |
-| Legislação (Segurança da Informação / Proteção de Dados) | 36–40 |
+| Legislação de Segurança da Informação e Proteção de Dados (LGPD, LAI, Marco Civil) | 36–40 |
 
 ## Conhecimentos Específicos (41–70)
 

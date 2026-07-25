@@ -42,7 +42,7 @@ raciocínio técnico geral, não como espelho de proporção de banca.
 | 51 | Função de ativação (sigmoide logística) em rede neural | Atualidades |
 | 52 | Redes convolucionais (CNN) — função das camadas de convolução | Atualidades |
 | 53 | LLMs, RAG, agentificação, engenharia de prompts, ética e segurança em IA | Atualidades |
-| 54 | Tabela de páginas / memória virtual (paginação, proteção de memória) | Arquitetura de Software |
+| 54 | Tabela de páginas / memória virtual (paginação, proteção de memória) | Arquitetura de computadores |
 | 55 | Ágil — mudança de escopo tardia no projeto | Engenharia de Software |
 | 56 | PMBOK — princípio de foco em valor | Governança |
 | 57 | LGPD — princípio da adequação | Legislação |

@@ -16,7 +16,7 @@ peso maior é em `redes` e `seguranca`.
 | Q | Tema | Sub-bloco |
 |---|---|---|
 | 41 | Estruturas de dados: Fila (FIFO) x Pilha (LIFO) | programacao |
-| 42 | Thrashing, paginação, TLB (tradução de endereço virtual→físico) e risco de segurança | arquitetura |
+| 42 | Thrashing, paginação, TLB (tradução de endereço virtual→físico) e risco de segurança | arquitetura de computadores |
 | 43 | Metaprogramação em Python — Decorators (@) | programacao |
 | 44 | Sistema de tipos do Python — Duck Typing | programacao |
 | 45 | Imutabilidade e hashing — objetos válidos como chave de dicionário | programacao |

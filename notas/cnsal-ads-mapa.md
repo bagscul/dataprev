@@ -34,16 +34,16 @@ proporção.
 | 52 | Modelagem ANSI/SPARC — nível conceitual e Diagrama de Classes | banco-dados |
 | 53 | Padrão de projeto GoF — Singleton (instância única) | eng-software |
 | 54 | Web Services SOAP — WSDL (descrição de interface) | arquitetura |
-| 55 | Hardware — CPU executa instruções e cálculos lógico/aritméticos | arquitetura |
-| 56 | Arquitetura de Von Neumann — gargalo do barramento único | arquitetura |
-| 57 | Organização do computador — impressora como dispositivo de Saída | arquitetura |
-| 58 | Soma binária 8 bits sem sinal — overflow/carry | arquitetura |
-| 59 | Complemento de dois — overflow aritmético | arquitetura |
-| 60 | Conversão de base — octal para binário | arquitetura |
+| 55 | Hardware — CPU executa instruções e cálculos lógico/aritméticos | arquitetura de computadores |
+| 56 | Arquitetura de Von Neumann — gargalo do barramento único | arquitetura de computadores |
+| 57 | Organização do computador — impressora como dispositivo de Saída | arquitetura de computadores |
+| 58 | Soma binária 8 bits sem sinal — overflow/carry | arquitetura de computadores |
+| 59 | Complemento de dois — overflow aritmético | arquitetura de computadores |
+| 60 | Conversão de base — octal para binário | arquitetura de computadores |
 | 61 | Interpretação x compilação (execução linha a linha) | programacao |
 | 62 | Procedimento (procedure) x função — bloco sem retorno | programacao |
 | 63 | Passagem de parâmetro por referência (endereço de memória) | programacao |
-| 64 | Memória ROM — firmware/boot não volátil | arquitetura |
+| 64 | Memória ROM — firmware/boot não volátil | arquitetura de computadores |
 | 65 | Notação IDEF1X — relacionamento identificador (linha sólida) | banco-dados |
 | 66 | Integridade Referencial (chave estrangeira x primária) | banco-dados |
 | 67 | SQL — INSERT INTO ... VALUES | banco-dados |

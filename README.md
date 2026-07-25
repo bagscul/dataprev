@@ -106,11 +106,20 @@ As provas em `provas/*.pdf` viram banco de questoes:
 
 ```bash
 ./importar_provas.py                       # PDF -> banco-provas.json
+./importar_provas.py --tudo                # idem, trazendo o caderno inteiro
 ./gabarito.py --falta                      # o que ainda esta sem gabarito
 ./gabarito.py dataprev2024 "1-C 2-A ..."   # cola o gabarito OFICIAL da FGV
 ./quiz.py --prova dataprev2024             # resolve as questoes reais
 ./quiz.py --prova todas -n 20              # de todas as provas importadas
 ```
+
+Reimportar e seguro: rodar `./importar_provas.py` com o banco atual devolve o
+arquivo **byte-identico**. Ele preserva gabarito, explicacoes e o marcador de
+anulada, e mantem o **recorte** da prova — das 80 questoes da ALERO ficaram so
+as de TI, e as descartadas nao voltam sozinhas (use `--tudo` se quiser o
+caderno inteiro). A `tag` vem sempre de `notas/<prova>-mapa.md`: para
+reclassificar uma questao, edite o mapa, nao o JSON, senao a reimportacao
+desfaz.
 
 O caderno de questoes nao traz o gabarito, entao a questao entra com
 `ans: null` e **o quiz nao a sorteia ate o gabarito oficial ser preenchido**.

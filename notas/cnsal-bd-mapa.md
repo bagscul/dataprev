@@ -39,7 +39,7 @@ de Rondônia (33-40).
 | 55 | Hashing Extensível — global depth, bucket pointers, split | banco-dados |
 | 56 | DBA proativo/preditivo — monitoramento e análise de tendências | banco-dados |
 | 57 | Triggers para auditoria de alterações | banco-dados |
-| 58 | Unidade de Controle (UC) — ciclo busca-decodificação-execução | arquitetura |
+| 58 | Unidade de Controle (UC) — ciclo busca-decodificação-execução | arquitetura de computadores |
 | 59 | Escopo de variáveis — estático/léxico x dinâmico | programacao |
 | 60 | Compilador x interpretador | programacao |
 | 61 | Índice de Bitmap — colunas de baixa cardinalidade em DW | bi |

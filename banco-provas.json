@@ -1452,7 +1452,7 @@
    "a dificuldade em alocar desenvolvedores sêniores para a fase de Codificação devido à rigidez do cronograma sequencial.",
    "a necessidade de produzir documentação excessiva, o que inevitavelmente introduz inconsistências no código.",
    "o risco de que erros fundamentais nos requisitos ou no design sejam descobertos somente na fase de validação, resultando em um custo de retrabalho exponencialmente maior.",
-   "o aumento do vendor lock-in devido à dependência excessiva de ferramentas de design proprietárias. Realização"
+   "o aumento do vendor lock-in devido à dependência excessiva de ferramentas de design proprietárias."
   ],
   "ans": 3,
   "why": "No Cascata, o cliente so valida no fim (fase de Testes), entao erros fundamentais de requisitos ou design so aparecem tarde, quando o custo de retrabalho ja e exponencialmente maior. Regra pratica: quanto mais tarde o defeito e descoberto, mais caro corrigir (curva de custo do erro).",
@@ -2362,7 +2362,7 @@
    "Total e Sobreposta (𝑇, 𝑆)",
    "Parcial e Disjunta (𝑃, 𝐷)",
    "Parcial e Sobreposta (𝑃, 𝑆)",
-   "A restrição é Total e Mista (parcialmente Disjunta e parcialmente Sobreposta). Realização"
+   "A restrição é Total e Mista (parcialmente Disjunta e parcialmente Sobreposta)."
   ],
   "ans": 4,
   "why": "A regra 1 obriga toda PESSOA a pertencer a pelo menos uma subclasse, logo a especialização é Total. Quanto à disjunção, Aluno e Professor podem coexistir (sobreposta) mas Professor e Admin não (disjunta), configurando um caso Misto. Por isso o gabarito é Total e Mista. Regra: totalidade vem da cobertura obrigatória; disjunção mista quando parte se sobrepõe e parte é exclusiva.",
@@ -3302,7 +3302,7 @@
    "Virtualização Completa.",
    "Virtual Desktop Infrastructure.",
    "Paravirtualização.",
-   "Virtualização de Aplicações. Realização"
+   "Virtualização de Aplicações."
   ],
   "ans": 3,
   "why": "Paravirtualização exige modificar o kernel do SO convidado para que ele use hypercalls, comunicando-se diretamente com o hypervisor de forma otimizada — o que aumenta a eficiência em relação à virtualização completa. Modificação do guest + hypercalls é sua marca.",
@@ -3777,7 +3777,7 @@
    "The price of the printer.",
    "The printer serial number.",
    "The printer stock availability.",
-   "The printer sale. Use the following TEXT to answer the next four questions. Research-Article How to be a successful app developer: lessons from the simulation of an app ecosystem Soo Ling Lim, Peter J. Bentley Abstract App developers are constantly competing against each other to win more downloads for their apps. With hundreds of thousands of apps in these online stores, what strategy should a developer use to be successful? Should they innovate, make many similar apps, optimize their own apps or just copy the apps of others? Looking more deeply, how does a complex app ecosystem perform when developers choose to use different strategies? This paper investigates these questions using AppEco, the first Artificial Life model of mobile application ecosystems. In AppEco, developer agents build and upload apps to the app store; user agents browse the store and download the apps. A distinguishing feature of AppEco is the explicit modelling of apps as artefacts. In this work we use AppEco to simulate Apple's iOS app ecosystem and investigate common developer strategies, evaluating them in terms of downloads received, app diversity, and adoption rate. https://dl.acm.org/doi/10.1145/2384697.2384698"
+   "The printer sale."
   ],
   "ans": 0,
   "why": "\"Pound\" (libra) é unidade de peso; \"a 1-pound printer\" descreve uma impressora de cerca de meio quilo — daí o autor dizer que não se importaria de colocá-la na mala de viagem. Regra prática: o próprio contexto (\"travel bag\") confirma que se fala de peso, e o texto diz explicitamente \"No word on pricing\".",
@@ -4257,7 +4257,7 @@
    "o Conselho Diretor é composto de r epresentantes, titulares e suplentes, da Câmara dos Deputados, do Comitê Gestor da Internet do Brasil, do Senado Federal, do Conselho Nacional de Justiça e do Conselho Nacional do Ministério Público.",
    "o Conselho Nacional de Proteção de Dados Pessoais e da Privacidade possui atribuição de sugerir ações a serem realizadas pela Autoridade Nacional de Proteção de Dados e disseminar o conhecimento sobre a proteção de dados pessoais e da privacidade à população.",
    "os membros do Conselho Nacional de Proteção de Dados Pessoais e da Privacidade somente perderão seus cargos em virtude de renúncia, condenação judicial transitada em julgado ou pena de demissão decorrente de processo administrativo disciplinar.",
-   "a Autoridade Nacional de Proteção de Dados é uma das integrantes do Conselho Nacional de Proteção de Dados Pessoais e da Privacidade, figurando como conselheira presidente, na hipótese de nomeação pelo Presidente da República. Conhecimentos Específicos"
+   "a Autoridade Nacional de Proteção de Dados é uma das integrantes do Conselho Nacional de Proteção de Dados Pessoais e da Privacidade, figurando como conselheira presidente, na hipótese de nomeação pelo Presidente da República."
   ],
   "ans": 2,
   "why": "O Conselho Nacional de Proteção de Dados Pessoais e da Privacidade (CNPD) é órgão consultivo: entre suas competências estão propor diretrizes estratégicas, SUGERIR ações a serem realizadas pela ANPD e disseminar o conhecimento sobre proteção de dados e privacidade à população. Regra prática: ANPD = fiscaliza e sanciona; CNPD = aconselha e sugere.",
@@ -4962,7 +4962,7 @@
    "combinar práticas ágeis com métodos tradicionais de gerenciamento de projetos para atender às necessidades específicas da equipe e do projeto.",
    "adotar apenas as cerimônias do Scrum, sem considerar outros métodos.",
    "implementar um plano fixo e detalhado antes de iniciar o projeto, sem revisões.",
-   "focar unicamente na documentação, ignorando a interação com a equipe. Realização"
+   "focar unicamente na documentação, ignorando a interação com a equipe."
   ],
   "ans": 1,
   "why": "A abordagem híbrida combina deliberadamente práticas ágeis (iterações, backlog, entregas incrementais) com práticas preditivas/tradicionais (marcos, EAP, cronograma, governança de portfólio), moldando o método ao contexto do projeto e da organização. Regra prática: híbrido = mistura ajustada (tailoring), não meio-termo genérico nem ágil puro.",

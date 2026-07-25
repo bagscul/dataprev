@@ -21,7 +21,7 @@ estudo, não como gabarito de proporção.
 |---|---|---|
 | 31 | Escalabilidade vertical x horizontal em nuvem (custo-benefício) | Arquitetura de Software |
 | 32 | TCP handshake (three-way handshake) | Redes |
-| 33 | Sistema operacional — E/S bloqueante, troca de contexto | Arquitetura de Software (SO) |
+| 33 | Sistema operacional — E/S bloqueante, troca de contexto | Arquitetura de computadores (SO) |
 | 34 | LGPD — aplicabilidade a empresa privada de segurança | Segurança |
 | 35 | Fundamentos de segurança da informação — disponibilidade x confidencialidade | Segurança |
 | 36 | DDD (Domain-Driven Design) — eventos de domínio, agregados, linguagem ubíqua | Engenharia de Software |

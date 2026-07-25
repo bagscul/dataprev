@@ -35,6 +35,9 @@ TAGS = {
     "bi": "bi",
     "seguranca": "seguranca",
     "redes": "redes",
+    # arquitetura de COMPUTADORES/SO nao e o bloco de arquitetura de SOFTWARE
+    # do edital (Perfil 3): cai em prova de outro perfil e vai para orfaos.
+    "arquitetura de computadores": "orfaos",
     "arquitetura de software": "arquitetura",
     "arquitetura": "arquitetura",
     "frontend": "frontend",
@@ -51,7 +54,17 @@ TAGS = {
     "raciocinio logico matematico": "rlm",
 }
 
-LIXO = re.compile(r"pcimarkpci|pciconcursos\.com\.br|^\s*$|PÁGINA \d+|TIPO BRANCA|FGV CONHECIMENTO")
+# Rodape de pagina. IGNORECASE nao e detalhe: sem ele, "FGV Conhecimento" (como
+# sai do PDF) nao casava com "FGV CONHECIMENTO", e o rodape da pagina seguinte
+# era emendado na ULTIMA alternativa da questao — em 52 das 432 questoes, junto
+# com cabecalho de secao e ate o enunciado inteiro da prova discursiva.
+LIXO = re.compile(
+    r"pcimarkpci|pciconcursos\.com\.br|^\s*$"
+    r"|FGV\s+CONHECIMENTO"
+    r"|P[ÁA]GINA\s+\d+"
+    r"|TIPO\s*\d*\s*[–\-]?\s*BRANCA",
+    re.IGNORECASE,
+)
 
 # O texto do PDF perde figuras, codigo e tabelas (viram imagem). Questao que se
 # apoia nisso fica impossivel de responder no terminal: marcamos e o quiz nao
@@ -77,9 +90,16 @@ def tag_de(texto):
         parte = parte.strip()
         if parte in TAGS:
             return TAGS[parte]
-    for chave, tag in TAGS.items():
-        if chave in s:
-            return tag
+    # Busca por trecho: vale a chave que aparece MAIS CEDO no rotulo e, em
+    # empate de posicao, a MAIS LONGA. Sem esses dois criterios a resolucao
+    # dependia da ordem do dicionario, e errava duas vezes:
+    #   "Legislacao (Seguranca da Informacao...)" caia em `seguranca`, porque
+    #   "seguranca" vinha antes de "legislacao" no TAGS;
+    #   "Arquitetura de computadores (SO)" caia em `arquitetura`, porque
+    #   "arquitetura" e prefixo da chave mais especifica.
+    achados = [(s.find(c), -len(c), t) for c, t in TAGS.items() if c in s]
+    if achados:
+        return min(achados)[2]
     return "orfaos"
 
 
@@ -110,23 +130,45 @@ def texto_do_pdf(caminho):
     r = pypdf.PdfReader(caminho)
     linhas = []
     for pag in r.pages:
+        primeira_da_pagina = True
         for l in (pag.extract_text() or "").splitlines():
-            if not LIXO.search(l):
-                linhas.append(l.rstrip())
+            if LIXO.search(l):
+                continue
+            linhas.append((l.rstrip(), primeira_da_pagina))
+            primeira_da_pagina = False
     return linhas
 
 
 def parsear(linhas):
-    """Quebra o texto corrido em questoes: numero, enunciado, 5 alternativas."""
+    """Quebra o texto corrido em questoes: numero, enunciado, 5 alternativas.
+
+    `linhas` e uma lista de (texto, virou_pagina).
+
+    Regra que importa: a alternativa NAO atravessa a virada de pagina. Depois
+    do rodape vem cabecalho de secao ("MODULO II", "CONHECIMENTOS
+    ESPECIFICOS"), o nome da organizadora ("Realizacao") ou ate o enunciado da
+    prova discursiva -- e o parser antigo emendava tudo isso na ULTIMA
+    alternativa. Se a alternativa de fato terminou antes da quebra (que e o
+    caso em todas as 432 questoes ja importadas), cortar ali e correto.
+    """
     questoes = []
     atual = None
-    for l in linhas:
-        # inicio de questao: linha com so o numero
+    apos_quebra = False
+    esperado = 1  # so aceita o PROXIMO numero da sequencia (veja abaixo)
+    for l, virou_pagina in linhas:
+        if virou_pagina:
+            apos_quebra = True
+        # Inicio de questao: linha com so o numero -- e que seja o proximo da
+        # sequencia. Sem essa segunda condicao, um "2" solto dentro de uma
+        # questao de RLM abria uma questao fantasma (era o caso da cnsal-ads
+        # Q2, que entrava com as alternativas de outra questao).
         m = re.match(r"^\s*(\d{1,2})\s*$", l)
-        if m and 1 <= int(m.group(1)) <= 90:
+        if m and int(m.group(1)) == esperado:
             if atual:
                 questoes.append(atual)
-            atual = {"num": int(m.group(1)), "enunciado": [], "alts": []}
+            atual = {"num": esperado, "enunciado": [], "alts": []}
+            esperado += 1
+            apos_quebra = False
             continue
         if atual is None:
             continue
@@ -134,9 +176,11 @@ def parsear(linhas):
         m = re.match(r"^\s*\(([A-E])\)\s*(.*)$", l)
         if m:
             atual["alts"].append([m.group(2)])
+            apos_quebra = False
             continue
         if atual["alts"]:
-            atual["alts"][-1].append(l.strip())  # continuacao da ultima alternativa
+            if not apos_quebra:  # continuacao da ultima alternativa
+                atual["alts"][-1].append(l.strip())
         else:
             atual["enunciado"].append(l.strip())
     if atual:
@@ -157,12 +201,22 @@ def parsear(linhas):
 
 
 def main():
-    alvos = sys.argv[1:] or [p.stem for p in sorted(PROVAS.glob("*.pdf"))]
+    args = sys.argv[1:]
+    tudo = "--tudo" in args
+    alvos = [a for a in args if not a.startswith("-")] or [
+        p.stem for p in sorted(PROVAS.glob("*.pdf"))
+    ]
 
     antigo = {}
     if SAIDA.exists():
         for q in json.loads(SAIDA.read_text(encoding="utf-8")):
             antigo[(q["prova"], q["num"])] = q
+    # Provas ja importadas guardam um RECORTE do caderno: das 80 questoes da
+    # ALERO, por exemplo, ficaram so as de TI (as de Historia e Geografia de
+    # Rondonia foram descartadas de proposito). Reimportar sem trava
+    # ressuscitaria as descartadas. Por padrao mantemos o recorte; --tudo
+    # traz o caderno inteiro.
+    ja_tem = {p for p, _ in antigo}
 
     banco = []
     for prova in alvos:
@@ -172,6 +226,12 @@ def main():
             continue
         tags = tags_do_mapa(prova)
         qs = parsear(texto_do_pdf(pdf))
+        if prova in ja_tem and not tudo:
+            fora = [q["num"] for q in qs if (prova, q["num"]) not in antigo]
+            if fora:
+                print(f"  {prova}: {len(fora)} questoes fora do recorte atual, mantidas de fora "
+                      f"(use --tudo para trazer): {fora[0]}–{fora[-1]}")
+            qs = [q for q in qs if (prova, q["num"]) in antigo]
         for q in qs:
             chave = (prova, q["num"])
             anterior = antigo.get(chave, {})
