@@ -143,10 +143,14 @@ da implementação (a ordem certa é elicitar antes de codificar).
 \end{pegadinha}
 
 \begin{jacaiu}
-A FGV também pede para \textbf{contar} quantos RF e quantos RNF há num
-enunciado longo, e para classificar o tipo de RNF (usabilidade, desempenho,
-produto, organizacional, externo). Ao ler, marque cada verbo de ação (RF) e
-cada ``deve ser rápido/seguro/exportável'' (RNF).
+\textbf{Em prova real da FGV:} pedir para \textbf{contar} quantos RF e quantos
+RNF há num enunciado longo é item recorrente --- caiu no \textbf{MPU} (rol de
+funcionalidades de um sistema de processo seletivo), no \textbf{TJ-RJ}
+(entrevista de elicitação sobre relatórios dinâmicos) e na \textbf{ALERO 2026}
+(LGPD e acessibilidade entrando como RNF). A banca também pede o \emph{tipo}
+do RNF (usabilidade, desempenho, produto, organizacional, externo). Ao ler,
+marque cada verbo de ação (RF) e cada ``deve ser rápido/seguro/exportável''
+(RNF).
 \end{jacaiu}
 
 \section{Metodologias ágeis}
@@ -215,10 +219,12 @@ Incremento.
 \end{pegadinha}
 
 \begin{jacaiu}
-Sprint Planning prioriza pela \textbf{capacidade real da equipe}, nunca por
-pressão externa. Mudança tardia de escopo: trata-se com o PO, ajustando o
-backlog --- nunca ``recusar por comprometer o plano'' nem ``suspender o
-projeto''.
+\textbf{Em prova real da FGV:} Sprint Planning prioriza pela
+\textbf{capacidade real da equipe}, nunca por pressão externa --- gabarito
+literal da \textbf{Dataprev 2024}. Mudança tardia de escopo: trata-se com o
+PO, ajustando o backlog, nunca ``recusar por comprometer o plano'' nem
+``suspender o projeto'' --- \textbf{TJ-RJ}, no cenário do projeto com 90\% do
+escopo já definido.
 \end{jacaiu}
 
 \section{Testes}
@@ -391,16 +397,40 @@ grande''.
 \end{itemize}
 
 \begin{jacaiu}
-Cascata $\times$ incremental; Sprint Review $\times$ Retrospective; requisito
-funcional $\times$ não funcional (cenário do ``saldo em tempo real'');
-brainstorming como elicitação válida; papel do Scrum Master no Daily e no
-Sprint Planning; metodologia ágil para mudança frequente (XP/Scrum/Kanban); CD
-no DevOps; Ponto de Função $\times$ Story Points; design alto $\times$ baixo
-nível; níveis de teste + TDD; ágil híbrido; CMMI por estágios (nível 3 =
-Definido) e MPS.BR; modelo V (requisitos $\leftrightarrow$ aceitação,
-arquitetural $\leftrightarrow$ integração); tipos de manutenção (adaptativa na
-troca de SGBD); cobertura de comandos $\times$ decisões; estresse $\times$
-carga; os três compromissos do Scrum. Rode \texttt{./quiz.py eng-software}.
+\textbf{Em prova real da FGV:} este é o bloco mais pesado dos específicos (26
+questões com a tag, mais uma dúzia escondida sob ``órfãos''). Requisito
+funcional $\times$ não funcional no cenário do ``saldo em tempo real'', com
+\textbf{brainstorming} como elicitação válida; papel do \textbf{Scrum Master
+no Daily}; \textbf{Sprint Planning} pela capacidade da equipe; metodologia
+ágil para mudança frequente (Scrum, com Kanban/XP/Lean/Cascata como
+distratores); \textbf{CD} no DevOps; \textbf{Ponto de Função $\times$ Story
+Points}; \textbf{design alto $\times$ baixo nível} (a banca inverte os dois
+numa alternativa e na seguinte); níveis de teste + \textbf{TDD} em item
+I/II/III/IV; \textbf{ágil híbrido}; \textbf{Liskov} em leitura de código ---
+\textbf{Dataprev 2024}. Contagem de RF/RNF, \textbf{BPMN} (Data Object
+$\times$ Data Association e leitura de diagrama), \textbf{CBOK 4.0}
+(\emph{handoffs} entre departamentos), \textbf{APF} sobre telas,
+\textbf{SNAP} (medição não funcional), testes automatizados, Liskov pela
+definição formal e \textbf{UML 2.5.1} --- \textbf{MPU}. Mudança tardia de
+escopo, \textbf{DDD} com especialistas de domínio, APF, contagem de RF/RNF e
+o \textbf{MoReq-Jus} (Resolução CNJ nº 522/2023) --- \textbf{TJ-RJ}.
+\textbf{CMMI e MPS.BR} no mesmo enunciado, \textbf{Ponto de Função} como
+métrica independente de linguagem, \textbf{modelo cascata} (validação só na
+fase final), \textbf{RUP} (as quatro fases, risco na Elaboração),
+\textbf{prototipação} para requisito volátil, \textbf{verificação $\times$
+validação} e negociação de requisitos conflitantes --- \textbf{ALERO 2026}.
+Versionamento (SVN $\times$ Git, GitLab CI) vem tagueado aqui, mas o conteúdo
+está no Capítulo \ref{cap:programacao}.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): Sprint Review $\times$ Retrospective; os três compromissos do Scrum
+(Meta do Produto, Meta da Sprint, Definition of Done); modelo V (requisitos
+$\leftrightarrow$ aceitação, arquitetural $\leftrightarrow$ integração); tipos
+de manutenção (adaptativa na troca de SGBD); cobertura de comandos $\times$
+decisões; teste de estresse $\times$ carga; cascata $\times$ incremental como
+par explícito.
+
+Rode \texttt{./quiz.py eng-software}.
 \end{jacaiu}
 
 \begin{pegadinha}[Resumo dos pares que a FGV inverte neste bloco]

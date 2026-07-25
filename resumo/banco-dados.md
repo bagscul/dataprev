@@ -276,16 +276,36 @@ ETL é melhor quando a transformação ocorre antes/fora.
 - Administração física (tablespaces, ARIES/recuperação, backup, otimizador)
   está em [orfaos](orfaos.md).
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Relacional × multidimensional (OLTP/OLAP); NoSQL (disponibilidade e escala
-horizontal); ETL × ELT (a incorreta); ETL como ponte para o DW; normalização
-1FN-3FN; integridade referencial; TRUNCATE/DELETE; teorema CAP; Star ×
-Snowflake; desnormalização em DW; Data Warehouse × Data Lake × Lakehouse;
-JOIN vs. NOT EXISTS; DISTINCT; VIEW como tabela virtual; GRANT de privilégios;
-SAVEPOINT/ROLLBACK TO; Crow's Foot → DDL; chave surrogada; N:M resolvido por
-tabela associativa; entidade fraca; níveis de isolamento e os fenômenos que
-cada um admite; gatilho × procedimento armazenado.
+**Em prova real da FGV:** quase toda a lista deste bloco tem lastro. Relacional
+× multidimensional (OLTP/OLAP); NoSQL; ETL × ELT ("assinale a **incorreta**");
+ETL como ponte para o DW — **Dataprev 2024**. Álgebra relacional (a seleção σ e
+sua tradução para o `WHERE`); **VIEW** como tabela virtual; **GRANT** de
+privilégios; **SAVEPOINT** com `ROLLBACK TO` e `RELEASE`; **Crow's Foot** →
+DDL, que no mesmo item cobra **N:M por tabela associativa** com chave composta
+e **integridade referencial**; `DROP` × `TRUNCATE` × `DELETE`; `LIKE`; MongoDB
+(relação ↔ coleção, `$size`, ETL de NoSQL para relacional); NoSQL de **grafos**
+para rede de relacionamentos; DAMA-DMBOK e governança de dados — **MPU**.
+Teorema **CAP** (o perfil CP); desnormalização intencional no DW; Star ×
+Snowflake; **Data Warehouse × Data Lake × Lakehouse**; **chave surrogada**;
+`LIMIT`/`OFFSET`; `DISTINCT`; anti-join (Partes sem Audiência); *constraints*
+(`UNIQUE`, `NOT NULL`, `CHECK`, PK autogerada) — **TJ-RJ**. **Entidade fraca**
+na notação IDEF1X; integridade referencial; normalização (chave candidata e a
+forma normal mais alta, a partir das dependências funcionais); **gatilho ×
+procedimento × função**, em três questões distintas; VIEW para esconder a
+coluna de salário; NoSQL chave-valor para cache de sessão — **ALERO 2026**.
+
+O bloco de **administração física** da ALERO 2026 (B+ Tree, índice *clustered*,
+hashing extensível, ARIES/WAL, otimizador e estatísticas, tablespaces,
+*connection pooling*, XML Schema, backup) está creditado em
+[orfaos](orfaos.md) — é o mesmo corpus, sob o rótulo de órfãs.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): **níveis de isolamento** e os fenômenos que cada um admite (leitura
+suja, não repetível, fantasma) — nenhuma das 432 questões reais menciona `READ
+COMMITTED` ou `SERIALIZABLE`.
+
 Rode `../quiz.py banco-dados` e `../quiz.py bi`.
 
 ## Pegadinhas da FGV (resumo)

@@ -228,14 +228,40 @@ Raft é *consenso*, decide por **maioria** e **continua funcionando** com a
 minoria fora. Trocar "unanimidade" por "maioria" de um para o outro é o
 distrator pronto, e "o 2PC tolera a falha do coordenador" é falso.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Servidor web × de aplicação; SOA e web services (baixo acoplamento, REST);
-arquitetura hexagonal × microsserviços (não compartilham banco); internet/
-extranet/intranet/portal; escalabilidade horizontal × vertical (com cálculo
-de custo-benefício); REST stateless; container × VM; API gateway; taints/
-tolerations no Kubernetes; cloud bursting; 2PC × Raft; ESB como barramento da
-SOA; layers × tiers; serverless/FaaS; balanceador × CDN.
+**Em prova real da FGV:** servidor web × de aplicação; SOA e web services
+(baixo acoplamento); arquitetura hexagonal × microsserviços — a afirmativa
+falsa é justamente "microsserviços compartilham o mesmo banco"; **design ×
+arquitetura** (amplo/estrutural contra detalhado/específico) — **Dataprev
+2024**, que também cobrou internet/intranet/extranet/portal, ali como item de
+*redes*. Escalabilidade horizontal × vertical **com cálculo de
+custo-benefício**; **REST stateless** (a escalabilidade vem da ausência de
+estado no servidor); **taints/tolerations** no Kubernetes; **cloud bursting**;
+container × VM em cenário de latência e isolamento; **object storage** de
+espaço de nomes plano; cloud-native × híbrida; cliente-servidor à Sommerville
+(o modelo é **lógico**); **WSDL** como descrição do web service; RabbitMQ e a
+entrega *exactly-once* — **TJ-RJ**. **DDD** depois da modelagem do domínio e
+escolha de distribuição do Kubernetes sob o Rancher — **MPU**. Balanceador de
+carga com **afinidade de sessão** (e o preço que ela cobra em tolerância a
+falhas), framework de arquitetura corporativa por *views* e *viewpoints*,
+**VDI**, PaaS gerenciado, **paravirtualização** com *hypercalls*,
+responsabilidade compartilhada em SaaS e **WSDL** de novo — **ALERO 2026**.
+
+**Fora do edital, mas presente na amostra:** 11 das 34 questões tagueadas
+`arquitetura` são **arquitetura de computadores e sistema operacional** — Von
+Neumann e seu gargalo, ULA e unidade de controle, *overflow* × *carry*,
+conversão de base, ROM e firmware, ciclo busca-decodificação-execução, MMU/TLB
+e *thrashing*, tabela de páginas, DMA. Vieram de provas de outro perfil (ALERO
+2026 e TJ-RJ); o edital do Perfil 3 fala em arquitetura *de software*. Saiba
+que existem, não gaste tempo nelas.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): **ESB** como barramento da SOA; **API gateway**; **Raft** (o 2PC, esse
+sim, caiu na ALERO 2026 pelo lado de banco distribuído); layers × tiers como
+par; serverless/FaaS e CDN como item próprio — os dois só apareceram como nome
+de produto entre distratores.
+
 Rode `../quiz.py arquitetura`.
 
 ## Pegadinhas da FGV (resumo)

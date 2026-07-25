@@ -171,10 +171,18 @@ Observer (eventos) --- ligar padrão a framework ajuda a fixar.
 \end{comosair}
 
 \begin{jacaiu}
-\textbf{Padrões (23 questões, subtag \texttt{padroes-projeto}):} os cinco
-criacionais em cenário (Singleton para instância única de configuração e de
-\emph{logging}; Abstract Factory para famílias de componentes; Builder com
-muitos atributos opcionais; Prototype quando criar do zero é caro; Factory
+\textbf{Em prova real da FGV:} \textbf{uma} questão na amostra inteira ---
+\textbf{ALERO 2026}, cache de documentos que precisa de uma \emph{única
+instância ativa} em toda a aplicação, gabarito \textbf{Singleton}, com Factory
+Method, Builder, Observer e Strategy como distratores. O enunciado fala em
+``Padrão de Projeto da \textbf{classificação GoF}'' --- por isso a tabela das
+três famílias acima continua valendo o estudo: é assim que a banca ancora o
+item.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas --- 23 questões, subtag \texttt{padroes-projeto}): os demais
+criacionais em cenário (Abstract Factory para famílias de componentes; Builder
+com muitos atributos opcionais; Prototype quando criar do zero é caro; Factory
 Method); Adapter para biblioteca de terceiros com interface incompatível;
 Proxy como substituto de imagem pesada; Decorator para responsabilidade
 dinâmica; Composite em árvore de pastas e arquivos; Facade acionando vários
@@ -182,8 +190,14 @@ subsistemas em sequência; Strategy trocando o cálculo de frete em runtime;
 Observer na planilha que recalcula dependentes; Template Method nas etapas
 compartilhadas; Command na fila com desfazer; Chain of Responsibility nas
 validações sucessivas; State no pedido que muda de comportamento por estágio;
-a \textbf{classificação dos 23} em três famílias; MVC; e GRASP (a qual classe
-cabe a responsabilidade). Rode \texttt{./quiz.py padroes-projeto}.
+MVC; e GRASP (a qual classe cabe a responsabilidade).
+
+\textbf{Cuidado ao garimpar ``já caiu'' por palavra-chave:} o corpus tem
+quatro falsos positivos que \emph{não} são GoF --- ``Decorators (@)'' numa
+questão de Python (é metaprogramação da linguagem), ``Portas e Adaptadores''
+na arquitetura hexagonal (não é o Adapter), os vários ``proxy'' das questões
+de rede, e o MVC, que só aparece descrito sem ser nomeado. Rode
+\texttt{./quiz.py padroes-projeto}.
 \end{jacaiu}
 
 \section{UML}
@@ -284,11 +298,27 @@ Deployment e Componente aparecem em questões de arquitetura (Capítulo
 \end{comosair}
 
 \begin{jacaiu}
-\textbf{UML (10 questões, subtag \texttt{uml}):} as duas famílias na UML 2.x;
-composição $\times$ agregação; multiplicidade em diagrama de classes;
-\texttt{<<include>>} $\times$ \texttt{<<extend>>}; sequência para a ordem
-temporal das mensagens; atividade para decisão, paralelismo e sincronização;
-máquina de estados no ciclo de vida do objeto; generalização (direção da
-seta); componentes $\times$ implantação; realização de interface. Rode
-\texttt{./quiz.py uml}.
+\textbf{Em prova real da FGV:} ao contrário dos padrões, UML \textbf{cai}, e
+sempre citando a versão. \textbf{Diagrama de sequência} para a ordem
+cronológica exata das mensagens --- e os distratores eram os outros diagramas
+de interação (\textbf{comunicação}, \textbf{timing}, \textbf{visão geral de
+interação}) mais o de atividades; \textbf{composição} para a parte que não
+existe sem o todo e some junto com ele (distratores: agregação, dependência,
+associação qualificada); \textbf{diagrama de casos de uso} combinado com o
+\textbf{diagrama de objetos} para montar plano de teste (o de objetos mostra
+os \emph{valores} dos atributos das instâncias num ponto da execução) ---
+\textbf{ALERO 2026}, sempre com ``UML 2.5.1'' no enunciado. Leitura de
+\textbf{diagrama de classes} (extremidade de associação representável como
+atributo, agregação composta, valor default de atributo) --- \textbf{MPU}.
+\textbf{Generalização/especialização total e disjunta} caiu na
+\textbf{ALERO 2026} pelo lado do modelo ER, com a mesma semântica.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas --- 10 questões, subtag \texttt{uml}): as duas famílias na UML 2.x;
+multiplicidade em diagrama de classes; \texttt{<<include>>} $\times$
+\texttt{<<extend>>}; atividade para decisão, paralelismo e sincronização;
+máquina de estados no ciclo de vida do objeto; direção da seta da
+generalização; componentes $\times$ implantação; realização de interface.
+
+Rode \texttt{./quiz.py uml}.
 \end{jacaiu}

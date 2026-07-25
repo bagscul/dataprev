@@ -206,13 +206,34 @@ Pegadinha: depois de conter e erradicar vem **recuperação + lições
 aprendidas** (a etapa que "fecha" o ciclo); detecção e análise vêm **antes**
 da contenção.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Controle de acesso mandatório (rótulos); OWASP Top 10:2021 (categoria válida);
-X.800 mecanismos de segurança (específicos × disseminados); SSL × TLS; tríade
-CIA; IDS × IPS; SAST × DAST; modelo de responsabilidade compartilhada em nuvem;
-HMAC em webhook (autenticidade + integridade); RTO × RPO na continuidade de
-negócio. Rode `../quiz.py seguranca`.
+**Em prova real da FGV:** é o bloco com mais questões reais dos específicos
+(38), e a lista abaixo é quase toda verdadeira. Controle de acesso
+**mandatório** (comparação de rótulos); **OWASP Top 10:2021**, identificar a
+categoria válida (gabarito: SSRF, o A10 — as demais alternativas descreviam
+*práticas*, não vulnerabilidades); **X.800** (mecanismo específico ×
+disseminado); **SSL × TLS** — **Dataprev 2024**. Tríade **CIA** em associação
+de colunas; modelo de **responsabilidade compartilhada** (PaaS); **HMAC** em
+webhook; o *claim* `sub` do OIDC para rastreabilidade; aplicabilidade da LGPD a
+empresa privada — **TJ-RJ**. Anonimização como tratamento que rompe a
+associação ao titular; tipo de controle na ISO 27001; o *claim* `iat` do OIDC —
+**MPU**. **RTO × RPO** saindo de uma BIA; **IDS × IPS** (o que *age*, não só
+detecta); SSL/TLS; responsabilidade compartilhada em SaaS; **RBAC**; segregação
+de funções; proprietário do ativo na 27002; tratamento de risco e risco
+residual; matriz 5×5 com WAF; criptografia simétrica × assinatura digital sobre
+ICP; a família de *malware* inteira (*worm*, *ransomware*, *spyware* +
+*keylogger*, *phishing*); DDoS e SYN *flood*; *spoofing* de MAC/IP; NGFW, WAF,
+proxy e VPN; e as etapas de **resposta a incidentes** (contenção, depois
+recuperação e lições aprendidas) — **ALERO 2026**, que sozinha respondeu por 17
+questões de segurança.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): **SAST × DAST** — nenhuma das 432 questões reais cita qualquer um dos
+dois. Continua valendo o estudo: é par de edital e a FGV adora inverter
+estático com dinâmico.
+
+Rode `../quiz.py seguranca`.
 
 ## Pegadinhas da FGV (resumo)
 

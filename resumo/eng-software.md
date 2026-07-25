@@ -271,17 +271,37 @@ dado derivado**, é **SE**; se é leitura pura, é **CE**. E **ALI × AIE**: que
   ou da configuração do projeto — as **protegidas/mascaradas** servem a
   segredo, e é aí que a banca cutuca.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-Cascata × incremental; Sprint Review × Retrospective; requisito funcional ×
-não funcional (cenário do saldo em tempo real); brainstorming como elicitação
-válida; Scrum Master no Daily e no Sprint Planning (capacidade do time);
-metodologia ágil para mudança frequente (XP/Scrum/Kanban); CD no DevOps;
-Ponto de Função × Story Points; design alto × baixo nível; testes I/II/III/IV
-+ TDD; ágil híbrido; CMMI por estágios (nível 3 = Definido) e MPS.BR; modelo V
-(requisitos ↔ aceitação, arquitetural ↔ integração); tipos de manutenção
-(adaptativa na troca de SGBD); cobertura de comandos × decisões; estresse ×
-carga; os três compromissos do Scrum. Rode `../quiz.py eng-software`.
+**Em prova real da FGV:** é o bloco mais pesado dos específicos (26 questões
+com a tag, mais uma dúzia escondida sob "órfãos"). Requisito funcional × não
+funcional no cenário do saldo em tempo real, com **brainstorming** como
+elicitação válida; **Scrum Master no Daily**; **Sprint Planning** pela
+capacidade do time; metodologia ágil para mudança frequente (Scrum, com
+Kanban/XP/Lean/Cascata como distratores); **CD** no DevOps; **Ponto de Função ×
+Story Points**; **design alto × baixo nível** (a banca inverte os dois em
+alternativas consecutivas); testes I/II/III/IV + **TDD**; **ágil híbrido**;
+**Liskov** em leitura de código — **Dataprev 2024**. Contagem de RF/RNF,
+**BPMN** (Data Object × Data Association e leitura de diagrama), **CBOK 4.0**
+(*handoffs*), **APF** sobre telas, **SNAP** (medição não funcional), testes
+automatizados, Liskov pela definição formal e **UML 2.5.1** — **MPU**. Mudança
+tardia de escopo, **DDD** com especialistas de domínio, APF, contagem de RF/RNF
+e o **MoReq-Jus** (Resolução CNJ nº 522/2023) — **TJ-RJ**. **CMMI e MPS.BR** no
+mesmo enunciado, **Ponto de Função** como métrica independente de linguagem,
+**modelo cascata** (validação só na fase final), **RUP** (quatro fases, risco
+na Elaboração), **prototipação** para requisito volátil, **verificação ×
+validação** e negociação de requisitos conflitantes — **ALERO 2026**.
+Versionamento (SVN × Git, GitLab CI) vem tagueado aqui, mas o conteúdo está em
+[programacao](programacao.md).
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
+provas): Sprint Review × Retrospective; os três compromissos do Scrum (Meta do
+Produto, Meta da Sprint, Definition of Done); modelo V (requisitos ↔ aceitação,
+arquitetural ↔ integração); tipos de manutenção (adaptativa na troca de SGBD);
+cobertura de comandos × decisões; teste de estresse × carga; cascata ×
+incremental como par explícito.
+
+Rode `../quiz.py eng-software`.
 
 ## Pegadinhas da FGV (resumo)
 

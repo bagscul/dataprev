@@ -69,14 +69,28 @@ Pegadinha: **include** (sempre executa) × **extend** (às vezes).
 4. Ligue ao resto: caso de uso ↔ requisitos funcionais; classes ↔ OO/SOLID;
    estado ↔ padrão State (`padroes-projeto.md`).
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-10 questões filtráveis por `../quiz.py uml`. As duas famílias na UML 2.x;
-composição × agregação; multiplicidade em diagrama de classes; `<<include>>` ×
-`<<extend>>`; sequência para a ordem temporal das mensagens; atividade para
-decisão, paralelismo e sincronização; máquina de estados no ciclo de vida do
-objeto; generalização (direção da seta); componentes × implantação; realização
-de interface.
+**Em prova real da FGV:** ao contrário dos padrões, UML **cai**, e sempre
+citando a versão. **Diagrama de sequência** para a ordem cronológica exata das
+mensagens — e os distratores eram os outros diagramas de interação
+(**comunicação**, **timing**, **visão geral de interação**) mais o de
+atividades; **composição** para a parte que não existe sem o todo e some junto
+com ele (distratores: agregação, dependência, associação qualificada);
+**diagrama de casos de uso** combinado com o **diagrama de objetos** para
+montar plano de teste (o de objetos mostra os *valores* dos atributos das
+instâncias num ponto da execução) — **ALERO 2026**, sempre com "UML 2.5.1" no
+enunciado. Leitura de **diagrama de classes** (extremidade de associação
+representável como atributo, agregação composta, valor default de atributo) —
+**MPU**. **Generalização/especialização total e disjunta** caiu na **ALERO
+2026** pelo lado do modelo ER, com a mesma semântica.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de provas
+— 10 questões filtráveis por `../quiz.py uml`): as duas famílias na UML 2.x;
+multiplicidade em diagrama de classes; `<<include>>` × `<<extend>>`; atividade
+para decisão, paralelismo e sincronização; máquina de estados no ciclo de vida
+do objeto; direção da seta da generalização; componentes × implantação;
+realização de interface.
 
 ## Alta probabilidade / pesquisa extra
 

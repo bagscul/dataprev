@@ -119,20 +119,33 @@ responsabilidade): os dois falam em "pequeno e específico", mas um trata de
 3. **Ligue ao SOLID:** Strategy e Template Method concretizam o Open/Closed;
    Dependency Inversion aparece em Factory/Abstract Factory.
 
-## O que já caiu (nossas questões)
+## O que já caiu
 
-23 questões filtráveis por `../quiz.py padroes-projeto`. Os cinco criacionais
-em cenário (Singleton para instância única de configuração e de *logging*;
-Abstract Factory para famílias de componentes; Builder com muitos atributos
-opcionais; Prototype quando criar do zero é caro; Factory Method); Adapter para
-biblioteca de terceiros com interface incompatível; Proxy como substituto de
-imagem pesada; Decorator para responsabilidade dinâmica; Composite em árvore de
-pastas e arquivos; Facade acionando vários subsistemas em sequência; Strategy
-trocando o cálculo de frete em runtime; Observer na planilha que recalcula
-dependentes; Template Method nas etapas compartilhadas; Command na fila com
-desfazer; Chain of Responsibility nas validações sucessivas; State no pedido
-que muda de comportamento por estágio; a **classificação dos 23** em três
-famílias; MVC; e GRASP (a qual classe cabe a responsabilidade).
+**Em prova real da FGV:** **uma** questão na amostra inteira — **ALERO 2026**,
+cache de documentos que precisa de uma *única instância ativa* em toda a
+aplicação, gabarito **Singleton**, com Factory Method, Builder, Observer e
+Strategy como distratores. O enunciado fala em "Padrão de Projeto da
+**classificação GoF**" — por isso a tabela das três famílias continua valendo o
+estudo: é assim que a banca ancora o item.
+
+**No nosso banco** (previsto pelo edital, ainda não visto na amostra de provas
+— 23 questões filtráveis por `../quiz.py padroes-projeto`): os demais
+criacionais em cenário (Abstract Factory para famílias de componentes; Builder
+com muitos atributos opcionais; Prototype quando criar do zero é caro; Factory
+Method); Adapter para biblioteca de terceiros com interface incompatível; Proxy
+como substituto de imagem pesada; Decorator para responsabilidade dinâmica;
+Composite em árvore de pastas e arquivos; Facade acionando vários subsistemas
+em sequência; Strategy trocando o cálculo de frete em runtime; Observer na
+planilha que recalcula dependentes; Template Method nas etapas compartilhadas;
+Command na fila com desfazer; Chain of Responsibility nas validações
+sucessivas; State no pedido que muda de comportamento por estágio; MVC; e GRASP
+(a qual classe cabe a responsabilidade).
+
+**Cuidado ao garimpar "já caiu" por palavra-chave:** o corpus tem quatro falsos
+positivos que *não* são GoF — "Decorators (@)" numa questão de Python (é
+metaprogramação da linguagem), "Portas e Adaptadores" na arquitetura hexagonal
+(não é o Adapter), os vários "proxy" das questões de rede, e o MVC, que só
+aparece descrito sem ser nomeado.
 
 ## Alta probabilidade / pesquisa extra
 

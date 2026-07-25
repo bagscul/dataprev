@@ -376,16 +376,40 @@ otimizador) está no Capítulo \ref{cap:orfaos} (Órfãos).
 \end{itemize}
 
 \begin{jacaiu}
-Relacional $\times$ multidimensional (OLTP/OLAP); NoSQL (disponibilidade e
-escala horizontal); ETL $\times$ ELT (identificar a incorreta); ETL como
-ponte para o DW; normalização 1FN-3FN; integridade referencial;
-TRUNCATE/DELETE; teorema CAP; Star $\times$ Snowflake; desnormalização em DW;
-Data Warehouse $\times$ Data Lake $\times$ Lakehouse; JOIN vs.\ NOT EXISTS;
-DISTINCT; VIEW como tabela virtual; GRANT de privilégios; SAVEPOINT/ROLLBACK
-TO; Crow's Foot $\to$ DDL; chave surrogada; N:M resolvido por tabela
-associativa; entidade fraca; níveis de isolamento e os fenômenos que cada um
-admite; gatilho $\times$ procedimento armazenado. Rode \texttt{./quiz.py
-banco-dados} e \texttt{./quiz.py bi}.
+\textbf{Em prova real da FGV:} quase toda a lista deste bloco tem lastro.
+Relacional $\times$ multidimensional (OLTP/OLAP); NoSQL; ETL $\times$ ELT
+(``assinale a \textbf{incorreta}''); ETL como ponte para o DW ---
+\textbf{Dataprev 2024}. Álgebra relacional (a seleção $\sigma$ e sua tradução
+para o \texttt{WHERE}); \textbf{VIEW} como tabela virtual; \textbf{GRANT} de
+privilégios; \textbf{SAVEPOINT} com \texttt{ROLLBACK TO} e
+\texttt{RELEASE}; \textbf{Crow's Foot} $\to$ DDL, que no mesmo item cobra
+\textbf{N:M por tabela associativa} com chave composta e \textbf{integridade
+referencial}; \texttt{DROP} $\times$ \texttt{TRUNCATE} $\times$
+\texttt{DELETE}; \texttt{LIKE}; MongoDB (relação $\leftrightarrow$ coleção,
+\texttt{\$size}, ETL de NoSQL para relacional); NoSQL de \textbf{grafos} para
+rede de relacionamentos; DAMA-DMBOK e governança de dados --- \textbf{MPU}.
+Teorema \textbf{CAP} (o perfil CP); desnormalização intencional no DW; Star
+$\times$ Snowflake; \textbf{Data Warehouse $\times$ Data Lake $\times$
+Lakehouse}; \textbf{chave surrogada}; \texttt{LIMIT}/\texttt{OFFSET};
+\texttt{DISTINCT}; anti-join (Partes sem Audiência); \emph{constraints}
+(\texttt{UNIQUE}, \texttt{NOT NULL}, \texttt{CHECK}, PK autogerada) ---
+\textbf{TJ-RJ}. \textbf{Entidade fraca} na notação IDEF1X; integridade
+referencial; normalização (chave candidata e a forma normal mais alta, a
+partir das dependências funcionais); \textbf{gatilho $\times$ procedimento
+$\times$ função}, em três questões distintas; VIEW para esconder a coluna de
+salário; NoSQL chave-valor para cache de sessão --- \textbf{ALERO 2026}.
+
+O bloco de \textbf{administração física} da ALERO 2026 (B+ Tree, índice
+\emph{clustered}, hashing extensível, ARIES/WAL, otimizador e estatísticas,
+tablespaces, \emph{connection pooling}, XML Schema, backup) está creditado no
+Capítulo \ref{cap:orfaos} --- é o mesmo corpus, sob o rótulo de órfãs.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): \textbf{níveis de isolamento} e os fenômenos que cada um admite
+(leitura suja, não repetível, fantasma) --- nenhuma das 432 questões reais
+menciona \texttt{READ COMMITTED} ou \texttt{SERIALIZABLE}.
+
+Rode \texttt{./quiz.py banco-dados} e \texttt{./quiz.py bi}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}

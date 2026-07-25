@@ -304,11 +304,34 @@ contenção --- a FGV embaralha essa ordem.
 \end{pegadinha}
 
 \begin{jacaiu}
-Controle de acesso mandatório (rótulos); OWASP Top 10:2021 (identificar
-categoria válida); X.800 mecanismos de segurança (específicos $\times$
-disseminados); SSL $\times$ TLS; tríade CIA; IDS $\times$ IPS; SAST $\times$
-DAST; modelo de responsabilidade compartilhada em nuvem; HMAC em webhook
-(autenticidade + integridade); RTO $\times$ RPO na continuidade de negócio.
+\textbf{Em prova real da FGV:} é o bloco com mais questões reais dos
+específicos (38), e a lista abaixo é quase toda verdadeira. Controle de acesso
+\textbf{mandatório} (comparação de rótulos); \textbf{OWASP Top 10:2021},
+identificar a categoria válida (gabarito: SSRF, o A10 --- as demais
+alternativas descreviam \emph{práticas}, não vulnerabilidades); \textbf{X.800}
+(mecanismo específico $\times$ disseminado); \textbf{SSL $\times$ TLS} ---
+\textbf{Dataprev 2024}. Tríade \textbf{CIA} em associação de colunas; modelo
+de \textbf{responsabilidade compartilhada} (PaaS); \textbf{HMAC} em webhook; o
+\emph{claim} \texttt{sub} do OIDC para rastreabilidade; aplicabilidade da LGPD
+a empresa privada --- \textbf{TJ-RJ}. Anonimização como tratamento que rompe a
+associação ao titular; tipo de controle na ISO 27001; o \emph{claim}
+\texttt{iat} do OIDC --- \textbf{MPU}. \textbf{RTO $\times$ RPO} saindo de uma
+BIA; \textbf{IDS $\times$ IPS} (o que \emph{age}, não só detecta); SSL/TLS;
+responsabilidade compartilhada em SaaS; \textbf{RBAC}; segregação de funções;
+proprietário do ativo na 27002; tratamento de risco e risco residual; matriz
+5$\times$5 com WAF; criptografia simétrica $\times$ assinatura digital sobre
+ICP; a família de \emph{malware} inteira (\emph{worm}, \emph{ransomware},
+\emph{spyware} + \emph{keylogger}, \emph{phishing}); DDoS e SYN
+\emph{flood}; \emph{spoofing} de MAC/IP; NGFW, WAF, proxy e VPN; e as etapas
+de \textbf{resposta a incidentes} (contenção, depois recuperação e lições
+aprendidas) --- \textbf{ALERO 2026}, que sozinha respondeu por 17 questões de
+segurança.
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): \textbf{SAST $\times$ DAST} --- nenhuma das 432 questões reais cita
+qualquer um dos dois. Continua valendo o estudo: é par de edital e a FGV adora
+inverter estático com dinâmico.
+
 Rode \texttt{./quiz.py seguranca}.
 \end{jacaiu}
 
