@@ -3,16 +3,21 @@
 ## O que mais cai
 - Modelagem dimensional (Kimball): Star Schema x Snowflake
   Schema — cenário longo de varejo/DW, hierarquia de
-  produtos. Aparece nas duas provas de TI.
+  produtos. É o tema mais recorrente do bloco: apareceu no
+  TJ-RJ, na ALERO 2026 e na Dataprev 2024.
 - OLAP: conceito de banco analítico e operações — dice
   (filtro múltiplo), slice, drill-down/up, roll-up, pivot.
 - Arquitetura de dados moderna: Data Warehouse x Data Lake x
   Lakehouse (camadas Bronze/Silver/Gold, dados brutos para
   ML + dimensional para BI).
 - Tipos de fato e dimensão: fato aditivo/semiaditivo/não
-  aditivo, dimensão degenerada.
+  aditivo, dimensão degenerada. Granularidade (o grão da
+  fato) e dimensão lentamente mutante (SCD, tipos 1/2/3).
 - ETL para modelo dimensional / Data Mart (inclusive
-  ingerindo de NoSQL/MongoDB), chave surrogada.
+  ingerindo de NoSQL/MongoDB). A chave surrogada também
+  cai, mas no bloco banco-dados (TJ-RJ).
+- CRISP-DM: as 6 fases e, principalmente, o que vem depois
+  da Avaliação (é a Implantação).
 - Mineração: regras de associação (suporte x confiança),
   Sistemas de Suporte à Decisão (SSD).
 - Governança de dados: DAMA-DMBOK, Dados Mestres e de

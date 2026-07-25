@@ -55,6 +55,39 @@ OLAP (analítico) $\times$ OLTP (transacional): ver Capítulo
 \textbf{Cubo:} dados organizados em \textbf{dimensões} (tempo, produto,
 local) e \textbf{métricas/fatos} (vendas, quantidade).
 
+\begin{conceito}[Modelo relacional $\times$ modelo multidimensional]
+São \textbf{duas formas de organizar o mesmo dado}, para finalidades
+diferentes --- e a FGV cobra a comparação diretamente.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Relacional (OLTP)} & \textbf{Multidimensional (OLAP)} \\
+\midrule
+Organiza em & tabelas normalizadas (até 3FN) & fatos $\times$ dimensões (cubo) \\
+Otimizado para & \textbf{escrita} curta e concorrente, sem redundância & \textbf{leitura} analítica, agregação em massa \\
+Redundância & evitada & \textbf{aceita de propósito} (desnormalização) \\
+Pergunta típica & ``qual o saldo do cliente X agora?'' & ``como as vendas evoluíram por região e trimestre?'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Formas de \textbf{armazenar} o cubo: \textbf{ROLAP} (o dado fica em tabelas
+relacionais e o cubo é montado por consulta --- escala melhor),
+\textbf{MOLAP} (cubo pré-calculado em estrutura própria --- consulta mais
+rápida, carga mais pesada) e \textbf{HOLAP} (híbrido: detalhe no relacional,
+agregados pré-calculados).
+\end{conceito}
+
+\begin{pegadinha}
+Duas trocas frequentes: dizer que o modelo multidimensional serve para
+\textbf{transação} (é o relacional/OLTP) e inverter ROLAP com MOLAP ---
+lembre que o \textbf{M} de MOLAP é de \emph{multidimensional}, o cubo
+pré-calculado. Absoluto a descartar: ``ferramentas de BI são incompatíveis
+com tabelas normalizadas'' --- não são; a desnormalização é escolha de
+desempenho, não exigência.
+\end{pegadinha}
+
 \begin{center}
 \begin{tabular}{@{}p{3cm}p{8.6cm}@{}}
 \toprule
@@ -84,6 +117,37 @@ Snowflake é o padrão recomendado por Kimball (é o Star). Também drill-down
 $\leftrightarrow$ roll-up e OLAP $\leftrightarrow$ OLTP invertidos.
 \end{pegadinha}
 
+\subsection{Granularidade (o grão da fato)}
+
+\textbf{Granularidade é o que uma linha da tabela fato representa.} Definir o
+grão é a primeira decisão do projeto dimensional, e ela é irreversível na
+prática: tudo o mais (dimensões, medidas, agregações) é escolhido depois
+dela.
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{7.6cm}@{}}
+\toprule
+\textbf{Grão} & \textbf{Consequência} \\
+\midrule
+\textbf{Fino} (detalhado) --- ``uma linha por atendimento'' & \textbf{amplia} as análises possíveis (dá para agregar depois em qualquer nível); volume maior \\
+\textbf{Grosso} (agregado) --- ``uma linha por unidade por dia'' & tabela menor e consulta mais rápida, mas o detalhe está \textbf{perdido para sempre} --- não dá para desagregar \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Regra de Kimball: \textbf{declare o grão no nível mais atômico que a fonte
+permitir}. Agregados são construídos \textbf{a partir} do detalhe, como
+tabelas adicionais --- nunca no lugar dele.
+
+\begin{pegadinha}
+A FGV inverte a consequência: diz que escolher o grão mais detalhado
+\textbf{restringe} as análises (é o contrário --- quem restringe é o
+agregado) ou que a granularidade é definida pela quantidade de dimensões (é
+definida pelo que \textbf{uma linha da fato representa}). Não confunda
+\textbf{grão} com \textbf{nível de agregação de uma consulta}: o grão é do
+modelo, a agregação é do drill-up.
+\end{pegadinha}
+
 \subsection{Tipos de fato e dimensão}
 
 \begin{itemize}
@@ -100,6 +164,39 @@ pedido) que fica na tabela fato, sem dimensão própria.
 A banca troca semiaditivo por aditivo --- lembre que semiaditivo tipicamente
 \textbf{não} soma no eixo do tempo (saldo bancário de hoje não é a soma dos
 saldos anteriores).
+\end{pegadinha}
+
+\subsection{Dimensões lentamente mutantes (SCD)}
+
+Atributo de dimensão muda com o tempo (o cliente troca de cidade, o produto
+troca de categoria). \textbf{SCD} (\textit{Slowly Changing Dimension}) é a
+técnica que decide o que fazer com o histórico:
+
+\begin{center}
+\begin{tabular}{@{}p{1.9cm}p{4cm}p{5.2cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{O que faz} & \textbf{Efeito no histórico} \\
+\midrule
+\textbf{Tipo 1} & \textbf{sobrescreve} o valor antigo & histórico \textbf{perdido}; os fatos passados passam a ser lidos com o valor novo \\
+\textbf{Tipo 2} & \textbf{insere um novo registro} versionado (nova chave \textit{surrogate}, com \texttt{data\_início}/\texttt{data\_fim} ou \textit{flag} de corrente) & \textbf{preserva o histórico completo} --- cada fato continua ligado à versão vigente na época \\
+\textbf{Tipo 3} & guarda o \textbf{valor anterior em outra coluna} & preserva só \textbf{uma} mudança (o ``valor anterior''), não a série toda \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+É o \textbf{tipo 2} que responde ao cenário clássico: ``as vendas antigas
+devem continuar associadas à cidade em que o cliente morava na época''. E é
+ele que justifica a \textbf{chave \textit{surrogate}} (substituta) da
+dimensão: como a mesma chave natural passa a ter várias versões, a fato
+precisa apontar para uma chave artificial que identifique a \textbf{versão},
+não a entidade.
+
+\begin{pegadinha}
+Inversão de número é a pegadinha inteira aqui: oferecer o \textbf{tipo 1}
+(sobrescrever) para um cenário que pede histórico, ou o \textbf{tipo 2} para
+um cenário de correção de erro de digitação (aí o certo \emph{é} sobrescrever
+--- tipo 1). O tipo 3 aparece como distrator ``quase certo'': preserva
+histórico, mas só o \textbf{valor imediatamente anterior}.
 \end{pegadinha}
 
 \section{Sistemas de Suporte à Decisão (SSD/DSS)}
@@ -122,24 +219,89 @@ prática \textbf{não recomendada} que a FGV pede como resposta.
 
 \section{Data Mining e visualização}
 
-\textbf{Data Mining:} descobrir padrões em grandes volumes (classificação,
-agrupamento/clustering, associação, regressão).
+\textbf{Data Mining:} descobrir padrões, correlações e conhecimento não
+trivial em grandes volumes de dados.
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{3.2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Tarefa} & \textbf{Tem rótulo?} & \textbf{Cenário típico} \\
+\midrule
+Classificação & \textbf{sim} (supervisionada) & prever se o cliente vai inadimplir (classes conhecidas) \\
+Regressão & \textbf{sim} (supervisionada) & prever um \textbf{valor numérico} (faturamento do mês) \\
+Clusterização & \textbf{não} (não supervisionada) & \textbf{descobrir grupos} de clientes com comportamento parecido, \emph{sem} rótulo prévio \\
+Regras de associação & não & \textbf{o que é comprado junto} (cesta de compras) \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \textbf{Regras de associação:} \textbf{suporte} = frequência do conjunto no
 total de transações; \textbf{confiança} = força da implicação A$\to$B. A FGV
 confunde os dois.
 
+\begin{pegadinha}
+O par que a banca inverte é \textbf{classificação} $\times$
+\textbf{clusterização}: se o enunciado diz ``\textbf{sem rótulos prévios}''
+ou ``descobrir grupos'', é clusterização (não supervisionada); se as classes
+já existem e o modelo aprende a atribuí-las, é classificação
+(supervisionada). ``Produtos comprados juntos'' é \textbf{regra de
+associação}, nunca clusterização.
+\end{pegadinha}
+
+\subsection{CRISP-DM --- o ciclo de um projeto de mineração}
+
+\begin{center}
+\begin{tabular}{@{}p{0.6cm}p{3.6cm}p{6.8cm}@{}}
+\toprule
+& \textbf{Fase} & \textbf{O que acontece} \\
+\midrule
+1 & Entendimento do \textbf{negócio} & objetivos e critérios de sucesso do negócio (é por aqui que começa, não pelos dados) \\
+2 & Entendimento dos \textbf{dados} & coleta inicial, exploração, qualidade \\
+3 & \textbf{Preparação} dos dados & limpeza, seleção, integração, formatação \\
+4 & \textbf{Modelagem} & escolha da técnica, treino, ajuste de parâmetros \\
+5 & \textbf{Avaliação} & os resultados atendem aos \textbf{objetivos de negócio}? \\
+6 & \textbf{Implantação} & colocar o modelo em operação, monitorar \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O ciclo é \textbf{iterativo}, não uma cascata: volta-se de qualquer fase à
+anterior, e a seta entre implantação e entendimento do negócio fecha o
+círculo.
+
+\begin{pegadinha}
+Não confunda a \textbf{avaliação} (fase 5, contra os objetivos de
+\textbf{negócio}) com a validação técnica do modelo, que é parte da
+\textbf{modelagem} (fase 4). Depois da avaliação vem a \textbf{implantação}
+--- se a alternativa disser que depois de avaliar volta-se sempre à
+preparação, é extrapolação. Outro distrator: começar o ciclo pelo
+entendimento \textbf{dos dados} --- começa pelo \textbf{negócio}.
+\end{pegadinha}
+
 \textbf{Dashboards e relatórios interativos:} camada de visualização (Power
 BI --- com recurso de \textit{drillthrough} entre páginas ---, Qlik, etc.).
 
 \begin{jacaiu}
-ETL como ponte/objetivo (extrair-transformar-carregar); SSD para os três
-tipos de problema; prática não recomendada no mapeamento de fontes (coletar
-tudo sem discriminar); relacional $\times$ multidimensional; ETL $\times$
-ELT; Star $\times$ Snowflake em cenário de varejo/DW; dice (filtro múltiplo)
-$\times$ slice; DW $\times$ Data Lake $\times$ Lakehouse (camadas
-Bronze/Silver/Gold); suporte $\times$ confiança em regras de associação. Rode
-\texttt{./quiz.py bi}.
+\textbf{Em prova real da FGV:} SSD para os três tipos de problema e a prática
+\emph{não} recomendada no mapeamento de fontes (coletar tudo sem
+discriminar) --- \textbf{Dataprev 2024}; Star $\times$ Snowflake em cenário
+de varejo/DW (contagem de \textit{joins}), o que a tabela fato contém
+(chaves estrangeiras + medidas numéricas), Data Mart como recorte
+departamental e o que pertence à fase de \textbf{Transformação} do ETL ---
+\textbf{ALERO 2026}; arquitetura \textbf{Lakehouse} e \textbf{dice} (filtro
+em várias dimensões) --- \textbf{TJ-RJ}; \textbf{suporte} $\times$
+\textbf{confiança} em regras de associação, relacional $\times$
+multidimensional e \textit{drillthrough} no Power BI --- \textbf{MPU}. O par
+ETL $\times$ ELT caiu na \textbf{Dataprev 2024}, como item de Banco de Dados
+(Capítulo \ref{cap:banco-dados}).
+
+\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
+provas): granularidade (o grão da fato); \textbf{SCD tipo 2}; as fases do
+\textbf{CRISP-DM}; fato semiaditivo; as quatro características de Inmon;
+clusterização $\times$ regras de associação; DW $\times$ Data Lake;
+drill-down $\times$ roll-up.
+
+Rode \texttt{./quiz.py bi}.
 \end{jacaiu}
 
 \section{Alta probabilidade / pesquisa extra}
