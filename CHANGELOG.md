@@ -4,7 +4,7 @@ Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
 ## 2026-07-25 — questões para os buracos de cobertura (auditoria, Bloco VII/ITEM 1)
 
-- **banco.json: 259 → 295 questões.** Dois lotes gerados a partir do relatório de
+- **banco.json: 259 → 331 questões.** Cinco lotes gerados a partir do relatório de
   cobertura, priorizados pelo peso do Apêndice A e por evidência de que a FGV
   cobra o tema (termo ausente do banco original × presente em prova real).
 - **LOTE 1 (22):** arquitetura 7, segurança 8, banco de dados 7. Fecha buracos que
@@ -18,12 +18,25 @@ Melhorias no material de estudo (Dataprev 2026, Perfil 3).
   Strategy), UML (componentes × implantação; realização × dependência), CMMI e
   MPS.BR, modelo V, tipos de manutenção, cobertura de comandos × decisões, teste
   de estresse × carga e os três compromissos do Scrum Guide.
-- **Calibração:** mediana do enunciado subiu de 19 para ~40 palavras (provas reais:
-  59), cenário aplicado em vez de definição pura, e 2 comandos negativos (~5,5% do
-  lote, contra ~4% das provas reais).
-- **Vazamentos de forma preservados em zero:** nas 36 questões novas, a correta é a
-  mais longa em 2 (5,5%) e não há termo absoluto só no distrator. Gabarito do banco
-  ficou uniforme (A–E com 59 cada).
+- **LOTE 3 (13):** os dois blocos gerais com menor oferta por ponto de prova. RLM
+  ganhou geometria plana e estatística descritiva (média/mediana/moda, desvio
+  padrão) — o Apêndice A registra que 2024 cobrou os dois e o banco tinha zero — e
+  juros simples × compostos. Inglês ganhou dois textos originais, com quatro itens
+  cada (ideia central, referência pronominal, conectivo e vocabulário em contexto).
+- **LOTE 4 (12):** Git além do clone (merge × rebase, área de stage, fetch × pull),
+  Python aplicado a dados (dicionário com `key=`, fatiamento e compreensão),
+  entrega × implantação contínua, Docker × Kubernetes, e BI (granularidade da fato,
+  medida semiaditiva, SCD tipo 2, fases do CRISP-DM, clusterização × associação).
+- **LOTE 5 (11):** **Língua Portuguesa saiu de zero questões originais.** Era o
+  maior descompasso do banco: 12 questões de prova (mesmo peso do Inglês) servidas
+  só pelas provas reais. Entraram um texto original com quatro itens de
+  interpretação e sete de norma-padrão (crase, concordância verbal, regência,
+  pontuação, porquês, conjunção concessiva e colocação pronominal).
+- **Calibração:** mediana do enunciado subiu de 19 para 41 palavras (provas reais:
+  59), com cenário aplicado no lugar de definição pura.
+- **Vazamentos de forma preservados em zero:** nas 72 questões novas, a correta é a
+  mais longa em 4 (6%) e não há uma única com termo absoluto só no distrator.
+  Gabarito do banco ficou uniforme (A–E com 66/67 cada).
 - `./valida.py`: 0 erros; nenhum aviso novo de forma.
 
 ## 2026-07-25 — fim dos vazamentos de forma no banco (auditoria, Bloco VI/A)

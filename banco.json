@@ -5603,5 +5603,689 @@
    "2": "Nenhum dos dois pares se sustenta: a Definition of Done é do Incremento e a Meta do Produto é do Product Backlog.",
    "3": "É a quase certa: o segundo par está correto, mas o Product Backlog responde pela Meta do Produto, e não pela Meta da Sprint."
   }
+ },
+ {
+  "tag": "rlm",
+  "q": "Uma sala de servidores retangular mede 12 m de comprimento por 7,5 m de largura. Será instalado piso elevado em toda a área da sala e um rodapé metálico ao longo de todo o perímetro, com exceção do vão de uma porta de 1,2 m. As quantidades de piso e de rodapé são, respectivamente:",
+  "alts": [
+   "90 m² e 37,8 m",
+   "90 m² e 39 m",
+   "90 m² e 19,5 m",
+   "45 m² e 37,8 m",
+   "180 m² e 37,8 m"
+  ],
+  "ans": 0,
+  "why": "A área do retângulo é 12 × 7,5 = 90 m². O perímetro é 2 × (12 + 7,5) = 39 m e, descontado o vão da porta, restam 39 − 1,2 = 37,8 m de rodapé.",
+  "erradas": {
+   "1": "O cálculo do perímetro está certo, mas ficou faltando descontar o vão de 1,2 m que o enunciado manda excluir — é a leitura incompleta do comando.",
+   "2": "O valor 19,5 m é o semiperímetro, ou seja, apenas 12 + 7,5. O perímetro percorre os quatro lados, e não dois.",
+   "3": "Dividir a área por dois seria o caminho para um triângulo com essa base e essa altura; a sala é retangular, então a área é o produto das duas medidas.",
+   "4": "Dobrar a área confunde o cálculo do perímetro, em que se multiplica por 2, com o da área, em que não há essa multiplicação."
+  }
+ },
+ {
+  "tag": "rlm",
+  "q": "No projeto de um datacenter, um cabo será esticado na diagonal de um piso retangular de 8 m por 6 m e outro cabo dará uma volta completa em torno de um pilar cilíndrico de 1,4 m de raio. Adotando π = 3,14, os comprimentos necessários são, aproximadamente:",
+  "alts": [
+   "14 m e 8,79 m",
+   "10 m e 6,15 m",
+   "10 m e 8,79 m",
+   "10 m e 4,40 m",
+   "12 m e 8,79 m"
+  ],
+  "ans": 2,
+  "why": "A diagonal é a hipotenusa do triângulo de catetos 8 e 6: √(64 + 36) = 10 m. A volta em torno do pilar é o comprimento da circunferência, 2πr = 2 × 3,14 × 1,4 ≈ 8,79 m.",
+  "erradas": {
+   "0": "Somar 8 + 6 dá o caminho pelas bordas, não a diagonal. A diagonal é sempre menor que a soma dos dois lados, o que já elimina o valor de 14 m.",
+   "1": "O número 6,15 é a área do círculo (πr² ≈ 6,1544), medida em metros quadrados. O enunciado pede comprimento de cabo, que é o contorno.",
+   "3": "O valor 4,40 corresponde a πr, isto é, metade da circunferência. Para dar a volta completa é preciso o dobro disso.",
+   "4": "Doze metros não sai de nenhuma das duas contas: seria a diagonal apenas se os catetos fossem outros, e o teorema de Pitágoras fixa o resultado em 10 m."
+  }
+ },
+ {
+  "tag": "rlm",
+  "q": "Sete medições do tempo de resposta de um serviço, em milissegundos, resultaram em: 120, 95, 110, 95, 130, 100 e 150. A média, a mediana e a moda desse conjunto são, respectivamente, aproximadamente:",
+  "alts": [
+   "114,3 ms, 95 ms e 110 ms",
+   "114,3 ms, 95 ms e 95 ms",
+   "110 ms, 114,3 ms e 95 ms",
+   "120 ms, 110 ms e 95 ms",
+   "114,3 ms, 110 ms e 95 ms"
+  ],
+  "ans": 4,
+  "why": "A soma dos sete valores é 800, logo a média é 800/7 ≈ 114,3. Ordenando (95, 95, 100, 110, 120, 130, 150), o valor central é 110, que é a mediana. O valor que mais se repete é 95, a moda.",
+  "erradas": {
+   "0": "A média está certa e as duas outras medidas aparecem trocadas: 95 é o valor que se repete (moda) e 110 é o que ocupa a posição central (mediana).",
+   "1": "Aqui a mediana foi tomada como o quarto elemento da lista na ordem em que ela foi apresentada. A mediana só existe depois de ordenar os dados.",
+   "2": "Média e mediana estão invertidas. A média resulta de dividir a soma pelo total de medições; a mediana é posicional e não depende da soma.",
+   "3": "O valor 120 é apenas a primeira medição da lista, e não a média — que exige somar os sete tempos e dividir por sete."
+  }
+ },
+ {
+  "tag": "rlm",
+  "q": "Dois servidores foram monitorados durante o mesmo período. Ambos apresentaram tempo médio de resposta de 200 ms, mas o servidor A teve desvio padrão de 8 ms e o servidor B, de 45 ms. Sobre esses dados, é correto afirmar que:",
+  "alts": [
+   "o servidor A é o mais rápido dos dois, pois desvio padrão menor indica média menor",
+   "os tempos do servidor A se concentram mais em torno da média do que os do servidor B",
+   "os dois conjuntos têm a mesma dispersão, uma vez que a média é idêntica nos dois casos",
+   "o servidor B tem, necessariamente, mediana maior do que a do servidor A",
+   "o desvio de 45 ms mostra que o tempo do servidor B variou entre 0 ms e 45 ms no período"
+  ],
+  "ans": 1,
+  "why": "O desvio padrão mede dispersão em torno da média, não a posição da média. Com médias iguais, o servidor de menor desvio é o mais regular: os tempos de A ficam mais agrupados em torno dos 200 ms.",
+  "erradas": {
+   "0": "Rapidez é medida pela média, e as duas são iguais a 200 ms. O desvio padrão informa a regularidade do serviço, não o quanto ele é rápido.",
+   "2": "Médias iguais não implicam dispersões iguais — é exatamente esse o ponto do enunciado, e a razão de existirem as duas medidas.",
+   "3": "Nada se pode concluir sobre a mediana a partir de média e desvio padrão: a mediana depende da distribuição dos valores, que não foi informada.",
+   "4": "O desvio padrão não delimita a faixa de valores observados. Ele expressa o afastamento típico em relação à média de 200 ms, e não um intervalo entre zero e 45."
+  }
+ },
+ {
+  "tag": "rlm",
+  "q": "Um valor de R$ 10.000,00 é aplicado pelo prazo de 2 anos, à taxa de 10% ao ano. A diferença entre o montante obtido no regime de juros compostos e o montante obtido no regime de juros simples, ao final dos 2 anos, é de:",
+  "alts": [
+   "R$ 0,00",
+   "R$ 1.000,00",
+   "R$ 200,00",
+   "R$ 100,00",
+   "R$ 2.100,00"
+  ],
+  "ans": 3,
+  "why": "A juros simples o montante é 10.000 + 2 × 1.000 = R$ 12.000,00. A juros compostos é 10.000 × 1,1² = R$ 12.100,00. A diferença, R$ 100,00, corresponde ao juro incidente sobre o juro do primeiro ano.",
+  "erradas": {
+   "0": "Os dois regimes só coincidem quando há um único período. A partir do segundo período o composto passa a render sobre o juro acumulado, e as curvas se separam.",
+   "1": "Mil reais é o juro de um ano em qualquer dos dois regimes, e não a diferença entre eles ao fim do prazo.",
+   "2": "Duzentos reais seria o dobro do valor correto; a incidência de juro sobre juro no segundo ano é de 10% sobre os R$ 1.000,00 do primeiro, ou seja, R$ 100,00.",
+   "4": "O valor de R$ 2.100,00 é o total de juros do regime composto nos dois anos, e não a diferença entre os dois montantes."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Firewalls and patches are useless against the attacks described in the text.",
+   "Encryption has been broken by criminals in most corporate networks.",
+   "The human factor, more than technology, is what makes phishing effective.",
+   "Awareness training should be replaced by stronger technical controls.",
+   "Employees are responsible for configuring the security tools they use."
+  ],
+  "ans": 2,
+  "why": "O texto opõe a parte técnica ('the easy part') ao comportamento humano: nenhuma ferramenta impede que um funcionário digite a senha numa página falsa, e é por isso que o phishing continua sendo a principal porta de entrada.",
+  "erradas": {
+   "0": "O texto diz que firewalls e patches podem ser configurados e aplicados, e não que sejam inúteis — o argumento é que eles não cobrem o comportamento das pessoas.",
+   "1": "O trecho afirma o contrário: em vez de quebrar a criptografia ('rather than breaking encryption'), os criminosos pedem as chaves às pessoas.",
+   "3": "O treinamento não é descartado: 'training helps', desde que seja contínuo. Substituí-lo por controles técnicos não é sugerido em nenhum ponto.",
+   "4": "A configuração das ferramentas aparece atribuída às equipes de segurança; ao funcionário o texto associa o risco de digitar a senha numa página falsa."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nIn the fragment \"Attackers know this\", the word \"this\" refers to the fact that:",
+  "alts": [
+   "no tool is able to stop an employee from revealing a password",
+   "firewalls can be configured by the security teams of a company",
+   "phishing is the most common entry point into corporate networks",
+   "a single awareness session at hiring time is quickly forgotten",
+   "patches are deployed before any attack reaches the organization"
+  ],
+  "ans": 0,
+  "why": "O pronome retoma a informação imediatamente anterior: 'no tool prevents an employee from typing a password into a convincing fake page'. É esse limite das ferramentas que os atacantes conhecem e exploram.",
+  "erradas": {
+   "1": "A configuração de firewalls aparece como parte fácil do trabalho, mencionada antes do 'but'. O que o pronome retoma é justamente a ressalva que vem depois.",
+   "2": "Essa é a consequência apresentada depois de 'which is why', e não o conteúdo retomado por 'this' — a ordem no texto separa causa e efeito.",
+   "3": "A frase sobre a sessão única de conscientização está na última linha, depois do pronome. Um pronome anafórico não retoma o que ainda não foi dito.",
+   "4": "O texto não afirma que os patches são aplicados antes de qualquer ataque; diz apenas que podem ser implantados, como exemplo da parte técnica."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nAccording to the text, it is correct to state that:",
+  "alts": [
+   "criminals prefer to break encryption instead of contacting the users of a system",
+   "phishing has become less frequent since companies started deploying patches",
+   "one awareness session at hiring time is enough to protect corporate networks",
+   "criminals often obtain credentials by asking people instead of breaking encryption",
+   "security teams consider the technical part of their job the hardest one to handle"
+  ],
+  "ans": 3,
+  "why": "A frase 'Rather than breaking encryption, criminals simply ask people for the keys' diz literalmente que o caminho preferido é pedir as credenciais às pessoas, e não vencer a criptografia.",
+  "erradas": {
+   "0": "É a inversão exata do que o texto afirma. A expressão 'rather than' indica a opção descartada, e a criptografia está justamente do lado descartado.",
+   "1": "Nada no texto relaciona a frequência do phishing à aplicação de patches; ao contrário, o phishing é apresentado como a porta de entrada mais comum.",
+   "2": "O texto diz que uma única sessão na contratação é rapidamente esquecida e que o treinamento precisa ser contínuo.",
+   "4": "Logo na primeira linha as equipes descrevem a tecnologia como a parte fácil ('the easy part'), e não como a mais difícil."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nIn the text, the word \"convincing\" is closest in meaning to:",
+  "alts": [
+   "harmless",
+   "believable",
+   "outdated",
+   "expensive",
+   "temporary"
+  ],
+  "ans": 1,
+  "why": "'Convincing' qualifica a página falsa que parece verdadeira o bastante para enganar o funcionário — ou seja, crível, convincente. 'Believable' é o sinônimo direto no contexto.",
+  "erradas": {
+   "0": "'Harmless' significa inofensivo, o oposto do que a página falsa representa no texto: ela é o instrumento do ataque.",
+   "2": "'Outdated' quer dizer desatualizado. Uma página convincente é bem-feita e atual o suficiente para passar por legítima.",
+   "3": "'Expensive' remete a custo, tema ausente da frase — o que está em jogo é a aparência de legitimidade da página.",
+   "4": "'Temporary' indica duração, e não credibilidade. O adjetivo qualifica a aparência da página falsa, não o tempo em que ela fica no ar."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Governments should stop using artificial intelligence in public services.",
+   "Algorithms are free from bias because they work around the clock.",
+   "Fraud detection is the only suitable use of AI in the public sector.",
+   "Citizens are usually able to understand how the automated decisions are made.",
+   "AI brings gains to public services, but demands human review of decisions."
+  ],
+  "ans": 4,
+  "why": "O texto reconhece a vantagem ('the appeal is obvious') e, em seguida, apresenta as ressalvas — viés herdado dos dados e falta de meios de contestação —, concluindo com a exigência de revisão humana.",
+  "erradas": {
+   "0": "Interromper o uso não é defendido em nenhum trecho; o que se propõe é a revisão humana das decisões de maior impacto.",
+   "1": "O texto afirma o contrário: as decisões automatizadas podem reproduzir os vieses presentes nos dados de treinamento.",
+   "2": "A triagem de pedidos e o atendimento a perguntas aparecem lado a lado com a detecção de fraude, e não como usos inadequados.",
+   "3": "É justamente o oposto: os cidadãos raramente têm um caminho claro para contestar um resultado que não compreendem."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nThe connective \"Still\" introduces:",
+  "alts": [
+   "an additional advantage of the use of algorithms",
+   "an example of a government that adopted the technology",
+   "a contrast with the advantage presented before it",
+   "a conclusion drawn from the previous sentences",
+   "a condition for governments to adopt automated systems"
+  ],
+  "ans": 2,
+  "why": "Em posição inicial, 'still' funciona como 'ainda assim', marcando oposição ao que veio antes: depois de elogiar a disponibilidade dos algoritmos, o texto passa às limitações.",
+  "erradas": {
+   "0": "Não há acréscimo de vantagem — o que vem depois de 'Still' são problemas: viés herdado dos dados e dificuldade de contestação.",
+   "1": "Nenhum país é citado como exemplo nesse ponto; a menção a 'several countries' aparece só na última frase, introduzida por outro conectivo.",
+   "3": "A conclusão do texto é introduzida por 'For this reason', na frase final. 'Still' está no meio do percurso, marcando a virada de argumento.",
+   "4": "Condição seria expressa por conectivos como 'if' ou 'provided that'. 'Still' não estabelece condição alguma."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nIn the fragment \"a result they do not understand\", the pronoun \"they\" refers to:",
+  "alts": [
+   "the citizens",
+   "the governments",
+   "the algorithms",
+   "the biases",
+   "the automated decisions"
+  ],
+  "ans": 0,
+  "why": "O sujeito da oração é 'citizens': são eles que raramente têm um caminho claro para contestar um resultado que não compreendem.",
+  "erradas": {
+   "1": "Os governos aparecem como sujeito da primeira frase, e não da oração em que o pronome está. A referência mais próxima e compatível é 'citizens'.",
+   "2": "Algoritmos não são o sujeito de 'do not understand'; no texto, eles produzem o resultado que o cidadão não compreende.",
+   "3": "'Biases' é complemento dentro da oração anterior e não pode ser o sujeito de quem deixa de compreender o resultado.",
+   "4": "As decisões automatizadas são o que se contesta, não quem contesta — trocar o objeto pelo sujeito é a armadilha aqui."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nIn the text, the verb \"challenge\" is closest in meaning to:",
+  "alts": [
+   "accept",
+   "contest",
+   "translate",
+   "postpone",
+   "reproduce"
+  ],
+  "ans": 1,
+  "why": "No contexto jurídico-administrativo do texto, 'to challenge a result' é contestar, questionar formalmente a decisão — e não 'desafiar' no sentido de provocação, que é o falso amigo explorado nesse tipo de item.",
+  "erradas": {
+   "0": "'Accept' inverte o sentido: quem contesta um resultado justamente não o aceita.",
+   "2": "'Translate' não tem relação com o trecho; o problema descrito é a falta de um caminho para questionar a decisão, não de idioma.",
+   "3": "'Postpone' significa adiar. O cidadão não busca atrasar a decisão, e sim discuti-la.",
+   "4": "'Reproduce' aparece antes no texto, referindo-se ao viés que os sistemas repetem — é outro trecho e outro sentido."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Uma desenvolvedora trabalha na branch feature e quer incorporar a ela as alterações mais recentes de main antes de abrir o pull request, mantendo o histórico da feature linear, sem um commit de junção. O comando adequado e o efeito produzido são:",
+  "alts": [
+   "git merge main, que une as duas linhas de desenvolvimento criando um commit de junção",
+   "git rebase main, que reaplica os commits da feature sobre a ponta de main",
+   "git revert main, que desfaz na feature os commits que haviam sido trazidos de main",
+   "git cherry-pick main, que copia para a feature os commits já existentes na branch main",
+   "git reset --hard main, que leva a feature ao estado de main preservando o trabalho local"
+  ],
+  "ans": 1,
+  "why": "O rebase transplanta os commits da feature para o topo de main, gerando novos commits e deixando o histórico linear. É por reescrever commits que ele não deve ser usado em branch já compartilhada.",
+  "erradas": {
+   "0": "O merge resolve a incorporação, mas produz exatamente o que o enunciado quer evitar: um commit de junção e um histórico com bifurcação visível.",
+   "2": "O revert cria um novo commit que anula o efeito de outro. Serve para desfazer mudanças já publicadas, não para atualizar a base da branch.",
+   "3": "O cherry-pick copia commits escolhidos um a um, e recebe identificadores de commit, não o nome de uma branch inteira como base de atualização.",
+   "4": "O reset --hard descarta as alterações locais em vez de preservá-las — é o comando que mais destrói trabalho quando usado por engano."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Depois de editar um arquivo que já estava versionado, uma pessoa executa git commit -m \"ajuste\" e percebe que a alteração não entrou no commit criado. A explicação e a correção são:",
+  "alts": [
+   "a alteração não foi levada à área de stage, e é preciso um git add antes do commit",
+   "o arquivo estava no stage, mas faltou executar git fetch para registrar a alteração",
+   "o commit só registra arquivos novos, e para os já versionados se usa o git push",
+   "faltou criar uma branch, porque não se pode commitar diretamente na branch atual",
+   "o commit exige um git clone do repositório remoto antes de registrar a alteração"
+  ],
+  "ans": 0,
+  "why": "O Git separa três áreas: diretório de trabalho, stage (index) e repositório local. O commit grava apenas o que está no stage, então uma edição não adicionada com git add fica de fora.",
+  "erradas": {
+   "1": "O fetch traz informação do repositório remoto para o local; ele não tem relação com registrar alterações feitas na própria máquina.",
+   "2": "O commit registra qualquer alteração preparada no stage, seja arquivo novo ou já versionado. O push apenas envia commits prontos ao remoto.",
+   "3": "Commitar na branch atual é o comportamento normal do Git; criar branch é decisão de organização do trabalho, não requisito do commit.",
+   "4": "O clone cria uma cópia inicial de um repositório remoto. Em um repositório já existente na máquina, ele não é necessário para commitar."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Antes de retomar o trabalho, uma pessoa quer ver o que os colegas enviaram ao repositório remoto, sem alterar ainda os arquivos da sua cópia de trabalho. O comando adequado e o motivo são:",
+  "alts": [
+   "git pull, porque ele consulta o remoto e exibe as diferenças encontradas",
+   "git push, porque sincroniza os dois lados antes que o trabalho continue",
+   "git status, porque mostra os commits enviados pelos colegas ao repositório remoto",
+   "git fetch, porque traz referências e objetos do remoto sem tocar na cópia de trabalho",
+   "git clone, porque atualiza a cópia local a partir do estado atual do repositório remoto"
+  ],
+  "ans": 3,
+  "why": "O fetch atualiza as referências remotas no repositório local e baixa os objetos correspondentes, mas não altera a branch de trabalho. A integração só acontece depois, com merge ou rebase.",
+  "erradas": {
+   "0": "O pull é fetch seguido de integração automática: ele mexe, sim, na cópia de trabalho, que é justamente o que o enunciado quer evitar por ora.",
+   "1": "O push vai no sentido oposto, enviando commits locais ao remoto. Ele não traz nada de volta.",
+   "2": "O status descreve o estado local — arquivos modificados e preparados — e não consulta o repositório remoto.",
+   "4": "O clone serve para obter um repositório pela primeira vez; em uma cópia já existente, não é o comando de atualização."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Considere o trecho de Python a seguir:\n\nvendas = {\"alfa\": 120, \"beta\": 340, \"gama\": 250}\nmaior = max(vendas, key=vendas.get)\nprint(maior, vendas[maior])\n\nA saída produzida é:",
+  "alts": [
+   "gama 250",
+   "340 beta",
+   "alfa 120",
+   "um erro, pois a função max() não aceita dicionário como argumento",
+   "beta 340"
+  ],
+  "ans": 4,
+  "why": "Ao iterar um dicionário, o Python percorre as chaves; o parâmetro key=vendas.get faz a comparação usar o valor associado a cada chave. O maior valor é 340, da chave 'beta', e o print exibe primeiro a chave e depois o valor.",
+  "erradas": {
+   "0": "Essa seria a saída se o key fosse omitido: sem ele, max() compara as próprias chaves como texto, e 'gama' é a última em ordem alfabética.",
+   "1": "A ordem está trocada: o print recebe maior antes de vendas[maior], então a chave aparece primeiro e o valor depois.",
+   "2": "O par 'alfa 120' corresponde ao menor valor, que seria devolvido por min(), não por max().",
+   "3": "Dicionário é iterável, e por isso max() o aceita normalmente — o que ele percorre são as chaves."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Considere o trecho de Python a seguir:\n\nnums = [4, 8, 15, 16, 23, 42]\nprint(nums[1:4])\nprint(sum(n for n in nums if n % 2 == 0))\n\nAs duas saídas são, respectivamente:",
+  "alts": [
+   "[8, 15, 16, 23] e 70",
+   "[4, 8, 15] e 70",
+   "[8, 15, 16] e 70",
+   "[8, 15, 16] e 108",
+   "[8, 15, 16] e 66"
+  ],
+  "ans": 2,
+  "why": "Em Python o fatiamento nums[1:4] começa no índice 1 e para antes do índice 4, devolvendo [8, 15, 16]. A soma percorre os pares 4, 8, 16 e 42, que totalizam 70.",
+  "erradas": {
+   "0": "Incluir o elemento de índice 4 supõe um limite superior fechado; no fatiamento do Python o segundo índice é exclusivo.",
+   "1": "Começar em 4 significa ter lido o primeiro índice como 0. O fatiamento parte exatamente do índice indicado, que aqui é 1.",
+   "3": "O valor 108 é a soma de todos os seis elementos, ou seja, ignora a condição n % 2 == 0 imposta na compreensão.",
+   "4": "O total 66 deixa o 4 de fora, provavelmente por ele ser o primeiro da lista — mas ele também é par e entra na soma."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Uma equipe automatizou seu pipeline: a cada push, o código é compilado e os testes são executados; passando nos testes, um pacote validado fica pronto para produção, mas a subida efetiva depende de aprovação manual de um responsável. Essa configuração caracteriza:",
+  "alts": [
+   "integração contínua e entrega contínua (continuous delivery)",
+   "integração contínua e implantação contínua (continuous deployment)",
+   "integração contínua isolada, já que nenhum pacote de produção é gerado",
+   "implantação contínua, pois existe um pacote validado e pronto para produção",
+   "entrega contínua sem integração contínua, porque os testes já são automáticos"
+  ],
+  "ans": 0,
+  "why": "Integrar e testar a cada push é integração contínua; deixar o artefato sempre pronto para ir a produção, com a liberação dependendo de decisão humana, é entrega contínua. A implantação contínua só existe quando essa última etapa também é automática.",
+  "erradas": {
+   "1": "É a quase certa: a primeira metade acerta, mas implantação contínua pressupõe que o pacote aprovado nos testes vá sozinho para produção, sem aprovação manual.",
+   "2": "O enunciado diz expressamente que um pacote validado fica pronto para produção, o que ultrapassa o escopo da integração contínua.",
+   "3": "Ter o pacote pronto caracteriza entrega, não implantação. O que distingue as duas é quem dá o último passo: uma pessoa ou o pipeline.",
+   "4": "Não existe entrega contínua sem integração contínua — ela é o pré-requisito, e os testes automáticos citados fazem parte justamente da integração."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Ao migrar para contêineres, uma equipe precisa, primeiro, empacotar a aplicação com suas dependências em uma imagem e, depois, manter várias réplicas em execução, substituindo automaticamente as que falharem. As ferramentas típicas para cada uma dessas necessidades são, respectivamente:",
+  "alts": [
+   "Kubernetes e Docker",
+   "Docker e Kubernetes",
+   "Docker e Docker Compose, que assume a recuperação automática em produção",
+   "Kubernetes e Docker Swarm, ambos responsáveis por construir a imagem",
+   "Git e Jenkins, que empacotam e orquestram os contêineres em produção"
+  ],
+  "ans": 1,
+  "why": "O Docker constrói e executa a imagem, que empacota aplicação e dependências. O Kubernetes é o orquestrador: mantém o número desejado de réplicas, reinicia o que falha e distribui a carga entre os nós.",
+  "erradas": {
+   "0": "As duas ferramentas estão certas, mas na ordem inversa da que o enunciado pede — construir a imagem é papel do Docker, e orquestrar é do Kubernetes.",
+   "2": "O Docker Compose orquestra contêineres em um único host, tipicamente em desenvolvimento; ele não é a resposta para manter réplicas com recuperação automática em produção.",
+   "3": "Nenhum dos dois constrói imagem: Kubernetes e Swarm são orquestradores. A construção da imagem parte de um Dockerfile.",
+   "4": "Git versiona código e Jenkins automatiza o pipeline; nenhum dos dois empacota a aplicação em imagem nem gerencia réplicas em execução."
+  }
+ },
+ {
+  "tag": "bi",
+  "q": "Ao projetar o data warehouse de uma central de atendimento, a equipe decide que cada linha da tabela fato representará um atendimento individual, e não o total diário por unidade. Sobre essa decisão, é correto afirmar que:",
+  "alts": [
+   "define a granularidade no nível mais agregado, reduzindo o volume de linhas armazenadas",
+   "a granularidade é atributo das tabelas de dimensão, e não da tabela fato",
+   "impede a análise por unidade, já que a fato passa a ignorar a dimensão geográfica",
+   "define a granularidade da fato no nível mais detalhado, ampliando as análises possíveis",
+   "torna desnecessárias as tabelas de dimensão, pois o detalhe já está na própria fato"
+  ],
+  "ans": 3,
+  "why": "Granularidade é o que uma linha da fato representa. Guardar o atendimento individual é o grão mais fino: dele se chega a qualquer agregação por soma, enquanto o caminho inverso, do total para o detalhe, não existe.",
+  "erradas": {
+   "0": "O total diário por unidade é que seria o nível agregado; guardar cada atendimento é o oposto disso, e aumenta o número de linhas.",
+   "1": "A granularidade é definida justamente na tabela fato — é a primeira decisão da modelagem dimensional, anterior à escolha das dimensões.",
+   "2": "A análise por unidade continua possível: basta somar os atendimentos pela dimensão correspondente. O grão fino preserva as agregações.",
+   "4": "As dimensões continuam necessárias, pois são elas que dão contexto à fato: quem, onde, quando. O grão fino não substitui esse papel."
+  }
+ },
+ {
+  "tag": "bi",
+  "q": "Em um data warehouse bancário, a medida \"saldo da conta\" não faz sentido quando somada ao longo do tempo, embora possa ser somada entre contas diferentes em uma mesma data. Essa medida é classificada como:",
+  "alts": [
+   "aditiva, pois admite soma em pelo menos uma das dimensões disponíveis",
+   "não aditiva, pois nenhuma operação de soma produz resultado com significado",
+   "semiaditiva, pois pode ser somada em algumas dimensões, mas não na do tempo",
+   "degenerada, por ser um atributo que não possui dimensão associada a ele",
+   "calculada, por depender de outras medidas armazenadas na tabela fato"
+  ],
+  "ans": 2,
+  "why": "Medidas semiaditivas somam em algumas dimensões e não em outras — tipicamente, não na do tempo. Saldo e estoque são os exemplos clássicos: somar saldos de dias diferentes não produz nenhuma informação útil.",
+  "erradas": {
+   "0": "Aditiva é a medida que soma em todas as dimensões, como o valor de uma venda. A restrição no tempo, descrita no enunciado, afasta essa classificação.",
+   "1": "Não aditivas são medidas como percentuais e índices, em que a soma não tem sentido em dimensão nenhuma. Aqui a soma entre contas funciona.",
+   "3": "Dimensão degenerada é outra coisa: um atributo de identificação, como o número da nota fiscal, que fica na fato sem tabela própria.",
+   "4": "Ser calculada diz respeito à origem do valor, não ao comportamento diante da soma — são classificações que respondem a perguntas diferentes."
+  }
+ },
+ {
+  "tag": "bi",
+  "q": "Em um data warehouse, a dimensão Cliente precisa preservar o histórico: quando um cliente muda de cidade, as vendas antigas devem continuar associadas à cidade em que ele morava na época. A técnica de dimensão lentamente mutante (SCD) adequada é a de:",
+  "alts": [
+   "tipo 1, que sobrescreve o valor antigo pelo novo no próprio registro",
+   "tipo 0, que mantém o valor original do registro, sem admitir atualização",
+   "tipo 3, que guarda o valor anterior em coluna adicional, preservando uma versão",
+   "tipo 2, que insere um novo registro versionado e mantém o histórico completo",
+   "tipo 4, que elimina a dimensão e transfere seus atributos para a tabela fato"
+  ],
+  "ans": 3,
+  "why": "No SCD tipo 2 a mudança gera uma nova linha na dimensão, com nova chave substituta e marcação de vigência. As vendas antigas continuam apontando para a linha anterior, o que preserva o contexto histórico.",
+  "erradas": {
+   "0": "O tipo 1 sobrescreve: depois da atualização, as vendas antigas passariam a ser lidas como se sempre tivessem ocorrido na cidade nova.",
+   "1": "O tipo 0 congela o atributo. Serviria para dados que nunca mudam, mas não atende a um cliente que efetivamente mudou de cidade.",
+   "2": "É a quase certa: o tipo 3 guarda histórico, porém limitado a uma versão anterior por coluna. O enunciado pede o histórico completo das mudanças.",
+   "4": "O tipo 4 não elimina dimensão nenhuma: ele separa os atributos que mudam com frequência em uma tabela de histórico à parte."
+  }
+ },
+ {
+  "tag": "bi",
+  "q": "Seguindo o CRISP-DM, uma equipe concluiu a modelagem e precisa verificar se os resultados obtidos atendem aos objetivos de negócio antes de colocar o modelo em operação. A fase correspondente a essa verificação e a que vem imediatamente depois dela são:",
+  "alts": [
+   "Preparação dos Dados e Modelagem",
+   "Entendimento dos Dados e Modelagem",
+   "Implantação e Avaliação",
+   "Entendimento do Negócio e Preparação dos Dados",
+   "Avaliação e Implantação"
+  ],
+  "ans": 4,
+  "why": "O CRISP-DM tem seis fases: Entendimento do Negócio, Entendimento dos Dados, Preparação dos Dados, Modelagem, Avaliação e Implantação. Conferir os resultados contra os objetivos de negócio é a Avaliação, e a Implantação é a fase seguinte.",
+  "erradas": {
+   "0": "Preparação e Modelagem antecedem a verificação descrita: o enunciado diz que a modelagem já foi concluída.",
+   "1": "O Entendimento dos Dados é uma das fases iniciais, voltada a explorar e conhecer a base — não a julgar resultados de um modelo pronto.",
+   "2": "A ordem está invertida. Implantar antes de avaliar contraria a lógica do ciclo, que só leva a produção o que foi aprovado na Avaliação.",
+   "3": "As duas fases citadas abrem o ciclo. O Entendimento do Negócio define objetivos; ele não é o momento de conferir se os resultados os atenderam."
+  }
+ },
+ {
+  "tag": "bi",
+  "q": "Uma equipe quer, em um projeto, descobrir grupos de clientes com comportamento de consumo parecido, sem dispor de rótulos prévios; em outro projeto, quer identificar quais produtos costumam ser comprados juntos. As tarefas de mineração de dados correspondentes são, respectivamente:",
+  "alts": [
+   "classificação e regressão",
+   "regras de associação e clusterização",
+   "classificação e detecção de anomalias",
+   "regressão e clusterização",
+   "clusterização e regras de associação"
+  ],
+  "ans": 4,
+  "why": "Agrupar registros semelhantes sem rótulo prévio é clusterização, tarefa não supervisionada. Descobrir itens que aparecem juntos nas mesmas transações é o objetivo das regras de associação, base da análise de cesta de compras.",
+  "erradas": {
+   "0": "Classificação exige classes conhecidas de antemão, e o enunciado afasta essa hipótese ao dizer que não há rótulos. Regressão estima valores numéricos contínuos.",
+   "1": "As duas tarefas estão certas, mas trocadas de posição em relação ao que o enunciado descreve.",
+   "2": "Detecção de anomalias procura registros fora do padrão, não conjuntos de itens que se repetem juntos nas transações.",
+   "3": "Regressão prevê um valor numérico e não agrupa clientes; além disso, a segunda tarefa do enunciado é de associação, não de agrupamento."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nA ideia central do texto é a de que:",
+  "alts": [
+   "a digitalização só produz inclusão quando acompanhada de política de acesso",
+   "o atendimento presencial deve ser mantido nas unidades públicas do país",
+   "os formulários eletrônicos não são capazes de reduzir filas nem de encurtar prazos",
+   "a população demonstra pouco interesse pelos serviços públicos oferecidos on-line",
+   "a eficiência é o critério que deve orientar as decisões da administração pública"
+  ],
+  "ans": 0,
+  "why": "O texto reconhece o ganho de eficiência, apresenta a ressalva das barreiras de acesso e fecha com a condição: a tecnologia só cumpre a promessa quando acompanhada de política de acesso. É essa condição que sintetiza o argumento.",
+  "erradas": {
+   "1": "Manter o presencial em todas as unidades é conclusão mais forte que a do texto, que apenas condiciona o desmonte à superação prévia das barreiras.",
+   "2": "A capacidade de reduzir filas e prazos é afirmada logo na segunda frase, precedida de 'De fato' — o texto concede esse ponto antes de fazer a ressalva.",
+   "3": "Falta de interesse da população não é mencionada em momento algum; o que se descreve é dificuldade de acesso e de manejo das ferramentas.",
+   "4": "A eficiência aparece como ponto de partida do senso comum ('costuma ser apresentada como'), e é justamente o que o texto relativiza."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nNo trecho \"antes que essas barreiras sejam vencidas\", a expressão \"essas barreiras\" retoma:",
+  "alts": [
+   "as filas e os prazos de atendimento reduzidos pelos formulários eletrônicos",
+   "os formulários eletrônicos adotados pelos serviços públicos",
+   "a exclusão prevista para quem mais depende do serviço público digital",
+   "as dificuldades de acesso à internet e de manejo das ferramentas digitais",
+   "a política de acesso mencionada na frase final do texto"
+  ],
+  "ans": 3,
+  "why": "O demonstrativo 'essas' é anafórico: retoma o que já foi dito. O elemento imediatamente anterior compatível são as dificuldades de acesso à internet e de manejo das ferramentas digitais.",
+  "erradas": {
+   "0": "Filas e prazos aparecem como aquilo que a digitalização reduz, ou seja, como ganho — e não como obstáculo a ser vencido.",
+   "1": "Os formulários eletrônicos são apresentados como solução, não como barreira. Tomá-los por referente inverte o sentido do período.",
+   "2": "A exclusão é a consequência prevista caso as barreiras não sejam vencidas; ela vem depois no texto e não pode ser retomada por um pronome anafórico.",
+   "4": "A política de acesso está na última frase, posterior ao trecho analisado, e é apresentada como remédio para as barreiras, não como uma delas."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nA expressão \"Ocorre que\", no início da terceira frase, introduz:",
+  "alts": [
+   "uma conclusão decorrente do que foi afirmado nas frases anteriores",
+   "uma ressalva que se contrapõe ao que se acabou de conceder",
+   "um exemplo destinado a ilustrar a eficiência da digitalização",
+   "uma causa que explica a redução de filas e de prazos no atendimento",
+   "uma finalidade a ser perseguida pela administração pública brasileira"
+  ],
+  "ans": 1,
+  "why": "A segunda frase concede um ponto ('De fato, formulários eletrônicos reduzem filas'). 'Ocorre que' vira o argumento, introduzindo a ressalva que sustenta o restante do texto — é um operador de valor adversativo.",
+  "erradas": {
+   "0": "A conclusão do texto vem na última frase, marcada por 'portanto'. Ler 'Ocorre que' como conclusivo desmonta a articulação entre concessão e ressalva.",
+   "2": "Não há exemplo: o que vem depois da expressão é um obstáculo à digitalização, e não uma ilustração de sua eficiência.",
+   "3": "A redução de filas e de prazos é justamente o que a frase seguinte relativiza; o trecho não explica essa redução, mas a limita.",
+   "4": "Finalidade seria expressa por conectivos como 'para que' ou 'a fim de'. A expressão em análise não projeta objetivo algum."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nA expressão \"manejo das ferramentas digitais\" pode ser substituída, sem alteração de sentido, por:",
+  "alts": [
+   "compra das ferramentas digitais",
+   "produção das ferramentas digitais",
+   "manutenção das ferramentas digitais",
+   "regulação das ferramentas digitais",
+   "uso das ferramentas digitais"
+  ],
+  "ans": 4,
+  "why": "No contexto, 'manejo' equivale a manuseio, ao ato de operar as ferramentas — daí a equivalência com 'uso'. A dificuldade descrita é de quem não consegue utilizá-las, não de quem não as possui.",
+  "erradas": {
+   "0": "Comprar remete a aquisição, questão de posse. O texto trata de saber operar, e não de adquirir o equipamento.",
+   "1": "Produzir desloca o sujeito: quem enfrenta a dificuldade é o usuário do serviço, não quem desenvolve as ferramentas.",
+   "2": "Manutenção supõe uma atividade técnica de conservação, atribuída a quem administra o sistema, e não ao cidadão que o acessa.",
+   "3": "Regulação é atividade normativa, de natureza institucional, sem relação com a dificuldade individual descrita no texto."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase em que o sinal indicativo de crase foi empregado de acordo com a norma-padrão.",
+  "alts": [
+   "O documento foi encaminhado à Vossa Senhoria dentro do prazo.",
+   "Estamos dispostos à colaborar com a equipe de auditoria.",
+   "O servidor entregou o processo à chefia imediata do setor.",
+   "A reunião foi adiada à pedido do diretor de tecnologia.",
+   "Ela se referiu à uma norma que já havia sido revogada."
+  ],
+  "ans": 2,
+  "why": "O verbo entregar pede complemento com a preposição a, e 'chefia' é palavra feminina que admite o artigo. Preposição mais artigo resultam na crase: entregou o processo à chefia.",
+  "erradas": {
+   "0": "Diante de pronome de tratamento iniciado por possessivo, como Vossa Senhoria, não há artigo — e sem artigo não existe crase.",
+   "1": "Diante de verbo no infinitivo não ocorre crase, porque não existe artigo antecedendo verbo.",
+   "3": "Em expressões como 'a pedido', 'a bordo' e 'a cavalo' não há artigo, e por isso o acento grave não se justifica.",
+   "4": "Antes de 'uma' não há crase: o artigo indefinido ocupa o lugar do definido, e a fusão deixa de ser possível."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase que está de acordo com a norma-padrão quanto à concordância verbal.",
+  "alts": [
+   "Fazem dois anos que o sistema entrou em produção.",
+   "Houveram muitas falhas no atendimento da semana passada.",
+   "Faz dois anos que o sistema entrou em produção.",
+   "Devem haver relatórios pendentes na fila de análise.",
+   "Existe muitos processos aguardando análise no setor."
+  ],
+  "ans": 2,
+  "why": "O verbo fazer indicando tempo decorrido é impessoal: fica sempre na terceira pessoa do singular, sem sujeito. Daí 'Faz dois anos'.",
+  "erradas": {
+   "0": "Aqui o verbo foi flexionado como se 'dois anos' fosse sujeito. Na indicação de tempo decorrido, fazer não tem sujeito e não vai para o plural.",
+   "1": "O verbo haver no sentido de existir também é impessoal, o que mantém a forma 'houve' mesmo diante de complemento no plural.",
+   "3": "Ao entrar em locução com haver impessoal, o auxiliar herda a impessoalidade: o correto é 'Deve haver relatórios pendentes'.",
+   "4": "O verbo existir, ao contrário de haver, tem sujeito e concorda com ele: 'Existem muitos processos'."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase em que a regência verbal está de acordo com a norma-padrão.",
+  "alts": [
+   "O relatório a que me refiro foi arquivado pela comissão.",
+   "O relatório que me refiro foi arquivado pela comissão.",
+   "Prefiro trabalhar de forma remota do que de forma presencial.",
+   "Assisti o filme institucional na sexta-feira, com a equipe.",
+   "Cheguei na repartição às oito horas para abrir o protocolo."
+  ],
+  "ans": 0,
+  "why": "O verbo referir-se exige a preposição a, que deve aparecer antes do pronome relativo: 'o relatório a que me refiro'. Suprimir a preposição é o erro mais cobrado nesse tipo de item.",
+  "erradas": {
+   "1": "Sem a preposição, o relativo fica sem a regência que o verbo exige — é a mesma frase da opção correta, com a preposição indevidamente apagada.",
+   "2": "O verbo preferir rege a preposição a e dispensa termos de intensidade: o correto é 'prefiro trabalhar de forma remota a trabalhar de forma presencial'.",
+   "3": "No sentido de ver, assistir é transitivo indireto: assiste-se ao filme. Sem a preposição, o verbo assumiria o sentido de prestar assistência.",
+   "4": "O verbo chegar indica destino com a preposição a: chega-se à repartição. O emprego de 'em' é corrente na fala, mas não na norma-padrão."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase em que a vírgula foi empregada de acordo com a norma-padrão.",
+  "alts": [
+   "Os servidores, que trabalham no setor de tecnologia receberam o treinamento.",
+   "Concluído o levantamento, a equipe iniciou a migração dos dados.",
+   "A equipe iniciou, a migração dos dados no mês passado.",
+   "O diretor afirmou que, o prazo do contrato será integralmente cumprido.",
+   "Os quatro setores da unidade, foram comunicados sobre a mudança."
+  ],
+  "ans": 1,
+  "why": "A oração reduzida de particípio antecipada funciona como adjunto adverbial deslocado e, por vir antes da oração principal, é separada por vírgula.",
+  "erradas": {
+   "0": "A vírgula abre um aposto ou uma oração explicativa que nunca se fecha. Ou se usam duas vírgulas, ou nenhuma — a pontuação pela metade é o erro.",
+   "2": "A vírgula separa o verbo de seu complemento direto, o que a norma-padrão não admite.",
+   "3": "Não se separa a conjunção integrante do sujeito da oração que ela introduz; a vírgula quebra a ligação entre 'que' e 'o prazo'.",
+   "4": "Sujeito e verbo não se separam por vírgula, ainda que o sujeito seja longo — é justamente a extensão que induz ao erro."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase em que o emprego de por que, porque, por quê ou porquê está de acordo com a norma-padrão.",
+  "alts": [
+   "Não sei porque o sistema saiu do ar durante a madrugada.",
+   "O sistema saiu do ar por quê motivo, afinal, na madrugada?",
+   "Ele explicou o porque da falha ocorrida no fim de semana.",
+   "Porquê você não avisou a equipe responsável pelo plantão?",
+   "Não sei por que o sistema saiu do ar durante a madrugada."
+  ],
+  "ans": 4,
+  "why": "Em orações interrogativas indiretas emprega-se 'por que', separado e sem acento, equivalente a 'por qual motivo'. É o caso de 'Não sei por que o sistema saiu do ar'.",
+  "erradas": {
+   "0": "A forma junta 'porque' é conjunção causal, que responde à pergunta em vez de formulá-la — não cabe numa interrogativa indireta.",
+   "1": "Diante do substantivo 'motivo' emprega-se 'por que', separado e sem acento; a forma acentuada só aparece em fim de frase ou antes de pausa forte.",
+   "2": "Precedido de artigo, o termo é substantivo e recebe acento: 'o porquê da falha'.",
+   "3": "No início de pergunta direta usa-se 'Por que', separado e sem acento; a forma 'porquê' exige a companhia de um determinante."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "No período \"O prazo foi cumprido, embora a equipe estivesse reduzida\", a oração iniciada por \"embora\" exprime ideia de concessão. Assinale a conjunção que pode substituir \"embora\" sem alterar essa relação de sentido.",
+  "alts": [
+   "portanto",
+   "porque",
+   "assim que",
+   "ainda que",
+   "à medida que"
+  ],
+  "ans": 3,
+  "why": "'Ainda que' é conjunção concessiva, assim como 'embora': admite um fato que contraria a expectativa e, mesmo assim, não impede o que se afirma na oração principal.",
+  "erradas": {
+   "0": "'Portanto' é conclusivo e inverteria a lógica do período, transformando a redução da equipe em consequência do cumprimento do prazo.",
+   "1": "'Porque' introduz causa, o que faria a equipe reduzida explicar o cumprimento do prazo — exatamente o contrário da relação original.",
+   "2": "'Assim que' marca tempo, situando a ação no momento imediatamente posterior a outra, sem qualquer valor concessivo.",
+   "4": "'À medida que' exprime proporção entre dois processos simultâneos, e não a contrariedade que a concessão pressupõe."
+  }
+ },
+ {
+  "tag": "portugues",
+  "q": "Assinale a frase que está de acordo com a norma-padrão quanto à colocação pronominal.",
+  "alts": [
+   "Não refiro-me ao processo que foi arquivado na semana passada.",
+   "Ninguém avisou-me da mudança no horário de atendimento.",
+   "Quando chamaram-me, o setor já havia encerrado o expediente.",
+   "Me parece que o prazo do contrato venceu no mês passado.",
+   "Não me refiro ao processo que foi arquivado na semana passada."
+  ],
+  "ans": 4,
+  "why": "Palavras negativas como 'não', 'ninguém' e 'nunca' atraem o pronome oblíquo para antes do verbo. Por isso a próclise é obrigatória em 'Não me refiro'.",
+  "erradas": {
+   "0": "É a mesma frase da opção correta com o pronome deslocado para depois do verbo, o que a palavra negativa 'não' não permite.",
+   "1": "O pronome indefinido negativo 'ninguém' também exerce atração: o correto seria 'Ninguém me avisou'.",
+   "2": "O advérbio 'quando', como as demais palavras interrogativas e relativas, puxa o pronome para antes do verbo: 'Quando me chamaram'.",
+   "3": "A norma-padrão não admite pronome átono abrindo período; a forma adequada seria 'Parece-me que o prazo venceu'."
+  }
  }
 ]
