@@ -158,9 +158,11 @@ rótulo pegou gestão de processos e estrutura organizacional; no
 função).
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
-provas): blockchain pelo encadeamento de hash; RPA; low-code; servidor web ×
-servidor de aplicação; os Vs do Big Data; supervisionado × não supervisionado;
-intranet × extranet.
+provas): blockchain pelo encadeamento de hash; RPA; low-code; os Vs do Big
+Data; supervisionado × não supervisionado. Dois itens que já estiveram nesta
+lista **caíram** de fato, só que sob outra tag na **Dataprev 2024**: **servidor
+web × servidor de aplicação** ([arquitetura](arquitetura.md)) e
+**internet/intranet/extranet/portal** (item de redes, [redes](redes.md)).
 
 ## Como se sair melhor
 
