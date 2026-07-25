@@ -27,9 +27,12 @@ SAIDA = BASE / "banco-provas.json"
 
 # nomes de bloco usados nos mapas -> arquivo em erros/
 TAGS = {
+    # Os mapas usam ora o nome por extenso, ora o slug da tag. Os dois valem.
     "engenharia de software": "eng-software",
     "eng. de software": "eng-software",
     "eng software": "eng-software",
+    "eng-software": "eng-software",
+    "banco-dados": "banco-dados",
     "programacao": "programacao",
     "banco de dados": "banco-dados",
     "bi": "bi",

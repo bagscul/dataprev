@@ -273,8 +273,8 @@ dado derivado**, é **SE**; se é leitura pura, é **CE**. E **ALI × AIE**: que
 
 ## O que já caiu
 
-**Em prova real da FGV:** é o bloco mais pesado dos específicos (26 questões
-com a tag, mais uma dúzia escondida sob "órfãos"). Requisito funcional × não
+**Em prova real da FGV: 39 questões**, o segundo bloco específico mais pesado do
+corpus, atrás só de banco de dados. Requisito funcional × não
 funcional no cenário do saldo em tempo real, com **brainstorming** como
 elicitação válida; **Scrum Master no Daily**; **Sprint Planning** pela
 capacidade do time; metodologia ágil para mudança frequente (Scrum, com

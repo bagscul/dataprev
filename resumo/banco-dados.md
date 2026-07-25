@@ -296,10 +296,17 @@ forma normal mais alta, a partir das dependências funcionais); **gatilho ×
 procedimento × função**, em três questões distintas; VIEW para esconder a
 coluna de salário; NoSQL chave-valor para cache de sessão — **ALERO 2026**.
 
-O bloco de **administração física** da ALERO 2026 (B+ Tree, índice *clustered*,
-hashing extensível, ARIES/WAL, otimizador e estatísticas, tablespaces,
-*connection pooling*, XML Schema, backup) está creditado em
-[orfaos](orfaos.md) — é o mesmo corpus, sob o rótulo de órfãs.
+**E tem mais 34, que só apareceram no fechamento do ITEM 7:** o bloco de
+**administração física** da **ALERO 2026** vinha classificado como "órfão" por
+um defeito do importador. São **B+ Tree** (eficiência e fator de ramificação) e
+**hashing extensível**; **índice *clustered***; **ARIES/WAL** e a ordem das três
+fases; **otimizador** de consultas e estatísticas desatualizadas;
+**tablespaces**; ***connection pooling***; **XML Schema** e XQuery no SGBD;
+**backup** com RPO/RTO; **Administração de Dados × DBA**; **JDBC/ODBC**;
+**dicionário de dados**; e **sharding**. Com elas, banco de dados salta de 25
+para **59** questões reais — é o **maior bloco específico do corpus**. O
+conteúdo de administração física continua sendo ensinado em
+[orfaos](orfaos.md).
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): **níveis de isolamento** e os fenômenos que cada um admite (leitura

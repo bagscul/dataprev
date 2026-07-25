@@ -554,7 +554,7 @@
  {
   "prova": "cnsal-ads",
   "num": 41,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Em um projeto para desenvolver um novo sistema de gestão de Comissões Parlamentares na Assembleia Legislativa, o Analista de Sistemas identificou um conflito significativo entre a Secretaria - Geral da Mesa (SGM) e a Procuradoria. A SGM exige um requisito de flexibilidade para alterar fluxos de trabalho rapidamente conforme a agenda política, enquanto a Procuradoria exige um requisito de rastreabilidade e imutabilidade processual para garantir a validade legal dos atos, independentemente da celeridade. Nesse contexto, assinale a opção que apresenta a tarefa da Engenharia de Requisitos mais crítica para resolver o conflito entre a SGM e a Procuradoria e a técnica tipicamente empregada nessa resolução.",
   "alts": [
    "Análise de Requisitos: O uso de Viewpoint Analysis é essencial para mapear as diferentes perspectivas e, em seguida, utilizar a negociação para alcançar um acordo de compromisso.",
@@ -578,7 +578,7 @@
  {
   "prova": "cnsal-ads",
   "num": 42,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "O setor de TI da Casa Legislativa está iniciando o projeto de um novo Sistema de Apoio à Consulta Pública e Audiências Interativas, com o objetivo não apenas de aumentar a participação cidadã, mas também cumprir integralmente com as novas exigências da Lei Geral de Proteção de Dados (LGPD) e de Acessibilidade Digital (eMAG). A equipe de Engenharia de Requisitos precisa priorizar e especificar os Requisitos Não Funcionais (RNFs) que são críticos para a aceitação pública e para a conformidade legal do sistema. Correlacione os conceitos e as técnicas de Engenharia de Requisitos listados na Coluna I da tabela abaixo com suas aplicações e descrições complexas no contexto do setor público/legislativo, apresentadas na Coluna II. Coluna I: Conceitos e técnicas de Engenharia de Requisitos Coluna II: Aplicações e descrições I. Goal-Oriented Requirements Engineering (GORE) A. Exige a blindagem de dados pessoais sensíveis de cidadãos em consultas públicas, aplicando a Lei Geral de Proteção de Dados e políticas de sigilo institucional. II. Requisito de confidencialidade B. O tempo máximo para carregar o inteiro teor de um projeto de lei complexo em consulta popular, medido em picos de acesso após votações importantes, em conformidade com as diretrizes de Acessibilidade. III. Método FURPS+ C. Utilizado para ligar requisitos de sistema a objetivos estratégicos de alto nível (ex: \"Aumento da Transparência Legislativa\"), ajudando a justificar e priorizar sistemas de apoio à decisão. IV. Requisito de Desempenho D. Estrutura robusta para classificação de Requisitos Não Funcionais e outros atributos como Design, Implementação e Operacional. A correlação correta, na ordem apresentada, é",
   "alts": [
    "I – C; II – A; III – D; IV – B",
@@ -602,7 +602,7 @@
  {
   "prova": "cnsal-ads",
   "num": 43,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "A equipe de TI está desenvolvendo um módulo de consulta de histórico de votações, um sistema de alta complexidade em termos de interface e volume de dados. Os usuários finais (assessores parlamentares e jornalistas) têm dificuldade em articular suas necess idades de interface exata, e o ambiente legislativo exige validação rápida, porém o custo de desenvolver uma solução completa do zero é muito alto. Considerando a necessidade de obter feedback rápido sobre a interface em um ambiente de alto custo de desenvolvimento, assinale a opção que apresenta o tipo de prototipação mais adequado e seu principal objetivo estratégico nesse cenário.",
   "alts": [
    "Prototipação Evolutiva: O objetivo é construir o protótipo como a primeira versão do sistema final, garantindo que o investimento inicial seja mantido e evoluído após a validação do usuário.",
@@ -626,7 +626,7 @@
  {
   "prova": "cnsal-ads",
   "num": 44,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Em um projeto de desenvolvimento de um sistema de controle de frotas para uma empresa de logística, o Analista de Sistemas precisa garantir que os requisitos levantados junto aos motoristas e gerentes sejam claros e consistentes antes de iniciar a fase de design. O Analista descobriu que há requisitos contraditórios sobre a forma como o rastreamento deve ser feito em tempo real versus por paradas programadas. Assinale a opção que apresenta a tarefa da Engenharia de Requisitos primariamente responsável por identificar e resolver inconsistências ou contradições como a descrita, transformando a informação bruta dos stakeholders em um modelo coerente.",
   "alts": [
    "Elicitação de Requisitos, pois a contradição foi descoberta durante a coleta de dados.",
@@ -650,7 +650,7 @@
  {
   "prova": "cnsal-ads",
   "num": 45,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Em um projeto para o desenvolvimento de um aplicativo governamental de serviço ao cidadão, a equipe de desenvolvimento finalizou a fase de Especificação. Antes de prosseguir para a codificação, o Gerente do Projeto exige uma revisão rigorosa para garantir que o produto a ser construído realmente atenda às necessidades regulamentares e de usuário. O objetivo principal da tarefa de Validação de Requisitos nesse cenário é",
   "alts": [
    "garantir que os requisitos estejam documentados usando o padrão IEEE 830 e que todas as sentenças estejam na forma \"O sistema deverá...\".",
@@ -674,7 +674,7 @@
  {
   "prova": "cnsal-ads",
   "num": 46,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "O Processo Unificado de Desenvolvimento (RUP) é organizado em quatro fases principais: Iniciação, Elaboração, Construção e Transição. A equipe de projeto do Legislativo precisa garantir que a primeira iteração do projeto esteja focada na mitigação dos riscos de negócio mais críticos e na definição da linha de base da arquitetura. Assinale a opção que apresenta a principal fase do RUP responsável por alcançar a Linha de Base da Arquitetura e por detalhar os Casos de Uso Críticos do sistema, solidificando a visão do projeto e mitigando os riscos de alto impacto.",
   "alts": [
    "Iniciação: Foca primariamente na delimitação do escopo do projeto, na obtenção de patrocínio e na identificação dos stakeholders principais.",
@@ -698,7 +698,7 @@
  {
   "prova": "cnsal-ads",
   "num": 47,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "A equipe de desenvolvimento precisa codificar a lógica de interação detalhada para o subsistema de autenticação de um novo portal de transparência. É crucial modelar a sequência cronológica exata das mensagens trocadas entre os objetos (usuário, controlador, backend de segurança) para garantir que a transação ocorra na ordem correta. O diagrama da UML 2.5.1 mais apropriado para modelar a ordem cronológica exata das mensagens e das chamadas de método entre os objetos participantes em uma interação específica é o",
   "alts": [
    "Diagrama de Comunicação.",
@@ -717,7 +717,7 @@
  {
   "prova": "cnsal-ads",
   "num": 48,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Ao modelar a estrutura de dados e as relações entre as entidades Projeto de Lei, Emenda e Autor para o novo sistema legislativo, o Analista de Sistemas utilizou um Diagrama de Classes. Foi definido que uma Emenda só pode existir se estiver vinculada a um Projeto de Lei, e que, se o Projeto de Lei for excluído, todas as suas Emendas também o serão. O tipo de relacionamento da UML 2.5.1 mais adequado para modelar a relação entre as Classes Projeto de Lei e Emenda é a",
   "alts": [
    "Agregação Fraca.",
@@ -784,7 +784,7 @@
  {
   "prova": "cnsal-ads",
   "num": 51,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um Analista de Sistemas está avaliando o design de uma tabela chamada PROJETOS_AUTORES em um sistema de controle de proposições legislativas. A tabela armazena o Título do Projeto (Título_PL), o Código do Autor (Cod_Autor), o Nome Completo do Autor (Nome_A utor) e a Data de Apresentação (Dt_Apresentacao). A chave primária é composta por (Título_PL, Cod_Autor). Título_PL Cod_Autor Nome_Autor Dt_Apresentacao PL 10/2025 150 Ana Silva 2025-03-10 PL 10/2025 210 Bruno Costa 2025-03-10 PL 10/2025 150 Ana Silva 2025-04-01 Assinale a opção que mostra a Forma Normal (FN) da tabela acima e qual o tipo de anomalia seria observada se fosse necessário alterar o Nome_Autor para todos os projetos de um autor específico.",
   "alts": [
    "1FN (Primeira Forma Normal); a anomalia observada seria a Anomalia de Inserção.",
@@ -803,7 +803,7 @@
  {
   "prova": "cnsal-ads",
   "num": 52,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "O Analista de Sistemas está iniciando o projeto de um novo sistema de gestão de Atos Normativos no Senado Federal. A primeira fase da Modelagem de Dados exige uma representação de alto nível das entidades, seus atributos e seus relacionamentos, livre de detalhes físicos ou de implementação. Assinale a opção que apresenta o nível de modelagem de dados da arquitetura ANSI/SPARC responsável por fornecer uma visão completa das entidades e relacionamentos do negócio, com foco na semântica e no entendimento dos stakeholders e o diagrama UML que é frequentemente utilizado para essa finalidade.",
   "alts": [
    "Nível Externo; Diagrama de Sequência.",
@@ -822,7 +822,7 @@
  {
   "prova": "cnsal-ads",
   "num": 53,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "A equipe de desenvolvimento precisa criar um mecanismo para garantir que o sistema de cache de documentos legislativos tenha apenas uma única instância ativa em toda a aplicação, de modo que todas as requisições acessem o mesmo recurso compartilhado, evitando inconsistência de dados. O Padrão de Projeto da classificação GoF mais apropriado para resolver esse problema, restringindo a instanciação de uma classe a um único objeto, é o(a)",
   "alts": [
    "Factory Method",
@@ -1100,7 +1100,7 @@
  {
   "prova": "cnsal-ads",
   "num": 65,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um Analista de Sistemas está desenvolvendo o modelo lógico de um banco de dados e precisa representar a relação de identificação entre a entidade DEPARTAMENTO e a entidade FUNCIONARIO_DEPENDENTE. Na notação IDEF1X, assinale a afirmativa correta sobre o modo como é representada graficamente a entidade FUNCIONARIO_DEPENDENTE em relação à entidade DEPARTAMENTO, indicando que a chave primária de DEPARTAMENTO se torna parte da chave primária de FUNCIONARIO_DEPENDENTE.",
   "alts": [
    "O relacionamento é desenhado com uma linha tracejada.",
@@ -1124,7 +1124,7 @@
  {
   "prova": "cnsal-ads",
   "num": 66,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Ao designar um banco de dados para gerenciar Atos Legais, o Analista precisa garantir que cada PARECER emitido esteja sempre associado a um ATO_LEGAL existente, e que não seja possível excluir um ATO_LEGAL se houver PARECERES vinculados a ele. A regra fundamental do Modelo Relacional que é implementada para garantir que os valores das chaves estrangeiras (PARECER.ID_Ato) sempre correspondam a valores válidos na chave primária da tabela referenciada (ATO_LEGAL.ID_Ato) é a",
   "alts": [
    "Integridade de Entidade.",
@@ -1148,7 +1148,7 @@
  {
   "prova": "cnsal-ads",
   "num": 67,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "O Analista precisa adicionar um novo registro de ASSESSOR ao banco de dados do Gabinete, informando apenas o seu nome (Maria Souza) e a matrícula (9876). O comando SQL mais adequado para realizar a inserção desse novo registro na tabela ASSESSOR é:",
   "alts": [
    "UPDATE ASSESSOR SET Nome = 'Maria Souza', Matricula = 9876.",
@@ -1167,7 +1167,7 @@
  {
   "prova": "cnsal-ads",
   "num": 68,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "A Assembleia Legislativa está buscando aprimorar seus processos de desenvolvimento e manutenção de sistemas críticos, como o portal de transparência e o sistema de protocolo eletrônico. A liderança de TI decidiu adotar um modelo de maturidade para medir e melhorar a capacidade de seus processos de engenharia de software, visando maior previsibilidade, eficiência e qualidade do produto. Ao aplicar modelos de avaliação de maturidade de processos de software, como o CMMI ou o MPS.BR, o nível de maturidade caracterizado pela medição quantitativa e pelo controle estatístico dos processos é o",
   "alts": [
    "Nível 1 – Inicial",
@@ -1191,7 +1191,7 @@
  {
   "prova": "cnsal-ads",
   "num": 69,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "O Analista de Sistemas precisa estimar o esforço e o custo de um novo módulo de software usando uma métrica independente de linguagem de programação. A seguinte métrica de tamanho de software é baseada na funcionalidade entregue ao usuário, sendo independente da linguagem de implementação:",
   "alts": [
    "Linhas de Código (Lines of Code - LOC).",
@@ -1378,7 +1378,7 @@
  {
   "prova": "cnsal-ads",
   "num": 77,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Um Analista de Sistemas está desenvolvendo um Plano de Testes. Ele utiliza o Diagrama de Casos de Uso para identificar os cenários de teste de nível de sistema e o Diagrama de Objetos para verificar a configuração de dados antes e depois da execução de um caso de uso. A principal vantagem de se usar o Diagrama de Objetos em conjunto com um Caso de Uso para a validação do sistema reside no fato de que o Diagrama de Objetos",
   "alts": [
    "valida a arquitetura física do servidor onde o Caso de Uso será executado.",
@@ -1445,7 +1445,7 @@
  {
   "prova": "cnsal-ads",
   "num": 80,
-  "tag": "orfaos",
+  "tag": "eng-software",
   "q": "Em um projeto de alta complexidade e missão crítica como um sistema de tráfego aéreo, a equipe optou pelo Modelo Cascata de desenvolvimento. Após a conclusão das fases de Requisitos e Design, e com a Codificação em andamento, o cliente terá sua primeira oportunidade de Validação significativa apenas na fase de Testes, no final do ciclo O principal risco arquitetônico e de custo introduzido pela natureza late-feedback do Modelo Cascata nesse cenário é",
   "alts": [
    "o risco de crescimento descontrolado do escopo (scope creep) durante a fase de Manutenção devido ao baixo engajamento do cliente.",
@@ -1469,7 +1469,7 @@
  {
   "prova": "cnsal-bd",
   "num": 41,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Considere um esquema de relação 𝑅(𝐴, 𝐵, 𝐶, 𝐷, 𝐸) e o conjunto de dependências funcionais 𝐹 = {𝐴 → 𝐵, 𝐵𝐶 → 𝐷𝐸, 𝐷 → 𝐴} . A respeito da chave candidata e da Forma Normal mais alta em que a relação R se encontra, assinale a afirmativa correta.",
   "alts": [
    "A chave candidata única é { C}, e a relação está na 1 o Forma Normal (1NF).",
@@ -1488,7 +1488,7 @@
  {
   "prova": "cnsal-bd",
   "num": 42,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um administrador de banco de dados precisa criar uma tabela chamada PRODUTO e, subsequentemente, inserir um registro. A tabela deve ter os campos: ID_PRODUTO (chave primária, inteiro), NOME (texto, obrigatório) e PRECO_UNITARIO (numérico, com valor padrão 1.00 caso não seja especificado). Assinale o trecho de código SQL que executa corretamente a criação da tabela e a inserção de um novo produto que não especifica o preço unitário.",
   "alts": [
    "CREATE TABLE PRODUTO ( ID_PRODUTO INT PRIMARY KEY, NOME VARCHAR(100) NOT NULL, PRECO_UNITARIO NUMERIC(10, 2) CHECK (PRECO_UNITARIO >= 0) ); INSERT INTO PRODUTO (ID_PRODUTO, NOME) VALUES (1, 'Teclado Mecânico');",
@@ -1507,7 +1507,7 @@
  {
   "prova": "cnsal-bd",
   "num": 43,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Considere as tabelas FUNCIONARIO (ID, NOME, DEPTO_ID, SALARIO) e DEPARTAMENTO (DEPTO_ID, NOME_DEPTO). Um analista de BI deseja obter os nomes de todos os departamentos cuja média salarial dos funcionários é superior à média salarial de todos os funcionários da empresa. Assinale a opção que apresenta o comando SQL capaz de atender a essa requisição de forma mais concisa.",
   "alts": [
    "SELECT T2.NOME_DEPTO FROM FUNCIONARIO T1 JOIN DEPARTAMENTO T2 ON T1.DEPTO_ID = T2.DEPTO_ID WHERE T1.SALARIO > (SELECT AVG(SALARIO) FROM FUNCIONARIO) GROUP BY T2.NOME_DEPTO;",
@@ -1526,7 +1526,7 @@
  {
   "prova": "cnsal-bd",
   "num": 44,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Durante o processamento de uma consulta, o Otimizador de Consultas avalia diferentes planos de execução. Para estimar o custo de cada plano, o otimizador depende criticamente de informações sobre o estado atual do banco de dados. O componente do SGBD que armazena as estatísticas essenciais como número de tuplas, distribuição de valores em colunas, existência e tipo de índices, que são importantes para o otimizador tomar decisões eficazes, é o",
   "alts": [
    "Transaction Log",
@@ -1550,7 +1550,7 @@
  {
   "prova": "cnsal-bd",
   "num": 45,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "O algoritmo ARIES é um protocolo de recuperação amplamente utilizado em SGBDs. Ele se baseia no princípio Write-Ahead Logging (WAL) e garante a durabilidade dos dados. Assinale a alternativa que cita, em ordem de ocorrência, as três fases primárias que o ARIES executa após uma falha do sistema, a fim de restaurar o estado consistente do banco de dados.",
   "alts": [
    "COMMIT, ROLLBACK, UNDO",
@@ -1574,7 +1574,7 @@
  {
   "prova": "cnsal-bd",
   "num": 46,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Considere um esquema de relação 𝑅(𝐴, 𝐵, 𝐶), em que 𝐴 é a chave primária. Das regras de integridade relacional a seguir, a que impede que o atributo 𝐵 de uma tupla em 𝑅 contenha um valor que não exista como chave primária em nenhuma outra tabela, garantindo a consistência das referências entre relações é a",
   "alts": [
    "Integridade de Domínio",
@@ -1612,7 +1612,7 @@
  {
   "prova": "cnsal-bd",
   "num": 48,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Uma empresa de e -commerce utiliza um sistema de banco de dados distribuído para gerenciar seu inventário e as informações financeiras. Para garantir a atomicidade de transações críticas como a compra de um produto que envolve a baixa no inventário em um nó e o débito na conta em outro nó, o SGBD utiliza o protocolo Two-Phase Commit. Assinale a opção que descreve corretamente o fluxo de comunicação entre o Coordenador e os Participantes durante a primeira fase do protocolo 2PC.",
   "alts": [
    "O Coordenador envia a mensagem COMMIT para todos os Participantes, e estes respondem com ACK se a transação foi concluída com sucesso localmente.",
@@ -1636,7 +1636,7 @@
  {
   "prova": "cnsal-bd",
   "num": 49,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Em um SGBD, o tipo de índice mais comum para acesso geral aos dados é a B+ Tree. A estrutura dessa árvore garante a eficiência tanto na busca por um registro específico quanto na busca por um intervalo de registros. Assinale a opção que descreve a característica da B+ Tree que a torna excepcionalmente eficiente para buscas por intervalo.",
   "alts": [
    "A B+ Tree utiliza uma função de hashing para mapear chaves diretamente para endereços de bloco, eliminando a necessidade de travessia da árvore.",
@@ -1727,7 +1727,7 @@
  {
   "prova": "cnsal-bd",
   "num": 53,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "A Administração de Dados é uma função essencial que lida com a gestão do ciclo de vida dos dados, incluindo a manutenção dos metadados. O Dicionário de Dados é um componente vital que suporta essa função. Assinale a afirmativa correta sobre o papel dos metadados e do Dicionário de Dados no ambiente de SGBD.",
   "alts": [
    "O Dicionário de Dados armazena exclusivamente os dados do usuário final, sendo atualizado apenas quando a aplicação realiza um INSERT ou UPDATE.",
@@ -1751,7 +1751,7 @@
  {
   "prova": "cnsal-bd",
   "num": 54,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "A conectividade de uma aplicação com um SGBD é tipicamente intermediada por interfaces padronizadas, como JDBC e ODBC. Assinale a opção que descreve a função principal de um Driver JDBC ou ODBC no contexto de conectividade de banco de dados.",
   "alts": [
    "O Driver é o componente da aplicação que armazena as credenciais de acesso do usuário e gerencia a criptografia dos dados em repouso.",
@@ -1775,7 +1775,7 @@
  {
   "prova": "cnsal-bd",
   "num": 55,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um DBA utiliza Hashing Extensível para implementar um índice em uma tabela onde se espera um alto volume de inserções. Este tipo de indexação dinâmica é preferido ao Hashing Estático quando o tamanho do arquivo de dados pode variar drasticamente. Assinale a afirmativa correta sobre o principal mecanismo que o Hashing Extensível utiliza para lidar com o crescimento dinâmico e o problema de colisão de forma eficiente, sem a necessidade de reestruturar todo o índice.",
   "alts": [
    "Utiliza uma tabela de Bucket Pointers e um Global Depth para endereçar os blocos de dados. Quando um bucket transborda, ele é dividido e a profundidade global pode ser incrementada.",
@@ -1799,7 +1799,7 @@
  {
   "prova": "cnsal-bd",
   "num": 56,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "O papel do Administrador de Banco de Dados (DBA) evoluiu de um foco reativo para um foco preditivo e proativo, com o objetivo de garantir a disponibilidade e performance contínuas. Uma tarefa de manutenção preditiva e proativa essencial do DBA é a(o)",
   "alts": [
    "restauração de um backup de emergência após uma falha de hardware grave.",
@@ -1823,7 +1823,7 @@
  {
   "prova": "cnsal-bd",
   "num": 57,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um administrador de banco de dados precisa garantir que todas as alterações na tabela INFORMACOES_PESSOAIS sejam registradas em uma tabela de auditoria, incluindo o usuário, a data e o tipo de operação. O recurso de banco de dados mais apropriado e programático para automatizar essa captura de eventos e garantir a segurança de auditoria no nível da aplicação é o",
   "alts": [
    "Views",
@@ -1933,7 +1933,7 @@
  {
   "prova": "cnsal-bd",
   "num": 62,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Uma aplicação de cache de alta velocidade para sessões de usuário foi implementada utilizando um banco de dados NoSQL do tipo Chave-Valor. A aplicação exige latência mínima para operações de leitura e escrita e não precisa de relacionamentos complexos ou consultas ad hoc. Assinale a opção que apresenta a principal vantagem de um banco de dados Chave -Valor em relação a um SGBD Relacional tradicional.",
   "alts": [
    "Oferece esquemas flexíveis e suporte nativo para documentos JSON complexos.",
@@ -2024,7 +2024,7 @@
  {
   "prova": "cnsal-bd",
   "num": 66,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Ao projetar um SGBD, o fator de ramificação dos nós internos de uma B+ Tree é dimensionado para ser o maior possível, limitado pelo tamanho da página do disco. Assinale a afirmativa que explica o benefício de ter um alto fator de ramificação em uma B+ Tree para a performance do SGBD.",
   "alts": [
    "Reduz a quantidade de espaço em disco necessária para armazenar a tabela de dados.",
@@ -2048,7 +2048,7 @@
  {
   "prova": "cnsal-bd",
   "num": 67,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um DBA está planejando a indexação de uma tabela de clientes no MS SQL Server. Ele decide criar um índice Clustered na coluna CPF e um índice Non-Clustered na coluna EMAIL. Assinale a opção que descreve o impacto do índice Clustered na organização física dos dados.",
   "alts": [
    "O índice Clustered armazena a chave de indexação e um ponteiro para a localização dos dados, mas não altera a ordem física das tuplas na página de dados.",
@@ -2072,7 +2072,7 @@
  {
   "prova": "cnsal-bd",
   "num": 68,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um Administrador de Banco de Dados implementou uma rotina de backup para um sistema de e -commerce de missão crítica. O objetivo é garantir o menor RPO ( Recovery Point Objective ) e o menor RTO ( Recovery Time Objective) possíveis em caso de falha catastrófica. O sistema utiliza a técnica de Full Backup semanal, complementada por Differential Backup diário. Assinale a afirmativa que descreve corretamente o procedimento de restauração e os backups necessários para recuperar o estado do banco de dados na terça -feira, às 14h, assumindo que o Full Backup mais recente foi feito no domingo, às 23h.",
   "alts": [
    "Apenas o Full Backup de domingo é necessário, pois o Differential Backup apenas armazena as diferenças desde a última transação.",
@@ -2096,7 +2096,7 @@
  {
   "prova": "cnsal-bd",
   "num": 69,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um sistema de emissão de relatórios está lento. Após analisar o plano de execução, o DBA identifica que o SGBD está realizando um Table Scan em uma tabela de milhões de registros, mesmo com um filtro no campo DATA_OCORRENCIA. O princípio fundamental de tunning a ser aplicado e o impacto esperado na performance da consulta é",
   "alts": [
    "aumentar a quantidade de memória RAM alocada para o buffer pool, o que melhorará o cache hit ratio, mas não o plano de execução da consulta.",
@@ -2120,7 +2120,7 @@
  {
   "prova": "cnsal-bd",
   "num": 70,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um desenvolvedor precisa criar uma rotina para calcular o imposto de uma transação e outra rotina para registrar o fechamento do caixa diário, que deve inserir dados em uma tabela e, se necessário, realizar um COMMIT ou ROLLBACK. Assinale a opção que apresenta o recurso programático mais apropriado para a rotina de fechamento de caixa diário e sua característica fundamental.",
   "alts": [
    "Uma Função, pois ela pode conter lógica de DML e DDL com controle transacional.",
@@ -2144,7 +2144,7 @@
  {
   "prova": "cnsal-bd",
   "num": 71,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um gerente de RH precisa acessar os dados de funcionários, mas não deve ter permissão para visualizar a coluna SALARIO de todos eles. O DBA precisa implementar uma solução de segurança no nível de objeto para atender a esse requisito. Assinale a afirmativa correta sobre o uso de Views para implementar a restrição de acesso a colunas específicas.",
   "alts": [
    "Views não podem ser usadas para segurança, pois elas apenas fornecem um nome alternativo para a tabela base.",
@@ -2168,7 +2168,7 @@
  {
   "prova": "cnsal-bd",
   "num": 72,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um SGBD relacional moderno está sendo usado para armazenar dados semiestruturados de configurações de produtos em um formato XML, utilizando um campo de tipo de dado XML nativo. O DBA precisa consultar apenas um nó específico dentro de um documento XML armazenado. A linguagem de consulta padrão utilizada para buscar e extrair dados de documentos XML em um ambiente de banco de dados é",
   "alts": [
    "XSLT",
@@ -2192,7 +2192,7 @@
  {
   "prova": "cnsal-bd",
   "num": 73,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um DBA precisa criar uma função para ser usada em uma consulta SQL que retorna o nome completo de um funcionário a partir de seu ID. Para otimizar a consulta e permitir que o SGBD armazene em cache os resultados da função, ele deve declará -la como determinística. Assinale a opção que define uma Função Determinística em um SGBD.",
   "alts": [
    "Uma função que não pode ser executada em paralelo e só pode ser chamada por Stored Procedures.",
@@ -2211,7 +2211,7 @@
  {
   "prova": "cnsal-bd",
   "num": 74,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um sistema bancário exige que, sempre que um INSERT for realizado na tabela CONTA_CORRENTE, um registro automático de saldo inicial zero seja criado na tabela SALDO. Assinale a opção que identifica e descreve a finalidade do recurso de programação de servidor mais adequado para garantir essa ação automática.",
   "alts": [
    "Stored Procedure",
@@ -2235,7 +2235,7 @@
  {
   "prova": "cnsal-bd",
   "num": 75,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Ao configurar um SGBD, o DBA cria e gerencia Tablespaces ou seus equivalentes. O principal benefício operacional e de manutenção da utilização de múltiplos Tablespaces é",
   "alts": [
    "aumentar a velocidade da CPU para processamento de consultas.",
@@ -2259,7 +2259,7 @@
  {
   "prova": "cnsal-bd",
   "num": 76,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Uma aplicação envia documentos XML ao banco de dados, e o DBA precisa garantir que todos os documentos XML inseridos sigam uma estrutura rígida e predefinida. O mecanismo formal utilizado para definir e validar a estrutura e o conteúdo de um documento XML é o",
   "alts": [
    "DTD",
@@ -2283,7 +2283,7 @@
  {
   "prova": "cnsal-bd",
   "num": 77,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um DBA nota que o Otimizador de Consultas está escolhendo planos de execução ruins, resultando em consultas lentas. O SGBD é configurado para coletar estatísticas automaticamente, mas o volume de dados alterados é muito grande. A melhor prática de manutenção para corrigir o mau desempenho do Otimizador de Consultas é",
   "alts": [
    "desativar a coleta automática de estatísticas, pois ela consome muitos recursos.",
@@ -2331,7 +2331,7 @@
  {
   "prova": "cnsal-bd",
   "num": 79,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Uma aplicação web com alto volume de tráfego está gerando lentidão no servidor de banco de dados, devido ao grande número de conexões sendo abertas e fechadas constantemente. O DBA sugere a implementação de Connection Pooling. O benefício do Connection Pooling para a performance do SGBD e da aplicação reside no fato de que",
   "alts": [
    "permite que a aplicação use uma única transação para todas as operações, garantindo a atomicidade e diminuindo a sobrecarga da requisição.",
@@ -2355,7 +2355,7 @@
  {
   "prova": "cnsal-bd",
   "num": 80,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Uma universidade modela seu sistema de gestão de pessoal. A superclasse PESSOA possui três subclasses: PROFESSOR, ALUNO e FUNCIONARIO_ADMINISTRATIVO. O sistema deve impor as seguintes regras de negócio: 1. Toda PESSOA registrada no sistema deve ser, pelo menos, um ALUNO, ou um PROFESSOR, ou um FUNCIONARIO_ADMINISTRATIVO. 2. Uma PESSOA pode, simultaneamente, ser ALUNO e PROFESSOR, mas não pode ser, ao mesmo tempo, PROFESSOR e FUNCIONARIO_ADMINISTRATIVO. As restrições de totalidade e disjunção aplicadas a essa estrutura de especialização são:",
   "alts": [
    "Total e Disjunta (𝑇, 𝐷)",
@@ -3247,7 +3247,7 @@
  {
   "prova": "cnsal-redes",
   "num": 78,
-  "tag": "orfaos",
+  "tag": "banco-dados",
   "q": "Um banco de dados da Assembleia, responsável pelo armazenamento de informações legislativas, apresentou crescimento significativo, tornando inviável sua administração e processamento em um único servidor. Para aprimorar o desempenho das consultas e a escal abilidade do sistema, tornou- se necessária a distribuição dos dados entre múltiplos servidores independentes. Nesse contexto, assinale a alternativa que identifica o processo de particionamento de um banco de dados ou conjunto de dados em partes menores e gerenciáveis, passíveis de serem distribuídas e armazenadas em diferentes nós de um cluster ou sistema distribuído.",
   "alts": [
    "Normalização.",

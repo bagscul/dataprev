@@ -90,6 +90,48 @@ itens de LGPD/LAI virarem `legislacao`).
 avisos, ambos intencionais — o `mpu Q41` (questão de imagem) e a #41 (falso
 positivo preservado).
 
+### O importador: cinco defeitos, e o corpus reclassificado
+
+Limpar os dados não bastava — o `importar_provas.py` reintroduzia tudo na
+próxima importação, e pior, **desfazia retag**. Consertados: (1) o filtro de
+rodapé era *case-sensitive*, e `FGV CONHECIMENTO` nunca casava com
+`FGV Conhecimento`; (2) a alternativa atravessava a virada de página e engolia
+cabeçalho de seção, o nome da organizadora e o enunciado da prova discursiva —
+agora corta na quebra, o que revelou mais 6 resíduos, incluindo **1191
+caracteres do texto de leitura seguinte** colados na alternativa E da
+`dataprev2024 Q20`; (3) o número da questão agora tem de ser o **próximo da
+sequência**, senão um "2" solto numa questão de RLM abria questão fantasma;
+(4) a `tag` se resolvia pela **ordem do dicionário**, então
+`"Legislação (Segurança da Informação...)"` caía em `seguranca`; (5) reimportar
+**ressuscitava as 97 questões descartadas de propósito** (432 → 529), agora
+travado por padrão, com `--tudo` para o caderno inteiro.
+
+**A regra que fica: a `tag` de prova real vem de `notas/<prova>-mapa.md`, nunca
+do JSON.** Editar o JSON direto é desfeito na reimportação — foi assim que o
+retag do Grupo C (Dataprev Q36–Q40) ficou exposto sem ninguém notar.
+
+E aí apareceu o defeito de fundo: **o rótulo de sub-bloco dos mapas da ALERO
+usava o _slug_** (`banco-dados`, `eng-software`), que a tabela de tags não
+reconhecia — então **47 questões caíam em `orfaos` por engano**. Corrigido, o
+corpus muda de forma:
+
+| bloco | antes | depois |
+|---|---|---|
+| `banco-dados` | 25 | **59** — o maior bloco específico |
+| `eng-software` | 26 | **39** |
+| `orfaos` | 68 | **21** |
+
+Isso desmonta a leitura que o Grupo C tinha registrado ("órfãos é o bloco com
+mais questões reais, maioria esmagadora DBA"): aquilo era **sintoma do bug**.
+Com a classificação certa, `orfaos` vira o que o nome promete — 21 questões em
+duas famílias, **arquitetura de computadores/SO** (11) e **administração e
+direito público do MPU** (10), **nenhuma delas conteúdo do Perfil 3**. O
+conteúdo de administração física continua sendo ensinado no capítulo de órfãos,
+com remissão a partir de banco de dados.
+
+**Garantia:** `./importar_provas.py` sobre o banco atual devolve o arquivo
+**byte-idêntico**, e as 432 questões batem com o PDF em `q`, `alts` e `tag`.
+
 ## 2026-07-25 (madrugada) — varredura do GRUPO C (auditoria, ITEM 7 · P0–P4)
 
 Sete blocos varridos contra as 112 questões que os alimentam: **legislação,

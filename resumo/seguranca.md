@@ -208,8 +208,9 @@ da contenção.
 
 ## O que já caiu
 
-**Em prova real da FGV:** é o bloco com mais questões reais dos específicos
-(38), e a lista abaixo é quase toda verdadeira. Controle de acesso
+**Em prova real da FGV:** 38 questões — o terceiro bloco específico mais
+pesado, atrás de banco de dados (59) e engenharia de software (39) —, e a lista
+abaixo é quase toda verdadeira. Controle de acesso
 **mandatório** (comparação de rótulos); **OWASP Top 10:2021**, identificar a
 categoria válida (gabarito: SSRF, o A10 — as demais alternativas descreviam
 *práticas*, não vulnerabilidades); **X.800** (mecanismo específico ×

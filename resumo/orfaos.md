@@ -143,28 +143,32 @@ resolve no reflexo errado:
 
 ## O que já caiu
 
-**Em prova real da FGV:** este é o bloco com **mais** questões reais no corpus
-(68), e a maioria esmagadora é **DBA**. **ARIES e WAL**; **otimizador de
-consultas** (estimativa de custo e planos ruins por estatísticas
-desatualizadas); **B+ Tree** (eficiência e fator de ramificação) e **hashing
-extensível**; **índice *clustered***; **tablespaces**; **backup** de sistema
-crítico; **views e menor privilégio** (esconder a coluna de salário);
-**trigger × procedure × function**; **2PC** em banco distribuído;
-**connection pooling**; **NoSQL chave-valor** para cache de sessão; **XML
-Schema** no SGBD; **Administração de Dados × DBA** (ciclo de vida do dado,
-metadados, foco reativo → proativo) — **ALERO 2026**. No **MPU**, o mesmo
-rótulo pegou gestão de processos e estrutura organizacional; no
-**cnsal-ads**, engenharia de software (RUP, cascata, casos de uso, ponto de
-função) e UML (sequência, composição, diagrama de objetos).
+**Em prova real da FGV: 21 questões, e nenhuma delas é conteúdo do Perfil 3.**
+Depois que a classificação foi consertada, este bloco virou o que o nome sempre
+prometeu — o que não tem casa — e se divide em duas famílias, as duas fora do
+edital:
 
-**Arquitetura de computadores e SO** entrou aqui no fechamento do ITEM 7: 11
-questões que vinham marcadas como `arquitetura` — gargalo de **Von Neumann**,
-ULA e unidade de controle, *overflow* × *carry*, complemento de dois, conversão
-de base, ROM/firmware, periférico, ciclo busca-decodificação-execução,
-**MMU/TLB** e *thrashing*, tabela de páginas, **DMA**. São de provas de **outro
-perfil** (ALERO 2026 e TJ-RJ) e **estão fora do edital do Perfil 3**, que fala
-em arquitetura *de software* ([arquitetura](arquitetura.md)). Ficam catalogadas,
-não estudadas.
+- **Arquitetura de computadores e sistema operacional (11).** Gargalo de **Von
+  Neumann**, ULA e unidade de controle, *overflow* × *carry*, complemento de
+  dois, conversão de base, ROM/firmware, periférico, ciclo
+  busca-decodificação-execução, **MMU/TLB** e *thrashing*, tabela de páginas,
+  **DMA** — **ALERO 2026** e **TJ-RJ**. O edital do Perfil 3 fala em
+  arquitetura *de software* ([arquitetura](arquitetura.md)).
+- **Administração e direito público (10).** Avaliação de desempenho de
+  gestores, priorização de melhoria de processo, liderança de equipe,
+  departamentalização, Resolução CNMP, redistribuição de cargo, compromisso da
+  LINDB, critério de desempate em licitação, responsabilidade da concessionária
+  e processo disciplinar — **MPU**, tudo do Módulo I daquele concurso.
+
+**O que saiu daqui.** Até o fechamento do ITEM 7 este bloco declarava 68
+questões e "maioria esmagadora DBA". Era sintoma de um defeito do importador: o
+rótulo de sub-bloco dos mapas da ALERO usava o *slug* (`banco-dados`,
+`eng-software`), que a tabela de tags não reconhecia, e 47 questões caíam aqui
+por engano. Foram para onde sempre pertenceram — **34 para banco de dados**
+([banco-dados](banco-dados.md)) e **13 para engenharia de software**
+([eng-software](eng-software.md)). O *conteúdo* de administração física (ARIES,
+B+ Tree, tablespaces, otimizador, backup) continua sendo ensinado aqui, e o
+resumo de banco de dados remete para cá.
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): blockchain pelo encadeamento de hash; RPA; low-code; os Vs do Big
@@ -175,8 +179,10 @@ web × servidor de aplicação** ([arquitetura](arquitetura.md)) e
 
 ## Como se sair melhor
 
-- Muita questão "órfã" é DBA disfarçado — se o cenário fala em backup,
-  tablespace, plano de execução, log/recuperação, é administração de BD.
+- O que este resumo **ensina** continua valendo muito: administração física de
+  banco de dados é matéria de prova, e as questões dela agora estão sob
+  `banco-dados`. O que ficou com a etiqueta de órfã é material de outro perfil —
+  reconheça e siga em frente.
 - Memorize os pares: AD × DBA, incremental × diferencial, RPO × RTO, ordem do
   ARIES, bitmap × B+ Tree, rotulado × não rotulado, data × concept drift,
   L1 × L2, Tipo 1 × Tipo 2, over × underfitting.

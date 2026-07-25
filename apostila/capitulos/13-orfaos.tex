@@ -203,31 +203,36 @@ intranet = interna; extranet = estende a intranet a parceiros externos.
 \end{pegadinha}
 
 \begin{jacaiu}
-\textbf{Em prova real da FGV:} este é o bloco com \textbf{mais} questões
-reais no corpus (68), e a maioria esmagadora é \textbf{DBA}. \textbf{ARIES e
-WAL}; \textbf{otimizador de consultas} (estimativa de custo e planos ruins
-por estatísticas desatualizadas); \textbf{B+ Tree} (eficiência e fator de
-ramificação) e \textbf{hashing extensível}; \textbf{índice \emph{clustered}};
-\textbf{tablespaces}; \textbf{backup} de sistema crítico; \textbf{views e
-menor privilégio} (esconder a coluna de salário); \textbf{trigger} $\times$
-\textbf{procedure} $\times$ \textbf{function}; \textbf{2PC} em banco
-distribuído; \textbf{connection pooling}; \textbf{NoSQL chave-valor} para
-cache de sessão; \textbf{XML Schema} no SGBD; \textbf{Administração de Dados
-$\times$ DBA} (ciclo de vida do dado, metadados, foco reativo $\to$
-proativo) --- \textbf{ALERO 2026}. No \textbf{MPU}, o mesmo rótulo pegou
-gestão de processos e estrutura organizacional; no \textbf{cnsal-ads},
-engenharia de software (RUP, cascata, casos de uso, ponto de função) e UML
-(sequência, composição, diagrama de objetos).
+\textbf{Em prova real da FGV: 21 questões, e nenhuma delas é conteúdo do
+Perfil 3.} Depois que a classificação foi consertada, este bloco virou o que o
+nome sempre prometeu --- o que não tem casa --- e ele se divide em duas
+famílias, as duas fora do edital:
 
-\textbf{Arquitetura de computadores e SO} entrou aqui no fechamento do ITEM
-7: 11 questões que vinham marcadas como \texttt{arquitetura} --- gargalo de
-\textbf{Von Neumann}, ULA e unidade de controle, \emph{overflow} $\times$
-\emph{carry}, complemento de dois, conversão de base, ROM/firmware,
+\begin{itemize}
+\item \textbf{Arquitetura de computadores e sistema operacional (11).}
+Gargalo de \textbf{Von Neumann}, ULA e unidade de controle, \emph{overflow}
+$\times$ \emph{carry}, complemento de dois, conversão de base, ROM/firmware,
 periférico, ciclo busca-decodificação-execução, \textbf{MMU/TLB} e
-\emph{thrashing}, tabela de páginas, \textbf{DMA}. São de provas de
-\textbf{outro perfil} (ALERO 2026 e TJ-RJ) e \textbf{estão fora do edital do
-Perfil 3}, que fala em arquitetura \emph{de software} (Capítulo
-\ref{cap:arquitetura}). Ficam catalogadas, não estudadas.
+\emph{thrashing}, tabela de páginas, \textbf{DMA} --- \textbf{ALERO 2026} e
+\textbf{TJ-RJ}. O edital do Perfil 3 fala em arquitetura \emph{de software}
+(Capítulo \ref{cap:arquitetura}).
+\item \textbf{Administração e direito público (10).} Avaliação de desempenho
+de gestores, priorização de melhoria de processo, liderança de equipe,
+departamentalização, Resolução CNMP, redistribuição de cargo, compromisso da
+LINDB, critério de desempate em licitação, responsabilidade da concessionária
+e processo disciplinar --- \textbf{MPU}, tudo do Módulo I daquele concurso.
+\end{itemize}
+
+\textbf{O que saiu daqui.} Até o fechamento do ITEM 7 este bloco declarava 68
+questões e ``maioria esmagadora DBA''. Era sintoma de um defeito do
+importador: o rótulo de sub-bloco dos mapas da ALERO usava o \emph{slug}
+(\texttt{banco-dados}, \texttt{eng-software}), que a tabela de tags não
+reconhecia, e 47 questões caíam aqui por engano. Foram para onde sempre
+pertenceram --- \textbf{34 para banco de dados} (Capítulo
+\ref{cap:banco-dados}) e \textbf{13 para engenharia de software} (Capítulo
+\ref{cap:eng-software}). O \emph{conteúdo} de administração física (ARIES,
+B+ Tree, tablespaces, otimizador, backup) continua sendo ensinado neste
+capítulo, e o Capítulo \ref{cap:banco-dados} remete para cá.
 
 \textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
 provas): blockchain pelo encadeamento de hash; RPA; low-code; os Vs do Big
@@ -237,9 +242,11 @@ nesta lista \textbf{caíram} de fato, só que sob outra tag na
 (Capítulo \ref{cap:arquitetura}) e \textbf{internet/intranet/extranet/portal}
 (item de redes, Capítulo \ref{cap:redes}).
 
-Regra prática: muita questão ``órfã'' é DBA disfarçado --- se o cenário fala
-em backup, tablespace, plano de execução ou log/recuperação, é administração
-de BD. Memorize os pares: AD $\times$ DBA, incremental $\times$ diferencial,
+Regra prática: o que este capítulo \emph{ensina} continua valendo muito ---
+administração física de banco de dados é matéria de prova, e as questões dela
+agora estão sob \texttt{banco-dados}. O que ficou com a etiqueta de órfã é
+material de outro perfil: reconheça e siga em frente. Memorize os pares:
+AD $\times$ DBA, incremental $\times$ diferencial,
 RPO $\times$ RTO, ordem do ARIES, bitmap $\times$ B+ Tree, rotulado $\times$
 não rotulado, data $\times$ concept drift, L1 $\times$ L2, Tipo 1 $\times$
 Tipo 2, over $\times$ underfitting.
