@@ -44,6 +44,46 @@ existente (ou é nula). Ações: CASCADE, SET NULL, RESTRICT/NO ACTION.
 filtra \textbf{linhas}; projeção ($\pi$) = filtra \textbf{colunas}.
 \end{itemize}
 
+\subsection{Do MER para o relacional (como cada cardinalidade vira tabela)}
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{9.8cm}@{}}
+\toprule
+\textbf{Cardinalidade} & \textbf{Implementação no modelo relacional} \\
+\midrule
+1:1 & FK em uma das duas tabelas (de preferência no lado de participação obrigatória), com restrição de unicidade \\
+1:N & \textbf{FK no lado N} --- a tabela ``muitos'' guarda a chave da tabela ``um'' \\
+\textbf{N:M} & \textbf{tabela associativa} (intermediária), com as FKs das duas pontas formando a chave primária composta \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+N:M \textbf{nunca} se resolve com FK direta em uma das tabelas (isso só
+atende 1:N) nem com coluna multivalorada dos dois lados --- coluna
+multivalorada viola a \textbf{1FN}. Trigger e índice composto não implementam
+cardinalidade nenhuma: são distratores de outra prateleira.
+\end{pegadinha}
+
+\begin{conceito}[Entidade fraca $\times$ entidade associativa]
+\textbf{Entidade fraca:} não se identifica sozinha. Sua chave é a chave da
+\textbf{entidade proprietária} (forte) somada a uma \textbf{chave parcial}
+(discriminador) --- ex.: DEPENDENTE só é identificado dentro do cadastro de um
+SERVIDOR, pelo nome. O relacionamento com o proprietário é
+\textbf{identificador}, e a existência da fraca depende da forte.
+
+\textbf{Entidade associativa:} é outra coisa --- é o \textbf{relacionamento
+N:M promovido a entidade}, quando ele próprio precisa se relacionar com uma
+terceira entidade ou ganhar atributos próprios.
+\end{conceito}
+
+\begin{pegadinha}
+A quase-certa diz ``entidade fraca, que \textbf{dispensa} a chave do
+proprietário'' --- é justamente o oposto: sem a chave do proprietário ela não
+se identifica. E ter atributos próprios \textbf{não} torna a entidade forte; o
+que define a força é conseguir se identificar sozinha.
+\end{pegadinha}
+
 \section{Normalização (formas normais)}
 
 \begin{center}
@@ -89,6 +129,31 @@ por palavra os comandos SQL da questão --- a FGV troca uma cláusula só
 código.
 \end{pegadinha}
 
+\subsection{Código no servidor: gatilho $\times$ procedimento armazenado}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.8cm}p{4.8cm}@{}}
+\toprule
+& \textbf{Gatilho (trigger)} & \textbf{Procedimento armazenado} \\
+\midrule
+Quem dispara & o \textbf{próprio SGBD}, em resposta a um \textbf{evento} de dados & a \textbf{aplicação} (ou outro código), por chamada explícita \\
+Como se invoca & não se invoca --- é automático & \texttt{CALL}/\texttt{EXECUTE} \\
+Amarrado a & uma tabela + evento (INSERT, UPDATE, DELETE) & nada; é código nomeado e reutilizável \\
+Parâmetros & não recebe & recebe (e pode retornar) \\
+Bom para & auditoria, log, regra que \textbf{não pode depender} da aplicação lembrar & rotina de negócio chamada sob demanda \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+A troca é sempre a mesma: dizer que o \textbf{procedimento} é ``acionado
+automaticamente pelo SGBD a cada UPDATE'' (isso é o gatilho) ou que o
+\textbf{gatilho} é ``invocado com um \texttt{CALL} antes do UPDATE'' (isso é o
+procedimento). O gatilho \textbf{também não substitui} restrição de
+integridade referencial declarada --- são mecanismos diferentes. Palavra-chave
+do enunciado: ``\textbf{sem depender de a aplicação lembrar}'' $\to$ gatilho.
+\end{pegadinha}
+
 \section{Propriedades ACID (transações)}
 
 \begin{itemize}
@@ -97,6 +162,48 @@ código.
 \item \textbf{I}solamento: transações concorrentes não interferem.
 \item \textbf{D}urabilidade: efeito confirmado persiste (mesmo após falha).
 \end{itemize}
+
+\section{Concorrência: níveis de isolamento}
+
+O ``I'' do ACID não é tudo-ou-nada: o padrão SQL define \textbf{quatro
+níveis}, e cada um \emph{admite} certos fenômenos de concorrência. Quanto
+maior o isolamento, \textbf{menor} a concorrência --- é um trade-off, não um
+ganho de graça.
+
+\textbf{Os três fenômenos:}
+\begin{itemize}
+\item \textbf{Leitura suja} (\emph{dirty read}): lê dado alterado por outra
+transação que \textbf{ainda não confirmou} (e pode desfazer).
+\item \textbf{Leitura não repetível} (\emph{non-repeatable read}): relê a
+\textbf{mesma linha} e o valor mudou, porque outra transação a atualizou e
+confirmou no meio.
+\item \textbf{Leitura fantasma} (\emph{phantom read}): relê a \textbf{mesma
+faixa} e aparecem \textbf{linhas novas}, inseridas e confirmadas por outra
+transação.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{2.6cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Nível} & \textbf{Leitura suja} & \textbf{Não repetível} & \textbf{Fantasma} \\
+\midrule
+READ UNCOMMITTED & admite & admite & admite \\
+READ COMMITTED & \textbf{impede} & admite & admite \\
+REPEATABLE READ & impede & \textbf{impede} & admite \\
+SERIALIZABLE & impede & impede & \textbf{impede} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Duas inversões prontas: dizer que o \textbf{READ UNCOMMITTED é o mais
+restritivo} (é o \textbf{mais permissivo} --- é justamente ele que deixa ler
+o não confirmado) e dizer que o \textbf{REPEATABLE READ elimina o fantasma}
+(elimina a \textbf{não repetível}; o fantasma só cai no SERIALIZABLE). E o
+absoluto invertido: ``quanto mais alto o isolamento, maior a concorrência''
+--- é o contrário. Marque o par pelo objeto: linha que \textbf{muda de valor}
+= não repetível; linha \textbf{nova que aparece} = fantasma.
+\end{pegadinha}
 
 \section{Relacional $\times$ Multidimensional (OLTP $\times$ OLAP)}
 

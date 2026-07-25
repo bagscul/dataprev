@@ -26,6 +26,32 @@ artefato de cada nível.
 - **Integridade referencial:** toda FK aponta para uma PK existente (ou é
   nula). Ações: CASCADE, SET NULL, RESTRICT/NO ACTION.
 - **Integridade de entidade:** PK não pode ser nula.
+- **Álgebra relacional:** seleção (σ) = `WHERE` = filtra **linhas**; projeção
+  (π) = filtra **colunas**.
+
+### 2.1 Do MER para o relacional (como cada cardinalidade vira tabela)
+
+| Cardinalidade | Implementação no modelo relacional |
+|---|---|
+| **1:1** | FK em uma das duas tabelas (de preferência no lado obrigatório), com restrição de unicidade |
+| **1:N** | **FK no lado N** — a tabela "muitos" guarda a chave da tabela "um" |
+| **N:M** | **tabela associativa** (intermediária), com as FKs das duas pontas formando a PK composta |
+
+Pegadinha: N:M **nunca** se resolve com FK direta em uma das tabelas (isso só
+atende 1:N) nem com coluna multivalorada — que viola a **1FN**. Trigger e
+índice composto não implementam cardinalidade nenhuma.
+
+**Entidade fraca × entidade associativa.** A **fraca** não se identifica
+sozinha: sua chave é a chave da **entidade proprietária** somada a uma **chave
+parcial** (discriminador) — DEPENDENTE só é identificado dentro do cadastro de
+um SERVIDOR, pelo nome. O relacionamento com o proprietário é **identificador**
+e a existência da fraca depende da forte. Já a **associativa** é o
+relacionamento **N:M promovido a entidade**, quando ele precisa se relacionar
+com uma terceira entidade ou ganhar atributos próprios.
+
+Pegadinha: a quase-certa diz "entidade fraca, que **dispensa** a chave do
+proprietário" — é o oposto. E ter atributos próprios **não** torna a entidade
+forte: o que define a força é identificar-se sozinha.
 
 ## 3. Normalização (formas normais)
 
@@ -53,12 +79,55 @@ Pegadinhas: **TRUNCATE (DDL) × DELETE (DML)**; `UNION` remove duplicatas /
 `GROUP BY`; `JOIN` sem `ON` vira produto cartesiano; ordem de execução
 lógica: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.
 
+### 4.1 Código no servidor: gatilho × procedimento armazenado
+
+| | **Gatilho (trigger)** | **Procedimento armazenado** |
+|---|---|---|
+| Quem dispara | o **próprio SGBD**, em resposta a um **evento** de dados | a **aplicação**, por chamada explícita |
+| Como se invoca | não se invoca — é automático | `CALL` / `EXECUTE` |
+| Amarrado a | uma tabela + evento (INSERT, UPDATE, DELETE) | nada; é código nomeado e reutilizável |
+| Parâmetros | não recebe | recebe (e pode retornar) |
+| Bom para | auditoria, log, regra que **não pode depender** da aplicação lembrar | rotina de negócio chamada sob demanda |
+
+Pegadinha: dizer que o **procedimento** é "acionado automaticamente pelo SGBD
+a cada UPDATE" (isso é o gatilho) ou que o **gatilho** é "invocado com um
+`CALL`" (isso é o procedimento). Gatilho também **não substitui** integridade
+referencial declarada. Palavra-chave do enunciado: "**sem depender de a
+aplicação lembrar**" → gatilho.
+
 ## 5. Propriedades ACID (transações)
 
 - **A**tomicidade: tudo ou nada.
 - **C**onsistência: leva o banco de um estado válido a outro.
 - **I**solamento: transações concorrentes não interferem.
 - **D**urabilidade: efeito confirmado persiste (mesmo após falha).
+
+## 5.1 Concorrência: níveis de isolamento
+
+O "I" do ACID não é tudo-ou-nada: o padrão SQL define **quatro níveis**, e
+cada um *admite* certos fenômenos. Quanto maior o isolamento, **menor** a
+concorrência — é trade-off, não ganho de graça.
+
+**Os três fenômenos:**
+
+- **Leitura suja** (*dirty read*): lê dado alterado por transação que **ainda
+  não confirmou** (e pode desfazer).
+- **Leitura não repetível**: relê a **mesma linha** e o valor mudou.
+- **Leitura fantasma** (*phantom*): relê a **mesma faixa** e aparecem **linhas
+  novas**, inseridas e confirmadas por outra transação.
+
+| Nível | Leitura suja | Não repetível | Fantasma |
+|---|---|---|---|
+| READ UNCOMMITTED | admite | admite | admite |
+| READ COMMITTED | **impede** | admite | admite |
+| REPEATABLE READ | impede | **impede** | admite |
+| SERIALIZABLE | impede | impede | **impede** |
+
+Pegadinhas: dizer que **READ UNCOMMITTED é o mais restritivo** (é o mais
+**permissivo**) e que **REPEATABLE READ elimina o fantasma** (elimina a não
+repetível; fantasma só cai no SERIALIZABLE). E o absoluto invertido: "quanto
+mais alto o isolamento, maior a concorrência". Marque pelo objeto: linha que
+**muda de valor** = não repetível; linha **nova que aparece** = fantasma.
 
 ## 6. Relacional × Multidimensional (OLTP × OLAP)
 
@@ -116,7 +185,9 @@ ETL é melhor quando a transformação ocorre antes/fora.
 Relacional × multidimensional (OLTP/OLAP); NoSQL (disponibilidade e escala
 horizontal); ETL × ELT (a incorreta); ETL como ponte para o DW; normalização
 1FN-3FN; integridade referencial; TRUNCATE/DELETE; teorema CAP; Star ×
-Snowflake; desnormalização em DW; Data Warehouse × Data Lake × Lakehouse.
+Snowflake; desnormalização em DW; Data Warehouse × Data Lake × Lakehouse;
+N:M resolvido por tabela associativa; entidade fraca; níveis de isolamento e
+os fenômenos que cada um admite; gatilho × procedimento armazenado.
 Rode `../quiz.py banco-dados` e `../quiz.py bi`.
 
 ## Pegadinhas da FGV (resumo)
