@@ -2,6 +2,79 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 (madrugada) — varredura do GRUPO C (auditoria, ITEM 7 · P0–P4)
+
+Sete blocos varridos contra as 112 questões que os alimentam: **legislação,
+redes, português, RLM, inglês, atualidades e órfãos**. É o grupo dos **gerais**
+— e o achado que muda a leitura do conjunto é que, ao contrário do Grupo B,
+**a maioria das alegações de "já caiu" aqui é verdadeira**: os blocos gerais
+têm lastro real em prova. O problema é outro — **subcrédito** e camadas
+desalinhadas. Apostila: **112 → 119 páginas**.
+
+- **P0 · a dica de RLM contradizia as outras três camadas.** Abria com *"na
+  FGV, RLM é MATEMÁTICA, não lógica formal"* e tratava tabela-verdade como
+  resíduo de 1 questão, enquanto a apostila, o resumo e o Apêndice A já
+  alertavam que o **edital 2026 põe a lógica formal em quatro dos cinco
+  itens**. Era a única camada ainda na versão pré-edital. E a ALERO 2026
+  confirma o alerta: **lógica proposicional encadeada e argumentação caíram
+  lá**. Junto, a contagem que não fechava dentro do próprio capítulo (`\peso`
+  dizia 5 questões, o *comosair* dizia "~6").
+- **P1a · 14 questões sem apoio em camada nenhuma.** Entraram de fato:
+  **handshake híbrido do TLS** (assimétrica só para acordar a chave de sessão),
+  **SSH × Telnet** — a palavra "Telnet" não existia em lugar nenhum do repo — e
+  **firewall stateful × stateless** em redes; **dado pessoal sensível** (o rol
+  fechado do art. 5º, II) e a **neutralidade de rede** definida de fato (art.
+  9º) em legislação; **juros simples × compostos**, **PA pelo termo geral**,
+  **produto de matrizes**, **inclusão-exclusão**, **mediana/moda** e **desvio
+  padrão** em RLM — a tabela de prioridades já listava esses tópicos e nenhum
+  era ensinado; **concordância verbal dos impessoais** e **por que / porque /
+  por quê / porquê** em português; **ESG por extenso** (a sigla aparecia 6×
+  sem nunca ser expandida), **viés × variância** e as **métricas de
+  classificação** em atualidades.
+- **P1b · órfãos é o bloco mais transversal do repo.** Cinco das oito questões
+  apontam para conteúdo que mora, com razão, em outro capítulo — e o Cap. 14
+  não remetia a nenhum. Entrou um **mapa de remissões dirigidas** (mesma
+  solução do Grupo B), com 2PC, RPA e low-code definidos ali mesmo. Nos
+  capítulos de destino: o Cap. 5 ganhou o corte **Java EE** do par servidor web
+  × servidor de aplicação (container web **e** container EJB), e o Cap. 6
+  passou a separar o **trio clássico** dos Vs do Big Data (Volume, Velocidade,
+  Variedade) das **extensões** — as duas camadas só diziam "5 V", e a
+  quase-certa da questão é montada trocando um membro do trio por um V de
+  extensão.
+- **P2 · quatro quebras de contenção.** Os **princípios da LGPD** estavam só na
+  dica — e caíram no TJ-RJ: o enunciado descrevia *"compatível com os fins
+  informados, de acordo com o contexto"* e o gabarito era **adequação**,
+  armadilha para quem decorou só "finalidade". A **desclassificação na LAI**
+  idem, e os quatro distratores da Dataprev 2024 moram exatamente ali. O
+  **art. 20 / explicabilidade** entrou no resumo de legislação — é o P2
+  **herdado do Grupo A**, agora executado, e as duas afirmações da dica
+  ("visto no TJ-RJ") foram conferidas e são verdadeiras. E o
+  `resumo/orfaos.md` ganhou a **seção de IA/ML** que faltava, justo no tema
+  que o bloco declara quente.
+- **P4 · as 7 caixas `jacaiu` separam prova real do nosso banco.** Três
+  alegações falsas, todas em legislação: **controlador × operador**, **bases
+  legais da LGPD** e **guarda de registros do Marco Civil** não aparecem em
+  nenhuma das 432 questões reais (a Q40 da Dataprev é ANPD × CNPD; a Q38 é
+  *sanções*, não guarda). Os prazos numéricos da LAI também não — caiu a
+  **classificação**, não os 5/15/25. Em atualidades, "viés algorítmico" saiu da
+  lista: o viés do TJ-RJ é o **estatístico** do trade-off. O resto era
+  subcrédito: **órfãos** é o bloco com mais questões reais do corpus (56, quase
+  todas DBA da ALERO 2026) e não creditava nenhuma; **português** tem 67 e só
+  listava as 12 da Dataprev. **P3:** o `resumo/orfaos.md` não tinha seção "O
+  que já caiu" nenhuma — as duas listas não podiam bater quando uma não
+  existia.
+- **Correção de tag em `banco-provas.json`.** As cinco questões de LGPD/LAI/
+  Marco Civil da Dataprev 2024 (Q36–Q40) estavam como `seguranca`. A estrutura
+  da prova confirma o conserto: agora o **Módulo I fecha em 40** questões e o
+  Módulo II em 30 — os 70 do edital. Antes, `legislacao` tinha zero.
+- **Buraco que a própria auditoria abriu:** ao creditar **cálculo de sub-rede**
+  como prova real (ALERO 2026), ficou visível que nenhuma camada ensinava.
+  Entrou a tabela prefixo/máscara/hosts úteis (2ʰ − 2) e a notação simplificada
+  do IPv6, que também caiu lá.
+
+Nenhuma questão nova. `./valida.py --strict` idêntico ao baseline em todos os
+commits.
+
 ## 2026-07-25 (noite) — varredura do GRUPO B (auditoria, ITEM 7 · P0–P4)
 
 Cinco blocos varridos contra as 110 questões que os alimentam: **programação,
