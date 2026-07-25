@@ -57,10 +57,13 @@ Pegadinhas: **Adapter** (compatibiliza o que já existe) × **Facade**
 | **Mediator** | centralizar a comunicação entre objetos (reduz acoplamento N-para-N) |
 | **Memento** | capturar/restaurar o estado de um objeto (snapshot) |
 | **Visitor** | adicionar operações a uma estrutura sem alterar as classes |
+| **Interpreter** | definir uma **gramática** para uma linguagem e um interpretador que avalia suas sentenças ("interpretar expressões/regras escritas numa mini-linguagem") |
 
 Pegadinhas: **Strategy** (troca o algoritmo) × **State** (troca conforme o
 estado) — parecidos na estrutura, diferentes na intenção. **Observer** = o
-padrão de eventos/notificação.
+padrão de eventos/notificação. **Interpreter** é o 11º comportamental e o mais
+esquecido — some da lista de quem conta de cabeça, e é justamente aí que a FGV
+pergunta o número.
 
 ## GRASP (princípios de atribuição de responsabilidade)
 
