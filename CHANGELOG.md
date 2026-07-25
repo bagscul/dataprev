@@ -2,6 +2,71 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 (noite) — varredura do GRUPO B (auditoria, ITEM 7 · P0–P4)
+
+Cinco blocos varridos contra as 110 questões que os alimentam: **programação,
+Java, frontend, BI e governança**. O achado dominante foi o inverso do Grupo A:
+em três recortes (`git-devops`, `java-moderno`, `leitura-codigo`) a **apostila
+estava mais fina que o resumo**, quebrando a contenção dica ⊂ resumo ⊂ apostila
+justo na camada para onde o quiz manda quem erra. Apostila: **100 → 112
+páginas**.
+
+- **P0 · PHP 8 fora do lugar.** O item de funções de sessão (`session_start`,
+  `session_destroy`, `session_regenerate_id`) estava dentro da seção "Python
+  aplicado a dados" do Cap. 9. Não era só rótulo errado: conferida a origem, o
+  item de PHP vem do **TJ-RJ**, enquanto todo o resto da seção vem do **MPU**.
+  Virou `\subsection` própria, como o `resumo/` já fazia.
+- **P1 · 13 questões sem apoio em nenhuma camada.** Entraram de fato:
+  **granularidade (o grão da fato)**, **SCD tipos 1/2/3** (com o porquê da
+  chave *surrogate*) e as **6 fases do CRISP-DM** em BI; **Daily Scrum de 15
+  min** (fixos, independentes do tamanho da Sprint), **tripla restrição** e
+  **lead time × cycle time** (com a âncora da palavra *solicitação*) em
+  governança; **ARIA** (com a regra nº 1: não usar ARIA), **Flexbox 1D × Grid
+  2D**, **especificidade de seletores** e **escopo de `var` × `let`** em
+  frontend; **interface × classe abstrata** (o corte é construtor e atributo de
+  instância, já que o Java 8 deu método `default` à interface), **`String`
+  imutável / `StringBuilder`** e as **anotações de Spring e JPA** em Java.
+- **P1 · a apostila alcançou o resumo.** O Cap. 9 tinha 5 linhas de Git; agora
+  tem as três áreas, a tabela comando × efeito, **`fetch` × `pull`**, o trio
+  **CI / entrega contínua / implantação contínua** e contêineres. A seção de
+  Python ganhou `max(dic, key=)` e fatiamento; o Cap. 10, `record` e `var` com
+  conteúdo (antes eram duas palavras num *bullet*).
+- **P1 · remissões dirigidas.** O `ref_apostila()` usa a `tag`, nunca a `sub` —
+  então quem erra uma questão de SOLID, GoF ou REST marcada como `programacao`
+  cai no Cap. 9, que não cobre nenhum dos três. Entrou um bloco apontando cada
+  tema para o capítulo certo (e **idempotência**, que faltava em todas as
+  camadas, foi definida ali).
+- **P2 · nove inversões dica → resumo desfeitas**, no mesmo padrão do Grupo A:
+  tipos de fato, suporte × confiança, camadas Bronze/Silver/Gold, DAMA-DMBOK e
+  *drillthrough* em BI; os **12 princípios do PMBOK 7 pelo nome**, o
+  **propósito de cada prática ITIL** que a banca troca e os **componentes** do
+  COBIT em governança; `createPortal` em frontend.
+- **P3 · três itens citados em "o que já caiu" e nunca ensinados.**
+  **`@import`**, **lead time × cycle time** e **relacional × multidimensional**
+  apareciam nas duas listas sem existir no corpo de nenhuma camada. Os três
+  foram ensinados (o `@import` com o motivo de ser distrator de media query, e
+  o modelo multidimensional com ROLAP/MOLAP/HOLAP), e as **cinco duplas de
+  listas** foram sincronizadas.
+- **P4 · a caixa "já caiu" dizia mais do que podia.** O ambiente da apostila é
+  rotulado *"O que já caiu nas provas"*, mas era preenchido a partir do
+  `banco.json`. Conferindo item a item contra `banco-provas.json` (432 questões,
+  7 provas), tinham **zero ocorrência em prova real**: checked × unchecked,
+  `==` × `equals`, ArrayList/LinkedList, ordem de catch/`finally`, *pinning*,
+  box model/`box-sizing`, React × Angular, `key`/`useState`, `@import` e lead
+  time × cycle time. Pior: `dicas/java.md` já era honesta ("mesmo sem ter caído
+  na amostra") e a apostila a contradizia. As cinco caixas — e as cinco do
+  `resumo/` — passaram a **separar o que caiu em prova real, com a sigla**
+  (Dataprev 2024, TJ-RJ, MPU, ALERO 2026), **do que é questão nossa**.
+- **P4 · miudezas.** "Aparece nas duas provas de TI" em `dicas/bi.md` estava
+  vencido (o corpus foi de 2 para 7 provas); a chave surrogada estava creditada
+  ao bloco errado; e a regra de que **diferir só no tipo de retorno não é
+  sobrecarga, é erro de compilação** entrou no Cap. 10, que a cobrava sem
+  enunciar.
+
+`./valida.py --strict` sai 0, com os mesmos 2 avisos pré-existentes
+(`mpu Q41` fora do sorteio e as 9 questões de correta longa). Banco não tocado:
+336 + 432.
+
 ## 2026-07-25 — desfeita a inversão de camada (auditoria, Bloco VII/ITEM 7 · P2)
 
 Em quatro blocos, conteúdo existia só em `dicas/` — a camada **rasa** — e
