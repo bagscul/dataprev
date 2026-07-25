@@ -4919,5 +4919,689 @@
    "3": "A ordem de declaração só decide empate quando a especificidade dos seletores é igual; aqui os seletores têm especificidades diferentes, e a maior (id) vence, não a ordem de escrita.",
    "4": "Inverte a hierarquia completamente: seletor de elemento (tag) é o de menor especificidade entre os três, não o de maior prioridade."
   }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Uma equipe precisa integrar seu sistema ao de um órgão parceiro que exige contrato de serviço publicado, segurança aplicada no nível da mensagem e independência do protocolo de transporte. Comparando SOAP e REST nesse cenário, é correto afirmar que:",
+  "alts": [
+   "o SOAP é um protocolo, com envelope XML e contrato em WSDL; o REST é um estilo arquitetural apoiado nos verbos HTTP",
+   "o SOAP é um estilo arquitetural orientado a recursos e URIs; o REST é um protocolo padronizado, com envelope próprio de mensagem",
+   "os dois são protocolos de aplicação e exigem, obrigatoriamente, mensagens em XML transportadas sobre HTTP",
+   "o REST é que oferece segurança no nível da mensagem, via WS-Security; o SOAP depende do TLS no transporte",
+   "o SOAP dispensa contrato formal de serviço, pois a descoberta acontece em tempo de execução, por HATEOAS"
+  ],
+  "ans": 0,
+  "why": "SOAP é protocolo: define envelope, cabeçalho e corpo em XML, com contrato descrito em WSDL e extensões como WS-Security, que protegem a mensagem independentemente do transporte. REST é estilo arquitetural, apoiado em recursos, URIs e na semântica do próprio HTTP. A FGV explora justamente a troca dos rótulos entre os dois.",
+  "erradas": {
+   "1": "A inversão está exatamente aí: recursos e URIs são a marca do REST, e o envelope padronizado é do SOAP. Trocar as duas descrições é a pegadinha mais comum do par.",
+   "2": "REST não impõe formato: a mesma representação pode vir em JSON, XML ou outro tipo negociado. E SOAP, embora normalmente trafegue sobre HTTP, não está preso a ele — foi desenhado para ser independente do transporte.",
+   "3": "WS-Security pertence à pilha WS-*, do SOAP, e é o que permite assinar ou cifrar partes da mensagem. Em REST a proteção costuma ficar no canal (TLS), não na mensagem.",
+   "4": "Contrato formal é característica do SOAP, via WSDL. HATEOAS é a restrição de REST em que as próprias respostas trazem os links para os próximos estados — nada a ver com dispensar contrato em SOAP."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Uma equipe documenta a API que acabou de publicar e quer descrever corretamente o estilo adotado. Assinale a opção que NÃO corresponde a uma característica do estilo REST.",
+  "alts": [
+   "Comunicação sem estado entre requisições, cada uma carregando o contexto necessário para ser processada.",
+   "Identificação dos recursos por URIs, manipulados pelos métodos definidos no protocolo HTTP.",
+   "Descrição das operações do serviço em um contrato WSDL, com as mensagens encapsuladas em um envelope.",
+   "Representações intercambiáveis do mesmo recurso, como JSON ou XML, negociadas na requisição.",
+   "Possibilidade de as respostas serem armazenadas em cache, sinalizada pelo próprio protocolo."
+  ],
+  "ans": 2,
+  "why": "Contrato em WSDL e envelope de mensagem são elementos do SOAP, não do REST. As demais opções listam restrições do estilo REST: ausência de estado, recursos identificados por URI, representações negociadas e capacidade de cache.",
+  "erradas": {
+   "0": "Ausência de estado é uma das restrições centrais de REST: o servidor não guarda contexto entre chamadas, e cada requisição chega completa. Por ser característica legítima, não é a resposta de um comando negativo.",
+   "1": "Recurso identificado por URI e manipulado por GET, POST, PUT e DELETE é a base da interface uniforme de REST — logo, não é o que se procura aqui.",
+   "3": "A negociação de conteúdo permite que o mesmo recurso seja devolvido em formatos diferentes; isso caracteriza REST em vez de excluí-lo.",
+   "4": "A capacidade de cache é restrição explícita do estilo, sinalizada por cabeçalhos do HTTP. Marcar essa opção significa ler o comando na direção positiva."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Uma organização contrata um serviço de nuvem em que o provedor entrega a plataforma de execução — sistema operacional, runtime e middleware já gerenciados — e a equipe interna cuida apenas do código da aplicação e dos dados. Segundo a classificação do NIST, esse modelo e a divisão de responsabilidade correspondem a:",
+  "alts": [
+   "IaaS, em que o cliente recebe a plataforma pronta e deixa de administrar sistema operacional e runtime",
+   "PaaS: o cliente responde pela aplicação e pelos dados; o provedor, pela plataforma e pela infraestrutura",
+   "SaaS, em que o cliente ainda responde pela atualização do sistema operacional das instâncias contratadas",
+   "IaaS, em que o provedor entrega o software final pronto para uso, acessado pelo navegador do usuário",
+   "PaaS, em que o cliente assume a manutenção do hardware e da rede física do datacenter do provedor"
+  ],
+  "ans": 1,
+  "why": "PaaS é exatamente a faixa intermediária: o provedor gerencia infraestrutura, sistema operacional e runtime; o cliente entra com o código e os dados. Em IaaS o cliente ainda administra o sistema operacional; em SaaS, recebe a aplicação pronta.",
+  "erradas": {
+   "0": "Esse é o retrato de PaaS com o rótulo de IaaS. Em IaaS o provedor entrega processamento, armazenamento e rede, e é o cliente quem instala e mantém o sistema operacional.",
+   "2": "Em SaaS o cliente consome a aplicação pronta e não chega perto do sistema operacional das instâncias — a atualização fica inteiramente com o provedor.",
+   "3": "Entregar o software final acessado pelo navegador descreve SaaS. O rótulo IaaS está no extremo oposto da pilha de responsabilidade.",
+   "4": "Hardware e rede física ficam com o provedor em qualquer um dos três modelos; nenhuma parte disso passa para o cliente em PaaS."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Durante uma campanha de vendas, um serviço em nuvem passa de 4 para 40 instâncias em minutos e volta a 4 na semana seguinte; a fatura acompanha o consumo hora a hora. As duas características essenciais da computação em nuvem (NIST) evidenciadas nesse relato são, respectivamente:",
+  "alts": [
+   "amplo acesso à rede e autosserviço sob demanda",
+   "pooling de recursos e amplo acesso à rede",
+   "autosserviço sob demanda e pooling de recursos",
+   "serviço mensurado e resiliência assegurada por contrato",
+   "elasticidade rápida e serviço mensurado"
+  ],
+  "ans": 4,
+  "why": "Variar a capacidade em minutos, acompanhando a demanda, é elasticidade rápida; cobrar pelo consumo medido hora a hora é serviço mensurado. São duas das cinco características essenciais da definição do NIST.",
+  "erradas": {
+   "0": "Amplo acesso à rede trata de alcançar o serviço por meios padronizados, de qualquer dispositivo; autosserviço sob demanda é provisionar sem intermediação humana. Nenhuma das duas descreve variar capacidade nem medir consumo.",
+   "1": "Pooling de recursos é o compartilhamento do mesmo parque físico entre vários clientes. O relato não fala em multilocação, e sim em capacidade que sobe e desce.",
+   "2": "O autosserviço aparece, no máximo, de forma implícita; o que o enunciado descreve com todas as letras é a variação de capacidade e a cobrança pelo consumo.",
+   "3": "A segunda parte acerta o serviço mensurado, mas resiliência assegurada por contrato não está entre as cinco características essenciais do NIST — é cláusula de SLA."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Uma equipe migra uma rotina de processamento de imagens para uma função serverless (FaaS). Sobre as implicações dessa escolha, assinale a alternativa correta.",
+  "alts": [
+   "Não há servidores envolvidos: o código passa a ser executado no próprio dispositivo que dispara o evento.",
+   "O estado da execução anterior permanece na função, o que dispensa armazenamento externo entre chamadas.",
+   "Como não existe provisionamento prévio, a latência da primeira invocação após um período ocioso é igual à das demais.",
+   "A função escala de zero a muitas execuções conforme os eventos, e a cobrança se dá pelo tempo consumido.",
+   "O modelo remove o limite de tempo por execução, o que o torna indicado para processamentos longos e contínuos."
+  ],
+  "ans": 3,
+  "why": "Em FaaS o provedor aloca a execução por evento: a função pode ficar em zero instâncias e escalar conforme a demanda, com cobrança pelo tempo e pelos recursos efetivamente consumidos.",
+  "erradas": {
+   "0": "Serverless não significa ausência de servidor, e sim ausência de gestão do servidor pela equipe. A execução continua na infraestrutura do provedor, não no dispositivo que emitiu o evento.",
+   "1": "Funções são projetadas para não guardar estado entre invocações; qualquer dado que precise sobreviver a uma execução vai para armazenamento externo, como um banco ou um objeto em bucket.",
+   "2": "É o oposto do efeito conhecido como cold start: a primeira invocação após ociosidade paga o custo de inicializar o ambiente e responde mais devagar que as seguintes.",
+   "4": "Cada plataforma impõe um tempo máximo por execução, o que torna FaaS pouco adequado a processamentos longos e contínuos — esses pedem contêineres ou instâncias dedicadas."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Ao revisar o desenho de uma aplicação, um arquiteto distingue camadas lógicas (layers) de camadas físicas (tiers). Sobre essa distinção, assinale a alternativa correta.",
+  "alts": [
+   "Uma aplicação pode ter três camadas lógicas e ser implantada em um único nó físico, permanecendo monolítica.",
+   "Aplicações organizadas em três camadas lógicas são implantadas, necessariamente, em três nós físicos distintos entre si.",
+   "A arquitetura cliente-servidor de duas camadas físicas impede que exista separação lógica entre apresentação e negócio.",
+   "Camadas lógicas descrevem a distribuição do software entre máquinas; camadas físicas, o agrupamento de responsabilidades.",
+   "O padrão MVC corresponde diretamente às três camadas físicas de uma aplicação web em ambiente de produção."
+  ],
+  "ans": 0,
+  "why": "Camada lógica é organização de responsabilidades no código; camada física é onde o software roda. Separar apresentação, negócio e dados no projeto não obriga a distribuir nada: os três podem viver no mesmo processo, em um servidor só.",
+  "erradas": {
+   "1": "Confundir a separação de responsabilidades com a topologia de implantação é o erro central: a decisão de distribuir em nós é independente do número de camadas lógicas desenhadas.",
+   "2": "Duas camadas físicas não impedem organização interna nenhuma. É perfeitamente possível ter apresentação e regra de negócio separadas no código e ambas rodando no mesmo servidor.",
+   "3": "A descrição está invertida: quem trata de distribuição entre máquinas é a camada física, e quem agrupa responsabilidades é a lógica.",
+   "4": "MVC é padrão de organização da apresentação e do fluxo de controle, dentro de uma camada. Ler o M, o V e o C como três máquinas em produção é extrapolar o padrão."
+  }
+ },
+ {
+  "tag": "arquitetura",
+  "q": "Um portal com usuários em todo o país sofre com lentidão no carregamento de imagens e arquivos estáticos e, nos horários de pico, com sobrecarga das instâncias de aplicação. Sobre o papel do balanceador de carga e da CDN nesse cenário, é correto afirmar que:",
+  "alts": [
+   "a CDN distribui as requisições dinâmicas entre as instâncias, e o balanceador replica o conteúdo estático nas bordas",
+   "a CDN torna o balanceador dispensável, pois passa a encaminhar também as requisições de escrita ao banco",
+   "o balanceador distribui as requisições entre as instâncias, e a CDN entrega o estático de nós próximos ao usuário",
+   "o balanceador reduz a latência geográfica ao aproximar o conteúdo do usuário, papel que a CDN não desempenha",
+   "as duas soluções atuam sobre o mesmo gargalo, de modo que manter ambas na arquitetura é redundante"
+  ],
+  "ans": 2,
+  "why": "São gargalos diferentes: o balanceador ataca a sobrecarga das instâncias, repartindo as requisições entre elas; a CDN ataca a latência geográfica, servindo o conteúdo estático a partir de pontos de presença próximos ao usuário.",
+  "erradas": {
+   "0": "Os papéis aparecem trocados. Distribuir requisições entre instâncias é função do balanceador, e cachear conteúdo na borda da rede é função da CDN.",
+   "1": "Escrita no banco não passa por CDN: o cache de borda serve conteúdo, e requisições dinâmicas continuam indo para a aplicação, atrás do balanceador.",
+   "3": "Aproximar o conteúdo do usuário é justamente o que a CDN faz. O balanceador atua sobre o conjunto de instâncias, sem efeito sobre a distância geográfica.",
+   "4": "Como os dois gargalos descritos no enunciado são distintos, uma solução não substitui a outra — o arranjo comum é usar as duas em conjunto."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Ao estruturar seu programa de segurança, uma organização recorre a duas normas da família ISO/IEC 27000: uma como referência dos requisitos auditáveis do sistema de gestão e outra como fonte de orientação sobre os controles. Sobre esse par de normas, é correto afirmar que:",
+  "alts": [
+   "a 27002 estabelece os requisitos do SGSI e é a norma contra a qual a organização obtém a certificação",
+   "as duas são certificáveis, cabendo à organização escolher em qual delas a auditoria será conduzida",
+   "a 27001 traz o detalhamento e as diretrizes de implementação de cada controle, sem estabelecer requisitos",
+   "a 27002 substituiu a 27001 na revisão de 2022, unificando requisitos e controles em uma norma única",
+   "a 27001 traz os requisitos certificáveis do SGSI, e a 27002 orienta a implementação dos controles"
+  ],
+  "ans": 4,
+  "why": "A 27001 é a norma de requisitos do Sistema de Gestão de Segurança da Informação, e é contra ela que se certifica; a 27002 é código de prática, com diretrizes de implementação dos controles. A FGV cobra esse par pela inversão dos papéis.",
+  "erradas": {
+   "0": "Aqui os papéis aparecem trocados: quem estabelece requisitos e serve de base para a certificação é a 27001.",
+   "1": "Só a 27001 é certificável. A 27002 é referência de boas práticas, usada para apoiar a implementação — não há auditoria de certificação contra ela.",
+   "2": "Detalhar diretrizes de implementação é papel da 27002. A 27001 é enxuta justamente por ser norma de requisitos, com os controles listados em anexo.",
+   "3": "Nenhuma substituiu a outra. A revisão de 2022 atualizou as duas de forma coordenada, e cada uma manteve sua finalidade."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "A revisão de 2022 da ISO/IEC 27002 reorganizou o conjunto de controles de segurança da informação. Sobre essa reorganização, assinale a alternativa correta.",
+  "alts": [
+   "Os controles passaram a ser agrupados em catorze seções, uma para cada domínio de segurança da informação.",
+   "Os controles foram reagrupados em quatro temas: organizacional, pessoas, físico e tecnológico.",
+   "O número de controles cresceu de 93 para 114, com a criação de uma seção específica para computação em nuvem.",
+   "A revisão eliminou os controles de segurança física, que foram absorvidos pelos requisitos da ISO/IEC 27001.",
+   "Os controles deixaram de ser agrupados e passaram a ser listados por ordem de criticidade definida pela norma."
+  ],
+  "ans": 1,
+  "why": "A versão de 2022 consolidou os controles em quatro temas (organizacional, pessoas, físico e tecnológico) e introduziu atributos que permitem filtrá-los por diferentes visões, como tipo de controle e propriedade de segurança afetada.",
+  "erradas": {
+   "0": "Catorze seções é a estrutura da edição anterior. Descrever o modelo antigo como se fosse o novo é o erro que a questão cobra.",
+   "2": "O movimento foi o inverso: os 114 controles da versão anterior foram consolidados em 93, e a redução veio de fusões, não de uma nova seção.",
+   "3": "Segurança física continua contemplada — virou um dos quatro temas da norma, e não algo transferido para a 27001.",
+   "4": "O agrupamento não desapareceu, e a norma não hierarquiza controles por criticidade: a priorização depende da avaliação de riscos de cada organização."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Um sistema precisa conceder acesso considerando, no momento da requisição, atributos do usuário (lotação, cargo), do recurso (classificação) e do ambiente (horário, endereço de origem), todos avaliados por uma política. O modelo de controle de acesso adequado é:",
+  "alts": [
+   "RBAC, que atende ao caso agregando cada combinação possível de atributos a um papel específico",
+   "DAC, em que o proprietário do recurso decide, caso a caso, quem recebe cada uma das permissões",
+   "MAC, em que rótulos de classificação atribuídos pelo sistema determinam o acesso, sem política de atributos",
+   "ABAC, que decide com base em atributos do usuário, do recurso e do ambiente avaliados na política",
+   "ACL, que associa a cada objeto a lista de usuários autorizados, independentemente do contexto da requisição"
+  ],
+  "ans": 3,
+  "why": "ABAC é o modelo em que a decisão é calculada em tempo de requisição, combinando atributos do sujeito, do objeto e do ambiente segundo regras de política. É o único que acomoda condições como horário e endereço de origem sem multiplicar estruturas fixas.",
+  "erradas": {
+   "0": "RBAC decide por papel, e é aí que ele trava: representar cada combinação de lotação, horário e origem como um papel novo leva à explosão de papéis, problema clássico do modelo.",
+   "1": "No DAC quem decide é o dono do recurso, de forma discricionária. Não há política central avaliando atributos de ambiente.",
+   "2": "MAC apoia-se em rótulos de sensibilidade impostos pelo sistema, como confidencial e secreto. A própria alternativa reconhece que não trabalha com política de atributos.",
+   "4": "ACL é lista estática de autorizações por objeto; contexto de requisição, como horário e origem, fica de fora."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Sobre os modelos clássicos de controle de acesso obrigatório (MAC) e discricionário (DAC), é correto afirmar que:",
+  "alts": [
+   "no MAC o sistema impõe a política por rótulos de classificação; no DAC o proprietário define as permissões",
+   "no DAC o sistema impõe a política por rótulos de sensibilidade; no MAC o dono do arquivo concede o acesso",
+   "os dois modelos delegam ao proprietário do recurso a decisão de conceder ou revogar cada permissão de acesso",
+   "o MAC é o modelo padrão dos sistemas de arquivos comerciais, em que o usuário compartilha o que criou",
+   "o DAC exige a definição prévia de níveis hierárquicos de sigilo, como confidencial e ultrassecreto"
+  ],
+  "ans": 0,
+  "why": "MAC é obrigatório porque a política vem do sistema, expressa em rótulos de classificação que o usuário não altera; DAC é discricionário porque a concessão fica a critério do proprietário do recurso.",
+  "erradas": {
+   "1": "É a inversão direta do par. O adjetivo entrega a lógica: obrigatório é o que o sistema impõe, discricionário é o que fica ao critério do dono.",
+   "2": "Só o DAC funciona assim. Se o proprietário pudesse liberar o que quisesse, não haveria política obrigatória — e o MAC deixaria de existir.",
+   "3": "Sistemas de arquivos comerciais implementam DAC: quem cria o arquivo decide com quem compartilha. MAC aparece em ambientes com classificação formal de informação.",
+   "4": "Níveis hierárquicos de sigilo são a base do MAC. O DAC não pressupõe classificação nenhuma."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Uma aplicação delega ao provedor de identidade corporativo a autenticação de seus usuários e precisa receber de volta a confirmação de quem é o usuário autenticado. Sobre os protocolos envolvidos, assinale a alternativa correta.",
+  "alts": [
+   "O OAuth 2.0 foi desenhado para autenticar o usuário final, entregando à aplicação a identidade já verificada.",
+   "O SAML e o OpenID Connect são incompatíveis com fluxos de SSO, por se restringirem à autorização de APIs.",
+   "O OpenID Connect é uma camada de identidade sobre o OAuth 2.0 e entrega o ID Token com os dados do usuário.",
+   "O JWT é um protocolo de autenticação federada, alternativa ao SAML na troca de asserções em formato XML.",
+   "A assinatura de um JWT cifra o conteúdo do token, o que impede que o payload seja lido durante o trânsito."
+  ],
+  "ans": 2,
+  "why": "OAuth 2.0 resolve autorização — delegar acesso a um recurso. Quem acrescenta autenticação é o OpenID Connect, camada construída sobre ele, que devolve o ID Token com as declarações sobre o usuário.",
+  "erradas": {
+   "0": "Confundir autorização com autenticação é o erro mais cobrado do tema: o OAuth 2.0 entrega um token de acesso a um recurso, não a identidade verificada do usuário.",
+   "1": "SSO federado é exatamente o terreno dos dois. SAML é o padrão tradicional em ambientes corporativos, e o OpenID Connect é o equivalente moderno sobre OAuth 2.0.",
+   "3": "JWT é um formato compacto de token, não um protocolo. Asserções em XML são do SAML; o JWT carrega declarações em JSON codificado.",
+   "4": "Assinar garante integridade e origem, não sigilo. O payload de um JWT assinado vai em Base64URL e pode ser lido por quem interceptar — para confidencialidade seria preciso cifrá-lo."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Uma auditoria constatou que um usuário comum consegue abrir os registros de outros usuários apenas trocando o identificador presente na URL, sem que a aplicação verifique a quem o registro pertence. Na classificação do OWASP Top 10 2021, essa falha se enquadra em:",
+  "alts": [
+   "A03:2021 – Injection, por manipulação do parâmetro que é enviado ao servidor da aplicação",
+   "A02:2021 – Cryptographic Failures, pela exposição de identificadores sequenciais e previsíveis",
+   "A05:2021 – Security Misconfiguration, por falha de configuração do servidor web que atende a rota",
+   "A10:2021 – Server-Side Request Forgery, já que a requisição é forjada pelo próprio usuário",
+   "A01:2021 – Broken Access Control, por ausência de verificação de autorização sobre o registro"
+  ],
+  "ans": 4,
+  "why": "Trocar o identificador na URL e alcançar dado alheio é falha de autorização por objeto, categoria que na edição de 2021 lidera a lista como A01 – Broken Access Control.",
+  "erradas": {
+   "0": "Injeção pressupõe dado não confiável interpretado como comando ou consulta. Aqui o parâmetro é usado como identificador legítimo; o que falta é a checagem de quem pode vê-lo.",
+   "1": "A categoria de falhas criptográficas trata de proteção inadequada de dados em trânsito ou em repouso. Identificador previsível facilita a exploração, mas a falha é a autorização ausente.",
+   "2": "Configuração indevida cobre serviços expostos, padrões inseguros e mensagens de erro reveladoras. O problema descrito está na lógica da aplicação, não na configuração do servidor.",
+   "3": "SSRF é o servidor sendo induzido a fazer requisições a endereços escolhidos pelo atacante. No caso, o usuário apenas acessa uma rota da própria aplicação."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Ao revisar o plano de continuidade, a diretoria define que o serviço de folha de pagamento pode ficar indisponível por no máximo 4 horas e que a perda de dados aceitável é de, no máximo, 15 minutos. Esses dois limites correspondem, respectivamente, a:",
+  "alts": [
+   "RPO de 4 horas e RTO de 15 minutos, na ordem em que os limites aparecem no enunciado",
+   "RTO de 4 horas e RPO de 15 minutos, que orientam a frequência dos backups",
+   "MTBF de 4 horas e MTTR de 15 minutos, métricas de confiabilidade e de reparo do serviço",
+   "SLA de 4 horas e RPO de 15 minutos, ambos contratados junto ao provedor de infraestrutura",
+   "RTO de 4 horas e MTTR de 15 minutos, que medem o intervalo médio entre falhas sucessivas"
+  ],
+  "ans": 1,
+  "why": "RTO é tempo: quanto o serviço pode ficar fora até ser restabelecido. RPO é dado: até que ponto no passado se aceita perder informação — e é ele que determina de quanto em quanto tempo o backup precisa rodar.",
+  "erradas": {
+   "0": "As siglas estão trocadas. Basta lembrar que o T de RTO é de tempo de recuperação e o P de RPO é de ponto de recuperação dos dados.",
+   "2": "MTBF e MTTR descrevem o comportamento histórico das falhas — intervalo médio entre elas e tempo médio de reparo. Não são metas definidas pela diretoria em plano de continuidade.",
+   "3": "SLA é o acordo que pode conter essas metas, não a métrica em si. A metade final acerta o RPO, mas a primeira troca o conceito pelo instrumento contratual.",
+   "4": "A primeira parte está correta, e é aí que mora a armadilha: MTTR não é a perda de dados tolerada nem mede intervalo entre falhas."
+  }
+ },
+ {
+  "tag": "seguranca",
+  "q": "Uma aplicação recebe do usuário uma URL e busca no servidor o conteúdo daquele endereço para exibi-lo. Um atacante informa um endereço interno da própria rede e, com isso, obtém dados de um serviço que não deveria estar acessível de fora. Essa vulnerabilidade é conhecida como:",
+  "alts": [
+   "Cross-Site Request Forgery (CSRF), pois a requisição parte do navegador da vítima já autenticada",
+   "Cross-Site Scripting (XSS) refletido, pois o conteúdo devolvido acaba renderizado dentro da página",
+   "Open Redirect, pois o usuário é encaminhado a um endereço fora do domínio original da aplicação",
+   "Server-Side Request Forgery (SSRF), pois é o servidor que executa a requisição ao endereço informado",
+   "Injeção de comando de sistema operacional, pois a URL é repassada a um interpretador do servidor"
+  ],
+  "ans": 3,
+  "why": "Em SSRF o atacante não ataca diretamente: ele faz o servidor da aplicação emitir a requisição por ele, alcançando destinos internos que não são acessíveis pela rede externa. Entrou no OWASP Top 10 2021 como A10.",
+  "erradas": {
+   "0": "No CSRF quem dispara a requisição é o navegador da vítima, aproveitando a sessão dela. Aqui quem faz a chamada é o servidor, e é essa troca de sujeito que a banca explora.",
+   "1": "XSS exige que código enviado pelo atacante seja executado no navegador de outra pessoa. No cenário, o problema é o destino da requisição feita pelo servidor.",
+   "2": "Em Open Redirect a aplicação apenas redireciona o usuário para um endereço arbitrário. Não é o caso: o servidor busca o conteúdo e o traz de volta.",
+   "4": "Injeção de comando exige que a entrada chegue a um interpretador do sistema operacional. O que a aplicação faz aqui é uma requisição de rede."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Em um sistema de reservas, duas transações concorrentes leem a mesma faixa de registros; entre as duas leituras da primeira transação, a segunda insere novas linhas que passam a aparecer no resultado. Esse fenômeno e o nível de isolamento que o elimina são, respectivamente:",
+  "alts": [
+   "leitura fantasma (phantom read), eliminada pelo nível SERIALIZABLE",
+   "leitura suja (dirty read), eliminada pelo nível READ COMMITTED",
+   "leitura não repetível, eliminada pelo nível REPEATABLE READ",
+   "leitura fantasma (phantom read), eliminada pelo nível REPEATABLE READ",
+   "leitura suja (dirty read), eliminada já no nível READ UNCOMMITTED"
+  ],
+  "ans": 0,
+  "why": "Linhas novas que aparecem entre duas leituras da mesma faixa caracterizam a leitura fantasma. No padrão SQL, só o SERIALIZABLE a impede; os níveis inferiores admitem o fenômeno.",
+  "erradas": {
+   "1": "Leitura suja é ler alteração ainda não confirmada por outra transação. O enunciado fala de inserções já efetivadas, o que descarta o fenômeno e, com ele, o nível apontado.",
+   "2": "Leitura não repetível é o mesmo registro mudando de valor entre duas leituras. No caso, o problema não é a linha existente mudar, e sim surgirem linhas novas.",
+   "3": "É a quase certa: identifica bem o fenômeno, mas erra o nível. REPEATABLE READ protege as linhas já lidas e ainda permite que novas apareçam.",
+   "4": "READ UNCOMMITTED é justamente o nível que permite a leitura suja — é o menos restritivo do padrão, não a solução para ela."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Sobre os níveis de isolamento definidos no padrão SQL e os fenômenos que cada um admite, assinale a alternativa correta.",
+  "alts": [
+   "READ UNCOMMITTED é o nível mais restritivo, pois impede que se leia dado ainda não confirmado.",
+   "REPEATABLE READ elimina a leitura fantasma, mas continua admitindo a leitura não repetível.",
+   "READ COMMITTED impede a leitura suja, mas ainda admite a leitura não repetível.",
+   "SERIALIZABLE passa a admitir a leitura fantasma em troca de maior concorrência entre transações.",
+   "Quanto mais alto o nível de isolamento, maior a concorrência obtida entre as transações do sistema."
+  ],
+  "ans": 2,
+  "why": "READ COMMITTED só enxerga dados efetivados, o que elimina a leitura suja; como cada leitura vê o estado mais recente já confirmado, o mesmo registro pode mudar entre duas leituras — daí a leitura não repetível continuar possível.",
+  "erradas": {
+   "0": "É o nível menos restritivo do padrão: permite ler alteração ainda não confirmada, que é a definição de leitura suja.",
+   "1": "Os dois fenômenos aparecem invertidos. REPEATABLE READ elimina a leitura não repetível e ainda deixa passar a fantasma.",
+   "3": "SERIALIZABLE é o nível mais alto e não admite nenhum dos três fenômenos; o preço que se paga por ele é menos concorrência, não mais.",
+   "4": "A relação é inversa: quanto mais isolamento, mais bloqueio e menos concorrência. Escolher o nível é equilibrar consistência e desempenho."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Um requisito determina que toda alteração de salário seja registrada em uma tabela de auditoria, sem depender de a aplicação lembrar de fazê-lo. Comparando gatilho (trigger) e procedimento armazenado (stored procedure), a solução adequada e o motivo são:",
+  "alts": [
+   "procedimento armazenado, porque é acionado automaticamente pelo SGBD a cada UPDATE na tabela",
+   "gatilho, porque é invocado pela aplicação com um comando CALL antes de cada UPDATE na tabela",
+   "procedimento armazenado, porque recebe parâmetros e por isso dispensa a chamada explícita",
+   "gatilho, porque substitui a restrição de integridade referencial declarada na definição da tabela",
+   "gatilho, porque é executado pelo próprio SGBD em resposta ao evento de UPDATE na tabela"
+  ],
+  "ans": 4,
+  "why": "Gatilho é código associado a um evento de dados: o SGBD o dispara sozinho no INSERT, UPDATE ou DELETE da tabela. Como o requisito é não depender da aplicação, é essa execução automática que resolve.",
+  "erradas": {
+   "0": "A justificativa descreve o gatilho, mas está colada no procedimento armazenado. Procedimento só roda quando alguém o chama.",
+   "1": "Invocação por CALL é a marca do procedimento; o gatilho não é chamado pela aplicação, e é exatamente por isso que serve ao requisito.",
+   "2": "Receber parâmetros não dispensa chamada nenhuma — pelo contrário, pressupõe que alguém chame o procedimento passando os valores.",
+   "3": "Gatilho pode implementar regras que a integridade referencial declarativa não expressa, mas não substitui a chave estrangeira, e o enunciado não trata de integridade referencial."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "No modelo entidade-relacionamento de um sistema de pessoal, a entidade DEPENDENTE só é identificada em conjunto com o SERVIDOR ao qual está vinculada, pois não possui identificador próprio suficiente. Sobre esse caso, é correto afirmar que:",
+  "alts": [
+   "trata-se de entidade forte, pois possui atributos próprios além do vínculo com o servidor",
+   "trata-se de entidade fraca, cuja chave combina a do proprietário com sua chave parcial",
+   "trata-se de entidade associativa, criada para transformar um relacionamento muitos-para-muitos em entidade",
+   "trata-se de especialização de SERVIDOR, herdando dele os atributos identificadores da superentidade",
+   "trata-se de entidade fraca, que dispensa a chave da entidade proprietária na sua identificação"
+  ],
+  "ans": 1,
+  "why": "Entidade fraca é a que não se identifica sozinha: sua chave é composta pela chave da entidade proprietária somada a um discriminador (chave parcial), como o nome do dependente dentro do cadastro de um servidor.",
+  "erradas": {
+   "0": "Ter atributos próprios não torna a entidade forte. O que define a força é conseguir se identificar sem depender de outra entidade, e o enunciado diz que não consegue.",
+   "2": "Entidade associativa nasce de um relacionamento muitos-para-muitos que precisa de atributos ou de participar de outros relacionamentos. Aqui há dependência de identificação, não um N:M.",
+   "3": "Especialização é relação de herança entre tipos, em que o subtipo é um caso do supertipo. Dependente não é um tipo de servidor.",
+   "4": "Acerta o nome e erra a consequência: sem a chave da entidade proprietária, a fraca simplesmente não se identifica — é essa dependência que a define."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Em um modelo ER, a entidade PESSOA é especializada em ALUNO e SERVIDOR. Toda pessoa cadastrada é obrigatoriamente aluno ou servidor, e existem pessoas que são as duas coisas ao mesmo tempo. Quanto à completude e à disjunção, essa especialização é classificada como:",
+  "alts": [
+   "parcial e disjunta",
+   "parcial e sobreposta",
+   "total e disjunta",
+   "total e sobreposta",
+   "total e exclusiva, por admitir mais de um subtipo por ocorrência"
+  ],
+  "ans": 3,
+  "why": "A especialização é total porque nenhuma ocorrência de PESSOA fica fora dos subtipos, e sobreposta porque a mesma ocorrência pode pertencer a mais de um subtipo simultaneamente.",
+  "erradas": {
+   "0": "Erra nos dois eixos: parcial pressupõe ocorrências que não caem em subtipo nenhum, e disjunta proíbe a pertinência simultânea que o enunciado descreve.",
+   "1": "A disjunção está certa, mas a completude não: como toda pessoa é aluno ou servidor, não sobra ocorrência fora dos subtipos.",
+   "2": "É a quase certa. Acerta a completude e tropeça na disjunção — disjunta significaria que ninguém poderia ser aluno e servidor ao mesmo tempo.",
+   "4": "Exclusiva é sinônimo de disjunta, o que torna a alternativa contraditória: ela afirma exclusividade e, na justificativa, admite mais de um subtipo."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Um analista precisa listar os departamentos que não possuem nenhum empregado. Ele escreve a consulta com NOT IN sobre uma subconsulta que retorna DEPT_ID de EMPREGADO, coluna que admite valores nulos. Sobre essa escolha, é correto afirmar que:",
+  "alts": [
+   "com um único DEPT_ID nulo na subconsulta, o NOT IN devolve conjunto vazio; o NOT EXISTS, não",
+   "o NOT IN e o NOT EXISTS produzem o mesmo resultado, já que o SGBD reescreve um na forma do outro",
+   "o valor nulo é simplesmente ignorado pelo NOT IN, que compara os identificadores efetivamente preenchidos",
+   "o problema se resolve trocando NOT IN por IN, que passa a tratar os nulos como valores distintos",
+   "o NOT EXISTS é que devolve conjunto vazio na presença de nulos, por avaliar a subconsulta linha a linha"
+  ],
+  "ans": 0,
+  "why": "A comparação com NULL resulta em desconhecido, e não em falso: basta um nulo na lista para que nenhuma linha satisfaça o NOT IN, zerando o resultado. O NOT EXISTS testa existência de linha correspondente e não sofre esse efeito.",
+  "erradas": {
+   "1": "Os dois só são equivalentes quando não há nulos envolvidos. É precisamente na presença de nulo que os resultados divergem.",
+   "2": "Nulo não é ignorado na comparação: ele contamina o predicado inteiro, porque comparar qualquer valor com NULL devolve desconhecido.",
+   "3": "Trocar a negação muda a pergunta: IN passaria a listar os departamentos que têm empregado, o oposto do que se pediu.",
+   "4": "A afirmação inverte os papéis. O NOT EXISTS é a forma robusta a nulos, e é por isso que costuma ser recomendado nesse tipo de consulta."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Uma tabela com 900 milhões de linhas degrada as consultas de um sistema, e a equipe avalia particionamento, sharding e replicação. Sobre as três técnicas, é correto afirmar que:",
+  "alts": [
+   "a replicação divide a tabela em subconjuntos disjuntos, o que reduz o volume de dados guardado por nó",
+   "o particionamento e o sharding são sinônimos, pois os dois distribuem os dados entre servidores distintos",
+   "o particionamento divide a tabela dentro do mesmo banco; o sharding distribui as partes entre nós diferentes",
+   "a replicação reduz o volume por nó e é, por isso, a técnica indicada para tabelas de porte muito elevado",
+   "o sharding mantém cópias idênticas da tabela em cada nó, o que favorece a distribuição das leituras"
+  ],
+  "ans": 2,
+  "why": "Particionar é quebrar a tabela em partes gerenciadas pelo mesmo servidor de banco; fazer sharding é levar essas partes para nós distintos, cada um com um subconjunto dos dados. Replicar é outra coisa: manter a mesma informação em mais de um nó.",
+  "erradas": {
+   "0": "A descrição é de particionamento ou sharding. Replicação copia o mesmo conjunto de dados, e por isso não reduz o volume armazenado em cada nó.",
+   "1": "O sharding é uma forma distribuída de particionamento horizontal, mas particionar não implica distribuir: dá para ter partições num servidor só.",
+   "3": "Como cada réplica guarda o conjunto inteiro, a replicação atende disponibilidade e leitura, não o problema de volume descrito no enunciado.",
+   "4": "Cópias idênticas em cada nó definem replicação. No sharding, cada nó guarda apenas a sua fatia dos dados."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um módulo de emissão de relatórios precisa acionar, em sequência, os subsistemas de autenticação, consulta, formatação e envio. Para que o cliente faça uma única chamada, sem conhecer a ordem nem as dependências internas, a equipe cria uma classe que expõe um método simples e coordena os quatro subsistemas. Esse é o padrão:",
+  "alts": [
+   "Adapter, que converte a interface de uma classe existente naquela que o cliente espera encontrar",
+   "Proxy, que mantém a mesma interface do objeto real e passa a controlar o acesso a ele",
+   "Mediator, que centraliza a comunicação entre objetos que antes se referenciavam diretamente",
+   "Decorator, que acrescenta responsabilidades ao objeto sem alterar a interface que ele já expõe",
+   "Facade, que oferece uma interface unificada e simplificada para um conjunto de subsistemas"
+  ],
+  "ans": 4,
+  "why": "O Facade não altera nem substitui os subsistemas: ele cria um ponto de entrada de mais alto nível que os coordena, reduzindo o acoplamento entre o cliente e as partes internas.",
+  "erradas": {
+   "0": "O Adapter existe para resolver incompatibilidade: há uma interface esperada e outra disponível, e ele traduz uma na outra. No enunciado não há interface incompatível, e sim complexidade a esconder.",
+   "1": "Proxy preserva a interface do objeto original e se interpõe para controlar acesso, adiar criação ou tratar chamadas remotas. Aqui a interface nova é deliberadamente mais simples que a dos subsistemas.",
+   "2": "O Mediator organiza a conversa entre objetos que se comunicariam entre si; o problema descrito é o cliente externo conhecer detalhes demais do subsistema, não os objetos internos se referenciarem.",
+   "3": "Decorator envolve um objeto para somar comportamento mantendo a mesma interface. Não é o caso: a classe criada expõe uma interface própria e mais enxuta que a dos quatro subsistemas."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Três relatórios compartilham a mesma sequência de etapas — abrir a fonte, extrair, formatar e fechar —, variando apenas a forma de extrair e de formatar. A equipe define na superclasse um método que fixa a ordem das etapas e deixa duas delas para as subclasses implementarem. O padrão aplicado e o mecanismo usado são:",
+  "alts": [
+   "Strategy, por herança: cada subclasse redefine o algoritmo inteiro de geração do relatório",
+   "Template Method, por herança: a superclasse fixa o esqueleto e as subclasses redefinem passos",
+   "Strategy, por composição: o objeto recebe o algoritmo e pode trocá-lo em tempo de execução",
+   "Builder, por composição: as etapas de construção são delegadas a um objeto construtor separado",
+   "Factory Method, por herança: as subclasses decidem qual objeto de relatório será instanciado"
+  ],
+  "ans": 1,
+  "why": "Template Method congela o esqueleto do algoritmo na superclasse e delega às subclasses apenas os passos variáveis, por herança. É o par que a FGV opõe a Strategy: lá o algoritmo inteiro é trocado por composição, aqui só os pontos de variação são redefinidos.",
+  "erradas": {
+   "0": "O nome está errado e o mecanismo, invertido: Strategy não trabalha por herança de uma superclasse que fixa etapas, e o enunciado deixa claro que a ordem das quatro etapas é imutável.",
+   "2": "A descrição de Strategy está correta em si, e é justamente por isso que atrai: mas no cenário não há algoritmo injetado nem troca em tempo de execução — há esqueleto fixo com passos redefinidos.",
+   "3": "Builder separa a construção de um objeto complexo de sua representação. O problema descrito não é montar um objeto passo a passo, e sim reaproveitar uma sequência de processamento.",
+   "4": "Factory Method trata de decidir qual objeto criar. As subclasses do enunciado não escolhem o que instanciar: elas implementam etapas do processamento."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um editor precisa registrar cada operação do usuário em uma fila, permitir desfazer a última e repetir operações a partir de um histórico. Para isso, cada operação passa a ser encapsulada em um objeto próprio, com método de execução. O padrão adotado é:",
+  "alts": [
+   "Observer, pois cada operação notifica automaticamente os componentes interessados na mudança",
+   "Chain of Responsibility, pois a operação percorre a fila até encontrar quem seja capaz de tratá-la",
+   "Memento, pois o estado interno do editor é capturado para permitir a restauração posterior",
+   "Command, pois a requisição vira objeto, o que permite enfileirá-la, registrá-la e desfazê-la",
+   "Mediator, pois um objeto central coordena as operações disparadas pelos elementos da interface"
+  ],
+  "ans": 3,
+  "why": "Transformar a requisição em objeto é a intenção declarada do Command: uma vez que a operação é um objeto, ela pode ser parametrizada, enfileirada, registrada em log e desfeita.",
+  "erradas": {
+   "0": "Observer resolve notificação de dependentes quando algo muda de estado. O enunciado não fala em interessados a avisar, e sim em operações a guardar e reverter.",
+   "1": "Na cadeia de responsabilidade a requisição caminha entre tratadores até que um a resolva. Aqui a fila é de operações já executadas, mantida para histórico e desfazer.",
+   "2": "É a quase certa: Memento de fato serve para desfazer, mas guardando fotografias do estado do objeto. O enunciado descreve encapsular a operação, não o estado.",
+   "4": "Mediator centraliza a comunicação entre objetos; nada no cenário indica objetos conversando entre si — o que se pede é registrar e reverter operações."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma requisição de reembolso passa por validações sucessivas — valor, alçada e disponibilidade orçamentária — e cada tratador decide se a resolve ou a repassa ao próximo. A equipe quer poder inserir e remover tratadores sem alterar quem dispara a requisição. O padrão adequado é:",
+  "alts": [
+   "Chain of Responsibility, em que a requisição percorre uma cadeia até que um tratador a atenda",
+   "Decorator, em que cada objeto envolve o anterior e soma comportamento à mesma interface exposta",
+   "Command, em que a requisição é encapsulada em um objeto e entregue a um receptor já definido",
+   "Observer, em que os tratadores inscritos são notificados ao mesmo tempo da requisição",
+   "Strategy, em que o cliente escolhe de antemão qual das validações será de fato executada"
+  ],
+  "ans": 0,
+  "why": "Na cadeia de responsabilidade o emissor não sabe quem vai atender: a requisição anda de tratador em tratador até ser resolvida, e a cadeia pode ser remontada sem tocar em quem dispara.",
+  "erradas": {
+   "1": "Decorator também encadeia objetos, e é por isso que confunde. A diferença está no destino: no Decorator todos os elos executam e acrescentam comportamento; na cadeia, um trata e o percurso termina.",
+   "2": "Command encapsula a requisição, mas o receptor é conhecido no momento da criação do objeto. O cenário exige justamente o contrário: o emissor ignora quem vai tratar.",
+   "3": "No Observer a notificação vai para todos os inscritos, sem que nenhum encerre a propagação. Aqui a ideia é que o primeiro tratador competente resolva e interrompa a sequência.",
+   "4": "Strategy pressupõe que o cliente escolha o algoritmo antes de executar. No enunciado a decisão é distribuída entre os tratadores, e não tomada por quem dispara."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "O catálogo GoF organiza os 23 padrões de projeto em criacionais, estruturais e comportamentais. Assinale a opção que NÃO corresponde a um padrão comportamental.",
+  "alts": [
+   "Iterator, que percorre os elementos de uma coleção sem expor a representação interna dela",
+   "State, que altera o comportamento do objeto quando o seu estado interno muda",
+   "Chain of Responsibility, que faz a requisição percorrer uma cadeia de possíveis tratadores",
+   "Command, que encapsula uma requisição como objeto, com parâmetros, execução e histórico",
+   "Composite, que compõe objetos em estruturas de árvore tratadas de modo uniforme"
+  ],
+  "ans": 4,
+  "why": "Composite é padrão estrutural: ele trata da composição de objetos em hierarquias parte-todo. Os outros quatro são comportamentais, pois descrevem como objetos distribuem responsabilidade e se comunicam.",
+  "erradas": {
+   "0": "Iterator é comportamental: sua preocupação é o modo de percorrer a coleção, e não a forma como os objetos são compostos.",
+   "1": "State está entre os comportamentais, já que organiza a variação de comportamento do objeto ao longo do ciclo de vida.",
+   "2": "Chain of Responsibility é comportamental por definição — distribui entre vários objetos a responsabilidade de atender a uma requisição.",
+   "3": "Command também é comportamental: converter a requisição em objeto é uma decisão sobre atribuição de responsabilidade, não sobre estrutura."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um objeto Pedido muda de comportamento conforme avança pelos estágios 'aberto', 'pago' e 'enviado', e é ele próprio que decide a transição para o estágio seguinte. Comparando os padrões State e Strategy nesse caso, é correto afirmar que:",
+  "alts": [
+   "os dois são intercambiáveis, uma vez que compartilham a mesma estrutura de classes e a mesma intenção",
+   "trata-se de Strategy, porque o cliente escolhe, a cada chamada, qual comportamento deve ser aplicado",
+   "trata-se de State, porque o comportamento acompanha a transição interna do próprio objeto",
+   "trata-se de Strategy, porque os comportamentos possíveis estão distribuídos em classes separadas",
+   "trata-se de State, porque o padrão exige que cada estágio seja representado por uma enumeração"
+  ],
+  "ans": 2,
+  "why": "State e Strategy têm estrutura de classes parecida, e é por isso que a FGV os cruza. O que separa os dois é a intenção: em Strategy o cliente escolhe o algoritmo; em State a troca é interna e acompanha o ciclo de vida do objeto.",
+  "erradas": {
+   "0": "A estrutura é semelhante, mas a intenção não: um trata de algoritmos intercambiáveis escolhidos de fora, o outro de comportamento que muda com o estado interno. Padrão se identifica pela intenção.",
+   "1": "Se o cliente escolhesse o comportamento a cada chamada, seria Strategy — mas o enunciado diz o contrário: quem decide a transição é o próprio Pedido.",
+   "3": "É a quase certa: distribuir comportamentos em classes separadas acontece nos dois padrões e, por isso, não serve para distingui-los.",
+   "4": "A conclusão está certa e a justificativa, inventada. State não impõe enumeração; os estados costumam ser classes que implementam uma interface comum."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma equipe precisa documentar, de um lado, em quais servidores e contêineres cada artefato executável será instalado e, de outro, como os módulos de software se relacionam por meio de interfaces providas e requeridas. Os diagramas da UML adequados a cada necessidade são, respectivamente:",
+  "alts": [
+   "diagrama de componentes e diagrama de implantação",
+   "diagrama de implantação e diagrama de componentes",
+   "diagrama de pacotes e diagrama de objetos",
+   "diagrama de implantação e diagrama de atividades",
+   "diagrama de classes e diagrama de componentes"
+  ],
+  "ans": 1,
+  "why": "O diagrama de implantação mostra nós de execução e os artefatos neles instalados; o de componentes mostra as partes lógicas do software e o encaixe entre interfaces providas e requeridas. Ambos são estruturais.",
+  "erradas": {
+   "0": "A ordem está invertida em relação ao que o enunciado pede: servidor e artefato instalado são assunto de implantação, e interface provida ou requerida é assunto de componentes.",
+   "2": "Pacotes agrupam elementos do modelo para organizar o projeto, e o de objetos mostra instâncias em um instante. Nenhum dos dois trata de nós de execução.",
+   "3": "A primeira metade acerta, mas o diagrama de atividades é comportamental: modela fluxo de trabalho, não a relação entre módulos por interfaces.",
+   "4": "O diagrama de classes descreve tipos e seus relacionamentos, e não onde o artefato é instalado — que é justamente a primeira necessidade do enunciado."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Em um diagrama de classes da UML, a classe PagamentoPix implementa a interface MeioDePagamento e, em outro ponto do modelo, a classe Relatorio usa temporariamente um objeto Formatador recebido como parâmetro de método. As notações que representam esses dois relacionamentos são, respectivamente:",
+  "alts": [
+   "linha cheia com triângulo vazado e linha cheia com losango preenchido",
+   "linha tracejada com seta aberta e linha tracejada com triângulo vazado",
+   "linha cheia com losango vazado e linha tracejada com seta aberta",
+   "linha tracejada com triângulo vazado e linha tracejada com seta aberta",
+   "linha cheia com triângulo vazado e linha tracejada com seta aberta"
+  ],
+  "ans": 3,
+  "why": "Realização (classe que implementa interface) é linha tracejada terminada em triângulo vazado; dependência (uso temporário, como parâmetro ou variável local) é linha tracejada com seta aberta. O tracejado é o que marca as duas.",
+  "erradas": {
+   "0": "Linha cheia com triângulo vazado é generalização, e losango preenchido é composição — nenhuma das duas descreve implementar uma interface ou usar um objeto de passagem.",
+   "1": "As duas notações estão certas, porém trocadas de lugar: a seta aberta é da dependência e o triângulo vazado, da realização.",
+   "2": "Losango vazado indica agregação, relação estrutural entre todo e parte. O enunciado descreve uso momentâneo, que não cria vínculo estrutural.",
+   "4": "É a quase certa: acerta a dependência e erra a primeira, trocando realização por generalização. A diferença está no traço — cheio para herança, tracejado para implementação de interface."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma organização avaliada no CMMI, na representação por estágios, foi classificada no nível 3. Sobre a escala de maturidade usada nessa avaliação, é correto afirmar que:",
+  "alts": [
+   "o nível 3 é o Gerenciado, e a organização ainda não padronizou processos no âmbito organizacional",
+   "o nível 3 é o Definido, e acima dele vêm o Gerenciado e depois o Em Otimização, nessa ordem",
+   "a escala tem quatro níveis, do Inicial ao Em Otimização, e o nível 3 é o penúltimo deles",
+   "no MPS.BR a escala equivalente evolui do nível A para o nível G, sendo o A o ponto de partida",
+   "o nível 3 é o Definido, e acima dele vêm o Gerenciado Quantitativamente e o Em Otimização"
+  ],
+  "ans": 4,
+  "why": "Na representação por estágios os cinco níveis são Inicial, Gerenciado, Definido, Gerenciado Quantitativamente e Em Otimização. No nível 3 os processos já estão padronizados na organização; a medição quantitativa vem no nível seguinte.",
+  "erradas": {
+   "0": "Gerenciado é o nível 2. A troca de posição é a pegadinha frequente, e a segunda parte contradiz a definição do nível 3, que é exatamente ter processos padronizados.",
+   "1": "A primeira metade está correta, e é o que faz a alternativa parecer boa: o erro é dizer que o Gerenciado vem depois do Definido, quando ele está um degrau abaixo.",
+   "2": "São cinco níveis, não quatro. Trocar a quantidade de itens de uma escala é um dos ajustes preferidos da banca.",
+   "3": "O sentido da evolução está invertido: no MPS.BR o percurso vai de G até A, sendo o G o nível de entrada e o A o de maior maturidade."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "No modelo V, cada fase do desenvolvimento é associada ao nível de teste que a verifica. Assinale a alternativa que apresenta associações corretas entre fase e nível de teste.",
+  "alts": [
+   "Especificação de requisitos e teste de aceitação; projeto arquitetural e teste de integração.",
+   "Especificação de requisitos e teste de unidade; codificação e teste de aceitação.",
+   "Projeto detalhado e teste de sistema; codificação e teste de aceitação.",
+   "Projeto arquitetural e teste de unidade; projeto detalhado e teste de integração.",
+   "Especificação de requisitos e teste de sistema; projeto arquitetural e teste de aceitação do usuário."
+  ],
+  "ans": 0,
+  "why": "O modelo V espelha as fases: o que foi acordado com o usuário nos requisitos é conferido no teste de aceitação, e o que foi decidido no projeto arquitetural — a divisão em módulos e suas interfaces — é conferido no teste de integração.",
+  "erradas": {
+   "1": "Requisitos não se verificam com teste de unidade, que olha o menor componente isolado, nem se aceita o produto testando código recém-escrito. As duas pontas do V aparecem invertidas.",
+   "2": "Projeto detalhado corresponde ao teste de unidade, não ao de sistema. E o teste de aceitação responde aos requisitos do usuário, não à codificação.",
+   "3": "As duas associações estão deslocadas um degrau: arquitetura casa com integração e projeto detalhado casa com unidade.",
+   "4": "É a que mais se aproxima, porque respeita o sentido geral do V, mas desloca os pares: requisitos casam com aceitação, e a especificação do sistema é que casa com o teste de sistema."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Depois de uma atualização obrigatória da versão do banco de dados corporativo, uma equipe altera o sistema para que ele continue funcionando no novo ambiente, sem acrescentar funcionalidade nem corrigir defeito relatado por usuário. Segundo a classificação usual dos tipos de manutenção, trata-se de manutenção:",
+  "alts": [
+   "corretiva, pois sem a alteração o sistema deixaria de funcionar como se espera dele",
+   "perfectiva, pois o objetivo final é melhorar o desempenho do sistema no novo ambiente",
+   "adaptativa, pois a alteração responde a uma mudança no ambiente em que o sistema opera",
+   "preventiva, pois a mudança evita que falhas latentes se manifestem após a atualização",
+   "evolutiva, pois a alteração ocorre depois da entrega e por isso amplia o escopo do produto"
+  ],
+  "ans": 2,
+  "why": "Manutenção adaptativa é a que ajusta o software a mudanças no ambiente — sistema operacional, banco de dados, plataforma ou legislação — sem que exista defeito a corrigir nem funcionalidade nova a entregar.",
+  "erradas": {
+   "0": "Corretiva pressupõe defeito no software, algo que ele já deveria fazer e não faz. O enunciado afasta essa hipótese ao dizer que nenhum defeito foi relatado.",
+   "1": "Perfectiva melhora atributos do produto ou atende a novos requisitos do usuário. Aqui não se busca ganho de desempenho, e sim compatibilidade com o novo ambiente.",
+   "3": "Preventiva antecipa problemas ainda não manifestados, tipicamente melhorando a manutenibilidade. A motivação descrita é externa e já concretizada: a versão do banco mudou.",
+   "4": "Ocorrer após a entrega vale para todos os tipos de manutenção, então isso não distingue nada — e ampliar escopo não é o que o enunciado descreve."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um método contém um único comando condicional, na forma 'if (a > 10) { x = 1; }', sem cláusula else. Um caso de teste com a = 20 executa todas as linhas do método. Sobre os critérios de cobertura de caixa-branca nesse caso, é correto afirmar que:",
+  "alts": [
+   "as coberturas de comandos e de decisões estão ambas em 100%, já que o método inteiro foi executado",
+   "a cobertura de decisões chega a 100%, mas a de comandos permanece incompleta nesse método",
+   "nenhum dos dois critérios foi atendido, porque falta um caso de teste com o valor a = 10",
+   "a cobertura de comandos chega a 100%, mas a de decisões exige o caso em que a condição é falsa",
+   "os dois critérios são equivalentes, de modo que atender um deles implica atender o outro"
+  ],
+  "ans": 3,
+  "why": "Cobertura de comandos mede linhas executadas; cobertura de decisões exige que cada condição seja avaliada como verdadeira e como falsa. Com a = 20 só o ramo verdadeiro é exercitado, então falta o caso falso — ainda que não exista bloco else escrito.",
+  "erradas": {
+   "0": "Executar todas as linhas basta para a cobertura de comandos, mas não para a de decisões: o ramo falso do if continua sem ser exercitado.",
+   "1": "A relação está invertida. É a cobertura de comandos que se completa com esse caso de teste; a de decisões é a que fica pela metade.",
+   "2": "O valor de fronteira a = 10 interessa ao teste de valor-limite, que é técnica de caixa-preta. Ele não é exigido pelos critérios de cobertura estrutural.",
+   "4": "Cobertura de decisões em 100% implica cobertura de comandos em 100%, mas o inverso não vale — e este método é exatamente o contraexemplo."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Antes de entrar em produção, uma equipe quer descobrir em que ponto o sistema deixa de responder quando o número de usuários simultâneos ultrapassa, de forma crescente, o volume previsto em contrato. O tipo de teste adequado a esse objetivo é o teste de:",
+  "alts": [
+   "carga, que observa o comportamento do sistema sob o volume de uso esperado em produção",
+   "estresse, que leva o sistema além dos limites previstos até identificar o ponto de ruptura",
+   "volume, que avalia o comportamento diante de grandes massas de dados já armazenadas",
+   "regressão, que confirma que as funcionalidades antigas seguem operando depois das mudanças",
+   "fumaça, que faz uma verificação rápida e superficial das funções principais de cada versão"
+  ],
+  "ans": 1,
+  "why": "O teste de estresse extrapola de propósito as condições contratadas para descobrir onde o sistema quebra e como ele se comporta ao quebrar. O teste de carga fica dentro do esperado; o de estresse vai além dele.",
+  "erradas": {
+   "0": "É a quase certa: carga e estresse são vizinhos, mas a carga verifica o comportamento dentro do volume previsto, e o enunciado pede exatamente ultrapassá-lo.",
+   "2": "O teste de volume varia a quantidade de dados manipulados, não a de usuários simultâneos. O cenário descreve concorrência crescente.",
+   "3": "Regressão é sobre preservar o que já funcionava depois de uma alteração; não tem relação com achar o limite de capacidade.",
+   "4": "O teste de fumaça é uma checagem inicial de sanidade da versão, feita antes de testes mais profundos, e não mede capacidade."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "O Scrum Guide associa a cada artefato um compromisso, que dá foco à equipe e permite medir o progresso. Sobre essa associação entre artefato e compromisso, assinale a alternativa correta.",
+  "alts": [
+   "Product Backlog e Definition of Done; Sprint Backlog e Meta do Produto.",
+   "Incremento e Meta da Sprint; Product Backlog e Definition of Done.",
+   "Sprint Backlog e Definition of Done; Incremento e Meta do Produto.",
+   "Product Backlog e Meta da Sprint; Incremento e Definition of Done.",
+   "Product Backlog e Meta do Produto; Sprint Backlog e Meta da Sprint."
+  ],
+  "ans": 4,
+  "why": "São três pares: Product Backlog tem a Meta do Produto, Sprint Backlog tem a Meta da Sprint e o Incremento tem a Definition of Done. A banca costuma manter os nomes certos e embaralhar as ligações.",
+  "erradas": {
+   "0": "As duas ligações estão trocadas: a Definition of Done pertence ao Incremento, e a Meta do Produto pertence ao Product Backlog.",
+   "1": "A Meta da Sprint é compromisso do Sprint Backlog, não do Incremento; e o compromisso do Product Backlog é a Meta do Produto.",
+   "2": "Nenhum dos dois pares se sustenta: a Definition of Done é do Incremento e a Meta do Produto é do Product Backlog.",
+   "3": "É a quase certa: o segundo par está correto, mas o Product Backlog responde pela Meta do Produto, e não pela Meta da Sprint."
+  }
  }
 ]

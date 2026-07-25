@@ -2,6 +2,30 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — questões para os buracos de cobertura (auditoria, Bloco VII/ITEM 1)
+
+- **banco.json: 259 → 295 questões.** Dois lotes gerados a partir do relatório de
+  cobertura, priorizados pelo peso do Apêndice A e por evidência de que a FGV
+  cobra o tema (termo ausente do banco original × presente em prova real).
+- **LOTE 1 (22):** arquitetura 7, segurança 8, banco de dados 7. Fecha buracos que
+  estavam em ZERO no banco: SOAP/WSDL (cai na Dataprev 2024 Q45), IaaS/PaaS/SaaS,
+  serverless, balanceador × CDN, layers × tiers, ISO 27001 × 27002 e a estrutura
+  da 27002:2022, RBAC/ABAC/MAC/DAC, OIDC/SAML/JWT, OWASP A01 e A10, RTO × RPO,
+  níveis de isolamento, trigger × procedure, entidade fraca, especialização
+  total/sobreposta, NOT IN com NULL e particionamento × sharding × replicação.
+- **LOTE 2 (14):** eng-software. Seis GoF que só existiam como distrator (Facade,
+  Template Method, Command, Chain of Responsibility, classificação dos 23, State ×
+  Strategy), UML (componentes × implantação; realização × dependência), CMMI e
+  MPS.BR, modelo V, tipos de manutenção, cobertura de comandos × decisões, teste
+  de estresse × carga e os três compromissos do Scrum Guide.
+- **Calibração:** mediana do enunciado subiu de 19 para ~40 palavras (provas reais:
+  59), cenário aplicado em vez de definição pura, e 2 comandos negativos (~5,5% do
+  lote, contra ~4% das provas reais).
+- **Vazamentos de forma preservados em zero:** nas 36 questões novas, a correta é a
+  mais longa em 2 (5,5%) e não há termo absoluto só no distrator. Gabarito do banco
+  ficou uniforme (A–E com 59 cada).
+- `./valida.py`: 0 erros; nenhum aviso novo de forma.
+
 ## 2026-07-25 — fim dos vazamentos de forma no banco (auditoria, Bloco VI/A)
 
 - **A correta deixou de ser a mais longa.** Era o vazamento mais grave do banco:
