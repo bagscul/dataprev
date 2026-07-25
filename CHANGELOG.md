@@ -2,6 +2,62 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — fechamento do ITEM 7: as 11 caixas `jacaiu` do GRUPO A
+
+Encerra a varredura dos 18 blocos. As **35 caixas "O que já caiu"** das duas
+camadas (17 na apostila, 18 no `resumo/`) agora separam **o que caiu em prova
+real da FGV**, com a sigla, do que é **previsão do edital no nosso banco** —
+o rótulo `preambulo.tex:101` diz "O que já caiu nas provas", mas as caixas
+eram preenchidas a partir do `banco.json`. Cada item foi conferido contra as
+**432 questões reais** de `banco-provas.json`. Apostila: **119 → 121 páginas**.
+
+O Grupo A concentra os específicos (26 eng-software, 34 arquitetura, 25
+banco-dados, 38 segurança, mais ~30 questões de "órfãos" que são engenharia de
+software, UML e modelagem disfarçadas). É o grupo **com mais lastro real** —
+e, por isso mesmo, o de **maior subcrédito**.
+
+- **Alegações falsas** (zero ocorrência nas 432 reais), retiradas do parágrafo
+  de prova real: em eng-software, **Sprint Review × Retrospective** e os **três
+  compromissos do Scrum** — "Definition of Done" só existe na *nossa* `erradas`
+  da Dataprev Q69 —, mais modelo V, tipos de manutenção, cobertura de comandos
+  × decisões e estresse × carga; em padrões de projeto, **22 dos 23 padrões**;
+  em arquitetura, **ESB**, **API gateway** (só no nosso `why` da Dataprev Q41),
+  **Raft**, layers × tiers como par, e serverless/FaaS e CDN, que só apareceram
+  como nome de produto entre distratores; em banco de dados, os **níveis de
+  isolamento** e seus fenômenos; em segurança, **SAST × DAST**.
+- **Padrões de projeto é o achado mais duro:** de 18 alegações, **uma** tem
+  lastro — o **Singleton** da ALERO 2026 (cache com instância única), cujo
+  enunciado fala em "classificação GoF", o que salva a tabela das três
+  famílias. A caixa ganhou o aviso dos **quatro falsos positivos** que uma
+  busca por palavra-chave produz: o `Decorators (@)` do Python, o "Portas e
+  Adaptadores" da arquitetura hexagonal, os "proxy" das questões de rede e o
+  MVC, que só aparece *descrito* numa alternativa, nunca nomeado.
+- **UML é o oposto:** a caixa creditava as 10 questões como nossas e omitia
+  **quatro reais** — diagrama de **sequência** (com comunicação, timing e visão
+  geral de interação como distratores), **composição**, **casos de uso +
+  diagrama de objetos** (ALERO 2026, sempre com "UML 2.5.1" no enunciado) e
+  leitura de **diagrama de classes** (MPU). Generalização/especialização caiu
+  pelo lado do modelo ER.
+- **Segurança tinha o maior buraco: 28 das 38 questões reais** ficavam de fora
+  — RBAC, segregação de funções, ISO 27002/27001, gestão de risco e risco
+  residual, a família de *malware* inteira, DDoS e SYN flood, spoofing,
+  NGFW/WAF/proxy/VPN, simétrica × assinatura digital sobre ICP, as etapas de
+  resposta a incidentes e os *claims* do OIDC (que o Grupo A já tinha
+  ensinado).
+- **Arquitetura ganhou uma seção nova:** **11 das 34** questões com essa tag
+  são **arquitetura de computadores e SO** (Von Neumann, ULA, overflow ×
+  carry, MMU/TLB, tabela de páginas, DMA), vindas de provas de outro perfil e
+  **fora do edital do Perfil 3**. Ficam registradas com a orientação explícita
+  de não gastar tempo nelas, em vez de sumirem da conta.
+- **Carry-over do Grupo C corrigido:** a caixa de órfãos listava em "ainda não
+  visto na amostra" dois pares que **caíram** na Dataprev 2024 sob outra tag —
+  **servidor web × servidor de aplicação** (Q50) e
+  **internet/intranet/extranet/portal** (Q44).
+
+Também acertei duas contagens da auditoria: `banco-dados` tem **25** questões
+reais (não 24) e `seguranca` tem **38** (o 43 era pré-retag, antes de os cinco
+itens de LGPD/LAI virarem `legislacao`).
+
 ## 2026-07-25 (madrugada) — varredura do GRUPO C (auditoria, ITEM 7 · P0–P4)
 
 Sete blocos varridos contra as 112 questões que os alimentam: **legislação,
