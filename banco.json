@@ -4,9 +4,9 @@
   "q": "Uma equipe de desenvolvimento da Dataprev adota um processo em que os requisitos são congelados no início, e as fases de análise, projeto, implementação e testes ocorrem em sequência estrita, sem sobreposição. Sobre esse modelo, é correto afirmar que:",
   "alts": [
    "é a prototipação evolutiva, pois o produto evolui fase a fase",
-   "é o modelo espiral, pois prioriza a análise de riscos entre as fases",
+   "é o modelo espiral, pois prioriza a análise de riscos entre as fases sucessivas do projeto",
    "é o modelo ágil, pois divide o trabalho em fases curtas",
-   "é o modelo em cascata, adequado quando os requisitos são bem compreendidos e estáveis",
+   "é o modelo em cascata, adequado quando os requisitos são estáveis e bem compreendidos",
    "é o modelo incremental, pois cada fase incrementa a anterior"
   ],
   "ans": 3,
@@ -42,10 +42,10 @@
   "q": "Durante a elicitação de requisitos de um sistema previdenciário, o analista reuniu simultaneamente representantes de diversas áreas em sessões estruturadas e facilitadas para produzir, em conjunto, os requisitos do sistema. Essa técnica é denominada:",
   "alts": [
    "JAD (Joint Application Design)",
-   "etnografia",
+   "etnografia (observação em campo)",
    "entrevista não estruturada",
-   "brainstorming",
-   "prototipação"
+   "brainstorming (tempestade de ideias)",
+   "prototipação de interfaces"
   ],
   "ans": 0,
   "why": "Sessões estruturadas, facilitadas e com múltiplos stakeholders produzindo requisitos em conjunto é a definição de JAD. Brainstorming é livre e sem estrutura; etnografia é observação do usuário no ambiente.",
@@ -60,11 +60,11 @@
   "tag": "eng-software",
   "q": "No TDD (Test-Driven Development), a ordem correta do ciclo de trabalho é:",
   "alts": [
-   "escrever o teste que falha, escrever o código mínimo que passa, refatorar",
+   "escrever o teste que falha, escrever o código mínimo que passa e sempre refatorar",
    "refatorar, escrever o teste, escrever o código",
    "escrever o código, escrever o teste, refatorar",
    "escrever o código, refatorar, escrever o teste que passa",
-   "escrever todos os testes do módulo, implementar o módulo, homologar"
+   "escrever todos os testes do módulo, implementar o módulo inteiro e depois homologar"
   ],
   "ans": 0,
   "why": "O ciclo red-green-refactor: teste que falha primeiro, código mínimo pra passar, depois refatoração. Escrever código antes do teste viola a premissa central do TDD.",
@@ -117,11 +117,11 @@
   "tag": "eng-software",
   "q": "A métrica de Análise de Pontos de Função mede o tamanho de um software com base:",
   "alts": [
-   "no esforço em homens-hora da equipe",
-   "na quantidade de classes e métodos do projeto",
+   "no esforço total em homens-hora gasto pela equipe",
+   "na quantidade de classes, métodos e atributos implementados no sistema inteiro",
    "nas funcionalidades entregues ao usuário, independentemente da tecnologia",
-   "nas linhas de código-fonte produzidas",
-   "na velocidade média das sprints anteriores"
+   "nas linhas de código-fonte efetivamente produzidas",
+   "na velocidade média das sprints anteriores da equipe"
   ],
   "ans": 2,
   "why": "APF mede tamanho funcional do ponto de vista do usuário, independente de linguagem ou tecnologia. É o oposto conceitual de LOC. Story points, por sua vez, medem esforço relativo, não tamanho funcional.",
@@ -140,7 +140,7 @@
    "está na 3FN",
    "viola a 2FN",
    "está necessariamente na FNBC",
-   "está apenas na 1FN"
+   "está na 1FN, mas não na 2FN"
   ],
   "ans": 1,
   "why": "3FN = 2FN + ausência de dependências transitivas. FNBC é mais restritiva e não é garantida. A FGV cobra a cadeia 1FN (atomicidade) → 2FN (sem dependência parcial) → 3FN (sem transitiva) com precisão.",
@@ -193,11 +193,11 @@
   "tag": "banco-dados",
   "q": "Um sistema precisa armazenar documentos JSON com estruturas variáveis e sem esquema fixo, priorizando escalabilidade horizontal. O tipo de banco NoSQL mais adequado é:",
   "alts": [
-   "relacional distribuído",
+   "relacional distribuído, como o CockroachDB",
    "orientado a grafos, como o Neo4j",
    "orientado a documentos, como o MongoDB",
-   "colunar, como o Cassandra",
-   "chave-valor, como o Redis puro"
+   "colunar, como o Cassandra ou o HBase",
+   "chave-valor, como o Redis em modo puro"
   ],
   "ans": 2,
   "why": "Documentos JSON com esquema flexível é o caso de uso canônico dos bancos de documentos. Chave-valor não consulta o interior do valor; grafos servem para relacionamentos densos.",
@@ -212,11 +212,11 @@
   "tag": "banco-dados",
   "q": "Em SQL, o comando TRUNCATE TABLE difere do DELETE sem WHERE porque o TRUNCATE:",
   "alts": [
-   "pode ser desfeito individualmente linha a linha",
-   "é sempre mais lento em tabelas grandes",
-   "é DDL, geralmente não dispara triggers de DELETE e reinicia contadores de identidade",
-   "permite cláusula WHERE para filtrar linhas",
-   "é uma operação DML registrada linha a linha no log"
+   "pode ser desfeito individualmente, linha a linha",
+   "é mais lento que o DELETE em tabelas grandes",
+   "é DDL, não dispara triggers de DELETE e reinicia contadores de identidade",
+   "permite a cláusula WHERE para filtrar as linhas removidas",
+   "é uma operação DML registrada linha a linha no log de transações do banco"
   ],
   "ans": 2,
   "why": "TRUNCATE é DDL: desaloca páginas em bloco, não dispara triggers de linha e costuma resetar sequences/identity. DELETE é DML, linha a linha, logado. Classificar TRUNCATE como DDL é pegadinha clássica.",
@@ -231,11 +231,11 @@
   "tag": "banco-dados",
   "q": "Uma view materializada difere de uma view comum porque:",
   "alts": [
-   "armazena fisicamente o resultado da consulta, exigindo atualização periódica",
-   "é sempre atualizada em tempo real sem custo",
-   "não pode ser consultada com SELECT",
-   "só pode ser criada sobre uma única tabela",
-   "não aceita índices"
+   "armazena fisicamente o resultado da consulta e sempre exige atualização",
+   "é sempre atualizada em tempo real, sem qualquer custo de manutenção",
+   "não pode ser consultada diretamente com SELECT",
+   "só pode ser criada sobre uma única tabela, sem joins nem subconsultas aninhadas",
+   "não aceita a criação de índices próprios"
   ],
   "ans": 0,
   "why": "View comum é apenas uma consulta nomeada, resolvida em tempo de execução. Materializada persiste o resultado em disco e precisa de refresh, trocando atualidade por desempenho de leitura.",
@@ -251,10 +251,10 @@
   "q": "Em Java, sobre a diferença entre == e equals() para objetos String, é correto afirmar que:",
   "alts": [
    "equals() só funciona para strings literais",
-   "== compara conteúdo e equals() compara referência",
+   "== compara o conteúdo textual e equals() compara a referência de memória",
    "== compara referências de memória e equals() compara o conteúdo",
    "== lança exceção quando aplicado a objetos",
-   "ambos comparam sempre o conteúdo"
+   "ambos comparam o conteúdo textual do objeto"
   ],
   "ans": 2,
   "why": "== compara identidade (mesma referência). equals() na String compara conteúdo caractere a caractere. O pool de strings faz literais iguais às vezes passarem no ==, o que torna a pegadinha ainda mais traiçoeira.",
@@ -421,11 +421,11 @@
   "tag": "programacao",
   "q": "Sobre o formato JSON, é correto afirmar que:",
   "alts": [
-   "é um formato binário mais compacto que XML",
-   "representa objetos como pares chave-valor, com chaves obrigatoriamente entre aspas duplas",
-   "permite comentários com // e /* */",
-   "suporta nativamente o tipo data (date)",
-   "exige declaração de esquema antes do uso"
+   "é um formato binário, bem mais compacto que o XML",
+   "representa objetos como pares chave-valor, com chaves entre aspas duplas",
+   "permite comentários de linha (//) e de bloco (/* */) dentro do documento",
+   "suporta nativamente o tipo de dado data (date)",
+   "exige a declaração de um esquema antes do uso"
   ],
   "ans": 1,
   "why": "JSON: chaves sempre string com aspas duplas, sem comentários, sem tipo data nativo (datas viram strings), sem esquema obrigatório, e é texto, não binário. Caiu JSON na Dataprev 2024.",
@@ -459,10 +459,10 @@
   "tag": "arquitetura",
   "q": "Comparada à arquitetura monolítica, a arquitetura de microsserviços tem como característica:",
   "alts": [
-   "serviços independentes, com deploy isolado e comunicação via rede",
-   "impossibilidade de usar tecnologias diferentes entre serviços",
+   "serviços independentes, cada um com deploy isolado e toda a comunicação feita via rede",
+   "impossibilidade de adotar tecnologias diferentes entre os serviços que compõem o sistema",
    "acoplamento forte entre os módulos de negócio",
-   "banco de dados obrigatoriamente único e compartilhado",
+   "banco de dados obrigatoriamente único e compartilhado por todos os serviços",
    "deploy único de toda a aplicação a cada alteração"
   ],
   "ans": 0,
@@ -480,9 +480,9 @@
   "alts": [
    "eliminar a necessidade de testes de integração",
    "acelerar o deploy através de containers",
-   "substituir a arquitetura em camadas por chamadas diretas ao banco",
+   "substituir a arquitetura em camadas por chamadas diretas do domínio ao banco de dados",
    "garantir que a interface gráfica dite o modelo de domínio",
-   "isolar o núcleo de negócio das tecnologias externas, que se conectam por portas e adaptadores"
+   "isolar o núcleo de negócio das tecnologias externas, ligadas por portas e adaptadores"
   ],
   "ans": 4,
   "why": "O hexágono protege o domínio: o núcleo não conhece banco, framework ou UI; tudo externo entra por portas (interfaces) e adaptadores. É inversão de dependência em escala arquitetural.",
@@ -516,11 +516,11 @@
   "tag": "arquitetura",
   "q": "Na arquitetura orientada a serviços (SOA), o barramento que intermedeia, roteia e transforma mensagens entre os serviços é conhecido como:",
   "alts": [
-   "ETL",
-   "CDN",
+   "ETL (Extract, Transform, Load)",
+   "CDN (Content Delivery Network)",
    "ESB (Enterprise Service Bus)",
-   "DNS corporativo",
-   "VPN site-to-site"
+   "DNS (Domain Name System) corporativo",
+   "VPN (Virtual Private Network) site-to-site"
   ],
   "ans": 2,
   "why": "O ESB é o intermediário clássico da SOA: roteamento, transformação e orquestração de mensagens entre serviços. Questão de SOA caiu na Dataprev 2024.",
@@ -554,11 +554,11 @@
   "tag": "redes",
   "q": "Sobre TCP e UDP, é correto afirmar que:",
   "alts": [
-   "o UDP estabelece conexão via three-way handshake",
-   "o UDP realiza controle de congestionamento",
+   "o UDP estabelece a conexão via three-way handshake",
+   "o UDP realiza controle de congestionamento na rede",
    "ambos garantem entrega ordenada dos segmentos",
-   "o TCP é preferido em streaming de vídeo ao vivo por ser mais rápido",
-   "o TCP é orientado a conexão e garante entrega e ordem; o UDP não oferece essas garantias"
+   "o TCP é preferido em streaming de vídeo ao vivo por ser bem mais rápido que o UDP",
+   "o TCP é orientado a conexão e garante entrega e ordem, o que o UDP não oferece"
   ],
   "ans": 4,
   "why": "TCP: conexão, confiabilidade, ordem, controle de congestionamento. UDP: sem conexão, sem garantias, por isso mais leve, preferido em tempo real. O handshake é exclusivo do TCP.",
@@ -573,11 +573,11 @@
   "tag": "redes",
   "q": "No estabelecimento de uma conexão HTTPS, durante o handshake TLS, a criptografia assimétrica é utilizada para:",
   "alts": [
-   "autenticar o usuário final com login e senha",
+   "autenticar o usuário final por meio de login e senha",
    "cifrar todo o tráfego de dados da sessão",
-   "trocar/estabelecer com segurança a chave simétrica que cifrará a sessão",
-   "substituir a necessidade de certificados digitais",
-   "comprimir os pacotes antes do envio"
+   "trocar com segurança a chave simétrica que cifrará toda a sessão",
+   "substituir por completo a necessidade de certificados digitais no handshake",
+   "comprimir os pacotes de dados antes do envio"
   ],
   "ans": 2,
   "why": "O padrão híbrido: assimétrica (lenta) só no handshake, para acordar a chave de sessão; simétrica (rápida) para o volume de dados. Exatamente o tipo de questão de SSL/TLS que caiu em 2024.",
@@ -611,11 +611,11 @@
   "tag": "redes",
   "q": "Uma VLAN tem como principal função:",
   "alts": [
-   "converter endereços privados em públicos",
-   "criptografar o tráfego entre switches",
-   "segmentar logicamente uma rede física em domínios de broadcast distintos",
-   "substituir o roteador na comunicação entre redes",
-   "aumentar a potência do sinal wireless"
+   "converter endereços privados em endereços públicos",
+   "criptografar o tráfego trocado entre os switches",
+   "segmentar logicamente uma rede física em domínios de broadcast",
+   "substituir o roteador na comunicação entre redes fisicamente distintas",
+   "aumentar a potência do sinal da rede wireless"
   ],
   "ans": 2,
   "why": "VLAN = segmentação lógica sobre a mesma infraestrutura física, isolando domínios de broadcast. Conversão de endereços é NAT; criptografia não é função de VLAN.",
@@ -630,7 +630,7 @@
   "tag": "seguranca",
   "q": "Os três pilares clássicos da segurança da informação, conhecidos como tríade CID, são:",
   "alts": [
-   "confidencialidade, integridade e autenticidade",
+   "confidencialidade, integridade e autenticidade da informação",
    "controle, integridade e disponibilidade",
    "confidencialidade, isolamento e durabilidade",
    "confidencialidade, integridade e não repúdio",
@@ -649,8 +649,8 @@
   "tag": "seguranca",
   "q": "Sobre criptografia, a principal diferença entre os sistemas simétrico e assimétrico é que:",
   "alts": [
-   "o simétrico usa par de chaves pública/privada; o assimétrico usa chave única",
-   "o simétrico usa a mesma chave para cifrar e decifrar; o assimétrico usa um par de chaves matematicamente relacionadas",
+   "o simétrico usa um par de chaves pública e privada, enquanto o assimétrico opera com uma única chave secreta",
+   "o simétrico usa a mesma chave para cifrar e decifrar, e o assimétrico usa sempre um par relacionado",
    "o assimétrico é sempre mais rápido para grandes volumes",
    "o simétrico não pode ser usado em comunicações de rede",
    "o assimétrico dispensa a proteção da chave privada"
@@ -668,9 +668,9 @@
   "tag": "seguranca",
   "q": "Uma função hash criptográfica, como SHA-256, tem como característica essencial:",
   "alts": [
-   "exigir par de chaves pública e privada",
+   "exigir um par de chaves pública e privada para o cálculo do resumo",
    "garantir a disponibilidade do dado",
-   "produzir saída de tamanho fixo e ser computacionalmente inviável de inverter",
+   "produzir saída de tamanho fixo e ser inviável de inverter",
    "ser reversível mediante a chave correta",
    "cifrar o conteúdo para transmissão segura"
   ],
@@ -708,9 +708,9 @@
   "alts": [
    "só funciona em linguagens compiladas",
    "substitui integralmente os testes de penetração",
-   "analisa o código-fonte sem executar a aplicação, enquanto o DAST testa a aplicação em execução",
-   "é aplicável apenas a aplicações mobile",
-   "testa a aplicação em execução, simulando ataques externos"
+   "analisa o código-fonte da aplicação sem precisar executá-la",
+   "restringe-se a aplicações mobile e híbridas",
+   "testa a aplicação em execução, simulando ataques externos ao sistema"
   ],
   "ans": 2,
   "why": "SAST = estático, caixa-branca, código-fonte parado. DAST = dinâmico, caixa-preta, aplicação rodando. O 'S' e o 'D' entregam a resposta, mas a banca embaralha as descrições.",
@@ -725,11 +725,11 @@
   "tag": "seguranca",
   "q": "O OAuth 2.0 é um protocolo cuja finalidade principal é:",
   "alts": [
-   "cifrar o canal de comunicação entre cliente e servidor",
+   "cifrar o canal de comunicação entre o cliente e o servidor da aplicação web",
    "sincronizar diretórios LDAP entre domínios",
    "substituir o uso de certificados digitais",
    "gerar hashes de senhas para armazenamento",
-   "autorizar acesso delegado a recursos, sem compartilhar credenciais do usuário"
+   "autorizar acesso delegado a recursos, sem expor as credenciais do usuário"
   ],
   "ans": 4,
   "why": "OAuth2 é AUTORIZAÇÃO delegada: o app acessa recursos em nome do usuário via token, sem nunca ver a senha. Autenticação de identidade é papel do OpenID Connect, construído sobre ele.",
@@ -744,11 +744,11 @@
   "tag": "bi",
   "q": "Em um data warehouse, a modelagem dimensional em esquema estrela (star schema) é caracterizada por:",
   "alts": [
-   "ausência de tabelas de dimensão",
+   "a ausência de tabelas de dimensão separadas, com os atributos embutidos na própria tabela fato",
    "uma tabela fato central ligada diretamente a tabelas de dimensão desnormalizadas",
    "tabelas totalmente normalizadas até a 3FN",
    "fatos redundantes espalhados pelas dimensões",
-   "dimensões normalizadas em múltiplos níveis hierárquicos"
+   "dimensões decompostas e normalizadas em vários níveis hierárquicos, como no esquema floco de neve (snowflake)"
   ],
   "ans": 1,
   "why": "Estrela: fato no centro, dimensões desnormalizadas ao redor, um join de distância. Dimensões normalizadas em cascata caracterizam o snowflake. Contraste favorito da banca.",
@@ -783,8 +783,8 @@
   "q": "No processo ETL, a etapa de transformação compreende:",
   "alts": [
    "a limpeza, padronização e adequação dos dados às regras do destino",
-   "a criação dos relatórios finais",
-   "o backup incremental das fontes",
+   "a criação dos relatórios, dashboards e painéis finais para o usuário de negócio",
+   "o backup incremental das fontes de dados de origem",
    "a coleta dos dados nas fontes de origem",
    "o carregamento físico dos dados no data warehouse"
   ],
@@ -804,8 +804,8 @@
    "é sempre menor em volume que o warehouse",
    "só armazena dados estruturados e modelados",
    "exige modelagem dimensional prévia obrigatória",
-   "não pode ser usado para machine learning",
-   "armazena dados brutos em formato nativo, aplicando esquema apenas na leitura (schema-on-read)"
+   "não pode ser usado para machine learning nem para análise exploratória de dados",
+   "armazena dados brutos, aplicando o esquema apenas na leitura (schema-on-read)"
   ],
   "ans": 4,
   "why": "Lake: dado bruto, qualquer formato, schema-on-read. Warehouse: dado tratado e modelado, schema-on-write. O lake é justamente o habitat preferido de cientistas de dados.",
@@ -820,10 +820,10 @@
   "tag": "frontend",
   "q": "Uma SPA (Single Page Application) caracteriza-se por:",
   "alts": [
-   "carregar uma única página HTML e atualizar o conteúdo dinamicamente via JavaScript, sem recarga completa",
+   "trocar o conteúdo via JavaScript sem recarregar toda a página, a partir de um único HTML",
    "ser renderizada apenas no servidor",
    "dispensar completamente o uso de servidor",
-   "recarregar a página inteira a cada interação do usuário",
+   "recarregar do servidor a página inteira a cada interação do usuário, mantendo o estado no servidor",
    "funcionar exclusivamente offline"
   ],
   "ans": 0,
@@ -858,11 +858,11 @@
   "tag": "frontend",
   "q": "Um PWA (Progressive Web App) diferencia-se de um site tradicional principalmente por:",
   "alts": [
-   "exigir publicação em loja de aplicativos",
+   "exigir publicação em loja de aplicativos para poder ser instalado no dispositivo",
    "não poder ser acessado por navegador",
-   "ser desenvolvido exclusivamente em linguagem nativa",
+   "ser desenvolvido em linguagem nativa da plataforma",
    "dispensar o protocolo HTTPS",
-   "usar service workers para funcionar offline e permitir instalação e notificações"
+   "usar service workers para funcionar offline, com instalação e notificações"
   ],
   "ans": 4,
   "why": "PWA = web app com service worker (cache/offline), manifest (instalável) e HTTPS obrigatório. Não passa por loja e roda no navegador; essa é a graça.",
@@ -877,11 +877,11 @@
   "tag": "frontend",
   "q": "Em acessibilidade web, os atributos ARIA (Accessible Rich Internet Applications) servem para:",
   "alts": [
-   "substituir o CSS na estilização",
-   "acelerar o carregamento da página",
-   "criptografar dados de formulários",
-   "validar o HTML no servidor",
-   "fornecer semântica adicional a elementos dinâmicos, permitindo interpretação por tecnologias assistivas"
+   "substituir o CSS na estilização dos componentes",
+   "acelerar o carregamento da página no navegador",
+   "criptografar os dados enviados pelos formulários",
+   "validar a marcação HTML diretamente no servidor antes de entregá-la ao navegador",
+   "fornecer semântica adicional a elementos dinâmicos para leitores de tela"
   ],
   "ans": 4,
   "why": "ARIA (role, aria-label etc.) dá semântica a componentes dinâmicos para leitores de tela. Acessibilidade e usabilidade estão nomeadas no edital do perfil 3.",
@@ -915,11 +915,11 @@
   "tag": "governanca",
   "q": "No COBIT 2019, a distinção fundamental entre governança e gestão de TI é que a governança:",
   "alts": [
-   "é responsabilidade exclusiva do gerente de projetos",
+   "é responsabilidade exclusiva do gerente de projetos, e não do conselho de administração",
    "é sinônimo de gestão no framework",
-   "trata apenas da infraestrutura física",
+   "trata da infraestrutura física de TI",
    "executa as operações diárias de TI",
-   "avalia, direciona e monitora (EDM), enquanto a gestão planeja, constrói, executa e monitora"
+   "avalia, direciona e monitora (EDM), enquanto a gestão planeja, constrói e executa"
   ],
   "ans": 4,
   "why": "Governança = EDM (Evaluate, Direct, Monitor), papel do conselho. Gestão = PBRM (Plan, Build, Run, Monitor), papel da diretoria executiva. Separação estrutural do COBIT.",
@@ -935,10 +935,10 @@
   "q": "Na notação BPMN, o elemento gráfico losango representa:",
   "alts": [
    "um gateway, que controla divergência e convergência do fluxo",
-   "uma atividade ou tarefa",
-   "um evento de início",
-   "um pool de participantes",
-   "um artefato de dados"
+   "uma atividade ou tarefa executada por um participante do processo",
+   "um evento de início do processo",
+   "um pool de participantes do processo",
+   "um artefato de dados anexado ao fluxo"
   ],
   "ans": 0,
   "why": "Losango = gateway (decisão/paralelismo). Círculo = evento; retângulo arredondado = atividade; retângulo grande = pool/lane. A banca cobra a simbologia literal.",
@@ -953,11 +953,11 @@
   "tag": "governanca",
   "q": "Segundo o Guia PMBOK, a diferença entre projeto e operação continuada é que o projeto:",
   "alts": [
-   "é um esforço temporário com início e fim definidos, para criar produto, serviço ou resultado único",
-   "não possui restrições de escopo ou prazo",
-   "é permanente e repetitivo",
-   "dispensa gerenciamento formal",
-   "é sempre executado por equipes externas"
+   "é um esforço temporário com início e fim definidos, para criar produto, serviço ou resultado único, nunca uma operação continuada",
+   "não possui restrições de escopo, prazo ou custo, por se tratar de um esforço aberto, continuado e sem data de encerramento prevista",
+   "é permanente e repetitivo, como as operações continuadas da organização",
+   "dispensa gerenciamento formal, por ter escopo restrito e equipe pequena",
+   "é sempre executado por equipes externas contratadas para essa finalidade"
   ],
   "ans": 0,
   "why": "Temporário + resultado único = projeto. Operação é contínua e repetitiva. Definição de abertura do PMBOK, cobrada de forma literal.",
@@ -972,9 +972,9 @@
   "tag": "orfaos",
   "q": "Em uma blockchain, a integridade da cadeia é garantida principalmente porque cada bloco:",
   "alts": [
-   "é criptografado com a chave privada de todos os usuários",
-   "depende de um administrador que valida manualmente as transações",
-   "pode ser editado por qualquer nó mediante votação simples",
+   "é criptografado com a chave privada dos usuários da rede",
+   "depende de um administrador central que valida manualmente cada transação registrada na cadeia",
+   "pode ser editado por um nó mediante votação simples",
    "contém o hash criptográfico do bloco anterior, tornando alterações retroativas detectáveis",
    "é armazenado em um único servidor central de confiança"
   ],
@@ -991,11 +991,11 @@
   "tag": "orfaos",
   "q": "RPA (Robotic Process Automation) é uma tecnologia voltada a:",
   "alts": [
-   "substituir bancos de dados relacionais",
-   "automatizar tarefas digitais repetitivas e baseadas em regras, simulando a interação humana com sistemas",
-   "fabricar robôs físicos para linhas de montagem",
-   "treinar redes neurais profundas",
-   "gerenciar clusters Kubernetes"
+   "substituir os bancos de dados relacionais na camada de persistência das aplicações corporativas",
+   "automatizar tarefas digitais repetitivas e baseadas em regras, simulando a interação humana",
+   "fabricar robôs físicos para as linhas de montagem industriais",
+   "treinar redes neurais profundas de larga escala",
+   "gerenciar clusters de contêineres no Kubernetes"
   ],
   "ans": 1,
   "why": "RPA = software que imita o usuário (cliques, digitação, leitura de tela) em tarefas repetitivas e regradas. Não é IA nem robô físico; está nomeado no edital do perfil 3.",
@@ -1010,11 +1010,11 @@
   "tag": "orfaos",
   "q": "A diferença entre intranet e extranet é que a extranet:",
   "alts": [
-   "é aberta a qualquer usuário da internet sem autenticação",
-   "não utiliza os protocolos TCP/IP",
-   "estende o acesso a partes autorizadas externas, como parceiros e fornecedores, mediante controle",
+   "é aberta ao público geral da internet, sem exigência de autenticação prévia dos usuários",
+   "não utiliza os protocolos TCP/IP da internet",
+   "estende o acesso a parceiros e fornecedores externos autorizados, sob controle",
    "é sinônimo de rede social corporativa",
-   "funciona apenas dentro da rede local física"
+   "funciona só dentro da rede local física da organização"
   ],
   "ans": 2,
   "why": "Intranet = interno à organização. Extranet = intranet estendida a terceiros autorizados. Internet = pública. O item 'ambientes internet, extranet, intranet e portal' está literal no edital.",
@@ -1029,11 +1029,11 @@
   "tag": "orfaos",
   "q": "Em uma aplicação web Java, a diferença entre um servidor web e um servidor de aplicação é que o servidor de aplicação:",
   "alts": [
-   "serve apenas conteúdo estático como HTML e imagens",
-   "não suporta o protocolo HTTP",
-   "oferece container completo para componentes de negócio, como EJB, além do container web",
+   "serve apenas conteúdo estático, como páginas HTML, imagens e arquivos de folha de estilo CSS e JS",
+   "não suporta o protocolo HTTP em nenhuma versão",
+   "oferece container completo para componentes de negócio, como EJB, além de todo o container web",
    "é sempre mais leve que o servidor web",
-   "dispensa a JVM"
+   "dispensa a JVM para executar a aplicação"
   ],
   "ans": 2,
   "why": "Servidor web (Apache, Nginx) serve estático e faz proxy. Servidor de aplicação (JBoss, WebLogic) tem containers para a especificação Java EE completa, incluindo EJB. Distinção nomeada no edital.",
@@ -1067,11 +1067,11 @@
   "tag": "legislacao",
   "q": "Nos termos da LGPD, dado pessoal sensível é aquele que revela, entre outros:",
   "alts": [
-   "histórico de compras online",
-   "número de telefone e e-mail corporativo",
-   "placa de veículo automotor",
-   "origem racial ou étnica, convicção religiosa, opinião política, dado referente à saúde ou à vida sexual, dado genético ou biométrico",
-   "nome completo e endereço residencial"
+   "histórico de compras online, dados de navegação e preferências de consumo registrados por sites de comércio eletrônico e marketplaces",
+   "número de telefone, e-mail corporativo e ramal de trabalho do titular",
+   "placa de veículo automotor e número do documento de habilitação",
+   "origem racial, convicção religiosa, opinião política, dado referente à saúde ou à vida sexual, dado genético ou biométrico",
+   "nome completo, endereço residencial e data de nascimento do titular"
   ],
   "ans": 3,
   "why": "O rol do art. 5º, II é taxativo e cai literal: racial/étnico, religião, opinião política, filiação sindical, saúde, vida sexual, genético, biométrico. Nome e endereço são pessoais comuns.",
@@ -1086,11 +1086,11 @@
   "tag": "legislacao",
   "q": "O Marco Civil da Internet (Lei 12.965/2014), em sua redação original (art. 19), estabelece, como regra geral, que o provedor de aplicações somente será responsabilizado civilmente por conteúdo gerado por terceiros se:",
   "alts": [
-   "houver simples notificação extrajudicial da vítima, em qualquer hipótese",
+   "houver simples notificação extrajudicial enviada pela vítima, independentemente de decisão judicial",
    "após ordem judicial específica, não tomar as providências para tornar o conteúdo indisponível",
-   "o conteúdo for denunciado por qualquer usuário",
-   "o autor do conteúdo for anônimo",
-   "o conteúdo tiver mais de mil compartilhamentos"
+   "o conteúdo for denunciado por outro usuário da plataforma",
+   "o autor do conteúdo permanecer anônimo",
+   "o conteúdo ultrapassar mil compartilhamentos"
   ],
   "ans": 1,
   "why": "Pela LETRA do art. 19, a responsabilização civil do provedor de aplicações só ocorre se, após ordem judicial específica, ele não tornar o conteúdo indisponível. Exceções na própria lei: conteúdo íntimo divulgado sem consentimento (art. 21), em que basta notificação. ATENÇÃO (atualização): em 26/06/2025 o STF (Temas 987 e 533) declarou o art. 19 parcialmente inconstitucional — hoje a notificação extrajudicial já basta para responsabilizar o provedor na maioria dos conteúdos ilícitos, permanecendo a exigência de ordem judicial apenas para crimes contra a honra. Se a FGV cobrar a letra da lei, a resposta é a ordem judicial; se cobrar o entendimento do STF, atenção ao novo regime.",
@@ -1124,11 +1124,11 @@
   "tag": "legislacao",
   "q": "A Lei 12.737/2012 (Lei de Delitos Informáticos, conhecida como Lei Carolina Dieckmann) tipificou como crime a conduta de:",
   "alts": [
-   "invadir dispositivo informático alheio, mediante violação indevida de mecanismo de segurança, para obter, adulterar ou destruir dados",
-   "compartilhar notícias falsas",
-   "utilizar rede social com perfil falso",
-   "acessar redes wi-fi públicas sem autorização do estabelecimento",
-   "enviar e-mails de propaganda sem consentimento"
+   "invadir dispositivo informático alheio, violando indevidamente mecanismo de segurança, para obter, adulterar ou destruir dados",
+   "compartilhar notícias falsas em redes sociais e aplicativos",
+   "utilizar rede social com perfil falso de outra pessoa",
+   "acessar redes wi-fi públicas sem autorização expressa do estabelecimento comercial que as disponibiliza gratuitamente aos clientes",
+   "enviar e-mails de propaganda sem consentimento do destinatário"
   ],
   "ans": 0,
   "why": "O art. 154-A do CP, inserido por essa lei: invasão de dispositivo com violação de mecanismo de segurança. O edital cobra especificamente o art. 2º dessa lei.",
@@ -1162,11 +1162,11 @@
   "tag": "rlm",
   "q": "A negação da proposição 'Todos os candidatos estudaram Java' é:",
   "alts": [
-   "pelo menos um candidato não estudou Java",
-   "nenhum candidato estudou Java",
-   "se um candidato estudou Java, então todos estudaram",
+   "nem todos os candidatos estudaram Java, ou seja, pelo menos um não estudou",
+   "nenhum dos candidatos estudou a linguagem Java para a prova",
+   "se um candidato estudou Java, então todos os demais também o estudaram antes",
    "todos os candidatos não estudaram Java",
-   "a maioria dos candidatos não estudou Java"
+   "a maioria dos candidatos não estudou a linguagem Java"
   ],
   "ans": 0,
   "why": "Negação de 'todo A é B' = 'existe A que não é B'. Negar universal com outro universal ('nenhum') é o erro que a banca planta como distrator principal.",
@@ -1238,11 +1238,11 @@
   "tag": "eng-software",
   "q": "Sobre DevOps, o conceito de integração contínua (CI) consiste em:",
   "alts": [
-   "integrar os servidores de produção e homologação em uma única máquina",
-   "publicar releases apenas uma vez por semestre, de forma consolidada",
+   "integrar os servidores de produção e de homologação em uma única máquina, para simplificar a operação da equipe",
+   "publicar releases uma única vez por semestre, de forma consolidada",
    "reunir a equipe diariamente para integrar conhecimentos",
-   "integrar o código dos desenvolvedores frequentemente ao repositório principal, com build e testes automatizados a cada integração",
-   "fazer deploy em produção a cada commit, sem qualquer validação"
+   "integrar o código dos desenvolvedores ao repositório principal com frequência, com build e testes automatizados",
+   "fazer deploy em produção a cada commit, sem validação alguma"
   ],
   "ans": 3,
   "why": "CI = merge frequente + build e testes automáticos a cada integração, detectando conflito cedo. Deploy automático em produção é CD (deployment contínuo), etapa seguinte.",
@@ -1276,11 +1276,11 @@
   "tag": "banco-dados",
   "q": "Em um SGBD relacional, um índice tem como principal finalidade:",
   "alts": [
-   "garantir a normalização automática das tabelas",
-   "substituir a chave primária",
-   "comprimir os dados armazenados",
-   "impedir a inserção de valores nulos",
-   "acelerar a recuperação de dados, ao custo de espaço adicional e de escritas mais lentas"
+   "garantir a normalização automática das tabelas do esquema físico",
+   "substituir a chave primária na identificação das linhas",
+   "comprimir os dados armazenados em disco pelo SGBD",
+   "impedir a inserção de valores nulos ou duplicados nas colunas indexadas da tabela",
+   "acelerar a recuperação de dados, ao custo de espaço e de escritas mais lentas"
   ],
   "ans": 4,
   "why": "Índice troca espaço e custo de escrita (precisa ser mantido a cada INSERT/UPDATE) por leitura rápida. Não normaliza nada e não substitui constraint.",
@@ -1333,11 +1333,11 @@
   "tag": "eng-software",
   "q": "No modelo de desenvolvimento incremental, o software é construído:",
   "alts": [
-   "em uma única entrega final, após todas as fases sequenciais",
+   "em uma única entrega final, depois de concluídas todas as fases sequenciais do projeto",
    "sem levantamento prévio de requisitos",
    "exclusivamente por ferramentas de geração automática de código",
    "apenas por meio de protótipos descartáveis",
-   "em versões sucessivas, cada uma agregando funcionalidades operacionais ao produto"
+   "em versões sucessivas, sempre agregando funcionalidades operacionais ao produto"
   ],
   "ans": 4,
   "why": "Incremental = entregas sucessivas, cada incremento é um subconjunto funcional utilizável. A entrega única final é a cascata.",
@@ -1352,11 +1352,11 @@
   "tag": "eng-software",
   "q": "O requisito 'o sistema deve responder a qualquer consulta em até 2 segundos' é classificado como:",
   "alts": [
-   "restrição de projeto de interface",
+   "restrição de projeto da interface com o usuário",
    "regra de negócio",
    "requisito não funcional de desempenho",
    "requisito funcional",
-   "requisito de domínio funcional"
+   "requisito de domínio da regra funcional"
   ],
   "ans": 2,
   "why": "Requisito funcional descreve O QUE o sistema faz; não funcional descreve COMO (desempenho, segurança, usabilidade). Tempo de resposta é o exemplo clássico de não funcional.",
@@ -1373,7 +1373,7 @@
   "alts": [
    "documentação extensa e detalhada antes da codificação",
    "integração contínua",
-   "desenvolvimento guiado por testes",
+   "desenvolvimento guiado por testes escritos antes do código",
    "programação em pares",
    "refatoração constante"
   ],
@@ -1410,10 +1410,10 @@
   "q": "A diferença entre a Sprint Review e a Sprint Retrospective é que a Review:",
   "alts": [
    "ocorre diariamente em 15 minutos",
-   "inspeciona o incremento do produto com os stakeholders, enquanto a Retrospective inspeciona o processo e as pessoas",
+   "inspeciona o incremento do produto junto aos stakeholders",
    "substitui a Retrospective quando o prazo está apertado",
-   "é realizada apenas pelo Scrum Master",
-   "inspeciona o processo de trabalho da equipe"
+   "é conduzida pelo Scrum Master sem a presença do time",
+   "inspeciona o processo de trabalho e as interações da equipe"
   ],
   "ans": 1,
   "why": "Review = olhar para o PRODUTO (incremento, feedback de stakeholders). Retrospective = olhar para o PROCESSO (o que melhorar no trabalho da equipe).",
@@ -1449,7 +1449,7 @@
   "alts": [
    "analisa apenas a cobertura de linhas de código",
    "conhece a estrutura interna do código e projeta casos com base nos caminhos lógicos",
-   "avalia entradas e saídas sem conhecimento da implementação interna",
+   "avalia entradas e saídas sem qualquer conhecimento da implementação interna",
    "executa exclusivamente testes unitários",
    "depende do acesso ao repositório de código-fonte"
   ],
@@ -1466,11 +1466,11 @@
   "tag": "eng-software",
   "q": "O BDD (Behavior-Driven Development) caracteriza-se por:",
   "alts": [
-   "eliminar a necessidade de testes automatizados",
-   "exigir que todos os testes sejam escritos após a entrega",
+   "eliminar a necessidade de testes automatizados, bastando a descrição textual dos comportamentos",
+   "exigir que os testes sejam escritos depois da entrega ao cliente",
    "ser incompatível com o TDD",
-   "descrever o comportamento esperado em linguagem natural estruturada, como no formato Given-When-Then, aproximando negócio e desenvolvimento",
-   "substituir o Product Owner por analistas de teste"
+   "descrever o comportamento esperado em linguagem natural estruturada, no formato Given-When-Then",
+   "substituir o Product Owner por analistas de teste na definição dos requisitos"
   ],
   "ans": 3,
   "why": "BDD = especificação por exemplos em linguagem acessível ao negócio (Gherkin: Dado-Quando-Então), que vira teste executável. É uma evolução do TDD com foco em comportamento, não incompatível com ele.",
@@ -1487,9 +1487,9 @@
   "alts": [
    "verificação pergunta 'estamos construindo certo o produto?' e validação 'estamos construindo o produto certo?'",
    "são sinônimos no vocabulário da qualidade",
-   "ambas verificam apenas a conformidade com padrões de codificação",
+   "ambas se limitam à conformidade com padrões de codificação",
    "verificação pergunta 'estamos construindo o produto certo?' e validação 'estamos construindo certo o produto?'",
-   "validação ocorre sempre antes da verificação"
+   "a validação ocorre antes da verificação, no início do projeto"
   ],
   "ans": 0,
   "why": "Verificação = conformidade com a especificação (construir certo). Validação = atender à necessidade real do usuário (produto certo). A inversão das frases é a pegadinha padrão.",
@@ -1497,7 +1497,7 @@
    "1": "Não são sinônimos — a distinção V&V existe exatamente para separar 'conforme a especificação' de 'útil ao usuário'.",
    "2": "Padrões de codificação são um item de verificação, e nem cobrem o conceito todo — a validação olha a necessidade do usuário, não o estilo do código.",
    "3": "Frases invertidas. Verificação = 'construindo certo o produto?' (conformidade com a especificação); validação = 'construindo o produto certo?' (atende à necessidade real). Distrator número um da FGV nesse tema.",
-   "4": "Ordem errada e ainda por cima absoluta: a verificação ocorre ao longo do desenvolvimento; a validação valida o produto contra a necessidade, tipicamente ao final."
+   "4": "Ordem invertida: a verificação acompanha o desenvolvimento, enquanto a validação confronta o produto com a necessidade real, tipicamente ao final."
   }
  },
  {
@@ -1505,10 +1505,10 @@
   "q": "A prototipação descartável (throwaway) tem como objetivo principal:",
   "alts": [
    "substituir a documentação de arquitetura",
-   "evoluir gradualmente até se tornar o produto final",
+   "evoluir gradualmente até se tornar o próprio produto final entregue ao cliente",
    "acelerar o deploy em produção",
    "reduzir o custo de infraestrutura",
-   "esclarecer e validar requisitos pouco compreendidos, sendo descartada após cumprir esse papel"
+   "esclarecer e validar requisitos mal compreendidos, sendo descartada depois"
   ],
   "ans": 4,
   "why": "Protótipo descartável serve para reduzir incerteza de requisitos e morre depois. O evolutivo, ao contrário, vira base do produto. Contraste cobrado com frequência.",
@@ -1526,8 +1526,8 @@
    "seja responsabilidade exclusiva do time de infraestrutura",
    "dispense análise de código",
    "substitua os testes funcionais",
-   "seja integrada desde o início do ciclo de desenvolvimento, automatizada na esteira de CI/CD (shift-left)",
-   "seja verificada apenas na homologação final, por equipe independente"
+   "seja integrada desde o início do ciclo e sempre automatizada na esteira de CI/CD (shift-left)",
+   "seja verificada apenas na homologação final, por uma equipe independente do time de desenvolvimento"
   ],
   "ans": 3,
   "why": "DevSecOps = deslocar a segurança para a esquerda do ciclo (shift-left): SAST, DAST e análise de dependências dentro do pipeline, responsabilidade compartilhada.",
@@ -1542,9 +1542,9 @@
   "tag": "eng-software",
   "q": "Sobre story points, é correto afirmar que representam:",
   "alts": [
-   "uma medida relativa de esforço e complexidade, calibrada pela própria equipe",
+   "uma medida relativa de esforço e complexidade, calibrada pela equipe",
    "o número de linhas de código estimado",
-   "a quantidade exata de horas que uma tarefa consumirá",
+   "a quantidade exata de horas que a tarefa vai consumir de cada desenvolvedor",
    "a quantidade de desenvolvedores necessária",
    "o valor financeiro da funcionalidade"
   ],
@@ -1561,11 +1561,11 @@
   "tag": "banco-dados",
   "q": "Em um banco relacional, a restrição de chave estrangeira (foreign key) garante:",
   "alts": [
-   "o incremento automático de identificadores",
-   "a integridade referencial, impedindo referências a registros inexistentes na tabela relacionada",
-   "a atomicidade das transações",
-   "a criptografia dos dados referenciados",
-   "a unicidade dos valores na coluna"
+   "o incremento automático dos identificadores gerados nas linhas da tabela filha",
+   "a integridade referencial, impedindo referências a registros inexistentes",
+   "a atomicidade das transações que alteram as duas tabelas",
+   "a criptografia dos dados referenciados na tabela pai",
+   "a unicidade dos valores armazenados na coluna referenciada da tabela"
   ],
   "ans": 1,
   "why": "FK = integridade referencial: o valor deve existir na tabela referenciada (ou ser nulo, se permitido). Unicidade é papel de PK/UNIQUE.",
@@ -1580,10 +1580,10 @@
   "tag": "banco-dados",
   "q": "Em SQL, a diferença entre as cláusulas WHERE e HAVING é que o HAVING:",
   "alts": [
-   "só aceita comparações de igualdade",
-   "filtra linhas antes do agrupamento",
-   "filtra grupos após a agregação realizada pelo GROUP BY",
-   "substitui o ORDER BY",
+   "só aceita comparações de igualdade entre colunas",
+   "filtra as linhas antes do agrupamento, exatamente como faz o WHERE",
+   "filtra grupos apenas depois da agregação feita pelo GROUP BY",
+   "substitui o ORDER BY na ordenação do resultado",
    "é obrigatório em toda consulta com JOIN"
   ],
   "ans": 2,
@@ -1600,10 +1600,10 @@
   "q": "Em SQL, a diferença entre UNION e UNION ALL é que o UNION:",
   "alts": [
    "ordena o resultado de forma decrescente por padrão",
-   "exige que as consultas tenham números diferentes de colunas",
-   "mantém todas as linhas, inclusive duplicadas",
-   "só combina consultas da mesma tabela",
-   "elimina linhas duplicadas do resultado combinado, enquanto o UNION ALL as mantém"
+   "exige que as consultas combinadas tenham números diferentes de colunas no SELECT",
+   "mantém as linhas duplicadas do resultado combinado",
+   "só combina consultas feitas sobre a mesma tabela",
+   "elimina linhas duplicadas do resultado, enquanto o UNION ALL as mantém"
   ],
   "ans": 4,
   "why": "UNION deduplica (com custo de ordenação/comparação); UNION ALL simplesmente concatena, sendo mais rápido. Número e compatibilidade de colunas devem coincidir em ambos.",
@@ -1618,11 +1618,11 @@
   "tag": "banco-dados",
   "q": "A diferença entre os comandos DELETE e DROP em SQL é que o DROP:",
   "alts": [
-   "pode ser aplicado somente a views",
-   "remove apenas as linhas, preservando a estrutura",
-   "aceita cláusula WHERE",
-   "é uma operação DML",
-   "remove a estrutura do objeto (tabela, índice) do banco, incluindo seus dados"
+   "pode ser aplicado a views, mas não a tabelas",
+   "remove as linhas armazenadas na tabela, preservando a sua estrutura original",
+   "aceita a cláusula WHERE para filtrar o que remover",
+   "é uma operação DML registrada no log de transações do banco",
+   "remove a estrutura do objeto (tabela, índice) do banco, com seus dados"
   ],
   "ans": 4,
   "why": "DELETE (DML) remove linhas; DROP (DDL) remove o objeto inteiro do catálogo. TRUNCATE fica no meio: esvazia a tabela mas preserva a estrutura.",
@@ -1656,11 +1656,11 @@
   "tag": "banco-dados",
   "q": "Na modelagem entidade-relacionamento, um relacionamento muitos-para-muitos (N:M) entre duas entidades é implementado no modelo relacional por meio de:",
   "alts": [
-   "uma trigger de sincronização",
-   "um índice composto na entidade mais volumosa",
-   "uma chave estrangeira em qualquer uma das duas tabelas",
-   "uma coluna multivalorada em ambas as tabelas",
-   "uma tabela associativa contendo as chaves das duas entidades"
+   "uma trigger de sincronização entre as duas tabelas",
+   "um índice composto na entidade de maior volume de dados",
+   "uma chave estrangeira em uma das duas tabelas envolvidas",
+   "uma coluna multivalorada em ambas as tabelas relacionadas",
+   "uma tabela associativa com as chaves das duas entidades"
   ],
   "ans": 4,
   "why": "N:M vira tabela intermediária (associativa) com FKs para as duas pontas. FK direta só resolve 1:N; coluna multivalorada viola a 1FN.",
@@ -1675,11 +1675,11 @@
   "tag": "banco-dados",
   "q": "Uma tabela viola a Primeira Forma Normal (1FN) quando:",
   "alts": [
-   "possui dependências transitivas",
-   "possui chave primária composta",
-   "não possui índices secundários",
-   "possui mais de dez colunas",
-   "possui atributos multivalorados ou grupos repetitivos, sem valores atômicos"
+   "possui dependências funcionais transitivas entre atributos",
+   "possui chave primária composta por duas ou mais colunas",
+   "não possui índices secundários sobre as colunas de busca",
+   "possui mais de dez colunas na sua definição",
+   "possui atributos multivalorados ou grupos repetitivos"
   ],
   "ans": 4,
   "why": "1FN = todo atributo atômico, sem listas nem grupos de repetição. Transitividade é assunto de 3FN; dependência parcial, de 2FN.",
@@ -1694,11 +1694,11 @@
   "tag": "banco-dados",
   "q": "Sobre a chave primária de uma tabela relacional, é correto afirmar que ela:",
   "alts": [
-   "pode se repetir quando a tabela for particionada",
-   "é dispensável em tabelas com chave estrangeira",
-   "é obrigatoriamente numérica e sequencial",
-   "deve ser única e não nula, identificando cada linha da tabela",
-   "pode conter valores nulos, desde que únicos"
+   "pode se repetir quando a tabela estiver particionada em faixas",
+   "é dispensável em tabelas que já possuem chave estrangeira",
+   "é obrigatoriamente numérica, sequencial e autoincrementada",
+   "deve ser única e não nula, identificando cada linha",
+   "pode conter valores nulos, desde que sejam únicos"
   ],
   "ans": 3,
   "why": "PK = unicidade + NOT NULL. Não precisa ser numérica nem sequencial (pode ser natural ou composta), e nulo é proibido por definição.",
@@ -1713,11 +1713,11 @@
   "tag": "banco-dados",
   "q": "Um banco de dados NoSQL do tipo chave-valor, como o Redis, é especialmente indicado para:",
   "alts": [
-   "garantia de integridade referencial entre tabelas",
-   "consultas analíticas complexas com múltiplos joins",
-   "relacionamentos densos entre entidades, como redes sociais",
-   "cache de sessões e dados de acesso ultrarrápido por chave conhecida",
-   "modelagem dimensional de data warehouse"
+   "garantia de integridade referencial entre tabelas relacionadas",
+   "consultas analíticas complexas, com múltiplos joins e agregações",
+   "relacionamentos densos entre entidades, como em redes sociais",
+   "cache de sessões e acesso ultrarrápido por chave conhecida",
+   "modelagem dimensional de um data warehouse corporativo"
   ],
   "ans": 3,
   "why": "Chave-valor = leitura/escrita O(1) por chave, ideal para cache e sessão. Não faz join nem consulta pelo interior do valor. Grafos servem para relacionamentos densos.",
@@ -1770,11 +1770,11 @@
   "tag": "java",
   "q": "Em Java, a diferença entre uma interface e uma classe abstrata é que a classe abstrata:",
   "alts": [
-   "não pode conter nenhum método implementado",
-   "é sempre final",
-   "permite herança múltipla, ao contrário da interface",
-   "não pode ser estendida por outras classes",
-   "pode ter construtores e atributos de instância, enquanto a interface não possui construtores"
+   "não pode conter nenhum método já implementado",
+   "é declarada final por definição",
+   "permite herança múltipla de implementação, ao contrário do que ocorre com a interface",
+   "não pode ser estendida por outras classes do projeto",
+   "pode ter construtores e atributos de instância, o que a interface não possui"
   ],
   "ans": 4,
   "why": "Classe abstrata: construtor, estado de instância, herança simples. Interface: sem construtor, sem estado de instância (desde o Java 8 pode ter métodos default e static), e uma classe pode implementar várias.",
@@ -1790,10 +1790,10 @@
   "q": "Em Java, a palavra-chave final aplicada a uma classe tem o efeito de:",
   "alts": [
    "impedir a instanciação da classe",
-   "marcar a classe para remoção pelo garbage collector",
+   "marcar a classe para remoção imediata pelo garbage collector",
    "impedir que a classe seja estendida por herança",
-   "forçar a implementação de todos os métodos",
-   "tornar todos os atributos constantes automaticamente"
+   "forçar a implementação dos métodos herdados",
+   "tornar os atributos constantes automaticamente"
   ],
   "ans": 2,
   "why": "final em classe = não herdável (ex.: String). Em método = não sobrescrevível. Em variável = valor único após atribuição. Impedir instanciação é papel de construtor privado ou classe abstrata.",
@@ -1808,11 +1808,11 @@
   "tag": "java",
   "q": "Em Java, sobre exceções verificadas (checked) e não verificadas (unchecked), é correto afirmar que:",
   "alts": [
-   "exceções verificadas devem ser tratadas ou declaradas na assinatura do método, como IOException",
-   "o compilador ignora as exceções verificadas",
-   "exceções não verificadas exigem cláusula throws obrigatória",
-   "RuntimeException e suas subclasses são verificadas",
-   "NullPointerException é uma exceção verificada"
+   "exceções verificadas devem ser tratadas ou declaradas na assinatura, como IOException",
+   "o compilador ignora por completo as exceções verificadas",
+   "exceções não verificadas exigem obrigatoriamente a cláusula throws na assinatura do método",
+   "RuntimeException e suas subclasses são exceções verificadas",
+   "NullPointerException é uma exceção verificada pelo compilador"
   ],
   "ans": 0,
   "why": "Checked (IOException, SQLException): o compilador exige try-catch ou throws. Unchecked (RuntimeException e filhas, como NullPointerException): não exige. A troca dos exemplos é a pegadinha.",
@@ -1847,10 +1847,10 @@
   "q": "Sobre o HashMap em Java, é correto afirmar que:",
   "alts": [
    "associa chaves únicas a valores, sem garantia de ordem de iteração",
-   "é sincronizado por padrão para uso concorrente",
+   "é sincronizado por padrão, próprio para uso concorrente entre threads",
    "não permite chave nula em nenhuma hipótese",
-   "não admite valores repetidos",
-   "mantém as chaves em ordem de inserção"
+   "não admite valores repetidos entre chaves distintas",
+   "mantém as chaves na ordem de inserção dos pares"
   ],
   "ans": 0,
   "why": "HashMap: chaves únicas, valores livres, ordem de iteração não garantida, não sincronizado (isso é o ConcurrentHashMap), e aceita uma chave nula. Ordem de inserção é o LinkedHashMap.",
@@ -1865,11 +1865,11 @@
   "tag": "java",
   "q": "No Spring, o padrão em que o framework instancia e fornece as dependências de um objeto, em vez de o próprio objeto criá-las, é chamado de:",
   "alts": [
-   "herança de contêiner",
-   "proxy reverso",
+   "herança de contêiner gerenciado",
+   "proxy reverso de dependências",
    "inversão de controle com injeção de dependência",
-   "service locator obrigatório",
-   "reflexão tardia"
+   "localizador de serviços obrigatório do contêiner",
+   "reflexão tardia de construtores"
   ],
   "ans": 2,
   "why": "IoC/DI é o coração do Spring: o contêiner cria os beans e injeta as dependências (via construtor, setter ou campo com @Autowired), invertendo o controle da criação.",
@@ -1903,11 +1903,11 @@
   "tag": "java",
   "q": "Uma característica do Spring Boot que simplifica a publicação de aplicações web é:",
   "alts": [
-   "a exigência de instalação separada de um servidor de aplicação completo",
-   "o servidor embutido (como Tomcat), que permite executar a aplicação como um JAR autônomo",
-   "a compilação para código nativo obrigatória",
-   "a proibição de arquivos de configuração",
-   "o uso exclusivo de XML para configuração"
+   "a exigência de instalar separadamente um servidor de aplicação completo antes do deploy",
+   "o servidor embutido (como Tomcat), executando a aplicação como JAR autônomo",
+   "a compilação obrigatória para código nativo antes do deploy",
+   "a proibição de arquivos externos de configuração",
+   "o uso de XML como único formato de configuração"
   ],
   "ans": 1,
   "why": "Boot embute o servlet container: java -jar app.jar e está no ar. Elimina o deploy de WAR em servidor externo. Configuração é por convenção + application.properties, não XML obrigatório.",
@@ -1922,11 +1922,11 @@
   "tag": "java",
   "q": "Sobre a classe String em Java, é correto afirmar que:",
   "alts": [
-   "é mutável, permitindo alteração direta de seus caracteres",
+   "é mutável, permitindo alterar diretamente os caracteres já armazenados",
    "é imutável, e concatenações intensivas devem preferir StringBuilder",
-   "não pode ser usada como chave de HashMap",
-   "só pode ser criada com o operador new",
-   "é um tipo primitivo"
+   "não pode ser usada como chave de um HashMap",
+   "só pode ser criada por meio do operador new",
+   "é um tipo primitivo da linguagem"
   ],
   "ans": 1,
   "why": "String é imutável: cada concatenação cria novo objeto. Em laços, StringBuilder evita a proliferação de objetos. A imutabilidade é justamente o que a torna ótima chave de mapa.",
@@ -1941,11 +1941,11 @@
   "tag": "java",
   "q": "Considere: Animal a = new Cachorro(); a.som(); onde Cachorro estende Animal e sobrescreve o método som(). O método executado será:",
   "alts": [
-   "o de Animal em tempo de compilação e o de Cachorro apenas se houver cast explícito",
-   "nenhum, pois o código não compila",
-   "ambos, em sequência",
+   "o de Animal em tempo de compilação, e o de Cachorro só depois de um cast explícito para o subtipo",
+   "nenhum deles, pois o código não compila",
+   "ambos, em sequência de chamada",
    "o da classe Cachorro, pois a ligação do método é dinâmica, baseada no objeto real",
-   "o da classe Animal, pois a referência é do tipo Animal"
+   "o da classe Animal, pois a referência declarada é do tipo Animal"
   ],
   "ans": 3,
   "why": "Polimorfismo dinâmico (late binding): o tipo da REFERÊNCIA decide o que compila; o tipo do OBJETO decide o que executa. Roda o som() de Cachorro.",
@@ -1960,11 +1960,11 @@
   "tag": "seguranca",
   "q": "A assinatura digital de um documento garante autenticidade, integridade e não repúdio porque o resumo (hash) do documento é cifrado com:",
   "alts": [
-   "a senha do usuário",
-   "o certificado da autoridade certificadora",
-   "uma chave simétrica compartilhada previamente",
-   "a chave privada do signatário, verificável por qualquer um com a chave pública correspondente",
-   "a chave pública do destinatário"
+   "a senha de acesso do usuário signatário",
+   "o certificado digital da autoridade certificadora raiz",
+   "uma chave simétrica compartilhada previamente entre o signatário e quem verifica",
+   "a chave privada do signatário, verificável com a chave pública correspondente",
+   "a chave pública do destinatário do documento"
   ],
   "ans": 3,
   "why": "Assinar = cifrar o hash com a chave PRIVADA do emissor. Qualquer um verifica com a pública. Cifrar com a pública do destinatário é confidencialidade, operação inversa. Troca clássica da banca.",
@@ -1979,11 +1979,11 @@
   "tag": "seguranca",
   "q": "Um certificado digital, no modelo de infraestrutura de chaves públicas (ICP), tem como função principal:",
   "alts": [
-   "vincular uma chave pública à identidade de seu titular, com garantia de uma Autoridade Certificadora",
-   "gerar chaves simétricas aleatórias",
-   "substituir o uso de criptografia nas comunicações",
-   "armazenar as senhas do usuário de forma cifrada",
-   "registrar logs de acesso ao sistema"
+   "vincular uma chave pública à identidade do titular, atestada por uma Autoridade Certificadora",
+   "gerar chaves simétricas aleatórias para cada sessão",
+   "substituir o uso da criptografia nas comunicações em rede",
+   "armazenar as senhas e credenciais do usuário de forma cifrada no dispositivo, sob custódia da AC",
+   "registrar os logs de acesso dos usuários ao sistema"
   ],
   "ans": 0,
   "why": "Certificado = chave pública + identidade + assinatura da AC. Resolve o problema de saber que aquela chave pública pertence mesmo àquela entidade.",
@@ -2036,11 +2036,11 @@
   "tag": "seguranca",
   "q": "A diferença entre IDS e IPS é que o IPS:",
   "alts": [
-   "substitui o firewall de borda",
-   "apenas registra os eventos suspeitos para análise posterior",
-   "atua em linha (inline) no tráfego, podendo bloquear ativamente o ataque detectado",
+   "substitui o firewall de borda da rede corporativa",
+   "apenas registra os eventos suspeitos e gera alertas para análise posterior",
+   "atua sempre em linha (inline) no tráfego, bloqueando o ataque detectado",
    "é instalado exclusivamente nas estações de trabalho",
-   "não utiliza assinaturas de ataques"
+   "não utiliza assinaturas de ataques conhecidos"
   ],
   "ans": 2,
   "why": "IDS = Detection: monitora e alerta, fora do fluxo. IPS = Prevention: fica no caminho do tráfego e bloqueia. O edital do perfil cita os dois conceitos nominalmente.",
@@ -2055,11 +2055,11 @@
   "tag": "seguranca",
   "q": "A solução que centraliza, correlaciona e analisa registros (logs) e eventos de segurança de múltiplas fontes da infraestrutura, gerando alertas de incidentes, é o:",
   "alts": [
-   "proxy reverso",
-   "WAF",
-   "DLP",
+   "servidor proxy reverso com cache de conteúdo estático",
+   "WAF (Web Application Firewall)",
+   "DLP (Data Loss Prevention)",
    "SIEM (Security Information and Event Management)",
-   "antivírus corporativo"
+   "antivírus corporativo com console central"
   ],
   "ans": 3,
   "why": "SIEM = agregação + correlação de eventos de toda a infraestrutura, base do trabalho de um SOC. WAF protege aplicações web; DLP previne vazamento de dados. SIEM está nominal no edital.",
@@ -2075,10 +2075,10 @@
   "q": "No ataque de Cross-Site Scripting (XSS), o código malicioso é executado:",
   "alts": [
    "no firewall de borda da rede",
-   "no servidor de banco de dados",
+   "no servidor de banco de dados, durante o processamento da consulta",
    "no serviço de DNS",
    "apenas em aplicações desktop",
-   "no navegador da vítima, injetado em página que ela visualiza"
+   "no navegador da vítima, em qualquer página que ela visualize"
   ],
   "ans": 4,
   "why": "XSS = script injetado em conteúdo web e executado no NAVEGADOR do usuário (roubo de sessão, redirecionamento). SQL injection, em contraste, executa no banco. Par de vulnerabilidades mais confundido.",
@@ -2094,10 +2094,10 @@
   "q": "O princípio do menor privilégio estabelece que:",
   "alts": [
    "os privilégios devem ser concedidos por ordem de chegada",
-   "cada usuário ou processo deve ter apenas as permissões estritamente necessárias às suas funções",
+   "cada usuário ou processo deve ter apenas as permissões estritamente necessárias",
    "as senhas devem ter o menor tamanho possível",
    "o acesso deve ser liberado por padrão e restringido sob demanda",
-   "todos os usuários devem ter acesso de administrador para agilizar o trabalho"
+   "todos os usuários devem ter acesso de administrador para agilizar o trabalho da equipe"
   ],
   "ans": 1,
   "why": "Menor privilégio limita o estrago de contas comprometidas e erros: só o necessário, pelo tempo necessário. Base de controle de acesso cobrada de forma direta.",
@@ -2150,11 +2150,11 @@
   "tag": "redes",
   "q": "O NAT (Network Address Translation) tem como função principal:",
   "alts": [
-   "traduzir endereços IP privados em públicos, permitindo que redes internas acessem a internet",
-   "criptografar o tráfego entre redes",
-   "atribuir endereços IP automaticamente aos hosts",
-   "segmentar a rede em domínios de broadcast",
-   "resolver nomes de domínio em endereços IP"
+   "traduzir endereços IP privados em públicos, dando acesso à internet",
+   "criptografar o tráfego trocado entre redes distintas",
+   "atribuir automaticamente endereços IP aos hosts da rede local interna",
+   "segmentar a rede em domínios de broadcast separados",
+   "resolver nomes de domínio em endereços IP numéricos"
   ],
   "ans": 0,
   "why": "NAT traduz privado↔público na borda, economizando IPv4 e ocultando a topologia interna. Atribuição automática é DHCP; resolução de nomes é DNS; segmentação é VLAN.",
@@ -2188,10 +2188,10 @@
   "tag": "redes",
   "q": "A diferença entre um switch e um hub é que o switch:",
   "alts": [
-   "opera na camada de rede, roteando pacotes IP",
-   "repete o sinal recebido para todas as portas indistintamente",
+   "opera na camada de rede, roteando os pacotes IP entre sub-redes distintas",
+   "repete o sinal recebido para todas as portas, indistintamente, o que acaba gerando colisões",
    "encaminha quadros apenas à porta do destinatário, com base na tabela de endereços MAC",
-   "elimina a necessidade de cabeamento",
+   "elimina a necessidade de cabeamento estruturado",
    "funciona apenas em redes sem fio"
   ],
   "ans": 2,
@@ -2226,11 +2226,11 @@
   "tag": "redes",
   "q": "O SSH substitui o Telnet na administração remota principalmente porque:",
   "alts": [
-   "funciona sem autenticação de usuário",
-   "transmite as credenciais em texto claro para auditoria",
-   "opera na camada física",
+   "funciona sem exigir autenticação prévia do usuário administrador",
+   "transmite as credenciais em texto claro, permitindo a auditoria da sessão",
+   "opera diretamente na camada física",
    "cifra toda a comunicação, incluindo a autenticação, na porta padrão 22",
-   "é mais rápido por não usar criptografia"
+   "é mais rápido que o Telnet por não usar criptografia"
   ],
   "ans": 3,
   "why": "Telnet trafega tudo em claro, inclusive senha; SSH cifra a sessão inteira (porta 22). É o exemplo canônico de protocolo inseguro substituído por seguro.",
@@ -2245,11 +2245,11 @@
   "tag": "redes",
   "q": "Um firewall stateful diferencia-se do filtro de pacotes simples (stateless) porque:",
   "alts": [
-   "atua exclusivamente na camada de aplicação",
-   "bloqueia somente tráfego de saída",
-   "dispensa regras de filtragem",
-   "analisa apenas os cabeçalhos de cada pacote isoladamente",
-   "mantém tabela de estado das conexões, avaliando cada pacote no contexto da sessão a que pertence"
+   "atua exclusivamente na camada de aplicação do modelo OSI, e não na de rede",
+   "bloqueia somente o tráfego de saída da rede interna",
+   "dispensa a definição de regras de filtragem",
+   "analisa apenas os cabeçalhos de cada pacote isoladamente, sem o contexto da sessão",
+   "mantém tabela de estado das conexões, avaliando todo pacote no contexto da sessão"
   ],
   "ans": 4,
   "why": "Stateful rastreia conexões (ex.: só aceita resposta de fora se houve requisição de dentro). Stateless olha pacote a pacote, sem contexto. Camada de aplicação é o firewall de próxima geração/WAF.",
@@ -2283,11 +2283,11 @@
   "tag": "programacao",
   "q": "O padrão Strategy é indicado quando se deseja:",
   "alts": [
-   "definir uma família de algoritmos intercambiáveis, encapsulados e selecionáveis em tempo de execução",
-   "simplificar a interface de um subsistema complexo",
-   "adicionar responsabilidades a um objeto dinamicamente",
-   "garantir instância única de uma classe",
-   "clonar objetos existentes"
+   "definir uma família de algoritmos intercambiáveis, selecionáveis em tempo de execução",
+   "simplificar a interface de acesso a um subsistema complexo",
+   "adicionar responsabilidades a um objeto dinamicamente, em tempo de execução, sem herança",
+   "garantir a existência de uma instância única de uma classe",
+   "clonar objetos já existentes sem conhecer sua classe concreta"
   ],
   "ans": 0,
   "why": "Strategy encapsula algoritmos permutáveis atrás de uma interface (ex.: cálculo de frete por transportadora). Adicionar responsabilidade dinamicamente é Decorator; clonar é Prototype.",
@@ -2302,10 +2302,10 @@
   "tag": "programacao",
   "q": "O padrão Factory Method propõe:",
   "alts": [
-   "que objetos sejam sempre reutilizados de um pool",
-   "a criação de objetos apenas por reflexão",
-   "que todos os objetos sejam criados no método main",
-   "que a criação de objetos seja delegada a subclasses, que decidem qual classe concreta instanciar",
+   "que todos os objetos sejam sempre reutilizados a partir de um pool de instâncias previamente alocado",
+   "a criação de objetos apenas por reflexão em tempo de execução",
+   "que todos os objetos do sistema sejam criados no método main",
+   "que a criação de objetos seja sempre delegada às subclasses, que escolhem a classe concreta",
    "a proibição de construtores públicos em todo o sistema"
   ],
   "ans": 3,
@@ -2321,11 +2321,11 @@
   "tag": "programacao",
   "q": "O princípio da Inversão de Dependência (DIP), do SOLID, estabelece que:",
   "alts": [
-   "interfaces devem ser evitadas para reduzir complexidade",
-   "classes de baixo nível devem conhecer os detalhes das de alto nível",
-   "toda dependência deve ser instanciada com new dentro da própria classe",
-   "a herança deve substituir a composição sempre que possível",
-   "módulos de alto e baixo nível devem depender de abstrações, e não de implementações concretas"
+   "as interfaces devem ser evitadas, para reduzir a complexidade do projeto",
+   "as classes de baixo nível devem conhecer os detalhes internos das classes de alto nível",
+   "cada dependência deve ser instanciada com new dentro da própria classe que a utiliza",
+   "a herança deve substituir a composição quando isso for possível",
+   "módulos de alto e de baixo nível devem depender de abstrações, e não de implementações"
   ],
   "ans": 4,
   "why": "DIP: dependa de abstrações (interfaces), não de concretos. É o princípio que a injeção de dependência do Spring materializa na prática.",
@@ -2340,11 +2340,11 @@
   "tag": "programacao",
   "q": "O princípio da Substituição de Liskov (LSP) é violado quando:",
   "alts": [
-   "um método é sobrecarregado com parâmetros diferentes",
-   "uma classe possui mais de um construtor",
-   "uma subclasse pode ser usada onde a superclasse é esperada, sem alterar a correção do programa",
-   "duas classes implementam a mesma interface",
-   "uma subclasse altera o comportamento esperado do contrato da superclasse, quebrando o código cliente que a utiliza"
+   "um método é sobrecarregado com uma lista de parâmetros diferente",
+   "uma classe possui mais de um construtor sobrecarregado",
+   "uma subclasse pode ser usada onde a superclasse é esperada, sem alterar a correção do programa executado",
+   "duas classes distintas implementam a mesma interface",
+   "uma subclasse altera o comportamento esperado do contrato da superclasse, quebrando o cliente"
   ],
   "ans": 4,
   "why": "LSP: subtipo deve honrar o contrato do supertipo. O exemplo clássico da violação é Quadrado herdando de Retângulo e quebrando setLargura/setAltura.",
@@ -2378,10 +2378,10 @@
   "tag": "programacao",
   "q": "Comparando XML e JSON como formatos de intercâmbio de dados, o XML se distingue por:",
   "alts": [
-   "não permitir hierarquia de elementos",
-   "dispensar marcação de fechamento",
-   "ser interpretado nativamente como objeto JavaScript",
-   "suportar validação formal de estrutura por esquemas como XSD, além de atributos e namespaces",
+   "não permitir hierarquia entre os elementos",
+   "dispensar a marcação de fechamento das tags",
+   "ser interpretado nativamente como um objeto pelo JavaScript executado dentro do navegador",
+   "suportar validação formal de toda a estrutura por esquemas como XSD, além de atributos",
    "ser sempre mais compacto que o JSON"
   ],
   "ans": 3,
@@ -2437,7 +2437,7 @@
   "alts": [
    "o backup foi concluído E o sistema não está no ar",
    "o sistema não está no ar OU o backup não foi concluído",
-   "o sistema não está no ar E o backup não foi concluído",
+   "o sistema não está no ar E o backup também não foi concluído",
    "se o sistema está no ar, o backup foi concluído",
    "o sistema está no ar OU o backup foi concluído"
   ],
@@ -2570,9 +2570,9 @@
   "alts": [
    "o consentimento é a única base legal admitida",
    "a execução de políticas públicas não constitui base legal",
-   "o legítimo interesse dispensa qualquer avaliação ou salvaguarda",
-   "o consentimento é uma entre as dez bases legais previstas, ao lado de hipóteses como cumprimento de obrigação legal, execução de contrato e legítimo interesse",
-   "dados sensíveis não podem ser tratados em nenhuma hipótese"
+   "o legítimo interesse dispensa avaliação de impacto e salvaguardas",
+   "o consentimento é uma entre as dez bases legais, ao lado de obrigação legal, execução de contrato e legítimo interesse",
+   "dados pessoais sensíveis não podem ser tratados em nenhuma hipótese, ainda que haja consentimento específico e destacado do titular"
   ],
   "ans": 3,
   "why": "Art. 7º traz dez bases; consentimento é só uma delas. A ideia de que 'sem consentimento não pode tratar' é o mito que a banca explora.",
@@ -2588,10 +2588,10 @@
   "q": "O órgão da administração pública federal responsável por zelar, implementar e fiscalizar o cumprimento da LGPD é:",
   "alts": [
    "a ANPD (Autoridade Nacional de Proteção de Dados)",
-   "o CGI.br",
-   "o Ministério Público Federal",
-   "a Polícia Federal",
-   "o CADE"
+   "o CGI.br (Comitê Gestor da Internet no Brasil)",
+   "o Ministério Público Federal (MPF)",
+   "a Polícia Federal (PF)",
+   "o CADE (Conselho Administrativo de Defesa Econômica)"
   ],
   "ans": 0,
   "why": "ANPD (Lei 13.709/2018, art. 55-J): orgao da administracao publica federal com atuacao normativa, fiscalizatoria e sancionadora da LGPD. E a autoridade competente para zelar, implementar e fiscalizar a lei em todo o territorio nacional.",
@@ -2606,11 +2606,11 @@
   "tag": "legislacao",
   "q": "Entre os direitos do titular de dados pessoais garantidos pela LGPD estão:",
   "alts": [
-   "confirmação do tratamento, acesso, correção, anonimização, portabilidade e eliminação dos dados",
-   "exclusão de dados tratados por obrigação legal, sem exceção",
-   "somente a revogação do consentimento",
-   "indenização automática por qualquer tratamento",
-   "apenas o direito de ser informado sobre vazamentos"
+   "confirmação da existência de tratamento, acesso, correção, anonimização, portabilidade e eliminação, a qualquer tempo",
+   "exclusão imediata de dados tratados por obrigação legal do controlador, sem qualquer exceção prevista em lei ou regulamento",
+   "somente a revogação do consentimento a qualquer tempo",
+   "indenização automática por qualquer tratamento de dados realizado",
+   "apenas o direito de ser informado sobre vazamentos de dados"
   ],
   "ans": 0,
   "why": "Art. 18 lista o cardápio: confirmação, acesso, correção, anonimização/bloqueio/eliminação, portabilidade, informação sobre compartilhamento e revogação do consentimento.",
@@ -2644,11 +2644,11 @@
   "tag": "legislacao",
   "q": "O princípio da neutralidade de rede, previsto no Marco Civil da Internet, determina que o responsável pela transmissão deve:",
   "alts": [
-   "bloquear aplicações concorrentes",
-   "tratar de forma isonômica quaisquer pacotes de dados, sem distinção por conteúdo, origem, destino ou aplicação",
-   "monitorar o conteúdo dos pacotes para fins comerciais",
+   "bloquear as aplicações de empresas concorrentes",
+   "tratar de forma isonômica quaisquer pacotes de dados, sem distinção por conteúdo, origem ou destino",
+   "monitorar o conteúdo dos pacotes trafegados para fins comerciais",
    "priorizar o tráfego de clientes que paguem mais",
-   "reduzir a velocidade de serviços de vídeo em horários de pico"
+   "reduzir a velocidade dos serviços de vídeo em horários de pico, para aliviar a carga total da rede de acesso"
   ],
   "ans": 1,
   "why": "Art. 9º: isonomia no tratamento dos pacotes. Discriminação só nas exceções técnicas regulamentadas (requisitos técnicos indispensáveis e priorização de emergência).",
@@ -2663,11 +2663,11 @@
   "tag": "legislacao",
   "q": "Quanto à guarda obrigatória de registros prevista no Marco Civil da Internet, os prazos são:",
   "alts": [
-   "a lei não fixa prazos, deixando a critério do provedor",
+   "a lei não fixa prazos, deixando-os a critério do provedor",
    "6 meses para registros de conexão e 1 ano para registros de acesso a aplicações",
-   "5 anos para ambos",
+   "5 anos para ambos os tipos de registro",
    "1 ano para registros de conexão e 6 meses para registros de acesso a aplicações",
-   "30 dias para ambos"
+   "30 dias para ambos os tipos de registro"
   ],
   "ans": 3,
   "why": "Conexão (provedor de conexão): 1 ano, art. 13. Acesso a aplicações (provedor de aplicação): 6 meses, art. 15. A inversão dos prazos é o distrator número um.",
@@ -2682,11 +2682,11 @@
   "tag": "bi",
   "q": "A diferença entre sistemas OLTP e OLAP é que o OLTP:",
   "alts": [
-   "é voltado à análise histórica multidimensional",
+   "é voltado à análise histórica multidimensional, com consultas agregadas sobre grandes volumes",
    "não utiliza bancos de dados relacionais",
-   "armazena exclusivamente dados agregados",
-   "é sempre mais lento que o OLAP",
-   "processa transações operacionais do dia a dia, com muitas escritas curtas, enquanto o OLAP serve à análise com consultas complexas de leitura"
+   "armazena dados agregados e pré-consolidados para relatórios",
+   "foi projetado para consultas analíticas complexas e demoradas",
+   "processa as transações operacionais do dia a dia, com escritas curtas e concorrentes"
   ],
   "ans": 4,
   "why": "OLTP = operação (INSERT/UPDATE curtos, normalizado). OLAP = análise (leituras pesadas, agregações, dimensional). O DW existe para tirar a carga analítica do transacional.",
@@ -2694,17 +2694,17 @@
    "0": "Análise histórica multidimensional é o OLAP. A alternativa atribui ao OLTP a característica do outro — inversão que a FGV repete à exaustão.",
    "1": "OLTP é tipicamente relacional e normalizado (é o caso de uso original do relacional). Afirmação falsa.",
    "2": "Armazenar dados agregados é típico do ambiente analítico/DW. O OLTP guarda o dado no nível mais detalhado da operação.",
-   "3": "Ao contrário: o OLTP é otimizado para transações curtas e rápidas. Consultas OLAP é que costumam ser pesadas e demoradas. Note o 'sempre'."
+   "3": "Consultas analíticas complexas e demoradas são o perfil do OLAP; atribuí-las ao OLTP inverte os papéis. O OLTP é otimizado para transações curtas e rápidas."
   }
  },
  {
   "tag": "bi",
   "q": "Na modelagem dimensional, a tabela fato contém:",
   "alts": [
-   "a hierarquia geográfica das filiais",
-   "apenas os metadados do ETL",
-   "as descrições textuais de clientes e produtos",
-   "os logs de auditoria do sistema",
+   "a hierarquia geográfica das filiais e regiões",
+   "os metadados e o dicionário do processo de ETL",
+   "as descrições textuais de clientes, produtos e demais dimensões descritivas do negócio",
+   "os logs de auditoria e rastreabilidade do sistema",
    "as métricas numéricas do negócio (medidas) e as chaves para as dimensões"
   ],
   "ans": 4,
@@ -2720,11 +2720,11 @@
   "tag": "bi",
   "q": "Um data mart diferencia-se do data warehouse por ser:",
   "alts": [
-   "um subconjunto do DW orientado a um departamento ou assunto específico, como vendas ou RH",
-   "incompatível com ferramentas OLAP",
+   "um subconjunto do DW orientado a um departamento ou assunto, como vendas ou RH",
+   "totalmente incompatível com ferramentas OLAP e de business intelligence corporativas",
    "um repositório de dados brutos sem tratamento",
    "obrigatoriamente maior que o data warehouse",
-   "um sinônimo de data lake"
+   "um outro nome comercial para o data lake mantido pela organização"
   ],
   "ans": 0,
   "why": "Data mart = recorte departamental do DW (ou construído de forma independente, na visão Kimball). Menor escopo, mesmo propósito analítico. Dado bruto sem tratamento é o lake.",
@@ -2740,10 +2740,10 @@
   "q": "Data mining é definido como o processo de:",
   "alts": [
    "descobrir padrões, correlações e conhecimento não trivial em grandes volumes de dados",
-   "cadastrar metadados de governança",
-   "carregar dados das fontes para o data warehouse",
+   "cadastrar e versionar os metadados de governança",
+   "carregar e consolidar os dados das diversas fontes de origem no data warehouse corporativo",
    "criar cópias de segurança dos bancos analíticos",
-   "normalizar tabelas relacionais"
+   "normalizar as tabelas relacionais até a 3FN"
   ],
   "ans": 0,
   "why": "Mineração = extração de padrões ocultos e acionáveis (associação, classificação, agrupamento). Carga é o L do ETL; mining vem depois, sobre o dado já consolidado.",
@@ -2759,10 +2759,10 @@
   "q": "Segundo a definição clássica de Inmon, um data warehouse é uma coleção de dados:",
   "alts": [
    "orientada por assunto, integrada, não volátil e variável no tempo",
-   "operacional, transacional e normalizada",
-   "criptografada, distribuída e anônima",
-   "desnormalizada, temporária e departamental",
-   "orientada a aplicações, volátil e em tempo real"
+   "operacional, transacional, normalizada e volátil",
+   "criptografada, distribuída, anônima e efêmera",
+   "desnormalizada, temporária, departamental e replicada",
+   "orientada a aplicações, volátil, em tempo real e atualizada sob demanda"
   ],
   "ans": 0,
   "why": "As quatro marcas de Inmon: subject-oriented, integrated, non-volatile, time-variant. Cai literal com frequência; memorize o quarteto.",
@@ -2777,10 +2777,10 @@
   "tag": "bi",
   "q": "A abordagem ELT, em contraste com o ETL tradicional, caracteriza-se por:",
   "alts": [
-   "eliminar a etapa de extração",
-   "exigir ferramentas exclusivamente on-premise",
+   "eliminar por completo a etapa de extração dos dados",
+   "exigir um ambiente de processamento on-premise dedicado, incompatível com a nuvem",
    "transformar os dados duas vezes",
-   "carregar os dados brutos no destino e realizar a transformação lá dentro, aproveitando o poder de processamento do repositório",
+   "carregar os dados brutos primeiro e transformá-los dentro do próprio repositório",
    "ser incompatível com data lakes"
   ],
   "ans": 3,
@@ -2796,11 +2796,11 @@
   "tag": "arquitetura",
   "q": "Em microsserviços, o padrão circuit breaker tem como objetivo:",
   "alts": [
-   "balancear a carga entre instâncias saudáveis",
-   "interromper temporariamente chamadas a um serviço que está falhando, evitando falhas em cascata e permitindo sua recuperação",
-   "registrar os serviços em um catálogo central",
+   "distribuir a carga entre as instâncias saudáveis do serviço, conforme verificações de saúde",
+   "interromper temporariamente as chamadas a um serviço que falha, evitando falhas em cascata",
+   "registrar e localizar os serviços em um catálogo central de descoberta",
    "versionar as APIs públicas",
-   "cifrar a comunicação entre os serviços"
+   "cifrar a comunicação entre os serviços com TLS mútuo"
   ],
   "ans": 1,
   "why": "Circuit breaker 'abre o circuito' após falhas seguidas: para de chamar o serviço doente, responde rápido com fallback e tenta de novo depois. Resiliência contra cascata.",
@@ -2815,11 +2815,11 @@
   "tag": "arquitetura",
   "q": "O uso de mensageria assíncrona (filas e tópicos) entre serviços proporciona principalmente:",
   "alts": [
-   "consistência forte imediata entre os serviços",
-   "desacoplamento entre produtor e consumidor, que não precisam estar disponíveis simultaneamente",
+   "consistência forte e imediata entre os serviços envolvidos",
+   "desacoplamento entre produtor e consumidor, dispensando disponibilidade simultânea",
    "respostas síncronas mais rápidas",
-   "acoplamento temporal forte entre produtor e consumidor",
-   "eliminação da necessidade de serialização de dados"
+   "acoplamento temporal forte entre produtor e consumidor, que passam a operar em conjunto",
+   "eliminação da necessidade de serialização dos dados trafegados"
   ],
   "ans": 1,
   "why": "Fila = desacoplamento temporal e de carga: o produtor publica e segue a vida; o consumidor processa no seu ritmo. O preço é a consistência eventual, não imediata.",
@@ -2834,10 +2834,10 @@
   "tag": "arquitetura",
   "q": "A diferença entre containers e máquinas virtuais é que os containers:",
   "alts": [
-   "compartilham o kernel do sistema operacional hospedeiro, isolando apenas processos e dependências, o que os torna mais leves",
-   "virtualizam o hardware completo, incluindo um sistema operacional próprio por instância",
-   "exigem hipervisor tipo 1 dedicado",
-   "são mais lentos para iniciar que as VMs",
+   "compartilham o kernel do sistema operacional hospedeiro, isolando apenas processos e dependências",
+   "virtualizam o hardware completo, com um sistema operacional convidado próprio para cada instância",
+   "exigem um hipervisor tipo 1 dedicado sobre o hardware",
+   "são mais lentos para iniciar do que as máquinas virtuais",
    "não podem ser orquestrados em cluster"
   ],
   "ans": 0,
@@ -2853,7 +2853,7 @@
   "tag": "arquitetura",
   "q": "A escalabilidade horizontal de uma aplicação consiste em:",
   "alts": [
-   "aumentar CPU e memória do servidor existente",
+   "aumentar a capacidade de CPU e memória do servidor já existente",
    "adicionar mais instâncias ou máquinas para dividir a carga",
    "migrar o banco para o mesmo servidor da aplicação",
    "reduzir o número de usuários simultâneos",
@@ -2875,8 +2875,8 @@
    "garante desacoplamento temporal completo",
    "é sempre a escolha correta para eventos de domínio",
    "não utiliza o protocolo HTTP",
-   "dispensa que o serviço chamado esteja disponível no momento da requisição",
-   "exige disponibilidade simultânea de chamador e chamado, com o cliente aguardando a resposta"
+   "dispensa que o serviço chamado esteja disponível no momento da requisição, bastando reenviá-la depois",
+   "exige chamador e chamado disponíveis ao mesmo tempo, com o cliente sempre aguardando a resposta"
   ],
   "ans": 4,
   "why": "Síncrono = requisição-resposta em tempo real, os dois vivos ao mesmo tempo; a indisponibilidade propaga. Assíncrono tolera indisponibilidade momentânea via fila.",
@@ -2893,9 +2893,9 @@
   "alts": [
    "é sinônimo de mudança emergencial",
    "é sempre resolvido pelo usuário final",
-   "é qualquer interrupção não planejada de um serviço",
+   "é qualquer interrupção não planejada de um serviço de TI já em produção",
    "tem prioridade menor que requisição de serviço",
-   "é a causa raiz, real ou potencial, de um ou mais incidentes"
+   "é sempre a causa raiz, real ou potencial, de um ou mais incidentes"
   ],
   "ans": 4,
   "why": "Incidente = interrupção/degradação a restaurar rápido. Problema = a causa por trás, investigada para eliminar recorrência. Distinção mais cobrada de ITIL em qualquer banca.",
@@ -2910,11 +2910,11 @@
   "tag": "governanca",
   "q": "As quatro dimensões do gerenciamento de serviços no ITIL v4 são:",
   "alts": [
-   "governança, gestão, auditoria e conformidade",
-   "estratégia, desenho, transição e operação",
-   "planejar, fazer, checar e agir",
+   "governança corporativa; gestão de serviços; auditoria interna; e conformidade regulatória",
+   "estratégia de serviço; desenho de serviço; transição de serviço; e operação de serviço",
+   "planejar; fazer; checar; e agir (ciclo PDCA)",
    "organizações e pessoas; informação e tecnologia; parceiros e fornecedores; fluxos de valor e processos",
-   "demanda, capacidade, disponibilidade e continuidade"
+   "gestão de demanda; gestão de capacidade; gestão de disponibilidade; e gestão de continuidade do serviço"
   ],
   "ans": 3,
   "why": "As 4 dimensões do v4. 'Estratégia, desenho, transição e operação' são os estágios do ciclo de vida do ITIL v3 — distrator perfeito para quem estudou a versão antiga.",
@@ -2930,7 +2930,7 @@
   "q": "No Kanban, a métrica lead time mede:",
   "alts": [
    "o número de defeitos por entrega",
-   "o tempo entre o início efetivo do trabalho e sua conclusão",
+   "o tempo decorrido entre o início efetivo do trabalho no item e a sua conclusão pela equipe",
    "a quantidade de itens em progresso",
    "a velocidade da equipe em story points",
    "o tempo total entre a solicitação (entrada no sistema) e a entrega ao cliente"
@@ -2948,10 +2948,10 @@
   "tag": "governanca",
   "q": "A tripla restrição clássica do gerenciamento de projetos é composta por:",
   "alts": [
-   "pessoas, processos e tecnologia",
+   "pessoas, processos e tecnologia da organização",
    "escopo, tempo e custo, com impacto direto na qualidade",
    "estratégia, tática e operação",
-   "risco, comunicação e aquisições",
+   "gerenciamento de riscos, de comunicações e de aquisições do projeto",
    "início, meio e fim"
   ],
   "ans": 1,
@@ -2967,10 +2967,10 @@
   "tag": "governanca",
   "q": "Na notação BPMN, os eventos de início e de fim de um processo são representados, respectivamente, por:",
   "alts": [
-   "seta simples e seta dupla",
+   "seta simples e seta dupla preenchida",
    "retângulo e losango",
-   "losango e círculo duplo",
-   "retângulo arredondado e hexágono",
+   "losango vazado e círculo de linha dupla",
+   "retângulo de cantos arredondados e hexágono duplo",
    "círculo de linha fina e círculo de linha grossa"
   ],
   "ans": 4,
@@ -3006,10 +3006,10 @@
   "q": "A técnica AJAX permite que uma página web:",
   "alts": [
    "funcione sem JavaScript habilitado",
-   "faça requisições assíncronas ao servidor e atualize partes da página sem recarregá-la",
+   "faça requisições assíncronas ao servidor e atualize partes da página",
    "dispense o uso do protocolo HTTP",
    "execute código do servidor no navegador",
-   "seja recarregada integralmente a cada requisição"
+   "seja recarregada integralmente a cada nova requisição enviada ao servidor"
   ],
   "ans": 1,
   "why": "AJAX = requisição assíncrona em segundo plano (XMLHttpRequest/fetch) + atualização parcial do DOM. É a fundação técnica que viabilizou as SPAs. Está nominal no edital.",
@@ -3043,11 +3043,11 @@
   "tag": "frontend",
   "q": "Comparado ao React, o Angular caracteriza-se por:",
   "alts": [
-   "ser um framework completo e opinativo, escrito em TypeScript, com injeção de dependência e two-way data binding nativos",
-   "não suportar componentização",
-   "ser apenas uma biblioteca de visualização, sem opinião sobre o restante da aplicação",
-   "dispensar o uso de módulos e serviços",
-   "ser mantido pela Meta"
+   "ser um framework completo e opinativo, sempre escrito em TypeScript, com injeção de dependência",
+   "não suportar a construção de interfaces por componentes",
+   "ser apenas uma biblioteca de visualização, sem opinião sobre o restante da arquitetura da aplicação",
+   "dispensar o uso de módulos, serviços e roteamento próprio",
+   "ser mantido pela Meta, mesma empresa responsável pelo React"
   ],
   "ans": 0,
   "why": "Angular (Google) = framework completo: DI, roteador, formulários, two-way binding, TypeScript por padrão. React (Meta) = biblioteca de UI, o resto vem do ecossistema. Os três (com Vue) estão no edital.",
@@ -3063,10 +3063,10 @@
   "q": "Plataformas low-code caracterizam-se por:",
   "alts": [
    "gerar exclusivamente aplicações desktop",
-   "serem restritas a protótipos não funcionais",
-   "permitir o desenvolvimento de aplicações por modelagem visual e configuração, com o mínimo de código manual",
-   "exigir domínio avançado de linguagens compiladas",
-   "eliminar por completo a participação de desenvolvedores profissionais"
+   "serem restritas à construção de protótipos não funcionais",
+   "permitir o desenvolvimento de aplicações por modelagem visual e configuração, com apenas o mínimo de código manual",
+   "exigir domínio avançado de linguagens compiladas e de algoritmos",
+   "eliminar por completo a necessidade de desenvolvedores profissionais em qualquer etapa do ciclo de desenvolvimento"
   ],
   "ans": 2,
   "why": "Low-code = arrastar-soltar + configuração + pouco código para casos específicos. No-code elimina o código de vez, voltado ao usuário de negócio. Ambos nominais no edital do perfil 3.",
@@ -3100,11 +3100,11 @@
   "tag": "orfaos",
   "q": "No aprendizado de máquina, a diferença entre aprendizado supervisionado e não supervisionado é que o supervisionado:",
   "alts": [
-   "não pode ser avaliado por métricas",
+   "não pode ser avaliado por métricas objetivas de desempenho preditivo do modelo treinado",
    "dispensa dados de treinamento",
-   "funciona apenas com imagens",
-   "agrupa dados sem qualquer referência prévia",
-   "utiliza dados rotulados, com a resposta correta conhecida, para aprender a prever novos casos"
+   "funciona só com dados de imagem",
+   "agrupa os dados sem referência prévia de rótulos ou de respostas corretas",
+   "utiliza dados rotulados, com a resposta correta conhecida, para prever novos casos"
   ],
   "ans": 4,
   "why": "Supervisionado = dado rotulado (classificação, regressão). Não supervisionado = sem rótulo, descobre estrutura (clustering, associação). Conceitos de IA estão no módulo geral E no específico.",
@@ -3119,10 +3119,10 @@
   "tag": "orfaos",
   "q": "Em transações distribuídas, o protocolo two-phase commit (2PC) funciona por meio de:",
   "alts": [
-   "um coordenador que primeiro consulta se todos os participantes podem confirmar (prepare) e, só com unanimidade, ordena o commit",
+   "um coordenador que consulta se todos os participantes podem confirmar (prepare) e, só com unanimidade, ordena o commit",
    "rollback automático a cada cinco minutos",
-   "execução paralela sem coordenação entre os participantes",
-   "confirmação individual e independente de cada participante",
+   "execução paralela sem coordenação entre os participantes da transação distribuída",
+   "confirmação individual e independente de cada participante, sem qualquer etapa prévia de consulta feita pelo coordenador",
    "votação por maioria simples entre os nós"
   ],
   "ans": 0,
@@ -3328,11 +3328,11 @@
   "tag": "arquitetura",
   "q": "Uma equipe quer estruturar uma aplicação web separando os dados e regras de negócio, a apresentação exibida ao usuário e a lógica que recebe as entradas e coordena as atualizações entre ambos, em três responsabilidades distintas. Qual padrão arquitetural descreve essa separação?",
   "alts": [
-   "Repository",
+   "Repository (Repositório de Dados)",
    "MVC (Model-View-Controller)",
-   "Facade",
-   "Camadas em Cebola (Onion)",
-   "Publish-Subscribe"
+   "Facade (Fachada)",
+   "Onion Architecture (camadas em cebola)",
+   "Publish-Subscribe (publicação-assinatura)"
   ],
   "ans": 1,
   "why": "O MVC separa a aplicação em Model (dados e regras de negócio), View (apresentação) e Controller (recebe entradas e coordena Model e View), organizando responsabilidades e favorecendo a manutenção.",
@@ -3367,8 +3367,8 @@
   "q": "Na UML 2.x, os diagramas são organizados em duas grandes famílias: estruturais e comportamentais. Assinale a alternativa que classifica CORRETAMENTE os diagramas indicados.",
   "alts": [
    "O diagrama de classes é comportamental, pois modela as operações dos objetos.",
-   "O diagrama de sequência é estrutural, pois mostra a estrutura de troca de mensagens.",
-   "Todos os diagramas de interação (sequência, comunicação) são estruturais.",
+   "O diagrama de sequência é estrutural, pois mostra a estrutura da troca de mensagens entre objetos.",
+   "Os diagramas de interação (sequência, comunicação) são estruturais.",
    "O diagrama de classes é estrutural e o diagrama de máquina de estados é comportamental.",
    "O diagrama de componentes é comportamental e o de atividades é estrutural."
   ],
@@ -3387,8 +3387,8 @@
   "alts": [
    "Composição em ambos os casos, pois há relação todo-parte nas duas.",
    "Herança entre Universidade e Departamento, e associação simples entre Time e Jogador.",
-   "Composição (losango preenchido) entre Universidade e Departamento, e agregação (losango vazado) entre Time e Jogador.",
-   "Agregação (losango vazado) entre Universidade e Departamento, e composição (losango preenchido) entre Time e Jogador.",
+   "Composição (losango preenchido) entre Universidade e Departamento, e agregação (losango vazado) entre Time e Jogador, ambas relações todo-parte.",
+   "Agregação (losango vazado) entre Universidade e Departamento, e composição (losango preenchido) entre Time e Jogador, ambas relações todo-parte.",
    "Associação simples em ambos os casos, pois a UML não distingue níveis de posse."
   ],
   "ans": 2,
@@ -3423,11 +3423,11 @@
   "tag": "eng-software",
   "q": "Sobre os relacionamentos <<include>> e <<extend>> em diagramas de casos de uso da UML, assinale a alternativa CORRETA.",
   "alts": [
-   "Ambos representam herança entre atores.",
-   "<<include>> representa comportamento obrigatório e reutilizado, sempre executado pelo caso de uso base; <<extend>> representa comportamento opcional, executado condicionalmente em um ponto de extensão.",
-   "<<include>> aponta do caso de uso incluído para o caso de uso base.",
+   "Ambos representam relações de herança entre os atores do sistema.",
+   "<<include>> representa comportamento obrigatório e reutilizado, sempre executado pelo caso de uso base; <<extend>> representa comportamento opcional, em um ponto de extensão.",
+   "<<include>> aponta do caso de uso incluído para o caso de uso base que o utiliza.",
    "<<extend>> é usado exclusivamente para modelar tratamento de erros, nunca fluxos alternativos.",
-   "<<include>> representa comportamento opcional executado apenas sob certa condição; <<extend>> representa comportamento sempre executado."
+   "<<include>> representa comportamento opcional, executado apenas sob certa condição, enquanto <<extend>> representa comportamento obrigatório, sempre executado pelo caso de uso base."
   ],
   "ans": 1,
   "why": "<<include>> fatora comportamento comum e obrigatório, sempre executado pelo caso base (seta do base para o incluído). <<extend>> adiciona comportamento opcional/condicional em um ponto de extensão do caso base (seta do estendente para o base).",
@@ -3501,9 +3501,9 @@
   "alts": [
    "Indica relação todo-parte, em que a subclasse é parte da superclasse.",
    "É representada por uma linha com losango preenchido apontando para a subclasse.",
-   "É representada por uma linha com uma seta de ponta triangular vazada apontando da subclasse para a superclasse, indicando relação \"é-um\".",
+   "É representada por seta de ponta triangular vazada, sempre apontando da subclasse para a superclasse ('é-um').",
    "É sempre representada com multiplicidade \"1..*\" nas duas pontas.",
-   "A subclasse não pode adicionar atributos próprios, apenas herdar os da superclasse."
+   "A subclasse não pode declarar atributos ou operações próprias, limitando-se a herdar tudo o que a superclasse define."
   ],
   "ans": 2,
   "why": "A generalização usa uma seta de ponta triangular VAZADA que aponta da subclasse (filha) para a superclasse (pai), expressando a relação 'é-um' (is-a). A subclasse herda e pode estender/redefinir membros.",
@@ -3519,9 +3519,9 @@
   "q": "No modelo de caixa (box model) do CSS, um desenvolvedor precisa aumentar o espaço INTERNO entre o conteúdo de um elemento e sua borda, sem afetar o espaçamento em relação aos elementos vizinhos. Qual propriedade ele deve usar?",
   "alts": [
    "gap, que define o espaço interno entre conteúdo e borda.",
-   "border-spacing, que define o preenchimento interno de qualquer elemento.",
+   "border-spacing, que define o preenchimento interno de qualquer elemento da página.",
    "margin, pois controla o espaço entre o conteúdo e a borda.",
-   "padding, pois controla o espaço entre o conteúdo e a borda do próprio elemento.",
+   "padding, pois controla sempre o espaço entre o conteúdo e a borda do elemento.",
    "outline, que empurra o conteúdo para dentro da borda."
   ],
   "ans": 3,
@@ -3537,10 +3537,10 @@
   "tag": "frontend",
   "q": "Sobre o uso de HTML semântico, assinale a alternativa CORRETA.",
   "alts": [
-   "O elemento <b> é semanticamente equivalente a <strong> e ambos indicam importância ao leitor de tela.",
-   "Elementos como <header>, <nav>, <main>, <article> e <footer> não afetam acessibilidade nem SEO, servindo apenas para estilização.",
-   "HTML semântico exige obrigatoriamente o uso de frameworks JavaScript para funcionar.",
-   "Tags semânticas descrevem o significado do conteúdo, favorecendo acessibilidade (leitores de tela), SEO e manutenção do código.",
+   "O elemento <b> é semanticamente equivalente a <strong>, e ambos indicam a importância do trecho ao leitor de tela.",
+   "Elementos como <header>, <nav>, <main>, <article> e <footer> não afetam a acessibilidade nem o SEO da página, servindo apenas para estilização.",
+   "HTML semântico exige obrigatoriamente o uso de frameworks JavaScript modernos para poder funcionar corretamente.",
+   "Tags semânticas descrevem o significado do conteúdo, favorecendo acessibilidade (leitores de tela), SEO e manutenção de todo o código.",
    "Usar <div> e <span> para toda a estrutura da página é a prática recomendada por ser mais semântica que as tags específicas."
   ],
   "ans": 3,
@@ -3558,9 +3558,9 @@
   "alts": [
    "Ambos exigem obrigatoriamente media queries para funcionar.",
    "Tabelas HTML são a técnica moderna recomendada, tornando Flexbox e Grid obsoletos.",
-   "Flexbox é otimizado para layouts unidimensionais (itens ao longo de um único eixo, linha ou coluna), enquanto o CSS Grid é projetado para layouts bidimensionais (linhas e colunas simultaneamente).",
-   "O CSS Grid é unidimensional e o Flexbox é bidimensional.",
-   "Flexbox e Grid são idênticos e intercambiáveis em todos os cenários, sem qualquer diferença de propósito."
+   "Flexbox é otimizado para layouts unidimensionais (linha ou coluna), enquanto o Grid é projetado para layouts bidimensionais (linhas e colunas).",
+   "O CSS Grid é unidimensional, adequado a um único eixo por vez, enquanto o Flexbox é bidimensional, controlando linhas e colunas ao mesmo tempo.",
+   "Flexbox e Grid são idênticos e intercambiáveis, sem diferença de propósito entre eles."
   ],
   "ans": 2,
   "why": "Flexbox foi projetado para distribuir e alinhar itens ao longo de UM eixo (uma dimensão), com quebra via flex-wrap. O CSS Grid é bidimensional, controlando linhas e colunas ao mesmo tempo. São complementares, escolhidos conforme a dimensionalidade do layout.",
@@ -3576,8 +3576,8 @@
   "q": "Sobre a diferença entre SPA (Single Page Application) e PWA (Progressive Web App), assinale a alternativa CORRETA.",
   "alts": [
    "SPA exige obrigatoriamente um Service Worker para funcionar.",
-   "Uma SPA carrega uma única página HTML e atualiza o conteúdo dinamicamente sem recarregar toda a página; uma PWA é uma aplicação web que, com Service Worker e manifest, pode ser instalável e funcionar offline.",
-   "PWA é um tipo de aplicativo nativo compilado exclusivamente para lojas de aplicativos.",
+   "Uma SPA carrega um único HTML e troca o conteúdo sem recarregar toda a página; a PWA usa Service Worker e manifest para instalar e rodar offline.",
+   "PWA é um tipo de aplicativo nativo, compilado na linguagem da plataforma e distribuído exclusivamente pelas lojas de aplicativos, sem relação com a web.",
    "PWA não pode ser construída sobre uma arquitetura SPA.",
    "SPA e PWA são sinônimos: toda SPA é obrigatoriamente uma PWA."
   ],
@@ -3594,11 +3594,11 @@
   "tag": "frontend",
   "q": "O Service Worker é peça central de uma PWA. Sobre ele, assinale a alternativa CORRETA.",
   "alts": [
-   "Executa na mesma thread da interface (UI), tendo acesso direto ao DOM da página.",
+   "Executa na mesma thread da interface (UI), com acesso direto ao DOM e ao ciclo de renderização, permitindo atualizar a tela imediatamente após o evento.",
    "Tem acesso direto ao DOM, permitindo manipular elementos da tela em tempo real.",
-   "Funciona apenas em conexões HTTP não seguras, sendo bloqueado em HTTPS.",
-   "É um script que roda em segundo plano, separado da página, atuando como proxy entre a aplicação e a rede, permitindo cache e funcionamento offline; requer HTTPS (exceto em localhost).",
-   "Substitui o servidor backend, dispensando qualquer API remota."
+   "Funciona em conexões HTTP não seguras, sendo bloqueado quando a página usa HTTPS.",
+   "É um script que roda em segundo plano, separado da página, como proxy entre a aplicação e a rede, permitindo cache e uso offline; requer HTTPS.",
+   "Substitui o servidor backend da aplicação, dispensando o uso de APIs remotas."
   ],
   "ans": 3,
   "why": "O Service Worker roda em uma thread separada da página, sem acesso direto ao DOM, funcionando como proxy de rede: intercepta requisições, gerencia cache e habilita offline/notificações. Por segurança, exige HTTPS (localhost é a exceção para desenvolvimento).",
@@ -3613,11 +3613,11 @@
   "tag": "frontend",
   "q": "No ecossistema JavaScript, é comum a distinção entre biblioteca e framework. Sobre React, Angular e Vue, assinale a alternativa CORRETA.",
   "alts": [
-   "React é, por definição de seus mantenedores, uma biblioteca focada na construção de interfaces, enquanto Angular é um framework completo e opinativo.",
+   "React é, por definição de seus mantenedores, uma biblioteca focada apenas na construção de interfaces, enquanto Angular é um framework completo",
    "A diferença entre biblioteca e framework está apenas no nome, sem impacto na inversão de controle.",
    "React, Angular e Vue são todos considerados, oficialmente e sem exceção, frameworks idênticos em escopo.",
    "TypeScript é incompatível com Angular, que só aceita JavaScript puro.",
-   "Angular é uma simples biblioteca de componentes sem roteamento nem injeção de dependência próprios."
+   "Angular é apenas uma biblioteca de componentes visuais, sem roteamento nem injeção de dependência próprios, dependendo inteiramente de pacotes externos."
   ],
   "ans": 0,
   "why": "O React é oficialmente descrito como uma biblioteca para construir interfaces (você o chama). O Angular é um framework completo e opinativo (com roteamento, DI, etc.) que aplica inversão de controle (ele chama seu código). Vue posiciona-se como framework progressivo.",
@@ -3634,8 +3634,8 @@
   "alts": [
    "Um redirect HTTP 302 que recarrega a página completa a cada dado buscado.",
    "Um Service Worker, obrigatório para qualquer requisição assíncrona funcionar.",
-   "Ajax (Asynchronous JavaScript and XML), que permite requisições assíncronas ao servidor e atualização parcial da página.",
-   "Server-side rendering estático, que impede qualquer atualização dinâmica no cliente.",
+   "Ajax (Asynchronous JavaScript and XML), que faz requisições assíncronas sem recarregar toda a página.",
+   "Server-side rendering estático, que impede qualquer atualização dinâmica no cliente depois da carga inicial.",
    "Um media query que consulta o servidor a cada resize da janela."
   ],
   "ans": 2,
@@ -3654,8 +3654,8 @@
    "UI é sempre mais importante que UX, tornando a pesquisa de usuário desnecessária.",
    "UX é responsabilidade exclusiva do backend, e UI, exclusiva do banco de dados.",
    "UI trata da experiência global e das emoções do usuário; UX trata apenas das cores e fontes dos botões.",
-   "UX e UI são exatamente a mesma coisa, e os termos podem ser usados de forma intercambiável sem qualquer distinção.",
-   "UX abrange a experiência global do usuário ao interagir com o produto (fluxos, usabilidade, satisfação); UI refere-se à interface visual e aos elementos com que o usuário interage (botões, cores, tipografia, layout)."
+   "UX e UI são exatamente a mesma coisa, e os termos podem ser usados de forma intercambiável em qualquer contexto de projeto de interface, sem qualquer distinção prática entre eles.",
+   "UX abrange toda a experiência do usuário com o produto (fluxos, usabilidade, satisfação); UI refere-se à interface visual e a seus elementos (botões, cores, tipografia)."
   ],
   "ans": 4,
   "why": "UX (User Experience) engloba toda a experiência do usuário com o produto: fluxos, usabilidade, pesquisa e satisfação. UI (User Interface) é a camada visual/interativa concreta: botões, cores, tipografia e layout. UI é uma parte que serve à UX.",
@@ -3674,7 +3674,7 @@
    "Portável, Original, Único e Recursivo, com um único nível de conformidade.",
    "Os princípios se aplicam exclusivamente a usuários com deficiência visual, ignorando outras deficiências.",
    "Rápido, Responsivo, Seguro e Escalável.",
-   "Perceptível, Operável, Compreensível e Robusto (POUR), com níveis de conformidade A, AA e AAA."
+   "Perceptível, Operável, Compreensível e Robusto (POUR), com todos os níveis de conformidade A, AA e AAA."
   ],
   "ans": 4,
   "why": "A WCAG baseia-se em quatro princípios: Perceptível, Operável, Compreensível e Robusto (sigla POUR, em inglês). A conformidade tem três níveis: A (mínimo), AA (intermediário, referência comum) e AAA (mais rigoroso).",
@@ -3689,8 +3689,8 @@
   "tag": "frontend",
   "q": "Um cliente pede um site institucional em que a própria equipe de comunicação (sem conhecimento de programação) possa criar, editar e publicar páginas e notícias. Qual tipo de ferramenta atende diretamente a esse requisito?",
   "alts": [
-   "Um CMS (Content Management System), como WordPress ou Drupal, voltado à gestão de conteúdo por usuários não técnicos.",
-   "Um framework CSS como recurso obrigatório para editar conteúdo sem programar.",
+   "Um CMS (Content Management System), como WordPress ou Drupal, voltado a usuários não técnicos.",
+   "Um framework CSS como o Bootstrap, recurso obrigatório para que a equipe edite o conteúdo sem programar.",
    "Um transpilador TypeScript, usado para publicar notícias.",
    "Um Service Worker, responsável por gerenciar o conteúdo editorial do site.",
    "Uma media query, que permite editores criarem páginas visualmente."
@@ -3710,7 +3710,7 @@
   "alts": [
    "Aprendizado Profundo é um campo independente que não utiliza técnicas de Aprendizado de Máquina.",
    "Inteligência Artificial e Aprendizado de Máquina são termos sinônimos e intercambiáveis, sem relação de continência entre eles.",
-   "Aprendizado de Máquina (Machine Learning) é um campo mais amplo que engloba a Inteligência Artificial como um de seus subconjuntos.",
+   "Aprendizado de Máquina (Machine Learning) é um campo mais amplo, que engloba a Inteligência Artificial como um de seus vários subconjuntos possíveis.",
    "Aprendizado Profundo (Deep Learning) é um subconjunto do Aprendizado de Máquina, que por sua vez é um subconjunto da Inteligência Artificial.",
    "Inteligência Artificial é um subconjunto do Aprendizado Profundo, especializado no uso de redes neurais."
   ],
@@ -3748,7 +3748,7 @@
   "alts": [
    "convergência prematura do gradiente descendente.",
    "underfitting (subajuste), caracterizado por alto viés.",
-   "regularização, decorrente da falta de parâmetros no modelo.",
+   "regularização excessiva, decorrente da falta de parâmetros no modelo.",
    "overfitting (sobreajuste), tipicamente associado à alta variância.",
    "normalização, causada pelo excesso de dados de teste."
   ],
@@ -3766,9 +3766,9 @@
   "q": "Sobre o compromisso (trade-off) entre viés (bias) e variância (variance) em modelos de aprendizado de máquina, assinale a afirmativa correta.",
   "alts": [
    "Viés e variância são conceitos independentes que nunca influenciam o erro de generalização.",
-   "Modelos com alta variância são pouco sensíveis aos dados de treino e sofrem underfitting.",
+   "Modelos com alta variância são pouco sensíveis às variações dos dados de treino e, por isso, sofrem underfitting sistemático nos dados.",
    "Reduzir o viés reduz sempre e invariavelmente a variância na mesma proporção.",
-   "Alto viés está associado a modelos simples demais (underfitting) e alta variância a modelos complexos demais (overfitting).",
+   "Alto viés está sempre associado a modelos simples demais (underfitting) e alta variância a modelos complexos demais (overfitting).",
    "Modelos com alto viés tendem a ser excessivamente complexos e a sofrer overfitting."
   ],
   "ans": 3,
@@ -3784,8 +3784,8 @@
   "tag": "atualidades",
   "q": "Um classificador de e-mails de spam foi avaliado. Considerando as métricas de desempenho, é correto afirmar que:",
   "alts": [
-   "a acurácia pode ser enganosa em bases muito desbalanceadas, sendo o F1-score uma média harmônica entre precisão e recall.",
-   "a precisão (precision) mede a proporção de exemplos positivos reais que foram corretamente identificados pelo modelo.",
+   "a acurácia pode ser enganosa em bases muito desbalanceadas, sendo o F1-score sempre a média harmônica entre precisão e recall.",
+   "a precisão (precision) mede a proporção de exemplos positivos reais que foram corretamente identificados pelo modelo treinado.",
    "a revocação/sensibilidade (recall) mede a proporção de previsões positivas que estavam efetivamente corretas.",
    "em bases altamente desbalanceadas, a acurácia é sempre a métrica mais confiável de desempenho.",
    "o F1-score é a média aritmética simples entre acurácia e revocação."
@@ -3822,11 +3822,11 @@
   "tag": "atualidades",
   "q": "Uma organização deseja que seu assistente baseado em LLM responda perguntas com base em documentos internos e atualizados da empresa, reduzindo respostas desatualizadas ou inventadas. A técnica que combina a recuperação de trechos relevantes de uma base de conhecimento externa com a geração de texto pelo modelo é conhecida como:",
   "alts": [
-   "quantização de parâmetros do modelo.",
+   "quantização dos parâmetros do modelo de linguagem.",
    "RAG (Retrieval-Augmented Generation / Geração Aumentada por Recuperação).",
-   "fine-tuning supervisionado completo dos pesos do modelo.",
-   "prompt injection defensivo.",
-   "destilação de conhecimento (knowledge distillation)."
+   "ajuste fino (fine-tuning) supervisionado completo dos pesos do modelo.",
+   "defesa contra injeção de prompt (prompt injection).",
+   "destilação de conhecimento (knowledge distillation) para um modelo menor e rápido."
   ],
   "ans": 1,
   "why": "RAG (Geração Aumentada por Recuperação) combina um componente de recuperação, que busca trechos relevantes em uma base externa, com a geração do LLM, fornecendo contexto atualizado e factual e reduzindo alucinações, sem precisar retreinar o modelo.",
@@ -3841,7 +3841,7 @@
   "tag": "atualidades",
   "q": "No contexto dos modelos generativos de linguagem, o termo 'alucinação' (hallucination) refere-se a:",
   "alts": [
-   "o consumo excessivo de energia dos data centers durante o treinamento do modelo.",
+   "o consumo excessivo de energia elétrica dos data centers durante as fases de treinamento e de inferência dos modelos.",
    "a perda de dados de treinamento causada por falha de hardware.",
    "a geração de conteúdo que parece plausível e é apresentado com confiança, mas é factualmente incorreto ou inventado.",
    "a recusa do modelo em responder a perguntas sobre temas sensíveis.",
@@ -3880,8 +3880,8 @@
   "q": "Sobre as iniciativas de regulação da Inteligência Artificial, assinale a afirmativa correta.",
   "alts": [
    "O AI Act europeu proíbe integralmente o desenvolvimento e uso de qualquer sistema de inteligência artificial no bloco.",
-   "O Regulamento de IA da União Europeia (AI Act) adota uma abordagem baseada em níveis de risco, chegando a proibir sistemas de risco inaceitável.",
-   "O AI Act europeu classifica todos os sistemas de IA em uma única categoria uniforme de risco, com as mesmas obrigações para todos.",
+   "O Regulamento de IA da União Europeia (AI Act) adota uma abordagem baseada em níveis de risco, chegando a proibir todos os sistemas de risco inaceitável.",
+   "O AI Act europeu classifica todos os sistemas de IA em uma única categoria uniforme de risco, com as mesmas obrigações para todos os fornecedores e usuários.",
    "O PL 2338/2023 já foi sancionado e está em vigor como lei desde 2023, com força equivalente a uma emenda constitucional.",
    "No Brasil, o PL 2338/2023 rejeita expressamente qualquer classificação por risco, optando por regras idênticas a todo sistema de IA."
   ],
@@ -3974,9 +3974,9 @@
   "tag": "ingles",
   "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nThe connective \"Thus\" (last sentence) introduces a:",
   "alts": [
-   "example of a failed migration",
-   "contrast with the previous statement",
-   "condition that must be avoided",
+   "example of a failed cloud migration",
+   "contrast with the previous statement that was made",
+   "condition that must always be avoided",
    "conclusion drawn from what was said before",
    "concession against the main argument"
   ],
@@ -4110,7 +4110,7 @@
    "even if companies invest in communication practices",
    "although companies already solved these problems",
    "if companies do NOT invest in strong communication practices",
-   "because companies always invest in communication practices",
+   "because companies always invest in strong communication practices",
    "after companies stop working remotely"
   ],
   "ans": 2,
@@ -4145,8 +4145,8 @@
   "tag": "java",
   "q": "Considere: na classe Base há o método 'int calc(int x)'. Na subclasse Deriv há 'int calc(int x, int y)' e 'long calc(int x)'. Analisando os conceitos de overload e override, assinale a afirmativa correta.",
   "alts": [
-   "'int calc(int x, int y)' é um overload, pois muda a lista de parâmetros; 'long calc(int x)' NÃO compila, pois difere apenas no tipo de retorno.",
-   "'int calc(int x, int y)' não compila porque overload exige tipos de parâmetros diferentes, não quantidade.",
+   "'int calc(int x, int y)' é overload, pois muda a lista de parâmetros; 'long calc(int x)' NÃO compila, por diferir apenas no retorno.",
+   "'int calc(int x, int y)' não compila, porque o overload exige tipos de parâmetros diferentes, e não apenas outra quantidade de parâmetros.",
    "Ambos os métodos de Deriv são overrides, pois têm o mesmo nome do método da Base.",
    "'long calc(int x)' é um override válido, já que o retorno covariante long é permitido sobre int.",
    "'int calc(int x, int y)' é um override de 'int calc(int x)', pois está numa subclasse."
@@ -4164,11 +4164,11 @@
   "tag": "java",
   "q": "Um desenvolvedor precisa de uma estrutura de Map em que a iteração sobre as chaves respeite a ordem crescente natural das chaves (ex.: ordem alfabética/numérica). Qual implementação do Java Collections Framework atende diretamente a esse requisito?",
   "alts": [
-   "TreeMap, que mantém as chaves ordenadas segundo a ordenação natural (ou um Comparator).",
-   "LinkedHashMap, que ordena as chaves pela ordem natural.",
-   "ArrayList, que preserva a ordem de comparação das chaves.",
-   "HashMap, que mantém as chaves ordenadas pelo hashCode.",
-   "Hashtable, que garante ordenação crescente por ser sincronizada."
+   "TreeMap, que mantém as chaves ordenadas pela ordenação natural (ou por Comparator)",
+   "LinkedHashMap, que reordena as chaves pela ordem natural delas",
+   "ArrayList, que preserva a ordem de comparação entre as chaves",
+   "HashMap, que mantém as chaves ordenadas pelo valor do hashCode",
+   "Hashtable, que ordena as chaves de forma crescente por ser uma estrutura sincronizada"
   ],
   "ans": 0,
   "why": "TreeMap implementa NavigableMap/SortedMap e mantém as chaves ordenadas pela ordem natural (Comparable) ou por um Comparator fornecido. HashMap não garante ordem alguma; LinkedHashMap preserva ordem de inserção, não a natural.",
@@ -4185,9 +4185,9 @@
   "alts": [
    "LinkedList oferece get(i) em O(1), pois cada nó guarda seu índice.",
    "Ambas oferecem get(i) em O(1), pois implementam a interface List.",
-   "LinkedList é sempre mais rápida que ArrayList em todas as operações.",
-   "ArrayList tem get(i) em O(n) porque precisa percorrer o array elemento a elemento.",
-   "ArrayList oferece acesso indexado get(i) em tempo constante O(1), enquanto na LinkedList esse acesso é O(n)."
+   "LinkedList supera o ArrayList em operações de acesso e de inserção.",
+   "ArrayList tem get(i) em O(n), pois precisa percorrer o array elemento a elemento até o índice.",
+   "ArrayList oferece get(i) em tempo constante O(1), enquanto na LinkedList esse acesso é O(n)."
   ],
   "ans": 4,
   "why": "ArrayList é apoiada por um array, permitindo acesso por índice em O(1). LinkedList é uma lista duplamente encadeada, então get(i) exige percorrer os nós, custando O(n).",
@@ -4203,10 +4203,10 @@
   "q": "Considere duas variáveis String a e b com o mesmo conteúdo textual, porém referenciando objetos distintos na heap. Qual a diferença entre 'a == b' e 'a.equals(b)'?",
   "alts": [
    "'a.equals(b)' compara referências porque String não sobrescreve equals.",
-   "Ambos comparam sempre as referências e retornam o mesmo resultado.",
-   "Ambos comparam sempre o conteúdo e retornam o mesmo resultado.",
-   "'a == b' compara o conteúdo dos caracteres; 'a.equals(b)' compara as referências de memória.",
-   "'a == b' compara as referências (identidade dos objetos); 'a.equals(b)' compara o conteúdo, retornando true por serem textualmente iguais."
+   "Ambos comparam as referências e retornam o mesmo resultado.",
+   "Ambos comparam o conteúdo textual e retornam o mesmo resultado.",
+   "'a == b' compara o conteúdo dos caracteres, ao passo que 'a.equals(b)' compara as referências de memória dos objetos.",
+   "'a == b' compara as referências (identidade dos objetos); 'a.equals(b)' compara o conteúdo, retornando true."
   ],
   "ans": 4,
   "why": "O operador == compara referências (se apontam para o mesmo objeto). String sobrescreve equals para comparar o conteúdo dos caracteres. Com objetos distintos de mesmo texto, == dá false e equals dá true.",
@@ -4221,11 +4221,11 @@
   "tag": "java",
   "q": "No princípio de projeto 'D' do SOLID (Inversão de Dependência), qual orientação está corretamente enunciada?",
   "alts": [
-   "Subtipos nunca podem substituir seus tipos base sem alterar o comportamento esperado.",
-   "Módulos de alto e baixo nível devem depender de abstrações; detalhes é que devem depender de abstrações, e não o contrário.",
+   "Subtipos não podem substituir seus tipos base sem alterar o comportamento esperado pelo cliente.",
+   "Módulos de alto e de baixo nível devem depender de abstrações; os detalhes é que dependem delas, e não o contrário.",
    "Uma classe deve ter mais de uma responsabilidade para reduzir o número de classes.",
-   "Clientes devem ser forçados a depender de interfaces amplas que reúnam todos os métodos do sistema.",
-   "Módulos de alto nível devem depender de módulos de baixo nível concretos, para maior eficiência."
+   "Clientes devem ser forçados a depender de interfaces amplas, que reúnam métodos que eles nem utilizam.",
+   "Módulos de alto nível devem depender diretamente dos módulos de baixo nível concretos, em nome da eficiência do sistema."
   ],
   "ans": 1,
   "why": "A Inversão de Dependência prega que módulos de alto e baixo nível dependam de abstrações (interfaces), e que detalhes dependam de abstrações — invertendo a dependência tradicional do concreto.",
@@ -4240,10 +4240,10 @@
   "tag": "java",
   "q": "Sobre interfaces e classes abstratas em Java (a partir do Java 8), assinale a afirmativa correta.",
   "alts": [
-   "Interfaces não podem ter nenhum método com corpo, nem mesmo métodos default.",
-   "Uma classe pode implementar múltiplas interfaces, mas só pode estender uma única classe (abstrata ou não).",
-   "Interfaces podem declarar atributos de instância mutáveis, iguais aos de uma classe abstrata.",
-   "Classes abstratas não podem ter construtores nem atributos de instância.",
+   "Interfaces não podem ter nenhum método com corpo, nem mesmo os métodos default do Java 8.",
+   "Uma classe pode implementar várias interfaces, mas só pode estender uma classe (abstrata ou não).",
+   "Interfaces podem declarar atributos de instância mutáveis, exatamente como uma classe abstrata faz.",
+   "Classes abstratas não podem declarar construtores nem atributos de instância próprios.",
    "Uma classe pode estender (extends) múltiplas classes abstratas simultaneamente."
   ],
   "ans": 1,
@@ -4260,9 +4260,9 @@
   "q": "Durante a migração de uma aplicação Java EE para Jakarta EE 9+, uma das mudanças mais impactantes no código-fonte foi:",
   "alts": [
    "A troca do prefixo 'jakarta.*' de volta para 'javax.*', revertendo o namespace.",
-   "A obrigatoriedade de reescrever todo o código de java.util e java.lang, que também mudaram de pacote.",
+   "A obrigatoriedade de reescrever o código de java.util e java.lang, que também mudaram de pacote.",
    "A substituição do prefixo de pacotes 'javax.*' das APIs corporativas pelo prefixo 'jakarta.*'.",
-   "A conversão automática de todas as classes para records, exigida pela especificação.",
+   "A conversão automática das classes existentes para records, exigida pela especificação.",
    "A remoção completa da JVM, substituída por um runtime proprietário da Eclipse Foundation."
   ],
   "ans": 2,
@@ -4278,10 +4278,10 @@
   "tag": "java",
   "q": "Em JPA/Hibernate, uma consulta que carrega uma lista de N entidades pai e, para cada uma, dispara uma consulta adicional para buscar a coleção de filhos associada caracteriza um problema clássico de desempenho. Sobre isso, assinale a afirmativa correta.",
   "alts": [
-   "O problema N+1 só ocorre com FetchType.EAGER e nunca com carregamento sob demanda.",
-   "Por padrão da especificação JPA, associações @OneToMany são EAGER, o que impede totalmente o problema N+1.",
-   "É o problema N+1 de consultas; pode ser mitigado com fetch join (JOIN FETCH) ou @EntityGraph para carregar os filhos em menos idas ao banco.",
-   "Trata-se de deadlock de transações, resolvido apenas aumentando o isolamento para SERIALIZABLE.",
+   "O problema N+1 ocorre só com FetchType.EAGER, não com carregamento sob demanda.",
+   "Por padrão da especificação JPA, as associações @OneToMany são EAGER, o que impede totalmente a ocorrência do problema N+1.",
+   "É o problema N+1 de consultas, mitigado com fetch join (JOIN FETCH) ou @EntityGraph, que reduzem as idas ao banco.",
+   "Trata-se de deadlock de transações, resolvido com o aumento do isolamento para SERIALIZABLE.",
    "É o problema N+1, e a única solução possível é trocar o banco relacional por um NoSQL."
   ],
   "ans": 2,
@@ -4297,11 +4297,11 @@
   "tag": "java",
   "q": "Sobre recursos modernos da linguagem Java, considerando as versões LTS, assinale a afirmativa correta.",
   "alts": [
-   "A palavra 'var' cria variáveis sem tipo, dinamicamente tipadas como em linguagens de script.",
+   "A palavra-chave 'var' cria variáveis sem tipo definido, dinamicamente tipadas como nas linguagens de script.",
    "Uma classe declarada como 'record' é mutável e serve para substituir enums.",
-   "Streams e expressões lambda foram introduzidos apenas no Java 17.",
-   "Uma classe 'sealed' permite que qualquer classe do classpath a estenda livremente.",
-   "As virtual threads (threads virtuais), voltadas a alta concorrência com bloqueio de I/O, tornaram-se recurso final (não-preview) no Java 21."
+   "Streams e expressões lambda foram introduzidos a partir do Java 17.",
+   "Uma classe 'sealed' permite que outra classe do classpath a estenda livremente.",
+   "As virtual threads, voltadas a alta concorrência com bloqueio de I/O, tornaram-se recurso final no Java 21."
   ],
   "ans": 4,
   "why": "As virtual threads foram finalizadas (recurso permanente, não-preview) no Java 21 (JEP 444), sendo o primeiro LTS com elas prontas para produção. Reduzem o custo de milhares de tarefas bloqueantes de I/O.",
@@ -4318,7 +4318,7 @@
   "alts": [
    "Escritorio de projetos (PMO), estrutura que padroniza processos e compartilha recursos entre iniciativas.",
    "Ciclo de vida do projeto, conjunto de fases pelas quais o projeto passa do inicio ao encerramento.",
-   "Programa, pois reune projetos relacionados coordenados para obter beneficios nao disponiveis se gerenciados individualmente.",
+   "Programa, pois reune projetos relacionados e coordenados entre si para obter beneficios nao disponiveis se fossem gerenciados individualmente.",
    "Projeto, por se tratar de um esforco temporario para criar um produto, servico ou resultado exclusivo.",
    "Portfolio, pois reune projetos, programas, portfolios subsidiarios e operacoes gerenciados como grupo para atingir objetivos estrategicos."
   ],
@@ -4337,7 +4337,7 @@
   "alts": [
    "Evaluate, Direct, Monitor, Align e Deliver.",
    "Escopo, Cronograma, Custos, Qualidade e Riscos.",
-   "Iniciacao, Planejamento, Execucao, Verificacao, e Entrega.",
+   "Iniciacao, Planejamento, Execucao, Verificacao, Controle de Qualidade e Entrega.",
    "Iniciacao, Planejamento, Execucao, Monitoramento e Controle, e Encerramento.",
    "Plan, Engage, Design, Deliver e Improve."
   ],
@@ -4373,8 +4373,8 @@
   "tag": "governanca",
   "q": "O Sistema de Valor de Servico (SVS) do ITIL 4 tem como um de seus componentes a cadeia de valor de servico, um modelo operacional flexivel. Quantas e quais sao as atividades dessa cadeia de valor de servico?",
   "alts": [
-   "Seis: Evaluate, Direct, Monitor, Align, Plan e Organize.",
-   "Quatro: correspondentes as quatro dimensoes do gerenciamento de servicos.",
+   "Seis: Evaluate, Direct, Monitor, Align, Plan e Organize, herdadas do COBIT.",
+   "Quatro: uma atividade para cada uma das quatro dimensoes do gerenciamento de servicos definidas pelo ITIL 4.",
    "Seis: Planejar, Melhorar, Engajar, Desenhar e transicionar, Obter/construir, e Entregar e dar suporte.",
    "Cinco: Planejar, Engajar, Projetar, Entregar e Melhorar.",
    "Sete: correspondentes aos sete principios orientadores."
@@ -4411,10 +4411,10 @@
   "tag": "governanca",
   "q": "O COBIT 2019 faz uma distincao central entre governanca e gestao. Sobre essa distincao, assinale a alternativa correta.",
   "alts": [
-   "A governanca avalia, dirige e monitora (EDM), sendo responsabilidade do conselho; a gestao planeja, constroi, executa e monitora as atividades alinhadas a direcao definida pela governanca.",
+   "A governanca avalia, dirige e monitora (EDM) e cabe ao conselho; a gestao planeja, constroi, executa e monitora, alinhada a direcao definida.",
    "Governanca e gestao pertencem ao mesmo dominio unico do COBIT 2019, chamado APO.",
    "Governanca e gestao sao sinonimos no COBIT 2019, ambos executados pela alta direcao.",
-   "A gestao avalia, dirige e monitora, enquanto a governanca planeja, constroi e executa as operacoes.",
+   "A gestao avalia, dirige e monitora, enquanto a governanca planeja, constroi, executa e monitora as operacoes cotidianas de TI da organizacao.",
    "A governanca e composta pelos dominios APO, BAI, DSS e MEA, e a gestao pelo dominio EDM."
   ],
   "ans": 0,
@@ -4433,7 +4433,7 @@
    "Cinco dominios: dois de governanca (EDM e MEA) e tres de gestao (APO, BAI e DSS).",
    "Cinco dominios: um de governanca (EDM) e quatro de gestao (APO, BAI, DSS e MEA).",
    "Cinco dominios de governanca, sem dominios de gestao, totalizando 40 objetivos.",
-   "Quatro dominios, todos de gestao: APO, BAI, DSS e MEA.",
+   "Quatro dominios de gestao: APO, BAI, DSS e MEA.",
    "Seis dominios: EDM, APO, BAI, DSS, MEA e PO."
   ],
   "ans": 1,
@@ -4449,7 +4449,7 @@
   "tag": "governanca",
   "q": "Em um modelo de processo BPMN, uma equipe precisa representar que, apos o registro de um pedido, o fluxo deve seguir por apenas UM entre dois caminhos, dependendo de o cliente ser ou nao cadastrado. Qual elemento BPMN representa adequadamente essa decisao exclusiva baseada em condicao?",
   "alts": [
-   "Fluxo de mensagem, que representa a troca de mensagens entre participantes distintos.",
+   "Fluxo de mensagem, que representa a troca de mensagens entre participantes de pools distintos do processo.",
    "Gateway paralelo (AND), que divide o fluxo em caminhos executados simultaneamente.",
    "Gateway inclusivo (OR), que pode ativar um ou mais caminhos ao mesmo tempo.",
    "Gateway exclusivo (XOR), que direciona o fluxo para apenas um dos caminhos com base em uma condicao.",
@@ -4468,11 +4468,11 @@
   "tag": "governanca",
   "q": "Sobre os elementos de conexao no BPMN, considere a diferenca entre fluxo de sequencia e fluxo de mensagem. Assinale a alternativa correta.",
   "alts": [
-   "O fluxo de sequencia (linha solida com seta preenchida) conecta atividades dentro de um mesmo processo/pool, definindo a ordem de execucao; o fluxo de mensagem (linha tracejada) representa a comunicacao entre participantes de pools distintos.",
+   "O fluxo de sequencia (linha solida) conecta atividades no mesmo pool, definindo a ordem de execucao; o fluxo de mensagem (linha tracejada) liga participantes de pools distintos.",
    "Fluxo de sequencia e fluxo de mensagem sao termos equivalentes e podem ser usados de forma intercambiavel.",
-   "O fluxo de mensagem define a ordem interna das atividades de uma raia, e o fluxo de sequencia liga eventos de inicio e fim de pools diferentes.",
+   "O fluxo de mensagem define a ordem interna das atividades de uma raia, ao passo que o fluxo de sequencia liga os eventos de inicio e de fim de pools diferentes entre si, sem ordem.",
    "O fluxo de sequencia conecta pools diferentes, e o fluxo de mensagem conecta atividades dentro do mesmo pool.",
-   "Ambos representam apenas a comunicacao entre pools distintos, diferindo somente na cor."
+   "Ambos representam a comunicacao entre pools distintos, diferindo na cor da linha."
   ],
   "ans": 0,
   "why": "No BPMN, o fluxo de sequencia (linha solida) ordena as atividades dentro de um mesmo processo/pool; o fluxo de mensagem (linha tracejada) representa a troca de mensagens entre participantes de pools diferentes.",
@@ -4487,11 +4487,11 @@
   "tag": "governanca",
   "q": "Uma equipe adota Scrum e Kanban de forma combinada. Sobre os fundamentos desses metodos e do Lean, assinale a alternativa correta.",
   "alts": [
-   "No Lean, aumentar o desperdicio (muda) e uma pratica recomendada para acelerar a entrega de valor.",
+   "No Lean, aumentar o desperdicio (muda) e uma pratica recomendada para acelerar a entrega de valor ao cliente.",
    "No Scrum, o Product Owner e responsavel por gerenciar a equipe e remover impedimentos tecnicos do dia a dia.",
    "O Kanban limita o trabalho em progresso (WIP) para melhorar o fluxo, enquanto o Scrum organiza o trabalho em Sprints de duracao fixa (timebox).",
-   "O Scrum define quatro papeis obrigatorios: Product Owner, Scrum Master, Gerente de Projeto e a equipe de desenvolvimento.",
-   "O Kanban exige, obrigatoriamente, Sprints com duracao fixa e uma reuniao de planejamento de Sprint."
+   "O Scrum define quatro papeis obrigatorios: Product Owner, Scrum Master, Gerente de Projeto e a equipe de desenvolvimento do produto entregue ao cliente.",
+   "O Kanban exige, obrigatoriamente, Sprints com duracao fixa e uma reuniao de planejamento a cada ciclo."
   ],
   "ans": 2,
   "why": "O Kanban foca em visualizar o fluxo e limitar o trabalho em progresso (WIP) para melhorar o fluxo continuo; o Scrum organiza o trabalho em Sprints de duracao fixa (timebox). As afirmacoes descrevem corretamente cada metodo.",
@@ -4509,8 +4509,8 @@
    "O modelo é tecnicamente neutro, pois não utiliza nenhum atributo sensível (como raça ou renda) diretamente em seu treinamento.",
    "Esse tipo de viés só pode ser eliminado retreinando o modelo com um conjunto de dados perfeitamente balanceado, o que sempre garante decisões justas.",
    "O problema ocorre exclusivamente porque o modelo utilizado é de aprendizado não supervisionado, que por definição desconsidera variáveis sensíveis.",
-   "Como o sistema é automatizado, o cidadão prejudicado não tem base legal para contestar a decisão, pois a LGPD só se aplica a decisões tomadas por humanos.",
-   "O CEP funciona como variável proxy de atributos sensíveis, e o modelo pode reproduzir e amplificar desigualdades históricas mesmo sem usar o atributo diretamente."
+   "Como o sistema é automatizado, o cidadão prejudicado não tem base legal para contestar a decisão, pois a LGPD só se aplica às decisões que sejam tomadas diretamente por seres humanos.",
+   "O CEP funciona como variável proxy de atributos sensíveis, e o modelo pode reproduzir e amplificar desigualdades históricas ainda que o atributo nunca tenha sido usado diretamente."
   ],
   "ans": 4,
   "why": "O CEP é um exemplo clássico de variável proxy: mesmo sem usar o atributo sensível diretamente, ele carrega correlação forte com raça/renda por causa da segregação urbana histórica, e o modelo aprende e reproduz esse padrão. É o cenário-chave de viés algorítmico em IA aplicada a políticas públicas.",
@@ -4546,9 +4546,9 @@
   "alts": [
    "Esse tipo de erro é exclusivo de arquiteturas antigas de Inteligência Artificial e já foi completamente eliminado nos modelos comerciais mais recentes.",
    "Como o LLM foi treinado com grande volume de dados, suas respostas são estatisticamente confiáveis o suficiente para dispensar qualquer revisão humana em atendimento ao cidadão.",
-   "A técnica de RAG (Retrieval-Augmented Generation) garante, de forma definitiva, que o modelo nunca mais cometerá esse tipo de erro, pois passa a responder apenas com base em documentos oficiais.",
+   "A técnica de RAG (Retrieval-Augmented Generation) garante, de forma definitiva, que o modelo nunca mais cometerá esse tipo de erro, pois passa a responder apenas com base em documentos oficiais previamente indexados, revisados e validados pelo órgão.",
    "O erro só pode ser evitado utilizando um modelo de aprendizado não supervisionado, já que esses modelos, por definição, não geram texto livre.",
-   "O episódio caracteriza uma alucinação do modelo — uma resposta plausível e bem articulada, porém factualmente incorreta —, por isso decisões ou informações que afetem direitos do cidadão não devem se basear apenas na resposta do modelo, sem validação humana ou consulta à fonte oficial."
+   "O episódio caracteriza uma alucinação do modelo — resposta plausível e bem articulada, porém factualmente incorreta —, por isso informações que afetem direitos do cidadão não devem se basear apenas na resposta do modelo, sem validação humana."
   ],
   "ans": 4,
   "why": "Alucinação é quando o LLM gera uma resposta fluente e coerente, porém sem lastro factual. Em atendimento público que afeta direito do cidadão, a mitigação correta é validação humana e/ou RAG com fonte oficial — nunca confiar cegamente na resposta do modelo.",
@@ -4582,10 +4582,10 @@
   "tag": "frontend",
   "q": "Considere o trecho a seguir:\n\nHTML:\n<div class=\"card\" data-status=\"pendente\">Solicitação</div>\n\nCSS:\n.card {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid #333;\n  margin: 10px;\n}\n.card::after {\n  content: attr(data-status);\n  font-weight: bold;\n}\n\nAssinale a alternativa correta sobre a renderização desse trecho.",
   "alts": [
-   "Por causa de box-sizing: border-box, o valor de width (200px) já inclui o padding e a borda, então a caixa ocupa exatamente 200px de largura (sem contar a margem), restando menos de 200px para o conteúdo interno.",
+   "Por causa de box-sizing: border-box, o width (200px) já inclui padding e borda, então a caixa ocupa exatamente 200px de largura, restando menos que isso para o conteúdo.",
    "Como a margem está definida como 10px, ela conta para o tamanho da própria caixa, fazendo a largura visual do elemento \"card\" aumentar para 210px.",
    "A largura total ocupada visualmente pela caixa, sem contar a margem, é de 250px, pois padding e border se somam ao width definido.",
-   "O texto \"pendente\" aparecerá literalmente como a string \"data-status\" após o texto \"Solicitação\", pois content: attr(x) imprime o nome do atributo, não o seu valor.",
+   "O texto \"pendente\" não aparece; será impressa literalmente a string \"data-status\" após o texto \"Solicitação\", pois content: attr(x) imprime o nome do atributo, não o seu valor.",
    "O pseudo-elemento ::after não será exibido, pois pseudo-elementos exigem uma classe adicional no HTML além da declaração no CSS."
   ],
   "ans": 0,
@@ -4601,10 +4601,10 @@
   "tag": "frontend",
   "q": "Considere o componente React a seguir:\n\nfunction Contador() {\n  const [cliques, setCliques] = useState(0);\n  function aoClicar() {\n    setCliques(cliques + 1);\n    setCliques(cliques + 1);\n  }\n  return <button onClick={aoClicar}>{cliques}</button>;\n}\n\nSobre o comportamento desse código ao clicar uma vez no botão, assinale a alternativa correta.",
   "alts": [
-   "setCliques é executado de forma síncrona, então, ao inspecionar a variável 'cliques' imediatamente após a primeira chamada de setCliques dentro de aoClicar, seu valor já estará atualizado.",
+   "setCliques é executado de forma síncrona, então, ao inspecionar a variável 'cliques' logo após a primeira chamada dentro de aoClicar, seu valor já estará atualizado para o novo número, permitindo usá-lo no restante da função.",
    "O React re-renderiza a lista inteira do DOM real a cada atualização de estado, recriando todos os elementos do zero, sem qualquer otimização.",
    "A cada clique no botão, o valor de 'cliques' é incrementado em 2, pois há duas chamadas a setCliques dentro de aoClicar.",
-   "Como as duas chamadas a setCliques usam o mesmo valor de 'cliques' lido no início do evento, o contador avança apenas 1 por clique, e não 2; para acumular corretamente seria necessário usar a forma funcional setCliques(c => c + 1) nas duas chamadas.",
+   "Como as duas chamadas a setCliques usam o mesmo valor de 'cliques' lido no início do evento, o contador avança apenas 1 por clique; para acumular seria preciso a forma funcional setCliques(c => c + 1).",
    "Usar o índice do array como key em elementos de lista é sempre a prática recomendada pelo React, independentemente de a lista poder ser reordenada."
   ],
   "ans": 3,
@@ -4641,7 +4641,7 @@
   "alts": [
    "Como regra geral, a notificação extrajudicial do usuário prejudicado já é suficiente para responsabilizar civilmente o provedor que, ciente do conteúdo ilícito, deixa de removê-lo; a exigência de ordem judicial prévia permanece apenas para os casos de crimes contra a honra.",
    "O novo entendimento equivale a um regime de censura prévia, no qual o provedor deve analisar e aprovar o conteúdo antes de permitir sua publicação pelos usuários.",
-   "O provedor de aplicações de internet somente pode ser responsabilizado civilmente por danos decorrentes de conteúdo gerado por terceiros se, após ordem judicial específica, não tomar as providências para tornar indisponível o conteúdo apontado como infringente.",
+   "O provedor de aplicações de internet somente poderá ser responsabilizado civilmente por danos decorrentes de conteúdo gerado por terceiros se, após ordem judicial específica, não tomar as providências necessárias para tornar indisponível o conteúdo apontado como infringente.",
    "A alteração da responsabilidade dos provedores decorreu da edição de uma nova lei pelo Congresso Nacional, que revogou expressamente o art. 19 do Marco Civil da Internet.",
    "A decisão do STF extinguiu por completo, para todo e qualquer conteúdo, a exigência de ordem judicial prévia, inclusive para os crimes contra a honra."
   ],
@@ -4659,9 +4659,9 @@
   "q": "Um usuário publica em uma rede social um vídeo que incita atos de violência contra um grupo específico e configura, em tese, crime contra a ordem democrática. Um terceiro identifica o conteúdo e envia uma notificação extrajudicial à plataforma, solicitando a remoção. À luz do entendimento do STF sobre o art. 19 do Marco Civil (pós-26/06/2025), assinale a alternativa correta.",
   "alts": [
    "A plataforma só pode ser responsabilizada se deixar de remover o conteúdo após ordem judicial específica, já que esse é o único critério previsto para qualquer tipo de conteúdo ilícito.",
-   "Por se tratar de conteúdo de risco especialmente grave (incitação à violência/ordem democrática), a plataforma deve agir de forma proativa, sob dever de cuidado, indo além da simples reação à notificação extrajudicial.",
+   "Por se tratar de conteúdo de risco especialmente grave (incitação à violência/ordem democrática), a plataforma deve sempre agir de forma proativa, sob dever de cuidado, sem depender de notificação.",
    "A notificação extrajudicial é irrelevante nesse caso, pois somente o Ministério Público pode notificar validamente uma plataforma sobre conteúdo ilícito.",
-   "Como se trata de conteúdo gerado por terceiro, e não pela própria plataforma, ela está isenta de qualquer responsabilidade civil, independentemente de notificação ou gravidade do conteúdo.",
+   "Como se trata de conteúdo gerado por terceiro, e não pela própria plataforma, ela está isenta de qualquer responsabilidade civil, independentemente de notificação, de ordem judicial ou da gravidade do conteúdo.",
    "A situação se enquadra na exceção dos crimes contra a honra, de modo que só ordem judicial específica poderia responsabilizar a plataforma."
   ],
   "ans": 1,
@@ -4677,8 +4677,8 @@
   "tag": "legislacao",
   "q": "Determinado usuário publica conteúdo que, em tese, configura crime de difamação contra outra pessoa física. Segundo o entendimento fixado pelo STF em 2025 sobre o art. 19 do Marco Civil, para que a plataforma seja civilmente responsabilizada por não remover esse conteúdo específico, é necessário que:",
   "alts": [
-   "Haja ordem judicial específica determinando a remoção, pois os crimes contra a honra (calúnia, injúria e difamação) são a exceção que preserva a exigência de decisão judicial.",
-   "Haja apenas notificação extrajudicial da vítima, aplicando-se a regra geral de notice-and-takedown, sem necessidade de ordem judicial.",
+   "Haja ordem judicial específica de remoção, pois os crimes contra a honra (calúnia, injúria e difamação) são sempre a exceção que preserva a decisão judicial.",
+   "Haja apenas notificação extrajudicial da vítima, aplicando-se a regra geral de notice-and-takedown, sem nenhuma necessidade de ordem judicial específica do caso.",
    "A plataforma seja notificada simultaneamente pela vítima e por uma autoridade pública, sendo insuficiente a notificação de apenas uma das partes.",
    "A exigência dependa exclusivamente do número de visualizações que o conteúdo tenha alcançado antes da notificação.",
    "Não há mais qualquer hipótese, após a decisão do STF, em que a exigência de ordem judicial permaneça válida no ordenamento brasileiro."
@@ -4696,10 +4696,10 @@
   "tag": "legislacao",
   "q": "Sobre a decisão do STF que tratou da constitucionalidade do art. 19 do Marco Civil da Internet (Temas 987 e 533), julgada em 26/06/2025, assinale a alternativa correta.",
   "alts": [
-   "A decisão trata exclusivamente de conteúdo relacionado a crimes contra a honra, não alcançando os demais tipos de conteúdo ilícito gerado por terceiros.",
+   "A decisão trata exclusivamente de conteúdo relacionado a crimes contra a honra, não alcançando os demais tipos de conteúdo ilícito gerado por terceiros e publicado nas plataformas.",
    "A tese fixada pelo STF perde a validade automaticamente após 12 meses, mesmo que o Congresso não tenha legislado sobre o tema.",
    "O STF declarou o art. 19 totalmente inconstitucional, retirando-o por completo do ordenamento jurídico, por unanimidade dos votos.",
-   "O STF declarou o art. 19 parcial e progressivamente inconstitucional, por maioria de votos, e a tese fixada continua vigente até que o Congresso Nacional legisle especificamente sobre o tema.",
+   "O STF declarou o art. 19 parcial e progressivamente inconstitucional, por maioria, e a tese vale para todos os casos análogos até o Congresso legislar sobre o tema.",
    "A decisão do STF é meramente uma recomendação ao Congresso Nacional, sem efeito vinculante imediato sobre o Poder Judiciário ou as plataformas."
   ],
   "ans": 3,
@@ -4716,10 +4716,10 @@
   "q": "O chamado 'viés algorítmico' em sistemas de Inteligência Artificial ocorre quando:",
   "alts": [
    "o conjunto de dados de treino é grande demais para caber em memória",
-   "dados de treino refletem desigualdades históricas (direta ou indiretamente, via variáveis proxy) e o modelo aprende e reproduz esse padrão em suas decisões",
+   "dados de treino refletem desigualdades históricas (inclusive via variáveis proxy) e o modelo aprende e reproduz esse padrão em suas decisões",
    "o modelo utiliza aprendizado por reforço em vez de aprendizado supervisionado",
    "a explicabilidade do modelo é maior do que sua acurácia",
-   "o modelo é intencionalmente programado para discriminar um grupo específico de pessoas"
+   "o modelo é intencionalmente programado por seus desenvolvedores para discriminar um grupo específico de pessoas ou uma comunidade inteira do país"
   ],
   "ans": 1,
   "why": "Viés algorítmico não exige intenção nem atributo sensível explícito: basta o dado de treino carregar, mesmo indiretamente via proxy, um padrão histórico de desigualdade para o modelo reproduzi-lo e até amplificá-lo.",
@@ -4737,8 +4737,8 @@
    "Como o sistema não utiliza o atributo 'sexo' como variável de entrada, ele não pode ser responsabilizado por qualquer forma de discriminação indireta.",
    "Esse tipo de resultado só seria considerado problemático se o sistema utilizasse aprendizado por reforço.",
    "A única forma de corrigir esse tipo de viés é interromper definitivamente o uso de qualquer sistema automatizado de triagem em processos seletivos.",
-   "Como a triagem é apenas uma etapa preliminar de um processo com decisão humana final, o candidato não tem qualquer direito de solicitar explicação sobre os critérios do sistema.",
-   "O histórico de contratações reproduz um padrão social preexistente, e o sistema aprendeu a associar esse padrão (hiato por cuidado familiar) a menor pontuação, ainda que 'sexo' nunca tenha sido usado como variável — configurando viés algorítmico indireto."
+   "Como a triagem é apenas uma etapa preliminar de um processo que termina com uma decisão humana final, o candidato não tem qualquer direito de solicitar explicação sobre os critérios adotados pelo sistema automatizado de triagem.",
+   "O histórico de contratações reproduz um padrão social preexistente e o sistema aprendeu a associar esse padrão (hiato por cuidado familiar) a menor pontuação, ainda que 'sexo' nunca tenha sido usado — viés algorítmico indireto."
   ],
   "ans": 4,
   "why": "'Hiato de carreira por cuidado familiar' é, na prática, um proxy correlacionado a gênero. O modelo pode aprender esse padrão histórico e reproduzi-lo mesmo sem usar 'sexo' diretamente — é viés algorítmico indireto, o mesmo mecanismo do CEP em cenários de política pública.",
@@ -4755,9 +4755,9 @@
   "alts": [
    "aplicar o mesmo conjunto de exigências regulatórias a todo e qualquer sistema de IA, independentemente de sua finalidade",
    "substituir integralmente a legislação de proteção de dados pessoais já existente em cada país",
-   "graduar as exigências regulatórias (transparência, supervisão humana, auditoria) conforme o nível de risco que a aplicação de IA representa para direitos e segurança das pessoas",
+   "graduar as exigências regulatórias (transparência, supervisão humana, auditoria) conforme o risco que a aplicação de IA representa para os direitos de todas as pessoas afetadas",
    "proibir integralmente qualquer aplicação de IA em setores considerados sensíveis, como saúde e segurança pública",
-   "delegar toda a responsabilidade regulatória exclusivamente aos desenvolvedores dos modelos, isentando quem os aplica em produtos finais"
+   "delegar toda a responsabilidade regulatória exclusivamente aos desenvolvedores dos modelos, isentando por completo as empresas que os aplicam em produtos finais destinados ao consumidor"
   ],
   "ans": 2,
   "why": "Regulação baseada em risco classifica aplicações de IA por nível de risco e escalona as exigências conforme essa classificação: quanto mais risco, mais obrigação de transparência, supervisão humana e auditoria.",
@@ -4793,9 +4793,9 @@
   "alts": [
    "conteúdo de cunho sexual ou de nudez envolvendo a pessoa exposta, divulgado sem seu consentimento",
    "conteúdo que verse sobre crítica a autoridades públicas",
-   "qualquer conteúdo que a própria plataforma julgue ofensivo à sua política interna de uso",
+   "conteúdo que a própria plataforma julgue ofensivo à sua política interna de uso",
    "conteúdo protegido por direitos autorais de terceiros",
-   "conteúdo que configure crime contra a honra, como calúnia e difamação"
+   "conteúdo que configure crime contra a honra, como a calúnia, a injúria e a difamação praticadas online"
   ],
   "ans": 0,
   "why": "O art. 21 do Marco Civil já prevê, desde a redação original, que basta notificação para responsabilizar o provedor que não remove cena de nudez ou ato sexual de caráter privado divulgado sem consentimento. É a exceção histórica que, após 2025, se tornou o modelo geral (notice-and-takedown) para a maioria dos conteúdos ilícitos.",
@@ -4813,8 +4813,8 @@
    "a responsabilização depende exclusivamente de o comentário ter recebido determinado número mínimo de curtidas ou compartilhamentos",
    "a plataforma deve remover o comentário automaticamente sempre que houver qualquer discordância entre consumidor e estabelecimento, mesmo sem notificação",
    "a plataforma nunca pode ser responsabilizada por comentários de consumidores, independentemente do conteúdo ou da gravidade",
-   "a simples notificação extrajudicial do proprietário já é suficiente para responsabilizar a plataforma, pois se aplica a regra geral de notice-and-takedown",
-   "por se tratar, em tese, de calúnia (crime contra a honra), a responsabilização da plataforma depende de ordem judicial específica, não bastando a notificação extrajudicial do ofendido"
+   "a simples notificação extrajudicial do proprietário do estabelecimento já seria suficiente para responsabilizar a plataforma, pois se aplicaria a regra geral de notice-and-takedown",
+   "por se tratar, em tese, de calúnia (crime contra a honra), a responsabilização da plataforma sempre depende de ordem judicial específica, não bastando a notificação extrajudicial"
   ],
   "ans": 4,
   "why": "Calúnia é crime contra a honra — categoria que, mesmo após a decisão do STF de 2025, continua exigindo ordem judicial específica para responsabilizar a plataforma. A simples notificação do ofendido não basta nesse caso, embora baste para a maioria dos outros conteúdos ilícitos.",
@@ -4849,10 +4849,10 @@
   "q": "O julgamento do STF que resultou na nova interpretação do art. 19 do Marco Civil (Temas 987 e 533) foi proferido em sede de:",
   "alts": [
    "medida provisória editada pelo próprio STF, com vigência de 60 dias",
-   "consulta popular promovida pelo Congresso Nacional, referendada posteriormente pelo STF",
+   "consulta popular promovida pelo Congresso Nacional e referendada posteriormente pelo Supremo Tribunal Federal em plenário",
    "ação direta de inconstitucionalidade (ADI), com efeito restrito às partes do processo",
    "recursos extraordinários com repercussão geral reconhecida, cuja tese fixada vincula o julgamento de casos análogos",
-   "súmula vinculante editada previamente pelo STF, apenas reafirmada no julgamento de 2025"
+   "súmula vinculante editada previamente pelo STF, reafirmada no julgamento de 2025"
   ],
   "ans": 3,
   "why": "Os Temas 987 e 533 foram julgados como recursos extraordinários com repercussão geral — instrumento que, uma vez fixada a tese, vincula o julgamento de casos análogos em todo o país, e não apenas as partes do processo original.",
@@ -4868,9 +4868,9 @@
   "q": "Considere o trecho Java a seguir:\n\nMap<String, Integer> mapa = new HashMap<>();\nmapa.put(\"b\", 2);\nmapa.put(\"a\", 1);\nmapa.put(\"c\", 3);\n\nMap<String, Integer> ordenado = new TreeMap<>(mapa);\n\nfor (String chave : ordenado.keySet()) {\n    System.out.print(chave);\n}\n\nAssinale a alternativa correta sobre a saída desse código.",
   "alts": [
    "A saída é imprevisível, pois HashMap e TreeMap não podem coexistir na mesma estrutura de dados.",
-   "A saída é \"bac\", pois o TreeMap preserva a ordem original de inserção do HashMap.",
+   "A saída é \"bac\", pois o TreeMap preserva a ordem original de inserção herdada do HashMap de origem.",
    "O código não compila, pois não é possível construir um TreeMap a partir de um HashMap.",
-   "A saída é \"abc\", pois o TreeMap ordena as chaves segundo sua ordem natural, independentemente da ordem de inserção no HashMap de origem.",
+   "A saída é \"abc\", pois o TreeMap ordena as chaves pela ordem natural, independentemente da inserção.",
    "A saída é \"cba\", pois o TreeMap inverte a ordem de inserção do HashMap original."
   ],
   "ans": 3,
@@ -4887,8 +4887,8 @@
   "q": "Considere o trecho de JavaScript a seguir:\n\nconst funcoes = [];\nfor (var i = 0; i < 3; i++) {\n  funcoes.push(function () { console.log(i); });\n}\nfuncoes[0]();\nfuncoes[1]();\nfuncoes[2]();\n\nAssinale a alternativa correta sobre a saída desse código.",
   "alts": [
    "O código não compila, pois não é permitido criar funções dentro de um laço for em JavaScript.",
-   "O comportamento seria idêntico se var fosse substituído por let, já que ambas as palavras-chave têm exatamente o mesmo escopo em JavaScript.",
-   "Imprime 3, 3 e 3, pois var tem escopo de função (não de bloco), então todas as funções compartilham a mesma variável i, cujo valor final após o laço é 3.",
+   "O comportamento seria idêntico se var fosse substituído por let, já que ambas as palavras-chave têm exatamente o mesmo escopo e o mesmo comportamento em laços.",
+   "Imprime 3, 3 e 3, pois var tem escopo de função (não de bloco), então todas as funções compartilham a mesma variável i, que vale 3 ao fim do laço.",
    "Imprime 0, 1 e 2, nessa ordem, pois cada função criada dentro do laço captura o valor de i no momento em que foi definida.",
    "Imprime 0, 0 e 0, pois cada função sempre reinicia i para seu valor inicial ao ser chamada."
   ],
@@ -4906,8 +4906,8 @@
   "q": "Considere o HTML e CSS a seguir:\n\nHTML: <p id=\"aviso\" class=\"destaque\">Atenção</p>\n\nCSS:\n#aviso { color: blue; }\n.destaque { color: red; }\np { color: green; }\n\nAssinale a alternativa correta sobre a cor em que o texto \"Atenção\" será exibido.",
   "alts": [
    "Vermelho, pois seletores de classe têm especificidade maior que seletores de id em CSS.",
-   "Azul, pois o seletor de id (#aviso) tem especificidade maior que o seletor de classe (.destaque) e que o seletor de elemento (p), prevalecendo sobre os demais.",
-   "A cor final é indefinida, pois há conflito entre três regras aplicáveis ao mesmo elemento, e o navegador não aplica nenhuma delas nesse caso.",
+   "Azul, pois o seletor de id (#aviso) sempre tem especificidade maior que o de classe (.destaque) e que o de elemento (p).",
+   "A cor final fica indefinida, pois há conflito entre as três regras aplicáveis ao mesmo elemento e o navegador não aplica nenhuma delas nesse caso.",
    "Verde, pois a última regra declarada no CSS sempre prevalece sobre as anteriores, independentemente do seletor utilizado.",
    "Verde, pois seletores de elemento (tag) têm prioridade sobre seletores de classe e de id por serem mais genéricos e abrangentes."
   ],

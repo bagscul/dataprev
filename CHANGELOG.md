@@ -2,6 +2,33 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — fim dos vazamentos de forma no banco (auditoria, Bloco VI/A)
+
+- **A correta deixou de ser a mais longa.** Era o vazamento mais grave do banco:
+  dava para acertar pela mecânica da alternativa, sem saber o conteúdo. Passou de
+  **160/259 (62%) para 6/259 (2%)** — e os 6 restantes são falsos-positivos
+  estruturais (itens do tipo "nomeie o termo", em que a correta é maior só porque
+  a *palavra* é maior, e itens I/II/III, em que o "apenas" é sintaxe do formato).
+- **Termo absoluto só no distrator: 81/259 (31%) → 1.** Onde a explicação da
+  errada *ensina* o absoluto como pista ("note o 'exclusivamente'"), o distrator
+  foi preservado e a correta ganhou um absoluto **legítimo** — verdadeiro pelo
+  conteúdo, não pela forma (ex.: "o IPS atua **sempre** em linha", "a seta da
+  generalização **sempre** aponta para a superclasse"). Assim "elimine a que tem
+  absoluto" para de funcionar sem estragar o comentário do gabarito.
+- **Correta ≥1,8× a média das erradas:** 86 questões → 1.
+- **Como foi feito:** nivelando por baixo, não só encurtando a correta. Os
+  distratores já estavam ancorados em erro conceitual real — só curtos demais;
+  cada distrator-âncora foi enriquecido até a frase completa do conceito errado
+  que já representava. Efeito colateral: distratores mais fortes.
+- **Itens de sigla nivelados** (ESB, SIEM, MVC, JAD, ANPD): a correta vinha com
+  sigla + significado por extenso e as erradas com a sigla nua — outro tell.
+  Agora todas as alternativas trazem o nome completo.
+- **166 questões tiveram alternativas reescritas. Nenhum gabarito, enunciado ou
+  tag foi alterado** (conferido por diff contra o commit anterior); dois campos
+  `erradas` (#78, #141) foram ajustados porque citavam literalmente o texto que
+  mudou. Todo conteúdo aparado da alternativa correta continua no `why`.
+- `./valida.py` sem os dois avisos sistêmicos de forma.
+
 ## 2026-07-24 (noite) — auditoria do banco: gabarito, estilo e ferramentas
 
 - **Gabarito reembaralhado (Bloco I):** a posição da correta estava concentrada
