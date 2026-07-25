@@ -54,13 +54,15 @@ questões de redes (OSI, protocolo, segurança de rede) para Desenvolvimento de
 Software. O edital 2026 do Perfil 3 só cita HTTPS, SSL/TLS. **Não ignore
 redes** — veja [redes](redes.md). Ignorar isso custou 7,5 pontos em 2024.
 
-**2. OWASP: 2021 vs 2025.** A Dataprev 2024 cobrou o **OWASP Top 10:2021**.
-Mas em **novembro/2025 saiu o OWASP Top 10:2025**, com mudanças grandes
-(Security Misconfiguration subiu para A02, "Software Supply Chain Failures"
-entrou como A03, SSRF foi absorvido em A01 Broken Access Control, e surgiu
-A10 "Mishandling of Exceptional Conditions"). O edital 2026 aponta para a
-página do projeto (sem fixar ano). **Saiba as duas listas** — detalhe em
-[seguranca](seguranca.md).
+**2. OWASP: 2025 (vigente) vs 2021.** A Dataprev 2024 cobrou o **OWASP Top
+10:2021**, que ainda ancora as questões deste material. Mas a **edição vigente
+hoje é o OWASP Top 10:2025** (*release candidate* em nov/2025, versão final
+publicada em **jan/2026**), com mudanças grandes: Security Misconfiguration
+subiu para A02, "Software Supply Chain Failures" entrou como A03, SSRF foi
+absorvido em A01 Broken Access Control, surgiu A10 "Mishandling of Exceptional
+Conditions" — e três categorias mudaram de **nome** (A07, A08 e A09). O edital
+2026 aponta para a página do projeto, sem fixar ano. **Saiba as duas listas** e
+confira qual ano o enunciado cita — detalhe em [seguranca](seguranca.md).
 
 ## IA entrou nas gerais (novo em 2026)
 

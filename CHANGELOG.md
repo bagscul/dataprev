@@ -2,6 +2,38 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — Interpreter e OWASP 2025 (auditoria, Bloco VII/ITEM 7 · P0)
+
+- **Faltava o Interpreter.** A apostila e o resumo afirmavam "comportamentais
+  (11)" — e diziam que o número é cobrado direto —, mas as tabelas listavam
+  **10**. O 11º padrão não existia em nenhuma camada nem no banco (`grep` sem um
+  único hit). Entrou nas duas tabelas com intenção e gatilho no mesmo formato
+  das outras linhas, mais a observação de que é justamente o que some da lista
+  de quem conta de cabeça. Criacionais (5) e estruturais (7) já estavam certos.
+- **OWASP: a edição vigente passou a ser a 2025.** O repositório se contradizia
+  — o guia de questões e o `valida.py` tratavam a 2021 como "a numeração
+  vigente", enquanto a apostila e o resumo já ensinavam as duas. Verificado em
+  owasp.org: a **2025 é a versão corrente** (8ª da série), o SSRF foi absorvido
+  pelo A01 e a lista das dez confere com o que estava escrito. Duas correções
+  de fato:
+  - **a data estava errada**: nov/2025 foi o *release candidate*; a versão final
+    saiu em **jan/2026** (data de fonte secundária, não do owasp.org);
+  - **as posições 6–9 do 2025 estavam em branco** e faltavam as **três
+    renomeações** — A07 perdeu o "Identification and", A08 trocou "and" por
+    "or", A09 trocou *Monitoring* por *Alerting*. É pegadinha pronta: oferecer o
+    nome de 2021 num item que diz 2025.
+- **Camadas alinhadas:** tabela lado a lado 2025 × 2021 completa nas dez
+  posições (apostila e resumo), `dicas/seguranca.md` deixou de falar só em 2021,
+  e `resumo/README.md` + `README.md` perderam a data errada. PDF recompilado
+  (87 → **88 páginas**).
+- **`valida.py`:** fato canônico novo, "OWASP Top 10 2025", declarado em
+  `apostila`/`resumo`/`dicas`. O **banco fica de fora de propósito** — suas
+  questões de OWASP nomeiam a edição de 2021 no enunciado, que é o comportamento
+  correto agora que duas numerações válidas convivem.
+- **`CONTRIBUINDO-QUESTOES.md`:** questão nova de OWASP tem de **dizer o ano**
+  quando cobra posição ou nome de categoria (#272 e #274 fazem certo; a #37 pode
+  ficar sem ano porque pede o conceito, que é categoria nas duas edições).
+
 ## 2026-07-25 — IA aplicada, ESG e Python para dados nas camadas (auditoria, Bloco VII/ITEM 6)
 
 - **Buraco que o detector de drift do ITEM 5 não pegava.** A checagem 1 varre só

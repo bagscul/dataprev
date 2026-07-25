@@ -247,6 +247,11 @@ FATOS_CANONICOS = [
     # (nome, regex ja normalizada/sem acento, camadas onde deve aparecer)
     ("STF art. 19 (26/06/2025)", r"26/06/2025|26 de junho de 2025", CAMADAS),
     ("OWASP Top 10 2021", r"owasp top 10\D{0,12}2021|top 10 de 2021", CAMADAS),
+    # A 2025 e a edicao VIGENTE (final em jan/2026), mas o banco fica de fora de
+    # proposito: as questoes de OWASP nomeiam a edicao de 2021 no enunciado, que
+    # e a pratica certa (as duas numerações divergem em posicao e em nome).
+    ("OWASP Top 10 2025", r"owasp top 10\D{0,12}2025|top 10 de 2025|top 10:?\s*2025",
+     ("apostila", "resumo", "dicas")),
     ("ISO/IEC 27002:2022", r"27002:?\s*2022|27002 de 2022|revisao de 2022 da iso/iec 27002",
      ("apostila", "resumo", "banco")),
     ("COBIT 2019", r"cobit\s*2019", CAMADAS),

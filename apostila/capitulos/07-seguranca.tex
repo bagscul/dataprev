@@ -115,38 +115,53 @@ autenticação. Nos claims do OIDC, a banca pede um e oferece os outros ---
 decore os quatro.
 \end{pegadinha}
 
-\section{OWASP Top 10 --- 2021 e 2025 (leia os dois)}
+\section{OWASP Top 10 --- 2025 (vigente) e 2021 (leia os dois)}
 
-O edital aponta para o projeto OWASP sem fixar ano. A Dataprev 2024 cobrou o
-\textbf{2021}; o \textbf{2025} saiu em novembro de 2025. Saber os dois cobre
-qualquer recorte que a prova use.
+O edital aponta para o projeto OWASP sem fixar ano, e hoje existem duas
+numerações válidas. A \textbf{edição vigente é a 2025} --- oitava da série,
+com \emph{release candidate} apresentado em novembro de 2025 e versão final
+publicada em janeiro de 2026. A \textbf{2021} é a que a Dataprev 2024 cobrou e
+a que ancora as questões deste material. Saber as duas cobre qualquer recorte
+que a prova use; e, ao ler o enunciado, \textbf{verifique qual ano ele cita}
+antes de contar posição.
 
 \begin{center}
 \begin{tabular}{@{}p{1.3cm}p{5.3cm}p{5.3cm}@{}}
 \toprule
-\# & \textbf{Top 10:2021} & \textbf{Top 10:2025} \\
+\# & \textbf{Top 10:2025} (vigente) & \textbf{Top 10:2021} (Dataprev 2024) \\
 \midrule
-1 & Broken Access Control & Broken Access Control (absorveu SSRF) \\
-2 & Cryptographic Failures & Security Misconfiguration (subiu de 5º) \\
-3 & Injection (SQLi; \textbf{XSS absorvido aqui}) & Software Supply Chain Failures (novo) \\
-4 & Insecure Design (novo em 2021) & Cryptographic Failures (caiu para 4º) \\
-5 & Security Misconfiguration & Injection (caiu para 5º) \\
-6 & Vulnerable and Outdated Components & --- \\
-7 & Identification and Authentication Failures & --- \\
-8 & Software and Data Integrity Failures & --- \\
-9 & Security Logging and Monitoring Failures & --- \\
-10 & Server-Side Request Forgery (SSRF) & Mishandling of Exceptional Conditions (novo) \\
+1 & Broken Access Control (absorveu o SSRF) & Broken Access Control \\
+2 & Security Misconfiguration (subiu de 5º) & Cryptographic Failures \\
+3 & Software Supply Chain Failures (novo; expande ``componentes vulneráveis'') & Injection (SQLi; \textbf{XSS absorvido aqui}) \\
+4 & Cryptographic Failures (caiu de 2º) & Insecure Design (novo em 2021) \\
+5 & Injection (caiu de 3º) & Security Misconfiguration \\
+6 & Insecure Design & Vulnerable and Outdated Components \\
+7 & Authentication Failures & Identification and Authentication Failures \\
+8 & Software \emph{or} Data Integrity Failures & Software \emph{and} Data Integrity Failures \\
+9 & Security Logging and \textbf{Alerting} Failures & Security Logging and \textbf{Monitoring} Failures \\
+10 & Mishandling of Exceptional Conditions (novo) & Server-Side Request Forgery (SSRF) \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+O que mudou de 2021 para 2025: \textbf{duas categorias novas} (A03 Software
+Supply Chain Failures e A10 Mishandling of Exceptional Conditions) e
+\textbf{uma consolidação} (o SSRF, que era A10 em 2021, foi absorvido pelo
+Broken Access Control). Três categorias só \textbf{mudaram de nome}: A07
+perdeu o ``Identification and''; A08 trocou o ``and'' pelo ``or''; A09 trocou
+\textbf{Monitoring} por \textbf{Alerting}.
 
 \begin{pegadinha}
 A Dataprev 2024 descreveu ``injeção'' citando SQL $\to$ categoria
 \textbf{Injection}; lembre que desde 2021 \textbf{XSS entrou em Injection}
 (era categoria própria até 2017). A banca mistura itens que \textbf{não} são
 da lista OWASP web --- ``proteção da cadeia de suprimentos'', ``ambiente de
-engenharia'', ``treinamento operacional'' são de CI/CD e SSDF, não OWASP. Se
-a prova disser ``2025'', troque o ranking conforme a tabela acima.
+engenharia'', ``treinamento operacional'' são de CI/CD e SSDF, não OWASP
+(atenção: em 2025 a cadeia de suprimentos \emph{de software} virou categoria
+própria, a A03 --- o que não torna ``proteção da cadeia de suprimentos'' item
+de 2021). As renomeações são material de pegadinha pronta: oferecer
+``Security Logging and \textbf{Monitoring}'' num item que diz 2025, ou
+``Authentication Failures'' num item que diz 2021.
 \end{pegadinha}
 
 \section{Desenvolvimento seguro}

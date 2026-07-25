@@ -67,37 +67,40 @@ esconde a existência, cifra esconde o conteúdo.
 Pegadinha: MAC = **rótulos** e regra central; DAC = dono decide. OAuth2 é
 autorização, não autenticação.
 
-## 5. OWASP Top 10 — **2021 E 2025** (leia os dois)
+## 5. OWASP Top 10 — **2025 (vigente) E 2021** (leia os dois)
 
-O edital aponta para o projeto OWASP (sem fixar ano). A Dataprev 2024 cobrou
-o **2021**; mas o **2025** saiu em nov/2025. Sabendo os dois, você cobre
-qualquer recorte.
+O edital aponta para o projeto OWASP (sem fixar ano), e hoje existem **duas
+numerações válidas**. A **edição vigente é a 2025** — oitava da série, com
+*release candidate* em nov/2025 e versão final publicada em **jan/2026**. A
+**2021** é a que a Dataprev 2024 cobrou e a que ancora as questões deste
+material. Sabendo as duas, você cobre qualquer recorte — e, ao ler o enunciado,
+**confira qual ano ele cita** antes de contar posição.
 
-**OWASP Top 10:2021** (referência das nossas questões):
+| # | **Top 10:2025** (vigente) | **Top 10:2021** (Dataprev 2024) |
+|---|---|---|
+| 1 | **Broken Access Control** (absorveu o SSRF) | **Broken Access Control** |
+| 2 | **Security Misconfiguration** (subiu de 5º) | **Cryptographic Failures** (era "Sensitive Data Exposure") |
+| 3 | **Software Supply Chain Failures** (novo) | **Injection** (SQLi; **XSS absorvido aqui** — CWE-79) |
+| 4 | Cryptographic Failures (caiu de 2º) | Insecure Design (novo em 2021) |
+| 5 | Injection (caiu de 3º) | Security Misconfiguration |
+| 6 | Insecure Design | Vulnerable and Outdated Components |
+| 7 | Authentication Failures | Identification and Authentication Failures |
+| 8 | Software **or** Data Integrity Failures | Software **and** Data Integrity Failures |
+| 9 | Security Logging and **Alerting** Failures | Security Logging and **Monitoring** Failures |
+| 10 | **Mishandling of Exceptional Conditions** (novo; erro/fail-open) | **Server-Side Request Forgery (SSRF)** |
 
-1. A01 **Broken Access Control** (subiu para o topo)
-2. A02 **Cryptographic Failures** (era "Sensitive Data Exposure")
-3. A03 **Injection** (SQLi, e **XSS foi absorvido aqui** — CWE-79)
-4. A04 Insecure Design (novo em 2021)
-5. A05 Security Misconfiguration
-6. A06 Vulnerable and Outdated Components
-7. A07 Identification and Authentication Failures
-8. A08 Software and Data Integrity Failures
-9. A09 Security Logging and Monitoring Failures
-10. A10 **Server-Side Request Forgery (SSRF)**
-
-**OWASP Top 10:2025** (o que mudou):
-
-- A01 **Broken Access Control** segue em 1º (e **absorveu o SSRF**).
-- A02 **Security Misconfiguration** subiu de 5º para 2º.
-- A03 **Software Supply Chain Failures** (novo; expande "Componentes
-  vulneráveis").
-- **Cryptographic Failures caiu para 4º; Injection para 5º.**
-- A10 **Mishandling of Exceptional Conditions** (novo; erro/fail-open).
+**O que mudou de 2021 para 2025:** duas categorias **novas** (A03 Software
+Supply Chain Failures, que expande "componentes vulneráveis", e A10 Mishandling
+of Exceptional Conditions) e uma **consolidação** (o SSRF, A10 em 2021, foi
+absorvido pelo Broken Access Control). Três categorias só **mudaram de nome**:
+A07 perdeu o "Identification and"; A08 trocou "and" por "or"; A09 trocou
+**Monitoring** por **Alerting**.
 
 Pegadinha 2024: descrever "injeção" citando SQL → categoria **Injection**;
 lembrar que em 2021 **XSS entrou em Injection** (era categoria própria até
-2017). Se a prova disser "2025", troque o ranking conforme acima.
+2017). As renomeações são pegadinha pronta: "Security Logging and
+**Monitoring**" num item que diz 2025, ou "Authentication Failures" num item
+que diz 2021. Se a prova disser "2025", troque o ranking conforme a tabela.
 
 ## 6. Desenvolvimento seguro
 

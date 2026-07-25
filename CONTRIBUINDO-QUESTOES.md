@@ -19,8 +19,16 @@ A resposta tem de sair de uma **fonte externa canônica**, não de um trecho do
 - **Norma/lei:** o texto do artigo (LGPD 13.709/2018, MCI 12.965/2014, LAI
   12.527/2011, Lei 12.737/2012), e a jurisprudência quando ela mudou a regra
   (ex.: STF 26/06/2025, Temas 987 e 533, sobre o art. 19).
-- **Padrão técnico:** RFC (ex.: 1918 para faixas privadas), OWASP Top 10 **2021**
-  (a categoria/numeração vigente), GoF (os 23 padrões), UML 2.x, SQL padrão.
+- **Padrão técnico:** RFC (ex.: 1918 para faixas privadas), OWASP Top 10 **2025**
+  (a edição vigente) e **2021** (a que a Dataprev 2024 cobrou e que ancora as
+  questões já no banco), GoF (os 23 padrões), UML 2.x, SQL padrão.
+  > **OWASP: diga a edição no enunciado.** Desde a publicação final da Top
+  > 10:2025 (jan/2026) convivem duas numerações válidas, e elas divergem em
+  > posição *e* em nome (o SSRF virou parte do A01; A09 trocou *Monitoring* por
+  > *Alerting*). Questão que só diz "segundo o OWASP Top 10" e cobra **posição
+  > ou nome de categoria** fica ambígua — nomeie o ano, como fazem a #272
+  > ("Na classificação do OWASP Top 10 2021…") e a #274. A #37 pode ficar sem
+  > ano porque pede o **conceito** (injeção), que é categoria nas duas edições.
 - **Framework oficial:** ITIL 4 (SVS, cadeia de valor, 7 princípios), COBIT 2019
   (EDM + APO/BAI/DSS/MEA), PMBOK (grupos de processo × áreas), Scrum Guide atual.
 - **Edital do Perfil 3** para saber o recorte cobrado.
