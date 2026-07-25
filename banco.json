@@ -827,10 +827,10 @@
   "q": "Uma SPA (Single Page Application) caracteriza-se por:",
   "alts": [
    "trocar o conteúdo via JavaScript sem recarregar toda a página, a partir de um único HTML",
-   "ser renderizada apenas no servidor",
-   "dispensar completamente o uso de servidor",
+   "ser renderizada apenas no servidor, que devolve o HTML pronto a cada navegação",
+   "dispensar completamente o uso de servidor, já que todo o conteúdo vem embutido no pacote",
    "recarregar do servidor a página inteira a cada interação do usuário, mantendo o estado no servidor",
-   "funcionar exclusivamente offline"
+   "funcionar exclusivamente offline, sem qualquer requisição de dados durante o uso"
   ],
   "ans": 0,
   "why": "SPA carrega o shell uma vez e troca conteúdo via JS/AJAX consumindo APIs. O oposto do modelo tradicional multi-page com recarga a cada clique.",
@@ -922,9 +922,9 @@
   "q": "No COBIT 2019, a distinção fundamental entre governança e gestão de TI é que a governança:",
   "alts": [
    "é responsabilidade exclusiva do gerente de projetos, e não do conselho de administração",
-   "é sinônimo de gestão no framework",
-   "trata da infraestrutura física de TI",
-   "executa as operações diárias de TI",
+   "é sinônimo de gestão no framework, sem distinção de papéis entre os dois",
+   "trata da infraestrutura física de TI, como data center, rede e servidores",
+   "executa as operações diárias de TI, no lugar das áreas de negócio",
    "avalia, direciona e monitora (EDM), enquanto a gestão planeja, constrói e executa"
   ],
   "ans": 4,
@@ -1036,10 +1036,10 @@
   "q": "Em uma aplicação web Java, a diferença entre um servidor web e um servidor de aplicação é que o servidor de aplicação:",
   "alts": [
    "serve apenas conteúdo estático, como páginas HTML, imagens e arquivos de folha de estilo CSS e JS",
-   "não suporta o protocolo HTTP em nenhuma versão",
+   "não suporta o protocolo HTTP em nenhuma versão, dependendo sempre de um servidor web à frente",
    "oferece container completo para componentes de negócio, como EJB, além de todo o container web",
-   "é sempre mais leve que o servidor web",
-   "dispensa a JVM para executar a aplicação"
+   "é sempre mais leve que o servidor web, por não carregar container algum",
+   "dispensa a JVM para executar a aplicação, rodando o bytecode direto no sistema operacional"
   ],
   "ans": 2,
   "why": "Servidor web (Apache, Nginx) serve estático e faz proxy. Servidor de aplicação (JBoss, WebLogic) tem containers para a especificação Java EE completa, incluindo EJB. Distinção nomeada no edital.",
@@ -1384,10 +1384,10 @@
   "q": "São práticas associadas ao Extreme Programming (XP), EXCETO:",
   "alts": [
    "documentação extensa e detalhada antes da codificação",
-   "integração contínua",
+   "integração contínua, com build automatizado a cada commit",
    "desenvolvimento guiado por testes escritos antes do código",
-   "programação em pares",
-   "refatoração constante"
+   "programação em pares, com dois desenvolvedores no mesmo código",
+   "refatoração constante do código já entregue, sem mudar o comportamento"
   ],
   "ans": 0,
   "why": "XP prega código como documentação principal e comunicação direta. Documentação extensa prévia é traço de processos prescritivos, o oposto do XP.",
@@ -1538,9 +1538,9 @@
   ],
   "q": "O conceito de DevSecOps propõe que a segurança:",
   "alts": [
-   "seja responsabilidade exclusiva do time de infraestrutura",
-   "dispense análise de código",
-   "substitua os testes funcionais",
+   "seja responsabilidade exclusiva do time de infraestrutura, fora do escopo do time de desenvolvimento",
+   "dispense a análise de código, por ser atividade de auditoria posterior à entrega",
+   "substitua os testes funcionais, já que a esteira automatizada cobre os dois papéis",
    "seja integrada desde o início do ciclo e sempre automatizada na esteira de CI/CD (shift-left)",
    "seja verificada apenas na homologação final, por uma equipe independente do time de desenvolvimento"
   ],
@@ -2089,10 +2089,10 @@
   "tag": "seguranca",
   "q": "No ataque de Cross-Site Scripting (XSS), o código malicioso é executado:",
   "alts": [
-   "no firewall de borda da rede",
+   "no firewall de borda da rede, antes de o tráfego chegar à aplicação",
    "no servidor de banco de dados, durante o processamento da consulta",
-   "no serviço de DNS",
-   "apenas em aplicações desktop",
+   "no serviço de DNS, durante a resolução do nome do domínio",
+   "apenas em aplicações desktop, fora do contexto do navegador",
    "no navegador da vítima, em qualquer página que ela visualize"
   ],
   "ans": 4,
@@ -2899,9 +2899,9 @@
   "tag": "arquitetura",
   "q": "Na comunicação entre microsserviços, comparando REST síncrono e mensageria assíncrona, o REST síncrono:",
   "alts": [
-   "garante desacoplamento temporal completo",
-   "é sempre a escolha correta para eventos de domínio",
-   "não utiliza o protocolo HTTP",
+   "garante desacoplamento temporal completo, permitindo que o chamado processe a requisição mais tarde",
+   "é sempre a escolha correta para eventos de domínio, mesmo com vários consumidores interessados",
+   "não utiliza o protocolo HTTP, apoiando-se em um broker de mensagens próprio",
    "dispensa que o serviço chamado esteja disponível no momento da requisição, bastando reenviá-la depois",
    "exige chamador e chamado disponíveis ao mesmo tempo, com o cliente sempre aguardando a resposta"
   ],
@@ -3662,11 +3662,11 @@
   "tag": "frontend",
   "q": "Sobre a diferença entre SPA (Single Page Application) e PWA (Progressive Web App), assinale a alternativa CORRETA.",
   "alts": [
-   "SPA exige obrigatoriamente um Service Worker para funcionar.",
+   "SPA exige obrigatoriamente um Service Worker para funcionar, sem o qual o roteamento no cliente não acontece.",
    "Uma SPA carrega um único HTML e troca o conteúdo sem recarregar toda a página; a PWA usa Service Worker e manifest para instalar e rodar offline.",
    "PWA é um tipo de aplicativo nativo, compilado na linguagem da plataforma e distribuído exclusivamente pelas lojas de aplicativos, sem relação com a web.",
-   "PWA não pode ser construída sobre uma arquitetura SPA.",
-   "SPA e PWA são sinônimos: toda SPA é obrigatoriamente uma PWA."
+   "PWA não pode ser construída sobre uma arquitetura SPA, porque o manifest impede o roteamento no cliente.",
+   "SPA e PWA são sinônimos: toda SPA é obrigatoriamente uma PWA, já que ambas rodam no navegador."
   ],
   "ans": 1,
   "why": "SPA descreve a arquitetura em que uma única página é carregada e o conteúdo muda dinamicamente (via JavaScript/roteamento client-side) sem recarregar tudo. PWA é um conjunto de capacidades (Service Worker + Web App Manifest) que torna a web app instalável e apta a funcionar offline.",
