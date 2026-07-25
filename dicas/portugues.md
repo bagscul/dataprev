@@ -7,8 +7,15 @@
 - Sintaxe do período: classificar orações subordinadas
   (substantiva, adjetiva, reduzida de infinitivo), função
   sintática de um termo destacado — sujeito, adjunto adnominal.
-- Regência verbal e nominal, concordância nominal, crase,
-  vírgula (justificar o MESMO motivo de uso em outra frase).
+- Regência verbal e nominal, concordância nominal E VERBAL,
+  crase, vírgula (justificar o MESMO motivo de uso em outra
+  frase).
+- Verbos impessoais na concordância verbal: FAZER de tempo e
+  HAVER de "existir" ficam na 3ª do singular (e travam o
+  auxiliar: "deve haver"); EXISTIR tem sujeito e varia.
+- Por que / porque / por quê / porquê — inclusive na
+  interrogativa INDIRETA ("Não sei por que..."), que não tem
+  ponto de interrogação mas continua sendo pergunta.
 - Semântica: qual noção o conector exprime (causa, consequência,
   finalidade, proporção, tempo), sentido de verbo (estado x ação),
   adjetivo x locução adjetiva.
@@ -34,6 +41,14 @@
   pontual plantado (regência trocada, concordância de "meio/
   anexo/proibido", crase indevida). O resto da frase parece
   natural de propósito.
+- Na concordância verbal, o erro plantado é sempre pluralizar
+  o impessoal: "Fazem dois anos", "Houveram falhas", "Devem
+  haver relatórios" — e, na direção inversa, singularizar o
+  pessoal: "Existe muitos processos".
+- Em por que/porquê, o erro mora na interrogativa indireta
+  ("Não sei porque..."), no acento fora do fim da frase ("por
+  quê motivo") e no substantivo sem acento ("o porque da
+  falha").
 
 ## Como se sair melhor
 - Volte ao texto e teste cada alternativa contra o que está

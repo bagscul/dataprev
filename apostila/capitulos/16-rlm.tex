@@ -53,6 +53,35 @@ cuidado com ``necessariamente''.
 \item \textbf{Combinação} $C(n,p) = n!/[p!(n-p)!]$ (ordem não importa)
 $\times$ \textbf{arranjo} $A(n,p)$ (ordem importa). Grafo completo de $n$
 vértices tem $C(n,2)$ arestas.
+\item \textbf{Juros simples $\times$ compostos.} Simples: o juro incide
+\textbf{sempre sobre o capital inicial}, $M = C(1 + i \cdot n)$. Compostos: o
+juro incide \textbf{sobre o montante anterior} (juro sobre juro), $M = C(1 +
+i)^n$. Em 2 períodos a diferença é exatamente o \emph{juro do juro do
+primeiro período}. Ex.: R\$ 10.000 a 10\% a.a.\ por 2 anos $\to$ simples R\$
+12.000, composto $10.000 \times 1{,}1^2 = $ R\$ 12.100; diferença R\$ 100.
+\item \textbf{Progressão aritmética (PA):} termo geral $a_n = a_1 + (n-1)r$;
+soma $S_n = (a_1 + a_n)\,n/2$. \textbf{PG:} $a_n = a_1 \cdot q^{\,n-1}$. O
+distrator clássico usa $n$ no lugar de $n-1$ (com $a_1=7$ e $r=4$, o 10º
+termo é $7 + 9{\cdot}4 = 43$, não $47$).
+\item \textbf{Matrizes:} o produto $A \cdot B$ só existe se o número de
+\textbf{colunas de $A$} for igual ao número de \textbf{linhas de $B$}; o
+resultado tem as \textbf{linhas de $A$} e as \textbf{colunas de $B$}. Logo
+$(2{\times}3) \cdot (3{\times}4) = (2{\times}4)$. O produto \textbf{não é
+comutativo}.
+\item \textbf{Conjuntos --- inclusão-exclusão:} $|A \cup B| = |A| + |B| - |A
+\cap B|$. Quem está ``fora dos dois'' é o total menos a união. Ex.: 60
+candidatos, 35 Java, 28 Python, 12 ambos $\to$ união $= 35+28-12 = 51$; fora
+$= 60-51 = 9$. Esquecer de subtrair a interseção é o erro plantado.
+\item \textbf{Medidas de posição:} \textbf{média} = soma/quantidade;
+\textbf{mediana} = valor central do rol \textbf{ordenado} (com $n$ par, média
+dos dois centrais); \textbf{moda} = o que mais se repete (pode não haver, ou
+haver mais de uma). Ordenar antes de pegar a mediana é o passo que a banca
+conta que você pule.
+\item \textbf{Desvio padrão} mede a \textbf{dispersão em torno da média}, não
+a posição da média. Duas séries com a \emph{mesma} média e desvios
+diferentes: a de \textbf{menor} desvio é a mais \textbf{regular}
+(concentrada). Desvio padrão não é amplitude --- não diz que os valores
+variaram ``de 0 até o desvio''.
 \end{itemize}
 
 \section{Lógica formal (não subestime)}
@@ -120,8 +149,16 @@ por ``nenhum'' (o certo é ``algum não'').
 \textbf{Nas de matemática:} cada alternativa errada é o resultado de um erro
 de conta específico --- esqueceu de somar o peso, inverteu
 numerador/denominador, contou o caso duplicado, somou as taxas em vez de
-multiplicar. Refaça com calma; o distrator ``quase certo'' vem de um passo
+multiplicar, usou $n$ em vez de $n-1$ na PA, não subtraiu a interseção na
+união de conjuntos, dividiu um grupo pelo outro em vez de pelo total na
+probabilidade. Refaça com calma; o distrator ``quase certo'' vem de um passo
 omitido.
+
+\textbf{Nas de estatística:} o distrator confunde \textbf{dispersão} com
+\textbf{posição} --- ``desvio padrão menor indica média menor'' é falso (a
+média pode ser idêntica) --- ou trata o desvio como \textbf{amplitude}
+(``variou entre 0 e 45 ms''). Na mediana, oferece o resultado de quem
+\textbf{não ordenou} a série.
 
 \textbf{Nas de lógica:} troca equivalência por implicação, marca a
 recíproca como equivalente, nega o quantificador errado (``todo''$\to$
@@ -139,7 +176,10 @@ média. Rode \texttt{./quiz.py rlm}.
 \begin{comosair}
 Chegue com as fórmulas na ponta: $C(n,2)=n(n-1)/2$; média ponderada =
 $\Sigma(\text{nota}\times\text{peso})/\Sigma\text{pesos}$;
-$(a+b)^2=a^2+2ab+b^2$; taxa acumulada = produto dos fatores. Em porcentagem
+$(a+b)^2=a^2+2ab+b^2$; taxa acumulada = produto dos fatores; PA
+$a_n=a_1+(n-1)r$; juros compostos $M=C(1+i)^n$ contra simples
+$M=C(1+i{\cdot}n)$; $|A\cup B|=|A|+|B|-|A\cap B|$; produto de matrizes
+$(m{\times}n)\cdot(n{\times}p)=(m{\times}p)$. Em porcentagem
 sucessiva, \textbf{sempre multiplique} fatores; nunca some percentuais.
 Estime a ordem de grandeza antes de marcar: isso elimina o distrator
 ``redondo'' plantado pela banca. Não gaste tempo demais numa questão de
@@ -151,8 +191,11 @@ recorrentes.
 \section{Alta probabilidade / pesquisa extra}
 
 \begin{itemize}
-\item \textbf{Probabilidade} básica (casos favoráveis / possíveis) pode
-aparecer.
+\item \textbf{Probabilidade} básica: casos favoráveis / casos
+\textbf{possíveis} (o total, não o outro grupo). Urna com 5 azuis e 3 verdes
+$\to$ P(azul) $= 5/8$, não $5/3$ (nem probabilidade seria, passa de 1) nem
+$5/3$ invertido em $3/5$.
+\item \textbf{Diagramas lógicos} (todo/algum/nenhum) para argumentação.
 \item Treine \textbf{velocidade}: são 5 questões valendo 1 ponto cada ---
 não gaste tempo demais numa; os específicos valem 2,5$\times$.
 \end{itemize}

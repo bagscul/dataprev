@@ -9,6 +9,10 @@ entender competências, prazos e papéis.
 ## O que mais cai
 - LGPD: princípios (finalidade x adequação x necessidade),
   papéis controlador x operador, e o par ANPD x CNPD.
+- LGPD: dado pessoal x dado pessoal SENSÍVEL (o rol do art.
+  5º, II é fechado e cai literal).
+- Marco Civil: neutralidade de rede — tratamento ISONÔMICO
+  dos pacotes (art. 9º).
 - LGPD aplicada a IA: explicabilidade em decisão
   automatizada, anonimização, scraping (visto no TJ-RJ).
 - LAI: graus de sigilo e seus prazos, e desclassificação.
@@ -31,6 +35,16 @@ entender competências, prazos e papéis.
   redação original do art. 19). Isso está desatualizado.
 - Diz que a invasão do art. 154-A exige o aparelho
   conectado à rede — não exige (o Dataprev derrubou isso).
+- Enche o rol de dado SENSÍVEL com dado pessoal comum: nome,
+  endereço, data de nascimento, telefone, placa, histórico de
+  compras. Sensível é o rol fechado do art. 5º, II — raça/etnia,
+  religião, opinião política, sindicato, saúde, vida sexual,
+  genético, biométrico.
+- Na neutralidade, oferece o que a lei PROÍBE com cara de
+  eficiência: "priorizar quem paga mais", "bloquear a
+  concorrência", "reduzir a velocidade de vídeo no pico". As
+  únicas exceções do art. 9º §1º são requisito técnico
+  indispensável e serviço de emergência.
 
 ## Como se sair melhor
 - LAI, prazos máximos contados da PRODUÇÃO da informação:

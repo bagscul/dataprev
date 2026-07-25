@@ -155,9 +155,69 @@ Capítulo \ref{cap:seguranca}. \textbf{SSL $\times$ TLS $\times$ HTTPS} e
 \textbf{X.800} (mecanismos de segurança OSI) também são fronteira com
 segurança.
 
+\subsection{Firewall stateful $\times$ stateless}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Stateless} (filtro de pacotes) & \textbf{Stateful} (com estado) \\
+\midrule
+O que olha & cada pacote \textbf{isoladamente}: IP de origem/destino, porta,
+protocolo & o pacote \textbf{no contexto da sessão} \\
+Como decide & só pela regra estática & mantém uma \textbf{tabela de estado}
+das conexões ativas \\
+Efeito prático & para liberar a resposta é preciso escrever a regra de volta
+à mão & a resposta de uma conexão iniciada de dentro já é aceita
+automaticamente \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os dois atuam nas camadas 3 e 4. Quem sobe para a camada 7 (inspeciona o
+conteúdo da aplicação) é o \textbf{firewall de próxima geração (NGFW)} ou o
+\textbf{WAF}, que são outra coisa.
+
+\subsection{SSH $\times$ Telnet e o handshake do TLS}
+
+\textbf{Telnet} (porta \textbf{23}) trafega \textbf{tudo em texto claro},
+inclusive a senha do administrador --- quem estiver no caminho lê a sessão
+inteira. O \textbf{SSH} (porta \textbf{22}) faz o mesmo trabalho de
+administração remota \textbf{cifrando toda a comunicação, inclusive a
+autenticação}. É o exemplo canônico de protocolo inseguro aposentado por um
+seguro, e a razão da substituição é \textbf{criptografia}, não velocidade.
+
+No \textbf{HTTPS}, o TLS usa criptografia \textbf{híbrida}, e a divisão de
+trabalho é o que a banca cobra:
+
+\begin{itemize}
+\item \textbf{Assimétrica --- só no handshake.} O certificado digital do
+servidor autentica quem ele diz ser, e o par de chaves serve para as duas
+pontas \textbf{acordarem com segurança uma chave simétrica de sessão}.
+\item \textbf{Simétrica --- no resto.} Todo o volume de dados da sessão é
+cifrado com essa chave simétrica, que é \textbf{muito mais rápida}.
+\end{itemize}
+
+A assimétrica é lenta demais para cifrar o tráfego inteiro; a simétrica não
+resolveria sozinha o problema de \emph{como} combinar a chave por um canal
+inseguro. Daí o híbrido.
+
 \begin{pegadinha}
 ``SSL mais seguro/moderno que TLS'' está \textbf{invertido} --- TLS sucedeu e
 corrigiu o SSL.
+
+No handshake TLS, o distrator diz que a assimétrica ``cifra todo o tráfego da
+sessão'' (não: ela só \textbf{troca a chave}), que ela ``autentica o usuário
+final por login e senha'' (não: autentica o \textbf{servidor}, por
+certificado) ou que ``dispensa os certificados'' (é justamente o contrário).
+
+Em firewall, o distrator descreve o \textbf{stateless} e chama de stateful
+(``analisa apenas os cabeçalhos de cada pacote isoladamente'') --- inversão
+de par pura. Outro: dizer que o stateful ``atua exclusivamente na camada de
+aplicação'' --- absoluto e errado, isso é NGFW/WAF.
+
+Em SSH, o distrator inverte o motivo: ``é mais rápido por não usar
+criptografia'' ou ``transmite as credenciais em texto claro'' --- essa é a
+descrição do \textbf{Telnet}.
 \end{pegadinha}
 
 \begin{jacaiu}

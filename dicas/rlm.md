@@ -28,12 +28,23 @@
   fatores), lucro/prejuízo, taxa média.
 - Análise combinatória: arranjo, combinação, princípio
   multiplicativo; C(n,2) aparece muito.
-- Média (aritmética, ponderada), moda, mediana — estatística
-  básica.
+- Média (aritmética, ponderada), moda, mediana e DESVIO PADRÃO
+  — estatística básica. Mediana só depois de ORDENAR o rol;
+  desvio padrão é dispersão em torno da média, não posição da
+  média nem amplitude.
 - Razão, proporção, regra de três, divisão proporcional.
-- PA e PG (soma de termos, termo geral).
+- Juros SIMPLES x COMPOSTOS: M = C(1+i·n) x M = C(1+i)^n. Em
+  2 períodos, a diferença é o juro do juro do 1º período.
+- PA e PG (soma de termos, termo geral): a_n = a_1 + (n-1)r.
+  O distrator sai de usar n em vez de n-1.
+- Conjuntos: inclusão-exclusão |A∪B| = |A|+|B|-|A∩B|; "fora
+  dos dois" = total - união.
+- Probabilidade: favoráveis / POSSÍVEIS (o total, não o outro
+  grupo).
 - Geometria plana (área, perímetro) e matrizes — aparecem em
-  outras provas FGV do mesmo edital.
+  outras provas FGV do mesmo edital. No produto de matrizes,
+  colunas de A = linhas de B, e o resultado é linhas de A por
+  colunas de B: (2x3)·(3x4) = (2x4).
 - Proposições/tabela-verdade: em 2024 foi 1 questão, mas o
   edital 2026 puxa a lógica formal para quatro dos cinco itens
   — não trate como resíduo. Foco: equivalência (contrapositiva
@@ -51,11 +62,17 @@
   estrada" (combinação, ordem não importa) com arranjo (dobro).
 - Na única de lógica, o distrator é a recíproca ("se não p
   então não q") em vez da contrapositiva.
+- Em estatística, confunde DISPERSÃO com POSIÇÃO: "desvio
+  padrão menor indica média menor" (falso — a média pode ser
+  idêntica) ou trata o desvio como AMPLITUDE ("variou entre 0
+  e 45 ms"). Na mediana, entrega o resultado de quem não
+  ordenou a série.
 
 ## Como se sair melhor
 - Chegue com as fórmulas na ponta: C(n,2)=n(n-1)/2; média
   ponderada = Σ(nota×peso)/Σpesos; (a+b)²=a²+2ab+b²; taxa
-  acumulada = produto dos fatores.
+  acumulada = produto dos fatores; a_n=a_1+(n-1)r; M=C(1+i)^n
+  contra M=C(1+i·n); |A∪B|=|A|+|B|-|A∩B|; (m×n)·(n×p)=(m×p).
 - Em porcentagem sucessiva, SEMPRE multiplique fatores; nunca
   some percentuais.
 - Estime a ordem de grandeza antes de marcar: elimina o

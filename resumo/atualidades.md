@@ -14,6 +14,21 @@ A FGV puxa fortemente para **sustentabilidade, meio ambiente, ESG** e temas
 socioambientais, e costuma cobrar no formato **julgar afirmativas** (V/F, "está
 correto o que se afirma em I, II, III").
 
+**ESG — as três dimensões.** Vem de *Environmental, Social and Governance*:
+**Ambiental, Social e Governança**. É o conjunto de critérios de desempenho
+**não financeiro** usado em relatórios corporativos e critérios de
+investimento.
+
+- **E — Ambiental:** emissões, energia, água, resíduos, biodiversidade, clima.
+- **S — Social:** trabalhadores, diversidade e inclusão, direitos humanos,
+  comunidades, cadeia de fornecedores.
+- **G — Governança:** conselho, ética, transparência, anticorrupção,
+  prestação de contas.
+
+O "G" é o mais trocado — a banca oferece "Gestão", "Global" ou "Growth" no
+lugar de **Governança**; e às vezes troca o "S" de Social por "Sustentável"
+(sustentabilidade é o guarda-chuva, não a letra).
+
 Temas quentes prováveis (2025–2026):
 - **Sustentabilidade e clima:** COPs, transição energética, ESG,
   descarbonização; impacto ambiental de **data centers** (consumo de energia
@@ -47,6 +62,45 @@ Pegadinha de atualidades: o item com **absoluto** ("invariavelmente",
 Pegadinha: supervisionado usa dados **rotulados**; não supervisionado, **sem
 rótulo**. A FGV troca os dois. "Aprende com os dados e melhora ao longo do
 tempo" = **redes neurais/ML**, não lógica booleana nem programação linear.
+
+### Ajuste do modelo e métricas de avaliação
+
+**Viés (bias) × variância (variance)** — o trade-off central do supervisionado:
+
+| | **Alto viés** | **Alta variância** |
+|---|---|---|
+| Modelo | **simples demais** | **complexo demais** |
+| Sintoma | erra no treino *e* no teste | acerta o treino, erra o teste |
+| Nome | **underfitting** | **overfitting** |
+| Combate | mais atributos, modelo mais expressivo | regularização (L1/L2), validação cruzada, mais dados |
+
+Reduzir um tende a aumentar o outro — por isso é *trade-off*, não uma escolha
+em que dá para zerar os dois.
+
+**Métricas de classificação** (a partir da matriz de confusão):
+
+- **Acurácia** = acertos / total. **Enganosa em base desbalanceada**: com 99%
+  de e-mails legítimos, chutar "legítimo" sempre dá 99% de acurácia e detecta
+  **zero** spam.
+- **Precisão** = dos apontados como positivos, quantos eram mesmo. Importa
+  quando o **falso positivo** custa caro (barrar e-mail legítimo).
+- **Recall** (revocação/sensibilidade) = dos positivos existentes, quantos o
+  modelo pegou. Importa quando o **falso negativo** custa caro (deixar passar
+  fraude).
+- **F1-score** = **média harmônica** de precisão e recall — harmônica, não
+  aritmética, para punir o desequilíbrio entre as duas.
+- **ROC/AUC** = capacidade de separar classes variando o limiar.
+
+Em **regressão** (prever número, não classe): **MAE**, **RMSE**, **R²**. Usar
+métrica de classificação em problema de regressão, ou o contrário, é distrator
+comum.
+
+Pegadinha: dizer que **alto viés** causa overfitting ou que **alta variância**
+é modelo simples demais. Âncora: viés alto = o modelo é *burro* (underfit);
+variância alta = o modelo *decorou* (overfit) — e a regularização combate a
+variância. Em métricas: chamar F1 de "média aritmética" (é **harmônica**),
+trocar precisão por recall, ou tratar acurácia alta como prova de bom modelo
+sem olhar o balanceamento da base.
 
 ### Modelos generativos e LLMs
 
@@ -149,9 +203,8 @@ automatizada; direito à revisão humana (LGPD, art. 20). Rode
 
 ## Alta probabilidade / pesquisa extra
 
-- **Métricas de ML:** classificação (acurácia, precisão, recall, F1, matriz
-  de confusão); regressão (MAE, RMSE, R²).
-- **Overfitting** (decora o treino, vai mal em dados novos) × **underfitting**
-  (simples demais); combate: regularização, validação cruzada, mais dados.
-- **Viés × variância:** trade-off central.
+- **Regularização L1 (Lasso, zera coeficientes) × L2 (Ridge, encolhe sem
+  zerar)**, **concept drift × data drift** e **MLOps** caíram nas provas de IA
+  do TJ-RJ e estão detalhados em [orfaos](orfaos.md) — que também é o capítulo
+  para onde o quiz manda quem erra questões de `orfaos`.
 - Acompanhe **notícias de IA e regulação de 2026** — é conteúdo vivo.

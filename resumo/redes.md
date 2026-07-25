@@ -94,6 +94,43 @@ A extranet é o meio-termo: **externo, mas autorizado**. Ver `arquitetura.md`.
 - **IDS** (detecta/alerta) × **IPS** (bloqueia). Ver `seguranca.md`.
 - **NAT** traduz endereços; **VLAN** segmenta a camada 2.
 
+### 7.1 Firewall stateful × stateless
+
+| | **Stateless** (filtro de pacotes) | **Stateful** (com estado) |
+|---|---|---|
+| O que olha | cada pacote **isoladamente**: IP de origem/destino, porta, protocolo | o pacote **no contexto da sessão** |
+| Como decide | só pela regra estática | mantém uma **tabela de estado** das conexões ativas |
+| Efeito prático | para liberar a resposta é preciso escrever a regra de volta à mão | a resposta de conexão iniciada de dentro já é aceita |
+
+Os dois atuam nas camadas 3 e 4. Quem sobe para a camada 7 (inspeciona o
+conteúdo da aplicação) é o **NGFW** ou o **WAF** — outra coisa.
+
+Pegadinha: o distrator descreve o **stateless** e chama de stateful ("analisa
+apenas os cabeçalhos de cada pacote isoladamente"). Outro: dizer que o
+stateful "atua **exclusivamente** na camada de aplicação".
+
+### 7.2 SSH × Telnet e o handshake do TLS
+
+- **Telnet** (porta **23**) trafega **tudo em texto claro**, inclusive a senha
+  do administrador. O **SSH** (porta **22**) faz a mesma administração remota
+  **cifrando toda a comunicação, inclusive a autenticação**. O motivo da
+  substituição é **criptografia**, não velocidade.
+- No **HTTPS**, o TLS usa criptografia **híbrida** — e a divisão de trabalho é
+  o que a FGV cobra:
+  - **Assimétrica, só no handshake:** o certificado autentica o **servidor** e
+    o par de chaves serve para as pontas **acordarem a chave simétrica de
+    sessão**.
+  - **Simétrica, no resto:** cifra todo o volume de dados da sessão, porque é
+    **muito mais rápida**.
+- A assimétrica é lenta demais para o tráfego inteiro; a simétrica sozinha não
+  resolveria *como* combinar a chave por um canal inseguro. Daí o híbrido.
+
+Pegadinha: dizer que a assimétrica "cifra todo o tráfego da sessão" (não: ela
+só **troca a chave**), que "autentica o usuário final por login e senha" (não:
+autentica o **servidor**, por certificado) ou que "dispensa certificados". Em
+SSH, o distrator inverte o motivo — "é mais rápido por não usar criptografia"
+descreve o **Telnet**.
+
 ## O que já caiu (nossas questões)
 
 Camada OSI de sessão (checkpoints); switch × roteador × hub; TCP × UDP;

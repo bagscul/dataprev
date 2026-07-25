@@ -22,6 +22,12 @@
   - Fundamentos: hierarquia IA > ML > Deep Learning; tipos de
     aprendizado (supervisionado/não supervisionado/reforço);
     LLM, Transformer, RAG, alucinação, fine-tuning, embeddings.
+  - Ajuste e métricas: viés x variância (alto viés =
+    underfitting; alta variância = overfitting), acurácia
+    enganosa em base desbalanceada, precisão x recall, F1 como
+    média HARMÔNICA, ROC/AUC; MAE/RMSE/R² na regressão.
+  - ESG por extenso: Environmental, Social and Governance —
+    AMBIENTAL, SOCIAL e GOVERNANÇA.
   - Ética e governança: viés algorítmico, explicabilidade,
     responsabilização, LGPD no treino e na inferência, AI Act
     (baseado em risco) e o PL 2338/2023.
@@ -74,6 +80,17 @@
   ROTULADOS) x não supervisionado (SEM rótulo). "Aprende com os
   dados e melhora ao longo do tempo" = redes neurais/ML, nunca
   lógica booleana ou programação linear.
+- Inverte viés x variância: diz que ALTO VIÉS causa overfitting
+  ou que ALTA VARIÂNCIA é modelo simples demais. Âncora: viés
+  alto = o modelo é burro (underfit); variância alta = o modelo
+  decorou (overfit). Regularização combate a VARIÂNCIA.
+- Em métricas, chama F1 de "média aritmética" de precisão e
+  recall (é HARMÔNICA), troca precisão por recall na definição,
+  ou vende acurácia alta como bom modelo sem olhar o
+  balanceamento da base (spam, fraude, doença rara).
+- No ESG, troca o G de GOVERNANÇA por "Gestão"/"Global"/
+  "Growth", ou o S de Social por "Sustentável" —
+  sustentabilidade é o guarda-chuva, não a letra.
 - Em cenário de IA aplicada, quatro traps se repetem:
   - o sistema DECIDE SOZINHO, sem revisão humana, e a
     alternativa vende isso como boa prática — descarte: a LGPD

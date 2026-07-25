@@ -37,6 +37,28 @@ proteção de dados aparecem quase sempre. A FGV costuma cobrar no formato
 \textbf{julgar afirmativas} (V/F, ``está correto o que se afirma em I, II,
 III'').
 
+\begin{conceito}[ESG --- as três dimensões]
+\textbf{ESG} vem do inglês \emph{Environmental, Social and Governance} ---
+em português, \textbf{Ambiental, Social e Governança}. É o conjunto de
+critérios usado para avaliar o desempenho \textbf{não financeiro} de uma
+organização, hoje presente em relatórios corporativos e em critérios de
+investimento:
+
+\begin{itemize}
+\item \textbf{E --- Ambiental:} emissões, energia, água, resíduos,
+biodiversidade, mudança climática.
+\item \textbf{S --- Social:} trabalhadores, diversidade e inclusão, direitos
+humanos, comunidades, cadeia de fornecedores.
+\item \textbf{G --- Governança:} composição e independência do conselho,
+ética, transparência, anticorrupção, prestação de contas.
+\end{itemize}
+
+O ``G'' é o mais trocado: a banca oferece ``Gestão'', ``Global'' ou
+``Growth'' no lugar de \textbf{Governança}, e às vezes troca o ``S'' de
+Social por ``Sustentável'' --- sustentabilidade é o guarda-chuva, não a
+letra.
+\end{conceito}
+
 Temas concretos vistos nas provas FGV do edital:
 
 \begin{itemize}
@@ -116,6 +138,66 @@ Supervisionado usa dados \textbf{rotulados}; não supervisionado, \textbf{sem
 rótulo}. A FGV troca os dois. ``Aprende com os dados e melhora ao longo do
 tempo'' = \textbf{redes neurais/ML}, não lógica booleana nem programação
 linear.
+\end{pegadinha}
+
+\subsection{Ajuste do modelo e métricas de avaliação}
+
+\textbf{Viés (bias) $\times$ variância (variance)} é o trade-off central do
+aprendizado supervisionado:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.4cm}@{}}
+\toprule
+& \textbf{Alto viés} & \textbf{Alta variância} \\
+\midrule
+Modelo & \textbf{simples demais} & \textbf{complexo demais} \\
+Sintoma & erra no treino \emph{e} no teste & acerta o treino, erra o teste \\
+Nome & \textbf{underfitting} & \textbf{overfitting} \\
+Combate & mais atributos, modelo mais expressivo & regularização (L1/L2),
+validação cruzada, mais dados \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Reduzir um tende a aumentar o outro --- por isso é \emph{trade-off}, não uma
+escolha em que dá para zerar os dois.
+
+\textbf{Métricas de classificação.} A partir da matriz de confusão
+(verdadeiro/falso positivo e negativo):
+
+\begin{itemize}
+\item \textbf{Acurácia} = acertos / total. \textbf{Enganosa em base
+desbalanceada}: num conjunto com 99\% de e-mails legítimos, o modelo que
+chuta ``legítimo'' sempre tem 99\% de acurácia e não detecta \textbf{nenhum}
+spam.
+\item \textbf{Precisão} = dos que o modelo apontou como positivos, quantos
+eram mesmo. Sobe quando o custo do \textbf{falso positivo} é alto (barrar
+e-mail legítimo).
+\item \textbf{Recall} (revocação/sensibilidade) = dos positivos que existiam,
+quantos o modelo pegou. Sobe quando o custo do \textbf{falso negativo} é alto
+(deixar passar fraude).
+\item \textbf{F1-score} = \textbf{média harmônica} de precisão e recall ---
+harmônica, não aritmética, justamente para punir o desequilíbrio entre as
+duas.
+\item \textbf{ROC/AUC} = capacidade de separar as classes variando o limiar
+de decisão.
+\end{itemize}
+
+Em \textbf{regressão} (prever um número, não uma classe): \textbf{MAE} (erro
+médio absoluto), \textbf{RMSE} e \textbf{R\textsuperscript{2}}. Métrica de
+classificação em problema de regressão --- e vice-versa --- é distrator
+comum.
+
+\begin{pegadinha}
+Inversão de par: dizer que \textbf{alto viés} causa overfitting ou que
+\textbf{alta variância} é modelo simples demais. O ancoradouro: viés alto =
+o modelo é \emph{burro} (underfit); variância alta = o modelo \emph{decorou}
+(overfit). E a regularização combate a \textbf{variância/overfitting}.
+
+Em métricas: chamar F1 de ``média aritmética'' de precisão e recall (é
+\textbf{harmônica}); trocar precisão por recall na definição; e tratar
+acurácia alta como prova de bom modelo sem olhar o balanceamento da base ---
+esse é o cenário que a banca monta com spam, fraude e doença rara.
 \end{pegadinha}
 
 \subsection{Modelos generativos e LLMs}
@@ -258,12 +340,11 @@ algorítmico em decisão automatizada; direito à revisão humana (LGPD, art.\
 \section{Alta probabilidade / pesquisa extra}
 
 \begin{itemize}
-\item \textbf{Métricas de ML:} classificação (acurácia, precisão, recall,
-F1, matriz de confusão); regressão (MAE, RMSE, R\textsuperscript{2}).
-\item \textbf{Overfitting} (decora o treino, vai mal em dados novos)
-$\times$ \textbf{underfitting} (simples demais); combate: regularização,
-validação cruzada, mais dados.
-\item \textbf{Viés $\times$ variância:} trade-off central.
+\item \textbf{Regularização L1 (Lasso, zera coeficientes) $\times$ L2 (Ridge,
+encolhe sem zerar)}, \textbf{concept drift $\times$ data drift} e
+\textbf{MLOps} caíram nas provas de IA do TJ-RJ e estão detalhados no
+Capítulo \ref{cap:orfaos}, seção de IA/ML --- que também é o capítulo para
+onde o quiz manda quem erra questões de \texttt{orfaos}.
 \item Acompanhe notícias de IA e regulação de 2026 --- é conteúdo vivo, e
 esta disciplina recompensa quem está atualizado na véspera, não quem
 estudou em julho.

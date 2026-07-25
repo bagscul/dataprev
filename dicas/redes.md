@@ -15,7 +15,13 @@
   ímpar).
 - Tipos de rede: Internet x intranet x extranet x portal
   (nível de acesso e público-alvo).
-- SSL x TLS x HTTPS (fronteira com segurança).
+- SSL x TLS x HTTPS (fronteira com segurança), e a divisão de
+  trabalho dentro do handshake TLS: ASSIMÉTRICA só para trocar
+  a chave de sessão, SIMÉTRICA para o tráfego.
+- SSH x Telnet: por que um substituiu o outro (criptografia da
+  sessão inteira, porta 22 x 23).
+- Firewall stateful x stateless (tabela de estado x pacote
+  isolado).
 - X.800 — mecanismos de segurança OSI (fronteira com
   segurança).
 - Observação: número de porta específico NÃO apareceu na
@@ -37,6 +43,18 @@
   de "rede restrita".
 - SSL "mais seguro/moderno que TLS" — invertido; TLS
   sucedeu e corrigiu o SSL.
+- No handshake TLS, diz que a assimétrica "cifra todo o
+  tráfego da sessão" (não: ela só TROCA a chave), que
+  "autentica o usuário final por login e senha" (não:
+  autentica o SERVIDOR, por certificado) ou que "dispensa
+  certificados" — é o contrário.
+- Descreve o firewall STATELESS e chama de stateful ("analisa
+  apenas os cabeçalhos de cada pacote isoladamente"). Ou diz
+  que o stateful atua "exclusivamente na camada de aplicação"
+  — absoluto e errado; isso é NGFW/WAF.
+- Em SSH, inverte o motivo da substituição: "é mais rápido por
+  não usar criptografia", "transmite as credenciais em texto
+  claro" — essa é a descrição do TELNET.
 
 ## Como se sair melhor
 - Decore a distância administrativa (Cisco): conectada 0,

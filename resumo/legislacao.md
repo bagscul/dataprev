@@ -25,6 +25,14 @@ STF, notícias 26/06/2025.)
 
 ## LGPD (Lei 13.709/2018)
 
+- **Dado pessoal** (art. 5º, I) = informação relacionada a pessoa natural
+  **identificada ou identificável** (nome, endereço, telefone, e-mail, placa,
+  CPF). **Dado pessoal sensível** (art. 5º, II) é um rol **fechado e menor**:
+  origem racial ou étnica, convicção religiosa, opinião política, filiação a
+  sindicato ou a organização de caráter religioso/filosófico/político, dado
+  referente à **saúde** ou à **vida sexual**, dado **genético** ou
+  **biométrico** vinculado a pessoa natural. Sensível tem regime **mais
+  restrito** (art. 11), não proibição.
 - **Controlador** decide sobre o tratamento (finalidade e meios);
   **operador** trata em nome do controlador. **Encarregado (DPO)** é o canal
   com titulares e ANPD. — a FGV troca controlador × operador.
@@ -46,6 +54,20 @@ STF, notícias 26/06/2025.)
   conexão).
 - **Registros de acesso a aplicações:** **6 meses** (provedor de aplicação).
 - Princípios: neutralidade de rede, privacidade, liberdade de expressão.
+
+**Neutralidade de rede (art. 9º).** O responsável pela transmissão, comutação
+ou roteamento deve **tratar de forma isonômica quaisquer pacotes de dados, sem
+distinção por conteúdo, origem e destino, serviço, terminal ou aplicação**. O
+provedor não pode degradar, priorizar nem bloquear tráfego por causa *do que*
+ele carrega ou *de quem* vem. Discriminação só nas **exceções do §1º**:
+requisitos técnicos indispensáveis e priorização de **serviços de emergência**,
+mediante regulamentação.
+
+Pegadinha: os distratores descrevem o que a lei proíbe com cara de eficiência
+operacional — "priorizar quem paga mais", "bloquear aplicações de
+concorrentes", "monitorar o conteúdo dos pacotes para fins comerciais",
+"reduzir a velocidade de vídeo no pico para aliviar a rede". O último é o mais
+perigoso: soa técnico, mas é discriminação **por aplicação**, fora do §1º.
 
 ## LAI (Lei 12.527/2011) — prazos de sigilo
 

@@ -37,6 +37,41 @@ decorada e solta). Prioridades:
 - **Discurso direto × indireto:** o direto reproduz a fala (aspas, travessão,
   verbo de elocução); não "demarca a soberania do narrador".
 
+## Concordância verbal — os verbos impessoais
+
+A concordância **nominal** (anexo, proibido, meio) é a mais lembrada, mas a
+**verbal** cai tanto quanto — e quase sempre pelo mesmo grupo de verbos
+**impessoais**, os que **não têm sujeito** e ficam travados na 3ª pessoa do
+singular:
+
+| Verbo | Quando é impessoal | Certo (e o erro plantado) |
+|---|---|---|
+| **fazer** | tempo decorrido | *Faz* dois anos — nunca "Fazem dois anos" |
+| **haver** | sentido de "existir" ou tempo | *Havia* muitas falhas — nunca "Haviam muitas falhas" |
+| **haver** + auxiliar | o auxiliar também trava | *Deve haver* relatórios — nunca "Devem haver" |
+| **existir** | **não** é impessoal — tem sujeito | *Existem* muitos processos — nunca "Existe muitos processos" |
+
+O corte: **haver** (existir) não tem sujeito e não varia; **existir** tem
+sujeito e varia. É a inversão que a banca monta.
+
+## Por que, porque, por quê, porquê
+
+| Forma | Quando | Exemplo |
+|---|---|---|
+| **por que** | pergunta (direta *ou* indireta) = "por qual motivo" | *Por que* o sistema caiu? / Não sei *por que* o sistema caiu. |
+| **porque** | resposta, causa = "pois" | Caiu *porque* faltou energia. |
+| **por quê** | mesmo sentido, mas **no fim** da frase ou antes de pausa | O sistema caiu *por quê*? |
+| **porquê** | substantivo — vem com artigo/determinante | Ele explicou o *porquê* da falha. |
+
+Regra prática de três passos: (1) dá para trocar por "por qual motivo"? →
+**por que** separado; (2) está no **fim** da frase? → ganha acento, **por
+quê**; (3) tem **artigo** antes (o, um, esse)? → junto e com acento,
+**porquê**. Sobrou? é o **porque** de causa.
+
+Armadilha mais comum: na **interrogativa indireta** ("Não sei por que…") não
+há ponto de interrogação, e muita gente escreve "porque" — mas continua sendo
+pergunta, logo **por que**, separado e sem acento.
+
 ## Como a FGV arma a pegadinha
 
 A alternativa errada geralmente **diz mais do que o texto diz** (extrapola),
