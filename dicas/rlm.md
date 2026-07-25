@@ -1,9 +1,14 @@
 # rlm — como a FGV cobra
 
 ## O que mais cai
-- ATENÇÃO: na FGV, "Raciocínio Lógico Matemático" é
-  MATEMÁTICA, não lógica formal. Estudar só tabela-verdade é
-  o erro clássico que faz perder o bloco inteiro.
+- ATENÇÃO: são DUAS frentes, matemática E lógica formal — não
+  estude só uma. A fama de "RLM da FGV é matemática" vem do
+  histórico de 2024, mas o edital 2026 lista a lógica formal
+  com peso próprio: estruturas lógicas, lógica de argumentação,
+  lógica sentencial e lógica de primeira ordem são os itens
+  1 a 4, e só o item 5 traz "problemas aritméticos, geométricos
+  e matriciais". São só 5 questões em 2026, então não dá para
+  prever o mix — cubra as duas frentes.
 - Na Dataprev 2024 foram 6 questões (Q25-30) e SÓ UMA era de
   lógica proposicional (equivalência de "se...então"). As
   outras 5 foram conta:
@@ -29,9 +34,11 @@
 - PA e PG (soma de termos, termo geral).
 - Geometria plana (área, perímetro) e matrizes — aparecem em
   outras provas FGV do mesmo edital.
-- Proposições/tabela-verdade: estude, mas é POUCO — 1 questão.
-  Foco: equivalência (contrapositiva de "se p então q" é
-  "se não q então não p") e negação de condicional/quantificador.
+- Proposições/tabela-verdade: em 2024 foi 1 questão, mas o
+  edital 2026 puxa a lógica formal para quatro dos cinco itens
+  — não trate como resíduo. Foco: equivalência (contrapositiva
+  de "se p então q" é "se não q então não p"), negação de
+  condicional e de quantificador, validade e falácias.
 
 ## Como a banca arma a pegadinha
 - A alternativa errada é o número que sai de UM erro de conta
