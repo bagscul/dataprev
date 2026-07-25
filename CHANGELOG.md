@@ -2,6 +2,55 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — seis imprecisões, duas delas factuais (auditoria, Bloco VII/ITEM 7 · P4)
+
+- **"Cache fica no cliente" estava errado, e o P1 tinha acabado de piorar o
+  problema.** A restrição *cacheable* do REST admite cache em
+  **intermediários** (proxy, gateway, CDN) — e o Cap. 5 agora tem uma questão
+  de CDN, então a formulação antiga treinava o reflexo contrário ao que o
+  próprio material passou a ensinar. Reescrito nas três camadas, separando as
+  duas coisas que estavam fundidas: o que não pode ficar no servidor é o
+  **estado da sessão**, não o cache. O `resumo/`, que omitia a frase, passou a
+  trazê-la — as camadas estavam divergentes.
+- **O edital do Cap. 6 estava atribuído ao perfil errado.** Lido o
+  `edital/edital-dataprev.pdf`: a lista de banco de dados (modelagem,
+  normalização, SQL ANSI, administração de dados, backup) e os **SGBD
+  nomeados** — Oracle 19C, MySQL, PostgreSQL, MongoDB, MS-SQL Server 2019 —
+  são o item 7 do **PERFIL 2** (pág. 27). O **Perfil 3** (pág. 29) **não tem
+  disciplina de Banco de Dados**: o assunto entra por Inteligência de Negócios
+  (*data warehouse* com ETL e OLAP, *data mining*) e pelo item 20 de
+  Desenvolvimento de Sistemas ("Análise de Dados e Big Data"). As caixas de
+  edital da apostila e do resumo diziam "Edital (Perfil 3)" sobre conteúdo do
+  Perfil 2. Reescritas com o recorte verdadeiro — e o peso do bloco passou a
+  ser justificado pelo que ele é: **ALTO por evidência de prova** (a FGV cobrou
+  BD no Perfil 3 da Dataprev 2024, como cobrou redes), não por peso de edital.
+- **DDD: afirmação sem lastro removida.** A apostila dizia que o DDD "casou com
+  microsserviços no TJ-RJ e no MPU". Busca em `banco-provas.json`: DDD caiu
+  mesmo nas duas provas — **MPU Q71** (gabarito: o *Aggregate* garante a
+  consistência das mudanças) e **TJ-RJ 2 Q36** (gabarito: eventos de domínio
+  são imutáveis) —, mas **nenhuma das duas questões menciona microsserviços**.
+  Trocado pelo que é verificável, com o gabarito de cada uma. O `resumo/`, que
+  citava só o TJ-RJ, foi completado.
+- **`dicas/uml.md`: "losango de gateway × decisão" era erro de notação.**
+  Gateway é **BPMN**; em UML o losango é nó de decisão/merge do diagrama de
+  atividade. Virou contraste explícito entre as duas notações, com remissão à
+  dica de BPMN — de erro passou a conteúdo útil.
+- **SOLID ficou consultável onde é usado.** O Cap. 4 manda "ligue ao SOLID" e a
+  dica manda ligar padrões a SOLID/GRASP, mas os cinco princípios só eram
+  definidos no Cap. 10 (Java). Entrou uma caixa compacta no Cap. 4 e no
+  `resumo/padroes-projeto.md`, com remissão ao tratamento completo — sem
+  duplicar o detalhe de Java. (SOLID é item 16 do **Perfil 2**; a remissão diz
+  isso.)
+- **As duas menores dicas do repositório reforçadas.** `dicas/padroes-projeto.md`
+  **26 → 92 linhas** (o gatilho de enunciado dos 23 padrões um a um, a contagem
+  5/7/11 com o Interpreter, os quatro pares que decidem a questão, a ligação com
+  SOLID e com o Spring) e `dicas/uml.md` **25 → 54** (as duas famílias com o
+  atalho de classificação, realização × dependência, componentes × implantação,
+  a seta da generalização e o losango UML × BPMN). Eram as menores do repo para
+  um capítulo marcado ALTA PROBABILIDADE com 33 questões via subtag.
+- PDF recompilado: **97 páginas**, zero *overfull*, referências cruzadas novas
+  (`sec:nuvem`, `cap:java`) resolvidas.
+
 ## 2026-07-25 — material para as 15 questões órfãs (auditoria, Bloco VII/ITEM 7 · P1)
 
 O achado de maior impacto da varredura do Grupo A: **15 questões do banco cujo
