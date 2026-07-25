@@ -870,7 +870,7 @@
  {
   "prova": "cnsal-ads",
   "num": 55,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Um Analista de Sistemas está avaliando o desempenho de um servidor para um novo sistema de votação eletrônica da Assembleia Legislativa. A velocidade de processamento das instruções é um fator de forte relevância para o andamento do trabalho. Para suprir essa necessidade, o componente do hardware de um computador que é o principal responsável por executar as instruções dos programas e realizar os cálculos lógicos e aritméticos é a(o)",
   "alts": [
    "Memória RAM (Random Access Memory).",
@@ -894,7 +894,7 @@
  {
   "prova": "cnsal-ads",
   "num": 56,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Ao analisar a arquitetura de Von Neumann, o Analista observa que a eficiência do sistema depende da capacidade da CPU acessar rapidamente tanto as instruções quanto os dados. A característica fundamental da arquitetura de Von Neumann que representa o principal gargalo de desempenho (o bottleneck) observado em sistemas modernos de computação é",
   "alts": [
    "o uso de registradores de propósito geral.",
@@ -918,7 +918,7 @@
  {
   "prova": "cnsal-ads",
   "num": 57,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Uma impressora laser foi conectada a um computador para imprimir relatórios de prestação de contas. A impressora aguarda os dados de impressão, vindos do sistema. No modelo básico de organização do computador, a impressora é classificada como",
   "alts": [
    "Armazenamento Volátil.",
@@ -942,7 +942,7 @@
  {
   "prova": "cnsal-ads",
   "num": 58,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Um programa em Assembly está realizando uma operação de soma de dois números inteiros de 8 bits sem sinal: 10100101 2 e 011000102. O resultado binário da soma dos números inteiros e a condição de overflow ou carry observada em um registrador de 8 bits são:",
   "alts": [
    "000000112; Overflow.",
@@ -966,7 +966,7 @@
  {
   "prova": "cnsal-ads",
   "num": 59,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "O Analista está debugando uma falha em que a soma de dois números inteiros positivos de 16 bits usando o complemento de dois resulta em um número inesperadamente negativo. A ocorrência de um resultado negativo ao somar dois números positivos (ou um resultado positivo ao somar dois negativos) em sistemas de Complemento de Dois é um sintoma direto da condição de",
   "alts": [
    "Underflow (Subfluxo).",
@@ -990,7 +990,7 @@
  {
   "prova": "cnsal-ads",
   "num": 60,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Um número é representado no sistema octal como 178. O Analista precisa converter esse número para o sistema binário para entender sua representação na memória. A representação binária correta do número 178 é",
   "alts": [
    "100012",
@@ -1076,7 +1076,7 @@
  {
   "prova": "cnsal-ads",
   "num": 64,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Para inicializar o hardware de um computador e carregar o sistema operacional, é necessário um software básico residente em uma memória não volátil. Assinale o tipo de memória que armazena o firmware inicial que é lido, mas que raramente é alterado.",
   "alts": [
    "Memória RAM",
@@ -1847,7 +1847,7 @@
  {
   "prova": "cnsal-bd",
   "num": 58,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Em um ambiente de alto desempenho, o processador de um servidor de banco de dados executa milhões de instruções por segundo. A eficiência desse processador depende fundamentalmente de como ele gerencia o ciclo básico de execução de instruções, conhecido co mo ciclo de Busca - Decodificação-Execução. Assinale a opção que identifica a unidade central de processamento responsável por interpretar o código de operação da instrução buscada e determinar quais micro -operações devem ser realizadas.",
   "alts": [
    "Unidade Lógica e Aritmética (ULA).",
@@ -2403,7 +2403,7 @@
  {
   "prova": "cnsal-redes",
   "num": 42,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "Um Analista de TI está investigando a queda de desempenho em um servidor de Business Intelligence (BI) e suspeita da ocorrência de thrashing, decorrente do excesso de trocas de páginas. Considerando que o sistema operacional Linux utiliza paginação para gerenciamento de memória, assinale a alternativa que identifica o principal mecanismo de hardware responsável por acelerar a tradução de ender eços virtuais em endereços físicos nesse esquema e o risco de segurança associado à sua manipulação inadequada em ambientes multiusuário.",
   "alts": [
    "Cache L3, que armazena blocos de código e dados.",
@@ -8062,7 +8062,7 @@
  {
   "prova": "tjrj1",
   "num": 54,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "O sistema operacional Moderno implementa a alocação de memória virtual baseada em paginação, combinando técnicas e estruturas de dados encontrados em outros sistemas operacionais. A tabela de páginas de memória do Moderno foi implementada nos mesmos moldes do Linux. Sendo assim, é correto afirmar que a tabela de páginas de memória do Moderno:",
   "alts": [
    "armazena informações sobre o estado de cada página, sem realizar mapeamento de endereços;",
@@ -9218,7 +9218,7 @@
  {
   "prova": "tjrj2",
   "num": 33,
-  "tag": "arquitetura",
+  "tag": "orfaos",
   "q": "O sistema operacional S está executando um processo P. Em determinado mome nto, P tenta realizar uma operação de entrada/saída (E/S). Estando o dispositivo de E/S solicitado por P indisponível no momento, S coloca P em estado de espera. Para evitar que o processador fique ocioso durante essa espera, S, sendo um sistema operaciona l moderno, emprega um mecanismo específico que viabiliza o uso da CPU por outro processo ao mesmo tempo em que P aguarda a conclusão da operação de E/S. Nesse cenário, o sistema operacional S emprega, especificamente, o mecanismo de:",
   "alts": [
    "troca de contexto;",

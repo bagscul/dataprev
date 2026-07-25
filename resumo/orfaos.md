@@ -144,7 +144,7 @@ resolve no reflexo errado:
 ## O que já caiu
 
 **Em prova real da FGV:** este é o bloco com **mais** questões reais no corpus
-(56), e a maioria esmagadora é **DBA**. **ARIES e WAL**; **otimizador de
+(68), e a maioria esmagadora é **DBA**. **ARIES e WAL**; **otimizador de
 consultas** (estimativa de custo e planos ruins por estatísticas
 desatualizadas); **B+ Tree** (eficiência e fator de ramificação) e **hashing
 extensível**; **índice *clustered***; **tablespaces**; **backup** de sistema
@@ -155,7 +155,16 @@ Schema** no SGBD; **Administração de Dados × DBA** (ciclo de vida do dado,
 metadados, foco reativo → proativo) — **ALERO 2026**. No **MPU**, o mesmo
 rótulo pegou gestão de processos e estrutura organizacional; no
 **cnsal-ads**, engenharia de software (RUP, cascata, casos de uso, ponto de
-função).
+função) e UML (sequência, composição, diagrama de objetos).
+
+**Arquitetura de computadores e SO** entrou aqui no fechamento do ITEM 7: 11
+questões que vinham marcadas como `arquitetura` — gargalo de **Von Neumann**,
+ULA e unidade de controle, *overflow* × *carry*, complemento de dois, conversão
+de base, ROM/firmware, periférico, ciclo busca-decodificação-execução,
+**MMU/TLB** e *thrashing*, tabela de páginas, **DMA**. São de provas de **outro
+perfil** (ALERO 2026 e TJ-RJ) e **estão fora do edital do Perfil 3**, que fala
+em arquitetura *de software* ([arquitetura](arquitetura.md)). Ficam catalogadas,
+não estudadas.
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): blockchain pelo encadeamento de hash; RPA; low-code; os Vs do Big

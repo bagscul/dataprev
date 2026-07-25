@@ -248,13 +248,15 @@ falhas), framework de arquitetura corporativa por *views* e *viewpoints*,
 **VDI**, PaaS gerenciado, **paravirtualização** com *hypercalls*,
 responsabilidade compartilhada em SaaS e **WSDL** de novo — **ALERO 2026**.
 
-**Fora do edital, mas presente na amostra:** 11 das 34 questões tagueadas
-`arquitetura` são **arquitetura de computadores e sistema operacional** — Von
-Neumann e seu gargalo, ULA e unidade de controle, *overflow* × *carry*,
-conversão de base, ROM e firmware, ciclo busca-decodificação-execução, MMU/TLB
-e *thrashing*, tabela de páginas, DMA. Vieram de provas de outro perfil (ALERO
-2026 e TJ-RJ); o edital do Perfil 3 fala em arquitetura *de software*. Saiba
-que existem, não gaste tempo nelas.
+**Fora do edital:** 11 questões que vinham marcadas como `arquitetura` eram
+**arquitetura de computadores e sistema operacional** — Von Neumann e seu
+gargalo, ULA e unidade de controle, *overflow* × *carry*, conversão de base,
+ROM e firmware, ciclo busca-decodificação-execução, MMU/TLB e *thrashing*,
+tabela de páginas, DMA. Vieram de provas de **outro perfil** (ALERO 2026 e
+TJ-RJ), e o edital do Perfil 3 fala em arquitetura *de software*. Foram
+**movidas para `orfaos`** ([orfaos](orfaos.md)), de onde não poluem mais a
+contagem deste bloco: sobram **23** questões reais de arquitetura de software.
+Saiba que existem, não gaste tempo nelas.
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): **ESB** como barramento da SOA; **API gateway**; **Raft** (o 2PC, esse
