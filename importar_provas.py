@@ -79,6 +79,46 @@ REFERE_IMAGEM = re.compile(
     re.IGNORECASE,
 )
 
+# Titulo de secao do caderno, sozinho na linha. Irma do problema do rodape: o
+# titulo nao e questao nem alternativa, entao o parser o emendava na ULTIMA
+# alternativa da questao anterior ("...apontar a desigualdade social. Lingua
+# Inglesa Use the following TEXT..."). Casa a LINHA INTEIRA de proposito —
+# "Legislacao"/"Modulo"/"Realizacao" aparecem dentro de alternativas legitimas
+# ("Bugs por Modulo.", "A realizacao de entrevistas...") e nao podem cortar.
+CABECALHO_SECAO = re.compile(
+    r"^(?:língua (?:portuguesa|inglesa)"
+    r"|raciocínio lógico[ -]matemático"
+    r"|atualidades"
+    r"|conhecimentos específicos"
+    r"|módulo\s+[IVX]+"
+    r"|legislação (?:específica|institucional)"
+    r"|noções de (?:sustentabilidade|administração pública|direito administrativo)"
+    r"|história e geografia de rondônia"
+    r"|realização"
+    r"|rascunho"
+    r"|prova discursiva"
+    # Titulos que o PDF quebra em duas ou tres linhas: basta casar a PRIMEIRA,
+    # porque a partir dai a alternativa ja esta encerrada e o resto e ignorado.
+    r"|legislação acerca de segurança da"
+    r"|noções de direitos humanos e"
+    r"|legislação especial, noções dos direitos)$",
+    re.IGNORECASE,
+)
+
+# A FGV imprime o texto de interpretacao UMA vez e o cobra em varias questoes
+# seguidas. Como o parser so reconhece item numerado, esses textos se perdiam
+# (e o comeco deles ainda por cima grudava na alternativa anterior): as 12
+# questoes de Lingua Inglesa da Dataprev 2024 entravam citando um "TEXT" que
+# nao estava em lugar nenhum — a Q14 ("What information is in TEXT?") e a Q21
+# ficavam literalmente irrespondiveis. O texto capturado aqui e prefixado no
+# enunciado de CADA questao do grupo, porque o quiz sorteia itens soltos e
+# cada um precisa se sustentar sozinho.
+MARCA_TEXTO = re.compile(
+    r"use the following TEXT to answer the next (\w+) questions?", re.IGNORECASE
+)
+NUM_EXTENSO = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+               "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
+
 
 def sem_acento(t):
     t = unicodedata.normalize("NFKD", t)
@@ -142,6 +182,37 @@ def texto_do_pdf(caminho):
     return linhas
 
 
+def textos_base(linhas):
+    """{numero_da_questao: texto} dos grupos que compartilham um texto-base.
+
+    O marcador ("...answer the next six questions.") diz quantas questoes o
+    texto cobre; o corpo vai dali ate a primeira linha que seja so um numero,
+    que e justamente a primeira questao do grupo.
+    """
+    mapa = {}
+    i = 0
+    while i < len(linhas):
+        m = MARCA_TEXTO.search(linhas[i][0])
+        if not m:
+            i += 1
+            continue
+        quantas = NUM_EXTENSO.get(m.group(1).lower())
+        corpo, j, inicio = [], i + 1, None
+        while j < len(linhas):
+            n = re.match(r"^\s*(\d{1,2})\s*$", linhas[j][0].strip())
+            if n:
+                inicio = int(n.group(1))
+                break
+            corpo.append(linhas[j][0].strip())
+            j += 1
+        if quantas and corpo and inicio is not None:
+            texto = re.sub(r"\s+", " ", " ".join(corpo)).strip()
+            for k in range(inicio, inicio + quantas):
+                mapa[k] = texto
+        i = max(j, i + 1)
+    return mapa
+
+
 def parsear(linhas):
     """Quebra o texto corrido em questoes: numero, enunciado, 5 alternativas.
 
@@ -180,6 +251,11 @@ def parsear(linhas):
         if m:
             atual["alts"].append([m.group(2)])
             apos_quebra = False
+            continue
+        # Fim da secao (titulo sozinho na linha) ou inicio de um texto-base:
+        # a alternativa corrente acabou, mesmo sem virada de pagina.
+        if CABECALHO_SECAO.match(l.strip()) or MARCA_TEXTO.search(l):
+            apos_quebra = True
             continue
         if atual["alts"]:
             if not apos_quebra:  # continuacao da ultima alternativa
@@ -228,7 +304,9 @@ def main():
             print(f"  {prova}: PDF nao encontrado, pulando.")
             continue
         tags = tags_do_mapa(prova)
-        qs = parsear(texto_do_pdf(pdf))
+        linhas = texto_do_pdf(pdf)
+        qs = parsear(linhas)
+        bases = textos_base(linhas)
         if prova in ja_tem and not tudo:
             fora = [q["num"] for q in qs if (prova, q["num"]) not in antigo]
             if fora:
@@ -238,12 +316,13 @@ def main():
         for q in qs:
             chave = (prova, q["num"])
             anterior = antigo.get(chave, {})
+            base = bases.get(q["num"])
             banco.append(
                 {
                     "prova": prova,
                     "num": q["num"],
                     "tag": tags.get(q["num"], "orfaos"),
-                    "q": q["q"],
+                    "q": f"{base}\n\n{q['q']}" if base else q["q"],
                     "alts": q["alts"],
                     # gabarito: preenchido por ./gabarito.py, nunca por chute
                     "ans": anterior.get("ans"),

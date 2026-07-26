@@ -6556,5 +6556,385 @@
    "2": "O bloco de texto existe justamente para conteúdo de várias linhas, como JSON e SQL embutidos, sem concatenação nem escapes de quebra.",
    "4": "A forma com seta executa apenas o ramo correspondente e não propaga para os seguintes — é ela que elimina a necessidade do break."
   }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Experienced developers finished their tasks faster once AI tools were allowed.",
+   "The trial shows that AI tools are of no use to developers in any kind of project.",
+   "What the trial measured went against what developers and experts had forecast.",
+   "Developers revised their opinion of AI and predicted a smaller gain than before.",
+   "Cursor Pro and Claude were compared to decide which tool makes developers faster."
+  ],
+  "ans": 2,
+  "why": "Fonte do texto: Becker, J.; Rush, N.; Barnes, E.; Rein, D. \"Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity\", arXiv:2507.09089, 12/07/2025 (https://arxiv.org/abs/2507.09089). O eixo do abstract é o contraste entre previsão e medição: os devs previam −24%, estimaram −20% depois de participar, e a medição deu +19%; economistas e especialistas em ML também erraram o sinal. A ideia central é esse desencontro, não o número isolado.",
+  "erradas": {
+   "0": "Inverte o sinal do resultado, que é o erro de leitura mais comum aqui: \"increases completion time by 19%\" significa que levaram MAIS tempo, e o próprio texto glosa isso com \"slowed developers down\".",
+   "1": "Extrapola. O recorte descreve devs experientes em projetos maduros nos quais já tinham em média 5 anos de casa; nada é afirmado sobre outros tipos de projeto, e \"of no use\" não aparece.",
+   "3": "Pega um detalhe verdadeiro e o promove a tese. Os devs de fato baixaram de 24% para 20%, mas isso continua sendo previsão de ganho — o ponto do texto é que até a estimativa revista errou a direção.",
+   "4": "Distrator inventado. Cursor Pro e Claude aparecem apenas como as ferramentas usadas quando a IA era permitida; o experimento contrapõe permitir e proibir IA, e não uma ferramenta a outra."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nIn the fragment \"This slowdown also contradicts predictions from experts\", the expression \"This slowdown\" refers to:",
+  "alts": [
+   "the 24% reduction in completion time developers expected before starting",
+   "the 19% increase in completion time measured when AI tools were allowed",
+   "the 20% reduction developers estimated after they had finished the study",
+   "the gap between the forecasts made by economists and by experts in ML",
+   "the average of 5 years of prior experience developers had in the projects"
+  ],
+  "ans": 1,
+  "why": "O demonstrativo retoma o resultado enunciado imediatamente antes: \"allowing AI actually increases completion time by 19%\". O próprio autor já havia reetiquetado esse número como \"AI tooling slowed developers down\" — é esse rótulo que \"This slowdown\" recupera.",
+  "erradas": {
+   "0": "Os 24% são a previsão feita ANTES das tarefas e apontam para redução de tempo. Chamar isso de \"slowdown\" inverteria o sentido do próprio número.",
+   "2": "Os 20% também são redução, só que estimada depois do estudo. A FGV explora esse par 24%/20% justamente porque os dois números vão na direção contrária à do resultado.",
+   "3": "Economistas (39%) e especialistas em ML (38%) são quem o resultado contradiz, e não o resultado em si. Trocar o alvo pelo agente é a armadilha da alternativa.",
+   "4": "Os 5 anos qualificam a experiência prévia dos participantes nos projetos e não descrevem variação alguma de tempo de conclusão."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nThe word \"Surprisingly\", used in the text, introduces a result that:",
+  "alts": [
+   "confirms the figure the developers had predicted before starting the tasks",
+   "adds one more argument in the same direction as the previous sentences",
+   "repeats the estimate produced by the economists and by the ML experts",
+   "restricts the finding to the mature projects that were used in the trial",
+   "runs counter to every expectation reported earlier in the text"
+  ],
+  "ans": 4,
+  "why": "\"Surprisingly\" é marcador de contraexpectativa: anuncia que o que vem a seguir desmente aquilo que o leitor foi levado a esperar. No parágrafo, as expectativas são montadas de propósito (previsão de −24%, estimativa de −20%) para serem quebradas pelo +19%.",
+  "erradas": {
+   "0": "Se confirmasse a previsão, o autor não teria motivo para marcar surpresa — e o número seguinte contradiz a previsão, em vez de ratificá-la.",
+   "1": "Aditivo seria \"moreover\" ou \"furthermore\". Trocar contraexpectativa por adição é uma das inversões de conectivo que a banca mais cobra.",
+   "2": "As estimativas de economistas e de especialistas em ML vêm depois e são apresentadas como igualmente contrariadas pelo resultado.",
+   "3": "Restringir o alcance de uma conclusão pede marcadores como \"however\" ou \"admittedly\"; \"surprisingly\" avalia o achado, não delimita a amostra."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nIn the text, the verbs \"forecast\" and \"estimate\" are not interchangeable because:",
+  "alts": [
+   "the first is made before the tasks; the second, after the study",
+   "the first belongs to the developers and the second, to the economists",
+   "the first refers to completion time and the second, to the number of tasks",
+   "the second reports the time actually measured, not an impression",
+   "the first indicates certainty about the figure and the second, doubt"
+  ],
+  "ans": 0,
+  "why": "O texto marca a diferença pela posição no tempo: \"Before starting tasks, developers forecast…\" contra \"After completing the study, developers estimate…\". São dois julgamentos do mesmo grupo em momentos distintos, e nenhum dos dois é a medição.",
+  "erradas": {
+   "1": "Os dois verbos têm \"developers\" como sujeito. Os economistas só aparecem na última frase, e o que se diz deles é \"predictions\".",
+   "2": "As duas frases falam de \"completion time\". O número de tarefas (246) aparece antes e não é objeto de nenhum dos dois verbos.",
+   "3": "É justamente o oposto: a medição real é introduzida por \"we find\", e com sinal invertido. \"Estimate\" continua sendo percepção dos participantes.",
+   "4": "Não há no texto qualquer graduação entre certeza e dúvida; os dois números são afirmados sem atenuação. A diferença é temporal, não modal."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Softr was designed specifically to build credential harvesting pages for criminals.",
+   "Public administration was chosen as a target because its staff had no training.",
+   "Large language models wrote the malicious scripts deployed in this campaign.",
+   "An ordinary AI web-building service was reused by the actors as a phishing tool.",
+   "Talos states that Softr had not been available to malicious actors until now."
+  ],
+  "ans": 3,
+  "why": "Fonte do texto: Johnson, A. \"IR Trends Q1 2026: Phishing reemerges as top initial access vector, as attacks targeting public administration persist\", Cisco Talos Intelligence Blog, 22/04/2026 (https://blog.talosintelligence.com/ir-trends-q1-2026/). O eixo é o desvio de uso: um serviço legítimo de criação de aplicações web com IA foi empregado para gerar página de captura de credenciais, e o fecho generaliza — a IA baixa a barreira de entrada.",
+  "erradas": {
+   "0": "O texto descreve o Softr como \"AI-based web application development service\", ou seja, ferramenta legítima desviada de finalidade. Supor que ela foi feita para o crime desfaz exatamente o que torna o caso noticiável.",
+   "1": "Nenhuma causa é atribuída à escolha do alvo: a administração pública aparece como o setor mais atingido no trimestre, sem explicação sobre treinamento de pessoal.",
+   "2": "Os LLMs são citados no segundo parágrafo como pano de fundo do abuso de IA em geral (\"have been observed abusing\"), e não como o que ocorreu nesta campanha, cuja ferramenta identificada foi o Softr.",
+   "4": "Contradiz o texto, que declara confiança moderada de que atores maliciosos usam a plataforma desde maio de 2023; o ineditismo está em DOCUMENTAR o uso num caso do Talos IR, não na disponibilidade da ferramenta."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nIn \"This incident demonstrates how AI tools can lower the barrier to entry\", the expression \"This incident\" refers to:",
+  "alts": [
+   "the campaign in which Softr generated a fake Exchange and OWA login page",
+   "the abuse of large language models to produce phishing lures and scripts",
+   "the adoption of AI algorithms by DDoS-as-a-service actors for evasion",
+   "the use of Softr by malicious actors since 2023 seen in Umbrella data",
+   "the rise in the number of attacks against public administration this quarter"
+  ],
+  "ans": 0,
+  "why": "\"This incident\" retoma o caso concreto narrado no primeiro parágrafo: a campanha de phishing atendida pelo Talos IR em que o Softr foi usado para gerar a página de captura de credenciais de Exchange e OWA. É a única ocorrência singular do texto — as demais menções descrevem tendências.",
+  "erradas": {
+   "1": "O abuso de LLMs é apresentado como contexto geral do setor, no plural e sem agente definido; \"incident\" exige um episódio delimitado, que só o primeiro parágrafo oferece.",
+   "2": "Os atores de DDoS-as-a-service entram na mesma enumeração de pano de fundo. Servem para mostrar que o uso de IA é amplo, não para nomear o caso comentado.",
+   "3": "O uso do Softr desde 2023 é inferência de telemetria, marcada por \"moderate confidence\", e cobre um período — não é o episódio único a que o demonstrativo se refere.",
+   "4": "Esse dado sequer aparece com número no recorte; o que se diz é que a administração pública foi o setor mais visado, o que é estatística do trimestre e não um incidente."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nThe word \"Notably\", used in the text, signals that what follows is:",
+  "alts": [
+   "a consequence that follows from the choice of target described just before",
+   "an objection to the figures presented in the sentence that comes before",
+   "a detail that the authors single out as especially remarkable",
+   "one example among several others of equal weight in the report",
+   "a condition without which the campaign could not have succeeded"
+  ],
+  "ans": 2,
+  "why": "\"Notably\" é marcador de realce: destaca do conjunto o elemento que o autor considera mais digno de nota. Aqui ele prepara o ineditismo anunciado logo em seguida — \"marking the first time we have documented the use of a specific AI tool\".",
+  "erradas": {
+   "0": "Consequência pediria \"thus\", \"therefore\" ou \"as a result\". O que vem depois de \"notably\" não decorre da escolha do alvo; é dado novo sobre o método do ataque.",
+   "1": "Objeção pediria \"however\" ou \"nevertheless\". Não há contraste com a frase anterior: o segundo período acrescenta informação, sem negar nada.",
+   "3": "Se fosse mais um exemplo equivalente, o marcador seria \"also\" ou \"in addition\". \"Notably\" faz o contrário de nivelar: ele hierarquiza.",
+   "4": "Condição pediria \"unless\", \"provided that\" ou \"only if\". O trecho não subordina o sucesso da campanha ao uso do Softr."
+  }
+ },
+ {
+  "tag": "ingles",
+  "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nIn \"AI tools can lower the barrier to entry for less sophisticated actors\", the expression \"lower the barrier to entry\" means that:",
+  "alts": [
+   "the tools reduce the damage caused by attackers who have little technical skill",
+   "attackers with less expertise can now run campaigns that once demanded more",
+   "the tools restrict access to the platform, keeping unskilled actors outside it",
+   "the cost of defending an organisation against phishing campaigns has fallen",
+   "junior analysts are able to detect these campaigns more easily than before"
+  ],
+  "ans": 1,
+  "why": "\"Barrier to entry\" é a barreira que impede alguém de ENTRAR numa atividade; abaixá-la significa facilitar o ingresso. O texto usa a expressão a favor do atacante — quem tinha pouca perícia passa a conseguir montar a campanha.",
+  "erradas": {
+   "0": "Confunde facilidade de execução com tamanho do estrago. O texto fala de quem consegue atacar, e não do impacto de cada ataque.",
+   "2": "Inverte a metáfora: barreira mais baixa deixa entrar mais gente. Ler \"lower\" como restrição é o erro clássico da expressão.",
+   "3": "Desloca o benefício para o lado da defesa. Toda a frase está construída do ponto de vista do atacante (\"for less sophisticated actors\").",
+   "4": "Detecção não está em jogo no trecho; o que a IA acelera, segundo o texto, é a produção das campanhas de phishing e de captura de credenciais."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Uma equipe implementa um cache em memória com tabela hash de endereçamento aberto e sondagem linear. Com o crescimento do volume, o fator de carga chega a cerca de 0,9 e o tempo médio de busca dispara, embora a função hash continue distribuindo bem as chaves. Assinale a alternativa que explica corretamente o fenômeno.",
+  "alts": [
+   "Com endereçamento aberto, o número de elementos armazenados passa a exceder o número de posições da tabela, e o excedente é varrido sequencialmente ao final dela.",
+   "A sondagem linear elimina as colisões, de modo que a degradação observada só pode vir de uma função hash mal escolhida para o conjunto de chaves.",
+   "O custo cresce porque cada posição da tabela passa a armazenar uma lista encadeada cada vez mais longa, percorrida por inteiro a cada consulta feita.",
+   "Como a busca em tabela hash é O(log n), o aumento do fator de carga multiplica o número de comparações pelo logaritmo do total de chaves armazenadas.",
+   "Chaves que colidem ocupam posições vizinhas e formam agrupamentos primários; com poucas posições livres, cada sondagem tende a percorrer um agrupamento inteiro."
+  ],
+  "ans": 4,
+  "why": "A sondagem linear resolve a colisão ocupando a próxima posição livre, o que cria blocos contíguos de chaves — o agrupamento primário (primary clustering). Quanto mais o fator de carga se aproxima de 1, maiores os blocos e mais longa a sondagem, até degenerar para busca linear. A função hash pode estar ótima: o problema está na estratégia de resolução.",
+  "erradas": {
+   "0": "Em endereçamento aberto todo elemento mora dentro do próprio vetor, então o número de chaves nunca ultrapassa o de posições — por isso o fator de carga fica limitado a 1. Não existe área de excedente.",
+   "1": "Sondagem nenhuma elimina colisão; ela apenas define para onde a chave vai quando a colisão acontece. Atribuir a degradação só à função hash ignora o efeito do próprio método de resolução.",
+   "2": "Lista encadeada em cada posição descreve o encadeamento separado, que é a outra estratégia. A banca inverte esse par com frequência: o separado guarda fora da posição, o aberto realoca dentro do vetor.",
+   "3": "O custo médio de busca em tabela hash é O(1), e não O(log n) — esse é o comportamento de árvore balanceada. A degradação aqui empurra o caso médio para O(n), não para um logaritmo."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Ao dimensionar a tabela de símbolos de um compilador, o desenvolvedor precisa escolher entre resolver colisões por encadeamento separado ou por endereçamento aberto. A diferença entre as duas estratégias é que:",
+  "alts": [
+   "no encadeamento separado o fator de carga nunca pode ultrapassar 1, ao passo que no endereçamento aberto ele cresce sem limite superior",
+   "o endereçamento aberto guarda os elementos numa estrutura auxiliar externa, e o encadeamento separado os mantém dentro do vetor principal",
+   "o encadeamento separado exige uma segunda função hash, enquanto o endereçamento aberto dispensa qualquer forma de sondagem das posições",
+   "o encadeamento separado sempre guarda os sinônimos fora da posição, e o endereçamento aberto os realoca dentro do próprio vetor",
+   "as duas garantem busca em tempo constante no pior caso, diferindo apenas no consumo de memória exigido para armazenar as chaves"
+  ],
+  "ans": 3,
+  "why": "A divisão é sobre ONDE mora o sinônimo. No encadeamento separado cada posição aponta para uma estrutura externa (em geral uma lista) que acumula as chaves colidentes; no endereçamento aberto não há estrutura externa, e a chave é realocada para outra posição livre do próprio vetor, achada por sondagem.",
+  "erradas": {
+   "0": "Inverte o par exatamente. Quem tem fator de carga limitado a 1 é o endereçamento aberto, porque cada posição comporta uma chave; no encadeamento separado a lista cresce à vontade e o fator passa de 1 sem problema.",
+   "1": "Troca os nomes de lugar: guardar fora do vetor é encadeamento separado, e manter tudo dentro dele é endereçamento aberto.",
+   "2": "Segunda função hash descreve o hash duplo, que é uma das formas de endereçamento aberto — e não do encadeamento separado. Além disso, dizer que o aberto dispensa sondagem contradiz a própria definição dele.",
+   "4": "No pior caso nenhuma das duas é constante: com todas as chaves colidindo, a busca degenera para O(n) nas duas. O tempo constante é o caso médio, com fator de carga sob controle."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Um serviço precisa recuperar registros por faixa de valores (todos os processos distribuídos entre duas datas) e também apresentar a listagem em ordem crescente de data. Assinale a alternativa correta quanto à estrutura de dados mais adequada.",
+  "alts": [
+   "Uma árvore de busca balanceada atende aos dois requisitos, porque mantém a ordem entre as chaves.",
+   "Uma tabela hash atende aos dois requisitos, desde que a função hash preserve a ordem das chaves.",
+   "Uma tabela hash é preferível, já que sua busca é O(1) no pior caso, contra O(log n) da árvore.",
+   "Uma lista encadeada mantida ordenada resolve os dois casos com busca binária em O(log n).",
+   "Uma pilha é adequada, pois o percurso em ordem é obtido desempilhando os elementos um a um até esvaziá-la."
+  ],
+  "ans": 0,
+  "why": "Consulta por faixa e listagem ordenada dependem de uma estrutura que preserve a relação de ordem entre as chaves, e é isso que a árvore de busca balanceada faz: achado o limite inferior, basta seguir o percurso em ordem até o limite superior. A tabela hash espalha as chaves de propósito e perde a vizinhança.",
+  "erradas": {
+   "1": "Uma função hash que preservasse a ordem contrariaria o próprio objetivo do hashing, que é distribuir uniformemente. Isso é estrutura especializada e rara, não a tabela hash comum implícita no enunciado.",
+   "2": "O O(1) da tabela hash é caso médio; no pior caso, com colisões concentradas, a busca vai a O(n). E ainda que fosse constante, resolveria a busca pontual, não a consulta por faixa.",
+   "3": "Busca binária exige acesso indexado em tempo constante para saltar ao elemento do meio, o que a lista encadeada não oferece: chegar ao meio já custa O(n). Ordenar a lista não muda isso.",
+   "4": "A pilha impõe LIFO, então a saída sai na ordem inversa da entrada, e não na ordem das chaves. Também não há como buscar uma faixa sem desmontar a estrutura."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "O módulo de desfazer (undo) de um editor deve reverter as últimas operações do usuário na ordem inversa à que foram executadas. No mesmo sistema, a fila de impressão deve atender os documentos na ordem em que foram enviados. Assinale a alternativa que associa corretamente as estruturas de dados.",
+  "alts": [
+   "As duas situações pedem uma fila, porque ambas processam elementos guardados em sequência.",
+   "O desfazer pede uma fila (FIFO) e a impressão, uma pilha (LIFO), pela ordem de atendimento.",
+   "O desfazer pede uma pilha (LIFO) e a impressão, uma fila (FIFO), pela ordem de atendimento.",
+   "As duas pedem uma pilha, já que o topo pode ser consultado sem remover nenhum elemento.",
+   "O desfazer pede uma fila de prioridade ordenada pelo custo de reverter cada operação."
+  ],
+  "ans": 2,
+  "why": "Desfazer exige recuperar primeiro a operação mais recente: é a disciplina LIFO da pilha. A impressão exige atender primeiro quem chegou antes: é a disciplina FIFO da fila. O enunciado entrega as duas ordens de propósito, e a decisão sai apenas do casamento entre a ordem exigida e a disciplina da estrutura.",
+  "erradas": {
+   "0": "Guardar em sequência é comum às duas estruturas e não decide nada; o que as distingue é a ponta por onde se remove. Se as duas fossem filas, o desfazer começaria pela operação mais antiga da sessão.",
+   "1": "Inverte o par LIFO/FIFO, que é a troca mais cobrada do tópico. Com fila no desfazer, o editor reverteria a primeira ação da sessão em vez da última.",
+   "3": "Consultar o topo sem remover (peek) é de fato operação da pilha, mas não justifica usá-la na impressão: com pilha, o último documento enviado imprimiria primeiro.",
+   "4": "Fila de prioridade é distrator inventado aqui: o enunciado não menciona custo nem prioridade, apenas ordem cronológica inversa."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Um programa precisa localizar um registro específico em um arquivo grande que não está ordenado e não possui qualquer estrutura de índice. Assinale a alternativa correta.",
+  "alts": [
+   "A busca binária é aplicável e resolve o problema em O(log n) comparações no pior caso.",
+   "Somente a busca sequencial se aplica, pois a busca binária pressupõe ordenação prévia.",
+   "A busca binária é aplicável, desde que o arquivo seja percorrido do fim para o início.",
+   "A busca sequencial tem custo O(log n), igual ao da binária, mudando só a ordem de visita.",
+   "Nenhuma das duas se aplica: sem índice, somente uma tabela hash localiza o registro."
+  ],
+  "ans": 1,
+  "why": "A busca binária descarta metade do espaço a cada passo porque a comparação com o elemento do meio informa de que lado está o alvo — e isso só vale se os dados estiverem ordenados. Sem ordenação e sem índice, sobra percorrer o arquivo elemento a elemento, em O(n).",
+  "erradas": {
+   "0": "Aplicar busca binária a dados desordenados não apenas perde eficiência: pode devolver \"não encontrado\" para um registro que existe, porque a decisão de qual metade descartar deixa de ter fundamento.",
+   "2": "Inverter o sentido do percurso não cria ordem nenhuma. A direção da varredura é irrelevante para a binária; o que ela exige é a relação de ordem entre os elementos.",
+   "3": "Confunde as duas complexidades. A sequencial é O(n) no pior caso, com n comparações; o O(log n) é justamente o ganho da binária, que depende da ordenação que aqui não existe.",
+   "4": "A tabela hash resolveria consultas futuras, mas exige construir a estrutura antes — o que significa ler o arquivo inteiro ao menos uma vez. Para uma única busca, a varredura sequencial já resolve."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Ao escolher entre um vetor (array) e uma lista simplesmente encadeada para uma coleção que sofre muitas inserções e remoções em posições intermediárias, a diferença decisiva é que:",
+  "alts": [
+   "o vetor insere no meio em tempo constante, porque basta sobrescrever a posição desejada",
+   "a lista encadeada permite acesso direto ao i-ésimo elemento, o que o vetor não oferece",
+   "as duas estruturas têm o mesmo custo de inserção, diferindo apenas no consumo de memória",
+   "o vetor dispensa deslocamento de elementos, já que o índice é recalculado pela linguagem",
+   "a lista encadeada apenas ajusta ponteiros, enquanto o vetor desloca os elementos seguintes"
+  ],
+  "ans": 4,
+  "why": "Inserir ou remover no meio de um vetor obriga a deslocar todos os elementos posteriores, o que custa O(n). Na lista encadeada, uma vez que se está na posição, basta reapontar dois ponteiros: O(1). O contrapeso — que o enunciado não pede — é o acesso por índice, constante no vetor e linear na lista.",
+  "erradas": {
+   "0": "Sobrescrever a posição substituiria o elemento que está lá, e não inseriria um novo. Para abrir espaço no meio do vetor é preciso mover todo o resto uma casa adiante.",
+   "1": "Inverte o par. O acesso direto ao i-ésimo elemento é a vantagem do vetor, que calcula o endereço por aritmética; na lista é preciso caminhar nó a nó até a posição.",
+   "2": "Os custos diferem em ordem de grandeza: O(n) no vetor contra O(1) na lista, uma vez posicionado. Reduzir a diferença a consumo de memória apaga o critério que o enunciado destaca.",
+   "3": "Nenhuma linguagem recalcula índices para evitar o deslocamento; o vetor é um bloco contíguo, e manter a contiguidade é exatamente o que força a mover os elementos."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Na contagem de pontos de função de um sistema de concessão de benefícios, o analista identificou dois grupos de dados: a tabela de requerimentos, criada e mantida pelo próprio sistema, e a tabela de servidores, apenas consultada e mantida por outro sistema corporativo. Assinale a alternativa que classifica corretamente os dois grupos.",
+  "alts": [
+   "Os dois são Arquivos Lógicos Internos, já que ambos são lidos pela aplicação contada.",
+   "A tabela de requerimentos é um Arquivo de Interface Externa, e a de servidores, um Arquivo Lógico Interno.",
+   "Os dois são Arquivos de Interface Externa, porque representam dados persistidos em banco.",
+   "A tabela de requerimentos é um Arquivo Lógico Interno, e a de servidores, um Arquivo de Interface Externa.",
+   "A tabela de requerimentos é um Arquivo Lógico Interno, e a de servidores, uma Consulta Externa."
+  ],
+  "ans": 3,
+  "why": "O critério da APF é a MANUTENÇÃO, não a leitura: é Arquivo Lógico Interno (ALI) o grupo de dados mantido dentro da fronteira da aplicação contada, e Arquivo de Interface Externa (AIE) o grupo referenciado pela aplicação mas mantido por outra. Os requerimentos são gravados pelo sistema (ALI); os servidores são apenas lidos (AIE).",
+  "erradas": {
+   "0": "Ler o dado não o torna interno. Se bastasse a leitura, o AIE deixaria de existir como categoria — e ele existe exatamente para os dados que a aplicação consulta sem manter.",
+   "1": "Inverte o par ALI/AIE, que é a troca mais cobrada do tópico. Como a aplicação grava os requerimentos, eles não podem ser interface externa.",
+   "2": "Estar em banco de dados não classifica nada: ALI e AIE são os dois grupos lógicos persistidos, e a distinção continua sendo quem os mantém.",
+   "4": "Acerta a primeira metade e erra na segunda, no detalhe que decide: Consulta Externa é função TRANSACIONAL (um processo que recupera e apresenta dados), ao passo que a tabela de servidores é um grupo de dados, ou seja, função de dados."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Três funcionalidades foram levantadas em um sistema: (I) tela que cadastra um novo servidor, gravando os dados na base do próprio sistema; (II) relatório que lista os servidores de uma unidade, exibindo apenas dados já armazenados; (III) relatório que calcula e apresenta o tempo médio de tramitação por unidade. Na Análise de Pontos de Função, I, II e III são classificadas, respectivamente, como",
+  "alts": [
+   "Entrada Externa, Consulta Externa e Saída Externa.",
+   "Entrada Externa, Saída Externa e Consulta Externa.",
+   "Consulta Externa, Entrada Externa e Saída Externa.",
+   "Entrada Externa, Consulta Externa e Arquivo Lógico Interno.",
+   "Arquivo Lógico Interno, Consulta Externa e Saída Externa."
+  ],
+  "ans": 0,
+  "why": "Entrada Externa processa dados vindos de fora da fronteira e altera um arquivo lógico interno (I). Consulta Externa recupera e apresenta dados sem processamento derivado (II). Saída Externa também envia dados para fora, mas com lógica de processamento adicional que gera dado derivado — a média calculada (III).",
+  "erradas": {
+   "1": "Troca II por III. O que separa Consulta de Saída Externa é a existência de dado derivado: listar o que já está gravado não deriva nada; calcular uma média, sim.",
+   "2": "Classifica como consulta a tela que grava. Toda função que mantém um ALI é entrada, por definição — apresentar uma tela não muda a intenção primária do processo.",
+   "3": "Acerta as duas primeiras e erra na terceira ao misturar as famílias: ALI é função de DADOS, e um relatório é sempre função transacional.",
+   "4": "Chama de ALI a tela de cadastro. A tela é o processo que mantém o arquivo; o arquivo mantido é que seria o ALI, e ele não está entre os itens enumerados."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Ao justificar a técnica de medição de tamanho de software a ser usada em contratos com fornecedores, o gerente precisa de uma métrica independente da tecnologia empregada na construção. Assinale a alternativa correta.",
+  "alts": [
+   "Linhas de código (LOC) é a métrica indicada, por ser objetiva e diretamente comparável entre linguagens.",
+   "Story points são indicados, porque expressam esforço em horas e são comparáveis entre equipes.",
+   "A Análise de Pontos de Função mede funcionalidade, e vale para qualquer linguagem.",
+   "A Análise de Pontos de Função mede o esforço da equipe e por isso substitui a estimativa de prazo.",
+   "Pontos de função e story points medem a mesma grandeza, mudando apenas a escala numérica usada."
+  ],
+  "ans": 2,
+  "why": "A APF conta funções de dados e transacionais a partir da visão do usuário, antes de qualquer decisão de implementação — por isso o mesmo requisito rende a mesma contagem em Java ou em COBOL. É o que a torna a métrica clássica de contrato público.",
+  "erradas": {
+   "0": "LOC é o exemplo canônico de métrica dependente de tecnologia: a mesma funcionalidade rende contagens muito diferentes conforme a linguagem, e ainda premia o código mais verboso.",
+   "1": "Erra duas vezes. Story point é medida relativa de esforço, deliberadamente sem unidade de tempo, e sua escala é calibrada por equipe — justamente por isso não se comparam entre times nem servem a contrato.",
+   "3": "Acerta a técnica e erra o que ela mede: a APF mede TAMANHO funcional. O esforço só aparece depois, ao aplicar um índice de produtividade sobre esse tamanho — a contagem sozinha não dá prazo.",
+   "4": "São grandezas distintas: tamanho funcional, derivado de regras padronizadas, contra esforço relativo estimado pela própria equipe. Não há fator de conversão estável entre as duas."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um campo de formulário aceita idades entre 18 e 65 anos, inclusive. O analista de testes derivou os casos com os valores 17, 18, 65 e 66. Assinale a alternativa que identifica a técnica aplicada.",
+  "alts": [
+   "Particionamento de equivalência, porque os quatro valores pertencem a partições distintas.",
+   "Análise de valor limite, pois os valores escolhidos ficam nas bordas das partições.",
+   "Teste de caixa branca, já que a derivação parte da estrutura interna do código que valida o campo.",
+   "Tabela de decisão, pois cada valor corresponde a uma regra de negócio distinta do formulário.",
+   "Particionamento de equivalência, e por isso um único valor dentro de cada faixa já bastaria."
+  ],
+  "ans": 1,
+  "why": "A análise de valor limite testa exatamente as fronteiras entre partições, onde se concentram os erros de programação (trocar < por <=, errar o \"inclusive\"). Os valores 17/18 e 65/66 são os pares imediatamente antes e depois de cada limite da faixa válida.",
+  "erradas": {
+   "0": "As partições aqui são três (abaixo de 18, de 18 a 65, acima de 65), e não quatro. Os valores foram escolhidos aos pares em torno de cada fronteira, o que caracteriza a análise de limite.",
+   "2": "Caixa branca deriva casos da estrutura interna (comandos, decisões, caminhos). Aqui se usou apenas a especificação do campo, sem olhar o código: é caixa preta.",
+   "3": "Tabela de decisão serve a combinações de condições que levam a ações distintas. Uma única faixa numérica contínua não produz a matriz de combinações que justificaria a técnica.",
+   "4": "A afirmação sobre particionamento é correta em si — um representante por partição basta —, mas descreve técnica diferente da que foi aplicada: se fosse ela, 17, 18, 65 e 66 seriam redundantes, já que 18 e 65 caem na mesma partição."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Uma equipe precisa publicar uma nova versão em produção mantendo dois ambientes idênticos: a versão atual segue atendendo os usuários enquanto a nova é preparada e testada, e a troca ocorre pelo redirecionamento do tráfego de uma só vez, com retorno imediato ao ambiente anterior em caso de falha. Assinale a alternativa que nomeia essa estratégia.",
+  "alts": [
+   "Canary release, porque o tráfego é dirigido a um subconjunto de usuários antes do restante.",
+   "Rolling update, porque as instâncias são substituídas gradualmente, uma parte de cada vez.",
+   "Feature toggle, porque a funcionalidade nova é ativada por configuração, sem novo deploy.",
+   "Big bang, porque a versão antiga é desligada antes de a nova entrar no ar para os usuários.",
+   "Blue-green deployment, porque os dois ambientes coexistem e o tráfego é comutado."
+  ],
+  "ans": 4,
+  "why": "O blue-green mantém dois ambientes de produção equivalentes: um recebe o tráfego (blue) enquanto o outro é preparado com a nova versão (green). A publicação é a comutação do roteamento, e o rollback é devolvê-lo — daí a interrupção mínima que a Dataprev 2024 cobrou nesse tema.",
+  "erradas": {
+   "0": "Canary também reduz risco, mas de outro jeito: expõe a versão nova a uma fatia pequena de usuários e vai ampliando conforme as métricas. O enunciado descreve troca de uma só vez, não exposição gradual.",
+   "1": "Rolling update substitui as instâncias em lotes, de modo que as duas versões convivem servindo tráfego durante a janela. Não há dois ambientes completos e paralelos.",
+   "2": "Feature toggle atua dentro de uma mesma versão já implantada, ligando e desligando funcionalidade por configuração. É complementar à estratégia de implantação, e não uma delas.",
+   "3": "Big bang descreve a troca sem ambiente reserva: derruba-se a versão antiga e sobe-se a nova, com janela de indisponibilidade e rollback caro — o oposto do que o enunciado descreve."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Sobre as quatro fases do Processo Unificado (RUP), assinale a alternativa INCORRETA.",
+  "alts": [
+   "A Concepção delimita o escopo e o caso de negócio, sem detalhar ainda todos os requisitos.",
+   "A Elaboração estabelece a arquitetura de referência e ataca os riscos mais graves do projeto.",
+   "A Construção concentra o grosso da codificação e produz a versão operacional inicial.",
+   "Cada fase corresponde a uma disciplina e é executada apenas uma vez, sem iterações internas.",
+   "A Transição cobre a implantação, o treinamento e o ajuste do produto junto ao usuário final."
+  ],
+  "ans": 3,
+  "why": "Fase e disciplina são eixos diferentes no RUP: as quatro fases (Concepção, Elaboração, Construção e Transição) formam o eixo do TEMPO, e cada uma se desdobra em uma ou mais iterações; as disciplinas (requisitos, análise e projeto, implementação, teste…) formam o eixo do CONTEÚDO e atravessam todas as fases, variando apenas de intensidade. A alternativa é falsa nas duas metades.",
+  "erradas": {
+   "0": "Está correta: a Concepção (Inception) delimita escopo, caso de negócio e riscos principais, fechando no marco dos Objetivos do Ciclo de Vida — o detalhamento fino de requisitos vem depois.",
+   "1": "Está correta, e é o ponto que a ALERO 2026 cobrou: a Elaboração existe para baixar o risco, produzindo a arquitetura executável de referência no marco da Arquitetura do Ciclo de Vida.",
+   "2": "Está correta: é na Construção que o volume de codificação e teste se concentra, entregando a Capacidade Operacional Inicial ao final.",
+   "4": "Está correta: a Transição leva o produto ao usuário — implantação, migração, treinamento e correções de aceite — até a liberação do produto."
+  }
  }
 ]

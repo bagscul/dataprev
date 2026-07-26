@@ -2,7 +2,7 @@
 
 Material de estudo condensado, montado a partir de **quatro fontes**: o
 conteúdo programático do edital (Anexo I), as dicas de banca (`../dicas/`), a
-resolução das ~715 questões que temos (336 originais + 7 provas reais da FGV,
+resolução das ~735 questões que temos (356 originais + 7 provas reais da FGV,
 em `../banco.json` + `../banco-provas.json`) e pesquisa em fontes primárias
 (normas, docs oficiais). Um arquivo por bloco; este índice é o mapa estratégico.
 
