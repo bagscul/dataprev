@@ -9,7 +9,7 @@ item. Três frentes: destravar questão real que estava fora do sorteio por
 engano, consertar um casamento de string que sujava um bloco, e começar a
 transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
 **432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
-**735 → 768**. Apostila: **122 → 140 páginas**.
+**735 → 768**. Apostila: **122 → 145 páginas**.
 
 ### 45 questões reais estavam trancadas por engano
 
@@ -81,6 +81,55 @@ Duas anotações que valem por si:
 - **`cnsal-redes` Q43 (Decorators do Python).** A explicação diz na cara que o
   `@` do Python não é o Decorator do GoF — a armadilha de garimpo já catalogada
   no repositório, agora ensinada no ponto exato em que ela aparece.
+
+### Apostila fase 3, lote 2 — Java, governança e o passe curto de redes
+
+**140 → 145 páginas.**
+
+**Java (1:3,54 → 1:0,76).** O capítulo cobria bem os pares que a FGV inverte e
+não ensinava os fundamentos que sustentam esses pares — os quatro pilares de OO
+eram **uma linha** num capítulo cujo edital pede análise e projeto orientados a
+objetos. Entraram os pilares pelo que cada um esconde (com as duas confusões que
+a banca explora: encapsulamento não é gerar *getter*/*setter* para tudo, e o
+polimorfismo cobrado é o de sobrescrita, resolvido em *runtime*); o **exemplo
+trabalhado da violação de Liskov** (Quadrado × Retângulo), com o critério
+prático — não exigir mais, não entregar menos, não quebrar invariante — e a nota
+de que o compilador já barra três violações na sobrescrita e **não** barra a
+quebra semântica, que é justamente onde a banca cobra; o **contrato
+`equals`/`hashCode`**, ou seja, por que o objeto "desaparece" do `HashSet`
+quando se sobrescreve um e se esquece o outro (com a quase-certa de que
+`TreeSet`/`TreeMap` não usam `hashCode`, e sim `compareTo`); a **JVM em duas
+ideias** — *bytecode*, de onde realmente vem o *write once, run anywhere*, e a
+divisão *stack* × *heap*, que amarra a passagem por valor e a pilha da seção
+nova de estruturas de dados —, mais o GC pelo critério de **alcançabilidade**; e
+o **stream como pipeline preguiçoso**, com os três fatos que a banca vira
+alternativa (sem operação terminal nada executa, a fonte não muda, o stream é de
+uso único). Era um *bullet* de meia linha.
+
+**Governança (1:5,31 → 1:0,79).** **Governança × gestão** entrou como a linha
+que organiza o capítulo — a pergunta de cada lado, os verbos, quem responde e o
+teste prático, incluindo o ponto em que a banca planta a dúvida: *monitorar*
+está nos dois lados, com objetos diferentes. **Incidente × problema ×
+requisição × mudança** era chamado pela própria pegadinha de a troca nº 1 do
+tema e não estava ensinado no corpo: entrou com a âncora de que incidente se
+mede em tempo de restauração (contorno serve, e **fecha** o incidente com o
+problema ainda aberto). Mais **por que a 6ª virou 7ª no PMBOK** (processo →
+princípio, com *tailoring*), os **três gateways do BPMN com as duas semânticas**
+— divisão e junção, e é a junção, que quase ninguém estuda, que a FGV cobra — e
+o significado de "serviço" e "cocriação de valor" na ITIL 4, que é o que explica
+a troca de *processo* por *prática*.
+
+**Redes — passe curto, deliberado (1:583 → 1:2,46).** Não se persegue 1:1 aqui:
+redes está fora do edital do Perfil 3 e valeu 1 questão na Dataprev 2024.
+Entrou **uma** caixa, no ponto que a prova real cobra duas vezes (TJ-RJ e ALERO
+2026): **encapsulamento** — cada camada resolve um problema e acrescenta o
+próprio cabeçalho, o nome do PDU denuncia a camada (segmento, pacote, quadro) e
+o critério de decisão é por **função**, que é como a FGV pergunta. Mais o
+mapeamento OSI 7 × TCP/IP 4.
+
+Caixas: `conceito` **52 → 60**. `pegadinha`, `jacaiu` e `comosair` intactas
+(116/20/24) — nenhuma caixa de banca nova neste lote, então o piso do
+`valida.py` não muda.
 
 ### Apostila fase 3, lote 1 — programação, padrões+UML e BI
 
