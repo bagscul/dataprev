@@ -53,6 +53,83 @@ dados. Exige processo administrativo.
 (art.\ 20), anonimização, \emph{scraping} --- os três já cobrados no TJ-RJ.
 \end{itemize}
 
+\subsection{Agentes de tratamento --- o papel vem do poder de decisão}
+
+A LGPD não distribui deveres por quem \emph{toca} no dado, e sim por quem
+\textbf{decide} sobre ele. É por isso que a empresa que hospeda o banco
+inteiro, roda o processamento e emprega os programadores pode ter menos
+obrigações do que o órgão que nunca abriu o sistema: o critério é a decisão,
+não o acesso.
+
+\begin{conceito}[Controlador, operador e encarregado (art.\ 5º, VI a IX)]
+\textbf{Controlador} é aquele a quem competem \textbf{as decisões referentes
+ao tratamento} --- define a finalidade (\emph{para quê}) e os meios
+(\emph{como}). \textbf{Operador} é quem \textbf{realiza o tratamento em nome
+do controlador}: executa, não escolhe. \textbf{Encarregado} é a pessoa
+indicada para atuar como \textbf{canal de comunicação} entre o controlador, os
+titulares e a ANPD --- não decide nem executa, \emph{intermedeia}.
+
+A trava que a FGV explora: o art.\ 5º, IX define \textbf{agentes de
+tratamento} como \textbf{o controlador e o operador} --- só os dois. O
+\textbf{encarregado não é agente de tratamento}. Quem responde perante a ANPD
+são os agentes; o encarregado é o telefone, não o responsável.
+\end{conceito}
+
+Exemplo. Um ministério contrata uma estatal de TI para processar a folha de
+pagamento. O ministério definiu por que os dados serão tratados e o que será
+feito com eles: é o \textbf{controlador}. A estatal executa o processamento
+segundo essas instruções: é a \textbf{operadora} --- ainda que sejam dela o
+banco, os servidores e a equipe. Agora mude um detalhe: a estatal resolve, por
+conta própria, usar aquela mesma base para treinar um modelo interno de
+detecção de fraude. Naquele tratamento novo foi ela quem decidiu a finalidade
+--- e, para ele, \textbf{virou controladora}. O papel não é um crachá
+permanente da empresa; é uma posição \emph{por tratamento}.
+
+Repare como isso amarra com os princípios da próxima subseção: quem responde
+pela \emph{finalidade} e pela \emph{adequação} é necessariamente quem decidiu
+a finalidade. Os \emph{deveres} detalhados dos agentes e a responsabilidade
+civil solidária estão no Capítulo VI da lei, que o edital não pede --- o que
+se cobra aqui é o papel, definido no Capítulo I.
+
+\subsection{Bases legais --- o art.\ 7º e o art.\ 11 são listas diferentes}
+
+Todo tratamento de dado pessoal precisa de uma \textbf{base legal}, escolhida
+\textbf{antes} de tratar. Não é justificativa que se procura depois: sem base,
+o tratamento é ilícito desde o primeiro registro. O erro de origem é achar que
+a base é sempre o consentimento --- ele é apenas uma das dez, e a mais frágil
+de todas, porque o titular pode revogá-lo.
+
+\begin{conceito}[Duas listas, não uma (arts.\ 7º e 11)]
+Para \textbf{dado pessoal comum}, o art.\ 7º traz \textbf{dez hipóteses}:
+consentimento; cumprimento de obrigação legal ou regulatória; execução de
+políticas públicas; realização de estudos por órgão de pesquisa; execução de
+contrato; exercício regular de direitos; proteção da vida; tutela da saúde;
+\textbf{legítimo interesse}; e \textbf{proteção do crédito}.
+
+Para \textbf{dado pessoal sensível}, vale o art.\ 11 --- uma lista
+\textbf{própria e menor}: consentimento \textbf{específico e destacado} para
+finalidades específicas, ou, sem consentimento, sete hipóteses em que o
+tratamento seja \textbf{indispensável} (obrigação legal; políticas públicas;
+estudos por órgão de pesquisa; exercício regular de direitos; proteção da
+vida; tutela da saúde; e prevenção à fraude e segurança do titular nos
+processos de identificação e autenticação).
+
+O que \textbf{não} está no art.\ 11 é justamente o que a banca oferece:
+\textbf{legítimo interesse} e \textbf{proteção do crédito} \textbf{não}
+autorizam tratar dado sensível.
+\end{conceito}
+
+Exemplo. Guardar o CPF de um usuário para executar um contrato entra pelo
+art.\ 7º, V. Guardar a \textbf{digital} do mesmo usuário para liberar a
+catraca é dado \textbf{biométrico}, portanto sensível: não adianta invocar
+legítimo interesse --- a base é o art.\ 11, II, ``g'' (prevenção à fraude e
+segurança do titular nos processos de identificação e autenticação). Trocar o
+artigo troca a lista inteira de hipóteses disponíveis, e é essa troca que o
+distrator esconde.
+
+A ligação com a subseção anterior é direta: quem escolhe a base é o
+controlador, porque escolher a base \emph{é} decidir a finalidade.
+
 \subsection{Princípios (art.\ 6º) --- o trio que a FGV confunde}
 
 São \textbf{dez} princípios: finalidade, adequação, necessidade, livre
@@ -89,6 +166,195 @@ propósito. Leia até o fim: quem fala em \emph{compatibilidade} e
 \emph{contexto} é a adequação; quem fala em \emph{informar o propósito} é a
 finalidade; quem fala em \emph{mínimo} é a necessidade.
 \end{pegadinha}
+
+\subsection{Decisão automatizada e explicabilidade (art.\ 20)}
+
+Sistemas que decidem sozinhos --- score de crédito, triagem de currículo,
+ordem de uma fila de atendimento --- desembocam num artigo só, e é dele que a
+FGV pendura todo cenário de IA aplicada.
+
+\begin{conceito}[O direito à revisão e o dever de explicar (art.\ 20)]
+O titular tem direito a \textbf{solicitar a revisão} de decisões tomadas
+\textbf{unicamente} com base em tratamento automatizado que afetem seus
+interesses, incluídas as destinadas a definir perfil pessoal, profissional, de
+consumo e de crédito. O \textbf{controlador} deve fornecer, sempre que
+solicitadas, \textbf{informações claras e adequadas sobre os critérios e os
+procedimentos} utilizados na decisão, \textbf{observados os segredos comercial
+e industrial} (§1º). Se ele se recusar invocando esse segredo, a \textbf{ANPD
+pode realizar auditoria} para verificar \textbf{aspectos discriminatórios}
+(§2º).
+
+\textbf{Cuidado com a redação antiga:} o texto original de 2018 dizia revisão
+``\textbf{por pessoa natural}''. A \textbf{Lei 13.853/2019} retirou essa
+expressão, e o parágrafo que a reporia (§3º) foi \textbf{vetado}. Hoje a lei
+\textbf{não exige} revisor humano --- material desatualizado ensina o
+contrário, e a alternativa que exige ``revisão por pessoa natural'' está
+errada.
+\end{conceito}
+
+Exemplo. Um sistema recusa automaticamente um pedido de benefício. O titular
+pode pedir revisão e pode saber \emph{quais critérios} pesaram --- não o
+código-fonte nem os pesos do modelo, que o segredo industrial protege, mas os
+fatores considerados e o procedimento seguido. É essa distinção que o TJ-RJ
+cobrou ao definir \textbf{explicabilidade}: a propriedade de um sistema de IA
+que permite que \textbf{os fatores importantes que influenciam uma decisão
+sejam expressos de maneira que humanos entendam}. Não é ``o modelo é
+simples'', não é ``o humano tende a confiar na decisão'' (isso é viés de
+automação) --- é \emph{o fator sai em linguagem humana}.
+
+Daí decorre a outra ponta cobrada no TJ-RJ: conteúdo publicamente acessível na
+web \textbf{não} é conteúdo livre de LGPD. Raspar a web para treinar modelo
+continua sendo tratamento de dados pessoais sempre que houver dado pessoal na
+coleta --- e a conformidade é exigível tanto de quem disponibiliza a
+plataforma quanto de quem faz a raspagem.
+
+\subsection{Segurança e boas práticas (Capítulo VII) --- a LGPD que o desenvolvedor implementa}
+
+Os capítulos anteriores dizem \emph{o que} pode ser tratado e \emph{por quem}.
+O Capítulo VII diz \emph{como} --- e é a parte da lei que vira requisito de
+sistema, não política de gaveta. Está no recorte do edital e é a mais próxima
+do trabalho de quem desenvolve.
+
+\begin{conceito}[Os quatro deveres operacionais (arts.\ 46 a 50)]
+\textbf{Segurança desde a concepção (art.\ 46).} Os agentes devem adotar
+medidas técnicas e administrativas aptas a proteger os dados de acessos não
+autorizados e de destruição, perda, alteração ou tratamento ilícito --- e o
+§2º exige que essas medidas sejam observadas \textbf{desde a fase de concepção
+do produto ou do serviço até a sua execução}. É o \emph{privacy by design}
+com texto de lei: segurança é requisito de projeto, não etapa final.
+
+\textbf{Sigilo que sobrevive ao fim (art.\ 47).} A obrigação de garantir a
+segurança alcança todos os que intervêm em qualquer fase do tratamento
+\textbf{mesmo após o seu término}.
+
+\textbf{Comunicação de incidente (art.\ 48).} O \textbf{controlador} deve
+comunicar \textbf{à ANPD e ao titular} o incidente de segurança que
+\textbf{possa acarretar risco ou dano relevante}, em \textbf{prazo razoável}
+definido pela autoridade, mencionando no mínimo a natureza dos dados afetados,
+os titulares envolvidos, as medidas de proteção utilizadas, os riscos do
+incidente, o motivo da demora e as providências de mitigação.
+
+\textbf{Governança em privacidade (art.\ 50).} Controladores e operadores
+podem formular regras de boas práticas e implementar programa de governança em
+privacidade, adaptado à estrutura, à escala e ao volume das operações e à
+sensibilidade dos dados tratados.
+\end{conceito}
+
+Exemplo. Um vazamento expõe e-mails e CPFs de mil titulares. Três leituras
+erradas aparecem como distrator. A primeira é que basta avisar a ANPD --- a
+lei manda avisar \textbf{também o titular}. A segunda é que só se comunica
+vazamento de dado sensível --- o critério é \textbf{risco ou dano relevante},
+não a categoria do dado. A terceira é que a lei fixa um prazo em horas --- ela
+diz \textbf{prazo razoável}, remetendo à regulamentação da ANPD. E há um
+detalhe que costuma passar: quem comunica é o \textbf{controlador}, porque o
+art.\ 48 põe o dever nele, ainda que o incidente tenha ocorrido na
+infraestrutura da operadora.
+
+Note a amarração com a subseção seguinte: a adoção demonstrada desses
+mecanismos e da política de governança é um dos parâmetros que a ANPD pesa ao
+dosar a sanção. Investir em prevenção não serve só para evitar o incidente ---
+conta a favor depois dele.
+
+\subsection{Sanções administrativas (art.\ 52) --- é um regime, não uma tabela de multa}
+
+O erro de leitura mais comum aqui é tratar o art.\ 52 como tabela de preços.
+Ele é um \textbf{regime}: define quem aplica, sob qual rito, com quais
+critérios de dosagem e em qual ordem. Quase todos os distratores da FGV atacam
+o rito ou o destino do dinheiro, não o percentual.
+
+\begin{conceito}[O regime sancionatório da LGPD]
+\textbf{Quem aplica:} a \textbf{ANPD}, sobre os \textbf{agentes de
+tratamento}.
+
+\textbf{Rito (§1º):} as sanções são aplicadas \textbf{após procedimento
+administrativo que possibilite a ampla defesa}, de forma \textbf{gradativa,
+isolada ou cumulativa}. Não existe sanção direta, nem para infrator contumaz.
+
+\textbf{Dosimetria (§1º):} a lei lista \textbf{onze parâmetros} --- gravidade
+e natureza da infração, boa-fé do infrator, vantagem auferida, condição
+econômica, reincidência, grau do dano, cooperação, adoção reiterada de
+mecanismos de mitigação, política de boas práticas e governança, pronta adoção
+de medidas corretivas e proporcionalidade. \textbf{Nacionalidade do infrator
+não é parâmetro.}
+
+\textbf{As sanções:} advertência com prazo para medidas corretivas; multa
+simples; multa diária; publicização da infração; bloqueio dos dados;
+eliminação dos dados; suspensão parcial do banco de dados; suspensão da
+atividade de tratamento; e proibição parcial ou total da atividade. As três
+últimas só podem ser aplicadas \textbf{depois} de já imposta ao menos uma das
+anteriores no mesmo caso concreto (§6º).
+
+\textbf{Multa simples:} até \textbf{2\%} do faturamento da pessoa jurídica de
+direito privado, grupo ou conglomerado \textbf{no Brasil}, no \textbf{último
+exercício}, \textbf{excluídos os tributos}, limitada a \textbf{R\$ 50 milhões
+por infração}.
+
+\textbf{Órgão público não leva multa (§3º):} a entidades e órgãos públicos
+aplicam-se apenas advertência, publicização, bloqueio, eliminação, suspensão e
+proibição --- \textbf{multa simples e multa diária ficam de fora}.
+
+\textbf{Destino da multa (§5º):} vai para o \textbf{Fundo de Defesa de
+Direitos Difusos}, \textbf{não} para o titular lesado.
+
+\textbf{Vazamento individual (§7º):} admite \textbf{conciliação direta entre
+controlador e titular}; não havendo acordo, aplicam-se as penalidades do
+capítulo.
+\end{conceito}
+
+Repare no desenho: a reparação do titular \textbf{não} sai da sanção
+administrativa. A multa financia um fundo coletivo; o dinheiro do titular vem
+por via civil, em ação de reparação. Confundir as duas vias é o distrator
+preferido --- ``o produto da arrecadação será destinado às pessoas naturais
+cujo direito foi violado'' soa justo e é falso.
+
+E há a ligação com o Capítulo VII da subseção anterior: dois dos onze
+parâmetros de dosimetria (adoção reiterada de mecanismos de mitigação e
+política de boas práticas e governança) só existem para quem implementou o que
+aquele capítulo pede. A mesma lei que pune dá desconto a quem se preparou.
+
+\subsection{ANPD e CNPD --- dois colegiados, e um deles mudou de nome em 2026}
+
+O par ANPD $\times$ CNPD é o item mais previsível do bloco: já caiu na
+Dataprev 2024 e a própria estrutura da lei convida à inversão.
+
+\begin{conceito}[Quem é quem no Capítulo IX]
+A \textbf{ANPD} é a autoridade: \textbf{fiscaliza, regulamenta e aplica
+sanção}. O \textbf{CNPD} é \textbf{consultivo}: \textbf{propõe} diretrizes
+estratégicas, \textbf{elabora} relatórios e estudos, \textbf{sugere ações} à
+ANPD e \textbf{dissemina} conhecimento sobre proteção de dados. Nenhum verbo
+do CNPD é verbo de decisão.
+
+A inversão estrutural que a banca explora: o CNPD \textbf{integra a estrutura
+da ANPD} (art.\ 55-C, II) --- e não o contrário. Dizer que ``a ANPD é uma das
+integrantes do CNPD'' inverte a relação.
+
+E não confunda os \textbf{dois colegiados}: o \textbf{Conselho Diretor} é o
+\textbf{órgão máximo de direção da própria ANPD}, com \textbf{cinco
+diretores} e mandato de \textbf{quatro anos}; o \textbf{CNPD} é o conselho
+consultivo, com \textbf{vinte e três representantes} de órgãos públicos,
+sociedade civil, instituições científicas e setor empresarial. Atribuir ao
+Conselho Diretor a composição multiinstitucional do CNPD foi exatamente o
+distrator da Dataprev 2024.
+\end{conceito}
+
+\begin{conceito}[Atualização --- Lei 15.352, de 25/02/2026]
+A \textbf{Lei 15.352/2026}, conversão da Medida Provisória 1.317/2025, deu
+nova redação ao art.\ 55-A. A sigla continua \textbf{ANPD}, mas o nome passou
+a ser \textbf{Agência} Nacional de Proteção de Dados: \textbf{autarquia de
+natureza especial vinculada ao Ministério da Justiça e Segurança Pública},
+dotada de autonomia \textbf{funcional, técnica, decisória, administrativa e
+financeira}, com patrimônio próprio e sede e foro no Distrito Federal,
+\textbf{nos termos da Lei 13.848/2019} --- a lei das agências reguladoras.
+
+Guarde a trajetória, porque é dela que a banca tira os distratores: a ANPD
+nasceu como \textbf{órgão} da administração pública federal integrante da
+\textbf{Presidência da República} (redação de 2018--2019, de natureza jurídica
+declaradamente transitória); tornou-se \textbf{autarquia de natureza especial}
+pela \textbf{Lei 14.460/2022}; e em \textbf{2026} passou a \textbf{agência},
+vinculada ao \textbf{Ministério da Justiça e Segurança Pública}. Alternativa
+que a descreva como ``órgão da administração direta'' ou ``vinculada à
+Presidência da República'' está retratando desenho revogado.
+\end{conceito}
 
 \begin{pegadinha}
 Troca \textbf{controlador $\times$ operador}: controlador \textbf{decide}
@@ -132,6 +398,39 @@ para fins comerciais'', ``reduzir a velocidade de vídeo no horário de pico
 para aliviar a rede''. Esse último é o mais perigoso: soa técnico, mas é
 discriminação \textbf{por aplicação}, que não está entre as exceções do §1º.
 \end{pegadinha}
+
+\subsection{Sanções (art.\ 12)}
+
+As sanções do Marco Civil punem o descumprimento das regras de guarda e de
+tratamento de registros dos arts.\ 10 e 11 --- exatamente a matéria da
+subseção anterior. Elas já caíram na Dataprev 2024, e o distrator era
+numérico.
+
+\begin{conceito}[As quatro sanções do art.\ 12]
+\textbf{I --- advertência}, com indicação de \textbf{prazo para adoção de
+medidas corretivas} (é a que tem duas faces: repreende e orienta);
+\textbf{II --- multa de até 10\%} do faturamento do \textbf{grupo econômico no
+Brasil} no seu \textbf{último exercício}, excluídos os tributos, considerados
+a condição econômica do infrator e a proporcionalidade entre a gravidade da
+falta e a intensidade da sanção; \textbf{III --- suspensão temporária} das
+atividades do art.\ 11; \textbf{IV --- proibição} do exercício dessas
+atividades. Aplicam-se \textbf{de forma isolada ou cumulativa} e
+\textbf{sem prejuízo} das demais sanções cíveis, criminais ou
+administrativas.
+
+\textbf{Parágrafo único:} tratando-se de \textbf{empresa estrangeira}, a
+\textbf{filial, sucursal, escritório ou estabelecimento situado no País}
+responde \textbf{solidariamente} pelo pagamento da multa --- não existe vácuo
+legislativo para empresa de fora.
+\end{conceito}
+
+O par de números é o que a banca troca: \textbf{Marco Civil, até 10\%} do
+faturamento do grupo econômico no Brasil no último exercício, \textbf{sem teto
+nominal}; \textbf{LGPD, até 2\%}, com \textbf{teto de R\$ 50 milhões por
+infração}. Quem guardou só ``dez por cento'' erra a LGPD, e quem guardou só
+``dois por cento'' erra o Marco Civil. Cuidado também com a janela: é
+\textbf{o último exercício}, não a média dos últimos três --- foi assim que a
+alternativa errada da Dataprev 2024 foi montada.
 
 \subsection{Art.\ 19 --- responsabilidade dos provedores (atualização crítica pós-STF, jun/2025)}
 
