@@ -23,11 +23,22 @@ entender competências, prazos e papéis.
 ## Como a banca arma a pegadinha
 - Troca controlador x operador: controlador DECIDE sobre o
   tratamento; operador EXECUTA em nome do controlador.
-- Troca ANPD x CNPD: a ANPD é autarquia federal de
-  natureza especial que FISCALIZA e APLICA sanção; o CNPD
-  é órgão CONSULTIVO — apenas propõe/sugere e dissemina
-  (no Dataprev 2024 a alternativa certa era o CNPD
-  "sugerir ações à ANPD").
+- Troca ANPD x CNPD: a ANPD é autarquia de natureza
+  especial que FISCALIZA e APLICA sanção; o CNPD é órgão
+  CONSULTIVO — apenas propõe/sugere e dissemina (no
+  Dataprev 2024 a alternativa certa era o CNPD "sugerir
+  ações à ANPD"). Cuidado com os DOIS colegiados: o
+  Conselho Diretor é a direção da própria ANPD (5
+  diretores); o CNPD tem 23 representantes e fica DENTRO
+  da estrutura da ANPD (art. 55-C, II), não o contrário.
+- ATUALIZAÇÃO DE 2026: a Lei 15.352, de 25/02/2026
+  (conversão da MP 1.317/2025), mudou o art. 55-A. A sigla
+  continua ANPD, mas o nome virou AGÊNCIA Nacional de
+  Proteção de Dados — autarquia de natureza especial
+  VINCULADA AO MINISTÉRIO DA JUSTIÇA E SEGURANÇA PÚBLICA,
+  nos termos da Lei 13.848/2019. Alternativa que a chame de
+  "órgão da administração direta" ou "vinculada à
+  Presidência da República" descreve desenho revogado.
 - Inverte os prazos da LAI ou o marco de contagem.
 - Multa da LGPD com número errado (vê abaixo o certo).
 - ARMADILHA DE 2026 no Marco Civil: alternativa que diz

@@ -172,6 +172,15 @@ para quem for conferir: **a página da LGPD no Planalto cita "Lei 15.452" na
 redação do art. 55-A, e é erro de digitação deles** — a Lei 15.452/2026 acrescenta
 um artigo ao Código de Trânsito. A correta é a **15.352/2026**.
 
+**A atualização foi propagada para as outras camadas** num lote curto logo em
+seguida: `resumo/legislacao.md` e `dicas/legislacao.md` ganharam o novo desenho
+da ANPD e a distinção Conselho Diretor × CNPD, e a `erradas` da alternativa (A)
+da Dataprev 2024 Q40 — que parava na Lei 14.460/2022 — passou a citar também a
+15.352/2026. Editar `why`/`erradas` no `banco-provas.json` **é seguro**: ao
+contrário da `tag`, esses campos são carregados do arquivo anterior pelo
+`importar_provas.py` (linhas 389–390), e a reimportação foi conferida —
+continua devolvendo o arquivo **byte-idêntico**.
+
 Contrato aditivo cumprido: `conceito` **1 → 9** no capítulo (62 → 70 no livro);
 `pegadinha` 7, `jacaiu` 1 e `comosair` 1 **inalteradas**, `PISO_CAIXAS` intocado
 em 116/20/24. `./valida.py --strict` com a **lista de avisos idêntica** ao

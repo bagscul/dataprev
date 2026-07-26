@@ -42,8 +42,22 @@ STF, notícias 26/06/2025.)
 - **Direitos do titular (art. 18):** confirmação, acesso, correção,
   anonimização/bloqueio/eliminação, portabilidade, informação sobre
   compartilhamento, revogação do consentimento.
-- **ANPD** (autarquia) **fiscaliza e sanciona**; o **CNPD** (Conselho) é
-  **consultivo** (propõe diretrizes). Não confunda os papéis.
+- **ANPD** **fiscaliza, regulamenta e sanciona**; o **CNPD** (Conselho) é
+  **consultivo** — propõe diretrizes, sugere ações à ANPD e dissemina. Não
+  confunda os papéis, nem os **dois colegiados**: o **Conselho Diretor** é a
+  direção da própria ANPD (**5 diretores**, mandato de 4 anos); o **CNPD** tem
+  **23 representantes** e **integra a estrutura da ANPD** (art. 55-C, II) — não
+  o contrário.
+- **Atualização de 2026 — a ANPD virou agência.** A **Lei nº 15.352, de
+  25/02/2026** (conversão da MP 1.317/2025) deu nova redação ao art. 55-A: a
+  sigla continua **ANPD**, mas o nome passou a **Agência** Nacional de Proteção
+  de Dados — **autarquia de natureza especial vinculada ao Ministério da
+  Justiça e Segurança Pública**, com autonomia funcional, técnica, decisória,
+  administrativa e financeira, **nos termos da Lei 13.848/2019** (lei das
+  agências reguladoras). A trajetória é de onde saem os distratores: *órgão*
+  ligado à **Presidência da República** (2018–2019, natureza declaradamente
+  transitória) → *autarquia de natureza especial* (**Lei 14.460/2022**) →
+  *agência* vinculada ao **Ministério da Justiça** (2026).
 - **Sanções:** advertência; **multa simples de até 2% do faturamento**,
   limitada a **R$ 50 milhões por infração**; publicização; bloqueio/eliminação
   dos dados. Exige processo administrativo.

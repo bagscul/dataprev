@@ -4377,7 +4377,7 @@
   "ans": 2,
   "why": "O Conselho Nacional de Proteção de Dados Pessoais e da Privacidade (CNPD) é órgão consultivo: entre suas competências estão propor diretrizes estratégicas, SUGERIR ações a serem realizadas pela ANPD e disseminar o conhecimento sobre proteção de dados e privacidade à população. Regra prática: ANPD = fiscaliza e sanciona; CNPD = aconselha e sugere.",
   "erradas": {
-   "0": "O CNPD não é empresa pública federal — é órgão consultivo. E a ANPD, após a Lei 14.460/2022, é autarquia de natureza especial, não mais órgão da administração direta.",
+   "0": "O CNPD não é empresa pública federal — é órgão consultivo. E a ANPD, após a Lei 14.460/2022, é autarquia de natureza especial, não mais órgão da administração direta; e, pela Lei 15.352, de 25/02/2026, ela passou a se chamar Agência Nacional de Proteção de Dados, autarquia de natureza especial vinculada ao Ministério da Justiça e Segurança Pública.",
    "1": "Confunde os colegiados: essa composição plural (Câmara, Senado, CGI.br, CNJ, CNMP e outros) é do CNPD; o Conselho Diretor é o órgão máximo da ANPD, formado por diretores nomeados pelo Presidente da República e aprovados pelo Senado.",
    "3": "A estabilidade com perda do cargo apenas em hipóteses taxativas é garantia dos diretores da ANPD; os membros do CNPD são representantes indicados, com mandato e função não remunerada.",
    "4": "A ANPD coordena/preside a estrutura, mas a lei não faz dela \"conselheira presidente\" do CNPD nessa condição — o CNPD é composto por representantes dos órgãos e entidades listados na lei."
