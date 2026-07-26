@@ -9,7 +9,7 @@ item. Três frentes: destravar questão real que estava fora do sorteio por
 engano, consertar um casamento de string que sujava um bloco, e começar a
 transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
 **432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
-**735 → 768**. Apostila: **122 → 127 páginas**.
+**735 → 768**. Apostila: **122 → 132 páginas**.
 
 ### 45 questões reais estavam trancadas por engano
 
@@ -58,12 +58,71 @@ Sustentabilidade e Direitos Humanos não estão no edital do Perfil 3 — é ru�
 de outro perfil, mesmo critério já aplicado à História e Geografia de Rondônia
 da ALERO.
 
-> **Efeito colateral a resolver:** as 44 questões destravadas nunca tiveram
-> `why`/`erradas` — elas estavam fora do sorteio, então a auditoria nunca
-> passou por elas. São **41 questões reais utilizáveis sem explicação**
-> (`cnsal-bd` 10, `cnsal-ads` 9, `mpu` 7, `tjrj2` 5, `cnsal-redes` 4, `tjrj1`
-> 4, `dataprev2024` 2). O quiz as sorteia e corrige, mas não comenta ao errar.
-> Escrever essas explicações é o próximo lote de conteúdo.
+### As 41 questões destravadas ganharam explicação
+
+Efeito colateral do item anterior, resolvido no mesmo lote: as questões que
+estavam fora do sorteio nunca tinham passado pela auditoria, então entraram sem
+`why` nem `erradas`. O quiz as corrigia e não comentava — o oposto do método,
+já que a `erradas` é justamente o que se lê ao errar. As 41 ganharam explicação
+ancorada no gabarito oficial (`banco-dados` 11, `legislacao` 7, `programacao`
+6, `eng-software` 5, `seguranca` 5, `bi` 2, `orfaos` 2, `java` 2, `frontend`
+1). Com isso o `valida.py --strict` volta à lista de avisos do baseline: 1
+aviso (a `mpu` Q41 documentada) + 1 de forma (a #41 preservada de propósito).
+
+Duas anotações que valem por si:
+
+- **`cnsal-bd` Q41 (chave candidata + forma normal).** O gabarito C acerta a
+  forma normal — 3FN e não BCNF —, mas a alternativa lista **só duas das três
+  chaves candidatas**: falta BC, e o fecho confirma ($BC \to DE$, e $D \to A$
+  fecha o resto). Isso não é preciosismo: é justamente BC que torna B primo;
+  pelas duas chaves que a alternativa cita, $A \to B$ seria dependência parcial
+  e a relação nem chegaria à 2FN. A explicação registra a inconsistência em vez
+  de fingir que a alternativa fecha.
+- **`cnsal-redes` Q43 (Decorators do Python).** A explicação diz na cara que o
+  `@` do Python não é o Decorator do GoF — a armadilha de garimpo já catalogada
+  no repositório, agora ensinada no ponto exato em que ela aparece.
+
+### Apostila fase 2 — arquitetura, segurança e eng-software
+
+Calibrada depois do piloto: banco de dados sozinho cresceu 5 páginas, e
+replicar aquela densidade nos 11 capítulos restantes levaria o livro a ~180.
+Estes três somaram **5 páginas no total** — o piloto era o caso extremo (1:14);
+estes estavam em 1:5,5 e 1:7,7, e o de engenharia de software já era o melhor
+servido do livro.
+
+**Arquitetura (1:5,5 → 1:1,18).** O capítulo já tinha boa prosa fora das
+caixas, então foi cirúrgico: os estilos como **sequência histórica** (cada um
+nasceu resolvendo a dor do anterior, e é a dor do enunciado que aponta o
+estilo); **o preço dos microsserviços**, que é o que falta para responder aos
+cenários em que eles são a resposta *errada*; **o que REST é de verdade**
+(recurso, representação, interface uniforme) com o encadeamento que a FGV cobra
+— sem estado → qualquer instância serve → escala horizontal; **IaaS/PaaS/SaaS
+pela linha de responsabilidade**, incluindo a responsabilidade compartilhada em
+segurança; e por que transação distribuída é difícil, amarrado ao CAP.
+
+**Segurança (1:7,7 → 1:1,52).** A **tríade CIA como critério de classificação**
+do capítulo inteiro, com o mapa controle → pilar e o ponto que separa quem
+entendeu: os três competem entre si. **Assimétrica: a mesma matemática, dois
+usos opostos** — a tabela das duas direções, a lógica de cada uma em uma frase,
+e as duas notas que a banca cobra (assina-se o *hash*; o TLS usa assimétrica só
+para combinar a chave simétrica de sessão). E **gestão de riscos** ganhou seção
+própria: o edital pede "ameaça, vulnerabilidade, impacto" e o capítulo não
+ensinava nenhum dos três.
+
+**Eng-software (1:1,3 → 1:0,70).** Preenchimento cirúrgico, como planejado.
+**CMMI**: o que é maturidade de processo, que problema ele resolveu, como se
+reconhece cada nível na prática — com o corte 2 → 3 — e por que existem duas
+representações. **APF**: o que o Ponto de Função mede e por que independe de
+linguagem, os cinco tipos em dois grupos, e os dois critérios de classificação
+(ALI × AIE pela manutenção; SE × CE pelo dado derivado). **RUP**: o capítulo o
+citava no "já caiu" e no "nosso banco" e **não o ensinava em lugar nenhum** —
+entraram os dois eixos, as quatro fases com seus marcos e a âncora de que risco
+e arquitetura vivem na Elaboração.
+
+Caixas no fim das duas fases: `conceito` **27 → 43**. `jacaiu` e `comosair`
+intactas (20/24). As duas `pegadinha` a mais (113 → 115) são de conteúdo novo —
+gestão de riscos e RUP, seções que não existiam. O piso do `valida.py` subiu
+junto.
 
 ### A apostila começa a ensinar — capítulo-piloto de Banco de Dados
 
