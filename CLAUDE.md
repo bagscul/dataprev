@@ -58,6 +58,19 @@ resultado de já ter testado os dois estilos neste repositório):
 - **Depois de gerar, sempre rode `./valida.py`** antes de considerar a
   questão pronta.
 
+## Mexer na apostila (`apostila/`)
+
+Para **verificar** o livro — conferir fatos, versões de norma, cobertura do
+edital, coerência entre as camadas: siga **`VERIFICAR-APOSTILA.md`**. Ele é o
+prompt de auditoria pronto, com as sete frentes em ordem de custo em ponto e a
+linha de base das caixas para detectar regressão.
+
+Vale mesmo para retoque pequeno: a apostila é a camada de cima de quatro
+(apostila → `resumo/` → `dicas/` → `banco.json`), então **fato alterado aqui
+tem de descer para as outras três**, senão o `./valida.py` acusa drift — e o
+Lucas decora a versão errada. Ao terminar, recompile
+(`cd apostila && latexmk -pdf main.tex`) e rode `./valida.py`.
+
 ## Caderno de erros — registrar sempre
 
 Depois de explicar, **sempre** proponha (ou já edite direto, se o bloco for
