@@ -2,6 +2,80 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-25 — lote de 20 questões nos recortes finos + os textos-base perdidos
+
+Primeiro lote guiado por **questões por ponto de prova** em vez de volume, e o
+primeiro em que questão de interpretação parte de **texto real** buscado na
+web, não de texto autoral. `banco.json`: **336 → 356**. Apostila: **121 → 122**
+páginas.
+
+**A prioridade mudou por causa de um defeito, não da tabela.** Inglês já era o
+bloco mais fino (2,5 questões por ponto), mas as **12 questões reais** do bloco
+— todas da Dataprev 2024, a única prova do corpus com Língua Inglesa — tinham
+sido importadas **sem os textos-base**. O `parsear()` só reconhece item
+numerado, então os três TEXTs da prova não viravam questão: eles grudavam na
+**última alternativa da questão anterior**. A alternativa (E) da Q12
+(português) carregava **3.963 caracteres** de um anúncio de e-book em inglês, e
+a (E) da Q18 trazia o texto do Gizmodo inteiro. Do outro lado, a Q14 (`"What
+information is in TEXT?"`, 28 caracteres) e a Q21 eram **literalmente
+irrespondíveis** — e o quiz as sorteava, porque tinham gabarito e não estavam
+marcadas como dependentes de figura.
+
+- **`importar_provas.py` — `textos_base()`.** O marcador (`"Use the following
+  TEXT to answer the next six questions."`) diz quantas questões o texto cobre;
+  o corpo vai dali até a primeira linha que seja só um número. O texto é
+  **prefixado no enunciado de cada questão do grupo**, porque o quiz sorteia
+  itens soltos e cada um precisa se sustentar sozinho — mesma decisão já tomada
+  nas questões de inglês do `banco.json`. O `requer_imagem` continua sendo
+  calculado sobre o enunciado, não sobre o texto.
+- **`CABECALHO_SECAO`** — irmã da correção do rodapé. Título de seção sozinho na
+  linha (`Língua Inglesa`, `Raciocínio Lógico Matemático`, `Atualidades`,
+  `Legislação Específica`, `MÓDULO II`…) agora encerra a alternativa corrente.
+  Casa a **linha inteira** de propósito: "Legislação", "Módulo" e "Realização"
+  aparecem dentro de alternativas legítimas ("Bugs por Módulo.", "A realização
+  de entrevistas…") e não podem cortar. Os títulos que o PDF quebra em duas ou
+  três linhas entram pela primeira linha, que já basta.
+- **23 questões corrigidas, nenhuma perdida.** 12 ganharam o texto-base
+  (Dataprev 2024 Q13–Q24) e 11 tiveram um rabicho de cabeçalho retirado da
+  alternativa (Dataprev Q12/Q18/Q24/Q30/Q35, MPU Q20/Q25/Q35/Q40, ALERO Q12/Q24,
+  TJ-RJ Q20 nas duas provas). Reimportar continua devolvendo o arquivo
+  **byte-idêntico**, e `tag`/`ans`/`why`/`erradas` não foram tocados.
+
+**As 20 questões novas.** Critério de escolha: termo presente em prova real da
+FGV e ausente do `banco.json`.
+
+- **Inglês, 8** (dois textos reais, 4 eixos cada — ideia central, anáfora,
+  conectivo, vocabulário em contexto). O perfil de fonte veio do que a FGV
+  usou de fato na Dataprev 2024: página da **Amazon**, post do **Gizmodo** e
+  abstract do **ACM** — jornalismo técnico, descrição de produto e resumo
+  acadêmico, nunca literatura. Escolhidos: um abstract do **arXiv**
+  (Becker *et al.*, `arXiv:2507.09089`, 12/07/2025 — o RCT em que a IA
+  *atrasou* devs experientes em 19%, contra previsão de −24%) e um post do
+  **Cisco Talos** (Johnson, 22/04/2026 — primeira vez que o Talos IR documenta
+  uso de uma ferramenta de IA por adversário em campanha de *phishing*, contra
+  administração pública). Fonte completa no `why` da primeira questão de cada
+  texto. O erro do original ("since at May 2023") foi **preservado**.
+- **Programação, 6 — estruturas de dados**, que tinham **zero** questões nossas
+  contra ~13 reais: tabela hash (agrupamento primário sob fator de carga alto;
+  encadeamento separado × endereçamento aberto), árvore balanceada para
+  consulta por faixa, pilha × fila, pré-requisito de ordenação da busca
+  binária, vetor × lista encadeada. A ALERO 2026 é a maior fonte do bloco (13
+  das 23 reais) e **não estava creditada** na caixa `jacaiu` de programação —
+  resquício do conserto de rótulo do commit `9e8a260`. Corrigido.
+- **Eng-software, 6 — subtópico, não volume** (o bloco já tinha 53 originais;
+  só parece fino porque vale 25 pontos). **APF** era o buraco gritante: 7 itens
+  reais contra 1 nosso. Entraram ALI × AIE pelo critério da manutenção, EE/CE/SE
+  pela intenção do processo, APF × LOC × story point; mais partição de
+  equivalência × valor limite, estratégias de implantação (*blue-green* ×
+  *canary* × *rolling* × *feature toggle*) e um item de **comando negativo**
+  sobre fase × disciplina no RUP.
+
+Métricas do lote (`./valida.py --novas 20`): correta-mais-longa **5%** (alvo
+≤6%), absoluto-só-no-distrator **0**, razão máxima correta/erradas **1,13**
+(limite 1,7), gabarito **4/4/4/4/4** — a distribuição do banco segue uniforme
+(A–D 71, E 72). Redes ficou de fora por estar fora do edital do Perfil 3;
+português, porque 79 das suas 90 questões já são reais, com texto íntegro.
+
 ## 2026-07-25 — fechamento do ITEM 7: as 11 caixas `jacaiu` do GRUPO A
 
 Encerra a varredura dos 18 blocos. As **35 caixas "O que já caiu"** das duas
