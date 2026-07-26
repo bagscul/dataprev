@@ -303,6 +303,12 @@ def _texto_camadas():
     }
 
 
+# Piso das caixas de banca da apostila (veja o item D de avisos_drift).
+# Sao os totais medidos em 26/07/2026, no fim do capitulo-piloto de banco de
+# dados. Se voce ACRESCENTAR caixa legitimamente, suba o numero aqui junto.
+PISO_CAIXAS = {"pegadinha": 113, "jacaiu": 20, "comosair": 24}
+
+
 def avisos_drift():
     """Avisos (nao bloqueiam) de descompasso entre apostila, resumo, dicas e
     banco. Silencioso quando as camadas estao em dia."""
@@ -350,6 +356,23 @@ def avisos_drift():
             if m and int(m.group(1)) != n:
                 linhas.append(f"[drift] {doc.name} diz '{m.group(1)} questoes "
                               f"originais', mas banco.json tem {n}")
+
+    # D) caixa de banca que sumiu da apostila.
+    # As caixas `pegadinha`, `jacaiu` e `comosair` sao o que a apostila tem de
+    # melhor: custaram uma auditoria inteira contra as 432 questoes reais, e as
+    # 35 `jacaiu` separam "prova real da FGV" (com sigla) do "nosso banco".
+    # A frente de aprofundamento da apostila e ADITIVA — ela acrescenta
+    # `conceito`, nunca dilui essas tres. Este contador e a trava: se um total
+    # cair, alguma coisa foi reescrita por cima em vez de acrescentada.
+    # `conceito` e `edital` ficam de fora de proposito: os dois devem crescer.
+    for env, minimo in PISO_CAIXAS.items():
+        achadas = sum(len(re.findall(rf"\\begin\{{{env}\}}",
+                                     tex.read_text(encoding="utf-8")))
+                      for tex in sorted(caps.glob("*.tex")))
+        if achadas < minimo:
+            linhas.append(f"[drift] apostila: {achadas} caixas '{env}', "
+                          f"eram {minimo} — caixa de banca nao se apaga, "
+                          f"so se acrescenta conceito ao redor")
     return linhas
 
 

@@ -123,25 +123,32 @@ resposta.
 - Rode **`./valida.py`** — erro bloqueia; aviso de forma é sinal de alerta sobre
   a questão nova.
 - Registre o aprendizado do erro, quando houver, em `erros/<bloco>.md`.
-- Campo opcional **`status`** (auditoria): `ok`, `revisar`, `ambigua`,
-  `distrator-fraco`, `explicacao-fraca`, `estilo-divergente`. Ausência = `ok`.
-  `valida.py` valida o vocabulário (sem bloquear).
+- **Preencha o `sub`** sempre que a questão tiver um recorte transversal (veja
+  abaixo). É o único campo opcional que ganha uso de verdade — os outros dois
+  saíram da documentação por não terem nenhum.
 
 ## Schema
 
 ```json
 {
   "tag": "<bloco>",
-  "sub": ["uml"],               // opcional (subtag)
+  "sub": ["uml"],               // opcional (subtag) — preencha quando couber
   "q": "<enunciado>",
   "alts": ["<a>", "<b>", "<c>", "<d>", "<e>"],
   "ans": 0,
   "why": "<por que a correta é certa>",
-  "erradas": {"1": "<...>", "2": "<...>", "3": "<...>", "4": "<...>"},
-  "apostila": "§10.5",          // opcional
-  "status": "revisar"            // opcional
+  "erradas": {"1": "<...>", "2": "<...>", "3": "<...>", "4": "<...>"}
 }
 ```
+
+> **Dois campos saíram daqui: `apostila` e `status`.** Eram opcionais e
+> terminaram com **0 de 356** questões cada um. O `apostila` (ex.: `"§10.5"`)
+> nunca fez falta porque o `ref_apostila()` do `quiz.py` já cai no mapa
+> bloco→capítulo quando o campo não existe; o `status` (`ok`/`revisar`/
+> `ambigua`/…) era instrumento da auditoria do banco, que terminou. O
+> `valida.py` continua aceitando os dois sem reclamar, então nada quebra se
+> você quiser usá-los um dia — mas campo documentado que ninguém preenche é
+> dívida, e a documentação deixa de pedir os dois.
 
 `ans` é 0–4; as chaves de `erradas` são os índices das 4 alternativas que **não**
 são o gabarito. Blocos (`tag`) disponíveis: os mesmos de `erros/`.
@@ -157,3 +164,9 @@ A `tag` **continua sendo o bloco** e é ela que alimenta o roteiro, o
 `--stats` e o `historico.json`. A `sub` só afeta o **filtro do quiz**
 (`./quiz.py uml`) e o `--dica`/`--resumo`/`--apostila`. Por isso nunca troque a
 `tag` de uma questão para criar um recorte: acrescente `sub`.
+
+**Regra do lote novo:** toda questão gerada daqui em diante preenche a `sub`
+quando o tema couber num dos cinco recortes. Hoje são 58 de 356, e o último
+lote não acrescentou nenhuma — foi assim que `./quiz.py uml` virou um filtro
+que devolve menos do que existe. **Não há passe retroativo** nas questões
+antigas: o trabalho é grande e o ganho, marginal.

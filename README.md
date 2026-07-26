@@ -64,7 +64,7 @@ a mesma errada duas vezes nao vira duas anotacoes). Para nao gravar, use
 progresso.csv (entao nao use ./feito.sh para as questoes do quiz).
 
 356 questoes originais em estilo FGV (todas com gabarito auditado contra
-fonte) + questoes reais de 7 provas da FGV = **~735 questoes utilizaveis**.
+fonte) + questoes reais de 7 provas da FGV = **~768 questoes utilizaveis**.
 As explicacoes ja vem gravadas no banco: o quiz roda offline, sem chave de
 API e sem custo — entao qualquer pessoa com o repo roda no terminal dela.
 
