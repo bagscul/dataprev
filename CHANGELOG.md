@@ -187,6 +187,55 @@ em 116/20/24. `./valida.py --strict` com a **lista de avisos idêntica** ao
 baseline e sem linha `[drift]`. Os 13 *overfull hbox* do livro continuam 13, com
 o mesmo máximo de 17,3pt.
 
+### Três incoerências que o capítulo de legislação deixou para trás
+
+Fechado o capítulo, sobraram três pontas soltas — nenhuma de conteúdo novo,
+todas de **coerência**: o material dizendo uma coisa em um lugar e outra dois
+parágrafos abaixo. **150 páginas, sem alteração na contagem.**
+
+**"A FGV adora a distinção controlador × operador" era palpite, não dado.** A
+frase estava no `\peso` de abertura do capítulo, no blockquote do edital em
+`resumo/legislacao.md` e sob "O que mais cai" em `dicas/legislacao.md` — e
+contradizia a `jacaiu` do próprio capítulo, que põe o par em "no nosso banco
+(previsto pelo edital, ainda não visto na amostra de provas)". A `jacaiu` está
+certa: nas 422 questões reais **os dois termos nunca aparecem juntos**. Há
+quatro ocorrências isoladas e metade nem é LGPD — em `cnsal-ads` Q47
+"controlador" é objeto de um diagrama de sequência e em `cnsal-bd` Q61
+"operador" é operador lógico de `WHERE`. Nos dois hits de LGPD o termo aparece
+sozinho, dentro de outro assunto (`dataprev2024` Q39, conciliação do art. 52,
+§7º; `tjrj1` Q61, art. 20). No lugar do palpite entrou o que a banca de fato
+cobrou nas 8 questões do nosso recorte: classificação na LAI, art. 154-A,
+sanções do Marco Civil, sanções da LGPD e ANPD × CNPD (Dataprev 2024);
+princípio da adequação, art. 20 e IA generativa × LGPD (TJ-RJ). O par
+controlador × operador **continua no material** — é edital, e o nosso banco o
+cobra —, agora rotulado como o que é: previsto, sem precedente da banca.
+
+**O detector de drift não protegia a atualização de 2026.** O `FATOS_CANONICOS`
+do `valida.py` guardava o STF de 26/06/2025 nas quatro camadas, mas a Lei
+15.352/2026 tinha acabado de entrar em três camadas **sem trava nenhuma** — se
+alguém reescrevesse uma delas e a ANPD voltasse a ser só "autarquia", nada
+avisaria. Exatamente o buraco que o ITEM 5 criou o detector para tapar. Entrou
+como `("ANPD agencia (Lei 15.352/2026)", r"15\.?352", ("apostila", "resumo",
+"dicas"))` — três camadas, não quatro, porque `_texto_camadas()` monta `"banco"`
+lendo só o `banco.json` e a citação nova vive no `banco-provas.json`. Conferido
+nas três, e conferido que na quarta não casaria.
+
+**O mapa que abre a `\section{LGPD}` tinha ficado atrás do próprio capítulo.**
+O `itemize` ainda dizia "ANPD (autarquia)" e listava **cinco** sanções,
+enquanto as subseções logo abaixo já ensinavam *Agência* vinculada ao MJSP e o
+regime completo do art. 52. O `itemize` **não foi apagado** — a redundância
+entre mapa e desenvolvimento é repetição espaçada, é de propósito. Os dois
+bullets só foram alinhados: a ANPD ganhou o desenho de 2026 e as sanções
+passaram a ser as **nove em vigor** (incisos I--VI e X--XII; VII--IX vetados),
+com a nota de que suspensão parcial, suspensão da atividade e proibição só
+vêm depois de outra sanção no mesmo caso concreto (§6º). Reconferido no
+Planalto: os incisos X a XII foram vetados em 2018 e **promulgados depois**,
+pela Lei 13.853/2019.
+
+Caixas do livro inalteradas — `conceito` 70, `pegadinha` 116, `jacaiu` 20,
+`comosair` 24, `edital` 15. `./valida.py --strict` com a lista de avisos
+idêntica ao baseline e sem `[drift]`; 13 *overfull hbox*, máximo 17,3pt.
+
 ### Apostila fase 3, lote 3 — frontend, e a fase fecha
 
 **145 → 146 páginas.** Era o capítulo de menor déficit do livro (1:1,88), já
