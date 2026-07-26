@@ -89,3 +89,12 @@
 - Leia palavra por palavra os comandos SQL; a FGV troca uma
   cláusula só (LIMIT/OFFSET, DISTINCT, ILIKE) e testa
   leitura de código.
+- Banco de Dados É disciplina do Perfil 3 (17 itens). O que
+  é do Perfil 2: os SGBD nomeados (Oracle 19C, MySQL,
+  PostgreSQL, MongoDB, MS-SQL 2019) e administração/backup.
+- Metadado é dado SOBRE o dado (tipo, origem, regra,
+  linhagem) — nunca o valor da coluna. Dicionário de dados =
+  catálogo técnico do SGBD; glossário = definição de negócio.
+- Avaliar modelo de dados: completude ("falta algo?") ×
+  corretude ("o que está aqui está certo?"). Um modelo pode
+  ser completo e errado.

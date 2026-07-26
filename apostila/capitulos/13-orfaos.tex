@@ -176,14 +176,8 @@ $\times$ \textbf{semissupervisionado.} Supervisionado usa dados
 estrutura \textbf{sem rótulo} (clusterização/associação). A FGV inverte
 ``rotulado'' entre os dois.
 \item \textbf{Overfitting} (decora o treino, vai mal em dados novos) $\times$
-\textbf{underfitting} (modelo simples demais). Regularização combate
-\textbf{overfitting}.
-\item \textbf{Regularização:} \textbf{L1 (Lasso)} zera coeficientes e faz
-seleção de atributos; \textbf{L2 (Ridge)} encolhe sem zerar. A banca troca os
-dois.
-\item \textbf{Concept drift} (muda a relação entrada$\to$saída, o próprio
-conceito alvo) $\times$ \textbf{data drift} (muda a distribuição da
-\textbf{entrada}). Fácil de trocar.
+\textbf{underfitting} (modelo simples demais) --- mecanismo detalhado no
+Capítulo \ref{cap:atualidades}, seção de viés $\times$ variância.
 \item \textbf{Métricas:} MAE = erro médio absoluto (regressão); F1 = média
 harmônica de precisão e recall; ROC/AUC = capacidade de separar classes
 variando o limiar.
@@ -194,6 +188,84 @@ ver também Capítulo \ref{cap:atualidades}.
 blue-green/canário são as respostas típicas de \textbf{MLOps}. Não confundir
 IA generativa (cria conteúdo) com IA discriminativa (classifica/prediz).
 \end{itemize}
+
+\begin{conceito}[Regularização --- por que a penalidade encolhe o modelo]
+O \emph{overfitting} tem uma assinatura numérica: para passar exatamente por
+cada ponto do treino, o modelo precisa de \textbf{coeficientes grandes} --- é
+o que permite a curva subir e descer bruscamente entre um ponto e outro.
+Regularizar é atacar essa assinatura: em vez de minimizar só o erro, o
+treinamento passa a minimizar \textbf{erro + penalidade sobre o tamanho dos
+coeficientes}. Coeficiente grande fica caro, e o modelo prefere uma curva mais
+lisa --- que generaliza melhor.
+
+O que muda entre as duas famílias é \textbf{como} a penalidade é calculada, e
+daí vem a diferença de efeito:
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{3.6cm}p{5.4cm}@{}}
+\toprule
+& \textbf{Penaliza} & \textbf{Efeito} \\
+\midrule
+\textbf{L1 (Lasso)} & a soma dos \textbf{valores absolutos} dos coeficientes &
+empurra coeficientes \textbf{até zero} --- o atributo sai do modelo. Por isso
+L1 faz \textbf{seleção de atributos} e produz modelo \emph{esparso} \\
+\textbf{L2 (Ridge)} & a soma dos \textbf{quadrados} dos coeficientes &
+\textbf{encolhe} todos proporcionalmente, mas \textbf{não zera} --- todos os
+atributos continuam no modelo, com peso menor \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A intuição do porquê:} ao elevar ao quadrado, a L2 pune muito o
+coeficiente grande e quase nada o que já está perto de zero --- então não vale
+a pena terminar de zerá-lo. A L1 pune o mesmo tanto por unidade em qualquer
+faixa, então zerar de vez compensa. É essa diferença de \emph{formato} da
+penalidade, e não uma escolha arbitrária, que gera a esparsidade.
+
+Consequência que decide o item: se o cenário pede \textbf{descartar atributos
+irrelevantes} de um conjunto com centenas de variáveis, é \textbf{L1}. Se pede
+apenas \textbf{estabilizar} um modelo com atributos correlacionados, sem
+perder nenhum, é \textbf{L2}.
+\end{conceito}
+
+\begin{conceito}[Drift --- o modelo não ``estraga'', o mundo é que anda]
+Um modelo em produção perde acurácia com o tempo sem que uma linha de código
+mude. A causa é que ele aprendeu uma fotografia e o mundo continuou andando ---
+e existem \textbf{duas} coisas diferentes que podem ter andado:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}p{4.8cm}@{}}
+\toprule
+& \textbf{O que mudou} & \textbf{Exemplo} \\
+\midrule
+\textbf{Data drift} & a \textbf{distribuição da entrada} $P(X)$ --- os dados
+que chegam já não se parecem com os de treino & o público do sistema mudou:
+antes vinham pedidos de servidores de 40--50 anos, agora chegam de 20--30. A
+regra ``quem é assim tende a cancelar'' continua valendo \\
+\addlinespace
+\textbf{Concept drift} & a \textbf{relação entrada$\to$saída} $P(Y|X)$ --- o
+próprio conceito-alvo & a entrada é a mesma, mas o comportamento mudou: depois
+de uma lei nova, o mesmo perfil de cliente que antes cancelava passou a
+permanecer. O modelo aprendeu uma regra que \textbf{deixou de ser verdadeira}
+\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Como distinguir na leitura do enunciado:} pergunte \emph{o que o
+cenário diz que mudou}. Se o texto descreve \textbf{quem} está entrando no
+sistema (perfil, faixa, origem, volume), é \textbf{data} drift. Se descreve
+que \textbf{o mesmo tipo de caso passou a ter desfecho diferente} --- nova
+legislação, nova campanha do concorrente, pandemia, fraude que mudou de
+tática ---, é \textbf{concept} drift.
+
+A diferença tem consequência prática, e é isso que o item de MLOps cobra: data
+drift às vezes se resolve \textbf{rebalanceando ou reamostrando} os dados;
+concept drift \textbf{exige retreinar com rótulos novos}, porque a resposta
+certa mudou. Detectar é papel do monitoramento contínuo --- e é por isso que
+``monitorar drift'' e ``gatilho automático de retreino'' são as respostas
+típicas em cenário de modelo degradando em produção.
+\end{conceito}
 
 \begin{pegadinha}
 Inverter hipervisor: \textbf{Tipo 1} (bare-metal) roda direto no hardware;

@@ -15,12 +15,15 @@ coluna ``bloco'' remete ao capítulo com o detalhe.
 \midrule
 \endhead
 Cascata $\times$ Incremental/Ágil & fases sequenciais + requisitos congelados = cascata & Eng.\ Software \\
+\textbf{Verificação $\times$ Validação} & verificação = produto \emph{corretamente} (contra a especificação); validação = produto \emph{certo} (contra a necessidade do usuário) & Eng.\ Software \\
 Requisito funcional $\times$ não funcional & RF = o que faz; RNF = qualidade/restrição (``em tempo real'' é RNF) & Eng.\ Software \\
 Sprint Review $\times$ Retrospective & Review = produto; Retro = processo & Eng.\ Software \\
 Scrum $\times$ Kanban & Scrum tem sprint (time-box); Kanban não tem sprint & Eng.\ Software \\
 Ponto de Função $\times$ Story Points & PF = objetivo/comparável; SP = relativo do time & Eng.\ Software \\
 TDD $\times$ BDD & TDD = teste antes, foco em design; BDD = linguagem de negócio (Gherkin) & Eng.\ Software \\
 CI $\times$ CD & CI integra/testa; CD leva a produção & Eng.\ Software \\
+Entrega $\times$ Implantação contínua & \emph{delivery} = artefato pronto, subida espera aprovação humana; \emph{deployment} = sobe automaticamente & Eng.\ Software / Programação \\
+ALI $\times$ AIE (APF) & ALI = o sistema \textbf{mantém} o dado; AIE = só \textbf{lê} o que outro mantém & Eng.\ Software \\
 Design alto $\times$ baixo nível & alto = estrutura/módulos; baixo = função/algoritmo & Eng.\ Software \\
 Factory Method $\times$ Abstract Factory & Method = um produto via herança; Abstract = famílias via composição & Padrões \\
 Adapter $\times$ Facade $\times$ Decorator & Adapter compatibiliza; Facade simplifica; Decorator adiciona função & Padrões \\
@@ -34,9 +37,12 @@ PUT $\times$ PATCH & PUT substitui inteiro; PATCH atualiza parcial & Arquitetura
 Fila $\times$ Tópico (pub/sub) & fila = um consumidor; tópico = vários & Arquitetura \\
 Escalar vertical $\times$ horizontal & vertical = mais recurso na instância; horizontal = mais instâncias & Arquitetura \\
 Container $\times$ VM & container compartilha kernel; VM tem SO completo & Arquitetura \\
+2PC $\times$ Raft & 2PC = commit atômico por \textbf{unanimidade}, bloqueia se o coordenador cair; Raft = consenso por \textbf{maioria}, sobrevive à queda da minoria & Arquitetura \\
 Hipervisor Tipo 1 $\times$ Tipo 2 & Tipo 1 bare-metal; Tipo 2 sobre SO hospedeiro & Arquitetura / Órfãos \\
 Intranet $\times$ Extranet $\times$ Internet & intranet = interna; extranet = + parceiros externos; internet = pública & Arquitetura / Redes \\
 OLTP $\times$ OLAP & OLTP = transacional/linha; OLAP = analítico/cubo & Banco de Dados / BI \\
+Metadado $\times$ dado & metadado descreve (tipo, origem, regra, linhagem); nunca é o valor da coluna & Banco de Dados \\
+Dicionário de dados $\times$ Glossário de negócio & dicionário = catálogo \textbf{técnico} do SGBD; glossário = definição em linguagem de \textbf{negócio} & Banco de Dados \\
 TRUNCATE $\times$ DELETE & TRUNCATE é DDL, auto-commit; DELETE é DML, WHERE + rollback & Banco de Dados \\
 ETL $\times$ ELT & ETL transforma antes de carregar; ELT transforma no destino & Banco de Dados / BI \\
 Star Schema $\times$ Snowflake & Star = desnormalizado/rápido; Snowflake = normalizado/mais joins & BI \\
@@ -52,7 +58,9 @@ DAC $\times$ MAC $\times$ RBAC & DAC = dono decide; MAC = rótulos do sistema; R
 Autenticação $\times$ Autorização (OAuth2) & OAuth2 = autorização; OIDC = autenticação & Segurança \\
 SAST $\times$ DAST & SAST = código parado; DAST = app rodando & Segurança \\
 IDS $\times$ IPS & IDS alerta (passivo); IPS bloqueia (ativo) & Segurança \\
+\textbf{RTO $\times$ RPO} & \textbf{T} de RTO = \textbf{tempo} fora do ar; \textbf{P} de RPO = \textbf{ponto} no tempo, quanto \textbf{dado} se aceita perder (define a frequência do backup) & Segurança \\
 Spring Boot $\times$ Spring Cloud & Boot = app individual; Cloud = distribuído/microsserviços & Programação \\
+merge $\times$ rebase / fetch $\times$ pull & merge cria commit de junção, rebase reescreve o histórico; fetch \textbf{não} toca na cópia de trabalho, pull toca & Programação \\
 Hibernate $\times$ JUnit & Hibernate = ORM; JUnit = teste de unidade & Programação \\
 XSLT sobre XML $\times$ JSON & XSLT só transforma XML, nunca JSON & Programação \\
 Flutter (Dart) $\times$ outros frameworks & Flutter = Dart; React Native = JS; Xamarin = C\# & Programação / Frontend \\
@@ -66,9 +74,12 @@ Padding $\times$ Margin & padding = interno; margin = externo & Frontend \\
 React $\times$ Angular & React = biblioteca (JS/JSX); Angular = framework completo (TypeScript) & Frontend \\
 Governança $\times$ Gestão (COBIT) & EDM = governança; APO/BAI/DSS/MEA = gestão & Governança \\
 Incidente $\times$ Problema (ITIL) & incidente = restaurar serviço; problema = causa-raiz & Governança \\
+Lead time $\times$ Cycle time & lead conta da \textbf{solicitação} (inclui fila); cycle conta do \textbf{início do trabalho}. Lead $\geq$ cycle sempre & Governança \\
+6 $\times$ 3 princípios (COBIT 2019) & 6 = do \textbf{sistema} de governança (o que você monta); 3 = do \textbf{framework} (o que o guia é). Cinco é COBIT 5 & Governança \\
 Grupo de processos $\times$ Área de conhecimento (PMBOK 6) & 5 grupos $\times$ 10 áreas --- não confundir com os 12 princípios do PMBOK 7 & Governança \\
 Modelo OSI por camada & sessão = diálogo/checkpoints; transporte = portas/TCP-UDP & Redes \\
 TCP $\times$ UDP & TCP = conexão/confiável; UDP = sem conexão/rápido & Redes \\
+Firewall stateful $\times$ stateless & stateless olha o pacote isolado; stateful mantém \textbf{tabela de estado} e já libera a resposta da conexão iniciada de dentro & Redes \\
 Distância administrativa (Cisco) & menor vence: conectada 0, estática 1, OSPF 110, RIP 120 & Redes \\
 MPLS $\times$ roteamento IP & MPLS = rótulo (``camada 2.5''), não olha IP a cada salto & Redes \\
 AD $\times$ DBA & AD = negócio/conceitual; DBA = técnico/físico & Órfãos \\
@@ -83,6 +94,9 @@ Contrapositiva $\times$ Recíproca & só a contrapositiva ($\lnot q \to \lnot p$
 Negação de ``todo''/``algum'' & nega ``todo A é B'' com ``algum A não é B'' & RLM \\
 Controlador $\times$ Operador (LGPD) & controlador decide; operador executa em nome dele & Legislação \\
 ANPD $\times$ CNPD & ANPD fiscaliza/sanciona; CNPD só é consultivo & Legislação \\
+Advertência $\times$ gradação do §6º & as 3 últimas sanções (X, XI, XII) exigem uma \textbf{dos incisos II a VI} antes --- \textbf{advertência não conta} & Legislação \\
+Prazo do art.\ 48 & a \textbf{lei} diz ``prazo razoável''; o \textbf{regulamento} da ANPD (Res.\ 15/2024) fixa \textbf{3 dias úteis} --- não são 72h do GDPR & Legislação \\
+AI Act $\times$ PL 2338 & AI Act = regulamento \textbf{em vigor} desde 2024; PL 2338 = \textbf{ainda projeto}, aprovado só no Senado & Atualidades \\
 \bottomrule
 \end{longtable}
 

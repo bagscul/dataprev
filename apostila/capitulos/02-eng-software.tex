@@ -69,6 +69,57 @@ requisito $\leftrightarrow$ aceitação; a de baixo, código $\leftrightarrow$
 unidade.
 \end{pegadinha}
 
+\subsection{Verificação $\times$ validação}
+
+O Modelo V chama de ``verificação'' todo o ramo ascendente, mas os dois termos
+não são sinônimos --- e o par já caiu (ALERO 2026). Ele é o exemplo mais puro
+de inversão: as duas palavras soam iguais em português, e a resposta muda
+inteira conforme qual delas o enunciado descreve.
+
+\begin{conceito}[Duas perguntas diferentes sobre o mesmo software]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Verificação} & \textbf{Validação} \\
+\midrule
+A pergunta & ``estamos construindo o produto \textbf{corretamente}?'' &
+``estamos construindo o \textbf{produto certo}?'' \\
+Compara com & a \textbf{especificação} --- o documento da fase anterior &
+a \textbf{necessidade real} do usuário \\
+Quando & ao longo de todo o desenvolvimento, fase a fase & principalmente
+perto da entrega, com o usuário \\
+Como se faz & revisão, inspeção, \emph{walkthrough}, análise estática, teste
+de unidade e de integração & teste de aceitação, teste alfa/beta,
+homologação, protótipo avaliado pelo cliente \\
+Precisa executar? & \textbf{não necessariamente} --- revisar documento é
+verificar & na prática \textbf{sim}: alguém usa o sistema \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A âncora de uma palavra:} verificação olha para o \emph{papel}
+(a especificação); validação olha para a \emph{pessoa} (o usuário).
+
+E a consequência que dá o gabarito nos cenários: \textbf{um sistema pode
+passar na verificação e falhar na validação}. Ele implementa exatamente o que
+foi especificado --- só que foi especificada a coisa errada. É o caso do
+sistema que atende a cada linha do documento de requisitos e não serve para o
+trabalho de ninguém: verificação impecável, validação reprovada. O contrário
+também existe, e é mais raro: o produto resolve a necessidade apesar de
+divergir da especificação escrita.
+\end{conceito}
+
+\begin{pegadinha}
+A troca é literal e a FGV a faz nos dois sentidos: definir \textbf{validação}
+como ``conformidade com a especificação'' (isso é verificação) ou
+\textbf{verificação} como ``atendimento às necessidades do usuário'' (isso é
+validação). Dois distratores adjacentes: dizer que verificação
+\textbf{exige execução} do software (não exige --- inspeção de documento é
+verificação) e tratar as duas como sinônimas de ``teste'' (teste é uma
+\emph{técnica}, usada pelas duas). No Modelo V, a ponta de baixo é
+verificação e a de cima, \textbf{aceitação}, é validação.
+\end{pegadinha}
+
 \subsection{RUP --- as quatro fases e os dois eixos}
 
 O RUP (\emph{Rational Unified Process}) é iterativo-incremental e dirigido por

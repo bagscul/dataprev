@@ -93,3 +93,10 @@
   Incremento.
 - Gatilhos de distrator: "sempre", "apenas", "exclusivamente",
   "nunca precisa alterar", "após a implementação".
+- Verificação × validação: verificação = "construímos
+  CORRETAMENTE?" (contra a especificação, aceita revisão de
+  documento, sem executar); validação = "construímos o
+  produto CERTO?" (contra a necessidade do usuário,
+  aceitação/homologação). Passar na verificação e falhar na
+  validação é o cenário: implementou o que foi especificado,
+  mas foi especificada a coisa errada.

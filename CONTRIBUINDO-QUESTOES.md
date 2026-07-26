@@ -2,7 +2,14 @@
 
 Guia obrigatório para toda questão **original** nova (não vale para
 `banco-provas.json`, que é texto real de prova). Destilado da auditoria do
-banco (Bloco V) comparando as 259 originais com 379 questões reais da FGV.
+banco (Bloco V) comparando as originais com as questões reais da FGV.
+
+> **Os números de calibração deste guia apodrecem.** Os que aparecem abaixo
+> foram remedidos em **26/07/2026**, sobre 403 questões originais e 422 reais.
+> Antes de agir sobre qualquer percentual daqui, refaça a medição — as funções
+> `_metricas()` e `avisos_forma()` do `valida.py` fazem o cálculo, e basta
+> aplicá-las a `banco.json` e a `banco-provas.json` separadamente. Corrigir um
+> vício que já foi corrigido piora o banco.
 Complementa a seção "Estilo de questão" do `CLAUDE.md` — aqui está o processo
 inteiro; lá, o resumo do estilo.
 
@@ -67,8 +74,11 @@ Um gerador de IA vaza a forma: dá pra acertar pela mecânica da alternativa, se
 saber o conteúdo. `valida.py` (função `avisos_forma`) monitora isso no banco
 inteiro. Numa questão nova, respeite:
 
-- **A correta não pode ser a mais longa.** Alvo do banco ~20%; hoje está em 62%.
-  Encurte a correta ou alongue os distratores até ficarem de tamanho parecido.
+- **A correta não pode ser a mais longa.** Medido em 26/07/2026: o banco está em
+  **4%** e a prova real da FGV, em **33%**. Ou seja, o problema histórico
+  (62%) **já foi corrigido** — não alongue distrator para "consertar" o que não
+  está quebrado. O que se exige da questão nova é só não ser mais um caso: se a
+  correta ficou a mais longa do item, encurte-a ou alongue os distratores.
 - **Absoluto não só no distrator.** Se usar "sempre/nunca/apenas", não deixe
   esse termo aparecer *só* nas erradas — senão "elimine a que tem absoluto"
   resolve. Ou tire o absoluto, ou coloque um numa alternativa que não seja errada por causa dele.
@@ -80,9 +90,10 @@ inteiro. Numa questão nova, respeite:
 
 ## 4. Proporção de cenário aplicado (calibração 8.2)
 
-As provas reais da FGV têm enunciado ~2,4× mais longo que o banco (mediana 59
-palavras × 19) e são **mais aplicadas**: ~32% de definição direta contra ~58%
-no banco. Ao criar questão nova:
+As provas reais da FGV têm enunciado **~2,3× mais longo** que o banco (mediana
+de **61 palavras contra 27**, medido em 26/07/2026) e são **mais aplicadas**:
+~32% de definição direta contra ~58% no banco (essa última razão é da auditoria
+original e **não foi remedida**). Ao criar questão nova:
 
 - Prefira **cenário/aplicação** (um contexto curto que sustente a pegadinha) a
   definição pura, principalmente nos blocos de peso alto (eng-software,
@@ -94,9 +105,10 @@ no banco. Ao criar questão nova:
   - **Cenário/julgamento I-II-III/leitura de código/legislação:** comando
     explícito ("Assinale a alternativa correta"), alternativas em frases
     completas e maiúsculas.
-- Use mais **comando negativo** ("Assinale a INCORRETA", "a que **NÃO**…",
-  "EXCETO"): a FGV real usa ~4% dos itens; o banco quase não usa (1). É um tipo
-  de item legítimo e sub-representado.
+- **Comando negativo** ("Assinale a INCORRETA", "a que **NÃO**…", "EXCETO"): a
+  FGV real usa em **2,2%** dos itens e o banco, em **2,0%** — a defasagem
+  histórica foi fechada. Continue usando o formato, mas **sem forçar**: um lote
+  pequeno com muitos negativos distorce o conjunto.
 - Mantenha os pontos fortes já alinhados ao real: itens de **leitura de código**
   (Java/JS/CSS/SQL) e de **julgamento de afirmativas I/II/III**.
 

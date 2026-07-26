@@ -50,3 +50,7 @@ Não dá pra decorar só conceito — treine ler snippet.
 - WCAG operável: preferir rótulos/labels bem associados aos
   campos e várias formas de entrada além do teclado; fugir
   de "submissão automática ao focar" (viola previsibilidade).
+- Usabilidade tem DUAS listas: Nielsen (aprendizado,
+  eficiência, MEMORABILIDADE, erros, satisfação) e ISO
+  9241-11 (EFICÁCIA, eficiência, satisfação, num contexto de
+  uso). "Eficácia" é da ISO; "memorabilidade" é de Nielsen.

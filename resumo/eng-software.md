@@ -42,6 +42,26 @@ Pegadinha: requisito nunca casa com teste de unidade (unidade verifica o
 **projeto detalhado**), nem codificação com aceitação. Na dúvida, use as
 pontas: requisito ↔ aceitação em cima, código ↔ unidade embaixo.
 
+**Verificação × validação** — par invertível, já caiu (ALERO 2026):
+
+| | **Verificação** | **Validação** |
+|---|---|---|
+| A pergunta | "estamos construindo o produto **corretamente**?" | "estamos construindo o **produto certo**?" |
+| Compara com | a **especificação** (documento da fase anterior) | a **necessidade real** do usuário |
+| Quando | ao longo de todo o desenvolvimento | perto da entrega, com o usuário |
+| Como | revisão, inspeção, *walkthrough*, análise estática, teste de unidade e de integração | teste de aceitação, alfa/beta, homologação, protótipo avaliado |
+| Executa? | **não necessariamente** — revisar documento é verificar | na prática **sim** |
+
+Âncora: verificação olha para o **papel** (a especificação); validação olha
+para a **pessoa** (o usuário). Consequência que dá o gabarito: **um sistema
+pode passar na verificação e falhar na validação** — implementa exatamente o
+que foi especificado, só que foi especificada a coisa errada.
+
+Pegadinha: definir **validação** como "conformidade com a especificação"
+(é verificação) ou **verificação** como "atendimento às necessidades do
+usuário" (é validação); dizer que verificação **exige execução** (não exige);
+tratar as duas como sinônimas de "teste" (teste é técnica, usada pelas duas).
+
 ## 1.1 Maturidade de processo: CMMI e MPS.BR
 
 Avaliam **quão maduro é o processo** da organização — não a qualidade de um

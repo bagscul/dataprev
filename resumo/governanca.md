@@ -81,11 +81,13 @@ Foco em **cocriação de valor** por meio de serviços.
   (3) parceiros e fornecedores; (4) fluxos de valor e processos.
 - **Cadeia de valor de serviço (6 atividades):** Planejar, Melhorar, Engajar,
   Desenhar e transicionar, Obter/construir, Entregar e suportar.
-- **34 práticas** em 3 grupos: **gerais** (ex: gestão de risco, gestão de
-  projeto), **de serviço** (ex: **gerenciamento de incidentes**, gestão de
-  mudança/*change enablement*, gerenciamento de problemas, central de
-  serviços), **técnicas** (ex: desenvolvimento de software, gestão de
-  implantação).
+- **34 práticas** em 3 grupos, e a repartição também cai: **14 gerais** (ex:
+  gestão de risco, gestão de projeto, melhoria contínua), **17 de serviço**
+  (ex: **gerenciamento de incidentes**, gestão de mudança/*change enablement*,
+  gerenciamento de problemas, central de serviços) e **3 técnicas** (gestão de
+  implantação, gestão de infraestrutura e plataforma, desenvolvimento e
+  gerenciamento de software). Decore **14 + 17 + 3 = 34** — as técnicas são só
+  três, e é o número que a banca infla.
 
 Pegadinha: incidente (restaurar serviço) × problema (causa-raiz) ×
 requisição de serviço; ITIL 4 fala em **práticas** (não "processos" como o
@@ -113,8 +115,19 @@ conselho) de **gestão** (planejar, construir, executar, monitorar).
   - **DSS** – Deliver, Service and Support.
   - **MEA** – Monitor, Evaluate and Assess.
 - **Fatores de desenho (design factors)** e **componentes do sistema de
-  governança.** Princípios: sistema de governança feito sob medida; holístico;
-  dinâmico; distingue governança de gestão; etc.
+  governança** — o COBIT 2019 fala em **componentes**, não nos *enablers* do
+  COBIT 5.
+- **Dois conjuntos de princípios, e não se misturam:**
+  - **6 do *sistema* de governança** (o que a organização monta): entregar
+    **valor às partes interessadas**; abordagem **holística**; sistema
+    **dinâmico**; governança **distinta** da gestão; **sob medida**; sistema
+    **de ponta a ponta**.
+  - **3 do *framework* de governança** (o que o próprio COBIT se compromete a
+    ser): baseado em **modelo conceitual**; **aberto e flexível**;
+    **alinhado** aos principais padrões do mercado.
+  - Oferecer "aberto e flexível" como princípio do sistema, ou "de ponta a
+    ponta" como princípio do framework, é a troca pronta — assim como dizer
+    que são **cinco**, que é o número do **COBIT 5**.
 
 Pegadinha: EDM é **governança**; APO/BAI/DSS/MEA são **gestão**. A FGV troca
 domínio ou atribui objetivo ao domínio errado — no MPU, "especificar e

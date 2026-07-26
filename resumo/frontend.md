@@ -73,8 +73,12 @@ hierarquia normal do DOM** (caiu no MPU).
 
 - **UX (experiência do usuário)** × **UI (interface)**: UX é a experiência
   toda; UI é a camada visual.
-- **Usabilidade** (Nielsen): eficiência, eficácia, satisfação, facilidade de
-  aprendizado, prevenção de erros.
+- **Usabilidade — duas listas, não misture.** Os **cinco atributos de
+  Nielsen** são **facilidade de aprendizado** (*learnability*), **eficiência**,
+  **memorabilidade**, **erros** (poucos e recuperáveis) e **satisfação**. A
+  **ISO 9241-11** usa outro trio: **eficácia**, **eficiência** e
+  **satisfação**, sempre *num contexto de uso declarado*. "Eficácia" é da ISO;
+  "memorabilidade" é de Nielsen — a banca cobra qual lista é de quem.
 - **Acessibilidade:** **WCAG** (W3C) — quatro princípios **POUR**:
   perceptível, operável, compreensível, robusto. Níveis de conformidade **A**
   (mínimo), **AA** (o exigido na maioria das normas e contratos públicos) e

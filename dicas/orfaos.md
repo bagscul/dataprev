@@ -65,3 +65,11 @@ FGV vem carregando em IA/ML e cloud; trate como tema quente.
   deploy blue-green/canário são as respostas de MLOps.
 - Não confunda IA generativa (cria conteúdo) com IA
   discriminativa (classifica/prediz).
+- L1 × L2 pelo mecanismo: L1 penaliza o valor absoluto e
+  pune igual em qualquer faixa, então zerar compensa (seleção
+  de atributos); L2 penaliza o quadrado, quase não pune quem
+  já está perto de zero, então encolhe sem zerar.
+- Drift pela leitura do enunciado: mudou QUEM entra no
+  sistema (perfil, faixa, origem) = data drift; o MESMO tipo
+  de caso passou a ter desfecho diferente = concept drift.
+  Concept drift exige retreinar com rótulos novos.

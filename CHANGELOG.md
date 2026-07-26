@@ -2,6 +2,104 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-26 — auditoria da apostila: fecha 10 achados, dois deles erros factuais
+
+Auditoria completa pelo `VERIFICAR-APOSTILA.md` (sete frentes). Veredito: dava
+para estudar pela apostila como estava, mas com **dois erros que valem ponto**.
+
+### Os dois erros factuais
+
+**1. O Perfil 3 TEM Banco de Dados no edital.** A caixa `edital` do capítulo
+5 (e o `resumo/banco-dados.md`) afirmava que o Perfil 3 "não tem Banco de
+Dados como disciplina" e que a lista fechada era do Perfil 2. Falso: o Anexo I
+traz, dentro de `PERFIL 3: DESENVOLVIMENTO DE SOFTWARE`, uma disciplina
+`BANCO DE DADOS` com **17 itens**. Consequência de cobertura: **metadados**
+(item 5) e **avaliação de modelos de dados** (item 16) não tinham uma linha
+sequer no livro — ganharam subseção própria (§4.1.1 do resumo, duas caixas de
+conceito na apostila). O que é mesmo do Perfil 2 (SGBD nomeados, item 7.1;
+administração/backup, item 8) ficou dito com o número do item.
+
+**2. LGPD art. 52, §6º — advertência não abre as três últimas sanções.** O
+livro dizia que suspensão do banco, suspensão da atividade e proibição (X, XI,
+XII) exigem "ao menos uma das anteriores" imposta antes. A lei exige uma dos
+**incisos II a VI** (multa simples, multa diária, publicização, bloqueio,
+eliminação) — a **advertência, inciso I, não conta**. Era distrator pronto da
+banca ("já houvera advertência, logo pôde suspender") e o material mandava
+marcar certo.
+
+### Desatualizações e lacunas fechadas
+
+- **Prazo de incidente (art. 48).** A lei diz "prazo razoável", mas a
+  **Resolução CD/ANPD nº 15/2024** já fixou **3 dias úteis** (ANPD e titular)
+  e **5 anos** de guarda do registro. O livro tratava "prazo com número" como
+  distrator — hoje a alternativa com os 3 dias úteis é a verdadeira.
+- **COBIT 2019:** faltavam os **6 princípios do sistema de governança** e os
+  **3 do framework** — o número que a FGV troca. **ITIL 4:** as 34 práticas
+  agora vêm com a repartição **14 + 17 + 3**.
+- **Verificação × validação:** o par já tinha caído (ALERO 2026) e não estava
+  explicado em nenhuma das quatro camadas — só citado na lista de "já caiu".
+  Ganhou subseção, entrada no Apêndice B e duas questões.
+- **Regulação de IA:** AI Act é **Regulamento (UE) 2024/1689, em vigor desde
+  01/08/2024**; o PL 2338/2023 **ainda é projeto** (aprovado só no Senado, em
+  10/12/2024). O corte cobrado é o *estado* de cada norma.
+- **Critério de aprovação:** o edital exige, cumulativamente, 57,5 pontos **e
+  não zerar nenhuma disciplina** (9.17). A segunda condição não aparecia — e
+  ela mata a estratégia de abandonar um bloco do Módulo I.
+
+### Precisão didática
+
+Nielsen (aprendizado, eficiência, **memorabilidade**, erros, satisfação) foi
+separado da ISO 9241-11 (**eficácia**, eficiência, satisfação); o alias no
+`WHERE` deixou de ser chamado de "erro de sintaxe"; a duração de 4h da prova
+passou a vir marcada como suposição (**o edital não a declara** — ele fixa só
+portões às 12h30, permanência mínima de 2h e caderno nos últimos 30 min); e a
+leitura do Crow's Foot trocou "de fora/de dentro", ambíguo em português, por
+"o que encosta na entidade é o máximo".
+
+### Razão conceito:estratégia
+
+`13-orfaos` estava em 1 conceito para 4 pegadinhas, com a seção de IA/ML
+reduzida a lista de pares sem mecanismo. Ganhou duas caixas de conceito
+explicando **por que** a penalidade L1 zera e a L2 não, e **o que** muda em
+cada tipo de drift. Nenhuma caixa de `pegadinha`, `jacaiu` ou `comosair` foi
+removida.
+
+### O guia de questões estava calibrado por números velhos
+
+Ao verificar as 13 questões novas contra o banco e contra as provas reais,
+apareceu um problema no próprio `CONTRIBUINDO-QUESTOES.md`: ele mandava
+corrigir vícios **que já haviam sido corrigidos**. Dizia que a correta era a
+mais longa em **62%** dos itens (está em **4%**; a prova real da FGV é que está
+em 33%) e que o comando negativo era sub-representado (banco em **2,0%**, real
+em **2,2%** — a defasagem fechou). Seguir o guia ao pé da letra hoje levaria a
+alongar distratores e a forçar itens negativos sem necessidade, degradando o
+banco. Os percentuais foram remedidos, datados, e o guia ganhou um aviso no
+topo com o procedimento de remedição (`_metricas()` e `avisos_forma()` do
+`valida.py`, aplicados a `banco.json` e `banco-provas.json` separadamente).
+
+As 13 questões novas, por sua vez, não têm vício de forma: 0% de "correta é a
+mais longa", 0% de absoluto só no distrator, gabarito espalhado em A–E, e o
+`avisos_forma` não acusa nada nem na janela de 30 nem no escopo restrito às 13.
+O enunciado ficou com mediana de 45 palavras contra 27 do banco e 61 do real —
+mais perto da prova, que é o que a calibração 8.2 pede.
+
+### Números
+
+| | antes | depois |
+|---|---|---|
+| páginas | 151 | **158** |
+| `conceito` | 71 | **78** |
+| `pegadinha` | 116 | **119** |
+| `comosair` / `jacaiu` / `edital` | 24 / 20 / 15 | 24 / 20 / 15 |
+| `banco.json` | 390 | **403** |
+| Apêndice B (pares) | 69 | **83** |
+
+As 13 questões novas cobrem o conteúdo acrescentado e os três subtópicos que
+o `cobertura.py` apontava como rasos: **blockchain** (1 questão sob a tag),
+**TCP × UDP** (2) e **JSF/Primefaces** (0). `./valida.py` íntegro; compilação
+sem `LaTeX Warning` e sem referência indefinida, e **sem nenhuma caixa
+`Overfull` nova** (13 antes, 13 depois — as mesmas, nos mesmos capítulos).
+
 ## 2026-07-26 — roteiro v3: replanejado para começar em 27/07, em 11 semanas
 
 Inscrição feita — a pendência saiu do `README.md` e do roteiro. E o cronograma

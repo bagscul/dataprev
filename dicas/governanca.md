@@ -51,3 +51,9 @@ cada coisa pertence acerta.
 - Ágil: mudança tardia é bem-vinda e se prioriza no backlog
   — nunca "suspender o projeto" ou "cobrar taxa sem
   discutir" (distratores clássicos da FGV).
+- COBIT 2019 tem DUAS listas de princípios: 6 do sistema de
+  governança (o que você monta) e 3 do framework (o que o
+  guia é). Cinco princípios é COBIT 5 — número de isca.
+- ITIL 4, as 34 práticas: 14 gerais + 17 de serviço + 3
+  técnicas. As técnicas são só três; é o número que a banca
+  infla.

@@ -119,8 +119,34 @@ sem olhar o balanceamento da base.
 - **Viés algorítmico** (dados enviesados → decisão injusta), transparência/
   explicabilidade, responsabilização.
 - **Privacidade:** IA e LGPD (dados pessoais em treino e inferência).
-- **Regulação:** discussões de marco legal da IA (Brasil PL 2338/2023; **AI
-  Act** europeu, baseado em risco).
+### Regulação da IA — o que está em vigor e o que ainda é projeto
+
+A distinção entre os dois **estados** é o que a banca cobra.
+
+- **UE — Regulamento (UE) 2024/1689 ("AI Act").** Não é proposta: **está em
+  vigor desde 01/08/2024**, com aplicação **escalonada**. Estrutura-se por
+  **nível de risco**: *inaceitável* (práticas proibidas — escore social,
+  manipulação), *alto risco* (conformidade, documentação, supervisão humana),
+  *risco limitado* (dever de transparência: avisar que se fala com uma IA) e
+  *mínimo* (livre). É **regulamento** — aplicável direto nos Estados-membros.
+- **Brasil — PL 2338/2023.** **Ainda é projeto de lei.** Aprovado pelo
+  **Senado em 10/12/2024**, tramita na **Câmara**, com votação em plenário
+  pautada e adiada mais de uma vez. Copia o desenho europeu: classificação
+  **por nível de risco** (excessivo, alto, demais), **direitos das pessoas
+  afetadas** (informação prévia, **explicação**, **contestação**, revisão
+  humana), cria o **SIA** (Sistema Nacional de Regulação e Governança de IA)
+  sob coordenação da ANPD, e multa de até **R$ 50 milhões por infração**.
+
+**Pegadinhas:** dizer que o **Brasil já tem** marco legal de IA em vigor (não
+tem — o que vigora e trata de IA por tabela é a **LGPD, art. 20**); dizer que
+o **AI Act ainda é proposta** (é regulamento vigente); atribuir ao PL 2338
+abordagem "baseada em princípios, sem classificação de risco" (é baseado em
+risco). E o número: os **R$ 50 mi por infração** aparecem no PL 2338, na LGPD
+(art. 52) e no ECA Digital — é o teto que a banca usa para confundir as três.
+
+> **Conteúdo volátil.** Confirme o estágio do PL 2338 na semana da prova: se
+> a Câmara aprovar e houver sanção antes de 11/10/2026, ele deixa de ser
+> projeto e vira lei nova — atualização que a FGV adora cobrar.
 
 ### IA aplicada — os cenários que a FGV monta
 

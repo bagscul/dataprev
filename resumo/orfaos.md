@@ -93,11 +93,34 @@ etiquetados como `orfaos`.
   "rotulado" entre os dois.
 - **Overfitting** (decora o treino, vai mal em dados novos) × **underfitting**
   (modelo simples demais). A **regularização combate o overfitting**.
-- **Regularização: L1 (Lasso)** zera coeficientes e faz seleção de atributos;
-  **L2 (Ridge)** encolhe sem zerar. A banca troca os dois. Caiu no TJ-RJ.
-- **Concept drift** (muda a relação entrada→saída, o próprio conceito alvo) ×
-  **data drift** (muda a distribuição da **entrada**). Fácil de trocar, e os
-  dois caíram no TJ-RJ.
+- **Regularização — por que a penalidade encolhe o modelo.** O *overfitting*
+  tem assinatura numérica: para passar por cada ponto do treino, o modelo
+  precisa de **coeficientes grandes**. Regularizar é minimizar **erro +
+  penalidade sobre o tamanho dos coeficientes** — coeficiente grande fica
+  caro, e o modelo prefere uma curva mais lisa, que generaliza. O que muda é
+  *como* a penalidade é calculada:
+  - **L1 (Lasso)** penaliza a soma dos **valores absolutos** → empurra
+    coeficientes **até zero**, faz **seleção de atributos**, modelo esparso.
+  - **L2 (Ridge)** penaliza a soma dos **quadrados** → **encolhe** todos
+    proporcionalmente, **não zera**.
+  - A intuição: ao elevar ao quadrado, a L2 pune muito o coeficiente grande e
+    quase nada o que já está perto de zero, então não compensa zerá-lo; a L1
+    pune igual em qualquer faixa, então zerar de vez compensa.
+  - Cenário: **descartar atributos irrelevantes** entre centenas → **L1**;
+    apenas **estabilizar** atributos correlacionados sem perder nenhum →
+    **L2**. A banca troca os dois. Caiu no TJ-RJ.
+- **Drift — o modelo não "estraga", o mundo é que anda.**
+  - **Data drift:** mudou a **distribuição da entrada** *P(X)* — o público
+    mudou (antes 40–50 anos, agora 20–30), mas a regra aprendida continua
+    valendo.
+  - **Concept drift:** mudou a **relação entrada→saída** *P(Y|X)* — a entrada
+    é a mesma, mas o desfecho mudou (lei nova, fraude que mudou de tática), e
+    a regra aprendida **deixou de ser verdadeira**.
+  - Na leitura: se o enunciado descreve **quem** está entrando, é *data*; se
+    descreve que **o mesmo tipo de caso passou a ter desfecho diferente**, é
+    *concept*. Consequência: data drift às vezes se resolve reamostrando;
+    concept drift **exige retreinar com rótulos novos**. Os dois caíram no
+    TJ-RJ.
 - **Métricas:** MAE = erro médio absoluto (regressão, caiu no TJ-RJ); F1 =
   média **harmônica** de precisão e recall; ROC/AUC = capacidade de separar
   classes variando o limiar. O detalhe de precisão × recall e da acurácia

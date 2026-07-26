@@ -139,3 +139,8 @@
 - Número em item de IA/ESG: confira SEMPRE contra o texto-base.
   A banca infla o dado do próprio texto, e ele nunca precisa
   ser lembrado de memória.
+- Regulação de IA, o corte é o ESTADO da norma: AI Act
+  (Regulamento UE 2024/1689) está EM VIGOR desde 01/08/2024;
+  PL 2338/2023 ainda é PROJETO — aprovado só no Senado
+  (10/12/2024), tramitando na Câmara. O Brasil não tem marco
+  legal de IA em vigor; o que vigora é a LGPD, art. 20.

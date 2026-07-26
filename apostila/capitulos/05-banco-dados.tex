@@ -2,24 +2,28 @@
 \label{cap:banco-dados}
 
 \begin{edital}
-\textbf{Atenção ao recorte:} o Perfil 3 \emph{não tem} ``Banco de Dados''
-como disciplina. O assunto entra por duas portas: \textbf{Inteligência de
-Negócios} (``arquitetura e aplicações de \emph{data warehouse} com ETL e
-OLAP'', ``\emph{data warehouse} e \emph{data mining}'', ``visualização de
-dados: BD individuais e cubos'') e o item 20 de Desenvolvimento de Sistemas
-(``Conceitos de Inteligência Artificial, \textbf{Análise de Dados} e Big
-Data'').
+\textbf{Banco de Dados é disciplina própria do Perfil 3}, com 17 itens:
+modelagem de dados (conceitual, lógica e física); abordagem relacional e
+multidimensional; normalização; integridade referencial; \textbf{metadados};
+modelagem dimensional; SQL; DDL; DML; SGBD; propriedades de banco de dados;
+NoSQL; \textbf{banco de dados em memória}; \emph{data lakes} e soluções para
+big data; \textbf{dados estruturados e não estruturados}; \textbf{avaliação de
+modelos de dados}; técnicas de integração e ingestão (ETL/ELT, transferência
+de arquivos, integração via base de dados).
 
-A lista fechada --- modelagem e normalização, arquitetura, estrutura de
-dados, SQL (ANSI), administração de dados, backup/restauração, engenharia de
-dados/Big Data --- e os \textbf{SGBD nomeados} (Oracle 19C, MySQL,
-PostgreSQL, MongoDB, MS-SQL Server 2019) estão no \textbf{Perfil 2}. Estudamos
-assim mesmo porque a \textbf{FGV cobrou banco de dados no Perfil 3 da Dataprev
-2024} --- do mesmo jeito que cobrou redes, que também não está no perfil.
+O assunto ainda entra por mais duas portas: \textbf{Inteligência de Negócios}
+(\emph{data warehouse} com ETL e OLAP, \emph{data mining}, cubos) e o item 20
+de Desenvolvimento de Sistemas (IA, \textbf{Análise de Dados} e Big Data).
+
+\textbf{O que não é nosso:} os \textbf{SGBD nomeados} (Oracle 19C, MySQL,
+PostgreSQL, MongoDB, MS-SQL Server 2019) e a \textbf{administração de dados /
+backup / restauração} são do \textbf{Perfil 2} (item 7.1 e item 8). Nenhuma
+questão deve depender de sintaxe proprietária; o conteúdo de administração
+física fica no Capítulo \ref{cap:orfaos} como vizinhança útil, não como item
+cobrável do nosso perfil.
 \end{edital}
-\peso{ALTO \textbf{por evidência de prova}, não por peso de edital --- metade
-do ``eixo duplo'' com Engenharia de Software; no MPU 2025 foi o bloco que mais
-caiu.}
+\peso{ALTO \textbf{por edital e por evidência de prova} --- é metade do ``eixo
+duplo'' com Engenharia de Software; no MPU 2025 foi o bloco que mais caiu.}
 
 \section{Modelagem em três níveis}
 
@@ -75,6 +79,76 @@ que o anterior decidiu e soma o seu. É por isso que a ordem não é invertível
 \begin{pegadinha}
 Ordem correta: conceitual $\to$ lógico $\to$ físico. A FGV inverte a ordem ou
 troca o artefato de cada nível.
+\end{pegadinha}
+
+\subsection{Metadados e avaliação de modelos de dados}
+
+Os dois são itens nomeados do edital (5 e 16) e quase nunca aparecem em
+material de concurso --- o que os torna ponto barato para quem os viu uma vez.
+
+\begin{conceito}[Metadado é dado \emph{sobre} o dado]
+\textbf{Metadado} descreve a estrutura, o significado, a origem e as regras de
+um dado --- não o valor dele. Se \texttt{"1988-10-05"} é o dado, o metadado é
+``a coluna chama-se \texttt{data\_admissao}, é do tipo \texttt{DATE}, não
+aceita nulo, veio do sistema de folha e significa a data de entrada em
+exercício''. Costuma-se dividir em três famílias:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9cm}@{}}
+\toprule
+\textbf{Técnico} & o que o SGBD precisa: tabelas, colunas, tipos, chaves,
+índices, restrições. É o que mora no \textbf{dicionário de dados} (ou catálogo)
+--- e é por isso que ele é consultável por SQL, no
+\texttt{INFORMATION\_SCHEMA} \\
+\textbf{De negócio} & o que a \emph{pessoa} precisa: definição do termo,
+regra de cálculo, dono do dado (\emph{data owner}), grau de sigilo. É o
+conteúdo do \textbf{glossário de negócio} \\
+\textbf{Operacional} & o que aconteceu com o dado: data da última carga, volume
+processado, erros, e a \textbf{linhagem} (\emph{data lineage}) --- de que fonte
+ele veio e por quais transformações passou \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A \textbf{linhagem} é a que mais rende em cenário: quando o relatório não
+fecha, é ela que responde ``de onde saiu este número''. E repare na ligação
+com o Capítulo \ref{cap:bi}: sem metadado, o ETL vira caixa-preta --- ninguém
+consegue dizer qual regra transformou o quê.
+\end{conceito}
+
+\begin{conceito}[Avaliar um modelo de dados --- os critérios, não o gosto]
+``O modelo está bom?'' não é opinião: existem critérios, e a FGV cobra pela
+descrição de um deles.
+
+\begin{itemize}
+\item \textbf{Completude:} o modelo cobre todos os requisitos levantados ---
+nenhuma entidade, atributo ou regra ficou de fora.
+\item \textbf{Corretude:} o que está desenhado corresponde ao negócio ---
+cardinalidades, opcionalidade e domínios refletem a realidade descrita.
+\item \textbf{Não redundância / grau de normalização:} cada fato mora num
+lugar só (ou a redundância é \emph{intencional} e justificada, como no DW).
+\item \textbf{Integridade:} chaves primárias e estrangeiras declaradas,
+restrições explícitas em vez de confiadas à aplicação.
+\item \textbf{Aderência a padrão:} convenção de nomes, notação e tipos
+uniformes --- o que permite outra pessoa ler o modelo sem tradutor.
+\item \textbf{Legibilidade e manutenibilidade:} o modelo se entende sem quem o
+desenhou, e uma mudança de regra não obriga a redesenhar meia base.
+\end{itemize}
+
+\textbf{O corte que decide o item:} \emph{completude} olha se falta algo;
+\emph{corretude} olha se o que está lá está certo. Um modelo pode ser completo
+e errado (tem tudo, com a cardinalidade invertida) ou correto e incompleto
+(o que desenhou está certo, mas faltou o requisito de auditoria).
+\end{conceito}
+
+\begin{pegadinha}
+Duas trocas prontas. \textbf{Metadado $\times$ dado}: a alternativa chama de
+metadado o \emph{conteúdo} da coluna (``o CPF do servidor'') --- metadado é a
+descrição, nunca o valor. \textbf{Dicionário de dados $\times$ glossário de
+negócio}: o dicionário é o catálogo \emph{técnico} do SGBD; o glossário é a
+definição em linguagem de negócio. E na avaliação, o distrator troca
+\textbf{completude} por \textbf{corretude} --- ancore em ``falta algo?''
+(completude) contra ``está certo?'' (corretude).
 \end{pegadinha}
 
 \section{Modelo relacional e integridade}
@@ -349,7 +423,9 @@ Duas consequências que a banca cobra sem avisar que está cobrando isto:
 \begin{itemize}
 \item \textbf{O \texttt{WHERE} não enxerga apelido do \texttt{SELECT}.} Em
 \texttt{SELECT preco*2 AS dobro \ldots\ WHERE dobro > 100}, o \texttt{WHERE}
-roda antes de \texttt{dobro} existir --- é erro de sintaxe. Já o
+roda antes de \texttt{dobro} existir --- o banco reclama de \textbf{coluna
+inexistente} (erro de resolução de nome, não de sintaxe: a instrução está bem
+escrita, só referencia algo que ainda não existe naquele ponto). Já o
 \texttt{ORDER BY dobro} funciona, porque roda depois.
 \item \textbf{\texttt{WHERE} filtra linha, \texttt{HAVING} filtra grupo.} Não
 é questão de estilo: o \texttt{WHERE} acontece \emph{antes} do \texttt{GROUP
@@ -394,9 +470,10 @@ volta ao \emph{savepoint} e a transação segue viva.
 \subsection{Notações do MER e chave surrogada}
 
 \textbf{Crow's Foot (pé de galinha):} a notação de cardinalidade mais usada em
-ferramenta. Lê-se \textbf{no ponto onde a linha encosta na entidade}, e cada
-lado traz \emph{dois} símbolos --- o de fora é o \textbf{máximo}, o de dentro
-é o \textbf{mínimo}:
+ferramenta. Cada lado da linha traz \emph{dois} símbolos, e a posição decide o
+papel: o que \textbf{encosta na entidade} é o \textbf{máximo} (a cardinalidade
+--- um ou muitos); o \textbf{mais afastado} dela é o \textbf{mínimo} (a
+modalidade --- zero ou um):
 
 \begin{center}
 \begin{tabular}{@{}p{4.6cm}p{7.4cm}@{}}

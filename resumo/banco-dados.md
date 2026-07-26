@@ -1,22 +1,28 @@
 # Banco de Dados — resumo (Perfil 3)
 
-> **Atenção ao recorte:** o Perfil 3 **não tem "Banco de Dados" como
-> disciplina**. O assunto entra por duas portas: **Inteligência de Negócios**
+> **Edital:** Banco de Dados é **disciplina própria do Perfil 3**, com 17
+> itens: modelagem de dados (conceitual, lógica e física); abordagem
+> relacional e multidimensional; normalização; integridade referencial;
+> **metadados**; modelagem dimensional; SQL; DDL; DML; SGBD; propriedades de
+> banco de dados; NoSQL; **banco de dados em memória**; *data lakes* e
+> soluções para big data; **dados estruturados e não estruturados**;
+> **avaliação de modelos de dados**; técnicas de integração e ingestão
+> (ETL/ELT, transferência de arquivos, integração via base de dados).
+>
+> O assunto ainda entra por mais duas portas: **Inteligência de Negócios**
 > ("arquitetura e aplicações de *data warehouse* com ETL e OLAP", "*data
 > warehouse* e *data mining*", "visualização de dados: BD individuais e
 > cubos") e o item 20 de Desenvolvimento de Sistemas ("Conceitos de
 > Inteligência Artificial, **Análise de Dados** e Big Data").
 >
-> A lista fechada — modelagem e normalização, arquitetura, estrutura de dados,
-> SQL (ANSI), administração de dados, backup/restauração, engenharia de
-> dados/Big Data — e os **SGBD nomeados** (Oracle 19C, MySQL, PostgreSQL,
-> MongoDB, MS-SQL Server 2019) estão no **Perfil 2**. Estudamos assim mesmo
-> porque a **FGV cobrou banco de dados no Perfil 3 da Dataprev 2024** — do
-> mesmo jeito que cobrou redes, que também não está no perfil.
+> **O que não é nosso:** os **SGBD nomeados** (Oracle 19C, MySQL, PostgreSQL,
+> MongoDB, MS-SQL Server 2019, item 7.1) e a **administração de dados /
+> backup / restauração** (item 8) são do **Perfil 2**. Nenhuma questão deve
+> depender de sintaxe proprietária; administração física fica em
+> [orfaos](orfaos.md) como vizinhança útil.
 >
-> **Peso esperado: ALTO por evidência de prova**, não por peso de edital.
-> Metade do "eixo duplo" com Eng. de Software; no MPU 2025 foi o bloco que
-> mais caiu.
+> **Peso esperado: ALTO por edital e por evidência de prova.** Metade do
+> "eixo duplo" com Eng. de Software; no MPU 2025 foi o bloco que mais caiu.
 
 ## 1. Modelagem em três níveis
 
@@ -28,6 +34,40 @@
 
 Ordem: conceitual → lógico → físico. A FGV inverte a ordem ou troca o
 artefato de cada nível.
+
+### 1.1 Metadados e avaliação de modelos de dados
+
+Itens 5 e 16 do edital, quase ausentes de material de concurso — ponto barato.
+
+**Metadado é dado *sobre* o dado** — descreve estrutura, significado, origem e
+regras, nunca o valor. Se `"1988-10-05"` é o dado, o metadado é "a coluna
+chama-se `data_admissao`, é `DATE`, não aceita nulo, veio da folha e significa
+a data de entrada em exercício". Três famílias:
+
+| Família | O que guarda |
+|---|---|
+| **Técnico** | tabelas, colunas, tipos, chaves, índices, restrições — é o **dicionário de dados** (catálogo do SGBD, consultável no `INFORMATION_SCHEMA`) |
+| **De negócio** | definição do termo, regra de cálculo, dono do dado, grau de sigilo — é o **glossário de negócio** |
+| **Operacional** | data da última carga, volume, erros e a **linhagem** (*data lineage*): de que fonte veio e por quais transformações passou |
+
+A **linhagem** é a que mais rende em cenário: quando o relatório não fecha, é
+ela que responde "de onde saiu este número". Sem metadado, o ETL vira
+caixa-preta ([bi](bi.md)).
+
+**Avaliar um modelo de dados** tem critérios, não gosto: **completude** (cobre
+todos os requisitos), **corretude** (o que está desenhado corresponde ao
+negócio), **não redundância / grau de normalização**, **integridade** (PK/FK e
+restrições declaradas), **aderência a padrão** (convenção de nomes e notação)
+e **legibilidade/manutenibilidade**.
+
+O corte que decide o item: *completude* pergunta "falta algo?"; *corretude*
+pergunta "o que está aqui está certo?". Um modelo pode ser completo e errado
+(tem tudo, com a cardinalidade invertida) ou correto e incompleto.
+
+**Pegadinhas:** chamar de metadado o **conteúdo** da coluna ("o CPF do
+servidor") — metadado é a descrição, nunca o valor; trocar **dicionário de
+dados** (técnico, do SGBD) por **glossário de negócio**; e trocar
+**completude** por **corretude**.
 
 ## 2. Modelo relacional e integridade
 
@@ -132,8 +172,9 @@ e a transação segue viva).
 ### 4.2 Notações do MER e chave surrogada
 
 **Crow's Foot (pé de galinha):** a notação de cardinalidade mais usada em
-ferramenta. Lê-se **no ponto onde a linha encosta na entidade**, e cada lado
-traz *dois* símbolos — o de fora é o **máximo**, o de dentro é o **mínimo**:
+ferramenta. Cada lado da linha traz *dois* símbolos, e a posição decide o
+papel: o que **encosta na entidade** é o **máximo** (cardinalidade — um ou
+muitos); o **mais afastado** dela é o **mínimo** (modalidade — zero ou um):
 
 | Símbolo | Leitura |
 |---|---|

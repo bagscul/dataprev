@@ -74,9 +74,22 @@ STF, notícias 26/06/2025.)
   supervisão parental, **vedação de publicidade comportamental** dirigida a
   criança e adolescente, e sanções de advertência, **multa de até R$ 50 milhões
   por infração** e suspensão ou proibição da atividade.
-- **Sanções:** advertência; **multa simples de até 2% do faturamento**,
-  limitada a **R$ 50 milhões por infração**; publicização; bloqueio/eliminação
-  dos dados. Exige processo administrativo.
+- **Sanções (art. 52):** são **nove** em vigor (incisos I–VI e X–XII; VII–IX
+  vetados) — advertência; **multa simples de até 2% do faturamento**, limitada
+  a **R$ 50 milhões por infração**; multa diária; publicização; bloqueio;
+  eliminação; suspensão parcial do banco de dados; suspensão da atividade; e
+  proibição parcial ou total. Exige processo administrativo, com ampla defesa.
+  - **Gradação (§6º, I):** as três últimas (X, XI, XII) só depois de já
+    imposta, no mesmo caso, ao menos uma das sanções dos **incisos II a VI**
+    (multa simples, multa diária, publicização, bloqueio ou eliminação).
+    **Advertência não conta** — é o distrator pronto ("já houvera advertência,
+    logo pôde suspender": não pôde).
+- **Comunicação de incidente (art. 48):** o **controlador** comunica **à ANPD
+  e ao titular** o incidente que possa acarretar **risco ou dano relevante**.
+  A **lei** diz "prazo razoável"; a **Resolução CD/ANPD nº 15/2024** fixou
+  **3 dias úteis** do conhecimento, para os dois destinatários, e **5 anos**
+  de guarda do registro de todo incidente (inclusive dos não comunicados).
+  Não são as 72h do GDPR, e o critério não é "ser dado sensível".
 - **LGPD aplicada a IA:** explicabilidade em decisão automatizada (art. 20),
   anonimização, *scraping* — os três já cobrados no TJ-RJ.
 

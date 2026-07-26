@@ -7582,5 +7582,252 @@
    "2": "O estágio do sistema não aparece como critério em momento algum do texto.",
    "3": "Solução considerada perfeita não geraria dívida: o texto parte de uma solução que a equipe sabe imperfeita."
   }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Após processo administrativo com ampla defesa, a ANPD aplicou a um controlador a sanção de advertência, com prazo para adoção de medidas corretivas. Verificando que as medidas não foram adotadas, a autoridade pretende aplicar, no mesmo caso concreto, a suspensão parcial do funcionamento do banco de dados. À luz do art. 52 da LGPD, é correto afirmar que:",
+  "alts": [
+   "a suspensão pode ser aplicada, porque a advertência já imposta satisfaz a exigência legal de gradação",
+   "a suspensão depende de autorização judicial prévia, por atingir a continuidade da atividade econômica",
+   "a suspensão ainda não cabe: a advertência não está entre as sanções dos incisos II a VI exigidas antes",
+   "a suspensão pode ser aplicada de imediato, pois a gradação é orientação de política, não requisito legal",
+   "a suspensão só seria cabível se o infrator fosse órgão público, hipótese em que a multa fica excluída"
+  ],
+  "ans": 2,
+  "why": "O §6º, I do art. 52 condiciona as sanções dos incisos X, XI e XII (suspensão parcial do banco de dados, suspensão da atividade de tratamento e proibição) à imposição prévia, no mesmo caso concreto, de ao menos uma das sanções dos incisos II a VI — multa simples, multa diária, publicização, bloqueio ou eliminação. A advertência é o inciso I e não integra essa lista, de modo que ela abre o regime sancionatório sem habilitar as três sanções mais graves.",
+  "erradas": {
+   "0": "É a leitura intuitiva e é justamente a armadilha: 'já houve uma sanção anterior' não basta, porque a lei nomeia quais sanções contam, e a advertência ficou de fora do rol dos incisos II a VI.",
+   "1": "Não existe reserva de jurisdição aqui. O art. 52 atribui a aplicação à própria ANPD, mediante procedimento administrativo com ampla defesa — a exigência é de rito, não de decisão judicial.",
+   "3": "Inverte a natureza do §1º e do §6º: a gradação é requisito de validade escrito na lei, não recomendação. Sanção aplicada fora da ordem legal é nula por vício de procedimento.",
+   "4": "Confunde dois parágrafos diferentes. O §3º trata de quais sanções alcançam entidades e órgãos públicos (excluindo multa simples e diária); ele não condiciona a suspensão à natureza do infrator."
+  }
+ },
+ {
+  "tag": "legislacao",
+  "q": "Uma autarquia federal detecta o acesso não autorizado a uma base com nomes e CPFs de mil titulares, com potencial de risco relevante. O encarregado pergunta ao jurídico em quanto tempo o incidente deve ser comunicado à ANPD e aos titulares. A resposta correta é:",
+  "alts": [
+   "72 horas, prazo fixado diretamente pela LGPD para a comunicação à autoridade nacional",
+   "prazo razoável definido caso a caso pelo próprio controlador, já que a lei não delegou a matéria",
+   "15 dias corridos, contados da conclusão do relatório de impacto à proteção de dados pessoais",
+   "não há prazo a observar, pois a comunicação só é obrigatória quando há dado pessoal sensível envolvido",
+   "3 dias úteis do conhecimento do incidente, conforme regulamento editado pela ANPD"
+  ],
+  "ans": 4,
+  "why": "O art. 48 da LGPD fala em 'prazo razoável, conforme definido pela autoridade nacional' — e a autoridade já definiu: a Resolução CD/ANPD nº 15/2024 fixou 3 dias úteis, contados do conhecimento pelo controlador de que o incidente afetou dados pessoais, tanto para a ANPD quanto para o titular. Quem parou na redação da lei descarta a alternativa certa.",
+  "erradas": {
+   "0": "As 72 horas são do GDPR europeu, e o erro tem dois andares: importa o prazo errado e ainda o atribui ao texto da LGPD, que não traz número algum.",
+   "1": "Metade correta: a lei realmente diz 'prazo razoável'. Só que ela remete expressamente à definição da autoridade nacional — não deixa a fixação ao critério do controlador, e a ANPD já regulamentou.",
+   "2": "O relatório de impacto é instrumento autônomo (art. 38) e não funciona como marco inicial de contagem. A comunicação corre do conhecimento do incidente, não de documento posterior.",
+   "3": "Troca o critério legal. O que aciona o dever de comunicar é o risco ou dano relevante ao titular, e não a categoria do dado — vazamento de dado comum, como CPF, entra normalmente."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "No COBIT 2019, afirmar que um framework de governança deve ser aberto e flexível e estar alinhado aos principais padrões e normas de mercado corresponde:",
+  "alts": [
+   "aos seis princípios do sistema de governança, ao lado da abordagem holística",
+   "aos três princípios do framework de governança, distintos dos seis do sistema",
+   "aos cinco princípios do COBIT, preservados sem alteração desde o COBIT 5",
+   "aos fatores de desenho, que orientam a customização do sistema de governança",
+   "aos componentes do sistema de governança, que sucederam os habilitadores do COBIT 5"
+  ],
+  "ans": 1,
+  "why": "O COBIT 2019 tem duas listas de princípios para objetos diferentes: seis descrevem o sistema de governança que a organização monta (valor às partes interessadas, holístico, dinâmico, governança distinta da gestão, sob medida, de ponta a ponta) e três descrevem o próprio framework (baseado em modelo conceitual, aberto e flexível, alinhado a padrões relevantes). Ser aberto e alinhado é compromisso do guia, não da governança implantada.",
+  "erradas": {
+   "0": "Mistura as duas listas. 'Abordagem holística' de fato é princípio do sistema de governança, mas 'aberto e flexível' pertence ao outro conjunto — e é exatamente essa mistura que a banca planta.",
+   "2": "O número cinco é do COBIT 5, cujos princípios foram reformulados na versão 2019. Repetir a contagem antiga é a troca de quantidade mais comum do tema.",
+   "3": "Fatores de desenho são as variáveis de contexto (porte, setor, apetite a risco, estratégia) que orientam a priorização dos objetivos. São insumo de customização, não princípios.",
+   "4": "Componentes são os elementos que constroem e sustentam o sistema de governança — processos, estruturas organizacionais, informação, pessoas. A observação sobre os habilitadores está certa, mas não responde ao enunciado."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "No ITIL 4, as 34 práticas de gerenciamento distribuem-se em três grupos. A quantidade de práticas em cada grupo é, respectivamente para gerais, de serviço e técnicas:",
+  "alts": [
+   "17, 14 e 3",
+   "14, 3 e 17",
+   "3, 17 e 14",
+   "14, 17 e 3",
+   "10, 20 e 4"
+  ],
+  "ans": 3,
+  "why": "São 14 práticas gerais de gerenciamento, 17 de gerenciamento de serviços e 3 de gerenciamento técnico — 14 + 17 + 3 = 34. As técnicas são apenas três (gestão de implantação, gestão de infraestrutura e plataforma, e desenvolvimento e gerenciamento de software), e é justamente esse número pequeno que a banca costuma inflar.",
+  "erradas": {
+   "0": "Troca as duas primeiras posições. O grupo mais numeroso é o de práticas de gerenciamento de serviços, com 17, e não o de práticas gerais.",
+   "1": "Reduz o grupo de serviços a três e infla o técnico para dezessete, invertendo exatamente o peso real: é no gerenciamento de serviços que se concentram incidentes, problemas, mudança e central de serviços.",
+   "2": "Deixa o grupo de práticas gerais com três itens, quando ele reúne quatorze — entre elas gestão de risco, gestão de projeto e melhoria contínua.",
+   "4": "Soma 34, o que a torna sedutora, mas nenhum dos três valores corresponde à divisão oficial; é distrator construído só para fechar o total."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Um sistema de concessão de benefício foi entregue após revisões de projeto, inspeção de código e execução completa das suítes de teste de unidade e de integração, todas em conformidade com o documento de especificação aprovado. Na homologação, os servidores da área finalística concluíram que o sistema não serve ao trabalho real, porque o fluxo especificado não é o fluxo que a área executa. Assinale a alternativa que descreve corretamente a situação.",
+  "alts": [
+   "O software passou na verificação e falhou na validação.",
+   "O software falhou na verificação, pois as inspeções e os testes não detectaram o defeito de requisito.",
+   "O software passou na validação e falhou na verificação, já que a homologação é atividade de verificação.",
+   "Não houve falha de verificação nem de validação, pois o produto está conforme a especificação aprovada.",
+   "A situação caracteriza falha de teste de regressão, que deveria ter comparado o fluxo novo com o anterior."
+  ],
+  "ans": 0,
+  "why": "Verificação pergunta se o produto foi construído corretamente, comparando-o com a especificação; validação pergunta se foi construído o produto certo, comparando-o com a necessidade real do usuário. O sistema atendeu ponto a ponto ao documento aprovado (verificação em ordem) e não atendeu ao processo de trabalho (validação reprovada) — o caso clássico de especificar bem a coisa errada.",
+  "erradas": {
+   "1": "Confunde o objeto de cada atividade. A verificação cumpriu o que lhe cabia: conferir o produto contra a especificação. Ela não teria como acusar erro, porque o defeito está na própria especificação, fora do seu referencial.",
+   "2": "Inverte o par e ainda erra a classificação da homologação, que é atividade de validação — é nela que o usuário confronta o sistema com a necessidade real.",
+   "3": "Conformidade com a especificação encerra a verificação, não a validação. Sustentar que não houve falha alguma equivale a dizer que atender ao documento basta, o que esvazia a própria razão de existir da validação.",
+   "4": "Teste de regressão verifica se uma alteração quebrou o que já funcionava. Aqui nada foi quebrado: o comportamento nunca chegou a corresponder à necessidade."
+  }
+ },
+ {
+  "tag": "eng-software",
+  "q": "Sobre verificação e validação em engenharia de software, assinale a alternativa correta.",
+  "alts": [
+   "A validação compara o produto com a especificação, e a verificação, com a necessidade do usuário.",
+   "Ambas exigem a execução do software, pois só o comportamento em tempo de execução é observável.",
+   "A verificação ocorre ao final do desenvolvimento, quando já existe produto a ser conferido.",
+   "A verificação pode ser feita sem executar o software, por revisão ou inspeção de artefatos.",
+   "Verificação e validação são sinônimos de teste, técnica que as realiza integralmente."
+  ],
+  "ans": 3,
+  "why": "Verificação é a conferência do produto contra a especificação da fase anterior, e ela se aplica a qualquer artefato — documento de requisitos, modelo, código. Por isso revisão, inspeção e walkthrough são técnicas de verificação sem nenhuma execução envolvida.",
+  "erradas": {
+   "0": "Os dois lados estão trocados: quem se compara à especificação é a verificação; quem se compara à necessidade do usuário é a validação. É a inversão de par mais direta do tema.",
+   "1": "Ignora justamente a família de técnicas estáticas. Revisar um documento de requisitos é verificar, e ali não há software a executar.",
+   "2": "Desloca a verificação para o fim do ciclo. Ela acompanha todas as fases — no Modelo V, cada nível do ramo descendente tem o seu correspondente de conferência.",
+   "4": "Reduz duas finalidades a uma técnica. Teste é um meio, usado tanto pela verificação (unidade, integração) quanto pela validação (aceitação), e não esgota nenhuma das duas."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Um relatório gerencial passou a divergir do sistema de origem. Para responder de que fonte veio cada campo e por quais transformações ele passou até chegar ao relatório, o recurso de governança de dados a ser consultado é:",
+  "alts": [
+   "o dicionário de dados, que registra tipos, chaves e restrições das tabelas",
+   "o glossário de negócio, que define o significado dos termos para os usuários",
+   "a linhagem de dados, metadado operacional que descreve o percurso do dado",
+   "o modelo conceitual, que descreve as entidades e os relacionamentos do domínio",
+   "o plano de execução, que informa quais caminhos de acesso o otimizador escolheu"
+  ],
+  "ans": 2,
+  "why": "Linhagem (data lineage) é o metadado operacional que registra origem e trajetória do dado — de qual sistema ele saiu e por quais transformações passou em cada etapa do ETL. É exatamente a pergunta 'de onde saiu este número', e sem ela o pipeline vira caixa-preta.",
+  "erradas": {
+   "0": "O dicionário guarda metadado técnico: como a coluna é declarada no SGBD. Ele descreve a estrutura de destino, mas não conta por onde o valor andou até chegar ali.",
+   "1": "Glossário de negócio fixa o significado do termo para as pessoas — útil para saber o que 'faturamento líquido' quer dizer, inútil para rastrear a transformação que produziu o número.",
+   "3": "O modelo conceitual representa o domínio em entidades e relacionamentos, num nível que sequer conhece tabelas. Rastreabilidade de carga não é o problema que ele resolve.",
+   "4": "Plano de execução é artefato de desempenho: mostra como uma consulta específica foi resolvida. Nada diz sobre a procedência do dado armazenado."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Considere a coluna data_admissao de uma tabela de servidores: declarada como DATE, obrigatória, alimentada a partir do sistema de folha de pagamento e definida pela área de gestão de pessoas como a data de entrada em exercício. Assinale a alternativa que NÃO apresenta um metadado dessa coluna.",
+  "alts": [
+   "O tipo DATE atribuído à coluna.",
+   "O valor 1988-10-05 gravado para um servidor.",
+   "A restrição de preenchimento obrigatório (NOT NULL).",
+   "O sistema de folha de pagamento como fonte de origem.",
+   "A definição de negócio de data de entrada em exercício."
+  ],
+  "ans": 1,
+  "why": "Metadado é dado sobre o dado: descreve estrutura, restrição, origem e significado. O conteúdo gravado em uma linha é o dado propriamente dito — é justamente aquilo que os metadados das outras alternativas descrevem.",
+  "erradas": {
+   "0": "Tipo de coluna é metadado técnico clássico, do tipo que mora no catálogo do SGBD e é consultável pelo INFORMATION_SCHEMA.",
+   "2": "A obrigatoriedade é uma restrição declarada sobre a coluna, e restrição é descrição de como o dado pode se comportar — portanto, metadado.",
+   "3": "Saber de onde o dado veio é metadado operacional, ligado à linhagem; ele não é o valor, é a procedência dele.",
+   "4": "A definição em linguagem de negócio é metadado de negócio, o conteúdo típico de um glossário corporativo."
+  }
+ },
+ {
+  "tag": "banco-dados",
+  "q": "Na revisão de um modelo de dados, a equipe constatou que todas as entidades, atributos e regras levantados na elicitação estão representados, mas que o relacionamento entre Servidor e Lotação foi desenhado como 1:1, embora o negócio admita várias lotações ao longo do tempo. Em avaliação de modelos de dados, esse achado indica:",
+  "alts": [
+   "falha de completude, pois falta representar o histórico de lotações do servidor",
+   "falha de aderência a padrão, pois a notação empregada não é a convencionada",
+   "falha de legibilidade, pois a cardinalidade escolhida dificulta a leitura do modelo",
+   "ausência de falha, pois cardinalidade é decisão a ser tomada no nível físico",
+   "falha de corretude, pois o representado não corresponde ao negócio descrito"
+  ],
+  "ans": 4,
+  "why": "Corretude avalia se aquilo que está desenhado corresponde à realidade do negócio; completude avalia se algo ficou de fora. Aqui nada faltou — o relacionamento está no modelo —, mas está com a cardinalidade errada. O modelo é completo e incorreto.",
+  "erradas": {
+   "0": "É a quase certa do item, e o corte é fino: completude pergunta 'falta algo?'. O enunciado diz expressamente que tudo o que foi levantado está representado, então o problema não é ausência, é cardinalidade errada.",
+   "1": "Aderência a padrão trata de convenção de nomes, notação e uniformidade de tipos. A notação não está em discussão; o que está errado é o conteúdo semântico do relacionamento.",
+   "2": "Legibilidade mede se outra pessoa entende o modelo sem quem o desenhou. Uma cardinalidade incorreta é perfeitamente legível — e é aí que mora o perigo, porque ela se lê bem e informa errado.",
+   "3": "Cardinalidade é decidida já no nível conceitual, junto com entidades e relacionamentos. O nível físico decide tipo exato, índice e partição, não quantos de um lado se ligam a quantos do outro."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Em uma blockchain no modelo do Bitcoin, cada bloco encadeia-se ao anterior pelo hash deste, o que sustenta a imutabilidade da cadeia. Assinale a alternativa que apresenta um elemento que NÃO é armazenado no bloco.",
+  "alts": [
+   "O hash do bloco anterior.",
+   "A raiz da árvore de Merkle das transações.",
+   "O nonce encontrado na mineração.",
+   "O saldo atual de cada carteira.",
+   "O carimbo de tempo do bloco."
+  ],
+  "ans": 3,
+  "why": "O bloco guarda cabeçalho (hash do bloco anterior, raiz de Merkle, timestamp, nonce e alvo de dificuldade) e as transações. Saldo não é campo armazenado: ele é derivado do histórico de transações, no modelo UTXO — a carteira soma as saídas não gastas que lhe pertencem.",
+  "erradas": {
+   "0": "É o campo que faz o encadeamento existir: alterar um bloco antigo muda seu hash e quebra a referência de todos os posteriores.",
+   "1": "A raiz de Merkle resume todas as transações do bloco em um único hash, permitindo provar que uma transação está no bloco sem baixar o bloco inteiro.",
+   "2": "O nonce é o número variado pelo minerador até que o hash do cabeçalho satisfaça a dificuldade exigida — é o resultado do trabalho de prova, e fica registrado.",
+   "4": "O timestamp integra o cabeçalho e participa do cálculo do hash do bloco, servindo ao ajuste periódico de dificuldade da rede."
+  }
+ },
+ {
+  "tag": "programacao",
+  "q": "Uma equipe mantém uma aplicação Java EE cuja interface é montada no servidor a partir de uma árvore de componentes, com ciclo de vida em fases: restaurar visão, aplicar valores da requisição, processar validações, atualizar o modelo, invocar a aplicação e renderizar a resposta. Sobre essa tecnologia e sobre o Primefaces, é correto afirmar que:",
+  "alts": [
+   "trata-se do JSF, e o Primefaces é uma biblioteca de componentes construída sobre ele",
+   "trata-se do JSF, e o Primefaces é framework concorrente que o substitui na camada web",
+   "trata-se de uma SPA, pois a árvore de componentes é mantida no navegador pelo Primefaces",
+   "trata-se de JSP puro, e o Primefaces fornece as tags de script executadas no cliente",
+   "trata-se do Spring MVC, e o Primefaces é o seu motor de renderização padrão"
+  ],
+  "ans": 0,
+  "why": "O ciclo de vida em seis fases descrito no enunciado é o do JSF (JavaServer Faces), framework de interface baseado em componentes e executado no servidor. O Primefaces não compete com ele: é uma biblioteca de componentes ricos que se acopla ao JSF, acrescentando tabelas, gráficos e Ajax prontos.",
+  "erradas": {
+   "1": "Acerta a tecnologia e erra a relação. Primefaces depende do JSF para funcionar — ele estende o conjunto de componentes, não substitui a camada.",
+   "2": "O traço definidor do JSF é justamente o oposto: a árvore de componentes e o estado da visão são mantidos no servidor, e cada interação relevante trafega até ele.",
+   "3": "JSP gera a view por marcação e scriptlets, sem árvore de componentes nem ciclo de vida em fases. O JSF é a geração seguinte, orientada a componentes e a eventos.",
+   "4": "Spring MVC segue o modelo de requisição-resposta com controladores e resolvedores de view; ele não tem o ciclo de seis fases descrito, e o Primefaces não pertence ao seu ecossistema."
+  }
+ },
+ {
+  "tag": "redes",
+  "q": "Um serviço de videoconferência transmite áudio e vídeo em tempo real: perdas pontuais degradam a qualidade por instantes, mas retransmitir um trecho já ultrapassado atrapalha mais do que ajuda. Um segundo serviço, de transferência de arquivos, não tolera nenhum byte perdido ou fora de ordem. Os protocolos de transporte adequados são, respectivamente:",
+  "alts": [
+   "TCP para a videoconferência e UDP para a transferência, pelo controle de fluxo do TCP",
+   "TCP para os dois, pois o handshake de três vias é o que assegura qualidade em tempo real",
+   "UDP para a videoconferência e TCP para a transferência de arquivos",
+   "UDP para os dois, já que a camada de aplicação pode reordenar os segmentos recebidos",
+   "UDP para a videoconferência e UDP para a transferência, com retransmissão feita pelo IP"
+  ],
+  "ans": 2,
+  "why": "O critério é o custo da retransmissão. Em tempo real, um pacote reenviado chega tarde demais para ser útil e ainda atrasa o que vem depois — daí o UDP, sem conexão e sem retransmissão. Na transferência de arquivo, integridade e ordem são inegociáveis, e é exatamente o que o TCP entrega com numeração de sequência, confirmação e retransmissão.",
+  "erradas": {
+   "0": "Inverte o par. Controle de fluxo é uma vantagem real do TCP, mas não muda o fato de que a retransmissão que ele garante é inútil, e prejudicial, para mídia ao vivo.",
+   "1": "Atribui ao handshake um papel que ele não tem. Ele sincroniza números de sequência para abrir a conexão; não autentica, não negocia qualidade e não ajuda em tempo real.",
+   "3": "Empurra ao aplicativo uma responsabilidade que o TCP já resolve de forma madura. Para transferência de arquivo, reimplementar confirmação e reordenação sobre UDP é retrabalho sem ganho.",
+   "4": "Erra a camada: o IP é um protocolo de melhor esforço, sem confirmação nem retransmissão. Confiabilidade fim a fim é serviço de transporte, não de rede."
+  }
+ },
+ {
+  "tag": "atualidades",
+  "q": "Sobre o estágio da regulação da inteligência artificial no Brasil e na União Europeia, assinale a alternativa correta.",
+  "alts": [
+   "O Brasil já possui marco legal específico de IA em vigor, oriundo da conversão do PL 2338/2023.",
+   "O AI Act vale em todos os Estados-membros, com aplicação escalonada; o PL 2338/2023 ainda tramita.",
+   "O AI Act é proposta em discussão no Parlamento Europeu, sem qualquer eficácia sobre os Estados-membros.",
+   "O PL 2338/2023 abandonou a classificação por risco e adotou abordagem baseada apenas em princípios.",
+   "Enquanto não houver lei específica de IA, nenhuma norma brasileira alcança decisões automatizadas."
+  ],
+  "ans": 1,
+  "why": "São dois estágios diferentes, e é isso que a banca cobra: o Regulamento (UE) 2024/1689 entrou em vigor em agosto de 2024 e, por ser regulamento, aplica-se diretamente em todos os Estados-membros, com obrigações escalonadas no tempo; já o PL 2338/2023 foi aprovado apenas no Senado, em dezembro de 2024, e segue em tramitação na Câmara dos Deputados.",
+  "erradas": {
+   "0": "Antecipa um desfecho que ainda não ocorreu. O PL 2338/2023 não foi convertido em lei; tratá-lo como norma vigente é o erro mais provável de quem acompanha o tema pela manchete.",
+   "2": "Desatualiza o AI Act em dois pontos: ele já foi aprovado e, por ser regulamento, aplica-se diretamente nos Estados-membros, sem necessidade de transposição para o direito nacional.",
+   "3": "Descreve o oposto do texto aprovado no Senado, que estrutura as obrigações justamente por nível de risco, no mesmo desenho do modelo europeu.",
+   "4": "Ignora a LGPD. O art. 20 já assegura ao titular a revisão de decisões tomadas unicamente com base em tratamento automatizado, além do dever de informar critérios e procedimentos."
+  }
  }
 ]

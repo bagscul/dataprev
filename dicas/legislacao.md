@@ -89,3 +89,10 @@ entender competências, prazos e papéis.
   legítimos informados; adequação = compatível com esses
   fins e o contexto; necessidade = mínimo indispensável.
 - Guarde: ANPD fiscaliza/sanciona; CNPD só aconselha.
+- LGPD art. 52, §6º: suspensão do banco, suspensão da
+  atividade e proibição (X, XI, XII) só depois de já imposta
+  uma dos incisos II a VI. Advertência NÃO conta — é o
+  distrator ("já houvera advertência, logo pôde suspender").
+- Prazo de incidente: a LEI diz "prazo razoável"; o
+  REGULAMENTO da ANPD (Res. 15/2024) fixa 3 DIAS ÚTEIS,
+  para a ANPD e para o titular. Não são as 72h do GDPR.
