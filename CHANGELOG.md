@@ -9,7 +9,7 @@ item. Três frentes: destravar questão real que estava fora do sorteio por
 engano, consertar um casamento de string que sujava um bloco, e começar a
 transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
 **432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
-**735 → 768**. Apostila: **122 → 146 páginas**.
+**735 → 768**. Apostila: **122 → 150 páginas**.
 
 ### 45 questões reais estavam trancadas por engano
 
@@ -82,6 +82,102 @@ Duas anotações que valem por si:
   `@` do Python não é o Decorator do GoF — a armadilha de garimpo já catalogada
   no repositório, agora ensinada no ponto exato em que ela aparece.
 
+### Legislação — o último capítulo da frente, e duas conferências que mudaram o plano
+
+**146 → 150 páginas. Legislação: 1:12,35 → 1:0,66.** Era a pior razão restante
+do livro, e a recomendação registrada era fazer só as bases legais e os agentes
+da LGPD, porque ali o "conceito" é o texto da lei. Duas conferências mudaram o
+recorte antes de escrever uma linha.
+
+**Primeira: o corpus real de legislação não são 47 questões, são 8.** Das 47 com
+a tag em `banco-provas.json`, **39 são de outro perfil** — organização do TJ-RJ,
+estatuto do MPU, Estatuto da Pessoa com Deficiência, licitação, servidor
+público, direito constitucional. Nada disso está no edital do Perfil 3. O que
+sobra são as cinco da Dataprev 2024 (LAI, art. 154-A, sanções do Marco Civil,
+sanções da LGPD, ANPD × CNPD) e três do TJ-RJ (princípio da adequação, art. 20 /
+explicabilidade, IA generativa × LGPD). E o cruzamento é revelador: **o que já
+estava bem ensinado é exatamente o que a banca já cobrou** (LAI e adequação são
+as melhores partes do capítulo). O buraco estava em **sanções** — duas das cinco
+questões da Dataprev — e nos agentes/ANPD.
+
+**Segunda: o recorte de capítulos do edital não é o que se supunha.** O edital
+pede LGPD caps. I, II, III, IV, VII, VIII e IX. Isso **exclui o Capítulo VI**
+("Dos agentes de tratamento", arts. 37–45), onde moram o encarregado do art. 41
+e a responsabilidade civil solidária do art. 42 — ou seja, dos "agentes de
+tratamento" da recomendação antiga só entram as **definições do art. 5º**
+(Capítulo I). E **inclui o Capítulo VII** ("Da segurança e das boas práticas",
+arts. 46–51), que **não existia em camada nenhuma do repositório** e é
+justamente a parte da lei que um desenvolvedor implementa. Mesma conferência no
+Marco Civil: o recorte é cap. II Seção I e cap. III Seções I e II, o que inclui
+o **art. 12** (sanções) e deixa o art. 19 **fora** — o capítulo já gasta uma
+página e meia com ele, e não recebeu uma palavra a mais.
+
+Sete inserções, todas dentro de seções existentes (nenhum `\section` novo, logo
+nenhum risco de *drift*):
+
+- **Agentes de tratamento.** O papel vem do **poder de decisão**, não do acesso:
+  a empresa que hospeda o banco e emprega os programadores pode ter menos
+  obrigações que o órgão que nunca abriu o sistema. E a trava do **art. 5º, IX** —
+  agentes de tratamento são **o controlador e o operador**, só os dois; o
+  **encarregado não é agente de tratamento**, é o telefone, não o responsável.
+  O exemplo mostra o papel mudando: a operadora que decide sozinha reaproveitar
+  a base vira **controladora daquele tratamento**.
+- **Bases legais: o art. 7º e o art. 11 são listas diferentes.** O mecanismo não
+  é decorar dez itens, é saber que dado sensível tem lista **própria e menor** —
+  e que **legítimo interesse e proteção do crédito não estão nela**. Guardar o
+  CPF por contrato é art. 7º; guardar a digital para liberar a catraca é art. 11,
+  II, "g".
+- **Decisão automatizada (art. 20)** — desfaz uma inversão de camada: o `resumo/`
+  tinha seção e a apostila tinha uma linha. Inclui a trava da redação antiga: o
+  texto de 2018 dizia revisão "**por pessoa natural**", a **Lei 13.853/2019**
+  retirou a expressão e o §3º que a reporia foi **vetado**. Hoje a lei **não
+  exige** revisor humano — e material desatualizado ensina o contrário.
+- **Capítulo VII, a LGPD que o desenvolvedor implementa** (ausente do repo
+  inteiro): *privacy by design* com texto de lei (art. 46, §2º — segurança
+  **desde a concepção do produto até a execução**), sigilo que **sobrevive ao
+  término** do tratamento (art. 47), comunicação de incidente **à ANPD e ao
+  titular** quando houver **risco ou dano relevante** (art. 48) e programa de
+  governança em privacidade (art. 50).
+- **Sanções da LGPD (art. 52) como regime, não como tabela de multa.** Rito com
+  ampla defesa, de forma gradativa, isolada ou cumulativa; os **onze parâmetros**
+  de dosimetria (nacionalidade não é um deles — foi distrator); **órgão público
+  não leva multa** (§3º); a multa vai para o **Fundo de Defesa de Direitos
+  Difusos** (§5º), **não** para o titular lesado; vazamento individual admite
+  **conciliação direta** (§7º, que foi o gabarito).
+- **ANPD × CNPD.** Os dois colegiados que a banca troca: **Conselho Diretor** =
+  órgão máximo de direção **da própria ANPD** (5 diretores, mandato de 4 anos) ×
+  **CNPD** = conselho **consultivo** com 23 representantes que **integra a
+  estrutura da ANPD** (art. 55-C, II) — daí o distrator invertido "a ANPD é uma
+  das integrantes do CNPD".
+- **Marco Civil, art. 12** — o `jacaiu` já creditava isso à Dataprev 2024 e o
+  corpo nunca ensinou. As quatro sanções, isoladas ou cumulativas, e o par
+  numérico que a banca troca: **MCI até 10%** do faturamento do grupo econômico
+  no Brasil **no último exercício, sem teto nominal**, contra **LGPD até 2% com
+  teto de R$ 50 milhões por infração**. O distrator da prova trocava a janela
+  ("média dos últimos três exercícios").
+
+**Atualização legislativa que o repositório não tinha.** A **Lei nº 15.352, de
+25/02/2026** (conversão da MP 1.317/2025) deu nova redação ao art. 55-A: a sigla
+continua ANPD, mas o nome passou a **Agência** Nacional de Proteção de Dados —
+autarquia de natureza especial **vinculada ao Ministério da Justiça e Segurança
+Pública**, com autonomia funcional, técnica, decisória, administrativa e
+financeira, **nos termos da Lei 13.848/2019**, a lei das agências reguladoras. O
+material descrevia o desenho da Lei 14.460/2022. A trajetória inteira entrou no
+capítulo, porque é dela que saem os distratores: *órgão* ligado à Presidência
+(2018–2019, natureza declaradamente transitória) → *autarquia de natureza
+especial* (2022) → *agência* vinculada ao Ministério da Justiça (2026).
+
+Tudo ancorado no texto consolidado do Planalto, artigo por artigo. Uma anotação
+para quem for conferir: **a página da LGPD no Planalto cita "Lei 15.452" na
+redação do art. 55-A, e é erro de digitação deles** — a Lei 15.452/2026 acrescenta
+um artigo ao Código de Trânsito. A correta é a **15.352/2026**.
+
+Contrato aditivo cumprido: `conceito` **1 → 9** no capítulo (62 → 70 no livro);
+`pegadinha` 7, `jacaiu` 1 e `comosair` 1 **inalteradas**, `PISO_CAIXAS` intocado
+em 116/20/24. `./valida.py --strict` com a **lista de avisos idêntica** ao
+baseline e sem linha `[drift]`. Os 13 *overfull hbox* do livro continuam 13, com
+o mesmo máximo de 17,3pt.
+
 ### Apostila fase 3, lote 3 — frontend, e a fase fecha
 
 **145 → 146 páginas.** Era o capítulo de menor déficit do livro (1:1,88), já
@@ -122,7 +218,9 @@ teto de 175.
 
 Sobra uma decisão: **`18-legislacao`** (1:14,26, a pior razão restante). O número
 é tentador, mas ali o "conceito" é o texto da lei, e apostila não substitui lei
---- provavelmente só as bases legais e os agentes da LGPD.
+--- provavelmente só as bases legais e os agentes da LGPD. *(Resolvida logo
+adiante, e o recorte saiu maior do que essa previsão — ver a seção de
+legislação acima.)*
 
 ### Apostila fase 3, lote 2 — Java, governança e o passe curto de redes
 
