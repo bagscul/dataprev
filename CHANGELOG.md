@@ -9,7 +9,7 @@ item. Três frentes: destravar questão real que estava fora do sorteio por
 engano, consertar um casamento de string que sujava um bloco, e começar a
 transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
 **432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
-**735 → 768**. Apostila: **122 → 132 páginas**.
+**735 → 768**. Apostila: **122 → 140 páginas**.
 
 ### 45 questões reais estavam trancadas por engano
 
@@ -81,6 +81,70 @@ Duas anotações que valem por si:
 - **`cnsal-redes` Q43 (Decorators do Python).** A explicação diz na cara que o
   `@` do Python não é o Decorator do GoF — a armadilha de garimpo já catalogada
   no repositório, agora ensinada no ponto exato em que ela aparece.
+
+### Apostila fase 3, lote 1 — programação, padrões+UML e BI
+
+Ordem por **impacto na nota** (peso da Dataprev 2024 × déficit de conceito), não
+por facilidade. **132 → 140 páginas.**
+
+**Programação (1:2,46 → 1:0,80).** Peso 6 na Dataprev 2024, o segundo maior
+específico. O achado do capítulo é grande: a caixa "já caiu" credita **13 das
+23 questões reais do bloco** a estruturas de dados (ALERO 2026), e o corpo do
+capítulo não ensinava nenhuma delas — nem a apostila, nem
+`resumo/programacao.md`. Entrou uma **seção nova**, tratada como o que a banca
+de fato cobra: **contrato de custo**, porque o enunciado dá o requisito
+("inserção e remoção frequentes no meio", "busca por chave em tempo
+constante"), nunca o nome da estrutura. Vetor × lista encadeada como troca
+recíproca (e o $O(1)$ da lista pressupondo o ponteiro em mãos); hash × árvore
+balanceada com a regra de que **não competem pela mesma vaga** — faixa e
+listagem ordenada são árvore, mesmo com o $O(1)$ do hash na tela; busca binária
+só sobre coleção ordenada. Mais o **exemplo trabalhado de por que o hash
+degrada**: fator de carga, as duas famílias de colisão (encadeamento separado
+deixa o $\alpha$ passar de 1; endereçamento aberto é o que o limita a 1) e o
+laço de realimentação da sondagem linear que produz o **agrupamento primário**
+— resposta literal de uma questão real.
+
+Também entraram **IoC e injeção de dependência** pelo nó que elas desfazem (com
+o detalhe que separa quem entendeu: o escopo *singleton* do Spring não é o
+Singleton do GoF) e os **quatro fatos da linguagem** que decidem qualquer item
+de leitura de código — compilada × interpretada × *bytecode* com o Java no
+meio, passagem por valor reduzida à pergunta certa ("esta linha reatribui ou
+muta?"), imutabilidade e por que só tupla serve de chave de dicionário, e *duck
+typing*.
+
+**Padrões + UML (1:5,21 → 1:1,04).** O capítulo era um catálogo de tabelas.
+Entrou **o que os 23 padrões têm em comum** — isolar o que varia atrás de uma
+interface estável, preferindo composição a herança — e o **critério das três
+famílias** pelo que cada uma isola. O **exemplo trabalhado do `if` gigante ao
+Strategy** nomeia o que se ganhou (Open/Closed, Dependency Inversion) e fecha
+com o contraste Strategy × State pela pergunta de **quem decide a troca**.
+GRASP era nove nomes sem uma linha de explicação: ganhou Information Expert e
+Creator. E, do lado da UML, os **quatro diagramas de interação** (sequência,
+comunicação, tempo, visão geral) — que o capítulo não distinguia e que são
+exatamente os distratores da questão real de sequência — mais a **sintaxe fina
+do diagrama de classes**: valor *default* de atributo, extremidade de
+associação representável como atributo e associação qualificada, os três itens
+de leitura de diagrama do MPU.
+
+**BI (1:3,53 → 1:0,82).** Começa pela pergunta que fundou o assunto — *por que
+não rodar o relatório direto no banco do sistema?* — e pelas três respostas que
+aparecem uma a uma nos cenários: concorrência, história e integração. A
+**arquitetura de BI ponta a ponta** o edital pede com esse nome e o capítulo não
+tinha: fontes → extração → *staging* → transformação → DW → OLAP →
+visualização, com OLAP e visualização marcados como **consumo**, não
+transformação. O ETL ganhou **o que pertence a cada fase**, com a regra prática
+de que tarefa que *decide* algo sobre o conteúdo é Transform (a ALERO cobrou
+isso literalmente). **Inmon × Kimball** estava no "alta probabilidade" e nunca
+tinha sido ensinado: entrou por quem se constrói primeiro e pelo risco
+espelhado de cada um (o projeto que não chega ao usuário × o silo por falta de
+dimensão conformada). Fecha com o **esquema estrela de vendas montado na frente
+do leitor** — a ordem das quatro decisões, o que a tabela fato contém (só chave
+estrangeira e medida numérica, mais a dimensão degenerada) e a contagem de
+*joins* estrela × floco de neve.
+
+Caixas: `conceito` **43 → 52**. `jacaiu` e `comosair` intactas (20/24). A
+`pegadinha` a mais (115 → 116) é da seção nova de estruturas de dados, e o piso
+do `valida.py` subiu junto.
 
 ### Apostila fase 2 — arquitetura, segurança e eng-software
 
