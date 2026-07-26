@@ -708,8 +708,13 @@
    "Diagrama de Sequência."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O diagrama de sequencia e o unico da UML que organiza as mensagens sobre uma linha do tempo vertical, com as linhas de vida dos objetos lado a lado — por isso e ele que expressa a ordem cronologica exata das chamadas.",
+  "erradas": {
+   "0": "O diagrama de comunicacao mostra as mesmas mensagens, mas organizadas pela ligacao entre os objetos; a ordem so aparece por numeracao, nao pela estrutura. E o par que a FGV inverte com o de sequencia.",
+   "1": "Timing tambem e diagrama de interacao, so que voltado a mudanca de estado ao longo do tempo — duracao e restricao temporal —, nao a sequencia de chamadas entre objetos.",
+   "2": "Visao geral de interacao e um diagrama de atividades cujos nos sao interacoes: da o encadeamento macro entre cenarios, nao a troca de mensagens detalhada que o enunciado pede.",
+   "3": "Atividades modela fluxo de controle e de trabalho, nao interacao entre objetos — nem sequer pertence ao grupo dos diagramas de interacao."
+  },
   "fonte": "FGV cnsal-ads Q47",
   "requer_imagem": false,
   "anulada": false
@@ -727,8 +732,13 @@
    "Composição."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Composicao e a agregacao forte: a parte nao existe sem o todo e e destruida junto com ele. O enunciado entrega as duas marcas exatas — a Emenda so existe vinculada ao Projeto de Lei, e some quando ele e excluido.",
+  "erradas": {
+   "0": "A agregacao comum e justamente a que NAO propaga a destruicao: a parte sobrevive ao todo. Alem disso, 'agregacao fraca' nem e termo da UML — e rotulo inventado sobre um conceito real.",
+   "1": "Associacao bidirecional diz apenas que as duas pontas se enxergam. Navegabilidade nao tem nada a ver com dependencia de existencia.",
+   "2": "Dependencia e o relacionamento mais fraco do conjunto — uso pontual, seta tracejada — e nao implica ciclo de vida compartilhado.",
+   "3": "Na associacao qualificada, um qualificador reduz a multiplicidade funcionando como indice; e questao de identificacao dentro do conjunto, nao de existencia."
+  },
   "fonte": "FGV cnsal-ads Q48",
   "requer_imagem": false,
   "anulada": false
@@ -794,8 +804,13 @@
    "1FN (Primeira Forma Normal); a anomalia observada seria a Anomalia de Atualização."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Cod_Autor determina Nome_Autor, e Cod_Autor e apenas PARTE da chave composta (Titulo_PL, Cod_Autor): dependencia parcial, que trava a tabela na 1FN. E como o nome se repete em toda linha daquele autor, altera-lo exige mexer em varias tuplas — a definicao de anomalia de atualizacao.",
+  "erradas": {
+   "0": "A forma normal esta certa e a anomalia, nao: anomalia de insercao seria nao conseguir cadastrar um autor que ainda nao tem projeto. O enunciado descreve alteracao em massa. E a 'quase certa' do item.",
+   "1": "Erra nas duas pontas. Estar na 2FN exigiria ausencia de dependencia parcial, e ela existe; e exclusao seria perder o autor ao apagar o ultimo projeto dele.",
+   "2": "Acerta a anomalia e erra a forma normal — a dependencia parcial de Nome_Autor sobre Cod_Autor impede a tabela de alcancar a 2FN.",
+   "3": "A 3FN e ainda mais exigente que a 2FN, que ja nao se atingiu; e a anomalia descrita no enunciado tampouco e de exclusao."
+  },
   "fonte": "FGV cnsal-ads Q51",
   "requer_imagem": false,
   "anulada": false
@@ -813,8 +828,13 @@
    "Nível Lógico; Diagrama de Casos de Uso."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Na arquitetura ANSI/SPARC o nivel conceitual e o da visao global do negocio, independente de implementacao — exatamente o que o enunciado descreve. E o diagrama de classes e o artefato da UML que representa entidades, atributos e relacionamentos.",
+  "erradas": {
+   "0": "O nivel externo e a visao PARCIAL de cada grupo de usuarios, nao a visao completa do negocio; e sequencia e diagrama de interacao, nao de estrutura.",
+   "1": "Nivel fisico e o do armazenamento — precisamente o que o enunciado exclui ao pedir representacao 'livre de detalhes fisicos'. Componentes, por sua vez, e diagrama de implementacao.",
+   "2": "O nivel logico ja esta preso ao modelo de dados escolhido, e o enunciado pede a etapa anterior a essa escolha; atividades modela fluxo, nao estrutura de dados.",
+   "4": "Repete o erro do nivel logico e ainda oferece casos de uso, que modelam funcionalidade sob a otica do ator — nao entidades e relacionamentos."
+  },
   "fonte": "FGV cnsal-ads Q52",
   "requer_imagem": false,
   "anulada": false
@@ -1024,8 +1044,13 @@
    "Análise Sintática (Parsing)"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Interpretar e ler e executar o codigo instrucao a instrucao, sem etapa previa de traducao para codigo de maquina — descricao literal do que o enunciado observa no script Python.",
+  "erradas": {
+   "0": "Compilacao e o oposto: traduz o programa inteiro ANTES de executar, gerando codigo objeto. O enunciado nega explicitamente essa etapa previa.",
+   "1": "Ligacao junta modulos objeto e bibliotecas num executavel — ela pressupoe que a compilacao ja aconteceu.",
+   "3": "Geracao de codigo objeto e uma etapa interna do compilador, nao um modo de execucao do programa.",
+   "4": "Analise sintatica verifica a gramatica do codigo e existe tanto em compilador quanto em interpretador — e uma fase da traducao, nao a estrategia de execucao."
+  },
   "fonte": "FGV cnsal-ads Q61",
   "requer_imagem": false,
   "anulada": false
@@ -1043,8 +1068,13 @@
    "Subroutine (Sub-rotina)."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Em linguagem procedural a distincao e classica e esta na devolucao de valor: procedimento executa comandos e nao retorna; funcao retorna.",
+  "erradas": {
+   "0": "Funcao e exatamente o oposto — ela existe para devolver um valor ao ponto de chamada, que e o que o enunciado descarta.",
+   "1": "Modulo e unidade de organizacao do codigo: agrupa rotinas, nao e uma rotina.",
+   "2": "Classe e construcao de orientacao a objetos, fora do recorte 'linguagem procedural como Pascal ou C' que o proprio enunciado fixa.",
+   "4": "Sub-rotina e o termo guarda-chuva que engloba funcao E procedimento — nao faz a distincao que a questao pede."
+  },
   "fonte": "FGV cnsal-ads Q62",
   "requer_imagem": false,
   "anulada": false
@@ -1158,8 +1188,13 @@
    "INSERT INTO ASSESSOR (Nome, Matricula) VALUES ('Maria Souza', 9876)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A sintaxe padrao de insercao e INSERT INTO tabela (colunas) VALUES (valores), e esta e a unica alternativa que a respeita. Listar as colunas e o que permite informar so nome e matricula sem preencher o resto.",
+  "erradas": {
+   "0": "UPDATE altera linha que ja existe; nao cria registro nenhum. E, sem WHERE, ainda alteraria a tabela inteira.",
+   "1": "SELECT INTO copia o resultado de uma consulta para outra tabela; combinar isso com VALUES nao existe em SQL.",
+   "2": "ALTER TABLE e DDL: muda a ESTRUTURA da tabela (acrescenta coluna, por exemplo), nunca o conteudo.",
+   "3": "'INSERT NEW' simplesmente nao existe — e sintaxe inventada, o distrator de forma que aparece em quase toda questao de comando SQL."
+  },
   "fonte": "FGV cnsal-ads Q67",
   "requer_imagem": false,
   "anulada": false
@@ -1321,8 +1356,13 @@
    "Risco de exploração de vulnerabilidades de Zero-Day."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Segregacao de funcoes separa quem desenvolve de quem implanta para que ninguem controle o ciclo inteiro sozinho. O risco que isso ataca e o de fraude interna: com a divisao, fraudar passa a exigir conluio de duas pessoas.",
+  "erradas": {
+   "0": "Phishing e engenharia social atacam o usuario de fora; dividir atribuicoes internas nao impede ninguem de cair num golpe.",
+   "1": "DoS mira a disponibilidade a partir do exterior — nao ha relacao com quem faz o que dentro da equipe.",
+   "3": "Falha de hardware e risco de disponibilidade, e se trata com redundancia e plano de continuidade, nao com divisao de papeis.",
+   "4": "Zero-day e vulnerabilidade tecnica ainda desconhecida; a segregacao nao a elimina, apenas limita o estrago que um agente interno faria com ela."
+  },
   "fonte": "FGV cnsal-ads Q74",
   "requer_imagem": false,
   "anulada": false
@@ -1388,8 +1428,13 @@
    "serve como base para a criação do banco de dados, sendo irrelevante para testes."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O diagrama de objetos e um instantaneo: mostra instancias com valores concretos de atributos num momento dado. E por isso que ele serve para conferir o estado do sistema antes e depois da execucao do caso de uso.",
+  "erradas": {
+   "0": "Arquitetura fisica de servidor e objeto do diagrama de implantacao (deployment) — outro diagrama, outra finalidade.",
+   "1": "Fluxo de mensagens entre classes e diagrama de sequencia ou de comunicacao. E a troca de diagramas que a banca planta em todo item de UML.",
+   "2": "Comeca certo — o diagrama de objetos de fato concretiza as classes — e erra no beneficio: validar a estrutura estatica e papel do diagrama de CLASSES; aqui a vantagem sao os valores das instancias. E a 'quase certa'.",
+   "4": "Chamar o diagrama de irrelevante para testes contradiz o proprio enunciado, que o coloca dentro do plano de testes."
+  },
   "fonte": "FGV cnsal-ads Q77",
   "requer_imagem": false,
   "anulada": false
@@ -1479,8 +1524,13 @@
    "A chave candidata única é {C}, e a relação não está na 2o Forma Normal (2NF)."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "C nunca aparece do lado direito de nenhuma dependencia, entao pertence a toda chave candidata; fechando a partir dele, AC, CD e BC alcancam os cinco atributos. Como B e primo (participa de BC), nenhuma dependencia viola a 3FN — mas D->A e A->B tem determinante que nao e superchave, e isso barra a BCNF. Repare que a alternativa lista so duas das tres chaves candidatas (falta BC), ainda assim e a unica com a forma normal correta.",
+  "erradas": {
+   "0": "{C} sozinho nao fecha nada: o fecho de C e o proprio C, entao ele nao e chave. E parar na 1FN ignora que nenhum atributo nao primo depende parcialmente da chave aqui.",
+   "1": "A chave nao e unica — ha pelo menos AC e CD —, e a relacao passa da 2FN. Fica um degrau abaixo do certo em cada metade da afirmacao.",
+   "3": "Chegar a BCNF exigiria que TODO determinante fosse superchave. D->A e A->B quebram isso: nem D nem A fecham a relacao sozinhos.",
+   "4": "Repete o erro de tomar {C} por chave e ainda desce para 'nem 2FN' — o extremo oposto do gabarito."
+  },
   "fonte": "FGV cnsal-bd Q41",
   "requer_imagem": false,
   "anulada": false
@@ -1498,8 +1548,13 @@
    "CREATE TABLE PRODUTO ( ID_PRODUTO INT NOT NULL, NOME VARCHAR(100) NOT NULL, PRECO_UNITARIO NUMERIC(10, 2) DEFAULT 1.00 ); INSERT INTO PRODUTO (ID_PRODUTO, NOME) VALUES (1, 'Teclado Mecânico');"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "E a unica que declara DEFAULT 1.00 na coluna de preco e faz o INSERT nomeando so ID e NOME, deixando o padrao agir. O ID e PRIMARY KEY (que ja implica NOT NULL) e o NOME tem NOT NULL explicito, como o enunciado exige.",
+  "erradas": {
+   "0": "Troca DEFAULT por CHECK. A restricao valida o valor que chegar, mas nao FORNECE valor nenhum — omitido o preco, a coluna entraria nula.",
+   "1": "Declara o DEFAULT certo e o anula no proprio INSERT: passar NULL explicitamente sobrescreve o padrao, que so age quando a coluna e OMITIDA. E a 'quase certa' do item.",
+   "3": "Poe o DEFAULT na coluna errada (NOME), deixa NOME sem NOT NULL e o preco sem valor padrao — erra os tres requisitos de uma vez.",
+   "4": "Usa NOT NULL no lugar de PRIMARY KEY no ID: perde a chave primaria pedida, embora o DEFAULT do preco esteja correto."
+  },
   "fonte": "FGV cnsal-bd Q42",
   "requer_imagem": false,
   "anulada": false
@@ -1517,8 +1572,13 @@
    "SELECT T2.NOME_DEPTO FROM FUNCIONARIO T1 JOIN DEPARTAMENTO T2 ON T1.DEPTO_ID = T2.DEPTO_ID GROUP BY T2.NOME_DEPTO ORDER BY AVG(T1.SALARIO) DESC;"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A comparacao e entre a media DO GRUPO e a media geral, entao o filtro tem de ocorrer depois do agrupamento — papel do HAVING. A subconsulta, sem GROUP BY, devolve a media da empresa inteira.",
+  "erradas": {
+   "0": "O WHERE atua linha a linha, ANTES do agrupamento: seleciona funcionarios que ganham acima da media, nao departamentos cuja media esta acima. Pergunta parecida, resposta diferente.",
+   "2": "Erra sintaxe e logica ao mesmo tempo: WHERE nao vem depois de GROUP BY, e funcao de agregacao nao pode ser filtrada em WHERE.",
+   "3": "O '> ALL' compara o salario individual com todas as medias departamentais — responde a outra pergunta, e nem chega a agrupar por departamento.",
+   "4": "Apenas ordena por media decrescente. Ordenar nao e filtrar: todos os departamentos voltariam no resultado."
+  },
   "fonte": "FGV cnsal-bd Q43",
   "requer_imagem": false,
   "anulada": false
@@ -1584,8 +1644,13 @@
    "Integridade de Chave Mínima"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Integridade referencial e precisamente a regra que exige que o valor da chave estrangeira exista como chave primaria na relacao referenciada — ou seja nulo.",
+  "erradas": {
+   "0": "Integridade de dominio limita os valores admissiveis de um atributo (tipo, faixa, formato) dentro da propria tabela; nao olha para outra relacao.",
+   "2": "Integridade de entidade e a regra da chave primaria: nao pode ser nula nem repetida. E o par que a banca troca com a referencial.",
+   "3": "'Integridade transacional' nao esta entre as regras do modelo relacional — remete ao ACID, que e outra prateleira.",
+   "4": "'Integridade de chave minima' e rotulo inventado. Minimalidade e propriedade da chave candidata, nao uma regra de integridade."
+  },
   "fonte": "FGV cnsal-bd Q46",
   "requer_imagem": false,
   "anulada": false
@@ -1603,8 +1668,13 @@
    "Uso de Hashing irreversível para os dados, que atende à segurança, mas inviabiliza a recuperação dos dados originais."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O enunciado descreve TDE (Transparent Data Encryption): a cifra ocorre na escrita do arquivo de dados/tablespace e a decifra ao carregar no buffer pool, o que a torna invisivel para a aplicacao e para o SQL ja existente.",
+  "erradas": {
+   "0": "Cifrar por coluna exige mudar a aplicacao para decifrar — exatamente o que o requisito de transparencia proibe.",
+   "1": "Cifra no sistema de arquivos funciona, mas e externa: o SGBD nao a gerencia, e nao e a tecnica que Oracle e SQL Server nomeiam no enunciado.",
+   "3": "SSL/TLS protege o dado em TRANSITO. O enunciado pede dado em REPOUSO, armazenado em disco — a propria alternativa admite a limitacao.",
+   "4": "Hash e irreversivel: serviria a integridade, mas inviabilizaria ler o dado de volta, o que a alternativa reconhece e mesmo assim oferece."
+  },
   "fonte": "FGV cnsal-bd Q47",
   "requer_imagem": false,
   "anulada": false
@@ -1694,8 +1764,13 @@
    "O esquema Snowflake economiza menos espaço em disco do que o Star Schema , devido à duplicação de atributos nas subdimensões."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Normalizar as dimensoes em subdimensoes cria mais tabelas e, portanto, mais juncoes por consulta. Esse e o custo de leitura que o Snowflake paga em relacao ao Star — e o Star existe justamente para evita-lo.",
+  "erradas": {
+   "0": "Inverte o ETL: quem desnormaliza no carregamento e o Star. O Snowflake mantem a estrutura normalizada, o que ate simplifica essa etapa.",
+   "1": "Chave composta de estrangeiras e caracteristica da tabela fato nos DOIS esquemas — nao e desvantagem do Snowflake, nem gera ambiguidade alguma.",
+   "3": "O Snowflake nao so suporta hierarquia como a torna EXPLICITA em tabelas separadas; esse e o argumento de venda dele, nao um defeito.",
+   "4": "Esta invertido: o Snowflake economiza MAIS espaco, porque normalizar elimina a redundancia de atributos que o Star aceita de proposito."
+  },
   "fonte": "FGV cnsal-bd Q51",
   "requer_imagem": false,
   "anulada": false
@@ -1857,8 +1932,13 @@
    "Registrador de Instrução (IR)"
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Decodificar o codigo de operacao e emitir os sinais que comandam as micro-operacoes e funcao da unidade de controle. A ULA so executa depois de comandada por ela.",
+  "erradas": {
+   "0": "A ULA faz as operacoes aritmeticas e logicas — ela e comandada, nao comanda. E a troca mais frequente do item.",
+   "1": "A cache L1 acelera o acesso a dados e instrucoes; nao interpreta coisa alguma.",
+   "2": "O contador de programa guarda o endereco da PROXIMA instrucao: atua na etapa de busca, nao na de decodificacao.",
+   "4": "O registrador de instrucao e onde a instrucao buscada FICA — o deposito, nao o interprete."
+  },
   "fonte": "FGV cnsal-bd Q58",
   "requer_imagem": false,
   "anulada": false
@@ -1876,8 +1956,13 @@
    "Em linguagens procedurais modernas, o escopo global é sempre preferível ao escopo local para simplificar a manutenção e evitar efeitos colaterais."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Escopo estatico (lexico) resolve o identificador pela posicao no codigo-fonte em que a funcao foi ESCRITA; o dinamico resolveria pela cadeia de chamadas em tempo de execucao. E a definicao canonica do par.",
+  "erradas": {
+   "0": "Descreve o escopo dinamico com a regra do estatico — no dinamico o que vale e de ONDE SE CHAMOU. O 'sempre... independentemente de onde foi definida' ja entrega o absoluto.",
+   "2": "Tipagem estatica e escopo sao dimensoes independentes; e no escopo lexico a resolucao de nomes acontece em tempo de compilacao, nao de execucao.",
+   "3": "O modificador static muda o TEMPO DE VIDA da variavel (ela persiste entre chamadas), nao a visibilidade: continua invisivel fora do bloco.",
+   "4": "E o conselho ao contrario do consenso. Escopo global e que produz efeito colateral; o local e o que os evita — a alternativa inverte a justificativa junto com a recomendacao."
+  },
   "fonte": "FGV cnsal-bd Q59",
   "requer_imagem": false,
   "anulada": false
@@ -1967,8 +2052,13 @@
    "Contém apenas as chaves primárias de todas as tabelas do DW, funcionando como um índice global."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A tabela fato guarda as metricas numericas do evento de negocio e as chaves estrangeiras que apontam para as dimensoes. E a definicao do modelo estrela.",
+  "erradas": {
+   "0": "Atributos descritivos e hierarquia sao das tabelas de DIMENSAO. Essa e a inversao classica do par fato/dimensao.",
+   "2": "Metadados e regras de transformacao vivem no repositorio de metadados e no ETL, fora do modelo dimensional.",
+   "3": "A fato do DW e carregada em lote, e o modelo dimensional e desnormalizado de proposito. Dizer 'altamente normalizada e em tempo real' e trocar o DW pelo sistema transacional.",
+   "4": "Chaves sem medidas nao seriam tabela fato — o que a caracteriza e justamente conter as metricas quantificaveis."
+  },
   "fonte": "FGV cnsal-bd Q63",
   "requer_imagem": false,
   "anulada": false
@@ -2202,8 +2292,13 @@
    "Uma função que possui lógica de COMMIT e ROLLBACK embutida."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Funcao deterministica e a que, para a mesma entrada, devolve sempre a mesma saida. E essa previsibilidade que autoriza o SGBD a cachear o resultado e a usar a funcao em indice.",
+  "erradas": {
+   "0": "Determinismo nao diz nada sobre paralelismo, nem restringe quem pode chamar a funcao.",
+   "2": "Descreve o oposto: funcao que faz I/O e precisa recalcular a cada chamada e justamente a NAO deterministica.",
+   "3": "Valor aleatorio e relogio do sistema sao os exemplos canonicos de nao determinismo. A alternativa define o conceito pelo seu contrario.",
+   "4": "Controle de transacao embutido nao tem relacao com determinismo — e, em geral, nem e permitido dentro de funcao."
+  },
   "fonte": "FGV cnsal-bd Q73",
   "requer_imagem": false,
   "anulada": false
@@ -2413,8 +2508,13 @@
    "Unidade Aritmética e Lógica (ULA), que armazena o fator de preempção."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O TLB e a cache de hardware das traducoes da tabela de paginas: e ele que evita percorrer a tabela a cada acesso a memoria. Como guarda mapeamentos por processo, falhar em invalida-lo na troca de contexto pode expor endereco de um processo a outro.",
+  "erradas": {
+   "0": "A cache L3 acelera o acesso a dados e instrucoes JA traduzidos; ela nao participa da traducao de endereco virtual para fisico.",
+   "1": "O superbloco guarda metadados do sistema de ARQUIVOS — outra camada do SO, sem relacao com paginacao de memoria.",
+   "2": "Checksum de cabecalho IPv4 e campo de protocolo de rede; entrou aqui so como distrator de prateleira errada.",
+   "4": "A ULA executa operacoes aritmeticas e logicas, e 'fator de preempcao' e termo inventado — dois erros numa alternativa so."
+  },
   "fonte": "FGV cnsal-redes Q42",
   "requer_imagem": false,
   "anulada": false
@@ -2432,8 +2532,13 @@
    "Context Managers (com with)"
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Decorator do Python envolve uma funcao existente com logica adicional sem tocar no corpo dela — e exatamente o que um log de auditoria transversal precisa. Nao confunda com o padrao Decorator do GoF: o nome coincide, o mecanismo e outro.",
+  "erradas": {
+   "0": "List comprehension e acucar sintatico para construir lista a partir de um iteravel; nao envolve nem intercepta funcao.",
+   "1": "Generators produzem valores sob demanda com yield, poupando memoria. Tratam de iteracao preguicosa, nao de metaprogramacao.",
+   "2": "Type hinting anota tipos para ferramentas de analise estatica e nao altera o comportamento em tempo de execucao.",
+   "4": "Context manager (with) garante entrada e saida de um bloco — abrir e fechar recurso. Envolve um BLOCO, nao a chamada de uma funcao qualquer."
+  },
   "fonte": "FGV cnsal-redes Q43",
   "requer_imagem": false,
   "anulada": false
@@ -2787,8 +2892,13 @@
    "Adware"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O worm e o malware que se autorreplica e se propaga sozinho pela rede, explorando falhas em servicos e sistemas desatualizados. A marca no enunciado e 'sem depender de acoes do usuario'.",
+  "erradas": {
+   "0": "O cavalo de Troia se disfarca de programa legitimo e depende de o usuario executa-lo — o oposto da propagacao autonoma descrita.",
+   "1": "Virus de boot infecta o setor de inicializacao e precisa de um hospedeiro e de uma acao para se espalhar; virus, em geral, nao se propaga sozinho pela rede.",
+   "3": "Spyware existe para coletar informacao as escondidas, nao para se replicar e consumir recursos da rede.",
+   "4": "Adware exibe publicidade indesejada. E incomodo, nao mecanismo de propagacao autonoma."
+  },
   "fonte": "FGV cnsal-redes Q58",
   "requer_imagem": false,
   "anulada": false
@@ -3094,8 +3204,13 @@
    "Load Balancer."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O WAF e o dispositivo especifico de camada de aplicacao: inspeciona HTTP/HTTPS e filtra requisicoes maliciosas como SQL Injection e XSS, que e literalmente o cenario do enunciado.",
+  "erradas": {
+   "0": "O NGFW amplia o firewall tradicional (identidade, aplicacao, IPS integrado), mas nao e 'especificamente projetado' para proteger aplicacao web — e a quase-certa do item.",
+   "1": "O IDS apenas DETECTA e alerta, de forma passiva; o enunciado pede mitigar, ou seja, bloquear.",
+   "3": "O concentrador VPN estabelece tunel cifrado de acesso remoto. Protege o trafego em transito, nao a aplicacao contra injecao.",
+   "4": "O balanceador distribui requisicoes entre instancias — atua sobre carga e disponibilidade, nao sobre conteudo malicioso."
+  },
   "fonte": "FGV cnsal-redes Q71",
   "requer_imagem": false,
   "anulada": false
@@ -4452,8 +4567,13 @@
    "SwiftUI."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Flutter e o framework do Google para desenvolvimento multiplataforma, e a linguagem dele e o Dart. A questao e de associacao direta framework-linguagem.",
+  "erradas": {
+   "0": "Xamarin e multiplataforma, mas do ecossistema .NET: a linguagem e C#.",
+   "2": "React Native tambem e multiplataforma e usa JavaScript/TypeScript com React — e o distrator mais forte, por ser o concorrente direto do Flutter.",
+   "3": "Ionic monta o app com tecnologias web (HTML, CSS e JavaScript) dentro de um container; nao usa Dart.",
+   "4": "SwiftUI e nativo da Apple e usa Swift — nem multiplataforma e, nem Dart."
+  },
   "fonte": "FGV dataprev2024 Q48",
   "requer_imagem": false,
   "anulada": false
@@ -4538,8 +4658,13 @@
    "I e III, apenas."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "As quatro afirmativas descrevem corretamente o que cada tipo de teste faz: unitario isola a menor unidade, integracao verifica a interacao entre modulos, TDD escreve o teste antes do codigo e usabilidade avalia a experiencia do usuario. Nao ha erro plantado em nenhuma.",
+  "erradas": {
+   "0": "Deixa a III de fora, mas escrever o teste antes do codigo e a propria definicao do ciclo red-green-refactor do TDD.",
+   "1": "Descarta a II sem motivo: verificar a interacao entre modulos combinados e exatamente o teste de integracao.",
+   "2": "Descarta a I, que so repete a definicao de teste unitario — funcao ou metodo isolado.",
+   "4": "E a mais restritiva de todas, e sacrifica duas afirmativas corretas de uma vez. Em item de julgamento, desconfie de recorte que elimina afirmativas que sao definicao pura."
+  },
   "fonte": "FGV dataprev2024 Q52",
   "requer_imagem": false,
   "anulada": false
@@ -5493,8 +5618,13 @@
    "compete à Comissão Permanente de Ética dar ciência à autoridade administrativa competente se verificar indícios de irregularidade administrativa nas condutas de Pedro e Maria."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A comissao de etica atua no plano ETICO; sancao disciplinar e da autoridade administrativa competente, apurada em processo proprio. Por isso, ao encontrar indicio de irregularidade administrativa, o que cabe a comissao e dar ciencia a essa autoridade — que e o que a alternativa afirma.",
+  "erradas": {
+   "0": "O codigo alcanca os servidores do orgao, e ocupante de cargo em comissao nao fica de fora. Excluir Pedro pelo tipo de vinculo e o atalho errado.",
+   "1": "Ser conivente com infracao etica alheia — omitir-se diante dela — e conduta vedada pelo proprio codigo; nao ha isencao por nao ter praticado o ato principal.",
+   "2": "Troca a natureza da sancao: quem aplica sancao DISCIPLINAR e a autoridade administrativa, em processo disciplinar, nao a comissao de etica.",
+   "3": "Acerta ao falar em sancao etica e erra no desenho do procedimento, alem de ignorar o ponto do item, que e o dever de comunicar a autoridade administrativa diante de indicio de irregularidade."
+  },
   "fonte": "FGV mpu Q32",
   "requer_imagem": false,
   "anulada": false
@@ -5747,8 +5877,13 @@
    "(autor = “Maria” ∪ situacao = “Ativo”) ⋈ ( 𝜋 processo_id (Processos))"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A consulta filtra linhas (WHERE com AND) e depois devolve uma unica coluna. Em algebra relacional isso e a selecao com conjuncao por dentro e a projecao de processo_id por fora — exatamente a ordem da alternativa.",
+  "erradas": {
+   "0": "Projeta autor e situacao, que sao justamente as colunas do FILTRO, e nao a coluna pedida. Alem disso monta a selecao com sintaxe inexistente.",
+   "2": "Inverte os dois operadores: poe a selecao por fora com uma coluna como condicao e a projecao por dentro com predicados. Selecao filtra LINHA, projecao escolhe COLUNA.",
+   "3": "Usa intersecao no lugar da conjuncao logica. AND entre dois predicados da mesma selecao e conjuncao, nao operacao entre conjuntos.",
+   "4": "Traz uniao e juncao, operadores que nem aparecem na consulta original — a uniao ainda inverteria o sentido, trazendo quem satisfaz qualquer uma das condicoes."
+  },
   "fonte": "FGV mpu Q43",
   "requer_imagem": false,
   "anulada": false
@@ -5934,8 +6069,13 @@
    "[4 2 3] [4 2 3] [1 2 3] [4 2 3] None (3,)"
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "copy() cria array independente, entao y guarda [1 2 3] mesmo depois de arr[0]=4; view() cria vista sobre o mesmo buffer, entao x acompanha arr em [4 2 3]. Dai x.base aponta para arr ([4 2 3]) e y.base e None. E arr.shape de vetor unidimensional de 3 elementos e a tupla (3,), com a virgula.",
+  "erradas": {
+   "0": "Acerta os tres arrays impressos e erra a segunda linha inteira: x.base nao e None (x e uma vista, tem base), e a forma de um vetor 1-D nao e (3,1) — isso seria matriz de 3 linhas por 1 coluna.",
+   "1": "Trata x como se fosse copia, mostrando [1 2 3]; e vista, acompanha a alteracao. E (3,2) nao corresponde a array nenhum do codigo.",
+   "2": "Inverte quem copiou e quem viu: quem preserva [1 2 3] e y, nao arr. Alem disso (3,0) descreveria array vazio.",
+   "3": "Poe o valor antigo em arr e o novo em x, quando os dois compartilham o mesmo buffer e tem de imprimir igual. E (3,3) seria matriz quadrada."
+  },
   "fonte": "FGV mpu Q51",
   "requer_imagem": false,
   "anulada": false
@@ -6044,8 +6184,13 @@
    "FUNCTION."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "VIEW e a tabela virtual por definicao: guarda a consulta com um nome, e cada acesso reexecuta o SELECT por tras dela — o que serve ao ciclo de refinamento analitico continuo descrito.",
+  "erradas": {
+   "1": "TRIGGER e codigo disparado automaticamente pelo SGBD em resposta a evento de dados; nao devolve conjunto consultavel.",
+   "2": "DOMAIN define um tipo com restricoes reutilizavel em varias colunas — atua sobre valor, nao sobre resultado de consulta.",
+   "3": "SEQUENCE e gerador de numeros em sequencia, usado tipicamente para chave substituta.",
+   "4": "FUNCTION encapsula logica e retorna valor (ou conjunto), mas exige chamada com parametros e nao e a 'tabela virtual' que a questao nomeia. E a quase-certa do item."
+  },
   "fonte": "FGV mpu Q56",
   "requer_imagem": false,
   "anulada": false
@@ -6111,8 +6256,13 @@
    "ALTER TABLE processo OWNER TO dadosadm;"
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O enunciado pede ALTERAR A ESTRUTURA da tabela alem de manipular linhas, e com controle total. GRANT de DML nao concede DDL: quem pode alterar a estrutura e o dono do objeto, e por isso a resposta e transferir a propriedade com ALTER TABLE ... OWNER TO.",
+  "erradas": {
+   "0": "Concede so DML (e TRUNCATE): o papel poderia manipular linhas, mas nunca executar ALTER TABLE para mexer em colunas. E a quase-certa — atende metade do pedido.",
+   "1": "REVOKE faz o contrario do que se quer: retira privilegio em vez de conceder.",
+   "2": "ALTER DEFAULT PRIVILEGES define o que sera concedido em objetos CRIADOS DEPOIS; nao afeta a tabela processo, que ja existe.",
+   "3": "SET TRANSACTION READ WRITE ajusta o modo da transacao corrente — nao tem relacao com privilegio de usuario, e a sintaxe apontando para tabela e papel nem existe."
+  },
   "fonte": "FGV mpu Q59",
   "requer_imagem": false,
   "anulada": false
@@ -6475,8 +6625,13 @@
    "0| 0 MPDFT |0 MPM|0 MPT|0 MPF |"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Sao tres efeitos somados. O ::before injeta o valor do atributo posicao antes do texto de cada p; o ::after acrescenta a barra depois; e o flex-direction: row-reverse inverte a ordem visual dos itens, comecando pelo ultimo (MPDFT, posicao 4) e terminando no primeiro (MPF, posicao 1).",
+  "erradas": {
+   "0": "Ignora o ::before por completo — nenhum numero aparece — e ainda mantem a ordem original do HTML, como se o row-reverse nao existisse.",
+   "1": "Usa a posicao da div (0) uma unica vez, em vez do atributo de cada p, e mantem a ordem direta. Sao os dois erros na mesma alternativa.",
+   "3": "Acerta a inversao e os numeros, mas troca a posicao da barra: ela vem do ::after, ou seja, DEPOIS do texto do p, nao colada ao numero antes dele.",
+   "4": "Repete o 0 da div em todos os itens, como se attr(posicao) fosse herdado do pai — o seletor #composicao p::before le o atributo de CADA p."
+  },
   "fonte": "FGV mpu Q75",
   "requer_imagem": false,
   "anulada": false
@@ -6494,8 +6649,13 @@
    "MPDFT, sendo final, não pode ser declarada após a classe MPM, de escopo protected."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Uma classe sealed tem de ter pelo menos uma subclasse permitida — e o sentido de selar: declarar quem pode estender. MPM e declarada sealed e nenhuma classe a estende, e e isso que nao compila.",
+  "erradas": {
+   "0": "A clausula permits pode ser OMITIDA quando as subclasses estao no mesmo arquivo-fonte, que e o caso: o compilador as infere. Por isso MPU esta correta.",
+   "1": "final e uma das tres opcoes validas para quem estende classe sealed — junto com sealed e non-sealed. MPF esta certa.",
+   "3": "non-sealed e exatamente o modificador criado para reabrir a hierarquia a partir de uma classe selada; MPT esta correta.",
+   "4": "Java nao impoe ordem de declaracao entre classes do mesmo arquivo, e 'escopo protected' nem se aplica a declaracao de classe de topo. E distrator inventado."
+  },
   "fonte": "FGV mpu Q76",
   "requer_imagem": false,
   "anulada": false
@@ -7137,8 +7297,13 @@
    "a certidão será fornecida em até 48 horas, mediante requerimento escrito, declinando sua fi nalidade, devendo a parte, em até oito dias, efetuar o recolhimento das custas."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Pelo Codigo de Normas da CGJ/RJ, a certidao depende de requerimento ESCRITO com a finalidade declinada, e sai em ate oito dias contados do recebimento, respeitada a ordem cronologica; a expedicao urgente depende de autorizacao do JUIZ competente. A alternativa reune os quatro elementos.",
+  "erradas": {
+   "0": "Muda so a autoridade: poe o chefe de serventia no lugar do juiz competente para autorizar a urgencia. E a quase-certa perfeita — identica no resto.",
+   "2": "Alem de deslocar a autorizacao para o chefe de serventia, admite requerimento oral; o codigo exige requerimento escrito.",
+   "3": "Troca o prazo de oito dias por 48 horas, admite pedido oral e ainda inverte a ordem do recolhimento das custas, que vem antes.",
+   "4": "Mantem o requerimento escrito, mas erra o prazo (48 horas) e joga o recolhimento das custas para depois da expedicao."
+  },
   "fonte": "FGV tjrj1 Q23",
   "requer_imagem": false,
   "anulada": false
@@ -7607,8 +7772,13 @@
    "do provedor de nuvem, apenas se o contrato de nível de serviço (SLA) especificar explicitamente a versão do kernel a ser utilizada; caso contrário, a responsabilidade recai sobre o tribunal por não ter auditado a i nfraestrutura subjacente antes do deploy."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "No PaaS o provedor entrega e mantem a plataforma: sistema operacional, runtime e os patches dessa camada. Como a pericia isolou a causa numa CVE nao corrigida no KERNEL, e como codigo e IAM do tribunal estavam corretos, a falha esta inteira do lado do provedor.",
+  "erradas": {
+   "0": "Joga no cliente o 'risco residual das vulnerabilidades do SO', camada que em PaaS o cliente sequer acessa para corrigir. Responsabilidade sem poder de agir nao se sustenta.",
+   "2": "Instalar HIDS para monitorar o SO pressupoe acesso ao SO — que o PaaS gerenciado nao da. A alternativa inventa uma obrigacao inexecutavel para dividir a culpa.",
+   "3": "O absoluto entrega: 'em todos os modelos de servico'. Patch de SO convidado e do cliente em IaaS; em PaaS e SaaS, nao.",
+   "4": "Condiciona a responsabilidade a uma clausula de SLA sobre versao de kernel. O modelo de responsabilidade compartilhada decorre do MODELO DE SERVICO contratado, nao de mencao expressa no contrato."
+  },
   "fonte": "FGV tjrj1 Q43",
   "requer_imagem": false,
   "anulada": false
@@ -8058,8 +8228,13 @@
    "a identificação do direito que deve preponderar, em maior ou menor medida, se a liberdade de expressão ou o direito à honra, será feita à luz das circunstâncias do caso concreto."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Liberdade de expressao e honra sao direitos fundamentais e nenhum deles e absoluto. Quando colidem, a solucao nao esta numa hierarquia fixa, e sim na ponderacao a luz das circunstancias do caso concreto — que e o que a alternativa diz.",
+  "erradas": {
+   "0": "A Constituicao consagra os dois: a honra esta entre os direitos da personalidade expressamente protegidos. Negar um deles resolve a colisao por eliminacao, que e falso.",
+   "1": "O 'sempre tem preferencia' e o absoluto classico do distrator. Nao ha precedencia previa e incondicional de um direito fundamental sobre outro.",
+   "2": "Se a protecao fosse absoluta nos dois lados, a colisao seria insoluvel — e e justamente por nao serem absolutos que se pondera. A alternativa nega o proprio fenomeno.",
+   "3": "Repete o erro do absoluto, so que do lado da honra. Decorrer da dignidade humana nao torna um direito imune a ponderacao."
+  },
   "fonte": "FGV tjrj1 Q63",
   "requer_imagem": false,
   "anulada": false
@@ -8221,8 +8396,13 @@
    "responderá pelo crime de abandono de função, na modalidade simples, sem causas de aumento de pena."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Abandono de funcao (art. 323 do Codigo Penal) se consuma com o abandono doloso do cargo fora dos casos permitidos, INDEPENDENTEMENTE de prejuizo. O prejuizo publico e o que faria incidir a forma agravada; sem ele, responde pela modalidade simples, sem causa de aumento.",
+  "erradas": {
+   "0": "Inverte o papel do prejuizo: ele nao e elementar do tipo, e sim circunstancia que AGRAVA. Sem prejuizo o crime existe do mesmo jeito.",
+   "1": "Aplica a causa de aumento que depende justamente do prejuizo que o enunciado nega expressamente. E a quase-certa: acerta a modalidade simples e erra no acrescimo.",
+   "2": "A conduta e tipificada — abandono de funcao e crime contra a Administracao praticado por funcionario publico.",
+   "3": "Escolhe a forma agravada sem o pressuposto que a justifica, e ainda se contradiz ao dizer 'sem causas de aumento'."
+  },
   "fonte": "FGV tjrj1 Q70",
   "requer_imagem": false,
   "anulada": false
@@ -8768,8 +8948,13 @@
    "a certidão será fornecida em até 48 horas, mediante requerimento escrit o, declinando sua finalidade, devendo a parte, em até oito dias, efetuar o recolhimento das custas."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Pelo Codigo de Normas da CGJ/RJ, a certidao depende de requerimento ESCRITO com a finalidade declinada, e sai em ate oito dias contados do recebimento, respeitada a ordem cronologica; a expedicao urgente depende de autorizacao do JUIZ competente. A alternativa reune os quatro elementos.",
+  "erradas": {
+   "0": "Muda so a autoridade: poe o chefe de serventia no lugar do juiz competente para autorizar a urgencia. E a quase-certa perfeita — identica no resto.",
+   "2": "Alem de deslocar a autorizacao para o chefe de serventia, admite requerimento oral; o codigo exige requerimento escrito.",
+   "3": "Troca o prazo de oito dias por 48 horas, admite pedido oral e ainda inverte a ordem do recolhimento das custas, que vem antes.",
+   "4": "Mantem o requerimento escrito, mas erra o prazo (48 horas) e joga o recolhimento das custas para depois da expedicao."
+  },
   "fonte": "FGV tjrj2 Q23",
   "requer_imagem": false,
   "anulada": false
@@ -9118,8 +9303,13 @@
    "2 requisitos funcionais e 2 requisitos não funcionais."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Separando o que o sistema FAZ do que e restricao de qualidade: montar relatorio dinamico com filtros, apresentar os resultados, exportar os resultados, gerar o grafico de entradas e gerar o grafico de saidas sao cinco funcionais. Formato nao proprietario, interoperabilidade com editor externo e exportacao de grafico em JPEG sao restricoes — tres nao funcionais.",
+  "erradas": {
+   "0": "Infla os funcionais promovendo restricao de formato a funcionalidade. 'Nao proprietario' e 'JPEG' dizem COMO, nao O QUE.",
+   "2": "Perde um funcional e dois nao funcionais de uma vez — provavelmente por tratar os dois graficos como um requisito so e ignorar as restricoes de formato.",
+   "3": "Afirmar que nao ha nenhum nao funcional ignora as tres restricoes de formato e interoperabilidade explicitas na fala do cliente.",
+   "4": "Subconta demais os dois lados. Ha bem mais de dois verbos de acao na fala de Lucio: montar, apresentar, exportar e gerar graficos."
+  },
   "fonte": "FGV tjrj2 Q38",
   "requer_imagem": false,
   "anulada": false
@@ -9516,8 +9706,13 @@
    "500."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "getOrDefault devolve o valor padrao quando a chave nao existe no mapa. Como 'produto3' nao foi inserido no construtor, o metodo retorna 0 — e o @RestController serializa esse 0 numa resposta 200.",
+  "erradas": {
+   "1": "5 e o valor de 'produto2'. So sairia se a URL pedisse esse produto.",
+   "2": "10 e o valor de 'produto1' — mesmo erro, trocando de chave.",
+   "3": "404 sairia se o mapeamento da rota nao existisse, ou se o codigo lancasse explicitamente ResponseStatusException. O @PathVariable casa normalmente com qualquer valor, e o metodo trata a ausencia sem erro.",
+   "4": "500 exigiria excecao nao tratada — seria o caso de um get() seguido de unboxing nulo, nao do getOrDefault, que existe justamente para evitar isso."
+  },
   "fonte": "FGV tjrj2 Q55",
   "requer_imagem": false,
   "anulada": false
@@ -9703,8 +9898,13 @@
    "a identificação do direito que deve preponderar, em maior ou menor medida, se a liberdade de expressão ou o direito à honra, será feita à luz das circunstâncias do caso concreto."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Liberdade de expressao e honra sao direitos fundamentais e nenhum deles e absoluto. Quando colidem, a solucao nao esta numa hierarquia fixa, e sim na ponderacao a luz das circunstancias do caso concreto — que e o que a alternativa diz.",
+  "erradas": {
+   "0": "A Constituicao consagra os dois: a honra esta entre os direitos da personalidade expressamente protegidos. Negar um deles resolve a colisao por eliminacao, que e falso.",
+   "1": "O 'sempre tem preferencia' e o absoluto classico do distrator. Nao ha precedencia previa e incondicional de um direito fundamental sobre outro.",
+   "2": "Se a protecao fosse absoluta nos dois lados, a colisao seria insoluvel — e e justamente por nao serem absolutos que se pondera. A alternativa nega o proprio fenomeno.",
+   "3": "Repete o erro do absoluto, so que do lado da honra. Decorrer da dignidade humana nao torna um direito imune a ponderacao."
+  },
   "fonte": "FGV tjrj2 Q63",
   "requer_imagem": false,
   "anulada": false
@@ -9866,8 +10066,13 @@
    "responderá pelo crime de abandono de função, na modalidade simples, sem causas de aumento de pena."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Abandono de funcao (art. 323 do Codigo Penal) se consuma com o abandono doloso do cargo fora dos casos permitidos, INDEPENDENTEMENTE de prejuizo. O prejuizo publico e o que faria incidir a forma agravada; sem ele, responde pela modalidade simples, sem causa de aumento.",
+  "erradas": {
+   "0": "Inverte o papel do prejuizo: ele nao e elementar do tipo, e sim circunstancia que AGRAVA. Sem prejuizo o crime existe do mesmo jeito.",
+   "1": "Aplica a causa de aumento que depende justamente do prejuizo que o enunciado nega expressamente. E a quase-certa: acerta a modalidade simples e erra no acrescimo.",
+   "2": "A conduta e tipificada — abandono de funcao e crime contra a Administracao praticado por funcionario publico.",
+   "3": "Escolhe a forma agravada sem o pressuposto que a justifica, e ainda se contradiz ao dizer 'sem causas de aumento'."
+  },
   "fonte": "FGV tjrj2 Q70",
   "requer_imagem": false,
   "anulada": false
