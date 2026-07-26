@@ -71,13 +71,65 @@ LIXO = re.compile(
 
 # O texto do PDF perde figuras, codigo e tabelas (viram imagem). Questao que se
 # apoia nisso fica impossivel de responder no terminal: marcamos e o quiz nao
-# sorteia. Cuidado: "abaixo"/"a seguir" NAO entram aqui — em questao da FGV
-# costumam apontar para afirmativas I/II/III que estao no proprio texto.
+# sorteia.
+#
+# A regra ANTIGA era so a lista de termos, e trancava 51 questoes — das quais
+# 45 nao dependiam de figura nenhuma. Ela casava "Código Florestal" (mpu Q20),
+# "Código Penal" (tjrj Q70), "Código de Ética" (mpu Q32), "esquema de relação
+# R(A,B,C)" escrito por extenso no proprio enunciado (cnsal-bd Q41/Q46),
+# "esquema Estrela/Snowflake" como conceito (cnsal-bd Q51/Q63), "assinale o
+# comando SQL que..." cuja resposta esta nas ALTERNATIVAS (cnsal-ads Q67), e
+# ate questoes cujo codigo o pypdf extraiu direitinho e esta ali no enunciado
+# (mpu Q51 numpy, Q59 CREATE ROLE, Q75 HTML/CSS, Q76 sealed, tjrj2 Q55 Spring).
+#
+# A regra NOVA exige tres coisas:
+#   1. DEIXIS junto do termo — a palavra que aponta para FORA do texto
+#      ("observe o diagrama abaixo"). Sem ela, "codigo"/"esquema"/"diagrama"
+#      sao so vocabulario tecnico. "Figura 1" tambem conta, por si so.
+#   2. AUSENCIA do artefato no proprio enunciado: se o pypdf trouxe o SELECT,
+#      o <div> ou o @RestController, a questao se sustenta e vale o sorteio.
+#   3. Alternativa vazia — sinal estrutural, nao de palavra: se a alternativa
+#      e um simbolo que virou imagem (mpu Q41, os simbolos BPMN), nao ha o que
+#      responder. Esta e a unica das tres que dispensa a lista de termos.
+# Resultado: 6 questoes fora do sorteio (mpu 41/52/63/64/67 e dataprev2024 49,
+# esta ultima com o codigo Java confirmadamente ausente da camada de texto).
+_ARTEFATO = (r"figuras?|imagem|gr[áa]ficos?|diagramas?|ilustra[çc][ãa]o"
+             r"|esquemas?|fluxogramas?|c[óo]digo|trecho de programa"
+             r"|comando SQL|consulta SQL|modelo ER")
+
+_DEIXIS = (r"a seguir|abaixo|acima|ao lado|adiante|seguintes?|apresentad\w+"
+           r"|ilustrad\w+|mostrad\w+|exibid\w+|observe|analise")
+
 REFERE_IMAGEM = re.compile(
-    r"\b(figura|imagem|gráfico|diagrama|ilustração|esquema|fluxograma"
-    r"|código|trecho de programa|comando SQL|consulta SQL|modelo ER)\b",
+    rf"(?:{_DEIXIS})[^.;]{{0,60}}?(?:{_ARTEFATO})"
+    rf"|(?:{_ARTEFATO})[^.;]{{0,60}}?(?:{_DEIXIS})"
+    rf"|figuras?\s+\d",
     re.IGNORECASE,
 )
+
+# O artefato veio junto na extracao: SQL, marcacao, codigo. Nao ha o que perder.
+ARTEFATO_INLINE = re.compile(
+    r"\bSELECT\b[^.]*\bFROM\b"
+    r"|\bINSERT\s+INTO\b|\bCREATE\s+(?:TABLE|ROLE|VIEW|INDEX|FUNCTION)\b"
+    r"|\bGRANT\b[^.]*\bTO\b|\bUPDATE\b[^.]*\bSET\b|\bDROP\s+TABLE\b"
+    r"|\bALTER\s+TABLE\b"
+    r"|</?\w+[\s/>]"
+    r"|\bimport\s+\w+|\bfrom\s+\w+\s+import\b"
+    r"|\b(?:public|private|protected)\s+\w+"
+    r"|\bdef\s+\w+\s*\(|\bclass\s+\w+\b"
+    r"|@\w+\s"
+    r"|\w+\s*=\s*\w+\s*\("
+    r"|\{[^{}]*\}",
+)
+
+
+def depende_de_figura(enunciado, alts):
+    """A questao e irrespondivel sem o que o PDF perdeu?"""
+    if any(not a.strip() for a in alts):
+        return True
+    if ARTEFATO_INLINE.search(enunciado):
+        return False
+    return bool(REFERE_IMAGEM.search(enunciado))
 
 # Titulo de secao do caderno, sozinho na linha. Irma do problema do rodape: o
 # titulo nao e questao nem alternativa, entao o parser o emendava na ULTIMA
@@ -140,7 +192,15 @@ def tag_de(texto):
     #   "seguranca" vinha antes de "legislacao" no TAGS;
     #   "Arquitetura de computadores (SO)" caia em `arquitetura`, porque
     #   "arquitetura" e prefixo da chave mais especifica.
-    achados = [(s.find(c), -len(c), t) for c, t in TAGS.items() if c in s]
+    # A busca e por PALAVRA INTEIRA. Sem o \b, a chave de duas letras "bi"
+    # casava DENTRO de outra palavra e levava dez questoes gerais do MPU para
+    # Business Intelligence: "Nocoes de Sustentabilidade" (sustenta-BI-lidade,
+    # Q16-20) e "Nocoes de Direitos Humanos ... e de Acessibilidade"
+    # (acessi-BI-lidade, Q21-25). Alem de sujar `./quiz.py bi`, isso as fazia
+    # valer 2,5x no --simulado, porque `bi` nao esta em GERAIS (quiz.py).
+    achados = [(m.start(), -len(c), t)
+               for c, t in TAGS.items()
+               if (m := re.search(rf"\b{re.escape(c)}\b", s))]
     if achados:
         return min(achados)[2]
     return "orfaos"
@@ -330,7 +390,7 @@ def main():
                     "erradas": anterior.get("erradas", {}),
                     "fonte": f"FGV {prova} Q{q['num']}",
                     # o PDF perdeu a figura/codigo: nao da pra responder no terminal
-                    "requer_imagem": bool(REFERE_IMAGEM.search(q["q"])),
+                    "requer_imagem": depende_de_figura(q["q"], q["alts"]),
                     # anulada e marcada a mao; preserva entre reimportacoes
                     "anulada": anterior.get("anulada", False),
                 }

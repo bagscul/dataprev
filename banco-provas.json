@@ -711,7 +711,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q47",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -730,7 +730,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q48",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -797,7 +797,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q51",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -816,7 +816,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q52",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1027,7 +1027,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q61",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1046,7 +1046,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q62",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1161,7 +1161,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q67",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1324,7 +1324,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q74",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1391,7 +1391,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-ads Q77",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1482,7 +1482,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q41",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1501,7 +1501,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q42",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1520,7 +1520,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q43",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1587,7 +1587,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q46",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1606,7 +1606,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q47",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1697,7 +1697,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q51",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1860,7 +1860,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q58",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1879,7 +1879,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q59",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -1970,7 +1970,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q63",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -2205,7 +2205,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-bd Q73",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -2416,7 +2416,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-redes Q42",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -2435,7 +2435,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-redes Q43",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -2790,7 +2790,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-redes Q58",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -3097,7 +3097,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV cnsal-redes Q71",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -4455,7 +4455,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV dataprev2024 Q48",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -4541,7 +4541,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV dataprev2024 Q52",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -5338,236 +5338,6 @@
  },
  {
   "prova": "mpu",
-  "num": 16,
-  "tag": "bi",
-  "q": "A Constituição Federal trouxe um rico capítulo dispondo sobre a proteção ao meio ambiente para as presentes e futuras gerações, estabelecendo que todos têm direito a um meio ambiente ecologicamente equilibrado. Em relação aos princípios, normas e regras estabelecidos no Art. 225 da Constituição Federal sobre Meio Ambiente, é correto afirmar que:",
-  "alts": [
-   "será inferior à dos combustíveis fósseis e de hidrelétricas o regime fiscal para os biocombustíveis, tecnologias de baixo carbono e para o hidrogênio verde para garantir diferenciais competitivos, especialmente em relação às contri buições parafiscais;",
-   "são consideradas cruéis as práticas desportivas que utilizem animais, ainda que sejam manifestações culturais registradas como bens de natureza imaterial integrantes do patrimônio cultural brasileiro e que assegurem o bem -estar dos animais envolvidos;",
-   "são patrimônio nacional os biomas da floresta amazônica brasileira, da mata atlântica, caatinga, pampas sulinos, serra do mar e o pantanal mato -grossense, e sua utilização far -se-á na forma de lei complementar, inclusive quanto ao uso dos recursos naturais;",
-   "incumbe ao poder público e à coletividade o dever de preservar e manter os processos ecológicos essenciais naturais e promover o manejo ecológico das espécies endêmicas e exóticas dos ecossistemas;",
-   "incumbe ao poder públic o definir os espaços territoriais e seus componentes a serem especialmente protegidos, sendo a alteração e a supressão permitidas apenas por meio de lei, vedada qualquer utilização que comprometa a integridade dos atributos que justificam sua proteção."
-  ],
-  "ans": 4,
-  "why": "Reproduz o art. 225, §1º, III da CF: cabe ao poder público definir espaços territoriais especialmente protegidos, sendo alteração e supressão permitidas SOMENTE por lei, vedada utilização que comprometa os atributos que justificam a proteção. Regra prática: criar unidade de conservação pode ser por decreto; reduzir ou suprimir, só por lei.",
-  "erradas": {
-   "0": "Distorce o dispositivo sobre regime fiscal favorecido: a tributação deve ser inferior à dos combustíveis fósseis; a comparação com hidrelétricas foi inventada.",
-   "1": "Inverte o §7º: a Constituição diz que NÃO se consideram cruéis as práticas desportivas com animais que sejam manifestações culturais registradas como patrimônio imaterial, assegurado o bem-estar animal.",
-   "2": "Erra a lista de biomas do §4º (não inclui caatinga nem pampas) e troca 'na forma da lei' por 'lei complementar'.",
-   "3": "Mistura os incisos: o dever de preservar/restaurar os processos ecológicos e prover o manejo das espécies e ecossistemas incumbe ao poder público, e a redação sobre 'espécies endêmicas e exóticas' não consta do texto constitucional."
-  },
-  "fonte": "FGV mpu Q16",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 17,
-  "tag": "bi",
-  "q": "A Agenda Ambiental na Administração Pública (A3P) é um programa do Ministério do Meio Ambiente e Mudança do Clima que objetiva estimular as instituições públicas do país a implementarem práticas de sustentabilidade. O programa se destina às instituições p úblicas das três esferas (federal, estadual e municipal) e dos três poderes da República (executivo, legislativo e judiciário). Nesse contexto, é correto afirmar que:",
-  "alts": [
-   "essa agenda é de adesão compulsória e possibilita que a instituição parceira, por mei o de organizações sociais, promova a preservação e conservação do meio ambiente, ao mesmo tempo em que otimiza a utilização dos recursos públicos em detrimento de outras áreas;",
-   "o programa está estruturado em seis eixos temáticos: uso racional dos recur sos naturais e bens públicos; gestão de resíduos gerados; qualidade de vida no ambiente de trabalho; sensibilização e capacitação dos servidores; compras públicas sustentáveis; e construções sustentáveis;",
-   "o acesso a esse serviço, não reconhecido pela U nesco, ocorre por meio de assinatura do Termo de Adesão à A3P, que possui duração de cinco anos, sendo que, ao término da vigência da adesão, não é possível realizar nova adesão, de modo que ela está limitada a um único período;",
-   "o Ministério Público, d urante os cinco anos de vigência da adesão, acompanhará as ações implementadas pelo órgão parceiro, prestando o assessoramento técnico necessário para o atingimento dos objetivos pactuados em plano de trabalho e corrigindo eventuais falhas;",
-   "os usuários serão atendidos consoante seu grau de prioridade e preferência, obedecidas as diretrizes de eficiência, celeridade, urbanidade e ética, de forma remota, inexistindo a possibilidade de atendimento presencial nesse programa."
-  ],
-  "ans": 1,
-  "why": "A A3P se estrutura em seis eixos temáticos: uso racional dos recursos naturais e bens públicos; gestão adequada dos resíduos gerados; qualidade de vida no ambiente de trabalho; sensibilização e capacitação dos servidores; compras públicas sustentáveis; e construções sustentáveis. Regra prática: decore os seis eixos — a FGV costuma cobrar exatamente essa enumeração, tirando ou trocando um item.",
-  "erradas": {
-   "0": "A adesão à A3P é VOLUNTÁRIA, não compulsória; e a agenda não pretende otimizar recursos 'em detrimento de outras áreas'.",
-   "2": "O programa é reconhecido internacionalmente (recebeu premiação da UNESCO) e a adesão pode ser renovada — não há limite de um único período.",
-   "3": "O acompanhamento das ações cabe ao órgão gestor da política ambiental (Ministério do Meio Ambiente), não ao Ministério Público.",
-   "4": "Descreve diretrizes genéricas de atendimento ao usuário de serviços públicos e inventa a exclusividade do atendimento remoto — nada disso pertence à A3P."
-  },
-  "fonte": "FGV mpu Q17",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 18,
-  "tag": "bi",
-  "q": "As mudanças climáticas estão cada vez mais presentes em eventos recentes como as enchentes do Rio Grande do Sul ou os incêndios em Los Angeles. Nesse contexto, a partir da Convenção das Nações Unidas sobre Mudanças Climáticas, que procura estabilizar as concentrações de gases de efei to estufa, cada país está estabelecendo sua própria política pública interna. No Brasil, trata-se da Política Nacional sobre Mudança do Clima - PNMC (Lei nº 12.187/2009). Sobre a Lei nº 12.187/2009, é correto afirmar que a PNMC:",
-  "alts": [
-   "busca a promoção e o de senvolvimento nacional de pesquisas científico -tecnológicas, bem como a difusão de tecnologias, processos e práticas orientados a mitigar a mudança do clima por meio de sumidouros de gases de efeito estufa implantados pelo poder público, adotando as medida s de adaptação possíveis, independentemente de vulnerabilidades e do setor produtivo;",
-   "e as ações dela decorrentes, executadas sob a responsabilidade dos entes políticos e dos órgãos da administração pública, observarão os princípios da precaução, da pr evenção, da participação cidadã, do desenvolvimento sustentável e o das responsabilidades comuns, porém diferenciadas, este último no âmbito internacional;",
-   "tem por finalidade o desenvolvimento econômico com a possível proteção do sistema climático, com redução das emissões naturais de gases de efeito estufa em relação às suas diferentes fontes, independentemente de fortalecimento das remoções antrópicas por sumidouros de gases de efeito estufa no território nacional;",
-   "estabelece que a adaptação neces sária do contexto socioeconômico deverá ser sustentável, independentemente das comunidades afetadas, buscando segurança energética a partir de combustíveis fósseis e complementariedade de energias renováveis, de modo a compatibilizar e otimizar a produção do país em mesma proporção gradativamente;",
-   "tem como diretriz os compromissos assumidos pelo Brasil no Protocolo de Quioto para obter as ações de mitigação da mudança do clima em detrimento do desenvolvimento sustentável, com as medidas de adaptação para equalização dos efeitos adversos das mudanças e estabilidade do sistema ambiental e econômico."
-  ],
-  "ans": 1,
-  "why": "É a transcrição do art. 3º da Lei 12.187/2009: a PNMC e as ações dela decorrentes observarão os princípios da precaução, da prevenção, da participação cidadã, do desenvolvimento sustentável e o das responsabilidades comuns, porém diferenciadas, este último no âmbito internacional. Regra prática: guarde a ressalva final — 'responsabilidades comuns, porém diferenciadas' só vale NO ÂMBITO INTERNACIONAL, e a FGV adora suprimir esse recorte.",
-  "erradas": {
-   "0": "O 'independentemente de vulnerabilidades e do setor produtivo' contraria a lei, que manda justamente considerar as vulnerabilidades socioambientais e os setores econômicos ao definir medidas de adaptação.",
-   "2": "Inverte a finalidade: a PNMC visa à compatibilização do desenvolvimento com a proteção do sistema climático e trata de emissões ANTRÓPICAS, além de prever expressamente o fortalecimento das remoções por sumidouros.",
-   "3": "Nenhuma diretriz da PNMC busca segurança energética 'a partir de combustíveis fósseis' nem despreza as comunidades afetadas — a lei aponta o caminho oposto.",
-   "4": "Deturpa a diretriz: os compromissos assumidos na Convenção-Quadro e no Protocolo de Quioto não se dão 'em detrimento do desenvolvimento sustentável', mas em harmonia com ele."
-  },
-  "fonte": "FGV mpu Q18",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 19,
-  "tag": "bi",
-  "q": "A divisão de atribuições e as modalidades de cooperação entre os entes federativos foram regulamentadas por meio da Lei Complementar (LC) nº 1 40/2011, que estabeleceu importantes novas regras. Com efeito, o federalismo cooperativo finalmente tem, nos instrumentos de cooperação e colaboração, ferramentas relevantes para a proteção ambiental no país. Diante do exposto, é correto afirmar que:",
-  "alts": [
-   "o ente federativo poderá delegar, mediante convênio, a execução de ações administrativas, desde que o ente destinatário da delegação disponha de órgão ambiental capacitado a executar as ações administrativas a serem delegadas e de conselho de meio ambiente;",
-   "a LC nº 140/2011 não reconhece os fundos privados e outros instrumentos econômicos como formas de cooperação, para fins específicos dessa política pública, mas apenas os fundos públicos, embora ela preveja instrumentos como convênios, acordos de cooperação e consórcios públicos;",
-   "a cooperação entre os entes federados implica a autorização legal para que qualquer um deles lavre auto de infração ambiental e instaure processo administrativo em face de empreendimentos licenciados e, concomitantemente, apure as penalidades cabíveis de forma ampla e indistinta;",
-   "a atuação subsidiária consiste em ação do ente da federação que se substitui ao ente federativo original e a atuação supletiva consiste na ação do ente federado que visa a auxiliar no desempenh o das atribuições comuns, quando solicitado pelo ente federativo original;",
-   "os instrumentos de cooperação são hierarquizados, sendo as duas formas de delegação (de atribuições de execução de ações) prioritárias nessa política ambiental, e as demais formas, como consórcios, participações públicas, audiências públicas e fundos públicos, instrumentos ordinários de cooperação previstos nessa legislação."
-  ],
-  "ans": 0,
-  "why": "Reproduz o art. 5º da LC 140/2011: a delegação da execução de ações administrativas se dá por convênio e só é possível se o ente destinatário tiver órgão ambiental capacitado E conselho de meio ambiente. Regra prática: guarde os dois requisitos cumulativos — a banca costuma suprimir o conselho de meio ambiente.",
-  "erradas": {
-   "1": "A LC 140 lista como instrumentos de cooperação fundos públicos E privados e outros instrumentos econômicos; negar o reconhecimento dos fundos privados contraria o texto legal.",
-   "2": "A fiscalização comum existe, mas prevalece o auto de infração lavrado pelo órgão que detém a atribuição de licenciamento — não é apuração 'ampla e indistinta' por qualquer ente.",
-   "3": "Inverte os conceitos do art. 2º: SUPLETIVA é a ação do ente que se substitui ao originário; SUBSIDIÁRIA é a que apenas auxilia, quando solicitada. Pegadinha clássica da FGV.",
-   "4": "Os instrumentos de cooperação não são hierarquizados nem há prioridade legal das delegações sobre os demais."
-  },
-  "fonte": "FGV mpu Q19",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 20,
-  "tag": "bi",
-  "q": "Os espaços especialmente protegidos, além do Código Florestal, possuem o Sistema Nacional de Unidades de Conservação (SNUC) como uma política pública das mais relevantes para essa finalidade. A divisão de Unidades de Conservação de Proteção Integral e de Uso Sustentável é construída a partir de uma lógica e perspectiva dos atributos que são necessários conservar. Desse modo, analise as afirmativas a seguir, considerando V para a(s) verdadeira(s) e F para a(s) falsa(s). I. Embora as unidades de proteção integral tenham como objetivo básico a manutenção dos ecossistemas livres de alterações causadas por inte rferência humana, admitindo, como regra, apenas o uso indireto dos seus atributos naturais, podem, conforme o caso, ser de uso direto, como, por exemplo, o monumento natural. II. A criação de unidades de conservação é feita por ato do poder público, prec edida de estudos técnicos e de consulta pública, que permitam identificar a localização, a dimensão e os limites mais adequados para a unidade, sendo que o subsolo e o espaço aéreo, sempre que influírem na estabilidade do ecossistema, integram os limites da unidade. III. A área das unidades de conservação pode ser considerada tanto área rural quanto área urbana, conforme o caso, mas sua zona de amortecimento é, em regra, área urbana, sendo que sua redução de limites pode ser feita por ato do poder público, publicado em Diário Oficial, devidamente motivado, quando necessário. A sequência correta é:",
-  "alts": [
-   "V, V, V;",
-   "F, F, F;",
-   "V, F, V;",
-   "V, V, F;",
-   "F, V, V."
-  ],
-  "ans": 3,
-  "why": "",
-  "erradas": {},
-  "fonte": "FGV mpu Q20",
-  "requer_imagem": true,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 21,
-  "tag": "bi",
-  "q": "Por ser tema de legítimo interesse internacional, a proteção dos direitos humanos não é reduzida ao domínio reservado do Estado, ou seja, não se restringe à competência nacional exclusiva ou à jurisdição doméstica exclusiva. Contudo, há especificidades no tratamento dos t ratados internacionais de proteção dos direitos humanos no ordenamento jurídico brasileiro, que ocorrem de acordo com as regras previstas na Constituição Federal de 1988. Sobre o tema, analise as afirmativas a seguir, à luz da Constituição Federal e da doutrina majoritária. I. Compete privativamente ao presidente da República promulgar um ato internacional, depois de devidamente ratificado, para que este seja incorporado à legislação interna. II. No Direito brasileiro vigora um sistema misto, pois, a partir da Emenda Constitucional nº 45/2004, a Constituição Federal passou a contar com um rito especial para aprovação dos tratados internacionais que versam sobre direitos humanos. III. Os tratados internacionais sobre direitos humanos que forem aprovados por dois quintos dos votos dos membros de cada Casa do Congresso Nacional, em dois turnos de votação, serão equivalentes às emendas constitucionais. IV. Nas hipóteses de grave violação de direitos humanos, o procurador-geral da República, com a finalidade d e assegurar o cumprimento de obrigações decorrentes de tratados internacionais de direitos humanos dos quais o Brasil seja parte, poderá suscitar, perante o Supremo Tribunal Federal, em qualquer fase do inquérito ou processo, incidente de deslocamento de competência para a Justiça Federal. Está correto o que se afirma em:",
-  "alts": [
-   "I e IV, apenas;",
-   "III e IV, apenas;",
-   "I, II e III, apenas;",
-   "I, II e IV, apenas;",
-   "I, II, III e IV."
-  ],
-  "ans": null,
-  "why": "",
-  "erradas": {},
-  "fonte": "FGV mpu Q21",
-  "requer_imagem": false,
-  "anulada": true
- },
- {
-  "prova": "mpu",
-  "num": 22,
-  "tag": "bi",
-  "q": "Determinado estado brasileiro, ao criar lei que dispõe sobre a prioridade de vaga em escola pública para pessoas com deficiência, estabeleceu: (a) o conceito de pessoas com deficiência como aquelas que necessitam de assistência especial, decorrentes de problemas visuais, auditivos, mentais, motores, ou má formação con gênita; (b) a caracterização do impedimento de longo prazo exclusivamente por laudo médico; e (c) a exclusão de escolas sem infraestrutura adequada do propósito de ensino inclusivo para pessoas com deficiência. Considerando a situação hipotética relatada, analise os itens a seguir de acordo com o Estatuto da Pessoa com Deficiência e demais legislações pertinentes, em conformidade com a jurisprudência do Supremo Tribunal Federal. I. A verificação da deficiência restrita a laudo médico -hospitalar contraria o Estatuto da Pessoa com Deficiência, segundo o qual a avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar. II. O Estatuto da Pessoa com Deficiência define pessoa com deficiência como aquela que tem impedimento de natureza física ou intelectual, o qual, em interação com uma ou mais barreiras, pode obstruir sua participação na sociedade em igualdade de condições com as demais pessoas. III. Há possibilidade de o Estado trazer um concei to distinto e mais restrito de pessoa com deficiência com o fim de assegurar prioridade para vagas em escolas públicas próximas à residência. IV. Havendo uma conceituação constitucional para pessoa com deficiência, não cabe à lei estadual restringi -la, re duzindo o grupo de destinatários da proteção. V. Sobre a não obrigatoriedade do recebimento de estudantes com deficiência em instituições de ensino consideradas despreparadas, a lei pode excluir peremptoriamente tais unidades de ensino do dever de prestar a educação inclusiva. Está correto o que se afirma em:",
-  "alts": [
-   "I e III, apenas;",
-   "I e IV, apenas;",
-   "II e IV, apenas;",
-   "I, II, III e IV, apenas;",
-   "I, II, III, IV e V."
-  ],
-  "ans": 1,
-  "why": "Corretos I e IV: o Estatuto (Lei 13.146/2015) exige avaliação BIOPSICOSSOCIAL por equipe multiprofissional e interdisciplinar quando necessária — laudo médico isolado não basta; e, existindo conceito de estatura constitucional/convencional de pessoa com deficiência, lei estadual não pode restringi-lo para reduzir o universo protegido. Regra prática: norma estadual pode AMPLIAR proteção, nunca encolher o conceito.",
-  "erradas": {
-   "0": "Inclui o item III, que é falso: o Estado não pode adotar conceito mais restrito de pessoa com deficiência, ainda que para distribuir vagas escolares.",
-   "2": "Inclui o item II, que erra a definição legal: o impedimento é 'de longo prazo, de natureza física, mental, intelectual OU SENSORIAL' — o item corta natureza mental e sensorial.",
-   "3": "Além de II e III (falsos), acumula os erros das duas alternativas anteriores.",
-   "4": "Ainda soma o item V, frontalmente contrário ao Estatuto: nenhuma escola pode se eximir do dever de matricular e prestar educação inclusiva alegando despreparo."
-  },
-  "fonte": "FGV mpu Q22",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 23,
-  "tag": "bi",
-  "q": "Na exposição de motivos que acompanhou a proposta legislativa da Lei nº 12.990/20 14, que regulamenta a reserva de 20% das vagas oferecidas em concursos públicos federais para candidatos negros, constou que o seu objetivo era o de regulamentar o Art. 39 do Estatuto da Igualdade Racial (Lei nº 12.288/2010). O Estatuto determina ações cap azes de proporcionar um tratamento mais isonômico entre as populações negra e branca. Sobre o tema, é correto afirmar que:",
-  "alts": [
-   "a Lei nº 12.990/2014 não estabelece regras que visam a instituir mecanismos compensatórios que se traduzem em ações afirmativas a serem implementadas pelo poder público, embora prescreva normas destinadas a assegurar às pessoas negras a reserva de 20% das vagas em concursos públicos;",
-   "o Estatuto da Igualdade Racial conceitua como desigualdade racial toda distinção, exclusão, rest rição ou preferência baseada em raça, cor, ascendência ou origem nacional ou étnica que tenha por objeto anular ou restringir o reconhecimento, gozo ou exercício, em igualdade de condições, de direitos humanos e liberdades fundamentais nos campos político, econômico, social, cultural ou em qualquer outro campo da vida pública ou privada;",
-   "classificam-se como ações afirmativas apenas os programas e medidas especiais adotados pela iniciativa privada para a correção das desigualdades raciais e para a promoç ão da igualdade de oportunidades; já os programas adotados pelo Estado são classificados como políticas públicas;",
-   "o Estatuto da Igualdade Racial estabelece que o poder público promoverá ações que assegurem a igualdade de oportunidades no mercado de trabalho para a população negra, inclusive mediante a implementação de medidas visando à promoção da igualdade nas contratações do setor público e ao incentivo à adoção de medidas similares nas empresas e organizações privadas;",
-   "o Poder Executivo federa l, de acordo com o que estabelece o Estatuto da Igualdade Racial, deverá implementar critérios para provimento de cargos em comissão e funções de confiança destinados a ampliar a participação de negros, buscando reproduzir a estrutura da distribuição étnic a nacional ou, quando for o caso, estadual, observados os dados demográficos oficiais."
-  ],
-  "ans": 3,
-  "why": "Corresponde à norma do Estatuto (Lei 12.288/2010) sobre trabalho: o poder público promoverá ações de igualdade de oportunidades no mercado de trabalho para a população negra, inclusive promovendo a igualdade nas contratações do setor público e incentivando medidas semelhantes nas empresas privadas. Regra prática: em enunciado de lei, procure o verbo — 'promoverá/incentivará' é diferente de 'obrigará'.",
-  "erradas": {
-   "0": "Contraditória em si e falsa: a reserva de 20% em concursos federais É uma ação afirmativa/mecanismo compensatório implementado pelo poder público.",
-   "1": "O texto transcrito é a definição de DISCRIMINAÇÃO racial (distinção, exclusão, restrição ou preferência), não de DESIGUALDADE racial. Troca de conceitos típica da FGV.",
-   "2": "Ações afirmativas, no Estatuto, são programas e medidas especiais adotados pelo Estado E pela iniciativa privada — o 'apenas iniciativa privada' quebra a definição.",
-   "4": "O Estatuto diz que o Poder Executivo federal PODERÁ implementar esses critérios para cargos em comissão; a alternativa transforma a faculdade em dever ('deverá')."
-  },
-  "fonte": "FGV mpu Q23",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 24,
-  "tag": "bi",
-  "q": "No dia 8 de março de 2023, foi publicado o Decreto nº 11.430, que dispõe sobre ações de equidade entre mulheres e homens no ambiente de trabalho como critério de des empate em licitações, criando uma cota para mulheres, neste caso, vítimas de violência, em contratos da Administração Pública federal. No Supremo Tribunal Federal, tramitam Ações Diretas de Inconstitucionalidade (ADIs) contra leis estaduais que estabelecem percentuais para o ingresso de mulheres na Polícia Militar e no Corpo de Bombeiros por concurso público. Num panorama geral, no que se refere à inserção das mulheres no mercado de trabalho, é correto afirmar que:",
-  "alts": [
-   "o Estado Democrático de Direito brasil eiro, ao reconhecer, na Constituição Federal e nas leis, a igualdade formal entre homens e mulheres, potencializa a igualdade material, que é aquela prevista em lei ao dispor que todos são iguais perante a lei;",
-   "critérios diferenciados em concursos públ icos para o ingresso em cargos e funções públicas não são admitidos, ainda que se fale em exigências específicas relacionadas à natureza do cargo;",
-   "o Poder Legislativo pode erigir condição de admissão no sentido de estabelecer percentuais para o ingress o de mulheres em concursos públicos, já que a Constituição Federal prevê que os cargos públicos são acessíveis “na forma da lei”;",
-   "a Constituição Federal proíbe, especificamente no que diz respeito às relações de trabalho, a diferenciação de critério de admissão por motivo de sexo, preceito extensível à admissão no serviço público por expressa disposição constitucional;",
-   "as normas delegam à Administração um espaço de discricionariedade que permite restrições à participação das mulheres nos certames se m que isso configure violação a dispositivos constitucionais pelas leis estaduais."
-  ],
-  "ans": 3,
-  "why": "A CF, no art. 7º, XXX, proíbe diferença de critério de admissão por motivo de sexo, e o art. 39, §3º estende expressamente esse inciso aos servidores públicos. Regra prática: a extensão ao serviço público não é construção jurisprudencial, é disposição constitucional explícita — e critérios diferenciados em concurso só se admitem quando a natureza do cargo os justificar e houver previsão em lei.",
-  "erradas": {
-   "0": "Confunde os planos: igualdade formal (todos iguais perante a lei) não é a igualdade material; a material exige tratamento desigual dos desiguais, e não é 'a prevista em lei'.",
-   "1": "Absoluto ('não são admitidos, ainda que...') — o STF admite requisitos diferenciados quando justificados pela natureza das atribuições do cargo e previstos em lei.",
-   "2": "A cláusula 'na forma da lei' não autoriza qualquer condição: percentuais de ingresso por sexo em concurso esbarram justamente na vedação do art. 7º, XXX c/c art. 39, §3º.",
-   "4": "Inverte a lógica: a Administração não tem discricionariedade para restringir a participação de mulheres em certames — isso violaria a Constituição."
-  },
-  "fonte": "FGV mpu Q24",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
-  "num": 25,
-  "tag": "bi",
-  "q": "A Convenção Americana de Direitos Humanos, também denominada Pacto de São José da Costa Rica, é o instrumento mais importante de efetivação dos direitos humanos do siste ma interamericano. O documento instituiu o denominado Sistema Interamericano de Direitos Humanos (SIDH), composto por dois órgãos principais: a Comissão Interamericana de Direitos Humanos (CIDH) e a Corte Interamericana de Direitos Humanos (Corte IDH). Acerca dos mecanismos de implementação do Pacto de São José da Costa Rica, é correto afirmar que:",
-  "alts": [
-   "o Estado signatário do Pacto de São José da Costa Rica pode ratificar a Convenção Americana de Direitos Humanos e não reconhecer a jurisdição contenciosa da Corte Internacional de Direitos Humanos, já que tal reconhecimento é cláusula facultativa da Convenção;",
-   "o Brasil é Estado-Parte da Convenção desde 1992 e, em 2002, reconheceu a competência contenciosa da Corte Interamericana de Direitos Humanos;",
-   "o reconhecimento da jurisdição contenciosa da Corte Internacional de Direitos Humanos é obrigatório e feito por declaração específica para todo e qualquer caso, e não somente para determinado caso específico;",
-   "a Corte Interamericana de Direitos Humanos é composta por nove juízes, cuja escolha é feita pelos Estados -Parte da Convenção, em sessão da Assembleia Geral da OEA, de uma lista de candidatos propostos pelos mesmos Estados;",
-   "as vítimas, assim como os Estados -Parte, podem submeter casos diretamente à Corte, sem que haja necessidade de apresentar suas alegações à Comissão Interamericana de Direitos Humanos."
-  ],
-  "ans": 0,
-  "why": "A jurisdição contenciosa da Corte Interamericana depende de declaração específica de aceitação — é cláusula facultativa. Ratificar a Convenção não implica, automaticamente, submeter-se à Corte. Regra prática: Convenção = obrigatória para quem ratifica; jurisdição da Corte = opção adicional, podendo ser incondicional, sob reciprocidade, por prazo ou para caso específico.",
-  "erradas": {
-   "1": "A adesão do Brasil à Convenção é de 1992, mas o reconhecimento da competência contenciosa da Corte se deu em 1998 (Decreto Legislativo nº 89/1998), não em 2002 — 2002 é apenas o decreto de promulgação.",
-   "2": "Contradiz a natureza facultativa da cláusula e ainda nega a possibilidade de aceitação para caso específico, expressamente prevista.",
-   "3": "A Corte Interamericana é composta por SETE juízes, não nove.",
-   "4": "Indivíduos e vítimas NÃO têm acesso direto à Corte: só a Comissão e os Estados-Partes podem submeter casos, após o procedimento perante a Comissão."
-  },
-  "fonte": "FGV mpu Q25",
-  "requer_imagem": false,
-  "anulada": false
- },
- {
-  "prova": "mpu",
   "num": 26,
   "tag": "orfaos",
   "q": "Em uma fundação, a avaliação de desempenho dos gestores contempla os seguintes quesitos: capacidade de desenvolver rede de relacionamentos e troca de informações com instituições externas relevantes; capacidade de obter e analisar informações relevantes sobre a organização e o ambiente externo; e capacidade de adaptar a equipe a processos de mudança. Esses quesitos da avaliação de desempenho dos gestores estão relacionados, respectivamente, aos seguintes papéis do administrador:",
@@ -5726,7 +5496,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q32",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -5980,7 +5750,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q43",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -6167,7 +5937,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q51",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -6277,7 +6047,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q56",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -6344,7 +6114,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q59",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -6708,7 +6478,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q75",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -6727,7 +6497,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV mpu Q76",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -7370,7 +7140,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj1 Q23",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -7533,7 +7303,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj1 Q30",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": true
  },
  {
@@ -7840,7 +7610,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj1 Q43",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -8291,7 +8061,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj1 Q63",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -8454,7 +8224,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj1 Q70",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -9001,7 +8771,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q23",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -9164,7 +8934,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q30",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": true
  },
  {
@@ -9351,7 +9121,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q38",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -9418,7 +9188,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q41",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": true
  },
  {
@@ -9749,7 +9519,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q55",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -9936,7 +9706,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q63",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  },
  {
@@ -10099,7 +9869,7 @@
   "why": "",
   "erradas": {},
   "fonte": "FGV tjrj2 Q70",
-  "requer_imagem": true,
+  "requer_imagem": false,
   "anulada": false
  }
 ]
