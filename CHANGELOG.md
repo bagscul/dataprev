@@ -2,6 +2,52 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-26 — roteiro v3: replanejado para começar em 27/07, em 11 semanas
+
+Inscrição feita — a pendência saiu do `README.md` e do roteiro. E o cronograma
+foi refeito para partir de **amanhã, 27/07**, em vez de 13/07.
+
+### 13 semanas viraram 11, sem perder conteúdo
+
+De 27/07 (segunda) a 11/10 (domingo da prova) são **exatamente 77 dias = 11
+semanas**, sem sobra nem falta. O que encolheu **não foi a fundação**: foram a
+folga de revisita e a antiga semana 12, que tinha seis dias só de revisão. A
+v2 gastava quatro semanas no Bloco 1; a v3 faz em três, mais densas.
+
+Nada de conteúdo saiu. Conferido item a item contra a v2 — requisitos,
+modelagem, SQL, SOLID, padrões, testes, DevOps/Git, JSON/XML/REST/mensageria,
+UX/CMS, reuso/UDDI e a varredura do Anexo I continuam todos no plano. As quatro
+leis entram nas cinco primeiras quintas, antes de qualquer revisita.
+
+| | v2 | v3 |
+|---|---|---|
+| Início | 13/07 | **27/07** |
+| Semanas | 13 | **11** |
+| Simulados | 14 | **11** (dez aos domingos + o último na quarta da prova) |
+| Bloco 1 (Fundação) | 4 semanas | 3 |
+| Bloco 2 (Carga máxima) | 6 semanas | 6 |
+| Bloco 3 (Varredura + reta final) | 3 semanas | 2 |
+
+Dias de conteúdo por bloco: eng-software 7, segurança 6, banco-dados 5,
+programação 5, java 5, bi 4, frontend 4, governança 4, arquitetura 3, redes 3,
+órfãos 3 — o eixo duplo no topo, como o Apêndice A manda.
+
+### O `progresso.csv` foi regerado, e os dois arquivos são checados um contra o outro
+
+O CSV é o que a tooling lê (`status.py`, `quiz.py --hoje`, `--pendentes`,
+`garantir_csv`), e o markdown é o que você lê — escritos separadamente, eles
+podem divergir em silêncio. Cross-check rodado: **77 dias em cada, mesmas datas
+na mesma ordem, dia da semana correto em todos, 11 simulados nos dois**. O
+`--pendentes` volta a dizer "em dia com o roteiro", porque o plano começa amanhã.
+
+### Um princípio que estava mentindo
+
+O `README.md` afirmava "nenhum tópico mais de 2 dias seguidos" — e a v2 já
+contrariava isso, com semanas temáticas de cinco dias em Java, Redes, Segurança,
+BI, Frontend e Governança. O texto agora descreve o que o plano faz de verdade:
+na semana temática o bloco domina, e o reencontro vem pelas revisitas marcadas,
+pelos simulados de domingo e pelo `--erradas`.
+
 ## 2026-07-26 — review do repo: o buraco de 10 pontos, um bug que falsificava o relatório de cobertura, e a Lei 15.352 conferida na fonte
 
 Review completo do repositório, fechando os gaps, defeitos e riscos que ele

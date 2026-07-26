@@ -22,7 +22,7 @@ em dia de **simulado**, dispara o simulado cronometrado; em **descanso/prova**,
 avisa. O `status.py` mostra o plano com os comandos prontos para copiar.
 
 **Atrasou? Faca um dia passado.** `./quiz.py --dia ontem` (ou `anteontem`,
-`-3`, ou `2026-07-13`) roda o plano daquele dia e **credita naquele dia**
+`-3`, ou `2026-07-29`) roda o plano daquele dia e **credita naquele dia**
 (marca como feito, conserta a aderencia) — nao mexe em hoje. Veja o que ficou
 em aberto com `./quiz.py --pendentes`.
 
@@ -238,8 +238,12 @@ Em `erros/<bloco>.md`, tres linhas. O "errei" e a parte que importa:
 
 - Questao **todo dia**, sem excecao. Resolver questao e o metodo, nao a revisao.
 - Filtro de banca travado em **FGV**. Outra banca constroi reflexo errado.
-- Nenhum topico mais de 2 dias seguidos; revisitar em ate 15 dias.
-- Simulado **domingo, 13h**, cronometrado. Mesmo horario da prova.
+- Dois assuntos por dia: um **especifico** + um **geral** (seg Portugues, ter
+  Ingles, qua RLM, qui Legislacao, sex Atualidades).
+- Nas semanas tematicas o bloco domina os 5 dias; o reencontro vem pelas
+  **revisitas** marcadas, pelos **simulados** e pelo `--erradas`.
+- Simulado **domingo, 13h**, cronometrado. Mesmo horario da prova. Sao 11 no
+  total — dez aos domingos e o ultimo na quarta da semana da prova.
 - No simulado: **especificos primeiro** (valem 2,5x), gerais depois.
 
 ## Onde a prova se decide
@@ -258,7 +262,6 @@ Redes caiu mesmo sem estar no conteudo do perfil 3.
 
 ## Pendencias
 
-- [ ] Inscricao (ate 06/08, 16h)
-- [ ] Boleto R$ 110,00 (ate 07/08)
+- [x] ~~Inscricao~~ — feita
 - [ ] Confirmar com a FGV se Ciencia da Computacao vale como
       "graduacao em TI" sem pos de 360h — concursodataprev26@fgv.br

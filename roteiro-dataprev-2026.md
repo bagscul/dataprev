@@ -1,10 +1,17 @@
-# Roteiro de Estudos — Concurso Dataprev 2026 (v2)
+# Roteiro de Estudos — Concurso Dataprev 2026 (v3)
 
 **Cargo:** Analista de Tecnologia da Informação — Perfil 3: Desenvolvimento de Software
 **Localidade:** Natal/RN (20 vagas imediatas, 13 de ampla concorrência)
 **Prova:** domingo, 11 de outubro de 2026, das 13h às 17h
-**Início dos estudos:** segunda-feira, 13 de julho de 2026
-**Janela:** 13 semanas exatas
+**Início dos estudos:** segunda-feira, 27 de julho de 2026
+**Janela:** 11 semanas exatas (77 dias)
+
+> **v3 — replanejado para começar em 27/07.** A v2 partia de 13/07 e tinha 13
+> semanas. Esta versão tem 11. **Nada de conteúdo foi cortado**: o que encolheu
+> foi a folga de revisita e a semana de consolidação, que estava com seis dias
+> só de revisão. A fundação (requisitos, modelagem, SQL, SOLID, ágil) continua
+> inteira, e ficou mais densa — as duas primeiras semanas agora carregam o que
+> antes se espalhava por quatro.
 
 ---
 
@@ -52,193 +59,167 @@ Não existem provas antigas úteis da Dataprev. As de 2011 e 2012 foram do Insti
 
 **Questões todos os dias, sem exceção.** Resolver questão não é revisão, é o método de estudo em si. Teoria pura entra apenas quando a taxa de erro num tópico está alta demais para aprender pelos comentários.
 
-**Nenhum tópico ocupa mais de dois dias consecutivos.** Todo tópico é revisitado dentro de 15 dias; os pesados, dentro de 7.
+**Dois assuntos por dia: um específico e um geral.** Segunda é Português, terça é Inglês, quarta é RLM, quinta é Legislação, sexta é Atualidades. O `./quiz.py --hoje` cobre os dois automaticamente.
+
+**Cada bloco é revisitado.** Nas semanas temáticas (Java, Redes, Segurança, BI, Frontend, Governança) o bloco domina os cinco dias — é assim que se ganha profundidade em bloco novo. O reencontro com o que já passou vem por três vias: as **revisitas** marcadas no plano, os **simulados de domingo** (que sorteiam de tudo) e o `--erradas`, que é repetição espaçada de verdade.
 
 **Filtro de banca travado em FGV.** Cada banca tem uma gramática própria de pegadinha. Treinar com CESPE constrói reflexos que não servem aqui.
 
-**Caderno de erros.** Anotação curta e contínua do que errou e por quê. Nas duas últimas semanas, ele vira o único material de revisão.
+**Caderno de erros.** Anotação curta e contínua do que errou e por quê. Na última semana, ele vira o único material de revisão.
 
 **Volume:** comece com 30 a 40 questões/dia e suba conforme o pique. Não persiga número, persiga a digestão dos comentários. Uma hora com 10 questões bem entendidas vale mais que uma hora com 50 chutadas.
 
-**Domingo é dia de simulado cronometrado.** Sempre. 70 questões, 4 horas, sem consulta.
+**Domingo é dia de simulado cronometrado.** Sempre. 70 questões, 4 horas, sem consulta. São 11 no total — dez aos domingos e o último na quarta da semana da prova.
 
 ---
 
-## 3. Bloco 1 — Fundação (Semanas 1 a 4 | 13/07 a 09/08)
+## 3. Bloco 1 — Fundação (Semanas 1 a 3 | 27/07 a 16/08)
 
-### Semana 1 — 13/07 a 19/07
+As três semanas que sustentam o resto. Eng. de Software e Banco de Dados valem, juntos, mais de um terço do Módulo II — e Programação/Arquitetura entram já apoiados neles.
 
-| Dia | Conteúdo |
-|---|---|
-| Seg 13/07 | **Eng. de Software:** ciclo de vida, processos de software, modelos de desenvolvimento. **Português:** interpretação de texto |
-| Ter 14/07 | **Eng. de Software:** engenharia de requisitos (classificação, processo, elicitação, validação). **Inglês:** reading comprehension (diagnóstico do seu nível) |
-| Qua 15/07 | **Banco de Dados:** modelo conceitual, lógico e físico; entidade-relacionamento. **RLM:** aritmética e problemas |
-| Qui 16/07 | **Banco de Dados:** normalização (1FN a 3FN), integridade referencial. **Legislação:** LGPD, capítulos I e II (texto seco da lei) |
-| Sex 17/07 | **Eng. de Software:** metodologias ágeis — Scrum. **Atualidades e IA:** conceitos de IA, aprendizado de máquina |
-| Sáb 18/07 | Revisão do caderno de erros da semana + questões mistas |
-| **Dom 19/07** | **Simulado 1** (70 questões, cronometrado) + correção comentada |
-
-> **Ação da semana: fazer a inscrição.** Prazo até 06/08, mas não deixe rolar.
-
-### Semana 2 — 20/07 a 26/07
+### Semana 1 — 27/07 a 02/08 · Eng. de Software + Banco de Dados
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 20/07 | **Eng. de Software:** Kanban, XP, Lean. **Português:** sintaxe (período composto, orações) |
-| Ter 21/07 | **Banco de Dados:** SQL — DDL, DML, joins, subconsultas. **Inglês:** verbos e tempos verbais |
-| Qua 22/07 | **Banco de Dados:** SQL avançado, agregações, views. **RLM:** álgebra e proporções |
-| Qui 23/07 | **Programação:** orientação a objetos (classes, herança, polimorfismo, encapsulamento). **Legislação:** LGPD, capítulos III e IV |
-| Sex 24/07 | **Programação:** SOLID. **Atualidades:** modelos generativos e modelos de linguagem |
-| Sáb 25/07 | Revisão do caderno de erros + refazer questões erradas da semana 1 |
-| **Dom 26/07** | **Simulado 2** + correção |
+| Seg 27/07 | **Eng. de Software:** ciclo de vida, processos de software, modelos de desenvolvimento. **Português:** interpretação de texto |
+| Ter 28/07 | **Eng. de Software:** engenharia de requisitos (classificação, processo, elicitação, validação). **Inglês:** reading comprehension (diagnóstico do seu nível) |
+| Qua 29/07 | **Banco de Dados:** modelo conceitual, lógico e físico; entidade-relacionamento. **RLM:** aritmética e problemas |
+| Qui 30/07 | **Banco de Dados:** normalização (1FN a 3FN), integridade referencial. **Legislação:** LGPD, capítulos I e II (texto seco da lei) |
+| Sex 31/07 | **Eng. de Software:** metodologias ágeis — Scrum, Kanban, XP, Lean. **Atualidades e IA:** conceitos de IA, aprendizado de máquina |
+| Sáb 01/08 | Revisão do caderno de erros da semana + questões mistas |
+| **Dom 02/08** | **Simulado 1** (70 questões, cronometrado) + correção comentada |
 
-### Semana 3 — 27/07 a 02/08
-
-| Dia | Conteúdo |
-|---|---|
-| Seg 27/07 | **Programação:** padrões de projeto (criacionais, estruturais, comportamentais). **Português:** morfologia e classes de palavras |
-| Ter 28/07 | **Programação:** GRASP, clean code, análise estática, SonarQube. **Inglês:** pronomes e conectivos |
-| Qua 29/07 | **Banco de Dados:** SGBD, propriedades ACID, NoSQL, bancos em memória. **RLM:** análise combinatória |
-| Qui 30/07 | **Eng. de Software:** testes — unitários, integração, TDD, BDD. **Legislação:** Marco Civil da Internet |
-| Sex 31/07 | **Eng. de Software:** testes automatizados, tipos de teste, gestão do ciclo de vida de testes, RPA. **Atualidades:** ética, governança e privacidade em IA |
-| Sáb 01/08 | Revisão + refazer erradas das semanas 1 e 2 |
-| **Dom 02/08** | **Simulado 3** + correção |
-
-### Semana 4 — 03/08 a 09/08
+### Semana 2 — 03/08 a 09/08 · SQL e Programação
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 03/08 | **Arquitetura de Software:** monolítica x microsserviços, arquitetura em camadas, SOA. **Português:** pontuação e crase |
-| Ter 04/08 | **Arquitetura de Software:** arquitetura hexagonal, API gateway, orquestração, containers. **Inglês:** substantivos e compostos |
-| Qua 05/08 | **Banco de Dados:** revisita (modelagem + SQL). **RLM:** geometria plana |
-| Qui 06/08 | **Programação:** JSON, XML, XSLT, REST, Web Services, Swagger, mensageria. **Legislação:** LAI (Lei 12.527 e decretos) |
-| Sex 07/08 | **Eng. de Software:** revisita (requisitos + ágil). **Atualidades** |
-| Sáb 08/08 | Revisão + caderno de erros acumulado |
-| **Dom 09/08** | **Simulado 4** + correção |
+| Seg 03/08 | **Banco de Dados:** SQL — DDL, DML, joins, subconsultas. **Português:** sintaxe (período composto, orações) |
+| Ter 04/08 | **Banco de Dados:** SQL avançado, agregações, views, controle da transação. **Inglês:** verbos e tempos verbais |
+| Qua 05/08 | **Programação:** orientação a objetos (classes, herança, polimorfismo, encapsulamento). **RLM:** álgebra e proporções |
+| Qui 06/08 | **Programação:** SOLID. **Legislação:** LGPD, capítulos III e IV |
+| Sex 07/08 | **Eng. de Software:** testes — unitários, integração, TDD, BDD. **Atualidades:** modelos generativos e modelos de linguagem |
+| Sáb 08/08 | Revisão + refazer questões erradas da semana 1 |
+| **Dom 09/08** | **Simulado 2** + correção |
 
-> **Checkpoint: inscrição e boleto pagos até 07/08.**
+### Semana 3 — 10/08 a 16/08 · Padrões e Arquitetura
+
+| Dia | Conteúdo |
+|---|---|
+| Seg 10/08 | **Programação:** padrões de projeto (criacionais, estruturais, comportamentais). **Português:** morfologia e classes de palavras |
+| Ter 11/08 | **Programação:** GRASP, clean code, análise estática, SonarQube. **Inglês:** pronomes e conectivos |
+| Qua 12/08 | **Arquitetura:** monolítica × microsserviços, arquitetura em camadas, SOA. **RLM:** análise combinatória |
+| Qui 13/08 | **Arquitetura:** hexagonal, API gateway, containers, REST × SOAP. **Legislação:** Marco Civil da Internet |
+| Sex 14/08 | **Programação:** JSON, XML, XSLT, REST, Web Services, Swagger, mensageria. **Atualidades:** ética, governança e privacidade em IA |
+| Sáb 15/08 | Revisão + caderno de erros acumulado |
+| **Dom 16/08** | **Simulado 3** + correção |
 
 ---
 
-## 4. Bloco 2 — Carga máxima (Semanas 5 a 10 | 10/08 a 20/09)
+## 4. Bloco 2 — Carga máxima (Semanas 4 a 9 | 17/08 a 27/09)
 
-### Semana 5 — 10/08 a 16/08 · Java
+### Semana 4 — 17/08 a 23/08 · Java
 
 Seu maior gargalo, vindo de Python e Node. O objetivo não é virar dev Java, é reconhecer sintaxe, anotações e a responsabilidade de cada peça do ecossistema numa questão de múltipla escolha.
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 10/08 | **Java:** sintaxe, tipos, coleções, tratamento de exceções. **Português** |
-| Ter 11/08 | **Java EE / Jakarta EE:** EJB, servlets, container web. **Inglês** |
-| Qua 12/08 | **JPA e Hibernate:** ORM, mapeamento, ciclo de vida da entidade. **RLM:** estatística básica |
-| Qui 13/08 | **Spring:** Spring Boot, injeção de dependência, anotações. **Legislação:** revisita LGPD |
-| Sex 14/08 | **Spring Cloud, JUnit, JSF, Primefaces.** **Atualidades** |
-| Sáb 15/08 | Revisão pesada de Java + caderno de erros |
-| **Dom 16/08** | **Simulado 5** + correção |
+| Seg 17/08 | **Java:** sintaxe, tipos, coleções, tratamento de exceções. **Português:** pontuação e crase |
+| Ter 18/08 | **Java EE / Jakarta EE:** EJB, servlets, container web. **Inglês:** substantivos e compostos |
+| Qua 19/08 | **JPA e Hibernate:** ORM, mapeamento, ciclo de vida da entidade. **RLM:** estatística básica |
+| Qui 20/08 | **Spring:** Spring Boot, injeção de dependência, anotações. **Legislação:** LAI (Lei 12.527 e decretos) |
+| Sex 21/08 | **Spring Cloud, JUnit, JSF, Primefaces.** **Atualidades:** IA aplicada a negócios e políticas públicas |
+| Sáb 22/08 | Revisão pesada de Java + caderno de erros |
+| **Dom 23/08** | **Simulado 4** + correção |
 
-### Semana 6 — 17/08 a 23/08 · Redes e protocolos
+### Semana 5 — 24/08 a 30/08 · Redes e protocolos
 
 O bloco que o edital do perfil 3 mal menciona e que caiu com 3 questões em 2024.
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 17/08 | **Redes:** modelo OSI, camadas, encapsulamento. **Português** |
-| Ter 18/08 | **Redes:** TCP/IP, protocolos de aplicação (HTTP, DNS, SMTP, FTP, SSH) . **Inglês** |
-| Qua 19/08 | **Protocolos seguros:** HTTPS, SSL/TLS, handshake, certificados. **RLM:** matrizes e problemas matriciais |
-| Qui 20/08 | **Segurança:** criptografia simétrica e assimétrica, hash, assinatura digital. **Legislação:** Lei de Delitos Informáticos |
-| Sex 21/08 | **Segurança de redes:** firewall, VPN, segurança na internet. **Atualidades** |
-| Sáb 22/08 | Revisão + refazer erradas de Java |
-| **Dom 23/08** | **Simulado 6** + correção |
+| Seg 24/08 | **Redes:** modelo OSI, camadas, encapsulamento. **Português:** concordância verbal e nominal |
+| Ter 25/08 | **Redes:** TCP/IP, protocolos de aplicação (HTTP, DNS, SMTP, FTP, SSH). **Inglês:** vocabulário técnico em contexto |
+| Qua 26/08 | **Protocolos seguros:** HTTPS, SSL/TLS, handshake, certificados. **RLM:** matrizes e problemas matriciais |
+| Qui 27/08 | **Segurança:** criptografia simétrica e assimétrica, hash, assinatura digital. **Legislação:** Lei de Delitos Informáticos (12.737) |
+| Sex 28/08 | **Segurança de redes:** firewall, VPN, segurança na internet. **Atualidades:** viés socioambiental |
+| Sáb 29/08 | Revisão + refazer erradas de Java |
+| **Dom 30/08** | **Simulado 5** + correção |
 
-### Semana 7 — 24/08 a 30/08 · Segurança da informação
-
-| Dia | Conteúdo |
-|---|---|
-| Seg 24/08 | **Segurança:** políticas, CID (confidencialidade, integridade, disponibilidade), ISO 27001:2022. **Português** |
-| Ter 25/08 | **Segurança:** ISO 27002:2022, gerência de riscos (ameaça, vulnerabilidade, impacto). **Inglês** |
-| Qua 26/08 | **Segurança:** controle de acesso, OAuth2, SSO. **RLM:** revisita aritmética e álgebra |
-| Qui 27/08 | **Segurança:** OWASP Top 10, SDL, SAST e DAST. **Legislação:** revisita Marco Civil e LAI |
-| Sex 28/08 | **Eng. de Software:** revisita testes + DevOps, DevSecOps, Git. **Atualidades** |
-| Sáb 29/08 | Revisão + caderno de erros |
-| **Dom 30/08** | **Simulado 7** + correção |
-
-### Semana 8 — 31/08 a 06/09 · Business Intelligence
+### Semana 6 — 31/08 a 06/09 · Segurança da informação
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 31/08 | **BI:** conceitos, fundamentos, arquitetura de BI, sistemas de suporte à decisão. **Português** |
-| Ter 01/09 | **BI:** data warehouse, modelagem dimensional, star e snowflake. **Inglês** |
-| Qua 02/09 | **BI:** ETL e ELT, OLAP e suas operações, cubos. **RLM:** análise combinatória e probabilidade |
-| Qui 03/09 | **BI:** data mining, data lake, big data, dados estruturados e não estruturados. **Legislação:** revisita LGPD |
-| Sex 04/09 | **Banco de Dados:** revisita completa (é eixo duplo, precisa de rodadas frequentes). **Atualidades** |
-| Sáb 05/09 | Revisão + refazer erradas de Segurança |
-| **Dom 06/09** | **Simulado 8** + correção |
+| Seg 31/08 | **Segurança:** políticas, CID (confidencialidade, integridade, disponibilidade), ISO 27001:2022. **Português:** regência verbal e nominal |
+| Ter 01/09 | **Segurança:** ISO 27002:2022, gerência de riscos (ameaça, vulnerabilidade, impacto). **Inglês:** voz passiva e modais |
+| Qua 02/09 | **Segurança:** controle de acesso, OAuth2, SSO. **RLM:** geometria plana |
+| Qui 03/09 | **Segurança:** OWASP Top 10 (**2025 vigente e 2021**), SDL, SAST e DAST. **Legislação:** revisita LGPD + a ANPD como agência (Lei 15.352/2026) |
+| Sex 04/09 | **Eng. de Software:** revisita testes + DevOps, DevSecOps, Git. **Atualidades:** tipos de aprendizado e métricas de avaliação |
+| Sáb 05/09 | Revisão + caderno de erros |
+| **Dom 06/09** | **Simulado 6** + correção |
 
-### Semana 9 — 07/09 a 13/09 · Frontend, mobile e web
+### Semana 7 — 07/09 a 13/09 · Business Intelligence
+
+| Dia | Conteúdo |
+|---|---|
+| Seg 07/09 | **BI:** conceitos, fundamentos, arquitetura de BI, sistemas de suporte à decisão. **Português:** coesão, coerência e conectivos |
+| Ter 08/09 | **BI:** data warehouse, modelagem dimensional, star e snowflake. **Inglês:** inferência e ideia principal |
+| Qua 09/09 | **BI:** ETL e ELT, OLAP e suas operações, cubos. **RLM:** probabilidade |
+| Qui 10/09 | **BI:** data mining, data lake, big data, CRISP-DM. **Legislação:** revisita Marco Civil e LAI |
+| Sex 11/09 | **Banco de Dados:** revisita completa (é eixo duplo, precisa de rodadas frequentes). **Atualidades:** interseção IA e ESG |
+| Sáb 12/09 | Revisão + refazer erradas de Segurança |
+| **Dom 13/09** | **Simulado 7** + correção |
+
+### Semana 8 — 14/09 a 20/09 · Frontend, mobile e web
 
 Bloco que em 2024 caiu dentro de "Programação", com 4 questões. Não é periférico.
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 07/09 | **Frontend:** HTML, CSS, Ajax, padrões de frontend. **Português** |
-| Ter 08/09 | **Frontend:** React, Angular, VueJS, SPA e PWA. **Inglês** |
-| Qua 09/09 | **Mobile:** Android e iOS, low-code e no-code. **RLM:** revisita geometria |
-| Qui 10/09 | **UX:** acessibilidade, usabilidade, arquitetura da informação, CMS, portais, workflow. **Legislação:** revisão geral |
-| Sex 11/09 | **Eng. de Software:** revisita (padrões, SOLID, arquitetura). **Atualidades** |
-| Sáb 12/09 | Revisão + caderno de erros |
-| **Dom 13/09** | **Simulado 9** + correção |
+| Seg 14/09 | **Frontend:** HTML, CSS, box model, Flexbox e Grid, Ajax. **Português:** semântica, sinonímia e ambiguidade |
+| Ter 15/09 | **Frontend:** React, Angular, VueJS, SPA e PWA. **Inglês:** false friends e phrasal verbs |
+| Qua 16/09 | **Mobile:** Android e iOS, low-code e no-code. **RLM:** revisita aritmética e álgebra |
+| Qui 17/09 | **UX:** acessibilidade (WCAG), usabilidade, arquitetura da informação, CMS, portais, workflow. **Legislação:** revisão geral |
+| Sex 18/09 | **Eng. de Software:** revisita (requisitos + metodologias ágeis). **Atualidades** |
+| Sáb 19/09 | Revisão + caderno de erros |
+| **Dom 20/09** | **Simulado 8** + correção |
 
-### Semana 10 — 14/09 a 20/09 · Governança e métricas
+### Semana 9 — 21/09 a 27/09 · Governança e métricas
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 14/09 | **Governança:** gerenciamento de projetos (PMBOK), tradicional, híbrido e ágil. **Português** |
-| Ter 15/09 | **Governança:** ITIL v4 — conceitos, estrutura, objetivos. **Inglês** |
-| Qua 16/09 | **Governança:** COBIT 2019, gestão de riscos. **RLM:** simulado só de RLM |
-| Qui 17/09 | **BPMN** e modelagem de processos de negócio + **Métricas:** Ponto de Função, Story Points. **Legislação:** revisão geral |
-| Sex 18/09 | **Arquitetura (revisita):** microsserviços, REST×SOAP, containers, hexagonal, API gateway, transações distribuídas. **Atualidades** |
-| Sáb 19/09 | Revisão + refazer erradas de Java e Redes |
-| **Dom 20/09** | **Simulado 10** + correção |
+| Seg 21/09 | **Governança:** gerenciamento de projetos — PMBOK **6ª e 7ª edições**, tradicional, híbrido e ágil. **Português:** ortografia e acentuação |
+| Ter 22/09 | **Governança:** ITIL 4 — SVS, cadeia de valor, 7 princípios, as 34 práticas. **Inglês:** referência pronominal e coesão |
+| Qua 23/09 | **Governança:** COBIT 2019, gestão de riscos. **RLM:** simulado só de RLM |
+| Qui 24/09 | **BPMN** e modelagem de processos + **Métricas:** Ponto de Função, Story Points. **Legislação:** revisão geral |
+| Sex 25/09 | **Arquitetura (revisita):** nuvem, containers, mensageria, transações distribuídas. **Atualidades** |
+| Sáb 26/09 | Revisão + refazer erradas de Java e Redes |
+| **Dom 27/09** | **Simulado 9** + correção |
 
 ---
 
-## 5. Bloco 3 — Varredura e afiação (Semanas 11 a 13 | 21/09 a 11/10)
+## 5. Bloco 3 — Varredura e reta final (Semanas 10 a 11 | 28/09 a 11/10)
 
-### Semana 11 — 21/09 a 27/09 · Os órfãos do edital
+### Semana 10 — 28/09 a 04/10 · Os órfãos do edital + consolidação
 
-Os itens que ninguém estuda e que a FGV cobra. Foi assim que Blockchain pegou o pessoal em 2024. Passe por todos, mesmo que superficialmente.
-
-| Dia | Conteúdo |
-|---|---|
-| Seg 21/09 | **Blockchain.** **Transações distribuídas.** **Português** |
-| Ter 22/09 | **Arquitetura de computadores** (conceitos básicos), **sistemas distribuídos**. **Inglês** |
-| Qua 23/09 | **Ambientes** internet, extranet, intranet e portal. **Servidores** de aplicação e web. **RLM** |
-| Qui 24/09 | **Conceitos de IA, análise de dados e big data** aplicados a desenvolvimento. **Legislação** |
-| Sex 25/09 | **Padrões de desenvolvimento e reuso.** **UDDI.** **Design de software.** **Atualidades** |
-| Sáb 26/09 | Varredura final: reler o Anexo I do edital item por item e marcar o que ainda é desconhecido |
-| **Dom 27/09** | **Simulado 11** + correção |
-
-### Semana 12 — 28/09 a 04/10 · Consolidação
-
-Semana de dois simulados. Nada de conteúdo novo, salvo buracos identificados.
+Os itens que ninguém estuda e que a FGV cobra. Foi assim que Blockchain pegou o pessoal em 2024. Na Dataprev 2024 esse bloco valeu **10 pontos** (Noções de Informática 2, Arq. de Computadores 1, Sistemas de Informação 1).
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 28/09 | Revisão dos 3 tópicos com pior taxa de acerto histórica |
-| Ter 29/09 | **Eixo duplo:** revisão intensiva de Engenharia de Software |
-| **Qua 30/09** | **Simulado 12** (meio de semana, para treinar resistência) |
-| Qui 01/10 | **Eixo duplo:** revisão intensiva de Banco de Dados e BI |
-| Sex 02/10 | Revisão de Segurança, Redes e Arquitetura |
-| Sáb 03/10 | Caderno de erros integral, do começo ao fim |
-| **Dom 04/10** | **Simulado 13** + correção |
+| Seg 28/09 | **Blockchain. Transações distribuídas. RPA.** **Português:** revisão de interpretação e sintaxe |
+| Ter 29/09 | **Arquitetura de computadores** (UC × ULA, ciclo de instrução, pipeline, hierarquia de memória) e **sistemas de informação** (SPT, SIG, SAD, ERP, CRM, SCM). **Inglês:** revisão de leitura técnica |
+| Qua 30/09 | **Ambientes** internet, extranet, intranet e portal. **Servidores** web × aplicação. **Padrões de reuso, UDDI, design de software.** IA/ML aplicado. **RLM:** lógica proposicional e sequências |
+| Qui 01/10 | Revisão dos 3 tópicos com pior taxa de acerto histórica (`./quiz.py --stats` aponta) |
+| Sex 02/10 | **Eixo duplo:** revisão intensiva de Eng. de Software e Banco de Dados |
+| Sáb 03/10 | Varredura final: reler o Anexo I do edital item por item + caderno de erros integral |
+| **Dom 04/10** | **Simulado 10** + correção |
 
-### Semana 13 — 05/10 a 11/10 · Reta final
+### Semana 11 — 05/10 a 11/10 · Reta final
 
 | Dia | Conteúdo |
 |---|---|
-| Seg 05/10 | Revisão leve: Legislação (LGPD, LAI, Marco Civil, delitos informáticos) lida no texto seco |
-| Ter 06/10 | Revisão leve: Português (sintaxe e pontuação) e Inglês (leitura de textos técnicos) |
-| **Qua 07/10** | **Simulado 14** — o último. Depois disso, nada de simulado |
+| Seg 05/10 | Revisão leve: Segurança, Redes e Arquitetura |
+| Ter 06/10 | Revisão leve: as quatro leis no texto seco (LGPD, LAI, Marco Civil, delitos informáticos) e Inglês (leitura de textos técnicos) |
+| **Qua 07/10** | **Simulado 11** — o último. Depois disso, nada de simulado |
 | Qui 08/10 | Caderno de erros. **Atualidades e IA:** notícias das últimas semanas (essa disciplina recompensa quem está atualizado, não quem estudou em julho) |
 | Sex 09/10 | Lives de revisão de véspera (Estratégia e Gran costumam fazer, e valem questão "de graça"). **Parar de estudar conteúdo novo** |
 | Sáb 10/10 | Descanso. Separar documentos e material. Dormir cedo |
@@ -262,10 +243,10 @@ Semana de dois simulados. Nada de conteúdo novo, salvo buracos identificados.
 
 ## 7. Pendências administrativas
 
+> **Inscrição feita.** ✔
+
 | Item | Prazo |
 |---|---|
-| Inscrição | até 06/08/2026, 16h |
-| Pagamento do boleto (R$ 110,00) | até 07/08/2026 |
 | Colação de grau | dezembro/2026 |
 | Certidão de conclusão (UERN) | logo após colar grau |
 | Solicitação do diploma registrado | quanto antes após a colação |
