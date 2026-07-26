@@ -304,11 +304,12 @@ def _texto_camadas():
 
 
 # Piso das caixas de banca da apostila (veja o item D de avisos_drift).
-# Totais medidos em 26/07/2026, no fim da fase 2 (banco de dados, arquitetura,
-# seguranca e eng-software). As duas `pegadinha` a mais que o piso original
-# (113) sao de conteudo NOVO — gestao de riscos e RUP, secoes que o livro nao
-# tinha. Se voce ACRESCENTAR caixa legitimamente, suba o numero aqui junto.
-PISO_CAIXAS = {"pegadinha": 115, "jacaiu": 20, "comosair": 24}
+# Totais medidos em 26/07/2026, no fim da fase 3 / lote 1 (programacao,
+# padroes+UML e BI). As tres `pegadinha` a mais que o piso original (113) sao de
+# conteudo NOVO — gestao de riscos e RUP (fase 2) e a secao de estruturas de
+# dados do Cap. 9 (fase 3), que o livro nao tinha. Se voce ACRESCENTAR caixa
+# legitimamente, suba o numero aqui junto.
+PISO_CAIXAS = {"pegadinha": 116, "jacaiu": 20, "comosair": 24}
 
 
 def avisos_drift():

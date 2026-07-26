@@ -13,6 +13,14 @@ Capítulo \ref{cap:java}.)
 
 \section{Ecossistema Spring (cai muito)}
 
+Antes do Spring, uma classe de negócio construía as próprias dependências com
+\texttt{new}: o serviço de pedidos decidia, dentro do seu código, qual
+repositório usar. Isso amarrava três coisas de uma vez --- trocar a
+implementação exigia editar e recompilar quem a usava, testar exigia o banco de
+verdade (não havia onde encaixar um dublê), e a configuração ficava espalhada
+por todas as classes. O ecossistema abaixo existe para desfazer esse nó, e
+entender o nó é o que faz a tabela parar de ser decoreba.
+
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{8.6cm}@{}}
 \toprule
@@ -26,6 +34,29 @@ JUnit & framework de testes de unidade \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\begin{conceito}[Inversão de controle e injeção de dependência --- o que o contêiner realmente faz]
+\textbf{Inversão de controle (IoC)} é isto: quem decide \emph{qual}
+implementação usar e \emph{quando} construí-la deixa de ser a classe e passa a
+ser o contêiner. A classe apenas \textbf{declara} do que precisa; recebe pronto
+de fora. O controle foi invertido --- daí o nome.
+
+\textbf{Injeção de dependência (DI)} é a forma concreta de fazer IoC: entregar
+a dependência por \textbf{construtor} (preferida --- a dependência é
+obrigatória e o objeto já nasce válido), por \emph{setter} ou por campo
+anotado. Não são conceitos rivais: DI é o mecanismo, IoC é o princípio.
+
+O ganho é duplo e é o que a banca cobra em cenário: \textbf{trocar a
+implementação} sem tocar em quem a usa, e \textbf{testar} injetando um dublê no
+lugar do recurso real. É o \emph{Dependency Inversion} --- o \textbf{D} do
+SOLID (Capítulo \ref{cap:padroes-uml}) --- executado por um contêiner.
+
+\textbf{Detalhe que separa quem entendeu:} o objeto gerenciado pelo contêiner
+chama-se \textbf{bean}, e o escopo padrão do Spring é \emph{singleton} ---
+\textbf{uma instância por definição de bean, dentro daquele contêiner}. Isso
+\emph{não} é o padrão Singleton do GoF, que faz a própria classe impedir a
+segunda instância. Mesmo nome, garantias diferentes.
+\end{conceito}
 
 \begin{pegadinha}
 Spring Boot \textbf{não exige} config manual de servidor (embute Tomcat) e
@@ -275,6 +306,96 @@ Não é Python, mas cai no mesmo tipo de item (``qual função faz X''):
 \texttt{session\_start}, \texttt{session\_destroy},
 \texttt{session\_regenerate\_id}.
 
+\section{Estruturas de dados}
+\label{sec:estruturas-dados}
+
+A FGV quase nunca pergunta ``o que é uma pilha''. Ela descreve um
+\textbf{requisito} --- ``inserções e remoções frequentes no meio da coleção'',
+``busca por chave em tempo constante'', ``listar em ordem e consultar por
+faixa'' --- e pergunta qual estrutura atende. Por isso decorar a definição não
+resolve: o que se cobra é o \textbf{custo de cada operação}, que é o que a
+escolha da estrutura fixa antes de a primeira linha ser escrita. E é uma
+escolha cara de desfazer, porque todo o código em volta se apoia nela.
+
+\begin{conceito}[Cada estrutura é um contrato de custo]
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{4.2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Estrutura} & \textbf{O que é barato} & \textbf{O que é caro / o preço} \\
+\midrule
+Vetor (\emph{array}) & acesso pela posição em $O(1)$ & inserir ou remover no meio é $O(n)$: os demais elementos \textbf{deslocam} \\
+Lista encadeada & inserir/remover em $O(1)$ --- \textbf{desde que você já esteja no ponto} & chegar ao $i$-ésimo é $O(n)$: percorre desde o início \\
+Duplamente encadeada & remover um nó conhecido em $O(1)$ e percorrer nos dois sentidos & dois ponteiros por nó (memória a mais) \\
+Pilha (LIFO) & empilhar/desempilhar no topo em $O(1)$ & só o topo é acessível \\
+Fila (FIFO) & enfileirar/desenfileirar em $O(1)$ & só as pontas \\
+Tabela hash & busca/inserção/remoção em $O(1)$ \textbf{em média} & \textbf{não guarda ordem}; pior caso $O(n)$ \\
+Árvore balanceada & busca em $O(\log n)$ \textbf{mantendo a ordem} & mais lenta que o hash na busca pontual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Duas frases resolvem a maioria dos itens. A primeira: \textbf{vetor troca
+inserção por acesso, lista encadeada troca acesso por inserção} --- e o $O(1)$
+da lista pressupõe que você já tem o ponteiro; se for preciso \emph{achar} a
+posição, some o $O(n)$ da busca. A segunda: \textbf{hash e árvore não competem
+pela mesma vaga} --- se o enunciado pede \emph{faixa} de valores ou
+\emph{listagem ordenada}, a resposta é a árvore, mesmo que a tabela hash esteja
+entre as alternativas com o seu $O(1)$ sedutor.
+
+\textbf{Busca:} a binária é $O(\log n)$, mas \textbf{exige a coleção já
+ordenada} --- sem essa condição ela não se aplica. Em arquivo desordenado e sem
+índice, a única saída é a \textbf{busca sequencial}, $O(n)$.
+\end{conceito}
+
+\textbf{Exemplo trabalhado --- por que o hash degrada.} Uma tabela hash com
+$m$ posições guardando $n$ chaves tem \textbf{fator de carga}
+$\alpha = n/m$. Duas chaves diferentes podem cair na mesma posição (colisão), e
+há duas famílias de tratamento:
+
+\begin{itemize}
+\item \textbf{Encadeamento separado:} cada posição aponta para uma lista. As
+chaves moram \textbf{fora} do vetor, então $\alpha$ \textbf{pode passar de 1};
+o custo médio da busca cresce com o comprimento da lista.
+\item \textbf{Endereçamento aberto:} a chave mora \textbf{dentro} do próprio
+vetor, numa posição livre achada por \emph{sondagem}. Como cada posição
+comporta uma chave, $\alpha \le 1$ \textbf{sempre} --- é o que limita o fator
+de carga a 1.
+\end{itemize}
+
+Agora o caso concreto: endereçamento aberto com \textbf{sondagem linear}
+(``ocupado? tente a próxima posição'') sob ocupação alta, $\alpha \approx
+0{,}8$. Só uma posição em cinco está livre, e as ocupadas se juntam em
+\textbf{blocos contíguos}. Uma chave que caia em \emph{qualquer} ponto de um
+bloco tem de caminhar até o fim dele --- e, ao se acomodar ali, \textbf{aumenta
+o bloco}, o que torna mais provável que a próxima chave também caia nele. Esse
+laço de realimentação é o \textbf{agrupamento primário}
+(\emph{primary clustering}), e é ele que empurra a busca do $O(1)$ médio para
+perto do $O(n)$. Remédios: sondagem quadrática ou hash duplo (espalham a
+sequência de tentativas) e, sobretudo, \textbf{redimensionar a tabela} quando
+$\alpha$ passa do limiar --- é o $\alpha$, não o número de chaves, que governa
+o desempenho.
+
+Repare que a mesma lógica reaparece em Banco de Dados (Capítulo
+\ref{cap:banco-dados}): o índice hash do SGBD encontra a linha por igualdade em
+tempo constante e é inútil para \texttt{BETWEEN} ou \texttt{ORDER BY} ---
+exatamente porque hash não preserva ordem. Estrutura de dados e índice são a
+mesma discussão, em dois níveis.
+
+\begin{pegadinha}
+A troca de custo é o desenho padrão: a alternativa afirma acesso $O(1)$ ao
+$i$-ésimo elemento da \textbf{lista encadeada} (não existe --- o $O(1)$ é da
+inserção com o ponteiro em mãos) ou inserção $O(1)$ no meio do \textbf{vetor}
+(esquece o deslocamento). No hash, o absoluto denuncia: ``a tabela hash garante
+busca em tempo constante'' sem o \textbf{em média} --- e a correta é justamente
+a que traz a ressalva. Cenário de \textbf{consulta por faixa} com hash entre as
+opções: é árvore balanceada. Busca binária oferecida sem a coleção estar
+\textbf{ordenada}: não se aplica. E o par que a banca inverte no fim:
+encadeamento separado (o $\alpha$ pode passar de 1) $\times$ endereçamento
+aberto (o $\alpha$ nunca passa de 1). Pilha $\times$ fila costuma vir com
+\textbf{dois cenários no mesmo item} --- responda um de cada vez, LIFO e FIFO,
+antes de olhar as alternativas.
+\end{pegadinha}
+
 \section{Leitura ativa de código --- técnica transversal}
 \label{sec:leitura-ativa-programacao}
 
@@ -299,6 +420,44 @@ API/linguagem faz cópia.
 \item \textbf{Confirme contra a assinatura real da função/método}, não
 contra o que você acha que ela deveria fazer.
 \end{enumerate}
+\end{conceito}
+
+\begin{conceito}[Quatro fatos da linguagem que decidem a resposta antes do código]
+Simular a execução só funciona se você souber as regras do jogo. Estas quatro
+respondem à maior parte dos itens de leitura de código:
+
+\begin{itemize}
+\item \textbf{Compilada $\times$ interpretada $\times$ bytecode.} Compilada
+traduz para código de máquina \emph{antes} de rodar --- o erro de tipo aparece
+na compilação. Interpretada executa comando a comando --- o mesmo erro só
+aparece \textbf{na linha em que a execução chega}. O \textbf{Java é o
+meio-termo} que a banca gosta de cobrar: compila para \textbf{bytecode}
+(\texttt{.class}), e a \textbf{JVM} é quem executa, compilando os trechos
+quentes para código nativo em tempo de execução (JIT).
+\item \textbf{Passagem por valor $\times$ por referência.} Em Java e em Python
+o que se passa é sempre o \textbf{valor da referência}. Consequência prática:
+\textbf{reatribuir} o parâmetro dentro da função \emph{não} muda a variável de
+quem chamou; \textbf{mutar} o objeto apontado muda para os dois. Diante do
+código, a pergunta certa não é ``é por valor ou por referência?'', e sim
+\textbf{esta linha reatribui ou muta?}
+\item \textbf{Imutável $\times$ mutável.} Em Python, \texttt{str},
+\texttt{int} e \texttt{tuple} são imutáveis; \texttt{list}, \texttt{dict} e
+\texttt{set} são mutáveis. O que a banca cobra é a consequência: só objeto
+imutável (portanto \emph{hashável}) serve de \textbf{chave de dicionário} ou
+elemento de \texttt{set} --- \textbf{tupla pode, lista não}. Em Java a mesma
+ideia aparece na \texttt{String} imutável, razão de existir o
+\texttt{StringBuilder} (Capítulo \ref{cap:java}).
+\item \textbf{Duck typing.} O que importa é o objeto \emph{responder} ao
+método, não a que classe ele pertence --- a compatibilidade é verificada no
+uso, não na declaração. É por isso que Python dispensa a interface explícita
+que o Java exige.
+\end{itemize}
+
+\textbf{Aviso de homônimo:} o \emph{decorator} do Python (a sintaxe
+\texttt{@}) é uma função que recebe outra função e devolve uma versão
+embrulhada dela --- metaprogramação da linguagem. \textbf{Não} é o padrão
+Decorator do GoF (Capítulo \ref{cap:padroes-uml}), que é composição de objetos.
+Mesmo nome, assuntos diferentes.
 \end{conceito}
 
 \textbf{Exemplo resolvido (NumPy --- referência $\times$ cópia):}

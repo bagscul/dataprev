@@ -15,6 +15,46 @@ Conjunto de conceitos e ferramentas para transformar \textbf{dado} em
 \textbf{informação} e apoiar a \textbf{tomada de decisão}. Pirâmide clássica:
 dado $\to$ informação $\to$ conhecimento $\to$ inteligência/sabedoria.
 
+A pergunta que fundou o assunto é mais concreta: \emph{por que não rodar o
+relatório direto no banco do sistema?} Por três motivos que aparecem, um a um,
+nos enunciados de cenário. Primeiro, \textbf{concorrência}: uma consulta que
+varre cinco anos de vendas segura recursos que o sistema transacional precisa
+para atender o caixa \emph{agora}. Segundo, \textbf{história}: o banco
+transacional guarda o estado \emph{atual} --- ele sabe onde o cliente mora, não
+onde morava quando comprou. Terceiro, e o mais caro, \textbf{integração}: os
+dados estão em vários sistemas que discordam entre si (a mesma unidade com dois
+códigos, a mesma data em dois formatos). O BI existe para resolver os três de
+uma vez, e é isso que o resto do capítulo descreve.
+
+\begin{conceito}[A arquitetura de BI --- o caminho do dado, ponta a ponta]
+\begin{center}
+fontes (OLTP, planilhas, externas) $\to$ \textbf{extração} $\to$
+\emph{staging} $\to$ \textbf{transformação} $\to$ \textbf{DW} (e seus
+\emph{data marts}) $\to$ \textbf{OLAP/cubo} $\to$ visualização
+\end{center}
+
+Cada etapa existe por um motivo, e é o motivo que a banca cobra:
+
+\begin{itemize}
+\item A \textbf{extração} lê das fontes sem incomodá-las mais do que o
+necessário (janela de carga, leitura incremental do que mudou).
+\item A \emph{\textbf{staging area}} é o pouso intermediário: dado bruto já
+fora da fonte, ainda não tratado. Existe para que a fonte seja liberada
+depressa e para que o tratamento possa ser refeito sem voltar a ela.
+\item A \textbf{transformação} é onde a integração acontece --- é a etapa cara,
+não a cópia.
+\item O \textbf{DW} guarda o resultado: integrado, histórico e
+\textbf{não volátil} (não se atualiza um fato passado; acrescenta-se).
+\item \textbf{OLAP e visualização} são \textbf{consumo}. Nenhum dos dois
+transforma dado --- quem transforma é o ETL, e essa separação é a resposta de
+vários itens.
+\end{itemize}
+
+O \textbf{data mart} é o recorte do DW por assunto ou departamento (vendas,
+RH). Ele não é uma cópia menor por economia: é a entrega no vocabulário de quem
+vai usar.
+\end{conceito}
+
 \section{Data Warehouse (DW)}
 
 Repositório central de dados \textbf{integrados, históricos e orientados a
@@ -39,6 +79,31 @@ estruturado. Lakehouse é o que combina os dois --- não é sinônimo de nenhum
 dos dois isoladamente.
 \end{pegadinha}
 
+\subsection{Inmon $\times$ Kimball --- por onde se começa}
+
+As duas escolas discordam sobre \textbf{qual peça se constrói primeiro}, e a
+discordância tem consequência prática.
+
+\begin{conceito}[Top-down $\times$ bottom-up]
+\textbf{Inmon (top-down).} Constrói-se primeiro o \textbf{DW corporativo},
+normalizado (até a 3FN), como fonte única de verdade da organização; os
+\textbf{data marts} dimensionais são \emph{derivados} dele. Integra melhor e
+resiste melhor à mudança, mas o primeiro relatório demora --- a área usuária
+espera o modelo corporativo ficar de pé.
+
+\textbf{Kimball (bottom-up).} Começa-se por um \textbf{data mart dimensional}
+de um processo de negócio (vendas, por exemplo), já em esquema estrela, e vão
+se acrescentando outros. Entrega valor cedo. A integração não vem do modelo
+central: vem das \textbf{dimensões conformadas} --- a mesma dimensão
+\texttt{Produto}, com a mesma chave e o mesmo significado, compartilhada por
+todos os marts (a \emph{bus architecture}).
+
+\textbf{O risco de cada um é o espelho do outro.} Em Inmon, o projeto longo que
+nunca chega ao usuário; em Kimball, o \textbf{silo}: marts que não conversam
+porque as dimensões não foram conformadas. Por isso ``dimensão conformada''
+não é detalhe de vocabulário --- é a peça que faz o bottom-up funcionar.
+\end{conceito}
+
 \section{ETL --- a ponte para o DW}
 
 \textbf{Extract $\to$ Transform $\to$ Load.} Objetivo principal: extrair de
@@ -46,6 +111,41 @@ várias fontes, transformar em formato padronizado e consistente, e carregar
 no DW. \textbf{Não é} ``criar dashboards'' nem ``treinar modelo de ML'' ---
 isso vem depois, como consumo do dado já carregado. ETL $\times$ ELT: ver
 Capítulo \ref{cap:banco-dados} (a posição do T é a mesma pegadinha).
+
+\begin{conceito}[O que acontece em cada fase --- e por que a FGV pergunta isso]
+O item típico descreve uma tarefa e pergunta \textbf{a que fase ela pertence}.
+Como quase tudo o que é interessante mora no \emph{T}, o critério tem de ser
+mais fino que ``transformar é mudar o dado''.
+
+\begin{center}
+\begin{tabular}{@{}p{2.1cm}p{9.6cm}@{}}
+\toprule
+\textbf{Fase} & \textbf{O que é dela} \\
+\midrule
+\textbf{Extract} & ler das fontes (banco, arquivo, API), tipicamente só o que
+mudou desde a última carga. \textbf{Sem regra de negócio} --- ela lê, não julga \\
+\textbf{Transform} & \textbf{limpeza} (nulos, formatos, valores inválidos),
+\textbf{padronização/conformidade} (o de-para que faz dois sistemas falarem a
+mesma língua), \textbf{deduplicação}, \textbf{junção} de fontes diferentes,
+\textbf{derivação} de medidas calculadas, geração da \textbf{chave
+\emph{surrogate}} e aplicação da regra de SCD \\
+\textbf{Load} & gravar no destino, \textbf{dimensões antes da fato} (a fato
+referencia as chaves das dimensões), carga completa $\times$ incremental,
+índices e agregados no fim \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A regra prática:} se a tarefa \emph{decide} alguma coisa sobre o
+conteúdo --- padronizar, deduplicar, casar duas fontes, calcular ---, é
+\textbf{Transform}. Ler é Extract; gravar é Load.
+
+\textbf{ELT} inverte a ordem por um motivo econômico: quando o destino tem
+poder de processamento de sobra (nuvem, \emph{lakehouse}), carrega-se o bruto e
+transforma-se \textbf{dentro} dele, com SQL. Não é uma versão moderna do ETL
+que torne a outra obsoleta --- é a mesma decisão de onde gastar o
+processamento.
+\end{conceito}
 
 \section{OLAP e modelagem dimensional}
 
@@ -116,6 +216,49 @@ normalizada em várias tabelas (isso é floco de neve/Snowflake), ou diz que
 Snowflake é o padrão recomendado por Kimball (é o Star). Também drill-down
 $\leftrightarrow$ roll-up e OLAP $\leftrightarrow$ OLTP invertidos.
 \end{pegadinha}
+
+\textbf{Exemplo trabalhado --- montando o esquema estrela de vendas.} O projeto
+dimensional tem uma ordem, e ela é sempre a mesma:
+
+\begin{enumerate}
+\item \textbf{Escolher o processo de negócio:} a venda no varejo.
+\item \textbf{Declarar o grão:} ``\textbf{uma linha por item de um pedido}''.
+É a decisão que governa todo o resto --- veja a seção seguinte.
+\item \textbf{Escolher as dimensões:} tudo o que responde a ``por qual
+recorte eu quero olhar?'' --- \texttt{Tempo}, \texttt{Produto}, \texttt{Loja},
+\texttt{Cliente}.
+\item \textbf{Escolher as medidas:} o que é \emph{numérico e somável} no grão
+declarado --- \texttt{quantidade}, \texttt{valor\_unitário},
+\texttt{valor\_total}, \texttt{desconto}.
+\end{enumerate}
+
+O resultado é uma \textbf{tabela fato} que contém \textbf{só duas coisas}: as
+\textbf{chaves estrangeiras} para as dimensões e as \textbf{medidas
+numéricas}. Nada de texto descritivo --- o nome do produto mora na dimensão
+\texttt{Produto}, não na fato. A única exceção com nome próprio é a
+\textbf{dimensão degenerada}: o \texttt{número\_do\_pedido} fica na fato,
+porque é um identificador que não tem atributo nenhum para formar dimensão.
+
+Agora a diferença que a banca mede em \emph{joins}. Para responder ``vendas do
+\textbf{departamento} X no trimestre'':
+
+\begin{center}
+\begin{tabular}{@{}p{2.5cm}p{9.2cm}@{}}
+\toprule
+\textbf{Estrela} & \texttt{Produto} guarda categoria e departamento como
+colunas dela mesma (desnormalizada): \textbf{2 joins} --- fato $\to$ Produto,
+fato $\to$ Tempo \\
+\textbf{Floco de neve} & \texttt{Produto} $\to$ \texttt{Categoria} $\to$
+\texttt{Departamento}, cada uma em sua tabela: \textbf{4 joins} para a mesma
+resposta \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+É daí que sai tudo o mais: menos \emph{joins} $\to$ consulta mais rápida $\to$
+esquema estrela como padrão do BI. O floco de neve troca velocidade por
+economia de espaço e por integridade da hierarquia --- uma escolha legítima,
+só não a padrão.
 
 \subsection{Granularidade (o grão da fato)}
 

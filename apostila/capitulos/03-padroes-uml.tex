@@ -20,6 +20,44 @@ quê'') de cada padrão. O catálogo GoF (\emph{Gang of Four}) reúne
 \textbf{estruturais} (7) e \textbf{comportamentais} (11). O número e a
 classificação em três grupos são cobrados diretamente.
 
+Antes do catálogo, o essencial: um padrão de projeto \textbf{não é código
+pronto, nem biblioteca, nem framework}. É a descrição de uma solução que já foi
+reinventada tantas vezes que virou vocabulário --- e, como todo verbete, tem
+quatro partes: um \textbf{nome}, o \textbf{problema} em que ele se aplica, a
+\textbf{solução} em termos de classes e objetos, e as \textbf{consequências}
+(porque toda escolha tem preço). Quem lê só a solução decora estrutura; quem lê
+o problema reconhece o gatilho no enunciado.
+
+Isso também explica o anti-padrão inverso: aplicar padrão \emph{sem} ter o
+problema é \emph{over-engineering} --- uma fábrica abstrata para criar um único
+tipo de objeto acrescenta duas classes e nenhuma flexibilidade.
+
+\begin{conceito}[O que os 23 padrões têm em comum --- e o critério das três famílias]
+Quase todo padrão do catálogo faz a \emph{mesma} coisa por dentro:
+\textbf{isola o que varia atrás de uma interface estável} e prefere
+\textbf{composição a herança} para poder trocar essa parte em tempo de
+execução. Guarde essa frase: ela é o fio que liga Strategy, State, Bridge,
+Decorator, Abstract Factory e quase todos os outros.
+
+O que muda de família para família é \textbf{o que} está sendo isolado:
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{4cm}p{5cm}@{}}
+\toprule
+\textbf{Família} & \textbf{Isola\ldots} & \textbf{Pergunta que ela responde} \\
+\midrule
+Criacionais (5) & \emph{qual} objeto se instancia, e quando & ``como criar isto sem amarrar o código à classe concreta?'' \\
+Estruturais (7) & \emph{como} as peças se encaixam & ``como compor/embrulhar objetos para obter uma interface ou um comportamento?'' \\
+Comportamentais (11) & \emph{quem} conversa com quem, e qual algoritmo roda & ``como distribuir a responsabilidade da interação em tempo de execução?'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Na dúvida entre duas alternativas, classifique primeiro pela família: se o
+enunciado fala em \textbf{criar} algo, os sete estruturais e os onze
+comportamentais caem fora de uma vez.
+\end{conceito}
+
 \subsection{Criacionais (como criar objetos)}
 
 \begin{center}
@@ -99,6 +137,41 @@ Mediator (que centraliza a comunicação, não notifica mudança de estado).
 lista de quem conta de cabeça, e é justamente aí que a FGV pergunta o número.
 \end{pegadinha}
 
+\textbf{Exemplo trabalhado --- do \texttt{if} gigante ao Strategy.} O cálculo
+do frete começa assim, dentro do serviço de pedidos:
+
+\begin{center}
+\begin{tabular}{@{}p{5.6cm}p{6cm}@{}}
+\toprule
+\textbf{Antes} & \textbf{Depois} \\
+\midrule
+\texttt{if tipo == "sedex" \{\ldots\}} & interface \texttt{CalculoFrete} com um
+método \texttt{calcular(pedido)} \\
+\texttt{else if tipo == "pac" \{\ldots\}} & uma classe por regra:
+\texttt{FreteSedex}, \texttt{FretePac}, \texttt{FreteRetirada} \\
+\texttt{else if tipo == "retirada" \{\ldots\}} & o serviço \textbf{recebe} a
+estratégia pronta e só chama \texttt{calcular} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O que se ganhou tem nome: acrescentar a transportadora nova passou a ser
+\textbf{criar uma classe}, não \textbf{editar} o método existente --- aberto à
+extensão, fechado à modificação, que é o \emph{Open/Closed} do SOLID. E o
+serviço deixou de conhecer as regras concretas: ele depende só da interface, o
+que é o \emph{Dependency Inversion} do mesmo conjunto. Repare que o padrão não
+eliminou a decisão de qual regra usar; ele a \textbf{moveu para fora}, para
+quem monta o objeto.
+
+Guarde o contraste, porque é a pegadinha do bloco: \textbf{Strategy e State têm
+a mesma estrutura} --- um objeto delegando a outro por uma interface. O que
+muda é quem decide a troca. No Strategy, \textbf{quem escolhe é o cliente}, de
+fora, e as estratégias não sabem umas das outras. No State, \textbf{quem troca
+é o próprio objeto} conforme seu estado interno, e os estados conhecem a
+transição seguinte (``pedido pago passa a enviado''). Se o enunciado descreve
+um ciclo de vida com transições, é State; se descreve alternativas
+intercambiáveis para a mesma tarefa, é Strategy.
+
 \subsection{GRASP}
 
 O edital cita GRASP no Perfil 2, mas o conceito permeia o Perfil 3. São
@@ -106,6 +179,17 @@ princípios (não ``caixas de código'') para decidir \textbf{qual classe recebe
 qual responsabilidade}: Information Expert, Creator, Controller, Low
 Coupling, High Cohesion, Polymorphism, Pure Fabrication, Indirection,
 Protected Variations.
+
+Dois deles respondem sozinhos quase toda questão de ``a qual classe cabe esta
+responsabilidade''. \textbf{Information Expert:} a responsabilidade vai para a
+classe que \textbf{tem os dados} necessários para cumpri-la --- quem calcula o
+total do pedido é o \texttt{Pedido}, que conhece os itens, não um
+\texttt{CalculadoraDeTotais} que precisaria pedir tudo emprestado.
+\textbf{Creator:} quem cria o objeto é quem o \textbf{agrega, contém ou usa de
+perto} --- o \texttt{Pedido} cria o \texttt{ItemDePedido}. Os dois existem pelo
+mesmo motivo: manter juntos o dado e o comportamento que o usa é o que produz
+\textbf{alta coesão} e \textbf{baixo acoplamento}, que são eles próprios
+princípios da lista.
 
 \subsection{Padrões arquiteturais (não são GoF, mas caem)}
 
@@ -203,6 +287,15 @@ de rede, e o MVC, que só aparece descrito sem ser nomeado. Rode
 \section{UML}
 \label{sec:uml}
 
+A UML é uma \textbf{linguagem de notação, não um método}: ela padroniza o
+desenho, não diz quando desenhar --- isso é papel do processo (RUP, Scrum;
+Capítulo \ref{cap:eng-software}). O problema que ela resolve é banal e caro:
+antes dela, cada empresa tinha a própria simbologia, e o mesmo losango
+significava coisas diferentes em dois documentos da mesma sala. Padronizar a
+notação é o que permite discutir projeto sem discutir desenho. A especificação
+vigente da OMG é a \textbf{2.5.1}, e a FGV costuma imprimir esse número no
+enunciado --- é sinal de que o item vai cobrar a semântica exata de um símbolo.
+
 \subsection{Os 14 diagramas em 2 famílias}
 
 \begin{center}
@@ -245,6 +338,40 @@ Realização & implementa interface & tracejada + triângulo \\
 (muitos). \textbf{Visibilidade:} \texttt{+} público, \texttt{-} privado,
 \texttt{\#} protegido, \texttt{\~{}} pacote.
 
+\begin{conceito}[Ler a caixa e a linha --- a sintaxe que a FGV cobra de perto]
+A classe tem \textbf{três compartimentos}: nome, atributos, operações. E o
+atributo tem uma forma completa, que é onde mora o item de leitura:
+
+\begin{center}
+\texttt{- status : String [1] = "aberto"}
+\end{center}
+
+\noindent visibilidade, nome, tipo, multiplicidade e \textbf{valor padrão} ---
+o valor que a instância assume quando ninguém informa outro na criação.
+
+Do lado da linha, duas notações que aparecem como distrator justamente por
+serem pouco lidas:
+
+\begin{itemize}
+\item \textbf{Extremidade de associação $\times$ atributo.} Cada ponta da
+associação tem papel, multiplicidade e navegabilidade --- e uma ponta navegável
+\textbf{pode ser representada como atributo} da classe do outro lado. ``Pedido
+associa-se a 1 Cliente'' e ``Pedido tem o atributo \texttt{cliente: Cliente}''
+dizem a \emph{mesma} coisa em UML; são duas notações para um modelo só, não
+duas modelagens diferentes.
+\item \textbf{Associação qualificada.} Um qualificador (uma chave, desenhado
+num retângulo na ponta) \textbf{particiona} o conjunto do outro lado e
+tipicamente derruba a multiplicidade de \texttt{*} para \texttt{0..1}: dado um
+banco \emph{e} um número de conta, chega-se a no máximo uma conta. É um
+índice, não um todo-parte --- e é por isso que ela funciona como distrator de
+agregação.
+\end{itemize}
+
+\textbf{Vocabulário da especificação:} o que este capítulo chama de composição
+a UML chama de \textbf{agregação composta} (o losango cheio). Se a alternativa
+usar esse nome, é composição --- não é um terceiro tipo de relacionamento.
+\end{conceito}
+
 \begin{pegadinha}
 Pegadinha central do bloco: \textbf{agregação} (losango vazio, parte
 independente) $\times$ \textbf{composição} (losango cheio, parte dependente).
@@ -271,6 +398,42 @@ Ator (boneco), caso de uso (elipse), fronteira do sistema.
 Linhas de vida (objetos no topo), mensagens trocadas na ordem temporal (de
 cima para baixo), barras de ativação. Mensagem síncrona (seta cheia) $\times$
 assíncrona (seta aberta) $\times$ retorno (tracejada).
+
+\begin{conceito}[Os quatro diagramas de interação --- onde a FGV monta os distratores]
+Quatro diagramas mostram \textbf{objetos trocando mensagens}. Como todos
+``mostram interação'', a banca usa os outros três como distratores do de
+sequência --- e a diferença não é o conteúdo, é \textbf{o que cada um
+enfatiza}:
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{4.2cm}p{4.2cm}@{}}
+\toprule
+\textbf{Diagrama} & \textbf{Enfatiza} & \textbf{Como se lê a ordem} \\
+\midrule
+\textbf{Sequência} & a \textbf{ordem cronológica} das mensagens & pela posição
+vertical: de cima para baixo \\
+\textbf{Comunicação} & a \textbf{estrutura de ligações} entre os objetos (quem
+está conectado a quem) & pela \textbf{numeração} das mensagens (1, 1.1,
+1.2) --- não há eixo de tempo \\
+\textbf{Tempo} (\emph{timing}) & a \textbf{mudança de estado} de cada
+participante ao longo de uma \textbf{escala de tempo explícita} & pelo eixo
+horizontal de tempo; usado quando o requisito é de duração/tempo real \\
+\textbf{Visão geral de interação} & como \textbf{vários cenários} se encadeiam
+& é um diagrama de atividades cujos nós são interações \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A regra de decisão cabe numa linha: pediu a \textbf{ordem exata em que as
+mensagens acontecem}, é \textbf{sequência}. Sequência e comunicação são
+\textbf{semanticamente equivalentes} (dá para converter um no outro sem perder
+informação) --- o que muda é a ênfase, e é justamente aí que a alternativa
+``comunicação'' parece defensável e não é, quando o enunciado fala em
+cronologia.
+
+Não confunda com \textbf{atividade}: lá não há troca de mensagens entre
+participantes, há \textbf{fluxo de trabalho} --- ações, decisões e paralelismo.
+\end{conceito}
 
 \subsection{Atividade e Estado}
 
