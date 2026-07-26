@@ -17,6 +17,18 @@ saída. Não dá para decorar só conceito; treine ler snippet.}
 \texttt{nav}, \texttt{main}, \texttt{article}, \texttt{section},
 \texttt{footer}).
 
+Vale entender por que a semântica é assunto e não decoração. Visualmente,
+\texttt{<div class="menu">} e \texttt{<nav>} podem ficar idênticos --- a
+diferença é que só o segundo \textbf{informa o papel} daquele bloco. Quem lê
+esse papel são programas: o leitor de tela, que anuncia ``navegação'' e permite
+saltar direto para ela; o buscador, que pesa o conteúdo do \texttt{<main>}
+diferente do do \texttt{<footer>}; e o próprio navegador, que já entrega
+comportamento de teclado pronto em elementos nativos. É daí que sai a
+\textbf{regra número um do ARIA}, mais adiante neste capítulo: se existe tag
+nativa com a semântica certa, ela vence o atributo acrescentado depois. A
+separação clássica do bloco --- \textbf{HTML estrutura, CSS apresenta, JS
+comporta} --- é a mesma ideia de baixo acoplamento aplicada à página.
+
 \textbf{CSS:} apresentação. \textbf{Box model:} content $\to$
 \textbf{padding} (interno, dentro da borda) $\to$ \textbf{border} $\to$
 \textbf{margin} (externo, fora da borda).
@@ -90,6 +102,42 @@ interceptar requisições em conexão não cifrada seria um vetor de ataque. O
 \textbf{manifest} (\texttt{manifest.json}) é o outro pilar: nome, ícones e
 modo de exibição que permitem a \textbf{instalação}.
 
+\begin{conceito}[Onde o HTML é montado: CSR, SSR, SSG e a \emph{hydration}]
+A SPA resolveu a navegação e criou um problema novo: se o HTML é montado pelo
+JavaScript no navegador, o servidor entrega uma página \textbf{vazia} e o
+usuário espera o \emph{bundle} baixar e executar antes de ver qualquer coisa.
+Daí as três estratégias, que se distinguem por \textbf{onde} e \textbf{quando} o
+HTML é gerado:
+
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{3.5cm}p{4.6cm}@{}}
+\toprule
+\textbf{Estratégia} & \textbf{HTML é gerado\ldots} & \textbf{O que se ganha e o que se paga} \\
+\midrule
+\textbf{CSR} (client-side) & no \textbf{navegador}, a cada tela & servidor
+leve e navegação instantânea depois; \textbf{primeira} pintura lenta e
+indexação frágil \\
+\textbf{SSR} (server-side) & no \textbf{servidor}, a cada requisição &
+conteúdo visível e indexável de imediato; custo de CPU por requisição \\
+\textbf{SSG} (estático) & no \textbf{build}, uma vez & o mais rápido e barato
+de servir; conteúdo só muda com nova publicação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{\emph{Hydration} é o que costura SSR e SPA.} O servidor manda HTML já
+pintado, mas HTML não tem comportamento: quando o JavaScript chega, ele
+``hidrata'' aquela marcação --- reassocia os componentes, o estado e os
+ouvintes de evento. A consequência é o detalhe que a banca gosta: existe uma
+janela em que a página \textbf{parece pronta e não responde ao clique}, porque
+foi pintada mas ainda não hidratada.
+
+\textbf{Não confunda com a PWA.} SSR/CSR decidem \emph{quem monta o HTML};
+Service Worker e \emph{cache} offline decidem \emph{o que acontece quando não
+há rede}. São eixos independentes --- uma SPA renderizada no cliente pode ser
+PWA, e uma página com SSR pode não ser.
+\end{conceito}
+
 \begin{pegadinha}
 \textbf{Service Worker é da PWA}, não requisito de SPA --- a alternativa que
 dá Service Worker à SPA é falsa (caiu exatamente assim na Dataprev 2024).
@@ -152,6 +200,42 @@ conteúdo.
 \item \textbf{CMS} (sistema de gestão de conteúdo): cria/gerencia conteúdo
 sem código (WordPress, portais corporativos, workflow editorial).
 \end{itemize}
+
+\begin{conceito}[UX $\times$ usabilidade $\times$ acessibilidade --- três recortes, não sinônimos]
+Os três aparecem juntos no edital e a FGV cobra exatamente a fronteira entre
+eles:
+
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{4cm}p{4.5cm}@{}}
+\toprule
+\textbf{Recorte} & \textbf{Pergunta que responde} & \textbf{Como se mede} \\
+\midrule
+\textbf{Usabilidade} & o usuário \emph{típico} consegue cumprir a tarefa com
+facilidade? & eficácia, eficiência e satisfação \textbf{em um contexto de uso}
+declarado \\
+\textbf{Acessibilidade} & \emph{pessoas com deficiência} conseguem usar? &
+conformidade com critérios objetivos (WCAG A/AA/AAA) \\
+\textbf{UX} & como é a \emph{experiência inteira}, inclusive antes e depois do
+uso? & percepção, expectativa, confiança --- mais ampla e menos mensurável \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Duas relações que resolvem o item. Primeira: \textbf{UX contém} usabilidade,
+que é um de seus atributos --- não são a mesma coisa, e a \textbf{UI} é apenas
+a camada visual pela qual a experiência acontece. Segunda, a que a banca
+prefere: \textbf{acessibilidade não é um caso particular de usabilidade}. Um
+sistema pode ser cômodo para o usuário sem deficiência e \emph{impossível} para
+quem navega por leitor de tela; e um sistema formalmente acessível pode ser
+péssimo de usar. Elas se cruzam, não se contêm.
+
+A diferença de \textbf{natureza} é o resto: usabilidade é objetivo de
+qualidade, e acessibilidade é \textbf{requisito com base normativa} --- WCAG
+(W3C) como critério técnico, \textbf{eMAG} como modelo do governo brasileiro
+derivado dele, e a Lei Brasileira de Inclusão como obrigação legal em serviço
+público. Por isso ``deixamos a acessibilidade para a próxima
+\emph{sprint}, quando houver demanda'' é sempre a alternativa errada.
+\end{conceito}
 
 \begin{comosair}[WCAG na prática]
 Princípio \textbf{operável}: preferir rótulos/labels bem associados aos
