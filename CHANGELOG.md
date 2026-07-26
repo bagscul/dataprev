@@ -2,6 +2,128 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-26 — auditoria do repositório inteiro: dois defeitos de importação e o piloto da apostila que ENSINA
+
+Primeira rodada de uma auditoria do repo inteiro, com o plano aprovado item a
+item. Três frentes: destravar questão real que estava fora do sorteio por
+engano, consertar um casamento de string que sujava um bloco, e começar a
+transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
+**432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
+**735 → 768**. Apostila: **122 → 127 páginas**.
+
+### 45 questões reais estavam trancadas por engano
+
+O `requer_imagem` tirava 51 questões do sorteio. Auditando uma a uma contra o
+contexto do casamento, **só 6 dependem mesmo de figura**. A regra antiga era
+uma lista de termos (`figura|codigo|esquema|diagrama|comando SQL`) casada em
+qualquer lugar do enunciado — então ela pegava:
+
+- **"Código" jurídico:** Código Florestal (`mpu` Q20), Código Penal (`tjrj`
+  Q70), Código de Ética (`mpu` Q32, `tjrj` Q30). 7 questões.
+- **"imagem" figurada:** "prejudiciais à sua imagem" (`tjrj` Q63), "exportar
+  como imagem JPEG" dentro de uma fala (`tjrj2` Q38). 3 questões.
+- **"esquema" como termo técnico:** "esquema de relação $R(A,B,C,D,E)$"
+  escrito por extenso ali mesmo (`cnsal-bd` Q41/Q46), esquema
+  Estrela/Snowflake como conceito (Q51/Q63). 5 questões.
+- **Resposta que está nas ALTERNATIVAS:** "assinale o comando SQL que…"
+  (`cnsal-ads` Q67, `cnsal-bd` Q42/Q43/Q73). 4 questões.
+- **Código que o `pypdf` extraiu direitinho e está no enunciado:** `mpu` Q51
+  (numpy), Q59 (`CREATE ROLE`), Q75 (HTML+CSS), Q76 (`sealed`), Q43
+  (`SELECT`), `tjrj2` Q55 (`@RestController`). 6 questões perfeitamente
+  respondíveis.
+
+A regra nova exige três coisas. **Dêixis** junto do termo ("observe o diagrama
+abaixo") — sem ela, "código"/"esquema"/"diagrama" é só vocabulário técnico.
+**Ausência do artefato no próprio enunciado** — se o `SELECT` veio junto, a
+questão se sustenta. E **alternativa vazia** como sinal estrutural, o único
+caso que dispensa a lista de termos: é o da `mpu` Q41, cujas alternativas são
+símbolos BPMN que viraram imagem.
+
+Ficam fora do sorteio 6: `mpu` 41/52/63/64/67 e `dataprev2024` 49. Nesta
+última conferi direto no PDF — o código Java da questão de Liskov **não está
+na camada de texto**, é imagem mesmo, não há o que recuperar.
+
+### A chave `"bi"` casava DENTRO de outra palavra
+
+O `tag_de()` resolvia o rótulo do mapa por substring pura. Resultado:
+`"Noções de Sustentabilidade"` (sustenta**bi**lidade) e `"Noções de Direitos
+Humanos e Fundamentais e de Acessibilidade"` (acessi**bi**lidade) mandavam as
+questões **16–25 do MPU** para Business Intelligence. Dez questões de direito
+ambiental e direitos humanos entravam em `./quiz.py bi` — e, como `bi` não
+está em `GERAIS`, **valiam 2,5× no `--simulado`**, inflando a projeção de
+nota. O BI real do corpus era 15 questões, não 25.
+
+A busca agora é por palavra inteira. E as dez saem também do recorte:
+Sustentabilidade e Direitos Humanos não estão no edital do Perfil 3 — é ruído
+de outro perfil, mesmo critério já aplicado à História e Geografia de Rondônia
+da ALERO.
+
+> **Efeito colateral a resolver:** as 44 questões destravadas nunca tiveram
+> `why`/`erradas` — elas estavam fora do sorteio, então a auditoria nunca
+> passou por elas. São **41 questões reais utilizáveis sem explicação**
+> (`cnsal-bd` 10, `cnsal-ads` 9, `mpu` 7, `tjrj2` 5, `cnsal-redes` 4, `tjrj1`
+> 4, `dataprev2024` 2). O quiz as sorteia e corrige, mas não comenta ao errar.
+> Escrever essas explicações é o próximo lote de conteúdo.
+
+### A apostila começa a ensinar — capítulo-piloto de Banco de Dados
+
+A apostila era um mapa de prova excelente e um livro-texto ruim: dizia o que
+cai e como a banca inverte, mas não ensinava o conceito. A proporção
+denunciava — **113 caixas de "como a FGV arma a pegadinha" contra 27 de "o que
+é isso"**, quatro para um a favor do truque, com o ambiente que existe para
+ensinar (`conceito`) sendo o menos usado do documento.
+
+O buraco não era uniforme, e é isso que definiu o piloto. **Banco de dados
+tinha 1 caixa de conceito, de 11 linhas, contra 11 pegadinhas e 153 linhas de
+estratégia — razão 1:14** — sendo a outra metade do eixo duplo e o segundo
+maior peso. Normalização inteira eram 18 linhas: uma tabela de quatro linhas e
+um parágrafo. Se o formato funciona no pior caso, funciona em qualquer um.
+
+Cada seção agora tem cinco tempos: **por que a coisa existe** e que problema
+resolve; o **conceito com o mecanismo**, não a glosa de uma linha; **exemplo
+concreto**; **ligação com o conceito vizinho**; e só então as caixas de banca.
+O que entrou:
+
+- **Dependência funcional** como a ferramenta que sustenta tudo — 2FN, 3FN e
+  BCNF são a mesma frase ficando mais rigorosa.
+- **Decomposição passo a passo**, com tabela desnormalizada de verdade, as
+  três anomalias que ela causa e a quebra 1FN → 2FN → 3FN feita na frente do
+  leitor. Mais o procedimento de achar chave candidata a partir de $F$, que é
+  o formato em que a FGV cobra (`cnsal-bd` Q41/Q46).
+- **Ordem lógica de execução do `SELECT`**, que explica de uma vez três
+  pegadinhas diferentes (o `WHERE` não vê apelido, `WHERE` × `HAVING`, e o
+  porquê de cada uma).
+- **ACID na transferência bancária**, com as quatro letras num cenário só, o
+  par Consistência × Isolamento e o falso amigo do "C" do CAP.
+- **CAP pelo cenário do cabo cortado**: por que só existem duas saídas, por
+  que "2 de 3" é simplificação e por que um monolito não é "CA".
+- **O que um índice é** e por que tem tipos — B+ Tree, hash e bitmap saem da
+  troca leitura/escrita e das duas perguntas que decidem.
+- Ações referenciais, os três níveis de modelagem pelo critério do que já foi
+  decidido, e por que OLTP e OLAP são separados.
+
+Capítulo: 460 → 780 linhas. Razão conceito:estratégia de **1:13,9 para
+1:0,81**. **Zero deleções** em `pegadinha`/`jacaiu`/`comosair` — o livro segue
+com 113/20/24, e só `conceito` subiu (27 → 34).
+
+**A trava que garante isso** entrou no `valida.py` (item D do drift): o piso
+das três caixas é verificado a cada rodada. Se um total cair, sai aviso — a
+frente de aprofundamento é aditiva por contrato, não por promessa.
+
+### Atrito e dívida
+
+- **`./feito.sh` jogava fora a sessão anterior.** Fazia `= q`, não `+= q`:
+  20 questões de manhã e 30 à noite terminavam o dia com 30 registradas, sem
+  aviso. Somar virou o padrão; `--set` substitui. De quebra, o `csv` escrevia
+  CRLF num arquivo LF — marcar um dia reescrevia as 92 linhas do
+  `progresso.csv`.
+- **`apostila` e `status` saem do schema documentado**: 0 de 356 questões cada
+  um. O `apostila` nunca fez falta porque o `ref_apostila()` já cai no mapa
+  bloco→capítulo; o `status` era instrumento da auditoria, que acabou. O
+  `valida.py` continua aceitando os dois.
+- **`sub` vira regra** (58 de 356, o único com uso real): todo lote novo
+  preenche quando couber. Sem passe retroativo.
+
 ## 2026-07-25 — lote de 20 questões nos recortes finos + os textos-base perdidos
 
 Primeiro lote guiado por **questões por ponto de prova** em vez de volume, e o
