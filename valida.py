@@ -257,6 +257,10 @@ FATOS_CANONICOS = [
     ("COBIT 2019", r"cobit\s*2019", CAMADAS),
     ("ITIL 4", r"itil\s*v?4", CAMADAS),
     ("LGPD 13.709/2018", r"13\.?709", CAMADAS),
+    # A ANPD virou Agencia (autarquia de natureza especial vinculada ao MJSP)
+    # pela Lei 15.352/2026. Fica fora da camada "banco": a citacao vive no
+    # banco-provas.json, e _texto_camadas() monta "banco" so com o banco.json.
+    ("ANPD agencia (Lei 15.352/2026)", r"15\.?352", ("apostila", "resumo", "dicas")),
     ("Marco Civil 12.965/2014", r"12\.?965", CAMADAS),
     ("LAI 12.527/2011", r"12\.?527", CAMADAS),
     ("Lei 12.737/2012 (delitos informaticos)", r"12\.?737", CAMADAS),

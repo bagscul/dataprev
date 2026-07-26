@@ -7,8 +7,9 @@ da lei no enunciado — não é decoreba de número, é
 entender competências, prazos e papéis.
 
 ## O que mais cai
-- LGPD: princípios (finalidade x adequação x necessidade),
-  papéis controlador x operador, e o par ANPD x CNPD.
+- LGPD: princípios (finalidade x adequação x necessidade —
+  adequação caiu literal no TJ-RJ) e o par ANPD x CNPD
+  (gabarito do Dataprev 2024).
 - LGPD: dado pessoal x dado pessoal SENSÍVEL (o rol do art.
   5º, II é fechado e cai literal).
 - Marco Civil: neutralidade de rede — tratamento ISONÔMICO
@@ -19,6 +20,10 @@ entender competências, prazos e papéis.
 - Marco Civil: guarda de registros, sanções, e a
   responsabilidade do provedor por conteúdo de terceiro.
 - Crimes Cibernéticos: invasão de dispositivo (art. 154-A).
+- Previsto pelo edital, mas AINDA NÃO visto na amostra de
+  provas: controlador x operador. Nas provas reais que temos
+  os dois termos nunca aparecem juntos — estude o par pelo
+  nosso banco, sem contar com precedente da banca.
 
 ## Como a banca arma a pegadinha
 - Troca controlador x operador: controlador DECIDE sobre o

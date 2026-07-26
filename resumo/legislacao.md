@@ -4,7 +4,12 @@
 > 7.724 e 7.845; Lei 12.737/2012 (Delitos Informáticos) art. 2º; Lei
 > 12.965/2014 (Marco Civil) cap. II Seção I e cap. III Seções I e II; Lei
 > 13.709/2018 (LGPD) caps I, II, III, IV, VII, VIII, IX.
-> **A FGV adora prazo, competência e a distinção controlador × operador.**
+> **Na amostra de provas** (nosso recorte de edital): classificação na LAI,
+> invasão de dispositivo (art. 154-A), sanções do Marco Civil, sanções da LGPD
+> e ANPD × CNPD (Dataprev 2024); princípio da adequação, explicabilidade da
+> decisão automatizada (art. 20) e IA generativa × LGPD (TJ-RJ). A banca cita o
+> número e a data da lei no enunciado — o que ela cobra é competência, prazo e
+> papel.
 
 ## ⚠️ Atualização crítica: Marco Civil, art. 19 (pós-STF, jun/2025)
 
