@@ -45,6 +45,18 @@ web). O ``sempre'' já entrega o primeiro.
 
 \section{Estilos de arquitetura}
 
+Os estilos não são uma lista de opções paralelas: são uma \textbf{sequência
+histórica}, e cada um nasceu resolvendo a dor do anterior. O monólito
+incomodava porque uma equipe travava a outra --- subir uma correção de uma tela
+obrigava a reimplantar o sistema inteiro. A SOA respondeu quebrando em
+serviços com contrato explícito, mas concentrou a inteligência no barramento,
+e o barramento virou o novo gargalo. Os microsserviços responderam à SOA
+invertendo isso: \emph{canais burros, serviços espertos}.
+
+Saber a sequência é o que permite responder às questões de cenário, que nunca
+perguntam ``o que é X'' e sim ``qual estilo resolve esta dor''. A dor descrita
+no enunciado aponta o estilo.
+
 \begin{conceito}[Do monólito aos microsserviços]
 \begin{itemize}
 \item \textbf{Monolítica:} tudo num artefato único, implantado junto.
@@ -67,6 +79,35 @@ banco} (não compartilham base --- isso reduz acoplamento). Comunicação leve
 \textbf{lógica de negócio} do mundo externo por \textbf{portas} (interfaces)
 e \textbf{adaptadores}; permite trocar UI/BD/serviços sem tocar no núcleo.
 \end{itemize}
+\end{conceito}
+
+\begin{conceito}[O preço dos microsserviços --- por que nem sempre valem]
+A banca gosta de cenários em que microsserviço é a resposta \emph{errada}, e
+quem só decorou a lista de vantagens cai. O que se ganha vem com uma conta:
+
+\begin{center}
+\begin{tabular}{@{}p{5.4cm}p{7cm}@{}}
+\toprule
+\textbf{Ganho} & \textbf{Preço correspondente} \\
+\midrule
+implantar um serviço sem tocar nos outros & precisa de automação de
+\emph{deploy} e de observabilidade distribuída --- sem isso, achar a causa de
+um erro fica pior que no monólito \\
+escalar só a parte que aperta & a chamada entre serviços virou \textbf{chamada
+de rede}: pode falhar, tem latência, exige repetição e \emph{timeout} \\
+cada serviço com seu banco & acabou o \texttt{JOIN} entre eles, e acabou a
+transação ACID que atravessa os dois --- daí Saga e consistência eventual \\
+equipes autônomas & só compensa se as equipes \emph{forem} várias; para um
+time pequeno, é custo sem benefício \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Daí a regra prática: microsserviço resolve problema \textbf{organizacional} e
+de \textbf{escala independente}. Se o enunciado descreve sistema pequeno,
+equipe única ou forte consistência transacional entre módulos, o monólito
+(eventualmente modular) é a resposta certa --- e ``migrar para microsserviços''
+é a quase-certa plantada.
 \end{conceito}
 
 \begin{pegadinha}
@@ -108,6 +149,34 @@ organização (apresentação), não de implantação.
 \end{pegadinha}
 
 \section{Integração: REST $\times$ SOAP, Web Services}
+
+\begin{conceito}[O que REST é de verdade --- recurso, representação, verbo]
+REST não é ``API que devolve JSON''. É um \textbf{estilo arquitetural} com uma
+ideia central: tudo que interessa é um \textbf{recurso}, identificado por uma
+URI, e o cliente nunca manipula o recurso --- ele troca
+\textbf{representações} dele (JSON, XML, HTML). Daí decorre o resto:
+
+\begin{itemize}
+\item \textbf{Interface uniforme.} O conjunto de verbos é fixo e igual para
+todo recurso: \texttt{GET} lê, \texttt{POST} cria, \texttt{PUT} substitui,
+\texttt{PATCH} altera em parte, \texttt{DELETE} remove. É por isso que a URI
+deve nomear \emph{coisa} e não \emph{ação}: \texttt{/pedidos/42} está certo,
+\texttt{/buscarPedido?id=42} contraria o estilo, porque põe o verbo na URI
+quando ele já está no método.
+\item \textbf{Sem estado (\emph{stateless}).} Cada requisição carrega tudo o
+que é preciso para ser entendida sozinha. O ganho não é ideológico: se o
+servidor não guarda sessão, \textbf{qualquer} instância atende
+\textbf{qualquer} requisição --- e é exatamente isso que permite pôr um
+balanceador na frente e escalar horizontalmente sem afinidade de sessão.
+\item \textbf{Cliente-servidor, cache, camadas.} O cliente não sabe se está
+falando com o servidor final ou com um intermediário; por isso proxy, gateway
+e CDN cabem no caminho sem quebrar nada.
+\end{itemize}
+
+Repare no encadeamento: \emph{ausência de estado} $\to$ \emph{qualquer
+instância serve} $\to$ \emph{escala horizontal}. Quando a FGV pergunta ``o que
+no REST sustenta a escalabilidade'', é essa corrente que ela está cobrando.
+\end{conceito}
 
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
@@ -209,6 +278,36 @@ interno \textbf{+} parceiros externos autorizados (o meio-termo).
 \section{Nuvem e escalabilidade}
 \label{sec:nuvem}
 
+\begin{conceito}[IaaS, PaaS, SaaS --- onde passa a linha de responsabilidade]
+Os três modelos respondem a uma pergunta só: \textbf{até onde vai o provedor e
+onde começa você}. A pilha é sempre a mesma --- rede, armazenamento,
+servidores, virtualização, sistema operacional, \emph{middleware}, tempo de
+execução, dados, aplicação --- e o modelo apenas move a linha de corte para
+cima.
+
+\begin{center}
+\begin{tabular}{@{}p{2cm}p{4.6cm}p{5.4cm}@{}}
+\toprule
+& \textbf{Você cuida de} & \textbf{Exemplo típico} \\
+\midrule
+\textbf{IaaS} & sistema operacional para cima: patch, runtime, aplicação, dados & máquina virtual alugada \\
+\textbf{PaaS} & aplicação e dados; o resto é do provedor & plataforma que recebe seu código e roda \\
+\textbf{SaaS} & só os \textbf{dados} e a configuração de uso & software pronto, acessado pelo navegador \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Duas consequências que a banca cobra. Primeira: \textbf{quanto mais ``as a
+Service'', menos controle} --- não é só menos trabalho, é também menos
+liberdade para customizar. Segunda, a \textbf{responsabilidade compartilhada}
+em segurança: mesmo em SaaS, \textbf{o dado continua sendo seu}. O provedor
+responde pela segurança \emph{da} nuvem (infraestrutura); o cliente responde
+pela segurança \emph{na} nuvem --- quem tem acesso, como o dado é
+classificado, se a conta usa segundo fator. A alternativa que diz que o SaaS
+``transfere integralmente a responsabilidade pelos dados ao provedor'' é
+falsa, e é a plantada.
+\end{conceito}
+
 \begin{itemize}
 \item \textbf{Modelos de serviço:} \textbf{IaaS} (infra), \textbf{PaaS}
 (plataforma), \textbf{SaaS} (software pronto). Regra: quanto mais ``as a
@@ -269,6 +368,16 @@ distantes / arquivos estáticos'' $\to$ CDN.
 \end{pegadinha}
 
 \section{Transações distribuídas}
+
+O problema nasce no instante em que cada microsserviço ganha o próprio banco.
+Dentro de um SGBD, o ACID é de graça: existe um só log, um só gerenciador de
+bloqueios, e ele decide sozinho. Distribuído, não há árbitro --- ``debitar no
+serviço de contas e reservar no serviço de estoque'' são \textbf{duas}
+transações, em \textbf{dois} bancos, ligadas por uma rede que pode cair no
+meio. Não existe operação que efetive as duas ao mesmo tempo; o que existe são
+protocolos que tentam \emph{coordenar} isso, cada um pagando um preço
+diferente. É o mesmo dilema do teorema CAP (Capítulo \ref{cap:banco-dados}),
+visto do lado de quem escreve a aplicação.
 
 \begin{itemize}
 \item \textbf{2PC (Two-Phase Commit):} coordenador + participantes; exige

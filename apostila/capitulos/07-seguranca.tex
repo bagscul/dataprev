@@ -12,6 +12,12 @@ DAST). Também: HTTPS, SSL/TLS.
 
 \section{Tríade CIA (a base de tudo)}
 
+A tríade não é uma lista de três palavras bonitas: é o \textbf{critério de
+classificação} de todo o resto do capítulo. Cada controle que você vai
+estudar --- cifra, hash, backup, RBAC, WAF --- existe para sustentar um dos
+três pilares, e a pergunta útil diante de qualquer mecanismo é sempre a mesma:
+\emph{qual pilar este controle protege?}
+
 \begin{itemize}
 \item \textbf{Confidencialidade:} só quem tem direito acessa/\textbf{vê}
 (cifra, controle de acesso).
@@ -22,6 +28,28 @@ indevidamente (hash, assinatura).
 \item Complementos: autenticidade, não repúdio, legalidade.
 \end{itemize}
 
+\begin{conceito}[Cada controle serve a um pilar --- e às vezes contra outro]
+Amarrar mecanismo a pilar resolve metade das questões do bloco de uma vez:
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{8.6cm}@{}}
+\toprule
+\textbf{Confidencialidade} & cifra (simétrica e assimétrica), controle de acesso, mascaramento, classificação da informação, TDE \\
+\textbf{Integridade} & hash, assinatura digital, HMAC, controle de versão, trilha de auditoria, restrição de integridade no banco \\
+\textbf{Disponibilidade} & backup, redundância, \emph{cluster}, balanceador, plano de continuidade (RTO/RPO), proteção contra DDoS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+E o detalhe que separa quem entendeu de quem decorou: os três \textbf{competem
+entre si}. Aumentar confidencialidade quase sempre custa disponibilidade ---
+segundo fator de autenticação barra o invasor e também barra o usuário
+legítimo que perdeu o celular; cifrar o backup protege o dado roubado e o
+torna inútil se a chave se perder. Por isso questão de cenário raramente pede
+``o mais seguro'': pede o \textbf{equilíbrio adequado ao contexto}, e a
+alternativa que maximiza um pilar ignorando os outros costuma ser a plantada.
+\end{conceito}
+
 \begin{pegadinha}
 Mapeie o verbo do cenário: ``restringir quem vê'' é confidencialidade, não
 integridade; ``ficar no ar'' é disponibilidade; ``alteração indevida'' é
@@ -29,6 +57,40 @@ integridade. A FGV troca a associação cenário $\to$ princípio.
 \end{pegadinha}
 
 \section{Criptografia}
+
+\begin{conceito}[Assimétrica: a mesma matemática, dois usos opostos]
+O par de chaves tem uma propriedade só, e ela é a origem de toda a confusão:
+\textbf{o que uma chave fecha, só a outra abre}. Como as duas direções
+funcionam, a mesma matemática serve a dois objetivos diferentes --- e a
+\textbf{direção escolhida é que decide qual}.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Para SIGILO} & \textbf{Para ASSINATURA} \\
+\midrule
+Cifra com & a \textbf{pública do destinatário} & a \textbf{privada do emissor} \\
+Abre com & a \textbf{privada do destinatário} & a \textbf{pública do emissor} \\
+Quem consegue ler & só o destinatário --- só ele tem a privada & \textbf{qualquer um}: a pública é pública \\
+Logo, garante & \textbf{confidencialidade} & \textbf{autenticidade, integridade e não repúdio} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A lógica de cada uma, em uma frase. \textbf{Sigilo:} eu quero que \emph{só
+você} leia, então uso o cadeado que \emph{só você} abre --- sua chave pública.
+\textbf{Assinatura:} eu quero provar que \emph{fui eu}, então uso a chave que
+\emph{só eu} tenho --- minha privada; que qualquer um consiga abrir não é
+defeito, é o ponto: é assim que qualquer um verifica.
+
+Duas notas que a banca cobra. Primeira: assina-se o \textbf{hash} do
+documento, não o documento inteiro --- assimétrica é lenta, e o hash tem
+tamanho fixo. Segunda: na prática o \textbf{sigilo} também não usa assimétrica
+para o volume de dados. O TLS faz o que se chama de \emph{envelope}: usa a
+assimétrica \textbf{só para combinar} uma chave simétrica de sessão, e daí em
+diante cifra tudo com a simétrica, que é rápida. Por isso ``a assimétrica
+substituiu a simétrica'' é falso --- elas se combinam.
+\end{conceito}
 
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
@@ -239,6 +301,62 @@ implementa \emph{um serviço} numa \emph{camada}; disseminado é de gestão, val
 para o sistema inteiro. Note que \textbf{preenchimento de tráfego} e
 \textbf{controle de roteamento} costumam surpreender --- são específicos, e
 servem à confidencialidade do \emph{fluxo}, não do conteúdo.
+\end{pegadinha}
+
+\section{Gestão de riscos: ameaça, vulnerabilidade e impacto}
+
+O edital pede os três termos, e eles só fazem sentido juntos. Um risco existe
+quando \textbf{uma ameaça encontra uma vulnerabilidade} e disso resulta um
+\textbf{impacto}. Tirar qualquer um dos três e o risco desaparece --- é essa
+composição que explica por que se trata risco de várias formas diferentes.
+
+\begin{conceito}[Os três termos, e o que cada um permite fazer]
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{9cm}@{}}
+\toprule
+\textbf{Ameaça} & o evento indesejado \emph{em potencial} --- incêndio, invasor, funcionário descuidado, \emph{ransomware}. Vem de fora do seu controle: você \textbf{não elimina} ameaça. \\
+\textbf{Vulnerabilidade} & a fraqueza que permite a ameaça se concretizar --- servidor sem \emph{patch}, senha fraca, ausência de \emph{backup}. É o \textbf{único dos três} sobre o qual você age diretamente. \\
+\textbf{Impacto} & o dano se acontecer. Você não impede o impacto, mas pode \textbf{reduzi-lo} (segmentar rede, cifrar o dado roubado) ou \textbf{transferi-lo} (seguro). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O \textbf{risco} é a combinação de \textbf{probabilidade} $\times$
+\textbf{impacto} --- é isso que a matriz 5$\times$5 desenha: probabilidade num
+eixo, impacto no outro, e a cor da célula diz a prioridade. Note a
+consequência: um evento catastrófico e improvável pode ficar \emph{abaixo} de
+um evento pequeno e frequente. A banca gosta de cenários em que a intuição
+diz ``o incêndio é pior'' e a matriz diz outra coisa.
+\end{conceito}
+
+\textbf{As quatro formas de tratar} (ISO 27005/31000) --- e o verbo do
+enunciado entrega qual é:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.4cm}@{}}
+\toprule
+\textbf{Mitigar} (reduzir) & implanta controle e \textbf{diminui} probabilidade ou impacto. É o caso mais comum: aplicar patch, pôr WAF, treinar equipe. \\
+\textbf{Transferir} (compartilhar) & passa a consequência financeira a um terceiro --- \textbf{seguro}, terceirização com cláusula de responsabilidade. Repare: transferir \textbf{não reduz} a probabilidade de acontecer. \\
+\textbf{Evitar} & \textbf{deixa de fazer} a atividade que gera o risco --- descontinuar o sistema legado, não coletar o dado sensível. \\
+\textbf{Aceitar} (reter) & decide conviver, \textbf{formalmente} e no nível certo da hierarquia, porque o controle custa mais que o dano. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Risco residual} é o que \textbf{sobra depois} do tratamento. Ele nunca
+é zero, e a norma exige que seja \textbf{aceito formalmente} por quem tem
+alçada --- aceitar risco residual é decisão de gestão, não do time técnico.
+
+\begin{pegadinha}
+Três trocas prontas. (i) Dizer que \textbf{transferir o risco elimina o
+risco}: o seguro paga o prejuízo, mas o incidente acontece do mesmo jeito ---
+quem reduz a chance é o \emph{mitigar}. (ii) Confundir \textbf{aceitar} com
+\textbf{ignorar}: aceitar é ato formal, documentado e aprovado; deixar sem
+tratamento por omissão não é uma das quatro opções. (iii) Afirmar que o
+\textbf{risco residual deve ser zero} --- se pudesse ser zerado, não se
+chamaria residual; o que a norma exige é que ele seja conhecido e aceito.
+Cuidado também com a inversão ameaça$\leftrightarrow$vulnerabilidade: o
+\emph{ransomware} é a ameaça, o servidor sem patch é a vulnerabilidade.
 \end{pegadinha}
 
 \section{Continuidade de negócio: RTO $\times$ RPO}

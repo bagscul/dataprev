@@ -69,10 +69,113 @@ requisito $\leftrightarrow$ aceitação; a de baixo, código $\leftrightarrow$
 unidade.
 \end{pegadinha}
 
+\subsection{RUP --- as quatro fases e os dois eixos}
+
+O RUP (\emph{Rational Unified Process}) é iterativo-incremental e dirigido por
+casos de uso, mas o que a banca cobra dele é a \textbf{estrutura em dois
+eixos} --- e é justamente aí que ela arma o item.
+
+\begin{conceito}[Fase $\times$ disciplina: o eixo do tempo e o eixo do conteúdo]
+\textbf{Fase} é \emph{quando}: o projeto passa por Concepção, Elaboração,
+Construção e Transição, nessa ordem, uma vez só, e cada fase termina num
+marco. \textbf{Disciplina} (ou \emph{workflow}) é \emph{o quê}: Requisitos,
+Análise e Projeto, Implementação, Teste, Implantação e as de apoio (Gerência
+de Projeto, Configuração e Mudança, Ambiente).
+
+O ponto que importa: \textbf{as disciplinas atravessam todas as fases}. Não
+existe ``a fase de testes'' no RUP --- testa-se em todas as fases, só que em
+intensidade diferente. Se você desenhar o gráfico clássico do RUP, as fases
+são as colunas e as disciplinas são as linhas: cada linha tem uma corcova onde
+aquele trabalho concentra, mas nenhuma linha começa e termina dentro de uma
+coluna só.
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{5.2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Fase} & \textbf{Pergunta que ela responde} & \textbf{Marco} \\
+\midrule
+Concepção & vale a pena fazer? escopo, viabilidade, caso de negócio & Objetivos do ciclo de vida \\
+\textbf{Elaboração} & \textbf{como fazer sem que dê errado?} --- é aqui que se atacam os \textbf{riscos} e se firma a \textbf{arquitetura executável} & Arquitetura do ciclo de vida \\
+Construção & construir o grosso do produto, iteração a iteração & Capacidade operacional inicial \\
+Transição & entregar ao usuário: implantação, treinamento, ajuste & Liberação do produto \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A âncora:} risco e arquitetura vivem na \textbf{Elaboração}. A lógica
+é econômica --- resolver o risco arquitetural antes de gastar o orçamento da
+Construção. Quem deixa a arquitetura para a Construção descobre o problema
+quando já é caro demais mudar.
+\end{conceito}
+
+\begin{pegadinha}
+Duas trocas prontas. (i) Tratar disciplina como fase --- ``a fase de testes do
+RUP'' não existe; teste é disciplina, e acontece nas quatro fases. (ii)
+Deslocar o risco: dizer que os riscos principais são tratados na
+\textbf{Concepção} (lá se avalia viabilidade) ou na \textbf{Construção} (lá já
+é tarde). É a \textbf{Elaboração}. Cuidado também com ``o RUP é cascata'' ---
+ele é iterativo \emph{dentro} de cada fase; o que é sequencial é a ordem das
+quatro fases, não o trabalho.
+\end{pegadinha}
+
 \section{Maturidade de processo: CMMI e MPS.BR}
 
 Modelos que avaliam \textbf{quão maduro é o processo} da organização --- não
 a qualidade de um produto específico.
+
+\begin{conceito}[O que é maturidade de processo, e que problema o CMMI resolve]
+O CMMI nasceu de uma pergunta prática do Departamento de Defesa americano nos
+anos 1980: \emph{como saber, antes de contratar, se um fornecedor vai
+entregar?} Olhar o produto anterior não bastava --- um projeto que deu certo
+pode ter dado certo por acaso, ou porque um herói virou noites. O que se
+queria medir era a \textbf{capacidade de repetir} o resultado.
+
+Daí a definição: \textbf{maturidade é o quanto o resultado depende do processo
+e não das pessoas}. Uma organização madura entrega parecido com equipes
+diferentes, porque o jeito de trabalhar está descrito, é seguido e é medido.
+Uma imatura entrega bem quando calha de ter a pessoa certa.
+
+\textbf{Como se reconhece cada nível na prática} --- e o corte que a banca
+mais cobra é o do 2 para o 3:
+
+\begin{center}
+\begin{tabular}{@{}p{2cm}p{10.2cm}@{}}
+\toprule
+\textbf{Nível 2} & Cada projeto se organiza \textbf{do seu jeito}. O projeto A
+tem cronograma e controle de mudanças; o projeto B, ao lado, faz diferente ---
+e os dois podem ser bem gerenciados. O que existe é disciplina \emph{por
+projeto}. \\
+\addlinespace
+\textbf{Nível 3} & Existe um \textbf{processo-padrão da organização}, e cada
+projeto o \emph{adapta} (\emph{tailoring}) dentro de regras. Um desenvolvedor
+que muda de projeto reconhece o jeito de trabalhar. O aprendizado de um
+projeto vira ativo de todos. \\
+\addlinespace
+\textbf{Nível 4} & O processo passa a ser \textbf{medido estatisticamente}:
+não se diz ``costuma dar certo'', diz-se ``a densidade de defeito fica entre
+tais limites''. Previsibilidade quantitativa. \\
+\addlinespace
+\textbf{Nível 5} & A medição do nível 4 é usada para \textbf{mudar o processo}
+de propósito e verificar se melhorou. Melhoria contínua baseada em dado, não
+em opinião. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A frase-âncora: \textbf{o 2 é ``gerenciado por projeto''; o 3 é ``padronizado
+na organização''}. Todo cenário de prova que descreve ``cada equipe tem seu
+próprio jeito, embora todas planejem e monitorem'' é nível 2.
+
+\textbf{E por que existem duas representações?} Porque as duas perguntas são
+legítimas. \emph{Por estágios} responde ``que nota tem esta
+\textbf{organização}?'' --- é um número só, comparável entre fornecedores, e
+foi para isso que o modelo nasceu. \emph{Contínua} responde ``quão capaz somos
+\textbf{nesta área específica}?'' --- permite investir em Engenharia de
+Requisitos sem ter de subir tudo junto, o que serve a quem quer melhorar e não
+a quem quer se certificar. Daí o vocabulário diferente: estágios dá
+\textbf{maturidade} à organização; contínua dá \textbf{capacidade} a cada área
+de processo.
+\end{conceito}
 
 \textbf{CMMI --- representação por estágios} (a que a banca cobra): cinco
 níveis de maturidade da organização inteira.
@@ -336,6 +439,42 @@ interface (robôs de software) --- \textbf{não é teste}.
 \end{conceito}
 
 \section{Mensuração: Ponto de Função $\times$ Story Points}
+
+\begin{conceito}[O que o Ponto de Função mede --- e por que independe da linguagem]
+A APF resolve um problema de contrato: \emph{como pagar por software sem pagar
+por linha de código?} Medir por linhas premia quem escreve mal e pune quem usa
+uma linguagem expressiva --- a mesma funcionalidade sai em 500 linhas de Java
+ou 80 de Python, e não faz sentido a segunda valer menos.
+
+A saída foi medir do \textbf{lado de fora}: conta-se o que o sistema
+\textbf{faz para o usuário}, não como foi construído. Por isso a contagem se
+faz a partir de \textbf{telas, relatórios e arquivos lógicos} --- artefatos
+visíveis --- e o resultado é o mesmo qualquer que seja a linguagem, a equipe
+ou a ferramenta. É exatamente essa independência que a FGV cobra.
+
+O que se conta são cinco tipos, em dois grupos:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.6cm}@{}}
+\toprule
+\textbf{Funções de transação} & o que \emph{atravessa} a fronteira do sistema:
+\textbf{EE} (entrada externa), \textbf{SE} (saída externa), \textbf{CE}
+(consulta externa) \\
+\addlinespace
+\textbf{Funções de dados} & o que o sistema \emph{guarda ou lê}: \textbf{ALI}
+(arquivo lógico interno, mantido aqui dentro), \textbf{AIE} (arquivo de
+interface externa, só lido) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os dois critérios que resolvem quase toda questão de classificação:
+\textbf{ALI $\times$ AIE se decide pela manutenção}, não pela leitura --- se o
+sistema \emph{mantém} o dado, é ALI; se só consulta o que outro mantém, é AIE.
+E \textbf{SE $\times$ CE se decide pelo dado derivado} --- se há cálculo,
+totalização ou lógica que gera informação nova, é Saída Externa; se é
+recuperação pura, é Consulta Externa.
+\end{conceito}
 
 \begin{center}
 \begin{tabular}{@{}p{2.8cm}p{4.7cm}p{4.7cm}@{}}
