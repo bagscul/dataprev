@@ -38,6 +38,18 @@ cascata), \textbf{ágil/adaptativa}, e \textbf{híbrida} (combina as duas
 conforme a necessidade).
 \end{itemize}
 
+\textbf{Por que a 6ª virou 7ª.} O PMBOK 6 descrevia \textbf{o que fazer}: 49
+processos, com entradas, ferramentas e saídas, organizados na matriz de 5 grupos
+$\times$ 10 áreas. Funciona bem em projeto previsível e mal em projeto que
+descobre o escopo andando --- e o guia passou a ser lido como receita a cumprir.
+A 7ª edição inverteu o eixo: saiu do \emph{processo} e foi para o
+\textbf{princípio} (12) mais os \textbf{domínios de desempenho} (8), que são
+áreas de resultado a acompanhar, não etapas a executar. Junto veio o
+\textbf{\emph{tailoring}}: adaptar a abordagem ao contexto passou a ser
+princípio, não exceção. As duas edições convivem em prova, e a distinção é
+justamente o que a banca cobra --- \textbf{processo é PMBOK 6; princípio é
+PMBOK 7}.
+
 \begin{pegadinha}
 Híbrido = \textbf{combinar} ágil + tradicional (nunca ``só ágil'' nem ``só
 cascata''); não confundir grupo de processos (5, do PMBOK 6) com área de
@@ -115,6 +127,49 @@ clássicos da FGV para esse cenário).
 
 Foco em \textbf{cocriação de valor} por meio de serviços.
 
+Essa frase é a chave da versão 4, e vale desmontá-la. \textbf{Serviço}, na
+ITIL, é o meio de permitir que o cliente alcance um resultado que ele quer, sem
+que precise gerenciar todos os custos e riscos envolvidos. E \textbf{cocriação}
+significa que o valor não é ``entregue'' de um lado para o outro: ele só
+existe quando o cliente \emph{usa} o serviço --- provedor e consumidor produzem
+o resultado juntos. É por isso que a v4 abandonou o vocabulário de
+\textbf{processos} (uma sequência que o provedor executa) e passou a falar em
+\textbf{práticas} (um conjunto de recursos organizacionais aplicados a um
+propósito). Trocar ``prática'' por ``processo'' num item de ITIL 4 é o
+distrator de vocabulário mais frequente do tema.
+
+\begin{conceito}[Incidente $\times$ problema $\times$ requisição $\times$ mudança]
+São quatro coisas diferentes que chegam pelo mesmo balcão (a \textbf{central de
+serviços}, que é ponto de contato, não solucionadora), e a FGV vive trocando as
+quatro:
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{4cm}p{4.6cm}@{}}
+\toprule
+\textbf{O que chegou} & \textbf{O que é} & \textbf{O objetivo do tratamento} \\
+\midrule
+\textbf{Incidente} & interrupção não planejada ou queda de qualidade do
+serviço & \textbf{restaurar o serviço} o mais rápido possível --- solução de
+contorno serve \\
+\textbf{Problema} & a \textbf{causa} de um ou mais incidentes & achar a
+\textbf{causa-raiz} e eliminá-la; não tem pressa de minutos \\
+\textbf{Requisição de serviço} & pedido \textbf{normal e previsto} (acesso,
+informação, senha) & atender com fluxo padronizado --- \textbf{não houve
+falha} \\
+\textbf{Mudança} & alteração em algo que pode afetar serviços & maximizar
+mudanças bem-sucedidas, avaliando risco antes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A âncora:} incidente é medido em \emph{tempo de restauração};
+problema, em \emph{causa encontrada}. Um incidente resolvido por contorno
+\textbf{fecha} mesmo com o problema aberto --- e é isso que a alternativa
+``quase certa'' nega, dizendo que não se fecha incidente sem eliminar a causa.
+Requisição de serviço é a que mais aparece disfarçada: se ninguém está fora do
+ar, não é incidente.
+\end{conceito}
+
 \begin{itemize}
 \item \textbf{Sistema de Valor de Serviço (SVS):} como os componentes
 trabalham juntos para gerar valor. Inclui: princípios orientadores,
@@ -150,6 +205,39 @@ contato).
 Distingue \textbf{governança} (avaliar, dirigir, monitorar --- responsabilidade
 do conselho) de \textbf{gestão} (planejar, construir, executar, monitorar ---
 responsabilidade da diretoria).
+
+\begin{conceito}[Governança $\times$ gestão --- a linha que organiza o capítulo inteiro]
+Essa distinção não é vocabulário: é a divisão de \textbf{quem decide o quê},
+e é dela que sai o gabarito da maioria dos cenários.
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.3cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Governança} & \textbf{Gestão} \\
+\midrule
+Pergunta & ``\textbf{o quê} e por quê?'' --- que direção seguir, que risco
+aceitar & ``\textbf{como} e quando?'' --- executar dentro daquela direção \\
+Verbos & \textbf{avaliar, dirigir, monitorar} (EDM) & \textbf{planejar,
+construir, executar, monitorar} (APO, BAI, DSS, MEA) \\
+Quem responde & o \textbf{conselho}/alta administração & a \textbf{diretoria}
+executiva de TI \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O \textbf{teste prático} para o item de prova: se o cenário fala em
+\emph{definir apetite a risco, aprovar direção, cobrar resultado}, é
+governança (EDM). Se fala em \emph{levantar requisito, construir, implantar,
+atender usuário, medir desempenho}, é gestão. Repare que \textbf{monitorar
+aparece nos dois lados} --- e é aí que a banca planta a dúvida: a governança
+monitora \emph{se a direção está sendo seguida} (EDM), a gestão monitora
+\emph{o desempenho do que está rodando} (MEA).
+
+Por isso o COBIT insiste que o sistema de governança é feito \textbf{sob
+medida} (os \emph{fatores de desenho}): não existe conjunto de objetivos que
+sirva a toda organização --- tamanho, setor, apetite a risco e estratégia
+mudam a prioridade. ``Implantar o COBIT inteiro como vem no guia'' é distrator.
+\end{conceito}
 
 \begin{itemize}
 \item \textbf{40 objetivos de governança e gestão} em \textbf{5 domínios:}
@@ -189,6 +277,38 @@ paralelo AND, inclusivo OR).
 \item \textbf{Fluxos:} de sequência (sólido) $\times$ de mensagem
 (tracejado).
 \end{itemize}
+
+\begin{conceito}[Os três gateways --- e o que cada um faz na volta]
+O gateway é o único elemento do BPMN com \textbf{duas} semânticas: uma quando
+divide o fluxo e outra quando o junta. A banca cobra a segunda, que quase
+ninguém estuda.
+
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{3.9cm}p{4.5cm}@{}}
+\toprule
+\textbf{Gateway} & \textbf{Na divisão} & \textbf{Na junção} \\
+\midrule
+\textbf{Exclusivo} (XOR, losango vazio ou com ``X'') & segue por
+\textbf{exatamente um} caminho, o da primeira condição verdadeira & apenas
+\textbf{repassa} o que chegar --- não espera nada \\
+\textbf{Paralelo} (AND, losango com ``+'') & dispara \textbf{todos} os
+caminhos ao mesmo tempo, sem avaliar condição & \textbf{sincroniza}: espera
+\textbf{todos} os caminhos chegarem para continuar \\
+\textbf{Inclusivo} (OR, losango com ``O'') & segue por \textbf{um ou mais},
+todos os que tiverem condição verdadeira & espera só os caminhos que
+\textbf{foram efetivamente ativados} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{O gatilho no enunciado:} ``as duas análises ocorrem simultaneamente e
+o processo só avança quando \textbf{ambas} terminarem'' é paralelo (AND) ---
+tanto na abertura quanto no fechamento. ``Ou aprova, ou recusa'' é exclusivo.
+``Podem ser necessárias uma, duas ou as três verificações'' é inclusivo, que é
+o único que decide na junção quantos esperar. Trocar o AND de fechamento pelo
+XOR é o erro de modelagem clássico: o processo segue adiante com metade do
+trabalho feito.
+\end{conceito}
 
 \begin{pegadinha}
 Troca do símbolo pelo espessura da borda (início$\leftrightarrow$fim) ou

@@ -63,6 +63,43 @@ fosse sobrecarga válida --- é erro de compilação.
 
 Pilares: abstração, encapsulamento, herança, polimorfismo.
 
+\begin{conceito}[Os quatro pilares --- o que cada um esconde de você]
+Os quatro têm o \emph{mesmo} propósito: limitar o que o resto do sistema
+precisa saber. O que muda é \textbf{o que} está sendo escondido.
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{4.1cm}p{4.5cm}@{}}
+\toprule
+\textbf{Pilar} & \textbf{Esconde\ldots} & \textbf{Como aparece no código} \\
+\midrule
+Abstração & os detalhes irrelevantes para quem usa & a classe expõe
+\emph{o que} faz (\texttt{sacar}), não \emph{como} \\
+Encapsulamento & o \textbf{estado} & atributo \texttt{private} + operações
+públicas que \textbf{protegem a regra} \\
+Herança & a parte comum, escrita uma vez & \texttt{extends}: relação
+\textbf{é-um} \\
+Polimorfismo & \textbf{qual} implementação vai atender a chamada &
+\texttt{conta.sacar()} executa o método da classe real do objeto, decidido em
+\textbf{tempo de execução} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Duas confusões que a banca explora.} A primeira: encapsulamento
+\textbf{não} é ``gerar getter e setter para todo atributo'' --- um
+\texttt{setSaldo} público expõe o estado tão bem quanto o atributo público, e a
+regra (``não sacar além do saldo'') fica sem dono. Encapsular é expor
+\emph{comportamento}, não campo. A segunda: o polimorfismo que a banca cobra é
+o de \textbf{sobrescrita}, resolvido em \emph{runtime} pela classe real do
+objeto --- a sobrecarga é escolhida em \textbf{compilação}, pelos tipos
+declarados, e por isso alguns autores nem a contam como polimorfismo de
+verdade.
+
+Herança é o pilar com \textbf{contraindicação}: ela acopla a subclasse à
+implementação do pai. Quando a relação for ``\textbf{tem-um}'' e não
+``é-um'', o certo é \textbf{composição} (Capítulo \ref{cap:padroes-uml}).
+\end{conceito}
+
 \begin{center}
 \begin{tabular}{@{}p{1.2cm}p{9.6cm}@{}}
 \toprule
@@ -76,6 +113,42 @@ D & Dependency Inversion --- depender de abstração, não de implementação \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\textbf{Exemplo trabalhado --- a violação de Liskov que a FGV mais usa.} A
+herança compila; o problema aparece em quem \emph{usa} o supertipo:
+
+\begin{center}
+\begin{tabular}{@{}p{5.5cm}p{6.1cm}@{}}
+\toprule
+\textbf{O código} & \textbf{O que acontece} \\
+\midrule
+\texttt{class Retangulo \{ setLargura; setAltura; area() \}} & quem usa
+assume: mudar a largura não muda a altura \\
+\texttt{class Quadrado extends Retangulo} --- e cada \emph{setter} muda
+\textbf{os dois} lados, para manter o quadrado quadrado & a classe está
+coerente consigo mesma\ldots \\
+\texttt{r.setLargura(5); r.setAltura(4);} \newline
+\texttt{assert r.area() == 20;} & \ldots\ mas com um \texttt{Quadrado} no lugar
+do \texttt{Retangulo} a área dá \textbf{16}. O código do cliente, que nunca
+soube do quadrado, quebrou \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Liskov não fala sobre a subclasse: fala sobre \textbf{quem consome o
+supertipo}. Daí o critério prático, que é o que resolve o item de prova: a
+subclasse não pode \textbf{exigir mais} do que o pai (fortalecer
+pré-condição), não pode \textbf{entregar menos} (enfraquecer pós-condição) e
+não pode quebrar uma \textbf{invariante} que o cliente já podia supor. O
+exemplo canônico do outro lado é o \texttt{Pinguim} que herda de \texttt{Ave}
+com o método \texttt{voar}: a hierarquia parece natural e o contrato não fecha.
+
+\textbf{Nota que rende ponto:} o próprio compilador do Java já barra três
+violações de Liskov na sobrescrita --- o método sobrescrito não pode
+\textbf{reduzir a visibilidade}, não pode declarar exceção \textbf{checked mais
+ampla} que a do pai, e o retorno tem de ser o mesmo ou um \textbf{subtipo}
+(covariante). O que ele \emph{não} consegue barrar é a quebra de contrato
+semântico do exemplo acima --- e é exatamente ali que a banca cobra.
 
 \begin{pegadinha}
 Não confundir \textbf{ISP} (interface enxuta) com \textbf{SRP} (uma
@@ -115,6 +188,16 @@ separam as duas. Outro distrator: dizer que Java tem herança múltipla de
 
 \section{Coleções (Collections)}
 
+O desenho do \emph{framework} de coleções é uma aula de \textbf{contrato
+$\times$ implementação}, e é por isso que ele cai. \texttt{List},
+\texttt{Set} e \texttt{Map} são \textbf{interfaces} --- dizem que garantia você
+tem (ordem, unicidade, chave-valor) e nada sobre como. \texttt{ArrayList} e
+\texttt{LinkedList} são \textbf{implementações} da mesma interface, com os
+custos opostos das estruturas do Capítulo \ref{cap:programacao} (Seção
+\ref{sec:estruturas-dados}). Por isso a boa prática é declarar pela interface
+(\texttt{List<String> lista = new ArrayList<>()}): trocar a implementação
+depois não mexe em quem usa.
+
 \begin{center}
 \begin{tabular}{@{}p{2.2cm}p{3.8cm}p{4cm}@{}}
 \toprule
@@ -134,6 +217,33 @@ inserção) $\times$ \texttt{TreeMap} (ordenado). \texttt{getOrDefault} retorna
 o \textbf{default} se a chave não existe --- não lança exceção nem retorna
 erro HTTP. \texttt{==} compara \textbf{referência}; \texttt{.equals()}
 compara \textbf{conteúdo}.
+
+\begin{conceito}[O contrato \texttt{equals}/\texttt{hashCode} --- por que o objeto ``desaparece'' do \texttt{HashSet}]
+As coleções com \texttt{Hash} no nome não procuram o elemento comparando com
+todos: elas calculam o \texttt{hashCode()} para achar o \textbf{compartimento}
+e só ali usam \texttt{equals()} para confirmar. Isso impõe um contrato:
+
+\begin{center}
+se \texttt{a.equals(b)} é \texttt{true}, então
+\texttt{a.hashCode() == b.hashCode()} \textbf{obrigatoriamente}
+\end{center}
+
+A recíproca não vale --- dois objetos diferentes podem ter o mesmo
+\emph{hash} (é colisão, e é normal).
+
+\textbf{A consequência que a banca cobra:} sobrescrever \texttt{equals} e
+\textbf{esquecer} \texttt{hashCode} produz um bug silencioso. Dois objetos
+``iguais'' caem em compartimentos diferentes, então o \texttt{HashSet} aceita a
+duplicata e o \texttt{contains}/\texttt{get} do \texttt{HashMap}
+\textbf{não encontra} um objeto que está lá dentro. Nada estoura --- só dá a
+resposta errada, que é o pior desenho possível para um item de ``qual a saída''.
+
+\textbf{Detalhe de ``quase certa'':} \texttt{TreeSet} e \texttt{TreeMap}
+\emph{não} usam \texttt{hashCode}; eles ordenam, e portanto dependem de
+\texttt{compareTo} (\texttt{Comparable}) ou de um \texttt{Comparator}. Uma
+classe sem nenhum dos dois estoura \texttt{ClassCastException} ao entrar num
+\texttt{TreeSet} --- e continua funcionando perfeitamente num \texttt{HashSet}.
+\end{conceito}
 
 \subsection{String: imutabilidade e \texttt{StringBuilder}}
 
@@ -174,6 +284,47 @@ em vez de \texttt{javax.*}).
 \item \textbf{JSF/Primefaces:} framework de UI server-side baseado em
 componentes.
 \end{itemize}
+
+\begin{conceito}[A JVM em duas ideias: bytecode e as duas áreas de memória]
+\textbf{Por que existe.} O compilador Java não gera código de máquina: gera
+\textbf{bytecode} (\texttt{.class}), uma instrução intermediária que nenhuma CPU
+executa. Quem executa é a \textbf{JVM}, e existe uma JVM para cada sistema
+operacional --- é daí, e só daí, que vem o \emph{write once, run anywhere}. O
+\texttt{.class} é o mesmo em Windows e Linux; o que muda é o intérprete.
+
+\textbf{Onde as coisas moram.} A separação explica metade das perguntas de
+memória:
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{9.4cm}@{}}
+\toprule
+\textbf{Área} & \textbf{O que guarda} \\
+\midrule
+\textbf{Stack} & uma por \textbf{thread}: um quadro por chamada de método, com
+os parâmetros, as variáveis locais e as \textbf{referências}. O quadro morre
+quando o método retorna \\
+\textbf{Heap} & os \textbf{objetos}, compartilhados por todas as threads.
+Sobrevivem ao método que os criou, enquanto alguém os alcançar \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A variável local mora na \emph{stack}; o objeto que ela aponta mora no
+\emph{heap}. É por isso que ``passar o objeto'' é passar uma referência
+copiada (Capítulo \ref{cap:programacao}), e é por isso que a \emph{stack} é
+uma pilha de verdade --- a mesma estrutura LIFO da Seção
+\ref{sec:estruturas-dados}, agora como mecanismo de execução: recursão sem fim
+estoura a pilha (\texttt{StackOverflowError}), objeto demais estoura o heap
+(\texttt{OutOfMemoryError}).
+
+\textbf{Garbage collection.} O coletor libera o que \textbf{não é mais
+alcançável} a partir das raízes (variáveis vivas nas pilhas, campos estáticos)
+--- não o que ``não é mais usado''. Duas consequências que a banca cobra: Java
+\textbf{não tem destrutor determinístico} (você não sabe \emph{quando} o objeto
+será coletado) e \texttt{System.gc()} é \textbf{sugestão}, não ordem. Recurso
+externo (arquivo, conexão) se fecha à mão, com \texttt{try-with-resources} ---
+o GC cuida de memória, não de \emph{handles}.
+\end{conceito}
 
 \begin{pegadinha}
 JPA N+1: o distrator oferece EAGER em tudo ou ``deixar o JPA decidir'' como
@@ -235,6 +386,38 @@ thread} de plataforma (não é uma-para-uma). Brilham em cenários I/O-bound.
 \item \textbf{Streams e lambdas} (Java 8+): programação funcional em
 coleções.
 \end{itemize}
+
+\begin{conceito}[Stream é um pipeline preguiçoso --- e é aí que está o item de prova]
+Um \emph{stream} não é uma coleção: é um \textbf{fluxo de processamento} sobre
+uma fonte. Ele tem três partes, e a terceira é a que importa:
+
+\begin{center}
+fonte (\texttt{lista.stream()}) $\to$ operações \textbf{intermediárias} $\to$
+operação \textbf{terminal}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Intermediárias} (\texttt{filter}, \texttt{map},
+\texttt{sorted}, \texttt{distinct}, \texttt{limit}) devolvem \emph{outro
+stream} e são \textbf{preguiçosas}: nenhuma executa na hora em que é escrita.
+\item \textbf{Terminais} (\texttt{collect}, \texttt{forEach},
+\texttt{reduce}, \texttt{count}, \texttt{anyMatch}) \textbf{disparam} o
+pipeline e o encerram.
+\end{itemize}
+
+Daí os três fatos que a FGV transforma em alternativa: um pipeline
+\textbf{sem operação terminal não executa nada} (nem o \texttt{map} roda); o
+stream \textbf{não altera a fonte} --- \texttt{map} devolve valores novos e a
+lista original continua intacta; e um stream é de \textbf{uso único}
+(reaproveitar o mesmo objeto dá \texttt{IllegalStateException}).
+
+\textbf{Trio funcional, em uma linha cada:} \texttt{filter} escolhe
+\emph{quais} passam (não muda o elemento); \texttt{map} transforma \emph{cada}
+elemento, um para um; \texttt{reduce} combina todos em \textbf{um} resultado.
+A \textbf{lambda} é só a forma curta de escrever a implementação de uma
+interface de método único (\texttt{Predicate}, \texttt{Function}) no lugar de
+uma classe anônima --- açúcar de sintaxe, não um recurso novo de tipo.
+\end{conceito}
 
 \subsection{\texttt{var}, \texttt{record} e \texttt{switch} como expressão}
 

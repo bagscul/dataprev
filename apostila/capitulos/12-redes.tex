@@ -32,6 +32,42 @@ de Software (modelo OSI, protocolo, segurança de rede). Ignorar isso custou
 \textbf{TCP/IP (4 camadas):} Acesso à Rede, Internet (IP), Transporte
 (TCP/UDP), Aplicação.
 
+\begin{conceito}[Encapsulamento --- a ideia única que faz o modelo em camadas funcionar]
+Camada não é gaveta de classificação: é \textbf{divisão de trabalho}. Cada
+camada resolve \emph{um} problema, entrega o resultado à de baixo e
+\textbf{acrescenta o próprio cabeçalho} --- na volta, cada uma retira o seu.
+Por isso o nome da unidade de dados denuncia a camada, e isso responde item de
+prova direto:
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{3.1cm}p{5.3cm}@{}}
+\toprule
+\textbf{Camada} & \textbf{Unidade (PDU)} & \textbf{Problema que ela resolve} \\
+\midrule
+Aplicação & mensagem/dados & o que os dois programas querem dizer \\
+Transporte & \textbf{segmento} (TCP) / datagrama (UDP) & entregar ao
+\textbf{processo} certo (porta), na ordem e sem perda \\
+Rede & \textbf{pacote} & achar o caminho \textbf{entre redes} diferentes (IP,
+roteamento) \\
+Enlace & \textbf{quadro} & entregar ao vizinho \textbf{dentro do mesmo
+segmento} físico (MAC) \\
+Física & bits & pôr o sinal no meio \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{O critério de decisão}, que é como a FGV cobra (por função, nunca pelo
+número): o problema é \emph{entre duas máquinas da mesma rede local}? Enlace.
+\emph{Entre redes}? Rede. \emph{Chegou à máquina certa mas não ao programa
+certo}, ou faltou ordem/retransmissão? Transporte. \emph{Diálogo, retomada,
+checkpoint}? Sessão. \emph{Formato, cifra, compressão}? Apresentação.
+
+Os dois modelos não competem: o OSI de 7 camadas é o \textbf{referencial de
+ensino}, e a pilha realmente implementada é a \textbf{TCP/IP} de 4 --- que junta
+OSI 5--7 em ``Aplicação'' e OSI 1--2 em ``Acesso à Rede''. Quando o enunciado
+cita sessão ou apresentação, está falando de OSI.
+\end{conceito}
+
 \begin{pegadinha}
 Modelo OSI é cobrado por \textbf{função}, não por número: o cenário descreve
 o comportamento e pede a camada. Ex.: ``checkpoints no fluxo + controle de
