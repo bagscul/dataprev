@@ -9,7 +9,7 @@ item. Três frentes: destravar questão real que estava fora do sorteio por
 engano, consertar um casamento de string que sujava um bloco, e começar a
 transformar a apostila de mapa de prova em livro-texto. `banco-provas.json`:
 **432 → 422** questões (o recorte encolheu de propósito); utilizáveis no quiz:
-**735 → 768**. Apostila: **122 → 145 páginas**.
+**735 → 768**. Apostila: **122 → 146 páginas**.
 
 ### 45 questões reais estavam trancadas por engano
 
@@ -81,6 +81,48 @@ Duas anotações que valem por si:
 - **`cnsal-redes` Q43 (Decorators do Python).** A explicação diz na cara que o
   `@` do Python não é o Decorator do GoF — a armadilha de garimpo já catalogada
   no repositório, agora ensinada no ponto exato em que ela aparece.
+
+### Apostila fase 3, lote 3 — frontend, e a fase fecha
+
+**145 → 146 páginas.** Era o capítulo de menor déficit do livro (1:1,88), já
+tinha boa prosa e duas caixas de conceito de leitura de código, então foi
+cirúrgico: três inserções, todas no que ele **citava e não ensinava**.
+**Frontend: 1:1,88 → 1:0,69.**
+
+**HTML semântico como decisão, não decoração** — o capítulo listava as tags e
+parava ali. Quem lê o *papel* do bloco são programas (leitor de tela, buscador,
+comportamento de teclado nativo), e é daí que vem a regra número um do ARIA, que
+o capítulo já ensinava adiante sem essa âncora. **CSR × SSR × SSG e a
+*hydration*** estavam no "alta probabilidade" e não eram ensinados em lugar
+nenhum, apesar de serem a consequência direta da SPA — que o próprio capítulo
+chama de "coração deste bloco": entraram pelo *onde e quando* o HTML é gerado,
+com o preço de cada estratégia, a *hydration* como costura entre SSR e SPA
+(incluindo a janela em que a página **parece pronta e não responde ao clique**)
+e o aviso de que SSR/CSR e PWA são **eixos independentes**, que é onde vive o
+distrator do item real de SPA × PWA. E **UX × usabilidade × acessibilidade**, que
+eram um *bullet* de uma linha cada, com as duas relações que resolvem o item: UX
+**contém** usabilidade (e a UI é só a camada visual), e acessibilidade **não é
+caso particular** de usabilidade — as duas se cruzam, não se contêm. Mais a
+diferença de natureza: usabilidade é objetivo de qualidade; acessibilidade é
+requisito normativo (WCAG como critério técnico, eMAG como modelo do governo
+brasileiro derivado dele, LBI como obrigação em serviço público).
+
+**Fecho da fase 3.** O Módulo II inteiro está agora em ≈1:1 ou melhor:
+eng-software 1:0,80, padrões+UML 1:1,04, arquitetura 1:1,12, banco de dados
+1:0,72, BI 1:0,82, segurança 1:1,35, programação 1:0,80, Java 1:0,76, frontend
+1:0,69, governança 1:0,79. Redes ficou em 1:2,46 **de propósito** (passe curto:
+fora do edital do Perfil 3, 1 questão na Dataprev 2024) e órfãos não foi tocado
+por decisão de escopo --- é conteúdo fora do perfil por definição, e a própria
+caixa do capítulo manda não gastar tempo nele. Caixas ao fim das três fases:
+`conceito` **27 → 62**; `pegadinha` 113 → 116 (as três a mais são de seções
+novas: gestão de riscos, RUP e estruturas de dados); `jacaiu` e `comosair`
+**nos mesmos 20 e 24 do início** --- o contrato aditivo cumprido em 13
+capítulos. O livro foi de 87 a 146 páginas, dentro do alvo de ~155 e longe do
+teto de 175.
+
+Sobra uma decisão: **`18-legislacao`** (1:14,26, a pior razão restante). O número
+é tentador, mas ali o "conceito" é o texto da lei, e apostila não substitui lei
+--- provavelmente só as bases legais e os agentes da LGPD.
 
 ### Apostila fase 3, lote 2 — Java, governança e o passe curto de redes
 
