@@ -44,6 +44,15 @@ entender competências, prazos e papéis.
   nos termos da Lei 13.848/2019. Alternativa que a chame de
   "órgão da administração direta" ou "vinculada à
   Presidência da República" descreve desenho revogado.
+- POR QUE ela virou agência: a Lei 15.211/2025 (ECA
+  Digital), em vigor desde 17/03/2026, deu à ANPD a
+  competência de regulamentar e fiscalizar as plataformas.
+  Essa lei NÃO está no rol do edital, mas é o contexto do
+  desenho atual da ANPD. Guarde: verificação de idade
+  confiável (autodeclaração não basta), conta de menor de
+  16 vinculada a responsável, vedação de publicidade
+  comportamental para criança e adolescente, multa de até
+  R$ 50 milhões por infração.
 - Inverte os prazos da LAI ou o marco de contagem.
 - Multa da LGPD com número errado (vê abaixo o certo).
 - ARMADILHA DE 2026 no Marco Civil: alternativa que diz

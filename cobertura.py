@@ -87,7 +87,11 @@ def keywords_from(title, body):
         t = clean_tex(m)
         # separa "A x B" e "A / B" em keywords distintas
         for part in re.split(r"\s*(?: x |×|/|,|;|→|↔|–)\s*", t):
-            part = part.strip(" -")
+            # A apostila escreve lista de definicao como \textbf{Termo:}, com o
+            # dois-pontos DENTRO das chaves. Sem tirar a pontuacao da ponta, a
+            # keyword vira "arquitetura de computadores:" e so casaria com uma
+            # questao que tambem tivesse o ':' colado — na pratica, nunca.
+            part = part.strip(" -:.;,")
             if len(part) >= 4 and norm(part) not in STOP:
                 kws.append(norm(part))
     # titulo: guarda o titulo INTEIRO (sem parentetico) como frase precisa,

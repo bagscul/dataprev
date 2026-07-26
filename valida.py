@@ -24,7 +24,8 @@ import unicodedata
 from pathlib import Path
 
 BASE = Path(__file__).parent
-C = {"r": "\033[0m", "verde": "\033[32m", "verm": "\033[31m", "ama": "\033[33m", "b": "\033[1m"}
+C = {"r": "\033[0m", "verde": "\033[32m", "verm": "\033[31m", "ama": "\033[33m", "b": "\033[1m",
+     "dim": "\033[2m"}
 
 # Vocabulario do campo opcional 'status' (auditoria Bloco V). Ausencia = 'ok'
 # implicito (questao nao marcada). Presente, tem que ser um destes valores.
@@ -141,6 +142,14 @@ JANELA_PADRAO = 30   # questao nova e sempre anexada ao fim: as N ultimas = lote
 BLOCO_MIN = 12       # bloco menor que isso nao e medido (flutuacao domina o sinal)
 RATIO_LIM = 1.7      # correta / media das erradas, por questao
 RATIO_MOSTRA = 5
+# Piso para o ratio valer alguma coisa. Em questao cujas alternativas sao TERMOS
+# secos ("dice", "slice", "drill-down", "pivot", "roll-up"), a razao estoura por
+# causa do tamanho da palavra, nao de verbosidade da correta: 10 contra media 5,25
+# da 1,9x com 5 caracteres de diferenca. Nao ha o que encurtar — o termo tem o
+# nome que tem. So acusa quando as erradas ja sao frases (media >= MIN_MEDIA) E a
+# correta tem folga real em caracteres (>= MIN_DELTA).
+RATIO_MIN_MEDIA = 20
+RATIO_MIN_DELTA = 12
 
 
 def _metricas(itens):
@@ -162,7 +171,9 @@ def _metricas(itens):
             continue
         if cl > max(wl):
             mais_longa.append(i)
-        ratios.append((cl / (sum(wl) / len(wl)), i))
+        media_wl = sum(wl) / len(wl)
+        if media_wl >= RATIO_MIN_MEDIA and cl - media_wl >= RATIO_MIN_DELTA:
+            ratios.append((cl / media_wl, i))
         if not _tem_absoluto(alts[a]) and any(_tem_absoluto(x) for j, x in enumerate(alts) if j != a):
             abs_so.append(i)
     if not n:
@@ -463,6 +474,13 @@ def main():
     # drift entre apostila, resumo, dicas e banco (nao bloqueia)
     avisos_d = avisos_drift()
 
+    # Separa o que e ACIONAVEL do que e permanente por natureza. Questao cujas
+    # alternativas eram FIGURAS no caderno (BPMN, diagrama UML) sai da extracao
+    # vazia e nunca vai ter texto — ela ja esta fora do sorteio e nao ha nada a
+    # editar. Misturada aos avisos de verdade, ensina a ignorar a lista inteira.
+    avisos_fs = [x for x in avisos if "[fora do sorteio]" in x]
+    avisos = [x for x in avisos if "[fora do sorteio]" not in x]
+
     print()
     print(cor(f"  banco.json: {n_orig} questoes | banco-provas.json: {n_prova} questoes", "b"))
     print(f"  utilizaveis no quiz: {n_usaveis}")
@@ -479,6 +497,13 @@ def main():
             print("   ", x)
         if len(avisos) > 15:
             print(f"    ... e mais {len(avisos) - 15}")
+    if avisos_fs:
+        print(cor(f"  {len(avisos_fs)} questao(oes) fora do sorteio por dependerem de figura "
+                  f"— esperado, nao ha o que editar:", "dim"))
+        for x in avisos_fs[:5]:
+            print(cor("    " + x, "dim"))
+        if len(avisos_fs) > 5:
+            print(cor(f"    ... e mais {len(avisos_fs) - 5}", "dim"))
     if avisos_f:
         print(cor(f"  {len(avisos_f)} aviso(s) de forma (banco.json) — nao bloqueiam, miram questoes novas:", "ama"))
         for x in avisos_f:

@@ -6936,5 +6936,651 @@
    "2": "Está correta: é na Construção que o volume de codificação e teste se concentra, entregando a Capacidade Operacional Inicial ao final.",
    "4": "Está correta: a Transição leva o produto ao usuário — implantação, migração, treinamento e correções de aceite — até a liberação do produto."
   }
+ },
+ {
+  "tag": "orfaos",
+  "q": "Em uma autarquia, o setor de atendimento registra cada solicitação recebida no sistema, uma a uma, no momento em que ela ocorre. A coordenação, por sua vez, recebe toda segunda-feira um relatório de formato fixo com o total de solicitações por tipo e por unidade, para acompanhar a rotina da área. Na classificação clássica dos sistemas de informação, o sistema que produz esse relatório da coordenação é o:",
+  "alts": [
+   "SPT (Sistema de Processamento de Transações), que é onde as solicitações são registradas uma a uma",
+   "SAD (Sistema de Apoio à Decisão), voltado a decisões semiestruturadas com simulação de cenários",
+   "SIG (Sistema de Informação Gerencial), que consolida os dados das transações em relatórios periódicos",
+   "SIE (Sistema de Informação Executivo), que sintetiza indicadores estratégicos para a alta direção",
+   "ERP (Enterprise Resource Planning), que integra os processos internos numa base de dados única"
+  ],
+  "ans": 2,
+  "why": "O SIG fica no nível gerencial/tático: pega o que o SPT registrou no nível operacional e devolve relatórios periódicos, de formato pré-definido, sobre a rotina. O enunciado descreve exatamente isso — periodicidade fixa, formato fixo, acompanhamento de rotina.",
+  "erradas": {
+   "0": "O SPT é o sistema descrito na primeira frase, não na segunda: ele registra a transação no momento em que ela ocorre, no nível operacional. Confundir a fonte do dado com quem o consolida é a troca que a banca monta.",
+   "1": "Faltam ao cenário as marcas do SAD: decisão semiestruturada, modelos analíticos, simulação de cenários. Relatório de formato fixo e periodicidade fixa é o oposto da flexibilidade que caracteriza o apoio à decisão.",
+   "3": "O SIE atende a alta direção com indicadores estratégicos e visão sintética da organização inteira. Aqui quem consome é a coordenação de uma área, sobre a rotina dela — nível tático, não estratégico.",
+   "4": "ERP não é nível de decisão, e sim escopo de integração: unifica processos de vários departamentos numa base única. Ele pode até alimentar o relatório, mas responder ERP troca a pergunta 'que tipo de sistema' por 'que produto'."
+  }
+ },
+ {
+  "tag": "orfaos",
+  "q": "Em arquitetura de computadores, as duas unidades funcionais clássicas da CPU são a Unidade de Controle (UC) e a Unidade Lógica e Aritmética (ULA). A respeito da divisão de trabalho entre elas, é correto afirmar que:",
+  "alts": [
+   "a UC executa as somas e as comparações, e a ULA fica encarregada de armazenar o resultado",
+   "a UC busca e decodifica a instrução e comanda as demais unidades; a ULA faz as contas e as comparações",
+   "ambas executam cálculo, e a diferença está na largura dos dados que cada uma processa",
+   "a ULA decodifica a instrução e decide qual operação a UC deve executar em seguida",
+   "a UC guarda os operandos nos registradores do processador, e a ULA gera os sinais de controle do barramento"
+  ],
+  "ans": 1,
+  "why": "A UC é a unidade de comando: busca a instrução, decodifica e emite os sinais que coordenam as demais unidades — ela não calcula. Quem calcula é a ULA, que realiza as operações aritméticas (soma, subtração) e lógicas (AND, OR, comparação).",
+  "erradas": {
+   "0": "Aqui os papéis estão simplesmente trocados de lado: somar e comparar é trabalho da ULA. E armazenar resultado não é função de nenhuma das duas — é dos registradores.",
+   "2": "Atribuir cálculo às duas apaga a razão de existirem separadas. A UC não possui circuito aritmético; a divisão é funcional (comandar × calcular), não uma questão de largura de dados.",
+   "3": "Decodificar instrução e definir o próximo passo é justamente o que a UC faz. Esta alternativa inverte o par na etapa mais cobrada do ciclo de instrução.",
+   "4": "Os dois complementos estão fora de lugar: registrador é elemento de armazenamento, não a UC; e sinal de controle é emitido pela UC, nunca pela ULA."
+  }
+ },
+ {
+  "tag": "orfaos",
+  "q": "A respeito da hierarquia de memória de um computador (registradores, memória cache, memória principal e armazenamento secundário), assinale a afirmativa INCORRETA.",
+  "alts": [
+   "Ao subir na hierarquia, o custo por bit armazenado tende a aumentar.",
+   "Os registradores, no topo da hierarquia, são a memória de acesso mais rápido pela CPU.",
+   "A memória cache guarda dados de acesso frequente para reduzir o número de acessos à memória principal.",
+   "Ao subir na hierarquia, a capacidade de armazenamento aumenta, acompanhando o ganho de velocidade.",
+   "O armazenamento secundário mantém os dados na ausência de energia, ao contrário da memória principal."
+  ],
+  "ans": 3,
+  "why": "A hierarquia troca capacidade por velocidade: subindo dos discos para os registradores, ganha-se velocidade e perde-se capacidade. Dizer que as duas crescem juntas é a inversão pedida pelo comando negativo — se existisse memória rápida e grande e barata, a hierarquia não faria sentido.",
+  "erradas": {
+   "0": "Afirmativa correta: quanto mais rápido o nível, mais caro o bit. É por isso que se usa pouco registrador e muito disco.",
+   "1": "Afirmativa correta: os registradores ficam dentro do próprio processador e são o nível de acesso mais rápido de todos.",
+   "2": "Afirmativa correta: a cache existe para explorar a localidade dos acessos e poupar idas à memória principal, que é mais lenta.",
+   "4": "Afirmativa correta: o armazenamento secundário é não volátil; a memória principal (RAM) perde o conteúdo quando falta energia."
+  }
+ },
+ {
+  "tag": "orfaos",
+  "q": "Uma empresa de logística tem sistemas isolados em finanças, estoque, compras e recursos humanos, com dados repetidos e divergentes entre eles. A diretoria quer um único sistema que integre esses processos internos sobre uma base de dados compartilhada, eliminando a redundância. A categoria de sistema adequada é:",
+  "alts": [
+   "CRM, por centralizar o histórico de interações e o relacionamento com os clientes",
+   "SCM, por coordenar o fluxo de materiais e informações ao longo da cadeia de suprimentos",
+   "BI, por consolidar dados em um repositório analítico para apoiar a tomada de decisão",
+   "ERP, por integrar os processos das áreas internas em torno de uma base de dados única",
+   "SPT, por processar as transações rotineiras de cada uma das áreas envolvidas"
+  ],
+  "ans": 3,
+  "why": "ERP é definido pela integração dos processos internos (finanças, estoque, compras, RH) sobre base de dados única — exatamente o problema de redundância descrito. O nome já entrega o escopo: planejamento dos recursos da empresa.",
+  "erradas": {
+   "0": "CRM olha para fora, para o cliente: vendas, marketing, atendimento, histórico de interações. O cenário não menciona cliente em nenhum ponto.",
+   "1": "SCM também olha para fora, mas para fornecedores e distribuição — o fluxo entre elos da cadeia. Integrar RH e finanças não é matéria de cadeia de suprimentos.",
+   "2": "BI cria um repositório analítico para consulta e decisão, alimentado pelos sistemas transacionais. Ele não substitui nem integra os sistemas de origem, que continuariam redundantes.",
+   "4": "SPT nomeia o que esses sistemas isolados já fazem hoje, cada um por conta. Responder SPT é reafirmar o problema em vez de resolvê-lo."
+  }
+ },
+ {
+  "tag": "orfaos",
+  "q": "Em arquitetura de computadores, o ciclo de instrução percorre as etapas de busca, decodificação e execução. Uma CPU com pipeline sobrepõe essas etapas de instruções diferentes, de modo que, enquanto uma instrução é executada, a seguinte já está sendo decodificada. O efeito principal do pipeline é:",
+  "alts": [
+   "reduzir o tempo total que uma instrução isolada leva desde a busca até a conclusão",
+   "dispensar a Unidade de Controle, já que as etapas passam a ser coordenadas pelo próprio pipeline",
+   "aumentar a vazão de instruções concluídas por unidade de tempo, sem encurtar cada instrução",
+   "eliminar a necessidade de memória cache, porque as instruções ficam retidas nos estágios",
+   "garantir que nenhuma instrução precise ser descartada, mesmo em desvio condicional"
+  ],
+  "ans": 2,
+  "why": "Pipeline é ganho de vazão (throughput), não de latência: a instrução individual continua atravessando todos os estágios no mesmo tempo, mas passa a sair uma instrução concluída por ciclo em vez de uma a cada N ciclos. A banca troca vazão por 'instrução mais rápida'.",
+  "erradas": {
+   "0": "É a troca clássica de latência por vazão. A instrução isolada não anda mais rápido — ela apenas deixa de esperar que a anterior termine para começar.",
+   "1": "A UC continua indispensável: é ela que comanda cada estágio. Pipeline organiza a sobreposição do trabalho, não elimina quem coordena.",
+   "3": "Cache e pipeline resolvem problemas distintos — o gargalo de acesso à memória e a ociosidade dos estágios. Um não substitui o outro.",
+   "4": "O oposto acontece: desvio condicional é o ponto fraco do pipeline. Errar a previsão obriga a descartar as instruções já adiantadas nos estágios."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "No gerenciamento de nível de serviço, uma área de TI mantém três documentos: um firmado com a área de negócio que consome o serviço, um firmado com a equipe interna de infraestrutura que sustenta esse serviço, e um firmado com a empresa terceirizada de links de rede. Esses três documentos são, respectivamente:",
+  "alts": [
+   "OLA, SLA e contrato de apoio",
+   "SLA, contrato de apoio e OLA",
+   "contrato de apoio, OLA e SLA",
+   "SLA, OLA e contrato de apoio",
+   "OLA, contrato de apoio e SLA"
+  ],
+  "ans": 3,
+  "why": "O critério é com quem se assina: SLA é o acordo com o cliente do serviço; OLA é o acordo interno, entre unidades do próprio provedor; contrato de apoio (underpinning contract) é o compromisso com fornecedor externo, que é contrato porque há terceiro juridicamente distinto.",
+  "erradas": {
+   "0": "Troca o SLA com o OLA nas duas primeiras posições. Acordo com quem consome o serviço é sempre SLA — OLA nunca é assinado com o cliente.",
+   "1": "Acerta o SLA na primeira posição e erra ao pôr o contrato de apoio na equipe interna. Equipe interna do mesmo provedor não gera contrato, gera acordo operacional.",
+   "2": "Inverte a ordem inteira, deixando o terceirizado com SLA e o cliente com contrato de apoio — precisamente o desenho oposto ao que os nomes descrevem.",
+   "4": "Repete o erro de dar OLA ao cliente e ainda desloca o contrato de apoio para dentro de casa, sobrando SLA para o fornecedor externo."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O COBIT 2019 enuncia princípios em dois planos distintos: os princípios de um sistema de governança e os princípios de um framework de governança. Sobre essa distinção, assinale a alternativa correta.",
+  "alts": [
+   "São seis princípios para o sistema de governança e três para o framework de governança.",
+   "São três princípios para o sistema de governança e seis para o framework de governança.",
+   "São seis princípios em cada um dos dois planos, num total de doze.",
+   "O COBIT 2019 enuncia um único conjunto de sete princípios, herdado do COBIT 5.",
+   "São cinco princípios para o sistema de governança, os mesmos cinco do COBIT 5."
+  ],
+  "ans": 0,
+  "why": "O COBIT 2019 traz seis princípios para o sistema de governança (entre eles fornecer valor às partes interessadas, abordagem holística, governança distinta da gestão e adaptação às necessidades da empresa) e três para o framework de governança (baseado em modelo conceitual, aberto e flexível, alinhado a padrões relevantes). A banca troca os dois números de lugar.",
+  "erradas": {
+   "1": "Os números estão certos, mas atribuídos ao plano errado — a troca de seis por três é exatamente o distrator que a banca constrói sobre esse item.",
+   "2": "Somar doze desfaz a assimetria proposital do modelo: os planos têm quantidades diferentes porque tratam de objetos diferentes, o sistema e o próprio framework.",
+   "3": "Os sete não existem no COBIT 2019, e o COBIT 5 tinha cinco princípios, não sete. A alternativa junta um número inventado a uma edição anterior.",
+   "4": "Os cinco princípios do COBIT 5 foram reformulados na edição de 2019, e não simplesmente mantidos. Repetir a estrutura antiga descreve versão superada."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "A sétima edição do Guia PMBOK alterou a forma de organizar o conteúdo em relação à sexta edição. Sobre essa mudança, assinale a alternativa correta.",
+  "alts": [
+   "A sétima edição ampliou os grupos de processos de cinco para oito, mantendo as dez áreas de conhecimento.",
+   "A sétima edição abandonou a orientação a princípios e retomou a estrutura por processos que a quinta edição do guia adotava.",
+   "A sétima edição substituiu os processos e as áreas de conhecimento por doze princípios de entrega e oito domínios de desempenho.",
+   "A sétima edição manteve os cinco grupos de processos e limitou-se a renomear as áreas de conhecimento como domínios.",
+   "A sétima edição eliminou os princípios e passou a tratar de métodos ágeis, deixando o preditivo de fora."
+  ],
+  "ans": 2,
+  "why": "O PMBOK 6 era estruturado em cinco grupos de processos, dez áreas de conhecimento e 49 processos; o PMBOK 7 mudou de orientação e passou a se organizar em doze princípios de entrega de projeto e oito domínios de desempenho, deixando os métodos e artefatos para consulta separada.",
+  "erradas": {
+   "0": "Os oito da sétima edição são domínios de desempenho, não grupos de processos ampliados. A alternativa conserva a estrutura antiga e só troca um número dentro dela.",
+   "1": "O movimento foi na direção contrária: a sétima edição avançou para princípios, e não retrocedeu à estrutura por processos de edições anteriores.",
+   "3": "Renomear área de conhecimento como domínio seria mudança de rótulo; a sétima edição mudou a lógica de organização, e os cinco grupos de processos deixaram de estruturar o guia.",
+   "4": "A sétima edição é deliberadamente agnóstica quanto à abordagem: serve a projetos preditivos, híbridos e ágeis. Restringi-la ao ágil extrapola a mudança."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O Scrum Guide associa a cada artefato do Scrum um compromisso, que dá transparência ao progresso em relação a ele. A associação correta entre artefato e compromisso é:",
+  "alts": [
+   "Product Backlog e Definição de Pronto; Sprint Backlog e Meta do Produto; Incremento e Meta da Sprint",
+   "Product Backlog e Meta do Produto; Sprint Backlog e Meta da Sprint; Incremento e Definição de Pronto",
+   "Product Backlog e Meta da Sprint; Sprint Backlog e Definição de Pronto; Incremento e Meta do Produto",
+   "Product Backlog e Meta do Produto; Sprint Backlog e Definição de Pronto; Incremento e Meta da Sprint",
+   "Product Backlog e Definição de Pronto; Sprint Backlog e Meta da Sprint; Incremento e Meta do Produto"
+  ],
+  "ans": 1,
+  "why": "Cada compromisso tem o horizonte do seu artefato: a Meta do Produto é o objetivo de longo prazo do Product Backlog; a Meta da Sprint é o objetivo único da Sprint, no Sprint Backlog; e a Definição de Pronto é o critério de qualidade que torna o Incremento utilizável.",
+  "erradas": {
+   "0": "Embaralha os três compromissos. Definição de Pronto é critério de qualidade do que foi entregue, e por isso pertence ao Incremento, nunca ao Product Backlog.",
+   "2": "Coloca a Meta da Sprint no Product Backlog e a Meta do Produto no Incremento, invertendo os horizontes: a meta de longo prazo migra para o artefato de curtíssimo prazo.",
+   "3": "Acerta a primeira associação e erra as outras duas, trocando Definição de Pronto e Meta da Sprint entre Sprint Backlog e Incremento — é a 'quase certa' do item.",
+   "4": "Só a associação do meio está correta. As pontas ficam invertidas, com o critério de qualidade no backlog e a meta de longo prazo no incremento."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Ao planejar as respostas aos riscos de um projeto, o gerente identifica a ameaça de perda de equipamentos por incêndio no galpão de obras e decide contratar um seguro que cobre integralmente o prejuízo financeiro. Segundo o Guia PMBOK, a estratégia de resposta adotada é:",
+  "alts": [
+   "mitigar, porque a apólice reduz a probabilidade de o incêndio ocorrer",
+   "prevenir, porque a contratação elimina a causa-raiz do risco identificado",
+   "aceitar ativamente, porque o projeto reserva recursos de contingência para o caso de o risco ocorrer",
+   "escalar, porque a decisão sobre a apólice cabe a instância superior ao projeto",
+   "transferir, porque o impacto financeiro passa a ser suportado por um terceiro"
+  ],
+  "ans": 4,
+  "why": "Seguro é o exemplo canônico de transferência: o risco continua existindo com a mesma probabilidade, mas a responsabilidade pelo impacto passa a um terceiro, mediante prêmio. O par que a banca explora é transferir × mitigar.",
+  "erradas": {
+   "0": "Mitigar é agir sobre a probabilidade ou sobre o impacto do evento em si — instalar detectores, brigada, extintores. A apólice não diminui a chance de o incêndio acontecer.",
+   "1": "Prevenir (ou evitar) é remover a exposição, mudando o plano para que o risco deixe de se aplicar. Contratar seguro pressupõe que o risco permanece.",
+   "2": "Na aceitação ativa cria-se reserva de contingência e o próprio projeto absorve o prejuízo. Aqui o prejuízo é deslocado para fora do projeto, o que descaracteriza a aceitação.",
+   "3": "Escalar é encaminhar o risco a quem tem autoridade sobre ele, quando está fora do escopo do projeto. O gerente aqui decidiu e agiu dentro da própria alçada."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "Em um diagrama BPMN de um processo de concessão de benefício, aparecem um retângulo externo nomeado \"Instituto Previdenciário\", subdividido internamente em três faixas horizontais nomeadas \"Atendimento\", \"Perícia\" e \"Concessão\". Sobre esses elementos, é correto afirmar que:",
+  "alts": [
+   "as três faixas são pools, e o retângulo externo é a lane que as agrupa",
+   "o retângulo externo é um subprocesso, e as faixas são as atividades que o compõem",
+   "o retângulo externo é um pool, que representa o participante, e as faixas são lanes, que separam papéis",
+   "tanto o retângulo externo quanto as faixas são pools, e a comunicação entre eles usa fluxo de sequência",
+   "as faixas são pools distintos, e por isso cada uma precisa ter seu próprio evento de início"
+  ],
+  "ans": 2,
+  "why": "Pool representa o participante do processo (a organização, o papel de negócio); lane é a subdivisão interna de um pool, usada para separar papéis, setores ou sistemas dentro do mesmo participante. O aninhamento visto no enunciado — faixas dentro de um retângulo — é a marca dessa relação.",
+  "erradas": {
+   "0": "Inverte a hierarquia: quem contém é o pool e quem é contido é a lane, e não o contrário. Lane não agrupa pools.",
+   "1": "Subprocesso é atividade composta, desenhada como retângulo arredondado com o sinal de mais, e não como moldura que abriga faixas nomeadas por setor.",
+   "3": "Erra duas vezes: as faixas internas não são pools, e a comunicação entre pools distintos se dá por fluxo de mensagem, jamais por fluxo de sequência.",
+   "4": "Como lanes do mesmo pool, as faixas compartilham o fluxo do processo e não exigem evento de início próprio. A exigência valeria para pools independentes."
+  }
+ },
+ {
+  "tag": "governanca",
+  "q": "O ITIL 4 reorganizou o que a versão 3 tratava como processos. A respeito das práticas do ITIL 4, é correto afirmar que:",
+  "alts": [
+   "são 26 práticas, herdadas sem alteração dos processos definidos no ITIL v3, apenas sob outro nome",
+   "são 34 práticas, divididas em gerais de gerenciamento, de gerenciamento de serviço e técnicas",
+   "são 34 práticas, reunidas em uma única categoria, a de gerenciamento de serviço",
+   "são 5 práticas, uma para cada etapa do ciclo de vida do serviço do ITIL v3",
+   "são 7 práticas, correspondentes aos sete princípios orientadores do ITIL 4"
+  ],
+  "ans": 1,
+  "why": "O ITIL 4 substituiu o conceito de processo por prática, entendida como conjunto de recursos organizacionais destinado a executar um trabalho, e agrupou as 34 práticas em três categorias: gerais de gerenciamento, de gerenciamento de serviço e de gerenciamento técnico.",
+  "erradas": {
+   "0": "As 26 são os processos do ITIL v3, e a mudança para prática não foi mera renomeação — a prática abrange pessoas, informação, tecnologia e parceiros, não apenas o fluxo de atividades.",
+   "2": "O número está certo e a classificação, errada: jogar as 34 numa só categoria apaga as práticas gerais de gerenciamento e as técnicas. É a 'quase certa' do item.",
+   "3": "As cinco etapas do ciclo de vida são estrutura do ITIL v3, abandonada no ITIL 4 em favor do Sistema de Valor de Serviço e da cadeia de valor.",
+   "4": "Os sete princípios orientadores existem, mas são recomendações de conduta e não se confundem com as práticas, que são capacidades organizacionais."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Uma aplicação servida em https://app.dataprev.gov.br passa a consumir uma API em https://api.parceiro.gov.br. O navegador bloqueia a leitura da resposta e o console acusa erro de CORS. A providência correta é:",
+  "alts": [
+   "desabilitar a política de mesma origem no navegador dos usuários, por configuração do cliente",
+   "configurar o servidor da API para retornar cabeçalhos que autorizem a origem da aplicação",
+   "trocar as chamadas por requisições síncronas, que não estão sujeitas à política de mesma origem",
+   "mover as chamadas para o próprio código da página, já que o bloqueio se restringe a requisições feitas por scripts externos",
+   "adicionar à página um cabeçalho declarando as origens externas que ela pretende acessar"
+  ],
+  "ans": 1,
+  "why": "CORS é um relaxamento controlado da política de mesma origem, e quem o concede é o servidor de destino: ele responde com Access-Control-Allow-Origin (e correlatos) declarando quais origens podem ler o recurso. O navegador apenas obedece a essa declaração.",
+  "erradas": {
+   "0": "Além de inviável em escala, inverte a lógica da proteção: a política existe para defender o usuário, e a permissão nunca depende da configuração da máquina de quem acessa.",
+   "2": "Ser síncrona ou assíncrona não muda nada na origem da requisição. A política de mesma origem olha esquema, host e porta, não a forma de execução da chamada.",
+   "3": "O bloqueio não distingue script externo de código embutido na página: o que conta é a origem do recurso requisitado, e não onde o código requisitante mora.",
+   "4": "É a 'quase certa': o cabeçalho existe, mas na resposta do servidor de destino, não na página que faz a chamada. A origem não se autoriza a si mesma."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Um desenvolvedor precisa guardar no navegador um dado que deve sobreviver ao fechamento da aba e do navegador, sem ser enviado automaticamente em cada requisição HTTP ao servidor. O mecanismo adequado é:",
+  "alts": [
+   "sessionStorage, que preserva o dado enquanto a aba existir",
+   "cookie de sessão, apagado quando o navegador é encerrado",
+   "cookie persistente, com data de expiração definida",
+   "localStorage, cujo conteúdo persiste até ser removido",
+   "a variável global window, que mantém o dado durante a navegação"
+  ],
+  "ans": 3,
+  "why": "localStorage é persistente por origem, sobrevive ao fechamento do navegador e não acompanha as requisições HTTP — o acesso é só por JavaScript. Os dois requisitos do enunciado, persistir e não trafegar, eliminam sessionStorage e cookies de uma vez.",
+  "erradas": {
+   "0": "sessionStorage atende o requisito de não trafegar, mas falha no outro: o conteúdo é descartado quando a aba é fechada. É a 'quase certa' do item.",
+   "1": "Cookie de sessão falha nos dois pontos — some ao encerrar o navegador e, enquanto existe, é enviado ao servidor em cada requisição do domínio.",
+   "2": "O cookie persistente sobrevive ao fechamento, mas continua sendo anexado automaticamente a cada requisição, o que o enunciado pede para evitar.",
+   "4": "Propriedade de window vive na memória do documento: qualquer recarga da página já a perde, o que está muito longe da persistência pedida."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Uma equipe migra um portal de notícias de renderização no cliente (CSR) para renderização no servidor (SSR). O principal ganho esperado dessa mudança é:",
+  "alts": [
+   "eliminar a necessidade de JavaScript no navegador, já que a interação passa a ser processada no servidor",
+   "reduzir a carga de processamento no servidor, que passa a entregar arquivos estáticos prontos",
+   "entregar HTML já renderizado na primeira resposta, favorecendo o conteúdo visível e a indexação",
+   "dispensar o uso de API, porque os dados passam a ser lidos diretamente do navegador",
+   "manter a aplicação em funcionamento offline, sem depender de requisição de rede"
+  ],
+  "ans": 2,
+  "why": "No SSR o servidor devolve o HTML já montado, então o conteúdo aparece antes de o pacote JavaScript baixar e executar, e o rastreador do buscador encontra o texto na própria resposta. Em CSR a primeira resposta é praticamente vazia, o que atrasa o conteúdo visível e complica a indexação.",
+  "erradas": {
+   "0": "SSR resolve a primeira pintura, não a interatividade: o JavaScript continua necessário no cliente para hidratar a página e tratar eventos.",
+   "1": "O efeito é o inverso — renderizar a cada requisição custa CPU no servidor. Entregar apenas estáticos descreve a geração de site estático (SSG), outra estratégia.",
+   "3": "A origem dos dados não muda com o local da renderização. O servidor passa a consumir a API no lugar do navegador, e o navegador nunca lê o banco diretamente.",
+   "4": "Funcionamento offline vem de Service Worker e cache, recurso de PWA. SSR depende de ida ao servidor a cada navegação, justamente o oposto de operar sem rede."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "No CSS, um elemento recebe position: absolute e as propriedades top e left. A referência usada para posicioná-lo é:",
+  "alts": [
+   "o ancestral posicionado mais próximo, isto é, qualquer ancestral cuja position não seja static",
+   "sempre o elemento pai direto, independentemente do position dele",
+   "sempre o elemento raiz do documento, o html",
+   "a área visível da janela, acompanhando a rolagem da página",
+   "a posição que o elemento ocuparia no fluxo normal, deslocada pelos valores informados"
+  ],
+  "ans": 0,
+  "why": "O elemento absoluto sai do fluxo e se posiciona em relação ao bloco de contenção formado pelo ancestral posicionado mais próximo — qualquer ancestral com position relative, absolute, fixed ou sticky. Não havendo nenhum, a referência passa a ser o bloco de contenção inicial.",
+  "erradas": {
+   "1": "O pai direto só serve de referência quando ele mesmo está posicionado. Se o pai é static, a busca continua subindo a árvore, e é aí que o layout costuma surpreender.",
+   "2": "O html é o caso de exceção, quando nenhum ancestral está posicionado — não a regra geral. Transformar a exceção em regra é a troca oferecida.",
+   "3": "Referência na janela e imunidade à rolagem descrevem position: fixed. Absolute rola junto com o documento a que está ancorado.",
+   "4": "Deslocar a partir do lugar que o elemento ocuparia, preservando o espaço no fluxo, é o comportamento de position: relative — o par que a banca inverte com absolute."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "Em uma tabela cujas linhas são criadas dinamicamente, um desenvolvedor registra um único ouvinte de clique no elemento <tbody> e nele identifica qual linha foi clicada, em vez de registrar um ouvinte por linha. Sobre a técnica e o mecanismo que a sustenta, assinale a alternativa correta.",
+  "alts": [
+   "A técnica é a delegação de eventos, e ela se apoia na fase de captura, em que o evento desce do alvo para os ancestrais.",
+   "A técnica é a delegação de eventos, e ela se apoia no borbulhamento, em que o evento sobe do alvo por todos os ancestrais.",
+   "A técnica é o borbulhamento, e ela exige que cada linha criada registre seu próprio ouvinte para repassar o evento ao pai.",
+   "A técnica só funciona para linhas existentes no carregamento da página, pois o ouvinte não alcança elementos criados depois.",
+   "A técnica é a delegação de eventos, e ela dispensa o objeto do evento, já que o alvo é sempre o elemento que registrou o ouvinte."
+  ],
+  "ans": 1,
+  "why": "Delegação de eventos aproveita o borbulhamento: o evento nasce no alvo e sobe pela árvore, então um ouvinte no ancestral recebe cliques de qualquer descendente e usa event.target para saber a origem. Por isso ela cobre também os elementos criados depois do registro.",
+  "erradas": {
+   "0": "Acerta o nome da técnica e erra o sentido: na captura o evento desce da raiz até o alvo, e o texto ainda descreve esse percurso ao contrário. A delegação se apoia na subida.",
+   "2": "Inverte os papéis — borbulhamento é o mecanismo, delegação é a técnica que o usa. E exigir ouvinte por linha desfaz a própria economia que justifica delegar.",
+   "3": "É exatamente o contrário: alcançar elementos futuros é a maior vantagem da delegação, porque o ouvinte vive no ancestral, que já existe.",
+   "4": "Sem o objeto do evento a técnica não fecha: é event.target que distingue a linha clicada de currentTarget, o elemento onde o ouvinte foi registrado."
+  }
+ },
+ {
+  "tag": "frontend",
+  "q": "No Vue, um desenvolvedor precisa que um bloco da interface alterne entre visível e oculto muitas vezes por segundo, conforme o usuário move um controle. Considerando as diretivas v-if e v-show, a escolha adequada e sua razão são:",
+  "alts": [
+   "v-if, porque ela apenas alterna a propriedade CSS display, o que é mais barato que recriar o elemento",
+   "v-show, porque ela apenas alterna a propriedade CSS display, mantendo o elemento no DOM",
+   "v-if, porque manter o elemento fora do DOM reduz o custo de cada alternância",
+   "v-show, porque ela remove e reinsere o elemento no DOM a cada alternância, liberando memória",
+   "qualquer das duas, porque ambas produzem exatamente o mesmo efeito no DOM e no desempenho"
+  ],
+  "ans": 1,
+  "why": "v-show renderiza o elemento uma vez e alterna só o display no CSS, custo baixo por alternância — o certo para alternância frequente. v-if de fato cria e destrói o elemento, custo maior a cada troca, e é preferível quando a condição raramente muda.",
+  "erradas": {
+   "0": "Combina a diretiva errada com a descrição da outra: alternar display é v-show. v-if monta e desmonta o elemento de verdade.",
+   "2": "A conclusão não segue da premissa: se o elemento está fora do DOM, ele precisa ser recriado para reaparecer, e é justamente isso que encarece a alternância.",
+   "3": "Atribui a v-show o comportamento de v-if. v-show nunca retira o elemento do DOM — ele continua lá, apenas invisível.",
+   "4": "As duas resolvem renderização condicional, mas por mecanismos diferentes e com custos diferentes. Igualá-las apaga o critério que a questão cobra."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 3,
+  "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Dashboards should be replaced by logs, which are the only reliable source of data.",
+   "Metrics became unnecessary once teams adopted traces and structured logging.",
+   "Night-time failures are the main reason why teams adopt observability tools.",
+   "Observability lets engineers investigate questions nobody foresaw at design time.",
+   "Operations teams should remain responsible for instrumenting the code written by developers."
+  ],
+  "why": "O texto contrasta coletar métricas com entender comportamento e diz que a observabilidade combina métricas, logs e traces 'so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built'. É essa capacidade de investigar o não previsto que organiza o texto inteiro.",
+  "erradas": {
+   "0": "O texto não hierarquiza as fontes nem descarta os dashboards: ele diz que o dashboard sozinho não conta a história toda, o que é diferente de substituí-lo por logs.",
+   "1": "As métricas continuam na lista — a observabilidade é descrita como a combinação de métricas, logs e traces. Tratar métricas como dispensáveis contraria o próprio texto.",
+   "2": "A falha às três da manhã abre o texto como ilustração, não como causa. Tomar o exemplo introdutório pela tese é a armadilha mais comum em questão de ideia principal.",
+   "4": "A última frase afirma o contrário: a mudança cultural exige que os desenvolvedores instrumentem o próprio código, em vez de deixar a tarefa para operações."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 0,
+  "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nIn the fragment \"instead of only the ones anticipated\", the expression \"the ones\" refers to:",
+  "alts": [
+   "questions",
+   "engineers",
+   "metrics",
+   "traces",
+   "systems"
+  ],
+  "why": "O trecho completo é 'ask new questions of a running system instead of only the ones anticipated'. 'The ones' retoma o substantivo plural imediatamente anterior que faz sentido com 'anticipated': as perguntas — as novas, em oposição às já previstas.",
+  "erradas": {
+   "1": "'Engineers' é quem formula a pergunta, e não o que se antecipa. Trocar o agente pelo objeto da ação desfaz a frase.",
+   "2": "'Metrics' aparece antes, na enumeração das fontes de dado, e não é o termo retomado pela comparação entre perguntas novas e previstas.",
+   "3": "'Traces' está na mesma enumeração e nem sequer é o plural mais próximo do fragmento citado.",
+   "4": "'System' aparece no singular dentro do fragmento ('a running system'), o que já o descarta como antecedente de um pronome plural."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 2,
+  "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nIn the text, the verb \"addresses\" is closest in meaning to:",
+  "alts": [
+   "ignores",
+   "postpones",
+   "tackles",
+   "widens",
+   "mentions"
+  ],
+  "why": "Em 'Observability addresses this gap by combining metrics, logs and traces', o verbo tem o sentido de enfrentar, dar tratamento a um problema — sinônimo de 'tackles'. O complemento 'by combining…' confirma: descreve o meio pelo qual a lacuna é enfrentada.",
+  "erradas": {
+   "0": "'Ignores' inverte o sentido: o texto explica justamente como a lacuna é enfrentada, não deixada de lado.",
+   "1": "'Postpones' introduz uma ideia de adiamento que não existe na frase — o tratamento da lacuna é apresentado como algo que já ocorre.",
+   "3": "'Widens' faria a observabilidade aumentar a lacuna que ela resolve, contradizendo o restante do período.",
+   "4": "'Mentions' é a quase certa: 'address' pode significar dirigir-se a um assunto, mas aqui o objeto é um problema (gap) e o meio vem explícito, o que exige o sentido de enfrentar."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 4,
+  "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nAccording to the text, the cultural dimension of the shift consists in:",
+  "alts": [
+   "hiring operations teams that specialise in reading dashboards at night",
+   "replacing charts of latency with narrative descriptions of each request path",
+   "asking engineers to anticipate, at design time, every question they may later need",
+   "training developers to read logs and traces produced by other teams",
+   "having developers instrument their own code rather than delegating it downstream"
+  ],
+  "why": "A frase final define a dimensão cultural: 'it requires developers to instrument the code they write rather than leaving that task to an operations team downstream'. É uma redistribuição de responsabilidade, e não uma mudança de ferramenta.",
+  "erradas": {
+   "0": "Contratar equipe de operações é o desenho que o texto apresenta como superado. A mudança descrita retira essa tarefa de operações, em vez de reforçá-la.",
+   "1": "O texto usa o gráfico de latência como exemplo do que é insuficiente, sem propor substituí-lo por descrição narrativa — detalhe que não está no texto.",
+   "2": "Antecipar todas as perguntas no projeto é exatamente a limitação que a observabilidade supera. A alternativa devolve o problema como se fosse a solução.",
+   "3": "Ler logs de outras equipes mantém a separação entre quem escreve e quem instrumenta o código, oposta à responsabilidade que o texto atribui ao desenvolvedor."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 1,
+  "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Data protection checklists should be applied more rigorously just before a system is launched.",
+   "Safeguards should be built into a project from its earliest decisions rather than added at the end.",
+   "Regulators and organisations agree on when protection measures should be introduced.",
+   "Personal data may be collected freely provided that strong encryption is applied later.",
+   "The moral case for privacy is what makes organisations change their engineering practices."
+  ],
+  "why": "O texto opõe a prática corrente (revisão final, checklist antes do lançamento) à exigência do privacy by design: proteger desde o estágio mais inicial, enquanto ainda se decide o que coletar. Essa oposição é a espinha do texto.",
+  "erradas": {
+   "0": "Aplicar o checklist com mais rigor mantém a proteção no fim do processo — precisamente o desenho que o texto critica. É a quase certa do item.",
+   "2": "O texto marca divergência, não acordo: 'Regulators have taken a different view'. Afirmar convergência apaga o contraste que estrutura o parágrafo.",
+   "3": "Criptografia não é mencionada, e a conclusão do texto vai na direção oposta: a melhor salvaguarda costuma ser não coletar o dado.",
+   "4": "O texto declara que o argumento é 'practical rather than moral'. Eleger a razão moral como motor contraria a frase explícita."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 2,
+  "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nIn the text, the word \"retrofitting\" is closest in meaning to:",
+  "alts": [
+   "removing a component that is no longer necessary",
+   "testing a feature before it reaches production",
+   "adding something to a system already built",
+   "restoring a system to an earlier working state",
+   "documenting a decision taken by another team"
+  ],
+  "why": "'Retrofitting protection into a system that already stores unnecessary personal data' descreve inserir depois, em algo pronto, o que não foi previsto no projeto. O advérbio 'already' no complemento é a pista decisiva.",
+  "erradas": {
+   "0": "Retirar componente é o movimento inverso ao do prefixo 'retro-fit', que indica encaixar algo em obra já existente.",
+   "1": "Testar antes da produção situa a ação em momento anterior à entrega, enquanto o texto fala de sistema que já armazena dados.",
+   "3": "Restaurar a um estado anterior é a ideia de 'rollback'. O texto não trata de voltar atrás, e sim de acrescentar proteção ao que existe.",
+   "4": "Documentar decisão alheia não guarda relação com o custo de engenharia que a frase atribui ao retrofitting."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 0,
+  "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nIn the fragment \"the most effective safeguard is often the simplest one\", the word \"one\" refers to:",
+  "alts": [
+   "safeguard",
+   "approach",
+   "system",
+   "project",
+   "decision"
+  ],
+  "why": "'One' é pró-forma do substantivo contável imediatamente anterior no mesmo sintagma: 'safeguard'. A leitura completa é 'the simplest safeguard' — e o travessão seguinte a define: não coletar o dado.",
+  "erradas": {
+   "1": "'Approach' aparece antes, em 'Under this approach', como circunstância da frase, e não como o núcleo que 'one' substitui.",
+   "2": "'System' foi mencionado no período anterior, dentro de outro sintagma, e não é o termo que o superlativo 'the simplest' qualifica.",
+   "3": "'Project' surge na frase sobre privacy by design e está distante demais para ser retomado por uma pró-forma.",
+   "4": "'Decisions' aparece no plural no texto, o que já o incompatibiliza com o singular 'one'."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 3,
+  "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nThe expression \"rather than\", in \"The argument is practical rather than moral\", is used to:",
+  "alts": [
+   "add a second reason to the one already given",
+   "concede that both explanations are equally valid",
+   "introduce the consequence of the preceding statement",
+   "reject one alternative in favour of the other",
+   "express uncertainty about which explanation applies"
+  ],
+  "why": "'Rather than' estabelece preferência excludente: afirma um termo e descarta o outro. O texto diz que a justificativa é de ordem prática, e não moral, e a frase seguinte comprova, falando de custo e de proteção incompleta.",
+  "erradas": {
+   "0": "Somar razões pediria conectivo aditivo ('and', 'moreover'). 'Rather than' faz o contrário: elimina uma das opções.",
+   "1": "Conceder validade às duas neutralizaria a escolha que a expressão marca — e o texto não volta a tratar do argumento moral.",
+   "2": "Consequência viria por 'therefore' ou 'thus'. Aqui não há relação de causa e efeito entre 'practical' e 'moral', e sim contraste.",
+   "4": "Não há hesitação na frase: o autor afirma qual é a natureza do argumento, sem sinalizar dúvida."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 4,
+  "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nWhat is the main idea of the text?",
+  "alts": [
+   "Accessibility features are useful only for users who have a permanent disability.",
+   "Captions and high contrast are the two requirements that any interface must implement.",
+   "Interfaces become clearer for everyone when accessibility is tested after the launch.",
+   "Designers tend to postpone accessibility because the techniques it requires are considered too complex.",
+   "Treating accessibility as an ordinary requirement helps everyone and costs less when done early."
+  ],
+  "why": "O texto ataca a ideia de acessibilidade como recurso de minoria, mostra com dois exemplos que os limites são difusos e conclui que tratá-la como requisito ordinário produz interfaces mais claras para todos — e mais baratas quando pensada antes.",
+  "erradas": {
+   "0": "É justamente a visão que o texto contesta na primeira linha, e que os exemplos do trem barulhento e da luz do sol desmontam.",
+   "1": "Legendas e alto contraste entram como ilustração do argumento, não como lista obrigatória. Converter exemplo em regra é extrapolar.",
+   "2": "O texto afirma o contrário sobre o momento: o custo cai quando a acessibilidade é considerada antes de a interface ser construída.",
+   "3": "A razão do adiamento apontada pelo texto é a percepção de que serve a poucos, não a complexidade técnica — causa que o texto não menciona."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 1,
+  "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nIn the text, the word \"blurred\" is closest in meaning to:",
+  "alts": [
+   "strictly defined",
+   "not clearly defined",
+   "recently established",
+   "widely accepted",
+   "carefully measured"
+  ],
+  "why": "'In practice the boundaries are blurred' prepara os exemplos em que recursos criados para um grupo servem a outros. 'Blurred' indica fronteira que perdeu nitidez — logo, não claramente delimitada.",
+  "erradas": {
+   "0": "Fronteira estritamente definida é o oposto do que o texto demonstra em seguida, quando mostra os usos se sobrepondo.",
+   "2": "Tratar de quando a fronteira foi estabelecida desloca o eixo: o texto fala da nitidez dela, não de sua data.",
+   "3": "Aceitação ampla diz respeito ao consenso sobre uma ideia, e não ao contorno impreciso entre grupos de usuários.",
+   "4": "Medição cuidadosa sugeriria precisão, o que contraria a imagem de contorno esfumaçado que a palavra carrega."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 2,
+  "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nThe examples of captions and high contrast are used in the text mainly to:",
+  "alts": [
+   "list the accessibility criteria required by current standards",
+   "compare the cost of two different design techniques",
+   "show that features created for specific needs also help other users",
+   "criticise designers who rely on visual elements alone",
+   "prove that noisy environments are the main obstacle to reading"
+  ],
+  "why": "Os dois exemplos vêm logo após 'the boundaries are blurred' e cada um traz o par 'grupo específico + público geral' (surdo e passageiro no trem; baixa visão e luz do sol). A função retórica é sustentar exatamente essa difusão de fronteiras.",
+  "erradas": {
+   "0": "Nenhuma norma é citada no texto, e dois itens não formariam uma lista de critérios exigidos.",
+   "1": "Não há comparação de custo entre as técnicas; o custo aparece só no fim, e a respeito do momento em que se pensa a acessibilidade.",
+   "3": "O texto não critica designers por usarem elementos visuais — a crítica recai sobre tratar acessibilidade como extra opcional.",
+   "4": "O trem barulhento é uma circunstância de exemplo, e elegê-lo como principal obstáculo generaliza muito além do texto."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 0,
+  "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nIn the fragment \"which explains why it is so often postponed\", the pronoun \"it\" refers to:",
+  "alts": [
+   "accessibility",
+   "a minority of users",
+   "the interface",
+   "the cost",
+   "the requirement"
+  ],
+  "why": "A oração retoma o sujeito do período: 'Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed'. O que se adia é a acessibilidade, e é dela que o resto do texto trata.",
+  "erradas": {
+   "1": "'A minority of users' está dentro do predicativo que descreve a acessibilidade; usuários não são algo que se adia.",
+   "2": "'Interface' só aparece nas frases finais, depois do fragmento citado, e por isso não pode ser o antecedente.",
+   "3": "'Cost' também surge apenas no fim do texto, e adiar o custo não faz sentido no encadeamento do primeiro período.",
+   "4": "'Requirement' aparece mais adiante, em 'ordinary quality requirement', posterior ao pronome em questão."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 3,
+  "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nWhat is the author's main point?",
+  "alts": [
+   "Technical debt should always be avoided, since it inevitably produces defects.",
+   "The metaphor of debt is inaccurate and should be abandoned by engineering teams.",
+   "Shipping faster is preferable whenever the team is able to document its decisions.",
+   "The metaphor exposes a trade-off, but only deliberate and tracked debt is legitimate.",
+   "Interest on technical debt is paid mainly through the extra cost of hiring new developers."
+  ],
+  "why": "O autor reconhece a utilidade da metáfora (tornar visível um trade-off a quem não lê código), aponta seu limite (servir de desculpa para desleixo) e fecha distinguindo dívida deliberada, registrada e agendada — legítima — do atalho silencioso, que é defeito.",
+  "erradas": {
+   "0": "O texto chama a dívida deliberada de 'a legitimate engineering decision'. Condená-la em bloco desfaz a distinção que sustenta o último período.",
+   "1": "A metáfora é criticada por ser esticada demais, não por ser incorreta — o texto abre reconhecendo sua utilidade.",
+   "2": "Documentar não é o único critério apresentado: a dívida precisa ser deliberada, registrada e agendada para pagamento.",
+   "4": "Os juros são definidos no próprio texto como mudanças mais lentas e mais defeitos. Contratação de pessoal não é mencionada."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 2,
+  "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nIn the fragment \"a solution it knows to be imperfect\", the pronoun \"it\" refers to:",
+  "alts": [
+   "the metaphor",
+   "the trade-off",
+   "the team",
+   "the interest",
+   "the defect"
+  ],
+  "why": "O sujeito da oração é 'a team ships faster today by choosing a solution it knows to be imperfect'. Quem escolhe e quem sabe da imperfeição é a equipe — o pronome retoma o sujeito da própria frase.",
+  "erradas": {
+   "0": "'The metaphor' é o tema do período anterior e não pratica a ação de escolher uma solução.",
+   "1": "'The trade-off' é o que a metáfora torna visível; um trade-off não conhece nem decide.",
+   "3": "'Interest' aparece depois, na oração coordenada seguinte, e nomeia o que se paga, não quem sabe.",
+   "4": "'Defect' só surge na última linha do texto, posterior ao fragmento, o que já o exclui como antecedente."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 1,
+  "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nIn the text, the expression \"excuse carelessness\" is closest in meaning to:",
+  "alts": [
+   "measure how often mistakes occur",
+   "justify work done without proper care",
+   "forgive a developer who has left the team",
+   "reduce the number of defects in production",
+   "explain a technical concept to non-specialists"
+  ],
+  "why": "'The danger appears when the metaphor is used to excuse carelessness': aqui 'excuse' é o verbo justificar/desculpar e 'carelessness' é o descuido. Juntos, nomeiam o uso da metáfora para legitimar trabalho malfeito.",
+  "erradas": {
+   "0": "Medir frequência de erro é atividade de métrica, sentido ausente tanto em 'excuse' quanto em 'carelessness'.",
+   "2": "Perdoar uma pessoa específica restringe o sentido a um indivíduo, enquanto o texto trata da prática de justificar o descuido.",
+   "3": "Reduzir defeitos seria efeito desejável; o texto aponta o oposto, o risco de a metáfora encobrir o problema.",
+   "4": "Explicar conceito a leigos é a utilidade legítima da metáfora, descrita antes — e não o perigo que a expressão nomeia."
+  }
+ },
+ {
+  "tag": "ingles",
+  "ans": 4,
+  "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nAccording to the text, what distinguishes legitimate technical debt from a mere defect is that legitimate debt is:",
+  "alts": [
+   "repaid before the affected feature reaches the users",
+   "approved by someone outside the development team",
+   "created only in systems that are already in production",
+   "limited to solutions that the team considers perfect",
+   "taken on purpose, written down and scheduled for repayment"
+  ],
+  "why": "O último período dá os três critérios em sequência: 'Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision', em oposição ao atalho tomado em silêncio, que vira defeito.",
+  "erradas": {
+   "0": "O texto exige agendamento do pagamento, não quitação prévia à entrega — a dívida existe justamente porque se entrega antes.",
+   "1": "Nenhuma aprovação externa é mencionada; o critério é a deliberação e o registro, que podem ocorrer dentro da própria equipe.",
+   "2": "O estágio do sistema não aparece como critério em momento algum do texto.",
+   "3": "Solução considerada perfeita não geraria dívida: o texto parte de uma solução que a equipe sabe imperfeita."
+  }
  }
 ]

@@ -2,6 +2,103 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-26 — review do repo: o buraco de 10 pontos, um bug que falsificava o relatório de cobertura, e a Lei 15.352 conferida na fonte
+
+Review completo do repositório, fechando os gaps, defeitos e riscos que ele
+apontou. `banco.json`: **356 → 390** questões; utilizáveis no quiz: **768 →
+802**. Apostila: **150 → 151 páginas**.
+
+### O risco número 1 era só risco: a Lei 15.352/2026 está certa
+
+A atualização da ANPD estava afirmada em quatro camadas (apostila, resumo,
+dicas, `banco-provas.json`) com trava no `valida.py` — e a trava garante
+consistência interna, não veracidade. Conferido na fonte: a **Lei 15.352, de
+25/02/2026** existe, veio do **PLV 13/2025, originado da MP 1.317/2025**, e o
+art. 55-A tem a redação que o material descreve, **inclusive o "nos termos da
+Lei nº 13.848, de 25 de junho de 2019"**. Nada a corrigir.
+
+O que a conferência revelou foi outra coisa: **o ECA Digital não existia no
+repo** (`grep` não achava uma menção). A **Lei 15.211/2025**, em vigor desde
+**17/03/2026**, é *a razão* de a ANPD ter virado agência — foi ela que lhe deu
+a competência de regulamentar as plataformas. Entrou nas três camadas de
+conteúdo, rotulada como **fora do rol do edital**, no mesmo espírito com que o
+material trata redes.
+
+### O buraco de 10 pontos: "Temas coringa genuínos"
+
+O `cobertura.py` apontava esse subtópico com **0 questões** — o único
+DESCOBERTO do livro. Ele cobre justamente **Noções de Informática (2q) +
+Arquitetura de Computadores (1q) + Sistemas de Informação (1q)** da Dataprev
+2024: 4 questões, **10 pontos**, sem uma única questão para treinar. Entraram 5
+(SPT × SIG × SAD × SIE, UC × ULA, hierarquia de memória, ERP × CRM × SCM,
+pipeline como ganho de vazão e não de latência).
+
+### O relatório de cobertura estava mentindo em 12% das keywords
+
+Investigando por que as questões novas não registravam, apareceu um bug no
+`cobertura.py`: a apostila escreve lista de definição como `\textbf{Termo:}`,
+com o **dois-pontos dentro das chaves**, e o extrator guardava a keyword como
+`"arquitetura de computadores:"`. Com a pontuação colada, ela só casaria com
+uma questão que também tivesse o `:` ali — ou seja, nunca. Eram **313 de 2.698
+keywords (12%)** mortas, subcontando a cobertura do livro inteiro. Corrigido o
+`strip`, os subtópicos DESCOBERTOS do material caíram de 1 para **0**.
+
+### Inglês: o pool mais fino contra o peso
+
+12 pontos, empatado com Português como maior disciplina isolada, e só 37
+questões utilizáveis — das quais as 26 originais rodavam sobre **7 textos-base**
+(4 questões cada). Na segunda passada você reconhece o texto, não treina
+interpretação. Entraram **4 textos novos × 4 questões** (observabilidade,
+privacy by design, acessibilidade, dívida técnica), no formato da casa: ideia
+principal, referência pronominal, conectivo e vocabulário em contexto.
+
+### Frontend e governança, os dois menores pools de específicos
+
+6 de frontend (CORS, localStorage × sessionStorage × cookie, CSR × SSR,
+`position: absolute`, delegação de eventos, `v-if` × `v-show`) e 7 de
+governança (SLA × OLA × contrato de apoio, os 6+3 princípios do COBIT 2019,
+**PMBOK 7** — que o material só cobria na 6ª edição —, artefatos e compromissos
+do Scrum, resposta a riscos, pool × lane, as 34 práticas do ITIL 4).
+
+### O `valida.py` pegou o lote novo duas vezes
+
+Vale registrar, porque é o argumento a favor de rodá-lo sempre: das 34 questões
+geradas, ele acusou **absoluto só em distrator em 8** ("elimine a que tem
+`apenas`" resolveria sem saber o conteúdo) e **correta mais longa em 43%** da
+janela. Os dois vazamentos foram corrigidos — ora tirando o absoluto incidental,
+ora pondo um legítimo na correta; ora encurtando a correta, ora engordando o
+distrator mais forte.
+
+### Dois ajustes no próprio `valida.py`
+
+- **Ratio com piso.** O aviso "correta ≥1,7× a média das erradas" acusava a #41,
+  cujas alternativas são termos secos (`dice`, `slice`, `drill-down`, `pivot`,
+  `roll-up`): 10 contra média 5,25 dá 1,9× com **5 caracteres** de diferença.
+  Não havia o que encurtar. Agora o ratio só mede quando as erradas já são
+  frases e a correta tem folga real em caracteres.
+- **Aviso permanente saiu do balde dos acionáveis.** A `mpu` Q41 tem as
+  alternativas em **figura** (notação BPMN); ela já está fora do sorteio e nunca
+  vai ter texto. Ficava na lista de avisos a cada execução, ensinando a ignorar
+  a lista. Virou uma linha própria, discreta, rotulada como esperada.
+
+### Caderno de erros: a única anotação manual estava errada
+
+`erros/portugues.md` tinha uma correção embolada ("a oração principal é a que
+não possui o conectivo ou na reduzida é a que não encontra-se no verbo
+nominal") e com erro de próclise no meio. Num caderno de Português, correção
+errada re-ensina o erro a cada revisão. Reescrita a partir da fonte (FGV
+Dataprev 2024 Q1), e desdobrada em **duas** entradas, porque eram duas lições:
+o par **substantiva subjetiva × adjetiva** e o **comando negativo** — a questão
+pedia a INCORRETA e foi marcada uma afirmativa verdadeira.
+
+### Miudezas
+
+- `resumo/seguranca.md`: a seção **5.1 (X.800)** estava depois da 6. Reordenada.
+  (Nos outros cinco resumos as seções `X.1` já estavam no lugar certo — o
+  relatório inicial do review exagerou nesse item.)
+- Contagens propagadas em `README.md`, `resumo/README.md` e
+  `CONTRIBUINDO-QUESTOES.md`.
+
 ## 2026-07-26 — auditoria do repositório inteiro: dois defeitos de importação e o piloto da apostila que ENSINA
 
 Primeira rodada de uma auditoria do repo inteiro, com o plano aprovado item a

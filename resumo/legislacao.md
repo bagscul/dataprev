@@ -63,6 +63,17 @@ STF, notícias 26/06/2025.)
   ligado à **Presidência da República** (2018–2019, natureza declaradamente
   transitória) → *autarquia de natureza especial* (**Lei 14.460/2022**) →
   *agência* vinculada ao **Ministério da Justiça** (2026).
+- **Por que a ANPD virou agência — o ECA Digital (fora do rol do edital, mas
+  colado na ANPD).** A **Lei nº 15.211/2025** (Estatuto Digital da Criança e do
+  Adolescente), em vigor desde **17/03/2026**, entregou à ANPD a competência de
+  regulamentar e fiscalizar as obrigações das plataformas — e foi essa
+  atribuição nova que motivou a transformação em agência. O edital não lista
+  essa lei, mas ela é o contexto de qualquer item sobre o desenho atual da
+  ANPD. O mínimo a saber: **verificação de idade confiável** (autodeclaração
+  não basta), **conta de menor de 16 anos vinculada a responsável** com
+  supervisão parental, **vedação de publicidade comportamental** dirigida a
+  criança e adolescente, e sanções de advertência, **multa de até R$ 50 milhões
+  por infração** e suspensão ou proibição da atividade.
 - **Sanções:** advertência; **multa simples de até 2% do faturamento**,
   limitada a **R$ 50 milhões por infração**; publicização; bloqueio/eliminação
   dos dados. Exige processo administrativo.

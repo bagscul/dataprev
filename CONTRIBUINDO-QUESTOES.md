@@ -142,7 +142,7 @@ resposta.
 ```
 
 > **Dois campos saíram daqui: `apostila` e `status`.** Eram opcionais e
-> terminaram com **0 de 356** questões cada um. O `apostila` (ex.: `"§10.5"`)
+> terminaram com **0 de 390** questões cada um. O `apostila` (ex.: `"§10.5"`)
 > nunca fez falta porque o `ref_apostila()` do `quiz.py` já cai no mapa
 > bloco→capítulo quando o campo não existe; o `status` (`ok`/`revisar`/
 > `ambigua`/…) era instrumento da auditoria do banco, que terminou. O
@@ -166,7 +166,7 @@ A `tag` **continua sendo o bloco** e é ela que alimenta o roteiro, o
 `tag` de uma questão para criar um recorte: acrescente `sub`.
 
 **Regra do lote novo:** toda questão gerada daqui em diante preenche a `sub`
-quando o tema couber num dos cinco recortes. Hoje são 58 de 356, e o último
+quando o tema couber num dos cinco recortes. Hoje são 58 de 390, e o último
 lote não acrescentou nenhuma — foi assim que `./quiz.py uml` virou um filtro
 que devolve menos do que existe. **Não há passe retroativo** nas questões
 antigas: o trabalho é grande e o ganho, marginal.

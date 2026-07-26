@@ -129,16 +129,6 @@ lembrar que em 2021 **XSS entrou em Injection** (era categoria própria até
 **Monitoring**" num item que diz 2025, ou "Authentication Failures" num item
 que diz 2021. Se a prova disser "2025", troque o ranking conforme a tabela.
 
-## 6. Desenvolvimento seguro
-
-- **SDL (Security Development Lifecycle):** segurança em todo o ciclo.
-- **SAST (estática):** analisa o **código-fonte** sem executar (caixa-branca).
-- **DAST (dinâmica):** testa a **aplicação em execução** (caixa-preta).
-- **IAST:** combina os dois em runtime instrumentado.
-- **DevSecOps:** segurança automatizada no pipeline CI/CD.
-
-Pegadinha: **SAST × DAST** (código parado × app rodando).
-
 ## 5.1 X.800 — a arquitetura de segurança OSI
 
 Recomendação da ITU-T que dá o **vocabulário** de segurança usado por normas e
@@ -160,6 +150,16 @@ auditoria** ou **rótulo de segurança** como "específico" (são
 *camada*; disseminado é de gestão e vale para o sistema inteiro.
 **Preenchimento de tráfego** e **controle de roteamento** surpreendem — são
 específicos, e servem à confidencialidade do *fluxo*, não do conteúdo.
+
+## 6. Desenvolvimento seguro
+
+- **SDL (Security Development Lifecycle):** segurança em todo o ciclo.
+- **SAST (estática):** analisa o **código-fonte** sem executar (caixa-branca).
+- **DAST (dinâmica):** testa a **aplicação em execução** (caixa-preta).
+- **IAST:** combina os dois em runtime instrumentado.
+- **DevSecOps:** segurança automatizada no pipeline CI/CD.
+
+Pegadinha: **SAST × DAST** (código parado × app rodando).
 
 ## 6.1 Continuidade de negócio: RTO × RPO
 
