@@ -283,8 +283,8 @@ Os itens que ninguém estuda e que a FGV cobra. Foi assim que Blockchain pegou o
 - Chegar com 1h30 de antecedência. **Portões fecham às 12h30, sem exceção**
 - Documento de identidade original com foto. CPF e certidão de nascimento **não** são aceitos
 - Comprovante de inscrição ou de pagamento
-- Caneta esferográfica azul ou preta, **corpo transparente**
-- **Proibido:** relógio de qualquer tipo, celular, lápis, lapiseira, borracha, corretivo, boné, óculos escuros
+- Caneta esferográfica de tinta azul ou preta, **de material transparente** (itens 9.10 e 10.1 — é o corpo da caneta que tem de ser transparente, não a tinta). Leve uma reserva, também transparente
+- **Proibido, sob pena de eliminação** (item 10.13): relógio de qualquer espécie, celular e eletrônicos, **lápis, lapiseira (grafite), corretor líquido e/ou borracha**, boné/chapéu/gorro, óculos escuros
 - Lanche e bebida só em embalagem transparente e sem rótulo
 - Permanência mínima obrigatória: **2 horas**
 - Caderno de questões só pode ser levado se você sair nos **últimos 30 minutos**
