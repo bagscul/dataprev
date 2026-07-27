@@ -1,11 +1,19 @@
-# Roteiro de Estudos — Concurso Dataprev 2026 (v3)
+# Roteiro de Estudos — Concurso Dataprev 2026 (v3.1)
 
 **Cargo:** Analista de Tecnologia da Informação — Perfil 3: Desenvolvimento de Software
 **Localidade:** Natal/RN (20 vagas imediatas, 13 de ampla concorrência)
 **Prova:** domingo, 11 de outubro de 2026, das 13h às 17h
-**Início dos estudos:** segunda-feira, 27 de julho de 2026
+**Início dos estudos:** segunda-feira, 27 de julho de 2026 — **é hoje, dia 1 de 77**
 **Janela:** 11 semanas exatas (77 dias)
+**Atualizado em:** 27/07/2026
 
+> **v3.1 — o plano de dias não mudou.** As 11 semanas abaixo continuam idênticas
+> e batem uma a uma com o `progresso.csv` (é dele que o `./quiz.py --hoje` e o
+> `./status.py` leem). O que esta revisão acrescenta é a **seção 3**: o material
+> de apoio ficou pronto depois que a v3 foi escrita (apostila de 150 páginas,
+> 403 questões originais auditadas, 422 de sete provas reais da FGV) e o roteiro
+> ainda não dizia onde cada coisa fica nem quando usar cada uma.
+>
 > **v3 — replanejado para começar em 27/07.** A v2 partia de 13/07 e tinha 13
 > semanas. Esta versão tem 11. **Nada de conteúdo foi cortado**: o que encolheu
 > foi a folga de revisita e a semana de consolidação, que estava com seis dias
@@ -73,7 +81,50 @@ Não existem provas antigas úteis da Dataprev. As de 2011 e 2012 foram do Insti
 
 ---
 
-## 3. Bloco 1 — Fundação (Semanas 1 a 3 | 27/07 a 16/08)
+## 3. O material: quatro camadas e um comando por dia
+
+Todo o material do repositório está organizado em quatro camadas, da mais
+lenta para a mais rápida. **Elas contam a mesma história** — um fato corrigido
+numa tem de descer para as outras, e o `./valida.py` acusa quando não desce.
+
+| Camada | Onde | Para quê | Quando usar |
+|---|---|---|---|
+| **Apostila** | `apostila/main.pdf` (150 páginas, 21 capítulos) | teoria explicada, com exemplos e caixas de pegadinha | quando erra por **não saber o conceito** |
+| **Resumo** | `resumo/<bloco>.md` | o mesmo conteúdo condensado, para reler rápido | revisão de sábado, véspera de simulado |
+| **Dicas de banca** | `dicas/<bloco>.md` | como a **FGV** cobra aquele bloco e arma a pegadinha | antes de atacar um bloco novo |
+| **Banco de questões** | `banco.json` + `banco-provas.json` | 403 originais auditadas + 422 de sete provas reais | todo dia, é o método de estudo |
+
+As sete provas reais são Dataprev 2024 (70), MPU (70), TJ-RJ 1 e 2 (69 e 70),
+CNSAL ADS (63), CNSAL BD (40) e CNSAL Redes (40) — todas FGV. Somando as duas
+fontes, são **815 questões sorteáveis** pelo quiz, com gabarito auditado e
+explicação de cada alternativa gravada: roda offline, sem custo.
+
+**A rotina de um dia comum**, na ordem:
+
+```bash
+./status.py                      # o que é hoje e como está a aderência
+./quiz.py --dica <bloco>         # 2 min: como a FGV cobra isso
+./quiz.py --hoje                 # o específico + o geral do dia
+./quiz.py --erradas              # fecha o dia com repetição espaçada
+```
+
+O `--resumo <bloco>` e o `--apostila <bloco>` entram **só quando a taxa de erro
+do bloco está alta** — teoria é remédio, não rotina. `./feito.sh 45 34` registra
+o que você resolveu fora do quiz (plataforma, PDF); as questões do próprio quiz
+já entram sozinhas.
+
+**Atrasou um dia?** `./quiz.py --dia ontem` roda o plano daquele dia e credita
+nele, sem sujar o de hoje. `./quiz.py --pendentes` lista o que ficou aberto.
+Atraso não se recupera dobrando o dia seguinte — se acumular mais de três dias,
+sacrifique as revisitas, nunca os simulados de domingo.
+
+**Caderno de erros:** `erros/<bloco>.md`. O quiz grava sozinho quando você erra,
+mas o que vem de fora (prova em PDF, questão de plataforma) tem de entrar na
+mão, no mesmo formato. Na semana 11 esse arquivo é o único material que sobra.
+
+---
+
+## 4. Bloco 1 — Fundação (Semanas 1 a 3 | 27/07 a 16/08)
 
 As três semanas que sustentam o resto. Eng. de Software e Banco de Dados valem, juntos, mais de um terço do Módulo II — e Programação/Arquitetura entram já apoiados neles.
 
@@ -115,7 +166,7 @@ As três semanas que sustentam o resto. Eng. de Software e Banco de Dados valem,
 
 ---
 
-## 4. Bloco 2 — Carga máxima (Semanas 4 a 9 | 17/08 a 27/09)
+## 5. Bloco 2 — Carga máxima (Semanas 4 a 9 | 17/08 a 27/09)
 
 ### Semana 4 — 17/08 a 23/08 · Java
 
@@ -197,7 +248,7 @@ Bloco que em 2024 caiu dentro de "Programação", com 4 questões. Não é perif
 
 ---
 
-## 5. Bloco 3 — Varredura e reta final (Semanas 10 a 11 | 28/09 a 11/10)
+## 6. Bloco 3 — Varredura e reta final (Semanas 10 a 11 | 28/09 a 11/10)
 
 ### Semana 10 — 28/09 a 04/10 · Os órfãos do edital + consolidação
 
@@ -227,7 +278,7 @@ Os itens que ninguém estuda e que a FGV cobra. Foi assim que Blockchain pegou o
 
 ---
 
-## 6. Checklist do dia da prova
+## 7. Checklist do dia da prova
 
 - Chegar com 1h30 de antecedência. **Portões fecham às 12h30, sem exceção**
 - Documento de identidade original com foto. CPF e certidão de nascimento **não** são aceitos
@@ -241,14 +292,22 @@ Os itens que ninguém estuda e que a FGV cobra. Foi assim que Blockchain pegou o
 
 ---
 
-## 7. Pendências administrativas
+## 8. Pendências administrativas
 
 > **Inscrição feita.** ✔
 
 | Item | Prazo |
 |---|---|
+| **Confirmar o requisito de formação com a FGV** | **esta semana (até 31/07)** |
 | Colação de grau | dezembro/2026 |
 | Certidão de conclusão (UERN) | logo após colar grau |
 | Solicitação do diploma registrado | quanto antes após a colação |
 
-**Confirmar com a FGV** (concursodataprev26@fgv.br ou 0800 591 3078) se o diploma de Ciência da Computação é aceito como "graduação em Tecnologia da Informação" sem exigir pós-graduação de 360h. O edital não explicita isso, e é a única incerteza real de requisito no seu caso.
+**Confirmar com a FGV** (concursodataprev26@fgv.br ou 0800 591 3078) se o
+diploma de Ciência da Computação é aceito como "graduação em Tecnologia da
+Informação" sem exigir pós-graduação de 360h. O edital não explicita isso, e é
+a única incerteza real de requisito no seu caso. É a **única pendência com
+risco de eliminar**, então não vale deixar rolando: manda o e-mail na primeira
+semana e guarda a resposta por escrito — resposta de telefone não serve de
+prova em recurso. Se a FGV responder que exige a pós, ainda dá tempo de
+planejar; em setembro, não.
