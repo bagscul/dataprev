@@ -18,6 +18,16 @@ de engenharia de software genérico.
 - Se a questão vier de uma prova real (Qconcursos, PDF oficial), pode perguntar
   o enunciado/gabarito se não tiver sido colado, mas não trave a explicação
   por falta disso.
+- **Fonte primária para fato verificável.** Se a dúvida envolver algo com
+  volatilidade real — número/texto de lei ou norma (ABNT, ISO, legislação),
+  versão de linguagem/framework, spec técnica — confira em fonte primária
+  (WebSearch/WebFetch: texto oficial, planalto.gov.br, documentação do
+  vendor, RFC) antes de responder, e cite a fonte. Não faça isso para
+  conceito estabelecido que já domino (definições, comparações clássicas,
+  regra gramatical) — buscar aí só atrasa sem reduzir erro. Exceção: se a
+  dúvida for um caso gramatical controverso/de duplo regime (regência,
+  crase em caso limítrofe), sinalize a controvérsia na resposta em vez de
+  sair buscando fonte — busca não resolve controvérsia, só a regra clara.
 
 ## Estilo de questão ao gerar para `banco.json`
 
