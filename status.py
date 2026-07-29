@@ -68,13 +68,16 @@ def mostrar_hoje(linhas):
         print(cor("  Hoje e a PROVA. Boa sorte!", "ciano"))
     elif tipo == "revisao":
         print(cor("  Dia de revisao:", "bold"))
-        print("    ./quiz.py --hoje        refaz suas erradas (originais + provas)")
+        print("    ./estudar.sh            apostila do dia + quiz --hoje")
+        print("    ./quiz.py --hoje        so o quiz, refaz erradas (originais + provas)")
     elif tipo == "simulado":
         print(cor("  Dia de simulado:", "bold"))
-        print("    ./quiz.py --hoje        questoes reais de prova, cronometre")
+        print("    ./estudar.sh --simulado apostila do dia + simulado cronometrado")
+        print("    ./quiz.py --hoje        so o quiz, questoes reais de prova")
     else:  # conteudo
         print(cor("  Estudar hoje:", "bold"))
-        print("    ./quiz.py --hoje        questoes dos blocos do dia")
+        print("    ./estudar.sh            apostila do dia + quiz --hoje")
+        print("    ./quiz.py --hoje        so o quiz, questoes dos blocos do dia")
         for b in plano["blocos"]:
             atalhos = []
             if (BASE / "resumo" / f"{b}.md").exists():
