@@ -22,7 +22,8 @@
 > [orfaos](orfaos.md) como vizinhança útil.
 >
 > **Peso esperado: ALTO por edital e por evidência de prova.** Metade do
-> "eixo duplo" com Eng. de Software; no MPU 2025 foi o bloco que mais caiu.
+> "eixo duplo" com Eng. de Software; na Dataprev 2024 empatou com
+> Programação (6 questões cada); no MPU 2025 foi o bloco que mais caiu.
 
 ## 1. Modelagem em três níveis
 
@@ -352,9 +353,9 @@ ensinado em [orfaos](orfaos.md).
 da ALERO para o perfil *Banco de Dados*, que não é o nosso. Nas provas mais
 próximas de desenvolvimento, banco de dados fica em **30**, atrás de engenharia
 de software (39). O número grande mede *material de treino disponível*, não a
-chance de cair: na Dataprev 2024, banco de dados e BI somaram **4** questões.
-Estude como pilar — é o eixo duplo com engenharia de software —, mas sem
-inflar.
+chance de cair: na Dataprev 2024, banco de dados e BI somaram **6** questões,
+empatado com Programação. Estude como pilar — é o eixo duplo com engenharia
+de software —, mas sem inflar.
 
 **No nosso banco** (previsto pelo edital, ainda não visto na amostra de
 provas): **níveis de isolamento** e os fenômenos que cada um admite (leitura

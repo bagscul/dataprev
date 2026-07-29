@@ -5,8 +5,14 @@
 **Prova:** domingo, 11 de outubro de 2026, das 13h às 17h
 **Início dos estudos:** segunda-feira, 27 de julho de 2026 — **é hoje, dia 1 de 77**
 **Janela:** 11 semanas exatas (77 dias)
-**Atualizado em:** 27/07/2026
+**Atualizado em:** 29/07/2026 (correção pontual na seção 1, ver nota abaixo)
 
+> **29/07 — seção 1 corrigida.** A tabela de distribuição da Dataprev 2024 e as
+> duas primeiras conclusões foram reclassificadas questão a questão direto no
+> PDF: a versão anterior usava categorias que nem existem como tag no quiz e
+> não fechava as 30 questões do bloco específico. O plano de dias (seções 4+)
+> não muda.
+>
 > **v3.1 — o plano de dias não mudou.** As 11 semanas abaixo continuam idênticas
 > e batem uma a uma com o `progresso.csv` (é dele que o `./quiz.py --hoje` e o
 > `./status.py` leem). O que esta revisão acrescenta é a **seção 3**: o material
@@ -27,19 +33,18 @@
 
 Não existem provas antigas úteis da Dataprev. As de 2011 e 2012 foram do Instituto Quadrix, banca diferente, tecnologia defasada. A única prova FGV para Dataprev é a de novembro de 2024. Uma amostra só é frágil, então o roteiro se apoia também no comportamento da FGV em provas recentes de TI de outros órgãos.
 
-**Distribuição real do Módulo II na Dataprev 2024 (30 questões):**
+**Distribuição real do Módulo II na Dataprev 2024 (30 questões, reclassificadas
+questão a questão direto no PDF em 29/07/2026 — a versão anterior desta tabela
+tinha categorias que nem existem no quiz e não fechava as 30 questões):**
 
 | Bloco | Questões | Pontos |
 |---|---|---|
-| Engenharia de Software | 10 | 25 |
-| Programação | 4 | 10 |
-| Banco de Dados / BI | 4 | 10 |
+| Engenharia de Software | 9 | 22,5 |
+| Banco de Dados / BI | 6 | 15 |
+| Programação | 6 | 15 |
+| Arquitetura de Software | 4 | 10 |
 | Segurança da Informação | 3 | 7,5 |
-| Redes de Computadores | 3 | 7,5 |
-| Arquitetura de Software | 2 | 5 |
-| Noções de Informática | 2 | 5 |
-| Arquitetura de Computadores | 1 | 2,5 |
-| Sistemas de Informação | 1 | 2,5 |
+| Redes de Computadores | 2 | 5 |
 
 **Comportamento da FGV em outras provas de TI:**
 
@@ -51,9 +56,9 @@ Não existem provas antigas úteis da Dataprev. As de 2011 e 2012 foram do Insti
 
 ### As cinco conclusões que moldam este roteiro
 
-**1. Engenharia de Software e Banco de Dados são um eixo duplo.** Na Dataprev 2024 o BD caiu com apenas 4 questões, mas isso foi flutuação, não padrão. No MPU o BD superou Engenharia de Software. Tratar os dois como pilares, sem eleger vencedor.
+**1. Engenharia de Software, Banco de Dados/BI e Programação dividem o topo.** Na Dataprev 2024 vieram quase empatados (9, 6 e 6 questões). No MPU o BD disparou na frente de Engenharia de Software. Tratar os três como prioridade, sem eleger vencedor único — e sem esquecer Arquitetura de Software (4 questões, tão relevante quanto Segurança).
 
-**2. Redes de Computadores cai mesmo não estando no edital do perfil.** Foram 3 questões em 2024 (protocolo, segurança de redes, modelo OSI). O edital 2026 só cita HTTPS e SSL/TLS de passagem. A banca puxa pra rede de qualquer jeito. Ignorar isso custa 7,5 pontos.
+**2. Redes de Computadores não é tão "fora do edital" quanto parece.** Das 2 questões de 2024, só a de X.800/arquitetura de segurança OSI foge de fato do edital do perfil. A outra (ambientes de Internet, intranet, extranet e portal) é o item 4 do próprio edital de Desenvolvimento de Sistemas — só não tem uma disciplina "Redes" com nome próprio. Ainda vale treinar OSI/X.800 à parte: é o ponto realmente cego.
 
 **3. Raciocínio Lógico da FGV é matemática, não lógica formal.** O que caiu foi aritmética, álgebra, estatística, análise combinatória e geometria plana. Só uma questão de proposições. O edital diz literalmente "problemas aritméticos, geométricos e matriciais". Estudar tabela-verdade e parar por aí é um erro.
 

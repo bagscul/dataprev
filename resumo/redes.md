@@ -1,10 +1,13 @@
 # Redes de Computadores — resumo (FORA do edital do Perfil 3, mas cai)
 
-> **⚠️ Atenção:** Redes de Computadores **não está** no conteúdo do Perfil 3
-> (está nos Perfis 2 e 5). O edital do Perfil 3 só cita HTTPS e SSL/TLS. Mesmo
-> assim, a **Dataprev 2024 trouxe ~3 questões de redes** para Desenvolvimento
-> de Software (modelo OSI, protocolo, segurança de rede). Ignorar custou 7,5
-> pontos. Estude o essencial — é seguro de ponto barato.
+> **⚠️ Atenção:** Redes de Computadores enquanto disciplina **não está** no
+> conteúdo do Perfil 3 (está nos Perfis 2 e 5). Ainda assim, a **Dataprev
+> 2024 trouxe 1 questão genuinamente fora do edital** (X.800, arquitetura de
+> segurança do modelo OSI) — 2,5 pontos por ignorar. Uma segunda questão
+> parece a mesma pegadinha (ambientes de Internet, intranet, extranet e
+> portal), mas é o **item 4** do próprio edital de Desenvolvimento de
+> Sistemas — não é rede "de fora". Estude o essencial abaixo — é seguro de
+> ponto barato.
 
 ## 1. Modelos de referência
 

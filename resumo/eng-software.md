@@ -5,8 +5,9 @@
 > automatizados, TDD, ciclo de vida, RPA); metodologias ágeis (Scrum, Kanban,
 > XP); padrões de desenvolvimento e reuso; codificação; Ponto de Função e
 > Story Points; DevOps; design de software.
-> **Peso esperado: MUITO ALTO.** Foi o maior bloco da Dataprev 2024 (~10 q).
-> É metade do "eixo duplo" da FGV em TI (a outra é Banco de Dados).
+> **Peso esperado: MUITO ALTO.** Foi o maior bloco da Dataprev 2024 (9 q), à
+> frente de Banco de Dados/BI e Programação (6 cada). É a maior fatia do
+> "eixo duplo" da FGV em TI (a outra é Banco de Dados).
 
 ## 1. Ciclo de vida e modelos de processo
 

@@ -36,11 +36,11 @@ estimativa abaixo vem da Dataprev 2024 (as 30 específicas daquela prova) e da
 
 | Bloco (arquivo) | Peso esperado | Por quê |
 |---|---|---|
-| [eng-software](eng-software.md) | **muito alto** | Foi o maior bloco em 2024 (~10 q). Requisitos, ágil, testes, ponto de função caem sempre. |
-| [banco-dados](banco-dados.md) | **alto** | Eixo duplo com Eng. Software. No MPU superou tudo. SQL, normalização, NoSQL. |
-| [arquitetura](arquitetura.md) | alto | Microsserviços, REST×SOAP, nuvem, containers, hexagonal. |
+| [eng-software](eng-software.md) | **muito alto** | Foi o maior bloco em 2024 (9 q), à frente do pelotão. Requisitos, ágil, testes, ponto de função caem sempre. |
+| [banco-dados](banco-dados.md) | **alto** | Eixo duplo com Eng. Software; empatou com Programação em 2024 (6 q cada). No MPU superou tudo. SQL, normalização, NoSQL. |
+| [arquitetura](arquitetura.md) | alto | 4 questões em 2024. Microsserviços, REST×SOAP, nuvem, containers, hexagonal. |
 | [seguranca](seguranca.md) | alto | ISO 27001/27002:2022, OWASP, OAuth2/SSO, SAST/DAST. |
-| [programacao](programacao.md) | médio-alto | Spring, XML/JSON/REST, DevOps, Git, mobile, low-code. |
+| [programacao](programacao.md) | **alto** | Empatou com Banco de Dados em 2024 (6 q). Spring, XML/JSON/REST, DevOps, Git, mobile, low-code. |
 | [bi](bi.md) | médio | DW, OLAP, ETL, data mining — costuma vir junto com BD. |
 | [governanca](governanca.md) | médio | ITIL 4, COBIT 2019, Scrum/Kanban, BPMN. |
 | [frontend](frontend.md) | médio | SPA×PWA, React/Angular/Vue, HTTPS/TLS. |
@@ -48,11 +48,12 @@ estimativa abaixo vem da Dataprev 2024 (as 30 específicas daquela prova) e da
 
 ## ⚠️ Dois alertas que valem pontos
 
-**1. Redes cai mesmo fora do edital do Perfil 3.** Redes de Computadores
-está nos Perfis 2 e 5, **não** no 3. Ainda assim, a Dataprev 2024 trouxe ~3
-questões de redes (OSI, protocolo, segurança de rede) para Desenvolvimento de
-Software. O edital 2026 do Perfil 3 só cita HTTPS, SSL/TLS. **Não ignore
-redes** — veja [redes](redes.md). Ignorar isso custou 7,5 pontos em 2024.
+**1. Redes cai mesmo fora do edital do Perfil 3 — mas só em parte.** Redes de
+Computadores está nos Perfis 2 e 5, **não** no 3. Da Dataprev 2024, só 1
+questão é genuinamente fora do edital (X.800/modelo OSI — 2,5 pontos por
+ignorar); uma segunda que parece a mesma pegadinha (ambientes de Internet,
+intranet, extranet e portal) é, na verdade, o item 4 do próprio edital de
+Desenvolvimento de Sistemas. **Não ignore o X.800** — veja [redes](redes.md).
 
 **2. OWASP: 2025 (vigente) vs 2021.** A Dataprev 2024 cobrou o **OWASP Top
 10:2021**, que ainda ancora as questões deste material. Mas a **edição vigente

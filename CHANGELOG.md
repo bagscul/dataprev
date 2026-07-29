@@ -2,6 +2,27 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-07-29 — README/roteiro: reclassifica a distribuição da Dataprev 2024 e adiciona o `./estudar.sh`
+
+A tabela "Onde a prova se decide" (README) e a "Distribuição real do Módulo
+II" (roteiro, seção 1) tinham duas fontes divergentes por trás: uma vinha de
+`notas/dataprev2024-mapa.md` (que já avisa, no topo, para não ser usada como
+gabarito de proporção) e a outra de uma classificação mais antiga com 9
+categorias, três delas (Noções de Informática, Arquitetura de Computadores,
+Sistemas de Informação) sem tag nenhuma no quiz. As 30 questões específicas
+foram relidas uma a uma direto no PDF (`provas/dataprev2024.pdf`) contra o
+texto do edital: Engenharia de Software 9, Banco de Dados/BI 6, Programação
+6, Arquitetura de Software 4, Segurança 3, Redes 2 — fecha as 30. O achado
+extra: das 2 questões "de rede", só a de X.800/OSI é realmente fora do
+edital; a outra (Internet/intranet/extranet/portal) é o item 4 do próprio
+edital de Desenvolvimento de Sistemas, então a alegação "Redes cai fora do
+edital" valia só pra 1 questão, não 3. `roteiro-dataprev-2026.md` ganhou uma
+nota de revisão datada; o plano de dias (seções 4+) não mudou.
+
+Também documentado no README: `./estudar.sh`, criado em `fa53f7f` (depois da
+última revisão do README) e hoje apontado pelo próprio `status.py` como o
+atalho principal do dia — abre a apostila no zathura + roda o quiz.
+
 ## 2026-07-26 — auditoria da apostila: fecha 10 achados, dois deles erros factuais
 
 Auditoria completa pelo `VERIFICAR-APOSTILA.md` (sete frentes). Veredito: dava

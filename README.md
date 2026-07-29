@@ -7,12 +7,23 @@ Lotacao: Natal/RN. 20 vagas imediatas, 13 de ampla concorrencia.
 
 ```bash
 ./status.py          # o que estudar hoje (blocos + atalhos) + como estou
-./quiz.py --hoje     # segue o plano do dia: questoes dos blocos de hoje
+./estudar.sh          # ATALHO PRINCIPAL: abre o(s) capitulo(s) do dia na apostila
+                      # (PDF de verdade, zathura) + roda ./quiz.py --hoje no terminal
+./quiz.py --hoje     # so o quiz, sem abrir a apostila
 ./quiz.py --resumo hoje   # resumo de conteudo dos blocos do dia
 ./quiz.py --dica hoje     # dica de banca dos blocos do dia
 ./feito.sh 45 34     # questoes feitas FORA do quiz (plataforma, PDF)
 ./salvar.sh          # commit + push
 ```
+
+**`./estudar.sh` e o atalho do dia a dia.** Sem argumento, abre a apostila
+(`apostila/main.pdf`) no zathura ja na pagina do(s) capitulo(s) de hoje e
+roda `./quiz.py --hoje` no terminal atual. Aceita os mesmos argumentos do
+quiz — `./estudar.sh java redes -n 15`, `./estudar.sh --simulado`,
+`./estudar.sh --dia ontem` — e repassa o que for do bloco/`--dia`/`--quem`
+tambem pra apostila. So funciona em Linux com zathura (WSLg no Windows); pra
+so ver onde ler sem abrir PDF, use `./quiz.py --apostila <bloco>`; pra abrir
+a apostila sem rodar o quiz, `./apostila.py <bloco>`.
 
 **Tudo puxa do roteiro.** Cada dia tem dois assuntos (um especifico + um
 geral, ex: "banco-dados + rlm"). O `--hoje` cobre os dois automaticamente, e
@@ -250,15 +261,21 @@ Em `erros/<bloco>.md`, tres linhas. O "errei" e a parte que importa:
 
 | Bloco (Dataprev 2024) | Questoes | Pontos |
 |---|---|---|
-| Engenharia de Software | 10 | 25 |
-| Programacao | 4 | 10 |
-| Banco de Dados / BI | 4 | 10 |
+| Engenharia de Software | 9 | 22,5 |
+| Banco de Dados / BI | 6 | 15 |
+| Programacao | 6 | 15 |
+| Arquitetura de Software | 4 | 10 |
 | Seguranca | 3 | 7,5 |
-| Redes (fora do edital!) | 3 | 7,5 |
-| Arquitetura de Software | 2 | 5 |
+| Redes | 2 | 5 |
 
-Eng. de Software e Banco de Dados sao o eixo duplo da FGV em TI.
-Redes caiu mesmo sem estar no conteudo do perfil 3.
+(Reclassificado questao a questao direto no PDF de `provas/dataprev2024.pdf`
+em 29/07/2026 — a tabela anterior tinha 4 categorias que nem existem como tag
+no quiz e nao fechava as 30 questoes do bloco especifico.)
+
+Eng. de Software, Banco de Dados/BI e Programacao dividem o topo da FGV em TI
+(9/6/6, praticamente empatados). So 1 das 2 questoes de Redes e realmente
+"fora do edital" (X.800/OSI) — a outra (ambientes Internet/intranet/extranet)
+e o item 4 do proprio edital de Desenvolvimento de Sistemas.
 
 ## Pendencias
 
