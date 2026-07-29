@@ -7,6 +7,8 @@ Uso:
     ./apostila.py java           abre o PDF (zathura) no Cap. 10 (Java)
     ./apostila.py java redes     abre uma janela por capitulo, nessa ordem
     ./apostila.py hoje           capitulos dos blocos do plano de hoje
+    ./apostila.py --dia ontem    capitulos do plano de outro dia (ontem,
+                                 anteontem, -3, ou AAAA-MM-DD)
     ./apostila.py --quem geys hoje
 
 Descobre a pagina inicial de cada capitulo lendo o cabecalho de pagina do PDF
@@ -25,7 +27,8 @@ BASE = Path(__file__).resolve().parent
 PDF = BASE / "apostila" / "main.pdf"
 
 sys.path.insert(0, str(BASE))
-from quiz import APOSTILA, _alvos  # noqa: E402
+import roteiro  # noqa: E402
+from quiz import APOSTILA, csv_de  # noqa: E402
 
 
 def mapa_paginas():
@@ -50,11 +53,15 @@ def mapa_paginas():
     return faixas
 
 
-def resolve_blocos(args, quem):
+def resolve_blocos(args, quem, data=None):
     blocos = []
     for a in args:
         if a == "hoje":
-            blocos.extend(_alvos("hoje", quem))
+            plano = roteiro.plano_de_hoje(csv_de(quem), data)
+            if plano["blocos"]:
+                blocos.extend(plano["blocos"])
+            else:
+                print("  aviso: esse dia nao tem bloco de conteudo no roteiro.", file=sys.stderr)
         else:
             blocos.append(a)
     return blocos
@@ -64,14 +71,21 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("blocos", nargs="*", default=["hoje"])
     p.add_argument("--quem", default="lucas")
+    p.add_argument("--dia", default=None)  # ontem, anteontem, -2, AAAA-MM-DD
     a = p.parse_args()
 
     if not PDF.exists():
         sys.exit(f"nao achei {PDF} — compile a apostila primeiro (cd apostila && latexmk -pdf main.tex)")
 
-    blocos = resolve_blocos(a.blocos, a.quem.strip().lower())
+    data = None
+    if a.dia is not None:
+        data = roteiro.resolver_data(a.dia)
+        if data is None:
+            sys.exit(f"nao entendi --dia '{a.dia}'. Use: ontem, anteontem, -2, ou AAAA-MM-DD")
+
+    blocos = resolve_blocos(a.blocos, a.quem.strip().lower(), data)
     if not blocos:
-        sys.exit("nenhum bloco pra mostrar (plano de hoje vazio?)")
+        sys.exit("nenhum bloco pra mostrar (plano do dia vazio?)")
 
     faixas = mapa_paginas()
 
