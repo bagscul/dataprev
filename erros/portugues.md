@@ -21,3 +21,9 @@
   uma V ou F — a resposta e a unica F. A FGV usa esse comando em ~4% dos itens,
   o suficiente para custar ponto em quem le no automatico.
 - FGV 2024 Dataprev Q1 | 14/07
+
+## Todas as opções abaixo mostram orações adjetivas sublinhadas; a… <!-- auto tjrj1:17 -->
+- **Errei:** marquei D, a correta era C
+- **E:** 'Raízes que precisamos preservar' equivale a 'raízes preserváveis / a serem preservadas'. 'Preservativas' significa 'que preservam' (sentido ativo) — inverte a voz. Regra prática: adjetivos em -ivo costumam ter valor ativo; para o valor passivo da oração adjetiva, procure sufixos como -vel.
+- Apostila Cap. 15 — Língua Portuguesa
+- FGV tjrj1 Q17 | 29/07
