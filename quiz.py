@@ -11,7 +11,8 @@ Uso:
                                  -3, ou AAAA-MM-DD); credita naquele dia
     ./quiz.py --pendentes        lista os dias de roteiro em aberto (atrasados)
     ./quiz.py --simulado         simulado cronometrado no formato da prova (70q,
-                                 especificos 2,5x, sem feedback ate o fim)
+                                 especificos 2,5x, sem feedback ate o fim); prioriza
+                                 questao nunca vista e avisa bloco com pool curto
     ./quiz.py --erradas          repeticao espacada: so o que voce ainda nao fixou
     ./quiz.py --prova dataprev2024   questoes REAIS daquela prova (precisa gabarito)
     ./quiz.py --prova todas      questoes reais de todas as provas importadas
@@ -489,27 +490,65 @@ def rodar(questoes, anotar=True):
     return acertos, erradas, causas
 
 
-def montar_simulado(banco, n):
+def montar_simulado(banco, n, hist=None):
     """Monta um simulado no formato da prova: gerais (peso 1) na proporcao do
     edital + especificos (peso 2,5) completando, escalado para n questoes.
-    Ordena os especificos primeiro (valem 2,5x — a estrategia do roteiro)."""
+    Ordena os especificos primeiro (valem 2,5x — a estrategia do roteiro).
+
+    Prioriza frescor: dentro de cada tag, quem nunca apareceu (em qualquer
+    modo do quiz — diario, revisao ou simulado, e' o mesmo historico.json)
+    ou apareceu ha mais tempo vem primeiro. So repete uma questao vista
+    recentemente quando o resto do pool da tag ja se esgotou. Sem hist,
+    cai no sorteio puro (comportamento antigo).
+
+    Devolve (sel, avisos): avisos sinaliza blocos com pool curto demais pra
+    manter a proporcao do edital, ou que so entraram repetindo questao ja
+    vista por falta de fresco — os dois sintomas de que vale gerar questoes
+    novas pra aquele bloco antes do proximo simulado."""
+    ultima_vez = defaultdict(str)  # "" (nunca vista) ordena antes de qualquer ISO
+    if hist:
+        for r in hist["respostas"]:
+            ultima_vez[r["id"]] = max(ultima_vez[r["id"]], r["quando"])
+
+    def mais_fresca_primeiro(pool):
+        pool = pool[:]
+        random.shuffle(pool)  # desempate aleatorio dentro da mesma faixa de frescor
+        pool.sort(key=lambda q: ultima_vez[q["id"]])
+        return pool
+
     por_tag = defaultdict(list)
     for q in banco:
         por_tag[q["tag"]].append(q)
     n_ger = round(n * 40 / 70)  # 40 de 70 sao gerais na prova
     sel, usados = [], set()
+    avisos = []
     for tag, alvo in ALVO_GERAIS.items():
         k = round(n_ger * alvo / 40)  # distribui os gerais pela proporcao do edital
-        pool = por_tag.get(tag, [])[:]
-        random.shuffle(pool)
+        total_tag = len(por_tag.get(tag, []))
+        if total_tag < k:
+            avisos.append(
+                f"{tag}: banco tem so {total_tag} questao(oes), precisava de {k} "
+                f"pra manter a proporcao do edital num simulado de {n}."
+            )
+        pool = mais_fresca_primeiro(por_tag.get(tag, []))
         for q in pool[:k]:
             sel.append(q)
             usados.add(id(q))
-    espec = [q for q in banco if q["tag"] not in GERAIS and id(q) not in usados]
-    random.shuffle(espec)
+    espec = mais_fresca_primeiro([q for q in banco if q["tag"] not in GERAIS and id(q) not in usados])
     sel += espec[: max(0, n - len(sel))]
     sel.sort(key=lambda q: 0 if q["tag"] not in GERAIS else 1)  # especificos 1o
-    return sel
+
+    # repeticao forcada: entrou porque o pool fresco da tag ja tinha acabado
+    repetidas = defaultdict(int)
+    for q in sel:
+        if ultima_vez[q["id"]]:
+            repetidas[q["tag"]] += 1
+    for tag, n_rep in sorted(repetidas.items()):
+        avisos.append(
+            f"{tag}: {n_rep} questao(oes) repetida(s) neste simulado "
+            f"(pool tem so {len(por_tag.get(tag, []))} no total)."
+        )
+    return sel, avisos
 
 
 def rodar_simulado(questoes, minutos=240):
@@ -755,7 +794,11 @@ def main():
 
     if a.simulado:
         base = carregar_originais() + carregar_provas()
-        sel = montar_simulado(base, n)
+        sel, avisos = montar_simulado(base, n, hist)
+        if avisos:
+            print(cor("\n  Cobertura curta neste simulado (gere questoes novas):", "ama"))
+            for av in avisos:
+                print(cor(f"    - {av}", "dim"))
         respondidas, tempo = rodar_simulado(sel)
         if not respondidas:
             return

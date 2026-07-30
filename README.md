@@ -67,6 +67,13 @@ para os 115 pontos, o corte de eliminacao e o desempenho por bloco. As erradas
 viram material de `--erradas`. Use `-n` para um simulado menor (ex: `-n 20`).
 No roteiro, o dia de **simulado** ja dispara esse modo via `--hoje`.
 
+O sorteio prioriza, dentro de cada bloco, a questao nunca vista ou vista ha
+mais tempo (olhando o `historico.json` de qualquer modo do quiz, nao so
+simulado) — so repete algo ja visto quando o pool fresco do bloco se esgota.
+Quando isso acontece, ou quando um bloco tem menos questoes do que a
+proporcao do edital exige, o simulado avisa no terminal qual bloco precisa de
+questao nova em `banco.json`.
+
 Voce responde com a letra; ao errar, o quiz explica por que a correta esta
 certa e por que CADA uma das outras esta errada. Ao errar, ele grava
 AUTOMATICAMENTE a entrada em `erros/<bloco>.md` (deduplicando por questao —
