@@ -1,0 +1,433 @@
+\chapter{Frontend}
+\label{cap:frontend-teoria}
+
+\begin{edital}
+Tecnologias e práticas frontend web --- HTML, CSS, UX, Ajax, frameworks
+(VueJS, Angular, React); padrões de frontend; SPA e PWA; UX (sistemas de
+gestão de conteúdo, arquitetura de informação, portais, workflow,
+acessibilidade, usabilidade).
+\end{edital}
+
+\section{HTML e CSS}
+
+\begin{conceito}[Por que semântica HTML é assunto, não decoração]
+Visualmente, \texttt{<div class="menu">} e \texttt{<nav>} podem
+renderizar de forma idêntica --- a diferença é que só o segundo
+\textbf{informa o papel} daquele bloco de conteúdo. Quem lê esse papel
+são \textbf{programas}: o leitor de tela, que anuncia "navegação" e
+permite ao usuário saltar direto para ela; o buscador, que pondera o
+conteúdo de \texttt{<main>} de forma diferente do conteúdo de
+\texttt{<footer>}; e o próprio navegador, que já entrega comportamento de
+teclado pronto em elementos nativos (como \texttt{<button>} responder a
+Enter e Espaço automaticamente). É daí que vem a "regra número um do
+ARIA" vista adiante: se existe tag nativa com a semântica certa, ela
+vence qualquer atributo acrescentado depois. A separação clássica ---
+\textbf{HTML estrutura, CSS apresenta, JS comporta} --- é a mesma lógica
+de baixo acoplamento aplicada à construção de uma página.
+\end{conceito}
+
+\begin{conceito}[Box model]
+\textbf{content} $\to$ \textbf{padding} (espaço interno, dentro da
+borda) $\to$ \textbf{border} (a borda em si) $\to$ \textbf{margin}
+(espaço externo, fora da borda). O tamanho final \textbf{visível} de um
+elemento é \texttt{content + padding + border} --- a \texttt{margin} conta
+apenas para o espaço \textbf{ao redor} do elemento, não para o tamanho do
+próprio elemento.
+
+Com \texttt{box-sizing: border-box}, a propriedade \texttt{width} já
+\textbf{inclui} padding e border dentro do valor declarado. Com o padrão
+(\texttt{content-box}), \texttt{width} se refere só ao conteúdo, e
+padding/border se \textbf{somam por fora} do valor declarado --- essa
+diferença de \texttt{box-sizing} é onde nasce boa parte das pegadinhas de
+cálculo de tamanho de elemento.
+\end{conceito}
+
+\begin{conceito}[Flexbox x Grid]
+\textbf{Flexbox} é \textbf{unidimensional} --- distribui itens ao longo
+de \textbf{um} eixo por vez (linha \textbf{ou} coluna). \textbf{Grid} é
+\textbf{bidimensional} --- define linhas \textbf{e} colunas
+simultaneamente. Um não substitui o outro: Grid é natural para a
+\textbf{estrutura geral} da página; Flexbox é natural para
+\textbf{alinhar o conteúdo} dentro de cada área já definida.
+\end{conceito}
+
+\begin{conceito}[Especificidade de seletores CSS]
+Quando duas regras declaram a mesma propriedade para o mesmo elemento,
+vence a de \textbf{maior especificidade}: \texttt{id} (peso 100) $>$
+classe / atributo / pseudoclasse (peso 10) $>$ elemento (peso 1). A
+\textbf{ordem de declaração} no arquivo só desempata quando as
+especificidades são \textbf{iguais} --- uma regra de especificidade menor
+declarada \textbf{depois} ainda perde para uma de especificidade maior
+declarada antes. \texttt{!important} ignora toda essa hierarquia e vence
+por cima de tudo, o que o torna desaconselhado como prática normal.
+\end{conceito}
+
+\begin{conceito}[\texttt{@import} x \texttt{<link>}]
+Os dois trazem uma folha de estilo externa, mas \texttt{@import} é
+resolvido \textbf{dentro do CSS}, em série (bloqueia o carregamento
+seguinte até resolver), enquanto \texttt{<link>} no HTML permite
+\textbf{download em paralelo} de várias folhas --- por isso
+\texttt{<link>} é a prática recomendada em produção. \texttt{@import}
+\textbf{não é} um mecanismo de responsividade, apesar de aceitar
+condição de mídia como parâmetro.
+\end{conceito}
+
+\begin{cuidado}
+Padding é interno, margin é externo --- não inverter. "A última regra
+declarada sempre vence" é falso: só vence entre especificidades
+\textbf{iguais}; um seletor de \texttt{id} ganha de um de classe mesmo
+declarado antes dele no arquivo.
+\end{cuidado}
+
+\section{SPA x PWA}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{SPA (\textit{Single Page Application})} & \textbf{PWA
+(\textit{Progressive Web App})} \\
+\midrule
+O que é & app numa única página; troca conteúdo \textbf{sem recarregar} &
+site que se comporta como um app nativo \\
+Chave & roteamento no cliente, sem \textit{full reload} & \textbf{Service
+Worker}, funcionamento offline, \textbf{instalável} \\
+Depende de & JavaScript no navegador & recursos web progressivos \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O \textbf{Service Worker} é um script que roda \textbf{em segundo
+plano}, separado da página em si, funcionando como um \textbf{proxy}
+entre a aplicação e a rede --- é daí que vêm o cache e o funcionamento
+offline: ele intercepta as requisições e decide servir da rede ou de um
+cache local. Não tem acesso direto ao DOM e \textbf{exige HTTPS} (só
+\texttt{localhost} é exceção durante desenvolvimento), precisamente
+porque interceptar requisições numa conexão não cifrada seria um vetor
+de ataque grave. O \textbf{manifest} (\texttt{manifest.json}) é o outro
+pilar da PWA: define nome, ícones e modo de exibição que permitem a
+\textbf{instalação} no dispositivo.
+\end{conceito}
+
+\begin{cuidado}
+Service Worker é característica da \textbf{PWA}, não requisito de SPA
+--- atribuí-lo à SPA é um erro comum. "SPA se instala no sistema
+operacional como um app nativo" é também característica de \textbf{PWA},
+não de SPA em si. Nenhuma das duas depende exclusivamente de um
+framework específico --- ambas podem ser feitas com JavaScript puro.
+\end{cuidado}
+
+\subsection{Onde o HTML é montado: CSR, SSR, SSG e \textit{hydration}}
+
+\begin{conceito}[O problema que a SPA criou, e as três respostas]
+A SPA resolveu a navegação fluida, mas criou um problema novo: se o HTML
+é montado inteiramente pelo JavaScript no navegador, o servidor entrega
+uma página \textbf{vazia} de início, e o usuário espera o pacote de
+código baixar e executar antes de ver qualquer conteúdo. Daí três
+estratégias, distinguidas por \textbf{onde} e \textbf{quando} o HTML é
+efetivamente gerado:
+
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{3.5cm}p{4.6cm}@{}}
+\toprule
+\textbf{Estratégia} & \textbf{HTML é gerado\ldots} & \textbf{O que se
+ganha e o que se paga} \\
+\midrule
+\textbf{CSR} (\textit{client-side}) & no \textbf{navegador}, a cada tela
+& servidor leve e navegação instantânea depois da carga inicial;
+\textbf{primeira} pintura lenta e indexação por buscadores mais frágil \\
+\textbf{SSR} (\textit{server-side}) & no \textbf{servidor}, a cada
+requisição & conteúdo visível e indexável de imediato; custo de CPU do
+servidor a cada requisição \\
+\textbf{SSG} (estático) & no momento do \textbf{\textit{build}}, uma
+única vez & o mais rápido e barato de servir; o conteúdo só muda com uma
+nova publicação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{\textit{Hydration}} é o que costura SSR e SPA no mesmo produto: o
+servidor manda HTML já pintado visualmente, mas HTML puro não tem
+comportamento interativo --- quando o JavaScript chega ao navegador, ele
+"hidrata" aquela marcação, reassociando componentes, estado interno e
+ouvintes de evento a ela. A consequência prática que costuma virar item
+de prova: existe uma \textbf{janela de tempo} em que a página
+\textbf{parece pronta visualmente e não responde a cliques}, porque foi
+pintada mas ainda não foi hidratada.
+
+SSR/CSR decidem \textbf{quem monta o HTML}; Service Worker e cache
+offline decidem \textbf{o que acontece quando não há rede} --- são eixos
+\textbf{independentes}: uma SPA renderizada no cliente pode ser uma PWA
+completa, e uma página com SSR pode não ser PWA nenhuma.
+\end{conceito}
+
+\section{Frameworks}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{3.4cm}p{3.4cm}p{2.6cm}@{}}
+\toprule
+& \textbf{React} & \textbf{Angular} & \textbf{Vue} \\
+\midrule
+Tipo & biblioteca de UI (Meta) & framework completo (Google) & framework
+progressivo \\
+Linguagem & JS/JSX & TypeScript & JS \\
+\bottomrule
+\end{tabular}
+\end{center}
+React é deliberadamente uma \textbf{biblioteca focada em UI} (a
+composição de outras peças --- roteamento, gerenciamento de estado global
+--- fica a cargo do desenvolvedor); Angular é um \textbf{framework
+completo}, com roteamento, injeção de dependência e formulários já
+embutidos e opinativos sobre como o código deve ser organizado.
+\end{conceito}
+
+\begin{cuidado}
+React não é escrito nativamente em TypeScript (embora aceite ser usado
+com ele) --- o par React/framework-completo e Angular/biblioteca costuma
+ser invertido em prova.
+\end{cuidado}
+
+\section{Ajax}
+
+\begin{conceito}
+\textbf{Ajax} (\textit{Asynchronous JavaScript and XML}, nome histórico)
+é o conjunto de técnicas para fazer requisições \textbf{assíncronas} ao
+servidor sem recarregar a página inteira --- é a base do comportamento de
+uma SPA. Hoje implementado tipicamente via \texttt{fetch} ou
+\texttt{XMLHttpRequest} (XHR), com dados trafegando majoritariamente em
+JSON, apesar do "X" histórico do nome se referir a XML.
+\end{conceito}
+
+\section{UX, usabilidade e acessibilidade}
+
+\begin{conceito}[Três recortes que se cruzam, mas não são sinônimos]
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{4cm}p{4.5cm}@{}}
+\toprule
+\textbf{Recorte} & \textbf{Pergunta que responde} & \textbf{Como se
+mede} \\
+\midrule
+\textbf{Usabilidade} & o usuário \textbf{típico} consegue cumprir a
+tarefa com facilidade? & eficácia, eficiência e satisfação \textbf{num
+contexto de uso} declarado \\
+\textbf{Acessibilidade} & \textbf{pessoas com deficiência} conseguem
+usar o sistema? & conformidade com critérios objetivos (WCAG A/AA/AAA) \\
+\textbf{UX} & como é a \textbf{experiência inteira}, inclusive antes e
+depois do uso propriamente dito? & percepção, expectativa, confiança ---
+mais ampla e menos diretamente mensurável \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Duas relações resolvem a maior parte das questões sobre o tema.
+\textbf{UX contém} usabilidade como um de seus atributos --- não são a
+mesma coisa, e \textbf{UI} é apenas a camada visual através da qual a
+experiência acontece, um subconjunto ainda menor. \textbf{Acessibilidade
+não é um caso particular de usabilidade}: um sistema pode ser cômodo
+para um usuário sem deficiência e \textbf{impossível} de usar para quem
+navega por leitor de tela; e um sistema formalmente acessível (que passa
+em todos os critérios técnicos) ainda pode ser péssimo de usar na
+prática. Os dois conceitos se cruzam, não se contêm um no outro.
+
+A diferença de \textbf{natureza}: usabilidade é objetivo de
+\textbf{qualidade} de produto; acessibilidade é \textbf{requisito com
+base normativa} --- WCAG (W3C) como critério técnico internacional,
+\textbf{eMAG} como o modelo derivado dele adotado pelo governo
+brasileiro, e a Lei Brasileira de Inclusão como obrigação legal em
+serviços públicos.
+\end{conceito}
+
+\begin{conceito}[Nielsen x ISO 9241-11: duas listas, não misture]
+Os \textbf{cinco atributos de usabilidade de Nielsen}: \textbf{facilidade
+de aprendizado} (\textit{learnability}), \textbf{eficiência},
+\textbf{memorabilidade} (o usuário que volta depois de um tempo relembra
+como usar), \textbf{poucos erros} (e recuperáveis quando acontecem), e
+\textbf{satisfação}. A \textbf{ISO 9241-11} usa outro trio, mais
+compacto: \textbf{eficácia}, \textbf{eficiência} e \textbf{satisfação},
+sempre avaliados \textbf{num contexto de uso} explicitamente declarado
+(usuários, tarefas, equipamentos e ambiente específicos).
+\end{conceito}
+
+\begin{cuidado}
+"Eficácia" pertence à lista da ISO 9241-11; "memorabilidade" e "poucos
+erros" pertencem à lista de Nielsen --- misturar as duas listas é o erro
+mais comum ao responder sobre o tema.
+\end{cuidado}
+
+\begin{conceito}[Acessibilidade: WCAG, níveis de conformidade, ARIA]
+\textbf{WCAG} (W3C) organiza a acessibilidade em quatro princípios ---
+\textbf{POUR}: \textbf{P}erceptível, \textbf{O}perável,
+\textbf{C}ompreensível (\textit{Understandable}), \textbf{R}obusto. Cada
+critério de sucesso individual tem um \textbf{nível de conformidade}:
+\textbf{A} (mínimo), \textbf{AA} (o exigido na maioria das normas e
+contratos públicos), \textbf{AAA} (máximo, nem sempre alcançável no site
+inteiro sem comprometer outros objetivos de design). No Brasil, o
+\textbf{eMAG} adapta esses critérios para o governo.
+
+\textbf{ARIA} (\textit{Accessible Rich Internet Applications}): conjunto
+de atributos (\texttt{role}, \texttt{aria-label}, \texttt{aria-hidden},
+\texttt{aria-live}) que acrescenta \textbf{semântica} a elementos
+\textbf{dinâmicos} ou construídos sem uma tag nativa correspondente, para
+que leitores de tela anunciem função, nome e estado corretamente. A
+\textbf{regra número um do ARIA é não usar ARIA}: se existe um elemento
+HTML nativo com a semântica certa (\texttt{<button>}, \texttt{<nav>},
+\texttt{<label>}), o nativo deve ser usado --- ARIA é complemento para o
+que o HTML puro não cobre, e ARIA mal aplicado pode piorar a
+acessibilidade em vez de melhorá-la (por exemplo, dizer a um leitor de
+tela que algo é um botão quando ele não se comporta como um).
+\end{conceito}
+
+\begin{conceito}[Arquitetura de informação e CMS]
+\textbf{Arquitetura de informação}: como o conteúdo de um site é
+organizado, categorizado e navegado, de forma que o usuário encontre o
+que procura. \textbf{CMS} (sistema de gestão de conteúdo): plataforma que
+permite criar e gerenciar conteúdo sem escrever código a cada publicação
+(WordPress, portais corporativos com fluxo editorial/\textit{workflow}
+de aprovação).
+\end{conceito}
+
+\section{Mobile: multiplataforma x nativo}
+
+\begin{conceito}
+\textbf{Flutter} usa \textbf{Dart}; \textbf{React Native} usa
+JavaScript; \textbf{Ionic} usa tecnologias web; \textbf{Xamarin} usa C\#.
+\textbf{Mobile nativo}: Android usa \textbf{Kotlin} (linguagem
+recomendada atualmente, com Java como opção mais antiga); iOS usa
+\textbf{Swift} (com Objective-C como opção mais antiga).
+\end{conceito}
+
+\section{Leitura ativa de código: CSS e React}
+\label{sec:leitura-ativa-frontend-teoria}
+
+Boa parte das questões de frontend não pede definição --- pede para
+\textbf{prever a renderização} de um trecho de HTML/CSS/JS. O protocolo
+de leitura ativa do Capítulo \ref{cap:programacao-teoria} se aplica aqui:
+resolva no papel, propriedade por propriedade, antes de comparar com
+alternativas prontas.
+
+\subsection{Pegadinhas visuais em CSS}
+
+\begin{conceito}[A ordem certa para somar regras de CSS]
+\begin{enumerate}
+\item \textbf{Box model primeiro}: já visto acima --- confira
+\texttt{box-sizing} antes de calcular qualquer tamanho.
+\item \textbf{Pseudo-elementos}: \texttt{::before} insere conteúdo
+\textbf{antes} do conteúdo real do elemento (mas ainda \textbf{dentro}
+dele, no DOM renderizado); \texttt{::after}, \textbf{depois}. Sem uma
+declaração \texttt{content: ...}, o pseudo-elemento \textbf{não aparece}
+de jeito nenhum, mesmo que outras propriedades estejam definidas nele.
+\item \textbf{\texttt{content: attr(x)}}: imprime o \textbf{valor} do
+atributo \texttt{x} do elemento HTML como texto --- se o elemento não
+tiver esse atributo, o pseudo-elemento aparece \textbf{vazio}, sem gerar
+erro.
+\item \textbf{Flex/Grid por último}: \texttt{flex-direction:
+row-reverse} inverte a \textbf{ordem visual} dos itens, sem alterar a
+ordem deles no DOM/HTML subjacente; \texttt{justify-content} age no
+\textbf{eixo principal}, \texttt{align-items} no \textbf{eixo
+transversal} --- trocar os dois é o distrator mais comum de layout.
+\end{enumerate}
+\end{conceito}
+
+\begin{exemplo}
+Um \texttt{<span data-nivel="urgente">} com CSS
+\texttt{span::before \{ content: attr(data-nivel) ": "; font-weight:
+bold; \}} produz, \textbf{antes} do texto original do \texttt{span}, o
+literal \textbf{"urgente: "} em negrito --- não o texto
+\texttt{"data-nivel"} (o nome do atributo, e não seu valor, que é o erro
+mais comum de leitura de \texttt{attr()}).
+\end{exemplo}
+
+\begin{cuidado}
+Questões de CSS costumam somar duas ou três regras na mesma pergunta
+(\texttt{box-sizing} + pseudo-elemento + \texttt{flex-direction}, por
+exemplo), e o erro de interpretação costuma estar na \textbf{combinação},
+não em nenhuma regra isolada. Resolva cada camada separadamente antes de
+somar o resultado final.
+\end{cuidado}
+
+\subsection{Escopo e \textit{closures} em JavaScript}
+
+\begin{conceito}[O clássico laço com \texttt{var}]
+\texttt{var} tem escopo de \textbf{função} (não de bloco) e sofre
+\textit{hoisting} (é içada para o topo da função em que está). Dentro de
+um laço, isso significa que existe \textbf{uma única} variável,
+compartilhada por todas as funções criadas dentro do laço --- quando
+essas funções forem finalmente executadas (por exemplo, num
+\textit{callback} assíncrono), todas leem o valor \textbf{final} que a
+variável tinha ao término do laço.
+
+\begin{center}
+\begin{tabular}{@{}p{5.4cm}p{5.4cm}@{}}
+\toprule
+\textbf{Código} & \textbf{Saída} \\
+\midrule
+\texttt{for (var i = 0; i < 3; i++)} \newline \texttt{\ \
+fs.push(() => console.log(i));} & \textbf{3, 3, 3} --- um único \texttt{i}
+compartilhado, que vale 3 ao final do laço \\
+\texttt{for (let i = 0; i < 3; i++)} \newline \texttt{\ \
+fs.push(() => console.log(i));} & \textbf{0, 1, 2} --- \texttt{let} cria
+uma variável \textbf{nova a cada iteração} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{conceito}
+\texttt{let} e \texttt{const} (ES6) têm escopo de \textbf{bloco}.
+\texttt{const} impede a \textbf{reatribuição} da própria variável, mas
+\textbf{não congela} o objeto referenciado --- \texttt{const obj = \{\};
+obj.x = 1;} é perfeitamente válido, porque o que está protegido é a
+ligação nome-valor, não o conteúdo interno do objeto.
+\texttt{==} faz \textbf{coerção de tipo} antes de comparar
+(\texttt{"1" == 1} resulta \texttt{true}); \texttt{===} compara valor
+\textbf{e} tipo, sem coerção.
+\end{conceito}
+
+\begin{cuidado}
+Um laço com \texttt{var} \textbf{não} imprime 0, 1, 2 --- essa saída
+descreve o comportamento de \texttt{let}, não de \texttt{var}. Em Java, o
+escopo de bloco é sempre a regra (Capítulo \ref{cap:java-teoria}) --- não
+confundir o comportamento das duas linguagens.
+\end{cuidado}
+
+\subsection{Renderização no React}
+
+\begin{conceito}
+\textbf{\texttt{key} em listas}: React usa a \texttt{key} para
+identificar qual item de uma lista mudou, foi adicionado ou removido
+entre duas renderizações sucessivas. Usar o \textbf{índice do array}
+como \texttt{key} numa lista que pode reordenar, inserir ou remover
+itens \textbf{quebra} esse rastreamento (o React pode reaproveitar o
+componente errado para o item errado, causando bugs visuais sutis) --- a
+prática recomendada é usar um \textbf{identificador estável} vindo dos
+próprios dados, nunca o índice posicional.
+
+\textbf{\texttt{useState} é assíncrono e agrupado (\textit{batched})}:
+chamar a função que atualiza o estado \textbf{não} atualiza a variável
+\textbf{na mesma linha} de código --- o novo valor só se reflete na
+\textbf{próxima renderização} do componente. Um trecho que chama
+\texttt{setContador(contador + 1)} duas vezes seguidas \textbf{não} soma
+2 ao contador, porque as duas chamadas leem o mesmo valor "antigo" de
+\texttt{contador} dentro do mesmo ciclo de evento --- para acumular
+corretamente usa-se a forma funcional \texttt{setContador(c => c + 1)},
+que recebe o valor mais atualizado em cada chamada.
+
+\textbf{Reconciliação (Virtual DOM)}: o React compara a árvore virtual
+nova com a anterior e aplica no DOM real \textbf{só as diferenças} ---
+não recria a página inteira a cada renderização. Criar uma
+\textbf{função anônima nova a cada renderização} (por exemplo,
+\texttt{onClick={() => ...}} sem memoização) não quebra a reconciliação
+em si, mas pode gerar \textbf{re-renderizações desnecessárias} em
+componentes filhos que foram otimizados com \texttt{memo}.
+\end{conceito}
+
+\begin{cuidado}
+Usar o índice do array como \texttt{key} \textbf{não} é sempre seguro ---
+falha justamente quando a lista pode reordenar ou ter itens
+inseridos/removidos no meio. \texttt{setState}/\texttt{useState}
+\textbf{não} atualiza de forma síncrona e imediata --- é assíncrono e
+agrupado dentro do mesmo \textit{handler} de evento. Virtual DOM
+(estrutura em memória usada para calcular diferenças) não é o mesmo que
+o DOM real do navegador.
+\end{cuidado}

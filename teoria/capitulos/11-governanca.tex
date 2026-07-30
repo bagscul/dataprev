@@ -1,0 +1,745 @@
+\chapter{Gestão e Governança de TI}
+\label{cap:governanca-teoria}
+
+\begin{edital}
+Gerenciamento de projetos (conceitos, áreas, projetos/programas/portfólio;
+abordagens tradicional, híbrida e ágil --- Scrum, Lean, Kanban; Guia Scrum);
+processos e grupos de processos; gestão de riscos; ITIL v4; COBIT 2019;
+gestão e modelagem de processos com BPMN.
+\end{edital}
+
+Este capítulo explica cada framework de gestão e governança do zero: o que
+ele resolve, por que tem a estrutura que tem, e como aplicar seus conceitos a
+um cenário. A versão resumida --- focada no que vira pegadinha de prova ---
+está no capítulo correspondente da \texttt{apostila/}; aqui o objetivo é
+entender o \textbf{porquê} de cada estrutura, não só memorizar o número certo.
+
+\section{Gerenciamento de projetos (PMBOK)}
+
+\subsection{Projeto, programa e portfólio}
+
+\begin{conceito}[Três escalas de coordenação de trabalho]
+As três palavras descrevem \textbf{escalas diferentes} de esforço
+organizado, uma contendo a outra:
+
+\begin{itemize}
+\item \textbf{Projeto}: esforço \textbf{temporário} (tem início e fim
+definidos) empreendido para criar um resultado \textbf{único} (produto,
+serviço ou resultado). Terminou de entregar o que foi pedido, o projeto
+acaba --- não é um esforço contínuo.
+\item \textbf{Programa}: um \textbf{grupo de projetos relacionados},
+gerenciados de forma coordenada, porque juntos entregam benefícios que
+nenhum deles entregaria isoladamente. A coordenação existe porque os
+projetos compartilham dependências (um alimenta o outro) ou objetivo comum.
+\item \textbf{Portfólio}: o \textbf{conjunto} de programas, projetos e
+outros trabalhos de uma organização, agrupados para viabilizar o
+\textbf{gerenciamento estratégico} --- os itens de um portfólio não
+precisam ter relação direta entre si, o que os une é estarem todos
+alinhados aos objetivos estratégicos da organização.
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Do projeto ao portfólio]
+Uma empresa quer "se tornar líder em atendimento digital". Isso vira um
+\textbf{portfólio} de iniciativas estratégicas. Dentro dele, um
+\textbf{programa} "Modernização do Atendimento" agrupa três
+\textbf{projetos} relacionados: (1) construir um novo app de atendimento,
+(2) migrar o banco de dados de clientes, (3) treinar a equipe de suporte. Os
+três são coordenados porque o app depende do banco migrado, e o treinamento
+depende do app pronto --- não fazem sentido soltos. Já o portfólio da
+empresa também contém outros programas sem relação com este (ex.: "Redução
+de custos operacionais"), unidos só pelo fato de servirem à mesma
+estratégia.
+\end{exemplo}
+
+\subsection{PMBOK 6ª edição: processos, grupos e áreas}
+
+\begin{conceito}[A matriz de 5 grupos $\times$ 10 áreas]
+O PMBOK 6 descreve o gerenciamento de projetos como uma \textbf{matriz de
+processos}: 49 processos, cada um cruzando um \textbf{grupo de processos}
+(quando, no ciclo de vida do projeto, ele acontece) com uma \textbf{área de
+conhecimento} (sobre o que ele trata).
+
+\textbf{5 grupos de processos} (a dimensão \emph{temporal} --- não são
+fases sequenciais rígidas, um projeto pode voltar à Execução depois de
+passar pelo Monitoramento, por exemplo):
+\begin{enumerate}
+\item \textbf{Iniciação}: autoriza formalmente o projeto (ou uma fase dele)
+a começar.
+\item \textbf{Planejamento}: define e refina os objetivos, e planeja a ação
+necessária para alcançá-los.
+\item \textbf{Execução}: realiza o trabalho definido no plano.
+\item \textbf{Monitoramento e Controle}: acompanha, revisa e regula o
+progresso e desempenho; identifica desvios e dispara ajustes.
+\item \textbf{Encerramento}: finaliza formalmente o projeto, a fase ou o
+contrato.
+\end{enumerate}
+
+\textbf{10 áreas de conhecimento} (a dimensão \emph{temática} --- o assunto
+de cada processo): integração, escopo, cronograma, custo, qualidade,
+recursos, comunicação, riscos, aquisições, partes interessadas.
+\end{conceito}
+
+\begin{cuidado}[Grupo de processos não é "fase do projeto"]
+É tentador ler os 5 grupos como 5 etapas sequenciais tipo cascata, mas não
+são: um projeto pode ter vários ciclos de Planejamento-Execução-Monitoramento
+dentro de uma única fase (é exatamente assim que um projeto ágil, iterativo,
+usa a mesma matriz do PMBOK 6). O grupo de processos é uma \textbf{categoria
+de natureza da atividade}, não uma marcação de calendário.
+\end{cuidado}
+
+\subsection{PMBOK 7ª edição: princípios e domínios de desempenho}
+
+\begin{conceito}[Por que a 6ª virou 7ª]
+O PMBOK 6 é \textbf{prescritivo}: descreve \emph{o que fazer}, processo por
+processo, com entrada $\to$ ferramenta $\to$ saída. Funciona bem quando o
+escopo do projeto é conhecido de antemão (obra, implantação de sistema com
+requisitos fechados) e mal quando o projeto \textbf{descobre} o escopo
+andando (a maioria dos projetos de software modernos, que usam abordagem
+ágil) --- seguir os 49 processos como receita nesse cenário vira burocracia
+que não ajuda a entregar valor.
+
+A 7ª edição inverteu o eixo: saiu do \textbf{processo} (uma sequência fixa
+de passos) e foi para o \textbf{princípio} (uma diretriz de julgamento, que
+o gerente aplica com discernimento, adaptando ao contexto). Com os
+princípios vieram os \textbf{domínios de desempenho} --- áreas de resultado
+a \emph{acompanhar} continuamente ao longo do projeto, não etapas a
+\emph{executar} em ordem.
+\end{conceito}
+
+\begin{conceito}[Os 12 princípios]
+\begin{itemize}
+\item Ser um \textbf{administrador diligente/zeloso} (\textit{steward}) ---
+cuidado ético, responsável e íntegro com os recursos confiados ao gerente.
+\item Criar um \textbf{ambiente colaborativo} de equipe.
+\item Envolver-se efetivamente com as \textbf{partes interessadas}.
+\item \textbf{Focar no valor} --- o resultado de negócio, não a entrega
+técnica em si.
+\item Reconhecer, avaliar e responder às interações do sistema
+(\textbf{pensamento sistêmico}) --- o projeto não existe isolado, ele afeta
+e é afetado pelo ambiente ao redor.
+\item Demonstrar comportamentos de \textbf{liderança}.
+\item \textbf{Adaptar} (\textit{tailoring}) a abordagem ao contexto do
+projeto --- não existe um método único que sirva a todo projeto.
+\item Incorporar a \textbf{qualidade} nos processos e resultados.
+\item Navegar na \textbf{complexidade}.
+\item Otimizar as respostas aos \textbf{riscos}.
+\item Adotar \textbf{adaptabilidade e resiliência} --- a capacidade de
+mudar de rumo e de se recuperar de contratempos.
+\item Permitir a \textbf{mudança} para alcançar o estado futuro previsto.
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Associando cenário a princípio]
+"A analista percebeu que uma mudança na API de pagamentos de terceiros ia
+afetar o cronograma de três equipes diferentes, e ajustou o plano
+considerando esses efeitos cruzados." --- isso é \textbf{pensamento
+sistêmico}: a analista reconheceu que o projeto interage com um sistema
+maior e ajustou a resposta considerando essas interações, não só o efeito
+isolado sobre sua própria equipe.
+
+"Depois de receber feedback dos usuários no meio do desenvolvimento, o time
+repriorizou o backlog para entregar primeiro a funcionalidade que os
+usuários mais valorizavam." --- isso é \textbf{foco no valor}: a decisão foi
+guiada pelo benefício de negócio percebido, não por seguir o plano original
+à risca.
+\end{exemplo}
+
+\begin{regrapratica}[Como não confundir os 12 princípios entre si]
+Pergunte "que \textbf{palavra-chave} do enunciado aponta para qual
+princípio": mudança de rumo por causa de feedback do cliente $\to$ foco em
+valor; efeito colateral em outra parte do sistema/organização $\to$
+pensamento sistêmico; decisão ética sobre uso de recursos $\to$
+administrador zeloso; recuperação de um imprevisto sem travar o projeto
+$\to$ adaptabilidade e resiliência. A banca sempre oferece um princípio
+\textbf{plausível mas não o do cenário} --- o critério de desempate é a
+palavra que o enunciado destaca.
+\end{regrapratica}
+
+\begin{conceito}[8 domínios de desempenho]
+São as áreas de foco contínuo (não sequenciais, todas rodam o tempo todo em
+paralelo): partes interessadas; equipe; abordagem de desenvolvimento e ciclo
+de vida; planejamento; trabalho do projeto; entrega; medição; incerteza.
+\end{conceito}
+
+\subsection{Tripla restrição e abordagens de execução}
+
+\begin{conceito}[O triângulo de ferro]
+\textbf{Escopo}, \textbf{tempo} e \textbf{custo} são as três restrições
+clássicas de todo projeto, e a lógica do "triângulo" é que elas são
+\textbf{interdependentes}: mexer em uma força ajuste nas outras duas (ou na
+qualidade, que sofre o impacto quando os três vértices são espremidos ao
+mesmo tempo). Reduzir prazo sem aumentar custo ou cortar escopo tende a
+comprometer a qualidade --- não existe almoço grátis.
+\end{conceito}
+
+\begin{conceito}[Tradicional, ágil e híbrida]
+\begin{itemize}
+\item \textbf{Tradicional/preditiva} (cascata): escopo definido e
+\textbf{congelado} no início, planejamento detalhado antecipado, execução
+segue o plano. Boa quando os requisitos são estáveis e bem conhecidos.
+\item \textbf{Ágil/adaptativa}: escopo \textbf{emerge} ao longo do projeto,
+por ciclos curtos com feedback constante. Boa quando os requisitos são
+incertos ou mudam com frequência.
+\item \textbf{Híbrida}: \textbf{combina} as duas --- por exemplo, planejar o
+orçamento e o cronograma macro de forma preditiva (porque o cliente exige
+previsibilidade financeira), mas executar o desenvolvimento em sprints
+ágeis (porque o produto em si precisa de iteração).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Híbrido não é "um pouco de ágil de vez em quando"]
+Híbrido é uma escolha deliberada de \textbf{combinar} elementos das duas
+abordagens conforme a parte do projeto que se beneficia de cada uma --- não
+é "ágil malfeito" nem um meio-termo vago. Uma alternativa que descreve
+híbrido como "somente ágil, mas com menos rigor" ou "cascata com reuniões
+diárias" está errada: o que caracteriza híbrido é a combinação
+\textbf{intencional} de práticas preditivas e adaptativas em partes
+diferentes do mesmo projeto.
+\end{cuidado}
+
+\section{Scrum, Kanban e Lean}
+
+\subsection{Scrum: os time-boxes}
+
+\begin{conceito}[Por que os eventos do Scrum são \textit{time-boxed}]
+Um evento \textit{time-boxed} tem duração \textbf{máxima} fixa --- pode
+terminar antes, nunca depois. O motivo é limitar o desperdício de tempo em
+reunião: sem um teto, planejamento e retrospectiva tendem a se alongar
+indefinidamente. O \textit{time-box} força o time a ser objetivo e cria um
+ritmo previsível (\textit{cadence}) de trabalho.
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{2.2cm}p{6.4cm}@{}}
+\toprule
+\textbf{Evento} & \textbf{Duração máx.\ (Sprint de 1 mês)} & \textbf{Quem conduz / para quê} \\
+\midrule
+\textbf{Daily Scrum} & \textbf{15 min} & os \textbf{Developers}, todo dia, no
+mesmo horário e lugar, para inspecionar o progresso rumo à \textbf{Meta da
+Sprint} e adaptar o plano das próximas 24h \\
+Sprint Planning & 8h & o time todo, no início da Sprint, para definir o que
+será feito e como \\
+Sprint Review & 4h & time + stakeholders, para inspecionar o incremento e
+adaptar o Product Backlog \\
+Sprint Retrospective & 3h & o time, sobre o \emph{processo} de trabalho
+(não sobre o produto) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os 15 minutos da Daily são \textbf{fixos}, \textbf{independentemente} do
+tamanho da Sprint (mesmo numa Sprint de uma semana, continua sendo 15 min);
+os demais valores são proporcionais ao tamanho da Sprint e \textbf{encolhem}
+em Sprints menores que um mês.
+\end{conceito}
+
+\begin{cuidado}[A Daily não é status report para o gerente]
+O propósito da Daily é o time \textbf{se replanejar entre si} rumo à Meta
+da Sprint --- não é uma prestação de contas individual ("o que eu fiz
+ontem" reportado a um chefe). É por isso que quem \textbf{conduz} a Daily
+são os próprios Developers, não o Scrum Master nem um gerente de projeto.
+\end{cuidado}
+
+\subsection{Kanban: fluxo contínuo e limite de WIP}
+
+\begin{conceito}[Sem sprints, sem iterações fechadas]
+O Kanban gerencia o trabalho como um \textbf{fluxo contínuo}: os itens
+entram no quadro e vão avançando de coluna em coluna conforme ficam prontos
+--- não há um ciclo fechado tipo Sprint que reinicia periodicamente. O
+mecanismo central é o \textbf{limite de trabalho em progresso} (WIP --- Work
+In Progress): cada coluna do quadro tem um número máximo de itens que pode
+conter simultaneamente.
+
+O WIP limitado força o time a \textbf{terminar} antes de \textbf{começar}
+mais coisa nova --- se uma coluna está no limite, ninguém puxa item novo
+para ela até que algo saia. Isso combate o multitarefa (que na prática
+atrasa tudo, porque troca de contexto tem custo) e torna gargalos
+\textbf{visíveis}: uma coluna que trava no limite mostra exatamente onde o
+fluxo está entupido.
+\end{conceito}
+
+\begin{conceito}[Lead time, cycle time e throughput]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{8.4cm}@{}}
+\toprule
+\textbf{Métrica} & \textbf{O que mede} \\
+\midrule
+\textbf{Lead time} & do momento da \textbf{solicitação} (entrada do item no
+sistema, sob a ótica de quem pediu) até a \textbf{entrega}. Inclui todo o
+tempo que o item passou esperando em fila antes de alguém começar a
+trabalhar nele. \\
+\textbf{Cycle time} & do momento em que o trabalho \textbf{começa de fato}
+até a entrega. É sempre um \textbf{trecho} do lead time --- nunca maior. \\
+\textbf{Throughput} & \textbf{quantidade} de itens entregues por unidade de
+tempo (ex.: 8 itens/semana). Não é uma medida de tempo, é uma contagem. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Como o cycle time é um pedaço do lead time, vale sempre \textbf{lead time
+$\geq$ cycle time}. A diferença entre os dois é exatamente o tempo que o
+item ficou parado \textbf{em fila}, esperando alguém puxá-lo.
+\end{conceito}
+
+\begin{exemplo}[Calculando lead time e cycle time]
+Um chamado é aberto pelo cliente na segunda-feira às 9h (solicitação). Um
+analista começa a trabalhar nele na quarta-feira às 9h (início do trabalho)
+e entrega a solução na quinta-feira às 17h. \textbf{Lead time} = da
+segunda 9h até quinta 17h = 3 dias e 8h. \textbf{Cycle time} = da quarta 9h
+até quinta 17h = 1 dia e 8h. A diferença de 2 dias é o tempo que o chamado
+ficou esperando na fila antes de ser puxado.
+\end{exemplo}
+
+\begin{conceito}[Por que reduzir WIP reduz o lead time --- a Lei de Little]
+A Lei de Little relaciona as três grandezas: \textbf{tempo médio no
+sistema = itens em progresso / taxa de conclusão}. Se a taxa de conclusão
+do time é relativamente estável, \textbf{diminuir o WIP} (menos itens
+disputando a atenção do time ao mesmo tempo) reduz diretamente o tempo
+médio que cada item passa no sistema --- ou seja, reduz o lead time. É o
+argumento formal por trás da prática de "limitar o trabalho em progresso" do
+Kanban: não é só disciplina, é consequência matemática.
+\end{conceito}
+
+\begin{cuidado}[Não inverta lead time e cycle time]
+O erro mais comum é dar ao \textbf{lead time} a definição do
+\textbf{cycle time} ("tempo do início do trabalho até a entrega"). A âncora
+para não errar: a palavra \textbf{solicitação}/\textbf{pedido do cliente} ---
+se a contagem do tempo começa aí, é lead time; se começa quando alguém do
+time \textbf{pega} o item para trabalhar, é cycle time. E "itens entregues
+por semana" nunca é uma das duas --- é \textbf{throughput}, porque é
+contagem, não duração.
+\end{cuidado}
+
+\subsection{Lean}
+
+\begin{conceito}[Eliminar desperdício, maximizar valor]
+O Lean (originado no Sistema Toyota de Produção) enxerga qualquer atividade
+que não agrega valor percebido pelo cliente como \textbf{desperdício}
+(\textit{muda}), e busca eliminá-lo sistematicamente --- espera,
+retrabalho, superprodução, movimentação desnecessária, etc. O Kanban, como
+ferramenta visual de fluxo, é uma das técnicas usadas para implementar
+princípios Lean no desenvolvimento de software.
+\end{conceito}
+
+\section{ITIL 4}
+\label{sec:itil4-teoria}
+
+\subsection{Cocriação de valor: a mudança de eixo da v4}
+
+\begin{conceito}[Por que "cocriação" e não "entrega"]
+A ITIL v3 descrevia o gerenciamento de serviços em termos de
+\textbf{processos}: sequências que o provedor de TI executa e "entrega" ao
+cliente, como um produto que sai de uma linha de montagem. A v4 muda o
+vocabulário para \textbf{práticas} e o modelo mental para
+\textbf{cocriação}, porque um serviço só gera valor quando é efetivamente
+\textbf{usado} --- o provedor disponibiliza a capacidade, mas o valor
+concreto (a economia de tempo, a informação obtida, o problema resolvido)
+só existe no momento em que o consumidor interage com o serviço. Provedor e
+consumidor produzem o resultado \textbf{juntos}: um sistema de streaming não
+gera valor por existir no servidor, gera valor quando alguém assiste.
+
+\textbf{Serviço}, na definição da ITIL, é o meio de permitir que o cliente
+alcance um resultado que ele quer \textbf{sem precisar gerenciar os custos e
+riscos específicos} envolvidos em produzi-lo --- é por isso que se contrata
+um serviço de e-mail em vez de manter servidor próprio: o cliente quer o
+resultado (comunicação), não a responsabilidade de operar a infraestrutura.
+
+\textbf{Prática} substitui \textbf{processo} como unidade central: um
+conjunto de \textbf{recursos organizacionais} (pessoas, processos,
+informação/tecnologia, parceiros) aplicados a um propósito específico ---
+mais amplo que "processo", porque reconhece que cumprir um propósito
+envolve pessoas e ferramentas, não só uma sequência de passos.
+\end{conceito}
+
+\begin{cuidado}[Trocar "prática" por "processo" é o erro de vocabulário mais comum]
+Sempre que um enunciado sobre ITIL 4 usa a palavra "processo" para descrever
+um dos 34 elementos do framework, desconfie --- a v4 abandonou esse termo
+propositalmente. "Processo" ainda existe como conceito genérico de gestão
+(inclusive dentro de uma prática pode haver processos), mas a \textbf{unidade
+organizacional} do modelo ITIL 4 é a prática.
+\end{cuidado}
+
+\subsection{Incidente, problema, requisição e mudança}
+
+\begin{conceito}[Quatro coisas diferentes que chegam pelo mesmo balcão]
+Todas passam pela \textbf{central de serviços} (o ponto único de contato
+entre usuários e provedor --- que \textbf{não é quem resolve} tudo, é quem
+recebe e direciona), mas são objetos de gestão completamente diferentes,
+com objetivos de tratamento diferentes:
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{4cm}p{4.6cm}@{}}
+\toprule
+\textbf{O que chegou} & \textbf{O que é} & \textbf{Objetivo do tratamento} \\
+\midrule
+\textbf{Incidente} & interrupção não planejada ou queda de qualidade do
+serviço & \textbf{restaurar o serviço} o mais rápido possível --- uma
+solução de contorno (\textit{workaround}) já resolve, mesmo sem eliminar a
+causa \\
+\textbf{Problema} & a \textbf{causa} (conhecida ou suspeita) de um ou mais
+incidentes & achar a \textbf{causa-raiz} e eliminá-la (ou documentar um
+erro conhecido) --- não tem a mesma urgência de minutos do incidente \\
+\textbf{Requisição de serviço} & pedido \textbf{normal e previsto} (acesso,
+informação, senha nova) & atender com fluxo padronizado --- \textbf{não
+houve falha} nenhuma, é operação normal \\
+\textbf{Mudança} & qualquer alteração que possa afetar serviços & maximizar
+mudanças \textbf{bem-sucedidas}, avaliando o risco antes de autorizar \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Separando os quatro num cenário só]
+O sistema de folha de pagamento fica fora do ar (\textbf{incidente}: o time
+restaura reiniciando o serviço em 20 minutos, sem saber ainda por que caiu).
+Investigando depois, descobre-se que a causa foi um vazamento de memória em
+uma rotina específica (\textbf{problema}: abre-se investigação para achar a
+causa-raiz). Enquanto isso, outro funcionário pede acesso ao mesmo sistema
+para um novo colaborador (\textbf{requisição de serviço}: fluxo padrão de
+concessão de acesso, nada quebrou). Depois de identificada a causa-raiz, o
+time submete a correção do código para aprovação antes de subir para
+produção (\textbf{mudança}: avaliação de risco e autorização formal).
+\end{exemplo}
+
+\begin{regrapratica}[O teste rápido para não confundir incidente com requisição]
+Pergunte: \textbf{algo estava funcionando e parou/piorou}, ou \textbf{o
+usuário está pedindo algo que nunca teve, de forma prevista}? Se houve
+degradação, é incidente. Se é um pedido normal dentro do catálogo de
+serviços (nova senha, novo acesso, nova informação), é requisição --- \emph{
+não houve falha}. E o incidente pode ser \textbf{fechado} assim que o
+serviço é restaurado, mesmo com o problema (a causa) ainda em aberto --- os
+dois são rastreados separadamente.
+\end{regrapratica}
+
+\subsection{Sistema de Valor de Serviço}
+
+\begin{conceito}[Como as peças da ITIL 4 se encaixam]
+O \textbf{Sistema de Valor de Serviço} (SVS) é o modelo que descreve como
+todos os componentes e atividades da organização trabalham juntos para
+\textbf{facilitar a criação de valor} através de serviços. Seus componentes:
+
+\begin{itemize}
+\item \textbf{Princípios orientadores} (7, ver abaixo): recomendações que
+guiam a organização em qualquer circunstância.
+\item \textbf{Governança}: como a organização é dirigida e controlada.
+\item \textbf{Cadeia de valor de serviço} (6 atividades, ver abaixo): o
+modelo operacional central.
+\item \textbf{Práticas} (34, ver abaixo): os conjuntos de recursos
+organizados por propósito.
+\item \textbf{Melhoria contínua}: o modelo recorrente de aprimoramento em
+todos os níveis.
+\end{itemize}
+\end{conceito}
+
+\begin{conceito}[7 princípios orientadores]
+Focar no \textbf{valor}; começar de onde se está (não descartar o que já
+existe e funciona); progredir \textbf{iterativamente} com feedback;
+colaborar e promover \textbf{visibilidade}; pensar e trabalhar de forma
+\textbf{holística}; manter \textbf{simples} e prático; otimizar e
+\textbf{automatizar}.
+\end{conceito}
+
+\begin{conceito}[4 dimensões]
+Toda prática precisa ser olhada sob quatro ângulos, para não deixar lacuna:
+(1) \textbf{organizações e pessoas}; (2) \textbf{informação e tecnologia};
+(3) \textbf{parceiros e fornecedores}; (4) \textbf{fluxos de valor e
+processos}. Um projeto de mudança que só olha a tecnologia e ignora as
+pessoas afetadas, por exemplo, está desconsiderando uma dimensão inteira.
+\end{conceito}
+
+\begin{conceito}[Cadeia de valor de serviço --- 6 atividades]
+O modelo operacional que transforma demanda em valor, através de
+combinações flexíveis das seis atividades (não é uma sequência fixa --- cada
+combinação de atividades forma um \textbf{fluxo de valor} diferente,
+adaptado à situação):
+
+\textbf{Planejar}, \textbf{Melhorar}, \textbf{Engajar} (com clientes,
+usuários, fornecedores --- manter relacionamento), \textbf{Desenhar e
+transicionar}, \textbf{Obter/construir}, \textbf{Entregar e suportar}.
+\end{conceito}
+
+\begin{conceito}[34 práticas em 3 grupos]
+\begin{itemize}
+\item \textbf{14 práticas gerais de gestão}: adaptadas do mundo geral de
+negócio para o gerenciamento de serviços (ex.: gestão de risco, gestão de
+projeto, gestão de portfólio, melhoria contínua, gestão financeira).
+\item \textbf{17 práticas de gerenciamento de serviço}: desenvolvidas
+especificamente no contexto de gerenciamento de serviços (ex.:
+gerenciamento de incidentes, gestão de mudança, gerenciamento de problemas,
+central de serviços, gerenciamento de nível de serviço).
+\item \textbf{3 práticas de gerenciamento técnico}: adaptadas do
+desenvolvimento e gestão de tecnologia (gestão de implantação, gestão de
+infraestrutura e plataforma, desenvolvimento e gerenciamento de software).
+\end{itemize}
+\textbf{14 + 17 + 3 = 34}. As técnicas são só três --- é o grupo que a
+memória tende a inflar por engano.
+\end{conceito}
+
+\begin{cuidado}[Propósito de práticas parecidas]
+Práticas com nomes próximos têm propósitos distintos que a prova cobra
+literalmente:
+\begin{itemize}
+\item \textbf{Gerenciamento de infraestrutura e plataforma}: monitorar e
+prover as soluções tecnológicas da organização --- é sobre manter a base
+técnica rodando.
+\item \textbf{Gerenciamento de liberação} (\textit{release}): tornar
+serviços e funcionalidades disponíveis para uso --- é sobre mover algo
+pronto para produção.
+\item \textbf{Central de serviços}: ser o ponto único de contato entre o
+provedor e os usuários --- é sobre \textbf{comunicação}, não sobre resolver
+tecnicamente.
+\end{itemize}
+Confundir "quem monitora a infraestrutura" com "quem libera para produção"
+é o tipo de troca que a banca planta entre práticas de nome parecido.
+\end{cuidado}
+
+\section{COBIT 2019}
+\label{sec:cobit-teoria}
+
+\subsection{Governança $\times$ gestão}
+
+\begin{conceito}[A distinção que organiza o framework inteiro]
+COBIT separa \textbf{governança} de \textbf{gestão} como duas
+responsabilidades \textbf{estruturalmente diferentes}, não dois sinônimos
+de "administrar":
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.3cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Governança} & \textbf{Gestão} \\
+\midrule
+Pergunta central & "\textbf{o quê} e por quê?" --- que direção seguir, que
+risco aceitar, que prioridade vale mais & "\textbf{como} e quando?" ---
+executar o trabalho dentro da direção já definida \\
+Verbos & \textbf{avaliar, dirigir, monitorar} (EDM) & \textbf{planejar,
+construir, executar, monitorar} (APO, BAI, DSS, MEA) \\
+Quem responde & o \textbf{conselho}/alta administração & a
+\textbf{diretoria} executiva de TI \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Note que \textbf{"monitorar" aparece nos dois lados} --- e é aí que mora a
+diferença mais sutil: a governança monitora \textbf{se a direção definida
+está sendo seguida} (o conselho pergunta "estamos indo aonde decidimos
+ir?"); a gestão monitora \textbf{o desempenho operacional do que está
+rodando} (a diretoria pergunta "o sistema está funcionando dentro do
+esperado?"). O mesmo verbo, dois objetos de observação diferentes.
+\end{conceito}
+
+\begin{exemplo}[Classificando uma atividade como governança ou gestão]
+"O conselho de administração define que a empresa vai priorizar segurança
+da informação sobre velocidade de lançamento de novos produtos, dado o
+histórico do setor." $\to$ \textbf{governança} (EDM): é uma decisão de
+direção e apetite a risco.
+
+"A equipe de TI implementa um pipeline de testes automatizados de segurança
+antes de cada deploy, seguindo a diretriz aprovada." $\to$ \textbf{gestão}
+(BAI/DSS): é a execução concreta daquilo que a governança decidiu.
+\end{exemplo}
+
+\begin{conceito}[Por que a governança é "sob medida" --- fatores de desenho]
+O COBIT 2019 insiste que \textbf{não existe um conjunto único de objetivos
+de governança que sirva a toda organização}. Tamanho, setor, apetite a
+risco, estratégia e ambiente regulatório mudam qual objetivo deve receber
+mais prioridade e recursos. Os \textbf{fatores de desenho}
+(\textit{design factors}) são justamente os critérios usados para
+\textbf{customizar} o sistema de governança à realidade de cada organização
+--- "implantar o COBIT inteiro, exatamente como vem no guia" contraria essa
+lógica.
+\end{conceito}
+
+\subsection{5 domínios, 40 objetivos}
+
+\begin{conceito}[EDM é governança; os outros quatro são gestão]
+\begin{itemize}
+\item \textbf{EDM} --- \textit{Evaluate, Direct and Monitor}
+(\textbf{governança}): avaliar opções estratégicas, dirigir a organização
+para a direção escolhida, monitorar se a direção está sendo seguida.
+\item \textbf{APO} --- \textit{Align, Plan and Organize} (gestão): alinhar
+a estratégia de TI com a organização, planejar e organizar os recursos.
+\item \textbf{BAI} --- \textit{Build, Acquire and Implement} (gestão):
+construir, adquirir e implementar as soluções.
+\item \textbf{DSS} --- \textit{Deliver, Service and Support} (gestão):
+entregar e dar suporte operacional aos serviços.
+\item \textbf{MEA} --- \textit{Monitor, Evaluate and Assess} (gestão):
+monitorar o desempenho operacional e a conformidade.
+\end{itemize}
+Ao todo, \textbf{40 objetivos de governança e gestão} distribuídos nesses 5
+domínios.
+\end{conceito}
+
+\begin{regrapratica}[Onde encaixar um objetivo específico]
+Se o enunciado fala em \textbf{especificar/priorizar requisitos},
+\textbf{construir} ou \textbf{implementar} uma solução, pense
+\textbf{BAI} primeiro (é o domínio de "construir, adquirir, implementar") ---
+é um erro comum jogar isso em APO (que é sobre alinhamento e planejamento
+estratégico, mais abstrato) ou em DSS (que já pressupõe a solução em
+operação). O critério: APO decide \textbf{o plano}, BAI \textbf{constrói a
+solução}, DSS \textbf{opera o que já foi construído}, MEA \textbf{mede o
+resultado}.
+\end{regrapratica}
+
+\subsection{Os dois conjuntos de princípios}
+
+\begin{conceito}[6 princípios do sistema, 3 do framework --- não se misturam]
+O COBIT 2019 tem \textbf{duas} listas de princípios, para \textbf{dois
+objetos diferentes}, e a diferença é literalmente "de quem é o princípio":
+
+\begin{center}
+\begin{tabular}{@{}p{4.2cm}p{7.4cm}@{}}
+\toprule
+\textbf{6 princípios do \emph{sistema} de governança} (descrevem a
+governança que a \emph{organização} monta) & entregar \textbf{valor às
+partes interessadas}; abordagem \textbf{holística}; sistema de governança
+\textbf{dinâmico}; governança \textbf{distinta} da gestão; \textbf{sob
+medida} para as necessidades da organização; sistema \textbf{de ponta a
+ponta} (cobre a empresa toda, não só a área de TI) \\
+\addlinespace
+\textbf{3 princípios do \emph{framework} de governança} (descrevem o guia
+que a \emph{ISACA} publica) & baseado em \textbf{modelo conceitual};
+\textbf{aberto e flexível}; \textbf{alinhado} aos principais padrões e
+normas do mercado \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os seis descrevem \textbf{o que você constrói} dentro da sua organização; os
+três descrevem \textbf{o guia em si}, como produto publicado pela ISACA. Uma
+alternativa que oferece "aberto e flexível" como princípio do
+\emph{sistema} de governança (em vez do \emph{framework}), ou "de ponta a
+ponta" como princípio do \emph{framework} (em vez do \emph{sistema}), trocou
+os dois grupos entre si. E dizer que são "cinco" princípios é o número do
+\textbf{COBIT 5} (edição anterior), não do 2019.
+\end{conceito}
+
+\begin{conceito}[Componentes, não "\textit{enablers}"]
+O COBIT 2019 usa o termo \textbf{componentes} para os elementos que
+constroem e sustentam um sistema de governança (processos, estruturas
+organizacionais, políticas, cultura, habilidades, serviços/infraestrutura
+etc.) --- o COBIT 5, edição anterior, chamava o mesmo tipo de elemento de
+\textit{enablers} (habilitadores). Se uma questão pergunta "para que serve o
+COBIT 2019", a resposta correta é algo como "definir os componentes que
+constroem e sustentam um sistema de governança" --- não "definir uma
+estratégia de TI" nem "criar um inventário de ativos" (isso é gestão de
+ativos, um objetivo específico dentro do framework, não o propósito do
+framework como um todo).
+\end{conceito}
+
+\section{BPMN (modelagem de processos)}
+\label{sec:bpmn-teoria}
+
+\begin{conceito}[Os elementos básicos de notação]
+BPMN (\textit{Business Process Model and Notation}) é uma notação gráfica
+padronizada para representar processos de negócio de forma que tanto
+analistas de negócio quanto desenvolvedores consigam ler:
+
+\begin{itemize}
+\item \textbf{Eventos} (círculos): algo que \textbf{acontece} durante o
+processo. Distinguem-se pela espessura da borda: \textbf{início} (borda
+fina), \textbf{intermediário} (borda dupla), \textbf{fim} (borda grossa).
+\item \textbf{Atividades} (retângulos de cantos arredondados): trabalho
+executado --- tarefas (atômicas) ou subprocessos (que se expandem em outro
+diagrama).
+\item \textbf{Gateways} (losangos): pontos de \textbf{decisão ou
+sincronização} do fluxo.
+\item \textbf{Raias} (\textit{pools}/\textit{lanes}): compartimentos que
+mostram \textbf{quem} executa cada parte do processo (papel, área,
+organização).
+\item \textbf{Fluxos}: de \textbf{sequência} (linha sólida --- ordem das
+atividades dentro de uma mesma raia/processo) $\times$ de \textbf{mensagem}
+(linha tracejada --- comunicação entre participantes/raias diferentes).
+\end{itemize}
+\end{conceito}
+
+\begin{conceito}[Os três gateways --- divisão e junção têm semânticas diferentes]
+O gateway é o único elemento do BPMN que se comporta de forma
+\textbf{diferente} dependendo de estar \textbf{abrindo} o fluxo (um caminho
+vira vários) ou \textbf{fechando} (vários caminhos voltam a virar um). É a
+semântica de \textbf{fechamento} que costuma ser mal compreendida:
+
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{3.9cm}p{4.5cm}@{}}
+\toprule
+\textbf{Gateway} & \textbf{Na divisão (abertura)} & \textbf{Na junção
+(fechamento)} \\
+\midrule
+\textbf{Exclusivo} (XOR) & segue por \textbf{exatamente um} caminho ---
+o da primeira condição verdadeira & apenas \textbf{repassa} o que chegar de
+qualquer um dos ramos --- não espera nada, porque só um ramo estava ativo \\
+\textbf{Paralelo} (AND) & dispara \textbf{todos} os caminhos ao mesmo
+tempo, \textbf{sem} avaliar condição nenhuma & \textbf{sincroniza}: espera
+\textbf{todos} os caminhos chegarem antes de deixar o fluxo continuar \\
+\textbf{Inclusivo} (OR) & segue por \textbf{um ou mais} caminhos, todos os
+que tiverem condição verdadeira & espera apenas os caminhos que
+\textbf{foram de fato ativados} na abertura correspondente --- é o único
+gateway cuja junção precisa "saber" quantos ramos abriram, para não travar
+esperando um caminho que nunca foi disparado \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Modelando três cenários com o gateway certo]
+"O pedido é avaliado e, então, \textbf{ou} é aprovado \textbf{ou} é
+recusado, nunca as duas coisas." $\to$ \textbf{exclusivo (XOR)}: os
+caminhos são mutuamente excludentes.
+
+"Ao receber uma proposta, o time jurídico e o time financeiro analisam
+\textbf{simultaneamente}, e o processo só segue adiante quando \textbf{os
+dois} pareceres estiverem prontos." $\to$ \textbf{paralelo (AND)}: dispara
+os dois ramos juntos na abertura e sincroniza esperando ambos no
+fechamento.
+
+"Dependendo do valor do pedido, \textbf{pode ser necessária} uma, duas ou as
+três verificações (crédito, estoque, fraude) --- pelo menos uma sempre
+acontece." $\to$ \textbf{inclusivo (OR)}: mais de um caminho pode ser
+ativado, e o fechamento precisa saber exatamente quais foram para não
+esperar por um ramo que nunca abriu.
+\end{exemplo}
+
+\begin{cuidado}[Trocar o AND de fechamento por XOR é o erro de modelagem mais grave]
+Se dois ramos abrem em paralelo (AND) mas o modelador fecha com um gateway
+\textbf{exclusivo}, o processo segue adiante assim que \textbf{o primeiro}
+ramo chegar --- \textbf{sem esperar o segundo}. Na prática, isso significa
+que o processo avança com metade do trabalho feito (ex.: aprova o pedido
+antes do parecer financeiro estar pronto). É o tipo de erro que passa
+despercebido no diagrama (visualmente parece só "um losango a menos") mas
+quebra a lógica de negócio inteira.
+\end{cuidado}
+
+\section{Gestão de riscos (ISO 31000)}
+
+\begin{conceito}[O ciclo de gestão de riscos]
+A norma ISO 31000 organiza a gestão de riscos em um processo cíclico e
+contínuo, aplicável a qualquer tipo de risco (não só de TI):
+\textbf{identificar} os riscos, \textbf{analisar} (entender causas,
+consequências, probabilidade), \textbf{avaliar} (comparar contra critérios,
+decidir prioridade), \textbf{tratar} (aceitar, mitigar, transferir ou
+evitar o risco) e \textbf{monitorar} continuamente (riscos e o contexto ao
+redor mudam com o tempo, então a análise não é um evento único).
+\end{conceito}
+
+\begin{regrapratica}[As quatro respostas possíveis a um risco identificado]
+Depois de avaliado, todo risco recebe uma destas respostas: \textbf{aceitar}
+(o custo de tratar é maior que o impacto do risco); \textbf{mitigar}
+(reduzir probabilidade ou impacto com uma ação concreta); \textbf{transferir}
+(repassar o impacto financeiro a terceiro, como um seguro ou contrato);
+\textbf{evitar} (eliminar a atividade que gera o risco). Não existe uma
+quinta opção de "ignorar sem decidir" --- mesmo não fazer nada é, na
+prática, uma decisão de aceitar.
+\end{regrapratica}
+
+\section{Roteiro de revisão do capítulo}
+
+\begin{regrapratica}[Os números que amarram cada framework]
+\textbf{PMBOK}: 6ª edição = 5 grupos de processos $\times$ 10 áreas de
+conhecimento; 7ª edição = 12 princípios + 8 domínios de desempenho (não é
+baseada em processos). \textbf{ITIL 4}: 4 dimensões, 7 princípios
+orientadores, 6 atividades da cadeia de valor, 34 práticas (14 gerais + 17
+de serviço + 3 técnicas). \textbf{COBIT 2019}: 5 domínios (1 de governança
+--- EDM --- e 4 de gestão), 40 objetivos, 6 princípios do sistema de
+governança + 3 do framework (o "5" pertence ao COBIT 5, edição anterior).
+Sempre que dois números de frameworks diferentes se parecem, volte a esta
+lista antes de responder.
+\end{regrapratica}

@@ -7,29 +7,37 @@
 #   ./estudar.sh java redes -n 15   blocos passam pros dois; -n so pro quiz
 #   ./estudar.sh --simulado      sem bloco -> apostila cai no plano de hoje
 #   ./estudar.sh --dia ontem     recupera outro dia nos dois (--quem idem)
+#   ./estudar.sh --teoria java   abre teoria/main.pdf (livro-texto) em vez da
+#                                apostila; so afeta o PDF, quiz roda igual
 set -euo pipefail
 cd "$(dirname "$0")"
 
-QUIZ_ARGS=("$@")
 BLOCOS=()
 APOSTILA_FLAGS=()
+QUIZ_ARGS=()
 esperando=""
 for a in "$@"; do
     if [ -n "$esperando" ]; then
         [ "$esperando" = apostila ] && APOSTILA_FLAGS+=("$a")
+        QUIZ_ARGS+=("$a")
         esperando=""
         continue
     fi
     case "$a" in
         --dia|--quem)
             APOSTILA_FLAGS+=("$a")
+            QUIZ_ARGS+=("$a")
             esperando=apostila
             ;;
         -n|--prova)
+            QUIZ_ARGS+=("$a")
             esperando=quiz
             ;;
-        --*) ;;
-        *) BLOCOS+=("$a") ;;
+        --teoria)
+            APOSTILA_FLAGS+=("$a")
+            ;;
+        --*) QUIZ_ARGS+=("$a") ;;
+        *) BLOCOS+=("$a"); QUIZ_ARGS+=("$a") ;;
     esac
 done
 [ ${#BLOCOS[@]} -eq 0 ] && BLOCOS=(hoje)

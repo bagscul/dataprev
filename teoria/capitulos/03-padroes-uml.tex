@@ -1,0 +1,581 @@
+\chapter{Padrões de Projeto e UML}
+\label{cap:padroes-uml-teoria}
+
+\begin{edital}
+"Padrões de projeto", "design de software", "padrões de desenvolvimento e
+reuso", "análise e projeto orientados a objetos". UML não está listada com
+todas as letras no edital do Perfil 3 (aparece explícita no Perfil 2), mas é
+vizinha direta desses itens e a FGV cobra com frequência em provas de TI.
+\end{edital}
+
+\section{Padrões de projeto (GoF)}
+
+\begin{conceito}[O que é --- e o que não é --- um padrão de projeto]
+Um padrão de projeto \textbf{não é código pronto, nem biblioteca, nem
+framework}. É a descrição de uma solução que já foi reinventada tantas
+vezes, por gente diferente, para o mesmo problema estrutural, que virou
+vocabulário compartilhado. Como todo verbete de dicionário técnico, tem
+quatro partes: um \textbf{nome} (para poder falar sobre ele sem reexplicar),
+o \textbf{problema} em que se aplica, a \textbf{solução} em termos de
+classes e objetos que colaboram, e as \textbf{consequências} --- porque toda
+escolha de design tem um preço (mais classes, mais indireção, mais
+complexidade para quem lê o código pela primeira vez).
+
+Essa definição já entrega o principal erro de quem estuda padrão decorando
+a estrutura: aplicar um padrão \textbf{sem ter o problema} correspondente é
+\textit{over-engineering}. Uma \textit{Abstract Factory} para criar um
+único tipo de objeto, sem variação nenhuma, acrescenta duas classes e zero
+flexibilidade real --- o padrão existe para resolver um problema, não para
+demonstrar conhecimento de padrões.
+
+O catálogo GoF (\textit{Gang of Four}, os quatro autores do livro que o
+consolidou em 1994) reúne \textbf{23 padrões}, divididos em três famílias:
+\textbf{criacionais} (5), \textbf{estruturais} (7), \textbf{comportamentais}
+(11).
+\end{conceito}
+
+\begin{conceito}[O fio que liga quase todos os 23]
+Por trás da variedade, a maioria dos padrões do catálogo faz a
+\textbf{mesma} manobra estrutural: \textbf{isola o que varia atrás de uma
+interface estável}, e prefere \textbf{composição a herança} para poder
+trocar essa parte variável em tempo de execução, sem recompilar nem alterar
+quem usa a interface. É o fio que liga Strategy, State, Bridge, Decorator,
+Abstract Factory e a maior parte dos outros --- e é por isso que "programe
+para uma interface, não para uma implementação" e "prefira composição a
+herança" são os dois lemas mais citados do livro original.
+
+O que muda de família para família é \textbf{o que} exatamente está sendo
+isolado:
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{3.8cm}p{4.8cm}@{}}
+\toprule
+\textbf{Família} & \textbf{Isola\ldots} & \textbf{Pergunta que ela responde} \\
+\midrule
+Criacionais (5) & \textit{qual} objeto se instancia, e quando & "como criar
+isto sem amarrar o código à classe concreta?" \\
+Estruturais (7) & \textit{como} as peças se encaixam & "como
+compor/embrulhar objetos para obter uma interface ou um comportamento
+novo?" \\
+Comportamentais (11) & \textit{quem} conversa com quem, e qual algoritmo
+roda & "como distribuir a responsabilidade da interação em tempo de
+execução?" \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\subsection{Criacionais}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho no enunciado)} \\
+\midrule
+Singleton & garantir \textbf{uma única instância} e ponto global de acesso
+("apenas uma conexão/configuração no sistema todo") \\
+Factory Method & delegar a criação a \textbf{subclasses}; criar objeto
+\textbf{sem acoplar à classe concreta} ("decidir em runtime qual objeto
+criar", via herança) \\
+Abstract Factory & criar \textbf{famílias} inteiras de objetos relacionados
+sem especificar classes concretas ("kit de componentes de UI para Windows e
+para Mac") \\
+Builder & construir objeto complexo \textbf{passo a passo}, separando o
+processo de construção da representação final ("montar um objeto com
+muitos parâmetros opcionais") \\
+Prototype & criar novos objetos \textbf{clonando} um protótipo existente
+("copiar um objeto já configurado em vez de criar do zero") \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Factory Method x Abstract Factory]
+Um sistema de notificação precisa enviar mensagens por e-mail ou SMS,
+decidido em tempo de execução por configuração. Uma classe abstrata
+\texttt{NotificadorFactory} tem o método \texttt{criar()}, e cada subclasse
+(\texttt{EmailFactory}, \texttt{SmsFactory}) decide qual notificador
+concreto instanciar --- isso é \textbf{Factory Method}: uma família de
+objetos, delegada a subclasses por herança.
+
+Agora imagine que o sistema de UI precisa gerar um \textbf{conjunto
+inteiro} de componentes visualmente consistentes: botão, campo de texto e
+janela, todos no estilo "Windows" ou todos no estilo "Mac", nunca
+misturados. Uma \texttt{UIFactory} abstrata declara \texttt{criarBotao()},
+\texttt{criarCampo()}, \texttt{criarJanela()}; \texttt{WindowsFactory} e
+\texttt{MacFactory} implementam a família inteira de uma vez --- isso é
+\textbf{Abstract Factory}: não um objeto, uma \textbf{família} de objetos
+relacionados que precisam ser consistentes entre si.
+\end{exemplo}
+
+\begin{cuidado}
+Factory Method resolve \textbf{um} produto por vez, via herança (uma
+subclasse por variante). Abstract Factory resolve uma \textbf{família}
+inteira de produtos relacionados, via composição (a fábrica concreta é
+injetada, não subclassificada por quem a usa). Singleton é sempre
+\textbf{uma} instância --- nunca "mais de uma quando necessário", isso
+descaracteriza o padrão.
+\end{cuidado}
+
+\subsection{Estruturais}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho)} \\
+\midrule
+Adapter & fazer interfaces \textbf{incompatíveis} trabalharem juntas
+("adaptar uma API legada à interface nova que o sistema espera") \\
+Facade & interface \textbf{simplificada} para um subsistema complexo ("uma
+fachada única escondendo vários serviços internos") \\
+Proxy & um \textbf{substituto} que controla o acesso ao objeto real
+(carregamento tardio, cache, controle de permissão) \\
+Decorator & adicionar responsabilidades a um objeto \textbf{dinamicamente},
+sem usar herança ("empilhar comportamentos em tempo de execução") \\
+Composite & tratar objeto individual e composição de objetos \textbf{de
+forma uniforme} (estrutura em árvore, relação todo-parte recursiva) \\
+Bridge & separar \textbf{abstração} de \textbf{implementação} para as duas
+variarem de forma independente \\
+Flyweight & compartilhar objetos semelhantes para \textbf{economizar
+memória} (muitas instâncias quase idênticas) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Adapter x Facade x Decorator x Proxy --- os quatro que se confundem]
+Um sistema novo espera receber pagamentos por uma interface
+\texttt{ProcessadorPagamento.pagar(valor)}, mas a biblioteca do banco só
+oferece \texttt{BancoLegado.executarTransacao(valorEmCentavos, moeda)}.
+Uma classe \texttt{AdapterBanco} implementa \texttt{ProcessadorPagamento} e,
+por dentro, converte a chamada para o formato do banco legado --- isso é
+\textbf{Adapter}: faz duas interfaces que já existem e não combinam
+conversarem.
+
+O mesmo sistema, para fechar um pedido, precisa chamar \texttt{Estoque},
+\texttt{Pagamento}, \texttt{NotaFiscal} e \texttt{Envio}, em sequência
+determinada. Uma classe \texttt{FachadaPedido.finalizar(pedido)} esconde
+essas quatro chamadas atrás de um método só --- isso é \textbf{Facade}:
+simplifica o acesso a um subsistema que já funciona, sem mudar nenhuma das
+peças internas.
+
+Agora um sistema de café precisa somar o preço base a extras escolhidos
+(leite, chantilly, calda) sem criar uma subclasse para cada combinação
+possível. \texttt{CafeComLeite} envolve um \texttt{Cafe} e soma seu próprio
+preço ao preço de quem envolve; \texttt{CafeComChantilly} faz o mesmo em
+volta do resultado anterior --- isso é \textbf{Decorator}: cada camada
+\textbf{acrescenta comportamento/dado}, empilhável em qualquer combinação.
+
+Por fim, uma imagem de 50MB só deve ser carregada do disco quando
+realmente for exibida na tela. Uma classe \texttt{ProxyImagem} implementa a
+mesma interface de \texttt{Imagem}, mas só instancia a \texttt{ImagemReal}
+(que faz o carregamento pesado) na primeira chamada a \texttt{exibir()}
+--- isso é \textbf{Proxy}: \textbf{controla o acesso} ao objeto real, sem
+acrescentar comportamento novo à funcionalidade em si.
+\end{exemplo}
+
+\begin{cuidado}[A diferença que sobra depois da estrutura parecida]
+Adapter, Facade e Decorator todos "envolvem" outro objeto, e por isso a
+estrutura de código fica parecida. O que os separa é a \textbf{intenção}:
+Adapter \textbf{traduz} uma interface existente para outra que o cliente
+espera (o objetivo é compatibilidade); Facade \textbf{simplifica} o acesso
+a várias peças que já são compatíveis entre si (o objetivo é conveniência);
+Decorator \textbf{acrescenta} funcionalidade nova, mantendo a mesma
+interface (o objetivo é extensão). E Proxy \textbf{controla acesso} sem
+mudar a função --- é a diferença que separa Proxy de Decorator: o primeiro
+decide \textit{se e quando} delega para o objeto real; o segundo sempre
+delega, e soma algo à resposta.
+\end{cuidado}
+
+\subsection{Comportamentais}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9cm}@{}}
+\toprule
+\textbf{Padrão} & \textbf{Intenção (gatilho)} \\
+\midrule
+Strategy & família de algoritmos \textbf{intercambiáveis}, escolhidos por
+\textbf{quem usa}, em runtime ("trocar a regra de cálculo sem um
+\texttt{if} gigante") \\
+Observer & notificar automaticamente \textbf{dependentes} quando o estado
+de um objeto muda (\textit{publish-subscribe}, sistema de eventos) \\
+Command & encapsular uma \textbf{requisição como objeto} (permite
+desfazer/refazer, enfileirar, logar operações) \\
+State & mudar o comportamento conforme o \textbf{estado interno}, e é o
+\textbf{próprio objeto/estado} quem decide a próxima transição \\
+Template Method & define o \textbf{esqueleto} fixo de um algoritmo,
+deixando passos específicos para subclasses sobrescreverem \\
+Iterator & percorre uma coleção \textbf{sem expor sua estrutura interna} \\
+Chain of Responsibility & passa a requisição por uma \textbf{cadeia} de
+manipuladores até que algum a trate \\
+Mediator & centraliza a comunicação entre vários objetos, reduzindo
+acoplamento \textbf{N-para-N} para N-para-1 \\
+Memento & captura e restaura o estado interno de um objeto sem violar seu
+encapsulamento (\textit{snapshot}, base do "desfazer") \\
+Visitor & adiciona novas operações a uma estrutura de objetos \textbf{sem
+alterar as classes} dessa estrutura \\
+Interpreter & define uma \textbf{gramática} para uma linguagem simples e um
+interpretador que avalia sentenças escritas nela \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Do \texttt{if} gigante ao Strategy]
+O cálculo de frete começa assim, dentro do serviço de pedidos:
+\texttt{if (tipo == "sedex") \{...\} else if (tipo == "pac") \{...\} else
+if (tipo == "retirada") \{...\}}. Refatorando com Strategy: cria-se uma
+interface \texttt{CalculoFrete} com o método \texttt{calcular(pedido)}, e
+uma classe por regra (\texttt{FreteSedex}, \texttt{FretePac},
+\texttt{FreteRetirada}). O serviço passa a \textbf{receber} a estratégia já
+escolhida e só chamar \texttt{calcular} --- ele deixa de conhecer as regras
+concretas, dependendo só da interface.
+
+O ganho tem nome: acrescentar uma transportadora nova virou \textbf{criar
+uma classe}, não \textbf{editar} um método já existente --- é o
+\textit{Open/Closed} do SOLID (Seção~\ref{sec:solid-uml} adiante) em ação.
+E o serviço passou a depender de uma abstração (\texttt{CalculoFrete}), não
+de implementações concretas --- é o \textit{Dependency Inversion} do mesmo
+princípio. Repare que o padrão não eliminou a decisão de \textbf{qual}
+regra usar; ele só a \textbf{moveu} para fora, para quem monta o objeto do
+serviço.
+\end{exemplo}
+
+\begin{cuidado}[Strategy x State --- mesma estrutura, intenção oposta]
+Os dois são, por dentro, a mesma estrutura de código: um objeto delegando
+comportamento a outro através de uma interface comum. A diferença está em
+\textbf{quem decide a troca}. No \textbf{Strategy}, quem escolhe a
+estratégia é \textbf{o cliente}, de fora, e as estratégias não sabem umas
+das outras (trocar o cálculo de frete não afeta o cálculo de imposto). No
+\textbf{State}, quem troca é \textbf{o próprio objeto}, conforme seu estado
+interno, e os estados costumam conhecer para qual estado ir a seguir
+("pedido pago" sabe que o próximo é "pedido enviado"). Regra de leitura: se
+o enunciado descreve um \textbf{ciclo de vida com transições} (pedido
+pendente $\to$ pago $\to$ enviado $\to$ entregue), é State; se descreve
+\textbf{alternativas equivalentes} para fazer a mesma tarefa (calcular
+frete de três jeitos diferentes), é Strategy.
+\end{cuidado}
+
+\begin{cuidado}[Observer x Mediator]
+\textbf{Observer} é o padrão de notificação: um sujeito muda de estado e
+\textbf{avisa} uma lista de interessados que se inscreveram para saber
+disso (a comunicação é sempre "sujeito $\to$ observadores", um-para-muitos).
+\textbf{Mediator} \textbf{centraliza a comunicação} entre vários objetos
+que, de outra forma, teriam que se conhecer uns aos outros (N-para-N vira
+N-para-1 através do mediador) --- não é sobre notificar mudança de estado,
+é sobre reduzir quantas classes conhecem quantas outras classes
+diretamente.
+\end{cuidado}
+
+\subsection{GRASP}
+
+\begin{conceito}[Princípios de responsabilidade, não padrões prontos]
+GRASP (\textit{General Responsibility Assignment Software Patterns}) não é
+uma lista de estruturas de código como o GoF --- é um conjunto de
+\textbf{princípios} para decidir \textbf{qual classe deve receber qual
+responsabilidade}: Information Expert, Creator, Controller, Low Coupling,
+High Cohesion, Polymorphism, Pure Fabrication, Indirection, Protected
+Variations.
+
+Dois deles resolvem sozinhos a maior parte das perguntas de "a qual classe
+cabe esta responsabilidade":
+
+\begin{itemize}
+\item \textbf{Information Expert}: a responsabilidade vai para a classe
+que \textbf{já tem os dados} necessários para cumpri-la. Quem calcula o
+total de um pedido é a classe \texttt{Pedido}, que já conhece seus itens
+--- não uma \texttt{CalculadoraDeTotais} externa, que precisaria pedir
+tudo emprestado (o que criaria acoplamento desnecessário).
+\item \textbf{Creator}: quem cria um objeto é quem o \textbf{agrega,
+contém ou usa de perto}. \texttt{Pedido} cria seus \texttt{ItemDePedido},
+porque é quem os contém e usa diretamente.
+\end{itemize}
+
+Os dois existem pelo mesmo motivo: manter juntos o dado e o comportamento
+que o usa é o que produz \textbf{alta coesão} (a classe faz uma coisa
+coerente) e \textbf{baixo acoplamento} (menos classes precisam se conhecer
+para o trabalho acontecer) --- que são, eles próprios, dois outros
+princípios da mesma lista.
+\end{conceito}
+
+\subsection{SOLID}
+\label{sec:solid-uml}
+
+\begin{conceito}[Os cinco princípios --- tratamento completo com armadilhas de Java no Capítulo~\ref{cap:java-teoria}]
+\begin{itemize}
+\item \textbf{S --- \textit{Single Responsibility}}: uma classe deve ter
+\textbf{uma responsabilidade}, ou seja, um único motivo para mudar. Uma
+classe que salva no banco \textbf{e} formata relatório \textbf{e} valida
+regra de negócio tem três motivos para mudar --- e muda toda vez que
+qualquer um dos três muda, mesmo sem relação com os outros dois.
+\item \textbf{O --- \textit{Open/Closed}}: aberta à \textbf{extensão},
+fechada à \textbf{modificação}. Acrescentar comportamento novo deve ser
+possível \textbf{sem editar} código já testado e em produção --- é
+exatamente o que o exemplo de Strategy acima demonstrou.
+\item \textbf{L --- \textit{Liskov}}: um subtipo deve poder substituir seu
+tipo base em qualquer lugar do programa \textbf{sem quebrar o
+comportamento esperado}. O exemplo clássico de violação: \texttt{Quadrado}
+herda de \texttt{Retangulo} e sobrescreve \texttt{setLargura} para também
+mudar a altura (mantendo os lados iguais) --- um código que usa
+\texttt{Retangulo} esperando poder mudar largura e altura independentemente
+quebra quando recebe um \texttt{Quadrado}.
+\item \textbf{I --- \textit{Interface Segregation}}: várias interfaces
+\textbf{pequenas e específicas} são melhores que uma interface "gorda" que
+obriga quem implementa a fornecer métodos que não usa.
+\item \textbf{D --- \textit{Dependency Inversion}}: módulos de alto nível
+não devem depender de módulos de baixo nível --- ambos devem depender de
+\textbf{abstrações}. Na prática: o serviço depende da interface
+\texttt{CalculoFrete}, nunca da classe concreta \texttt{FreteSedex}.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[ISP x SRP]
+Os dois falam em "pequeno e específico", e por isso se confundem, mas
+tratam de coisas diferentes: \textbf{SRP} é sobre quantas
+\textbf{responsabilidades} uma \textbf{classe} tem; \textbf{ISP} é sobre
+quantos \textbf{métodos desnecessários} uma \textbf{interface} obriga a
+implementar. Uma classe pode violar SRP mesmo implementando uma interface
+enxuta, e uma interface pode violar ISP mesmo sendo implementada por uma
+classe de responsabilidade única.
+\end{cuidado}
+
+\subsection{Padrões arquiteturais (fora do catálogo GoF)}
+
+\begin{conceito}
+\begin{itemize}
+\item \textbf{MVC} (\textit{Model-View-Controller}): separa dados
+(\textit{Model}), apresentação (\textit{View}) e controle do fluxo
+(\textit{Controller}) em três responsabilidades distintas.
+\item \textbf{MVVM / MVP}: variações do MVC com \textit{binding} de dados
+automático (MVVM) ou um \textit{presenter} que intermedeia view e model
+(MVP) --- comuns em front-end e mobile.
+\item \textbf{DAO} (\textit{Data Access Object}) \textbf{/ Repository}:
+isolam o código de acesso a dados (SQL, ORM) do resto da aplicação.
+\item \textbf{DTO} (\textit{Data Transfer Object}): objeto simples, sem
+lógica de negócio, usado só para transportar dados entre camadas.
+\end{itemize}
+\end{conceito}
+
+\subsection{Reuso e anti-padrões}
+
+\begin{conceito}
+\textbf{Reuso por herança} ("é-um": \texttt{Cachorro extends Animal}) x
+\textbf{reuso por composição} ("tem-um": \texttt{Carro} tem um
+\texttt{Motor}). A recomendação consolidada é \textbf{preferir composição a
+herança} (\textit{favor composition over inheritance}) sempre que a
+relação não for genuinamente um tipo-subtipo estável, porque herança
+acopla fortemente a subclasse aos detalhes internos da superclasse
+(qualquer mudança na base pode quebrar a subclasse sem aviso).
+
+\textbf{Anti-padrões} (más práticas recorrentes, batizadas do mesmo jeito
+que os padrões, para poder nomear o erro): \textbf{God Object} (uma classe
+que faz tudo, violando SRP em escala máxima), \textbf{Spaghetti Code}
+(fluxo de controle emaranhado, sem estrutura reconhecível),
+\textbf{Golden Hammer} (usar sempre a mesma ferramenta/solução para
+problemas diferentes, mesmo quando não é a mais adequada),
+\textbf{Copy-Paste Programming} (duplicar código em vez de extrair uma
+abstração comum).
+\end{conceito}
+
+\section{UML}
+\label{sec:uml-teoria}
+
+\begin{conceito}[Notação, não método]
+A UML é uma \textbf{linguagem de notação}, não um processo: ela padroniza
+\textbf{o desenho}, não diz \textbf{quando} desenhar cada diagrama --- isso
+é papel do processo de desenvolvimento (RUP, Scrum; Capítulo
+\ref{cap:eng-software-teoria}). O problema que ela resolve é concreto:
+antes da padronização, cada empresa tinha sua própria simbologia, e o
+mesmo losango podia significar coisas diferentes em dois documentos da
+mesma equipe. Padronizar a notação é o que permite discutir projeto sem
+primeiro precisar combinar o que cada símbolo quer dizer. A especificação
+vigente da OMG é a \textbf{UML 2.5.1}.
+\end{conceito}
+
+\subsection{Os 14 diagramas em duas famílias}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.6cm}p{6.4cm}@{}}
+\toprule
+\textbf{Família} & \textbf{Foca em} & \textbf{Diagramas principais} \\
+\midrule
+Estruturais & estrutura \textbf{estática} --- como o sistema é organizado
+num instante & \textbf{Classe}, Objeto, Componente, Implantação
+(\textit{deployment}), Pacote, Estrutura composta, Perfil \\
+Comportamentais & comportamento \textbf{dinâmico} --- como o sistema se
+move no tempo & \textbf{Caso de uso}, \textbf{Sequência},
+\textbf{Atividade}, \textbf{Estado} (máquina de estados), Comunicação,
+Interação geral, Tempo \\
+\bottomrule
+\end{tabular}
+\end{center}
+A pergunta-teste: o diagrama descreveria o sistema \textbf{parado, num
+instante} (estrutural) ou descreve \textbf{o que acontece ao longo do
+tempo} (comportamental)? Classe é sempre estrutural; sequência, atividade,
+estado e caso de uso são sempre comportamentais.
+\end{conceito}
+
+\subsection{Diagrama de classes}
+
+\begin{conceito}[Relacionamentos e o que cada notação significa]
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{4.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Relacionamento} & \textbf{Significado} & \textbf{Notação} \\
+\midrule
+Associação & ligação estrutural entre classes & linha \\
+Agregação & todo-parte \textbf{fraca} (a parte sobrevive sem o todo) &
+losango \textbf{vazio} \\
+Composição & todo-parte \textbf{forte} (a parte morre junto com o todo) &
+losango \textbf{cheio} \\
+Herança / Generalização & é-um (subtipo do tipo base) & seta de triângulo
+vazio \\
+Dependência & usa temporariamente (parâmetro, variável local) & seta
+tracejada \\
+Realização & implementa uma interface & linha tracejada + triângulo vazio \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Multiplicidade} (quantas instâncias do outro lado participam):
+\texttt{1} (exatamente uma), \texttt{0..1} (zero ou uma), \texttt{1..*}
+(uma ou mais), \texttt{*} (zero ou mais). \textbf{Visibilidade}:
+\texttt{+} público, \texttt{-} privado, \texttt{\#} protegido,
+\texttt{\textasciitilde} pacote.
+
+A classe se desenha em \textbf{três compartimentos}: nome, atributos,
+operações. O atributo, na forma completa, é onde mora o detalhe mais
+cobrado em leitura de diagrama:
+
+\begin{center}
+\texttt{- status : String [1] = "aberto"}
+\end{center}
+
+Nessa ordem: visibilidade, nome, tipo, multiplicidade, e \textbf{valor
+padrão} --- o valor que a instância assume quando ninguém informa outro na
+criação.
+\end{conceito}
+
+\begin{exemplo}[Agregação x composição]
+Uma \texttt{Universidade} tem \texttt{Departamentos} --- se a universidade
+fechar, os departamentos, como entidades daquela universidade, deixam de
+existir junto (não fazem sentido soltos): \textbf{composição}, losango
+cheio do lado de \texttt{Universidade}. Um \texttt{Departamento} tem
+\texttt{Professores} --- se o departamento fechar, os professores continuam
+existindo (podem ser realocados para outro departamento):
+\textbf{agregação}, losango vazio do lado de \texttt{Departamento}.
+\end{exemplo}
+
+\begin{cuidado}[Extremidade de associação como atributo, e associação qualificada]
+Cada ponta de uma associação tem papel, multiplicidade e navegabilidade
+--- e uma ponta navegável \textbf{pode ser representada como atributo} da
+classe do outro lado. "\texttt{Pedido} associa-se a 1 \texttt{Cliente}"
+desenhado como linha e "\texttt{Pedido} tem o atributo \texttt{cliente:
+Cliente}" escrito no compartimento de atributos dizem a \textbf{mesma}
+coisa em UML --- são duas notações de um único modelo, não duas
+modelagens diferentes. Uma \textbf{associação qualificada} (um qualificador
+desenhado como um pequeno retângulo na ponta da linha, geralmente uma
+chave) \textbf{particiona} o conjunto do outro lado e costuma reduzir a
+multiplicidade de \texttt{*} para \texttt{0..1}: dado um \texttt{Banco} e
+um \texttt{numeroConta}, chega-se a no máximo uma \texttt{Conta} --- é um
+índice de busca, não uma relação todo-parte, o que a torna um distrator
+plausível de agregação em leitura de diagrama.
+\end{cuidado}
+
+\subsection{Casos de uso}
+
+\begin{conceito}
+Modela \textbf{requisitos funcionais} do ponto de vista de quem usa o
+sistema: \textbf{ator} (bonequinho, alguém/algo externo que interage),
+\textbf{caso de uso} (elipse, uma funcionalidade completa do ponto de vista
+do ator), \textbf{fronteira do sistema} (retângulo que delimita o que está
+dentro).
+
+\begin{itemize}
+\item \textbf{«include»}: o comportamento incluído é \textbf{sempre}
+executado como parte do caso de uso base (obrigatório) --- ex.: "Fazer
+Pedido" \textit{include} "Autenticar Usuário".
+\item \textbf{«extend»}: o comportamento é \textbf{opcional/condicional},
+só ocorre em certas circunstâncias --- ex.: "Fazer Pedido" pode ser
+\textit{extended} por "Aplicar Cupom de Desconto", que só roda se o
+cliente tiver um cupom.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}
+Include é o comportamento que \textbf{sempre} acontece; extend é o que
+\textbf{às vezes} acontece. É comum a leitura inverter os dois --- o teste
+mental é: "esse passo é parte obrigatória do fluxo principal, ou é um
+desvio condicional que só ocorre em certas situações?"
+\end{cuidado}
+
+\subsection{Os quatro diagramas de interação}
+
+\begin{conceito}[Todos mostram objetos trocando mensagens; a diferença é a ênfase]
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{4.2cm}p{4.2cm}@{}}
+\toprule
+\textbf{Diagrama} & \textbf{Enfatiza} & \textbf{Como se lê a ordem} \\
+\midrule
+\textbf{Sequência} & a \textbf{ordem cronológica} das mensagens & pela
+posição vertical: de cima para baixo \\
+\textbf{Comunicação} & a \textbf{estrutura de ligações} entre os objetos
+(quem está conectado a quem) & pela \textbf{numeração} das mensagens (1,
+1.1, 1.2) --- sem eixo de tempo explícito \\
+\textbf{Tempo} (\textit{timing}) & a \textbf{mudança de estado} de cada
+participante ao longo de uma \textbf{escala de tempo explícita} & pelo eixo
+horizontal de tempo; usado quando o requisito envolve duração/tempo real \\
+\textbf{Visão geral de interação} & como \textbf{vários cenários} se
+encadeiam entre si & é um diagrama de atividades cujos nós são, eles
+mesmos, interações \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Sequência} e \textbf{comunicação} são \textbf{semanticamente
+equivalentes} --- dá para converter um no outro sem perder informação, já
+que ambos mostram as mesmas mensagens entre os mesmos objetos. A diferença
+é puramente de ênfase visual: sequência é melhor para ver \textbf{quando}
+cada coisa acontece; comunicação é melhor para ver \textbf{quem fala com
+quem}. Diagrama de \textbf{atividade} é diferente dos quatro: ali não há
+troca de mensagens entre participantes nomeados, há um \textbf{fluxo de
+trabalho} genérico --- ações, decisões, paralelismo.
+\end{conceito}
+
+\begin{regrapratica}
+Se o enunciado pede a \textbf{ordem exata em que as mensagens acontecem},
+é \textbf{sequência}. Se pede \textbf{quem está ligado a quem}
+estruturalmente, sem se importar com quando, é \textbf{comunicação}. Se
+envolve \textbf{duração/tempo real}, é \textbf{timing}. Se é sobre um
+\textbf{fluxo de trabalho} sem participantes trocando mensagem nomeada, é
+\textbf{atividade}, não um diagrama de interação.
+\end{regrapratica}
+
+\subsection{Atividade e máquina de estados}
+
+\begin{conceito}
+\textbf{Atividade}: fluxo de trabalho/algoritmo --- nós de ação, decisão
+(losango), bifurcação/junção (barra, representa paralelismo), início/fim.
+Parecido com um fluxograma; usado para modelar processos de negócio ou a
+lógica de um algoritmo.
+
+\textbf{Máquina de estados}: modela os \textbf{estados possíveis} de um
+objeto e as \textbf{transições} entre eles, disparadas por eventos --- o
+objeto se comporta diferente conforme o estado em que está. É o diagrama
+que casa diretamente com o padrão de projeto \textbf{State} (Seção
+anterior): cada estado do diagrama pode virar uma classe concreta que
+implementa a interface do estado.
+\end{conceito}
+
+\begin{regrapratica}[Roteiro para ligar diagrama a conceito]
+Caso de uso $\leftrightarrow$ requisitos funcionais (Capítulo
+\ref{cap:eng-software-teoria}). Classes $\leftrightarrow$ orientação a
+objetos/SOLID. Máquina de estados $\leftrightarrow$ padrão de projeto
+State. Componente e Implantação (\textit{deployment})
+$\leftrightarrow$ decisões de arquitetura (Capítulo
+\ref{cap:arquitetura-teoria}).
+\end{regrapratica}

@@ -1,0 +1,592 @@
+\chapter{Órfãos --- Administração de BD e Temas Coringa}
+\label{cap:orfaos-teoria}
+
+Este é o capítulo mais heterogêneo do livro: reúne administração física de
+banco de dados (o lado operacional que o Capítulo \ref{cap:banco-dados-teoria}
+não cobre, focado que está em modelagem e SQL), arquitetura de computadores
+e sistema operacional, sistemas de informação corporativos, e aprendizado de
+máquina. São temas que aparecem em prova mas não têm um capítulo natural no
+edital do Perfil 3 --- daí o nome. No fim do capítulo há um mapa indicando
+onde os demais temas "coringa" (blockchain, virtualização, 2PC etc.) estão
+tratados em profundidade nos outros capítulos deste livro.
+
+\section{Administração de Dados $\times$ Administração de Banco de Dados}
+
+\begin{conceito}[Dois papéis com o mesmo objeto e focos opostos]
+Os dois cuidam do mesmo recurso --- o dado da organização --- mas em níveis
+de abstração diferentes, e é essa diferença de \textbf{nível}, não de
+"quem é mais importante", que a prova cobra:
+
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Administração de Dados (AD)} & \textbf{Administração de BD (DBA)} \\
+\midrule
+Foco & \textbf{negócio/lógico} --- o dado como recurso corporativo,
+independente de onde ele está armazenado & \textbf{técnico/físico} --- o
+SGBD específico funcionando \\
+Atividades & modelagem conceitual, políticas de dados, governança,
+dicionário de dados & instalação, ajuste de desempenho
+(\textit{tuning}), backup, segurança de acesso, disponibilidade \\
+Natureza & estratégica, \textbf{independe} do produto de SGBD escolhido &
+operacional, \textbf{ligada} a um produto específico (Oracle, PostgreSQL,
+SQL Server...) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uma forma de fixar a distinção: a AD decidiria \textit{que} dado a empresa
+precisa guardar sobre um cliente e \textit{que} regras de qualidade esse
+dado deve seguir; o DBA decidiria \textit{em que servidor}, com
+\textit{que configuração de índice} e \textit{que rotina de backup} esse
+dado efetivamente vai residir.
+\end{conceito}
+
+\begin{cuidado}[Não inverta os dois papéis]
+Descrever a AD como "quem cuida do servidor de banco" ou o DBA como "quem
+define a política corporativa de qualidade de dados" troca os dois níveis
+entre si. A pergunta de desempate: a atividade descrita \textbf{depende de
+qual produto de SGBD está instalado}? Se sim, é DBA. Se a resposta seria a
+mesma independentemente do SGBD escolhido, é AD.
+\end{cuidado}
+
+\section{Recuperação e transações: o protocolo ARIES}
+
+\begin{conceito}[Write-Ahead Logging --- registrar antes de gravar]
+A maioria dos SGBDs usa o protocolo \textbf{ARIES} para se recuperar de uma
+queda (falta de energia, crash do processo) sem perder transações
+confirmadas nem deixar o banco num estado inconsistente. O princípio-base é
+o \textbf{WAL} (\textit{Write-Ahead Logging}): antes de gravar uma
+alteração \textbf{nos dados em si}, o SGBD grava um registro dessa
+alteração \textbf{no log}, em disco. Isso garante a \textbf{durabilidade}
+(o D do ACID, ver Capítulo \ref{cap:banco-dados-teoria}) sem precisar
+gravar cada página de dado imediatamente a cada operação --- o log, mais
+compacto e sequencial, é o que vai para disco com prioridade; o dado em si
+pode ser escrito depois, em lote, com mais eficiência.
+\end{conceito}
+
+\begin{conceito}[As três fases da recuperação, em ordem fixa]
+Depois de uma queda, o ARIES reconstrói o estado do banco em três fases,
+\textbf{sempre nesta ordem}:
+\begin{enumerate}
+\item \textbf{Analysis} (Análise): varre o log a partir do último
+\textit{checkpoint} para reconstruir \textbf{que transações} estavam
+ativas e \textbf{que páginas} estavam sujas (modificadas, mas não
+gravadas) no momento da queda.
+\item \textbf{Redo} (Refazer): reaplica \textbf{todas} as operações
+registradas no log a partir do ponto identificado --- inclusive as de
+transações que \textbf{não chegaram a confirmar} (\textit{commit}). O
+princípio é "\textit{repeating history}": primeiro reconstrói o estado
+exato de antes da queda, sem julgar ainda o que deveria ou não ter
+acontecido.
+\item \textbf{Undo} (Desfazer): só depois de reconstruído o estado exato do
+momento da queda, desfaz as operações das transações que \textbf{não
+tinham confirmado} --- porque uma transação sem commit não deve deixar
+efeito permanente.
+\end{enumerate}
+\end{conceito}
+
+\begin{exemplo}[Por que Redo vem antes de Undo]
+Se o Undo rodasse antes do Redo, o sistema tentaria desfazer operações de
+transações \textbf{sem primeiro saber com certeza} quais páginas realmente
+tinham sido alteradas em disco no momento da queda (algumas mudanças
+podem ter chegado ao disco, outras não) --- o Redo existe exatamente para
+eliminar essa incerteza, recriando um estado \textbf{conhecido e completo}
+antes de começar a reverter o que não deveria ter ficado. Inverter a ordem
+quebraria a garantia de consistência que o protocolo promete.
+\end{exemplo}
+
+\begin{cuidado}[A troca mais comum: inverter Redo e Undo]
+Um enunciado que descreve a recuperação como "primeiro desfaz as
+transações não confirmadas, depois refaz as confirmadas" inverteu a lógica
+do ARIES. A ordem correta refaz \textbf{tudo primeiro} (inclusive o que
+depois será desfeito) e só desfaz \textbf{depois}, num segundo momento.
+\end{cuidado}
+
+\section{Armazenamento físico e desempenho}
+
+\begin{conceito}[Tablespace: a unidade lógica que organiza os arquivos físicos]
+\textbf{Tablespace} (termo Oracle; \textit{filegroup} no SQL Server) é uma
+unidade lógica de armazenamento que agrupa objetos do banco (tabelas,
+índices) e os associa a um ou mais arquivos físicos em disco. O motivo de
+separar tablespaces distintas para dados, índices e área temporária é
+\textbf{isolar o padrão de I/O}: dados e índices costumam ser lidos juntos
+mas escritos em ritmos diferentes, e a área temporária (usada por
+ordenações e junções grandes) tem um padrão de uso totalmente diferente
+--- separar fisicamente evita que um tipo de operação compita com outro
+pelo mesmo disco.
+\end{conceito}
+
+\begin{conceito}[Otimizador de consultas e o papel das estatísticas]
+O \textbf{otimizador de consultas} (\textit{query optimizer}) decide o
+\textbf{plano de execução} de um comando SQL --- em que ordem fazer os
+\texttt{JOIN}s, se usar um índice ou percorrer a tabela inteira
+(\textit{full scan}), qual algoritmo de junção aplicar. Essa decisão se
+baseia em \textbf{estatísticas} sobre os dados (quantas linhas tem cada
+tabela, quão distribuídos estão os valores de cada coluna) --- não em
+executar a consulta de verdade e comparar. Quando as estatísticas ficam
+\textbf{desatualizadas} (a tabela cresceu, a distribuição de valores mudou,
+mas o otimizador ainda raciocina com o retrato antigo), o plano escolhido
+deixa de ser o melhor, e a consulta que era rápida vira lenta sem que
+nenhum código tenha mudado. Por isso, \textbf{atualizar as estatísticas} é
+frequentemente o primeiro passo de diagnóstico quando uma consulta piora de
+repente --- antes de sair reescrevendo SQL ou criando índice novo.
+\end{conceito}
+
+\begin{conceito}[Particionamento: dividir para escalar]
+\textbf{Particionamento} divide uma tabela grande em pedaços menores e mais
+administráveis:
+\begin{itemize}
+\item \textbf{Horizontal} (também chamado \textit{sharding} quando os
+pedaços vão para servidores diferentes): divide por \textbf{linhas} --- por
+exemplo, uma tabela de pedidos particionada por ano, cada partição com um
+subconjunto das linhas.
+\item \textbf{Vertical}: divide por \textbf{colunas} --- separa colunas
+acessadas com frequência das raramente acessadas (ou muito grandes, como
+um campo de texto longo), para que consultas comuns leiam menos dado.
+\end{itemize}
+O ganho em ambos os casos é permitir que uma consulta toque só a parte
+relevante dos dados, em vez de varrer a tabela inteira.
+\end{conceito}
+
+\begin{regrapratica}[Índices: reveja no capítulo de banco de dados]
+A escolha entre índice B+ Tree, hash e bitmap já está detalhada na Seção de
+Índices do Capítulo \ref{cap:banco-dados-teoria} --- as duas perguntas que
+decidem o tipo certo são \textit{a consulta pede faixa ou igualdade?} e
+\textit{quantos valores distintos tem a coluna?}. Não repita esse
+raciocínio do zero aqui; ele é o mesmo independentemente de o cenário vir
+rotulado como "administração de BD" ou "modelagem".
+\end{regrapratica}
+
+\section{Backup e recuperação}
+
+\begin{conceito}[Completo, incremental e diferencial --- a diferença é a referência]
+Os três tipos de backup diferem em \textbf{a partir de que ponto} eles
+medem "o que mudou":
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{8.4cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{O que copia} \\
+\midrule
+\textbf{Completo (full)} & \textbf{tudo}, sem depender de nenhum backup
+anterior \\
+\textbf{Incremental} & só o que mudou \textbf{desde o último backup, de
+qualquer tipo} (o completo mais recente \textbf{ou} o incremental mais
+recente) \\
+\textbf{Diferencial} & tudo que mudou \textbf{desde o último backup
+completo} --- ignora incrementais/diferenciais intermediários \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A consequência prática é o que costuma ser cobrado: o \textbf{diferencial}
+\textbf{cresce} a cada dia que passa sem um novo completo (porque sempre
+conta a partir do mesmo ponto fixo), enquanto o \textbf{incremental} tende
+a ficar pequeno e constante (porque cada um só cobre o intervalo desde o
+anterior, que é sempre recente). Em compensação, restaurar a partir de
+incrementais exige reaplicar \textbf{toda a cadeia} de incrementais em
+ordem desde o último completo; restaurar a partir de um diferencial exige
+só o completo + o diferencial mais recente.
+\end{conceito}
+
+\begin{conceito}[RPO e RTO --- as duas perguntas de continuidade de negócio]
+\textbf{RPO} (\textit{Recovery Point Objective}): quanto \textbf{dado} a
+organização aceita perder, medido em tempo --- se o RPO é de 1 hora, o
+backup/replicação precisa garantir que, na pior hipótese, no máximo 1 hora
+de transações seja perdida. \textbf{RTO} (\textit{Recovery Time
+Objective}): em quanto \textbf{tempo} o serviço precisa voltar a operar
+depois de um incidente. São eixos independentes: um sistema pode ter RPO
+baixo (não pode perder quase nada de dado) mas RTO alto (pode ficar fora do
+ar por horas), ou o contrário.
+\end{conceito}
+
+\begin{conceito}[Backup quente $\times$ frio]
+\textbf{Quente} (\textit{online}): feito com o banco \textbf{no ar},
+atendendo requisições normalmente durante a cópia. \textbf{Frio}
+(\textit{offline}): feito com o banco \textbf{parado} --- mais simples de
+garantir consistência, mas exige uma janela de indisponibilidade.
+\end{conceito}
+
+\section{Segurança e acesso no SGBD}
+
+\begin{conceito}[Camadas de controle de acesso dentro do banco]
+\textbf{GRANT/REVOKE} (comandos DCL, ver Capítulo
+\ref{cap:banco-dados-teoria}) concedem e revogam privilégios diretamente.
+\textbf{Papéis/roles} (RBAC --- \textit{Role-Based Access Control}) agrupam
+privilégios e são atribuídos a usuários, evitando conceder/revogar
+privilégio individual a cada pessoa. \textbf{Views} podem restringir o
+acesso a \textbf{colunas} específicas (o usuário enxerga só um subconjunto
+de campos de uma tabela). \textit{\textbf{Row-level security}} restringe o
+acesso por \textbf{linha} (ex.: o gerente de uma filial só vê as linhas
+daquela filial). Auditoria registra quem acessou o quê, para rastreamento
+posterior.
+
+O princípio que organiza tudo isso é o \textbf{menor privilégio}: cada
+usuário/aplicação recebe exatamente o acesso necessário para sua função,
+nada além --- o gerente de RH acessa dados de folha de pagamento, não
+acessa esquema de outro sistema que não lhe diz respeito.
+\end{conceito}
+
+\section{Arquitetura de computadores e sistema operacional}
+
+\begin{conceito}[Fora do escopo estrito do edital, mas cai em prova]
+O edital do Perfil 3 fala em arquitetura \emph{de software}
+(Capítulo \ref{cap:arquitetura-teoria}), não em arquitetura \emph{de
+hardware}. Ainda assim, provas de concurso costumam reaproveitar questões
+de "informática básica"/arquitetura de computadores entre perfis
+diferentes, e esse conteúdo aparece. É rápido de cobrir e vale a pena
+saber.
+\end{conceito}
+
+\subsection{Modelo de Von Neumann}
+
+\begin{conceito}[Um só barramento para dados e instruções --- e o gargalo que isso cria]
+A arquitetura de Von Neumann descreve um computador com \textbf{memória
+única} compartilhada entre \textbf{instruções} (o programa) e
+\textbf{dados} (as informações que o programa manipula), acessada por um
+\textbf{único barramento}. A CPU busca uma instrução, depois busca/grava
+dados, pelo mesmo canal --- nunca simultaneamente. Esse compartilhamento é
+conhecido como o \textbf{gargalo de Von Neumann}: por mais rápida que a CPU
+fique, ela é limitada pela velocidade com que consegue trafegar instrução e
+dado pelo mesmo barramento, um de cada vez.
+\end{conceito}
+
+\subsection{CPU: Unidade de Controle e ULA}
+
+\begin{conceito}[Duas unidades, duas responsabilidades]
+\begin{itemize}
+\item \textbf{Unidade de Controle (UC)}: \textbf{coordena} a execução ---
+busca a instrução, decodifica o que ela significa, e ativa os sinais de
+controle necessários para executá-la (não realiza o cálculo em si, apenas
+orquestra).
+\item \textbf{Unidade Lógica e Aritmética (ULA)}: executa as operações
+\textbf{de fato} --- soma, subtração, comparações lógicas (E, OU, NÃO).
+\end{itemize}
+A analogia útil: a UC é o maestro (decide o que tocar e quando), a ULA é
+quem toca o instrumento.
+\end{conceito}
+
+\subsection{Ciclo de instrução e \textit{pipeline}}
+
+\begin{conceito}[Busca, decodifica, executa]
+Toda instrução de máquina passa por um ciclo básico:
+\textbf{busca} (\textit{fetch} --- traz a instrução da memória),
+\textbf{decodifica} (\textit{decode} --- interpreta o que ela pede) e
+\textbf{executa} (\textit{execute} --- realiza a operação, geralmente na
+ULA). Um processador simples faz esse ciclo inteiro para uma instrução
+antes de começar o próximo.
+\end{conceito}
+
+\begin{conceito}[Pipeline: sobrepor os ciclos]
+Um processador com \textbf{pipeline} não espera uma instrução terminar
+todo o ciclo antes de começar a próxima: enquanto a instrução A está sendo
+\textbf{executada}, a instrução B já está sendo \textbf{decodificada} e a
+instrução C já está sendo \textbf{buscada} --- como uma linha de montagem,
+em que cada estação trabalha numa instrução diferente ao mesmo tempo. O
+ganho é em \textbf{taxa de conclusão de instruções por segundo}
+(\textit{throughput}), não em fazer uma instrução isolada terminar mais
+rápido.
+\end{conceito}
+
+\subsection{Sistemas de numeração e complemento de dois}
+
+\begin{conceito}[Conversão entre bases --- o mesmo valor, notações diferentes]
+Um computador só entende binário (base 2) internamente, mas humanos leem
+mais facilmente octal (base 8) ou hexadecimal (base 16) --- ambas
+escolhidas por serem \textbf{potências de 2} ($8=2^3$, $16=2^4$), o que
+torna a conversão \textbf{dígito a dígito} sem precisar de conta longa:
+agrupe os bits binários em grupos de 3 (octal) ou 4 (hexadecimal), da
+direita para a esquerda, e converta cada grupo isoladamente.
+\end{conceito}
+
+\begin{exemplo}[Convertendo binário para hexadecimal]
+Binário: \texttt{1011 1100}. Agrupe de 4 em 4, da direita para a esquerda:
+\texttt{1011} e \texttt{1100}. \texttt{1011} = 8+0+2+1 = 11 = \texttt{B}.
+\texttt{1100} = 8+4+0+0 = 12 = \texttt{C}. Resultado: \texttt{0xBC}.
+\end{exemplo}
+
+\begin{conceito}[Complemento de dois: como o computador representa negativos]
+Para representar números negativos em binário sem precisar de um circuito
+separado para subtração, usa-se o \textbf{complemento de dois}: para negar
+um número, inverte-se todos os bits (complemento de um) e soma-se 1. A
+vantagem é que \textbf{a mesma unidade de soma} da ULA resolve subtração
+também --- "$A - B$" vira "$A + (\text{complemento de dois de } B)$", sem
+circuito dedicado.
+\end{conceito}
+
+\begin{conceito}[\textit{Overflow} $\times$ \textit{carry} --- dois tipos de "estourou"]
+\begin{itemize}
+\item \textbf{Carry} (vai-um): ocorre quando uma soma \textbf{sem sinal}
+ultrapassa a capacidade de bits disponível --- é o "vai um" que sobra da
+última posição.
+\item \textbf{Overflow}: ocorre quando o resultado de uma operação
+\textbf{com sinal} (complemento de dois) produz um valor que \textbf{não
+cabe} na faixa representável com aquele número de bits --- por exemplo,
+somar dois números positivos grandes e o resultado "virar" negativo por
+estourar o bit de sinal.
+\end{itemize}
+Os dois podem ocorrer independentemente um do outro na mesma operação ---
+não são sinônimos, e um enunciado que os trata como a mesma coisa está
+simplificando demais um conceito que a prova cobra separado.
+\end{conceito}
+
+\subsection{ROM, firmware e periféricos}
+
+\begin{conceito}[Memória que sobrevive sem energia]
+\textbf{ROM} (\textit{Read-Only Memory}) é memória \textbf{não volátil}
+(mantém o conteúdo sem energia), tipicamente usada para armazenar
+\textbf{firmware} --- o software de baixo nível gravado de fábrica que
+inicializa o hardware antes mesmo do sistema operacional carregar (ex.: a
+BIOS/UEFI de um computador). \textbf{Periférico} é qualquer dispositivo de
+entrada/saída conectado à CPU (teclado, monitor, disco), que se comunica
+com o resto do sistema através de controladores e barramentos de E/S.
+\end{conceito}
+
+\subsection{Memória virtual: paginação, MMU, TLB e \textit{thrashing}}
+
+\begin{conceito}[O problema: programas maiores que a RAM física disponível]
+\textbf{Memória virtual} é a técnica que permite a um programa "enxergar"
+mais memória do que a RAM física realmente tem, usando o disco como
+extensão. O sistema operacional divide a memória em blocos de tamanho fixo
+chamados \textbf{páginas}, e mantém uma \textbf{tabela de páginas} que
+mapeia \textbf{endereço virtual} (o que o programa usa) para
+\textbf{endereço físico} (onde o dado realmente está --- na RAM ou, se não
+estiver presente no momento, no disco).
+\end{conceito}
+
+\begin{conceito}[MMU e TLB: o hardware que acelera a tradução]
+A \textbf{MMU} (\textit{Memory Management Unit}) é o circuito de hardware
+que traduz endereço virtual em físico a cada acesso à memória, consultando
+a tabela de páginas. Como consultar a tabela de páginas na RAM a
+\textbf{cada} acesso seria lento, a MMU mantém um pequeno cache dedicado
+chamado \textbf{TLB} (\textit{Translation Lookaside Buffer}) com as
+traduções mais recentes/frequentes --- um acerto na TLB evita ter que
+consultar a tabela de páginas completa.
+\end{conceito}
+
+\begin{conceito}[\textit{Thrashing}: quando a paginação vira o próprio problema]
+Se a memória física disponível é pequena demais para as páginas que os
+processos ativos realmente precisam a cada instante, o sistema passa a
+gastar mais tempo \textbf{trocando páginas entre RAM e disco}
+(\textit{swapping}) do que executando trabalho útil --- esse colapso de
+desempenho é o \textbf{thrashing}. O sintoma característico é a CPU parecer
+\textbf{ociosa} mesmo com processos "rodando": na verdade eles estão
+travados esperando página chegar do disco, não executando instrução.
+\end{conceito}
+
+\subsection{E/S bloqueante, troca de contexto e DMA}
+
+\begin{conceito}[E/S bloqueante x troca de contexto]
+Quando um processo pede uma operação de \textbf{entrada/saída bloqueante}
+(ex.: ler um arquivo em disco), ele fica \textbf{suspenso} esperando a
+operação terminar --- não faz sentido a CPU ficar parada nesse meio tempo,
+então o sistema operacional aproveita para dar a CPU a \textbf{outro}
+processo pronto para rodar. Essa troca --- salvar o estado do processo
+suspenso e carregar o estado do próximo --- é a \textbf{troca de contexto}
+(\textit{context switch}), o mecanismo que viabiliza multitarefa numa CPU
+que só executa uma instrução por vez em cada núcleo.
+\end{conceito}
+
+\begin{conceito}[DMA: tirar a CPU do meio do caminho]
+\textbf{DMA} (\textit{Direct Memory Access}) é um controlador dedicado que
+transfere dados diretamente entre um periférico (ex.: disco) e a memória
+RAM, \textbf{sem} que a CPU precise mediar byte a byte a transferência ---
+a CPU apenas configura a operação (origem, destino, tamanho) e é
+\textbf{interrompida} quando a transferência termina, ficando livre para
+fazer outra coisa enquanto o DMA trabalha. Sem DMA, toda transferência de
+E/S consumiria ciclos de CPU copiando dado por dado.
+\end{conceito}
+
+\section{Sistemas de informação corporativos}
+
+\begin{conceito}[Cada sistema atende um nível gerencial diferente]
+Sistemas de informação corporativos se diferenciam pelo \textbf{nível de
+decisão} que atendem --- do operacional ao estratégico:
+\begin{itemize}
+\item \textbf{SPT} (Sistema de Processamento de Transações, também
+chamado transacional): registra as operações do \textbf{dia a dia}
+operacional (uma venda, um pagamento) --- nível mais baixo, alto volume,
+baixa complexidade de decisão por transação.
+\item \textbf{SIG} (Sistema de Informação Gerencial): consolida dados
+operacionais em \textbf{relatórios} para a gerência tática acompanhar
+desempenho.
+\item \textbf{SAD/SSD} (Sistema de Apoio/Suporte à Decisão): fornece
+\textbf{análise} para decisões \textbf{não estruturadas} ou semiestruturadas,
+tipicamente de nível mais estratégico --- simulações, cenários "e se".
+\item \textbf{ERP} (\textit{Enterprise Resource Planning}): integra
+processos de \textbf{múltiplas} áreas (financeiro, estoque, produção,
+RH) num único sistema com base de dados compartilhada, eliminando
+retrabalho de dados duplicados entre sistemas isolados.
+\item \textbf{CRM} (\textit{Customer Relationship Management}): foca no
+relacionamento com o \textbf{cliente} --- histórico de contato, vendas,
+suporte.
+\item \textbf{SCM} (\textit{Supply Chain Management}): foca na
+\textbf{cadeia de suprimentos} --- fornecedores, logística, estoque entre
+elos da cadeia.
+\end{itemize}
+A pirâmide organizacional clássica (operacional na base, tático no meio,
+estratégico no topo) ajuda a lembrar: SPT nasce na base, SIG no meio, SAD
+no topo; ERP/CRM/SCM são \textbf{transversais}, cortando vários níveis ao
+mesmo tempo, cada um por um recorte de processo diferente (recursos
+internos, cliente, cadeia de fornecimento).
+\end{conceito}
+
+\section{Aprendizado de máquina}
+
+\begin{conceito}[Supervisionado, não supervisionado e semissupervisionado]
+A distinção central é se os dados de treino trazem \textbf{rótulo}
+(\textit{label} --- a resposta certa já conhecida):
+\begin{itemize}
+\item \textbf{Supervisionado}: treina com dados \textbf{rotulados} ---
+cada exemplo já vem com a resposta esperada. Usado em
+\textbf{classificação} (rótulo categórico: "é spam?") e \textbf{regressão}
+(rótulo numérico: "qual será o preço?").
+\item \textbf{Não supervisionado}: treina com dados \textbf{sem
+rótulo} --- o algoritmo busca \textbf{estrutura} escondida nos próprios
+dados, sem saber de antemão qual é a "resposta certa". Usado em
+\textbf{clusterização} (agrupar exemplos parecidos) e \textbf{associação}
+(achar padrões de coocorrência).
+\item \textbf{Semissupervisionado}: usa uma \textbf{pequena} quantidade de
+dados rotulados junto com uma \textbf{grande} quantidade de dados sem
+rótulo --- útil quando rotular é caro (exige um humano), mas coletar dado
+bruto é barato.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Não inverta "rotulado" entre os dois]
+Um enunciado que descreve o \textbf{não supervisionado} como "usa dados
+rotulados para prever categorias" trocou a definição com o
+\textbf{supervisionado}. O critério de desempate é sempre: \textbf{existe
+resposta certa conhecida de antemão no conjunto de treino, ou o algoritmo
+tem que descobrir a estrutura sozinho?}
+\end{cuidado}
+
+\begin{conceito}[Overfitting e underfitting]
+\textbf{Overfitting}: o modelo \textbf{decora} particularidades do
+conjunto de treino (inclusive ruído) em vez de aprender o padrão geral ---
+desempenho ótimo no treino, ruim em dados novos. \textbf{Underfitting}: o
+modelo é \textbf{simples demais} para captar sequer o padrão do treino ---
+desempenho ruim em ambos, treino e dados novos. O tratamento detalhado da
+relação viés$\times$variância por trás desses dois fenômenos está no
+Capítulo \ref{cap:atualidades-teoria}.
+\end{conceito}
+
+\begin{conceito}[Regularização L1 e L2: como conter o overfitting pela penalidade]
+Um modelo \textit{overfit} costuma ter \textbf{coeficientes grandes} --- é
+o que permite a curva ajustada oscilar bruscamente para passar exatamente
+por cada ponto do treino. Regularizar significa treinar minimizando
+\textbf{erro + uma penalidade sobre o tamanho dos coeficientes}, tornando
+caro manter coeficiente grande sem necessidade real:
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{3.6cm}p{5.4cm}@{}}
+\toprule
+& \textbf{Penaliza} & \textbf{Efeito} \\
+\midrule
+\textbf{L1 (Lasso)} & soma dos \textbf{valores absolutos} dos coeficientes
+& empurra coeficientes \textbf{até zero} --- remove atributos do modelo
+(\textbf{seleção de atributos}, modelo \textit{esparso}) \\
+\textbf{L2 (Ridge)} & soma dos \textbf{quadrados} dos coeficientes &
+\textbf{encolhe} todos proporcionalmente, mas \textbf{não zera nenhum} ---
+todos os atributos permanecem, com peso menor \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A razão da diferença está no \textbf{formato} da penalidade: elevar ao
+quadrado (L2) pune muito um coeficiente grande e quase nada um já pequeno
+--- não compensa terminar de zerá-lo. A L1 pune o mesmo valor por unidade
+em qualquer faixa, então zerar de vez sai "de graça" e compensa. Use L1
+quando o objetivo é \textbf{descartar} atributos irrelevantes de um
+conjunto com muitas variáveis; use L2 quando o objetivo é apenas
+\textbf{estabilizar} um modelo com atributos correlacionados, mantendo
+todos.
+\end{conceito}
+
+\begin{conceito}[Métricas de avaliação]
+\textbf{MAE} (\textit{Mean Absolute Error}): erro médio absoluto, para
+\textbf{regressão} --- a distância média entre previsão e valor real, sem
+distinguir se errou para mais ou para menos. \textbf{F1-score}: média
+\textbf{harmônica} entre precisão (dos que o modelo disse positivo, quantos
+eram de fato) e recall/revocação (dos que eram de fato positivos, quantos o
+modelo capturou) --- usada quando as classes são desbalanceadas e acurácia
+simples enganaria. \textbf{ROC/AUC}: mede a capacidade do modelo de
+\textbf{separar classes} variando o limiar de decisão --- quanto mais perto
+de 1 a área sob a curva (AUC), melhor a separação.
+\end{conceito}
+
+\begin{conceito}[Drift: o modelo não piora sozinho, o mundo muda ao redor]
+Um modelo em produção perde acurácia ao longo do tempo mesmo sem nenhuma
+mudança de código, porque foi treinado numa "fotografia" da realidade que
+deixa de valer. Duas causas distintas:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}p{4.8cm}@{}}
+\toprule
+& \textbf{O que mudou} & \textbf{Exemplo} \\
+\midrule
+\textbf{Data drift} & a \textbf{distribuição da entrada} --- os dados que
+chegam já não se parecem com os de treino & o perfil de usuários do
+sistema mudou (faixa etária, região), mas a relação entre perfil e
+comportamento continua a mesma \\
+\textbf{Concept drift} & a \textbf{relação entre entrada e saída} --- o
+próprio padrão que o modelo aprendeu deixou de valer & uma lei nova (ou
+mudança de mercado) faz o mesmo perfil de cliente se comportar de um jeito
+diferente do que se comportava antes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A diferença tem consequência prática: data drift às vezes se resolve
+reamostrando/rebalanceando os dados de treino; concept drift \textbf{exige
+retreinar com rótulos novos}, porque a resposta certa em si mudou --- não
+adianta só ajustar a proporção dos dados antigos. Detectar os dois é papel
+do monitoramento contínuo de modelos em produção (MLOps).
+\end{conceito}
+
+\section{Mapa: onde estão os demais temas coringa}
+
+Vários temas que também caem sob a etiqueta "sem capítulo próprio" já
+recebem tratamento profundo em outros capítulos deste livro --- não os
+repita aqui, use este mapa:
+
+\begin{center}
+\begin{tabular}{@{}p{5cm}p{6cm}@{}}
+\toprule
+\textbf{Tema} & \textbf{Onde está} \\
+\midrule
+Blockchain (hash encadeado, raiz de Merkle, \textit{nonce}) & Capítulo
+\ref{cap:programacao-teoria} \\
+Servidor web $\times$ servidor de aplicação & Capítulo
+\ref{cap:arquitetura-teoria} \\
+2PC (\textit{two-phase commit}) $\times$ Raft (consenso) & Capítulo
+\ref{cap:arquitetura-teoria}, Seção~\ref{sec:transacoes-dist} \\
+Virtualização: hipervisor Tipo 1 $\times$ Tipo 2 $\times$ contêiner &
+Capítulo \ref{cap:arquitetura-teoria} \\
+Low-code / no-code & Capítulo \ref{cap:programacao-teoria} \\
+RPA (\textit{Robotic Process Automation}) & Capítulo
+\ref{cap:eng-software-teoria} \\
+Os "V"s do Big Data & Capítulo \ref{cap:banco-dados-teoria} \\
+Índices (B+ Tree, hash, bitmap) & Capítulo \ref{cap:banco-dados-teoria} \\
+Internet $\times$ intranet $\times$ extranet $\times$ portal & Capítulo
+\ref{cap:redes-teoria} \\
+IA generativa, LLM, RAG, ética e regulação & Capítulo
+\ref{cap:atualidades-teoria} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Roteiro de revisão do capítulo}
+
+\begin{regrapratica}[Pares que se invertem com frequência]
+Memorize estes pares em bloco, porque a confusão entre os dois lados de
+cada par é o erro mais comum deste capítulo: AD (negócio) $\times$ DBA
+(técnico); incremental (desde o último backup qualquer) $\times$
+diferencial (desde o último completo); RPO (quanto dado perder) $\times$
+RTO (quanto tempo até voltar); ordem Analysis $\to$ Redo $\to$ Undo do
+ARIES; carry (sem sinal) $\times$ overflow (com sinal); supervisionado
+(rotulado) $\times$ não supervisionado (sem rótulo); L1 (zera, seleciona)
+$\times$ L2 (encolhe, mantém todos); data drift (mudou quem entra)
+$\times$ concept drift (mudou a regra).
+\end{regrapratica}

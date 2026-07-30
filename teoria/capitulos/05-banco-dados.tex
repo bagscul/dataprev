@@ -1,0 +1,824 @@
+\chapter{Banco de Dados}
+\label{cap:banco-dados-teoria}
+
+\begin{edital}
+Modelagem de dados (conceitual, lógica e física); abordagem relacional e
+multidimensional; normalização; integridade referencial; metadados;
+modelagem dimensional; SQL; DDL; DML; SGBD; propriedades de banco de dados;
+NoSQL; banco de dados em memória; \textit{data lakes} e soluções para big
+data; dados estruturados e não estruturados; avaliação de modelos de dados;
+técnicas de integração e ingestão (ETL/ELT, transferência de arquivos,
+integração via base de dados).
+\end{edital}
+
+\section{Modelagem em três níveis}
+
+\begin{conceito}[A mesma pergunta, respondida três vezes, com liberdade decrescente]
+Modelar um banco é responder três vezes à mesma pergunta de negócio, cada
+vez com \textbf{menos} liberdade de escolha. \textit{O que existe no mundo
+do negócio?} --- existem servidores, e cada servidor tem dependentes.
+\textit{Como isso vira estrutura de dados?} --- vira duas tabelas, ligadas
+por uma chave. \textit{Como isso roda neste produto específico?} --- vira
+um \texttt{CREATE TABLE} com tipos concretos, um índice na coluna de busca
+e uma escolha de armazenamento.
+
+A separação não é burocracia: os três níveis \textbf{mudam em ritmos
+diferentes}. A regra "todo dependente pertence a um servidor" sobrevive à
+troca do SGBD Oracle pelo PostgreSQL; o tipo \texttt{NUMBER(5)} específico
+do Oracle não sobrevive. Quem mistura os níveis (decide tipo de coluna
+enquanto ainda discute com o usuário o que é uma entidade) acaba
+redesenhando o negócio toda vez que troca de infraestrutura.
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+\textbf{Nível} & \textbf{O que é} & \textbf{Artefato} \\
+\midrule
+Conceitual & visão de negócio, independe de SGBD & Modelo
+Entidade-Relacionamento (MER/DER) \\
+Lógico & estrutura no modelo de dados escolhido (relacional, documento...) &
+tabelas, chaves, tipos genéricos \\
+Físico & implementação no SGBD específico & DDL, índices, particionamento \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O critério para saber em que nível uma decisão pertence é \textbf{o que já
+foi decidido até ali}: o \textbf{conceitual} decide entidades, atributos e
+relacionamentos --- não sabe o que é tabela nem chave estrangeira; é o
+nível discutido \textbf{com o usuário de negócio}, sem jargão técnico. O
+\textbf{lógico} já escolheu o \textit{paradigma} (relacional, documento,
+grafo) e traduz o conceitual para ele --- entidades viram tabelas,
+relacionamentos viram chaves estrangeiras ou tabelas associativas --- mas
+ainda \textbf{não} escolheu o produto/SGBD. O \textbf{físico} já escolheu o
+produto e decide o que só existe ali dentro: tipo exato de coluna, índice,
+partição, \textit{tablespace} --- é o único nível em que "desempenho" é uma
+resposta legítima à pergunta "por que essa decisão".
+
+A informação \textbf{só se acrescenta} de um nível para o outro: cada nível
+carrega tudo que o anterior decidiu e soma o seu. É por isso que a ordem
+não é invertível --- não se parte de um índice físico para descobrir qual
+é a entidade de negócio.
+\end{conceito}
+
+\subsection{Metadados}
+
+\begin{conceito}[Metadado é dado sobre o dado, não o dado]
+\textbf{Metadado} descreve a estrutura, o significado, a origem e as
+regras de um dado --- nunca o valor dele. Se \texttt{"1988-10-05"} é o
+dado, o metadado é "a coluna chama-se \texttt{data\_admissao}, é do tipo
+\texttt{DATE}, não aceita nulo, veio do sistema de folha de pagamento e
+significa a data de entrada em exercício do servidor". Divide-se em três
+famílias:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9cm}@{}}
+\toprule
+\textbf{Técnico} & o que o SGBD precisa para funcionar: tabelas, colunas,
+tipos, chaves, índices, restrições. Mora no \textbf{dicionário de dados}
+(catálogo do sistema), consultável por SQL \\
+\textbf{De negócio} & o que a \textbf{pessoa} precisa entender: definição
+do termo, regra de cálculo, dono do dado (\textit{data owner}), grau de
+sigilo. Conteúdo do \textbf{glossário de negócio} \\
+\textbf{Operacional} & o que aconteceu com o dado ao longo do tempo: data
+da última carga, volume processado, erros, e a \textbf{linhagem}
+(\textit{data lineage}) --- de que fonte ele veio e por quais
+transformações passou \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A \textbf{linhagem} é a que mais rende em questão de cenário: quando um
+relatório não fecha, é ela que responde "de onde saiu este número, e o que
+foi feito com ele no caminho". Sem metadado operacional, um pipeline de
+ETL vira uma caixa-preta --- ninguém consegue dizer qual regra transformou
+o quê.
+\end{conceito}
+
+\begin{cuidado}
+Metadado \textbf{não é} o conteúdo/valor da coluna ("o CPF do servidor" é
+dado, não metadado) --- metadado é a \textbf{descrição} desse dado.
+Dicionário de dados (catálogo \textbf{técnico}) e glossário de negócio
+(definições em linguagem de \textbf{negócio}) não são a mesma coisa.
+\end{cuidado}
+
+\subsection{Avaliação de modelos de dados}
+
+\begin{conceito}[Critérios objetivos, não gosto pessoal]
+"O modelo está bom?" tem critérios concretos, não é opinião:
+
+\begin{itemize}
+\item \textbf{Completude}: o modelo cobre todos os requisitos levantados
+--- nenhuma entidade, atributo ou regra ficou de fora.
+\item \textbf{Corretude}: o que está desenhado corresponde à realidade do
+negócio --- cardinalidades, opcionalidade e domínios refletem o que
+realmente acontece.
+\item \textbf{Não redundância / grau de normalização}: cada fato mora num
+único lugar (ou a redundância é \textbf{intencional} e justificada, como
+num Data Warehouse).
+\item \textbf{Integridade}: chaves primárias e estrangeiras declaradas,
+restrições explícitas no modelo em vez de confiadas ao código da
+aplicação.
+\item \textbf{Aderência a padrão}: convenção de nomes, notação e tipos
+uniformes --- o que permite outra pessoa ler o modelo sem um tradutor.
+\item \textbf{Legibilidade e manutenibilidade}: o modelo se entende sem
+quem o desenhou por perto, e uma mudança de regra de negócio não obriga a
+redesenhar meia base.
+\end{itemize}
+
+O corte que decide entre os dois primeiros critérios: \textbf{completude}
+pergunta "falta algo?"; \textbf{corretude} pergunta "o que está lá está
+certo?". Um modelo pode ser \textbf{completo e errado} (tem tudo, mas com
+uma cardinalidade invertida) ou \textbf{correto e incompleto} (o que está
+desenhado está certo, mas faltou modelar o requisito de auditoria).
+\end{conceito}
+
+\section{Modelo relacional e integridade}
+
+\begin{conceito}[A ideia central de Codd (1970) e sua consequência inevitável]
+O modelo relacional tem uma ideia central: \textbf{todo dado é uma
+tabela, e a única forma de ligar duas tabelas é o valor de um campo
+coincidir com o valor de outro} --- não há ponteiro, não há endereço de
+memória, não há ordem garantida entre linhas. A consequência inevitável:
+se o vínculo é por \textbf{valor}, alguém precisa \textbf{garantir que o
+valor referenciado exista}, senão a ligação aponta para o nada. É disso
+que trata a integridade referencial.
+
+Caso concreto: se \texttt{DEPENDENTE.servidor\_id} vale 47 e não existe
+servidor com id 47, aquela linha é lixo --- nenhuma consulta com
+\texttt{JOIN} vai trazê-la de volta corretamente, porque não há do outro
+lado quem ela referencia. A restrição de integridade referencial é o que
+\textbf{impede essa linha de nascer} no banco.
+\end{conceito}
+
+\begin{conceito}[Vocabulário básico]
+\begin{itemize}
+\item \textbf{Chave primária (PK)}: identifica unicamente cada tupla
+(linha); não pode ser nula, precisa ser única.
+\item \textbf{Chave estrangeira (FK)}: referencia a PK de outra tabela (ou,
+em casos recursivos, da mesma tabela).
+\item \textbf{Integridade referencial}: toda FK aponta para uma PK que
+existe, ou é nula.
+\item \textbf{Integridade de entidade}: a PK nunca pode ser nula.
+\item \textbf{Álgebra relacional}: seleção ($\sigma$) corresponde ao
+\texttt{WHERE} do SQL e filtra \textbf{linhas}; projeção ($\pi$) filtra
+\textbf{colunas}.
+\end{itemize}
+\end{conceito}
+
+\begin{conceito}[As ações referenciais: o que fazer quando o "pai" é apagado]
+A pergunta que \texttt{ON DELETE} responde: apagaram o servidor 47, e
+existem dependentes apontando para ele. O que acontece com os
+"dependentes órfãos"?
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{9.2cm}@{}}
+\toprule
+\textbf{Ação} & \textbf{O que o SGBD faz} \\
+\midrule
+\texttt{CASCADE} & apaga (ou atualiza) os filhos junto --- o dependente
+some com o servidor \\
+\texttt{SET NULL} & mantém o filho e zera a FK --- exige que a coluna
+aceite \texttt{NULL} \\
+\texttt{SET DEFAULT} & mantém o filho e aponta a FK para um valor padrão,
+que precisa existir \\
+\texttt{RESTRICT} & \textbf{barra} a operação de imediato, se existirem
+filhos \\
+\texttt{NO ACTION} & barra também, mas a checagem só ocorre no \textbf{fim
+do comando} --- permite que um passo intermediário viole a restrição,
+desde que o estado final esteja íntegro \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\texttt{RESTRICT} e \texttt{NO ACTION} são quase idênticos: os dois
+recusam a operação, e a diferença é só \textbf{quando} a verificação
+acontece. \texttt{CASCADE} é o oposto dos dois --- não recusa nada, ele
+propaga a mudança. Uma consequência prática: \texttt{CASCADE} numa tabela
+central pode apagar em silêncio uma quantidade grande de dados a partir de
+um único \texttt{DELETE}.
+\end{conceito}
+
+\subsection{Do MER ao relacional: como cada cardinalidade vira tabela}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.2cm}p{9.8cm}@{}}
+\toprule
+\textbf{Cardinalidade} & \textbf{Implementação no modelo relacional} \\
+\midrule
+1:1 & FK em uma das duas tabelas (de preferência no lado de participação
+obrigatória), com restrição de unicidade \\
+1:N & \textbf{FK no lado N} --- a tabela "muitos" guarda a chave da tabela
+"um" \\
+\textbf{N:M} & \textbf{tabela associativa} (intermediária), com as FKs das
+duas pontas formando a chave primária composta \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Por que N:M precisa de uma terceira tabela]
+Um \texttt{ALUNO} pode se matricular em vários \texttt{CURSO}s, e um
+\texttt{CURSO} tem vários \texttt{ALUNO}s. Se a FK ficasse dentro de
+\texttt{ALUNO} (apontando para um curso só), cada aluno só poderia estar
+em um curso --- perderia a possibilidade de matricular-se em vários. A
+solução é criar \texttt{MATRICULA(aluno\_id, curso\_id)}, com as duas FKs
+formando a chave primária composta --- cada linha dessa tabela representa
+uma combinação aluno-curso específica.
+\end{exemplo}
+
+\begin{cuidado}
+N:M \textbf{nunca} se resolve com FK direta numa das tabelas (isso só
+atende 1:N) nem com coluna multivalorada dos dois lados --- coluna
+multivalorada viola a 1FN (Seção~\ref{sec:normalizacao}).
+\end{cuidado}
+
+\subsection{Entidade fraca x entidade associativa}
+
+\begin{conceito}
+\textbf{Entidade fraca}: não se identifica sozinha. Sua chave é a chave da
+\textbf{entidade proprietária} (forte) somada a uma \textbf{chave parcial}
+(discriminador) --- por exemplo, \texttt{DEPENDENTE} só é identificado
+dentro do cadastro de um \texttt{SERVIDOR} específico, pelo nome. O
+relacionamento com o proprietário é \textbf{identificador}, e a existência
+da entidade fraca depende da entidade forte.
+
+\textbf{Entidade associativa}: conceito diferente --- é o
+\textbf{relacionamento N:M promovido a entidade}, usado quando esse
+relacionamento precisa, ele próprio, se relacionar com uma terceira
+entidade ou ganhar atributos próprios (por exemplo, \texttt{MATRICULA} da
+seção anterior, se ganhar o atributo \texttt{nota}, vira uma entidade
+associativa).
+\end{conceito}
+
+\begin{cuidado}
+Entidade fraca \textbf{não dispensa} a chave do proprietário --- é
+exatamente o oposto: sem ela, a entidade fraca não se identifica sozinha.
+Ter atributos próprios \textbf{não} torna uma entidade "forte"; o que
+define força é conseguir se identificar sozinha, sem depender da chave de
+outra entidade.
+\end{cuidado}
+
+\section{Normalização}
+\label{sec:normalizacao}
+
+\begin{conceito}[O problema real que a normalização resolve: anomalias]
+Normalizar não é obediência a uma regra estética --- resolve um problema
+concreto chamado \textbf{anomalia}, que aparece sempre que uma tabela
+guarda \textbf{dois assuntos ao mesmo tempo}.
+\end{conceito}
+
+\begin{conceito}[Dependência funcional --- a ferramenta que sustenta tudo]
+Escreve-se \textbf{A $\to$ B} e lê-se "\textbf{A determina B}": dado um
+valor de A, existe \textbf{um único} valor de B possível. \texttt{CPF
+$\to$ nome} é dependência funcional --- um CPF corresponde a um único
+nome. \texttt{nome $\to$ CPF} \textbf{não} é --- homônimos existem, o mesmo
+nome pode ter CPFs diferentes.
+
+Toda forma normal é uma restrição sobre \textbf{quais} dependências
+funcionais uma tabela tem o direito de conter. A chave determina todo o
+resto --- isso é literalmente o que significa "ser chave". O que a
+normalização proíbe, forma a forma, é que \textbf{algo além da chave
+inteira} determine outra coisa:
+
+\begin{itemize}
+\item determinar a partir de \textbf{parte} da chave (não da chave
+inteira) $\to$ viola a \textbf{2FN} (dependência parcial) --- só é
+possível quando a chave é composta, por isso a 2FN não tem o que fazer
+numa tabela de chave simples;
+\item determinar a partir de um atributo \textbf{não-chave} (um atributo
+comum determinando outro) $\to$ viola a \textbf{3FN} (dependência
+transitiva);
+\item determinar sendo algo que \textbf{não é chave candidata} $\to$
+viola a \textbf{BCNF} (forma normal de Boyce-Codd).
+\end{itemize}
+
+As três são a mesma frase ficando progressivamente mais rigorosa. Por
+isso a ordem é cumulativa: quem está em 3FN já está automaticamente em
+2FN e em 1FN.
+\end{conceito}
+
+\begin{center}
+\begin{tabular}{@{}p{2cm}p{9.4cm}@{}}
+\toprule
+\textbf{FN} & \textbf{Elimina} \\
+\midrule
+1FN & atributos multivalorados / não atômicos (cada célula, um valor só) \\
+2FN & dependência parcial da chave (só é relevante com PK composta) \\
+3FN & dependência transitiva (atributo não-chave que depende de outro
+atributo não-chave) \\
+BCNF & anomalia residual quando existe mais de uma chave candidata
+sobreposta \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Normalizar \textbf{reduz redundância}; \textbf{desnormalizar de
+propósito} (caso típico: Data Warehouse, Capítulo \ref{cap:bi-teoria}) é
+aceitável quando o objetivo é desempenho de \textbf{leitura} --- nunca de
+escrita.
+
+\subsection{Decomposição passo a passo: um exemplo completo}
+
+\begin{exemplo}[De uma tabela com anomalias a três tabelas em 3FN]
+Uma tabela de matrículas mal projetada, guardando aluno, curso, nota,
+nome e departamento do aluno, e chefe do departamento, tudo junto:
+
+\begin{center}
+\small
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{aluno} & \textbf{curso} & \textbf{nota} & \textbf{nome\_aluno} &
+\textbf{depto} & \textbf{chefe\_depto} \\
+\midrule
+101 & BD01 & 8,5 & Ana   & Computação & Prof. Silva \\
+101 & ES02 & 7,0 & Ana   & Computação & Prof. Silva \\
+102 & BD01 & 9,0 & Bruno & Computação & Prof. Silva \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A chave é composta: \textbf{(aluno, curso)} --- é o par que identifica uma
+matrícula específica. As dependências funcionais presentes:
+
+\begin{center}
+\begin{tabular}{@{}p{5cm}p{7.4cm}@{}}
+\toprule
+\textbf{Dependência} & \textbf{Status} \\
+\midrule
+(aluno, curso) $\to$ nota & legítima: depende da chave \textbf{inteira} \\
+aluno $\to$ nome\_aluno, depto & \textbf{parcial}: depende de só
+\textbf{metade} da chave (viola 2FN) \\
+depto $\to$ chefe\_depto & \textbf{transitiva}: um atributo não-chave
+determina outro (viola 3FN) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{As três anomalias que isso causa}: (1) \textbf{de atualização}
+--- o chefe da Computação muda; ele está repetido em toda linha de todo
+aluno do departamento, e se um \texttt{UPDATE} esquecer uma linha, a
+tabela passa a afirmar duas coisas contraditórias ao mesmo tempo; (2)
+\textbf{de inserção} --- criou-se um departamento novo, ainda sem aluno
+nenhum; não há onde guardá-lo, porque a chave exige (aluno, curso) e não
+existe aluno; (3) \textbf{de exclusão} --- o aluno 102 trancou e sua
+única matrícula foi apagada; junto com ela sumiu o próprio registro de que
+Bruno existe.
+
+\textbf{Decompondo, uma forma normal por vez.} Já está em \textbf{1FN}
+(toda célula tem um valor só). Para \textbf{2FN}, elimina-se a
+dependência parcial: nome e departamento do aluno não dependem de
+\textit{curso}, dependem só do \textit{aluno} --- separa-se uma tabela:
+
+\begin{center}
+\texttt{MATRICULA(aluno, curso, nota)}\\
+\texttt{ALUNO(aluno, nome\_aluno, depto, chefe\_depto)}
+\end{center}
+
+Para \textbf{3FN}, elimina-se a transitiva: dentro de \texttt{ALUNO}, o
+chefe não depende diretamente do aluno, depende do \textit{departamento},
+que por sua vez depende do aluno --- separa-se mais uma:
+
+\begin{center}
+\texttt{MATRICULA(aluno, curso, nota)}\\
+\texttt{ALUNO(aluno, nome\_aluno, depto)}\\
+\texttt{DEPARTAMENTO(depto, chefe\_depto)}
+\end{center}
+
+Cada fato passou a morar num único lugar, e as três anomalias
+desaparecem junto: trocar o chefe vira um \texttt{UPDATE} numa única
+linha; cadastrar um departamento novo não exige inventar um aluno; apagar
+a última matrícula de alguém não apaga o registro do aluno.
+\end{exemplo}
+
+\begin{regrapratica}[Achar a chave a partir das dependências funcionais]
+A FGV costuma cobrar assim: "considere $R(A,B,C,D,E)$ e $F = \{A \to B,
+BC \to DE, \ldots\}$; qual a forma normal mais alta?". O procedimento é
+mecânico: parta dos atributos que \textbf{nunca aparecem do lado direito}
+de nenhuma dependência --- eles obrigatoriamente fazem parte de toda chave
+candidata. Feche esse conjunto aplicando as dependências até parar de
+crescer; se ele alcançar todos os atributos da relação, é chave. Só então
+classifique cada dependência restante como parcial, transitiva, ou fora de
+chave candidata --- a forma normal mais alta é a última que \textbf{nenhuma}
+dependência viola.
+\end{regrapratica}
+
+\section{SQL: DDL x DML x DCL x TCL}
+
+\begin{conceito}[A divisão é sobre o que cada grupo faz com a transação]
+DDL muda a \textbf{estrutura} do banco e, na maioria dos SGBD, confirma
+sozinha (\textit{auto-commit}) --- não se desfaz um \texttt{DROP TABLE}
+com \texttt{ROLLBACK}. DML muda os \textbf{dados} dentro de uma
+transação, e por isso é desfazível. É essa diferença de comportamento
+transacional --- não a semelhança do efeito visível --- que separa
+\texttt{TRUNCATE} (DDL) de \texttt{DELETE} (DML), mesmo que os dois
+"esvaziem a tabela".
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4cm}p{4.5cm}@{}}
+\toprule
+\textbf{Sublinguagem} & \textbf{Comandos} & \textbf{Observação} \\
+\midrule
+DDL (definição) & CREATE, ALTER, \textbf{DROP, TRUNCATE} & TRUNCATE é DDL
+(não DML), \textit{auto-commit} \\
+DML (manipulação) & SELECT, INSERT, UPDATE, DELETE & DELETE é DML, aceita
+WHERE e é desfazível com ROLLBACK \\
+DCL (controle) & GRANT, REVOKE & gerencia permissões \\
+TCL (transação) & COMMIT, ROLLBACK, SAVEPOINT & controla o ciclo de vida
+da transação \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{conceito}[A ordem lógica de execução, e o que ela explica]
+Você escreve o \texttt{SELECT} primeiro na sintaxe, mas o banco o resolve
+quase por último:
+
+\begin{center}
+\texttt{FROM} $\to$ \texttt{WHERE} $\to$ \texttt{GROUP BY} $\to$
+\texttt{HAVING} $\to$ \texttt{SELECT} $\to$ \texttt{ORDER BY}
+\end{center}
+
+Duas consequências práticas que decorrem diretamente dessa ordem:
+
+\begin{itemize}
+\item \textbf{O \texttt{WHERE} não enxerga um apelido definido no
+\texttt{SELECT}}. Em \texttt{SELECT preco*2 AS dobro ... WHERE dobro >
+100}, o \texttt{WHERE} roda \textbf{antes} de \texttt{dobro} existir --- o
+banco acusa erro de coluna inexistente. Já \texttt{ORDER BY dobro}
+funciona normalmente, porque \texttt{ORDER BY} roda depois do
+\texttt{SELECT}.
+\item \textbf{\texttt{WHERE} filtra linha; \texttt{HAVING} filtra
+grupo}. O \texttt{WHERE} acontece \textbf{antes} do \texttt{GROUP BY},
+quando nenhum grupo existe ainda; o \texttt{HAVING} acontece depois, e por
+isso é o único que pode comparar com o resultado de \texttt{COUNT(*)} ou
+\texttt{SUM()}.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}
+\texttt{UNION} remove duplicatas; \texttt{UNION ALL} mantém todas as
+linhas, inclusive repetidas. \texttt{JOIN} sem cláusula \texttt{ON}
+produz um \textbf{produto cartesiano} (cada linha de uma tabela combinada
+com todas as linhas da outra).
+\end{cuidado}
+
+\subsection{VIEW, GRANT e controle de transação}
+
+\begin{conceito}
+\textbf{VIEW (visão)}: uma \textbf{tabela virtual} --- é a consulta
+guardada com um nome, não os dados copiados fisicamente. Consultar a
+visão executa o \texttt{SELECT} que está por trás dela, então o resultado
+é \textbf{sempre atual}. Serve para simplificar uma consulta complexa e
+para \textbf{restringir acesso} (a visão expõe só as colunas/linhas
+permitidas, e o \texttt{GRANT} é dado sobre a visão, não sobre a tabela
+inteira). Uma visão \textbf{simples} costuma aceitar atualização; uma
+visão com \texttt{JOIN}, agregação ou \texttt{DISTINCT}, geralmente não. A
+\textbf{\textit{materialized view}} é a exceção: ela \textbf{sim}
+armazena o resultado fisicamente em disco, e precisa ser
+\textbf{atualizada} (\textit{refresh}) periodicamente para refletir
+mudanças na origem.
+
+\textbf{GRANT/REVOKE (DCL)}: \texttt{GRANT SELECT, INSERT ON tabela TO
+usuario} concede privilégios; \texttt{REVOKE} os retira. Com
+\texttt{WITH GRANT OPTION}, quem recebeu o privilégio pode
+\textbf{repassá-lo} a terceiros.
+
+\textbf{SAVEPOINT e ROLLBACK TO (TCL)}: \texttt{SAVEPOINT nome} marca um
+ponto \textbf{dentro} de uma transação em andamento; \texttt{ROLLBACK TO
+nome} desfaz só o que veio \textbf{depois} daquela marca, e a transação
+\textbf{continua aberta} --- não equivale a um \texttt{COMMIT} nem a um
+\texttt{ROLLBACK} total. É um desfazer parcial.
+\end{conceito}
+
+\begin{cuidado}
+Uma visão comum \textbf{não armazena} dados fisicamente (isso é exclusivo
+da \textit{materialized view}). \texttt{GRANT} é \textbf{DCL}, não DDL
+nem DML. \texttt{ROLLBACK TO} \textbf{não encerra} a transação nem desfaz
+tudo --- ele volta ao \textit{savepoint} indicado, e a transação segue
+viva.
+\end{cuidado}
+
+\subsection{Notação Crow's Foot e chave surrogada}
+
+\begin{conceito}[Crow's Foot: dois símbolos por ponta, dois significados]
+Cada ponta de uma linha de relacionamento traz \textbf{dois} símbolos, e a
+posição decide o papel: o que \textbf{encosta na entidade} é o
+\textbf{máximo} (a cardinalidade propriamente dita --- um ou muitos); o
+símbolo \textbf{mais afastado} é o \textbf{mínimo} (a modalidade --- zero
+ou um).
+
+\begin{center}
+\begin{tabular}{@{}p{4.6cm}p{7.4cm}@{}}
+\toprule
+\textbf{Símbolo} & \textbf{Leitura} \\
+\midrule
+Traço (barra) & exatamente \textbf{um} (mínimo 1 / máximo 1) \\
+Círculo & \textbf{zero} --- opcional \\
+Pé de galinha (três riscos) & \textbf{muitos} \\
+Círculo + pé de galinha & \textbf{zero ou muitos} \\
+Traço + pé de galinha & \textbf{um ou muitos} (obrigatório) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Tradução direta para DDL: o lado com \textbf{pé de galinha} é o lado
+\textbf{N}, e é nele que entra a \textbf{FK}; o círculo indica
+participação \textbf{opcional} (a FK aceita \texttt{NULL}); o traço
+indica participação \textbf{obrigatória} (\texttt{NOT NULL}).
+\end{conceito}
+
+\begin{conceito}[Chave surrogada x chave natural]
+\textbf{Chave surrogada} (substituta/artificial): chave primária
+\textbf{sem significado de negócio}, gerada pelo sistema (sequência,
+\textit{identity}, UUID) --- em oposição à \textbf{chave natural}, que
+vem do próprio domínio (CPF, matrícula). Vantagens da surrogada: é
+\textbf{estável} (um dado de negócio pode mudar --- CPF corrigido,
+matrícula reemitida --- sem exigir alterar a chave e todas as FKs que a
+referenciam), curta e uniforme para \textit{join}. É padrão em Data
+Warehouse, onde também permite guardar \textbf{versões históricas} da
+mesma entidade de negócio (dimensão de mudança lenta, Capítulo
+\ref{cap:bi-teoria}).
+\end{conceito}
+
+\begin{cuidado}
+Chave surrogada \textbf{não substitui} a necessidade da chave natural na
+tabela --- o campo de negócio continua presente, em geral com restrição
+\texttt{UNIQUE}. Em Crow's Foot, a inversão comum é ler a cardinalidade
+do lado errado da linha --- o símbolo vale para a entidade que ele
+\textbf{toca}, não para a entidade do outro lado.
+\end{cuidado}
+
+\subsection{Gatilho x procedimento armazenado}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.8cm}p{4.8cm}@{}}
+\toprule
+& \textbf{Gatilho (\textit{trigger})} & \textbf{Procedimento armazenado} \\
+\midrule
+Quem dispara & o \textbf{próprio SGBD}, em resposta a um \textbf{evento}
+de dados & a \textbf{aplicação} (ou outro código), por chamada explícita \\
+Como se invoca & não se invoca --- é automático & \texttt{CALL}/
+\texttt{EXECUTE} \\
+Amarrado a & uma tabela + evento (INSERT, UPDATE, DELETE) & nada
+específico; é código nomeado e reutilizável \\
+Parâmetros & não recebe & recebe (e pode retornar) \\
+Bom para & auditoria, log, regra que \textbf{não pode depender} de a
+aplicação lembrar de chamá-la & rotina de negócio chamada sob demanda \\
+\bottomrule
+\end{tabular}
+\end{center}
+Palavra-chave para reconhecer o gatilho num enunciado: "\textbf{sem
+depender de a aplicação lembrar}".
+\end{conceito}
+
+\section{Propriedades ACID}
+
+\begin{conceito}[As quatro letras, na transferência de R\$ 100 de A para B]
+Uma transação é um conjunto de operações que o banco trata como
+\textbf{uma só}. Debitar R\$ 100 da conta A e creditar R\$ 100 na conta B
+são dois \texttt{UPDATE}s, e nenhum estado intermediário entre eles é
+aceitável.
+
+\begin{itemize}
+\item \textbf{A}tomicidade --- \textit{tudo ou nada}. Se o servidor cair
+entre o débito e o crédito, o débito é desfeito. Nunca existe "saiu de A
+e não chegou em B". Quem entrega: \texttt{ROLLBACK} e o log de
+transações.
+\item \textbf{C}onsistência --- \textit{estado válido antes, estado
+válido depois}. A soma dos saldos não mudou, e nenhuma restrição
+declarada (\texttt{CHECK}, chave estrangeira, \texttt{UNIQUE}) foi
+violada. Consistência é sobre \textbf{as regras do banco}, não sobre
+concorrência entre transações.
+\item \textbf{I}solamento --- \textit{uma transação não enxerga o meio da
+outra}. Se um extrato rodar no exato instante da transferência, ele não
+pode ver o dinheiro debitado e ainda não creditado. É a letra mais
+cobrada porque é a única que tem \textbf{graus} (Seção seguinte).
+\item \textbf{D}urabilidade --- \textit{confirmado é para sempre}. Depois
+do \texttt{COMMIT}, o efeito sobrevive a uma queda de energia. Quem
+entrega: a gravação do log em disco \textbf{antes} da confirmação (WAL,
+\textit{write-ahead log}).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}
+Consistência x isolamento se confundem: a primeira olha para as
+\textbf{regras declaradas} do banco; a segunda olha para \textbf{outras
+transações} concorrentes. Não confundir com o "C" do teorema CAP
+(Seção~\ref{sec:cap-teoria}) --- lá, consistência significa que todas as
+réplicas mostram o mesmo dado, um conceito diferente.
+\end{cuidado}
+
+\section{Concorrência: níveis de isolamento}
+
+\begin{conceito}[Quatro níveis, cada um admitindo certos fenômenos]
+O "I" do ACID não é tudo-ou-nada: o padrão SQL define quatro níveis, e
+cada um \textbf{admite} certos fenômenos de concorrência. Quanto maior o
+isolamento, \textbf{menor} a concorrência possível --- é uma troca
+(\textit{trade-off}), não um ganho de graça.
+
+\textbf{Os três fenômenos:} \textbf{leitura suja} (\textit{dirty read}):
+lê um dado alterado por outra transação que \textbf{ainda não confirmou}
+(e pode desfazer depois). \textbf{Leitura não repetível}
+(\textit{non-repeatable read}): relê a \textbf{mesma linha} e o valor
+mudou, porque outra transação a atualizou e confirmou no meio do caminho.
+\textbf{Leitura fantasma} (\textit{phantom read}): relê a \textbf{mesma
+faixa} de resultados e aparecem \textbf{linhas novas}, inseridas e
+confirmadas por outra transação.
+
+\begin{center}
+\begin{tabular}{@{}p{3.6cm}p{2.6cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Nível} & \textbf{Leitura suja} & \textbf{Não repetível} &
+\textbf{Fantasma} \\
+\midrule
+READ UNCOMMITTED & admite & admite & admite \\
+READ COMMITTED & \textbf{impede} & admite & admite \\
+REPEATABLE READ & impede & \textbf{impede} & admite \\
+SERIALIZABLE & impede & impede & \textbf{impede} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{cuidado}
+READ UNCOMMITTED é o \textbf{mais permissivo} (não o mais restritivo) ---
+é justamente o que deixa ler dado ainda não confirmado. REPEATABLE READ
+elimina a leitura \textbf{não repetível}, mas \textbf{não} elimina a
+fantasma (que só é eliminada no SERIALIZABLE). Quanto mais alto o
+isolamento, \textbf{menor} a concorrência --- nunca o contrário. Para
+diferenciar os dois últimos fenômenos: linha que \textbf{muda de valor}
+$\to$ não repetível; linha \textbf{nova que aparece} $\to$ fantasma.
+\end{cuidado}
+
+\section{Relacional x multidimensional: OLTP x OLAP}
+
+\begin{conceito}[Duas cargas de trabalho opostas exigem dois modelos opostos]
+O sistema que registra uma venda precisa gravar \textbf{uma linha por
+vez, muitas vezes por segundo}, sem perder nada --- a normalização serve
+bem a ele, porque cada fato mora num único lugar e a escrita fica barata.
+O sistema que responde "quanto vendemos por região no último trimestre"
+precisa \textbf{varrer milhões de linhas e somar} --- e aí a
+normalização vira inimiga, porque cada \texttt{JOIN} a mais é trabalho a
+mais numa consulta que já é pesada.
+
+Rodar as duas cargas na mesma base é o erro clássico: o relatório trava a
+produção. Separar em OLTP e OLAP é a resposta --- e é isso que justifica
+o Data Warehouse existir como uma cópia desnormalizada dos dados, em vez
+de ser um capricho de arquitetura.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.4cm}@{}}
+\toprule
+& \textbf{OLTP (transacional)} & \textbf{OLAP (analítico)} \\
+\midrule
+Uso & operações do dia a dia & apoio à decisão / análise \\
+Escrita/leitura & muitas escritas curtas & leitura pesada, agregação \\
+Modelo & relacional normalizado & multidimensional (cubos) \\
+Estrutura & tabelas & dimensões e métricas/fatos \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\section{NoSQL e novos armazenamentos}
+
+\begin{conceito}[Quatro famílias de NoSQL, e o que cada uma otimiza]
+NoSQL prioriza alta disponibilidade e \textbf{escalabilidade horizontal},
+e costuma relaxar as garantias ACID em favor do modelo \textbf{BASE}
+(\textit{Basically Available, Soft state, Eventual consistency}).
+
+\begin{itemize}
+\item \textbf{Chave-valor} (Redis): busca extremamente rápida por uma
+chave, sem estrutura interna imposta ao valor.
+\item \textbf{Documento} (MongoDB): documentos semiestruturados (tipo
+JSON), bom para dados que variam de forma entre registros.
+\item \textbf{Colunar} (Cassandra): otimizado para escrita massiva e
+leitura por coluna em grandes volumes.
+\item \textbf{Grafo} (Neo4j): nós e arestas, otimizado para percorrer
+\textbf{relacionamentos} complexos (rede social, detecção de fraude).
+\end{itemize}
+
+Banco NoSQL \textbf{não} é "sempre grafo" e não segue ACID estritamente
+por padrão --- e não substitui um ERP/CRM fortemente transacional sem
+uma análise cuidadosa do que se perde.
+\end{conceito}
+
+\subsection{Teorema CAP}
+\label{sec:cap-teoria}
+
+\begin{conceito}[Por que o CAP obriga a escolher: o cenário do cabo cortado]
+Duas réplicas do mesmo banco, uma no Rio e outra em Natal. O cabo de rede
+entre elas cai --- isso é a \textbf{partição} (P). Chega uma escrita no
+Rio. O sistema tem exatamente duas saídas:
+
+\begin{itemize}
+\item \textbf{Aceitar a escrita}: o Rio responde ao usuário, mas Natal
+segue com o dado antigo --- as réplicas divergiram. Abriu-se mão de
+\textbf{C}onsistência para manter \textbf{A}vailability: perfil
+\textbf{AP}.
+\item \textbf{Recusar a escrita} (ou travar até o cabo voltar): ninguém
+lê dado divergente, mas o serviço ficou indisponível para aquela
+operação. Abriu-se mão de \textbf{A} para manter \textbf{C}: perfil
+\textbf{CP}.
+\end{itemize}
+
+Não existe terceira saída --- é por isso que é um teorema, não uma
+recomendação. "Escolha 2 de 3" é uma simplificação didática: numa rede
+real, a partição \textbf{não é opcional} (cabo cai eventualmente); P está
+sempre presente, e a escolha verdadeira é sempre entre \textbf{C ou A}. Um
+banco monolítico rodando num servidor só \textbf{não é "CA"} --- ele
+simplesmente não é um sistema distribuído, e o teorema não se aplica a
+ele.
+\end{conceito}
+
+\begin{regrapratica}
+Pergunte \textbf{o que dói mais} no cenário descrito. Saldo bancário,
+sentença judicial, registro oficial, estoque de item único $\to$ dado
+errado é inaceitável $\to$ \textbf{CP}. Carrinho de compras, curtida,
+\textit{feed} social, telemetria $\to$ ficar fora do ar é o inaceitável, e
+a divergência se resolve depois $\to$ \textbf{AP}.
+\end{regrapratica}
+
+\subsection{Data Lake x Data Warehouse x Lakehouse}
+
+\begin{conceito}
+\textbf{Data Lake}: guarda dado \textbf{bruto} (\textit{schema-on-read}
+--- a estrutura só é imposta na hora de ler, não na hora de gravar),
+aceita dado estruturado e não estruturado. \textbf{Data Warehouse}: guarda
+dado \textbf{tratado e modelado} (\textit{schema-on-write} --- a estrutura
+é definida antes de gravar). \textbf{Lakehouse}: combina os dois --- a
+flexibilidade de ingestão do lake com as garantias de estrutura e
+qualidade do warehouse.
+\end{conceito}
+
+\section{ETL x ELT}
+
+\begin{conceito}[A posição do "T" muda tudo]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.3cm}p{4.3cm}@{}}
+\toprule
+& \textbf{ETL} & \textbf{ELT} \\
+\midrule
+Ordem & Extrai $\to$ \textbf{Transforma} $\to$ Carrega & Extrai $\to$
+Carrega $\to$ \textbf{Transforma} \\
+Transformação & antes de carregar, fora do destino & depois de carregar,
+dentro do próprio destino \\
+Bom para & Data Warehouse tradicional & destino com muito poder de
+processamento (nuvem, big data) \\
+\bottomrule
+\end{tabular}
+\end{center}
+ELT aproveita o processamento do próprio destino, o que o torna melhor
+para \textbf{grande} volume (não o contrário); ETL faz mais sentido
+quando a transformação precisa ocorrer antes/fora do destino, por
+limitação de processamento lá.
+\end{conceito}
+
+\section{Índices}
+
+\begin{conceito}[O que um índice é, e por que existem tipos diferentes]
+Um índice é uma \textbf{estrutura separada da tabela}, que guarda os
+valores de uma coluna já \textbf{organizados}, junto com o endereço da
+linha correspondente. Não muda a tabela em si: acrescenta um caminho de
+acesso a mais. A troca é sempre a mesma --- \textbf{leitura mais rápida,
+escrita mais lenta} (todo \texttt{INSERT} precisa atualizar o índice
+também) e mais espaço em disco. Índice não é grátis, e "criar índice em
+tudo" nunca é a resposta certa.
+
+\begin{itemize}
+\item \textbf{B+ Tree}: árvore balanceada com os valores \textbf{ordenados}
+nas folhas, encadeadas entre si. Como está ordenado, atende faixa
+(\texttt{BETWEEN}, \texttt{>}, \texttt{<}), \texttt{ORDER BY} \textbf{e}
+igualdade. É o padrão em todo SGBD, ideal para colunas de \textbf{alta
+cardinalidade} (muitos valores distintos: CPF, data, valor monetário).
+\item \textbf{Hash}: aplica uma função ao valor e vai direto ao "balde"
+correspondente. Ótimo para \texttt{=} e \textbf{inútil} para faixa --- o
+hash embaralha a ordem de propósito, então "entre 10 e 20" não significa
+nada dentro dele.
+\item \textbf{Bitmap}: um vetor de bits por valor distinto. Só compensa em
+\textbf{baixa cardinalidade} (ex.: coluna ativo/inativo, ou UF com 27
+valores), porque o número de vetores é o número de valores distintos.
+Combina vários filtros com operações lógicas de bits rapidamente ---
+excelente em consulta analítica, ruim em tabela com muita escrita
+concorrente.
+\end{itemize}
+
+As duas perguntas que decidem o tipo certo: \textit{a consulta pede faixa
+ou igualdade?} e \textit{quantos valores distintos a coluna tem?}
+\end{conceito}
+
+\section{Big Data: os "V"s}
+
+\begin{conceito}[O trio clássico, e o que veio depois]
+O trio \textbf{original} (Gartner, 2001) é \textbf{Volume, Velocidade e
+Variedade}. \textbf{Veracidade} e \textbf{Valor} são \textbf{extensões}
+posteriores (por isso os modelos "4V" e "5V"), assim como
+\textbf{Variabilidade}. Saber qual é o trio original importa porque a
+pergunta clássica de prova troca um membro do trio por um V de extensão
+("volume, velocidade e valor" ou "volume, variedade e veracidade" soam
+plausíveis mas não são o trio original).
+\end{conceito}

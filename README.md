@@ -9,6 +9,7 @@ Lotacao: Natal/RN. 20 vagas imediatas, 13 de ampla concorrencia.
 ./status.py          # o que estudar hoje (blocos + atalhos) + como estou
 ./estudar.sh          # ATALHO PRINCIPAL: abre o(s) capitulo(s) do dia na apostila
                       # (PDF de verdade, zathura) + roda ./quiz.py --hoje no terminal
+./estudar.sh --teoria # idem, mas abre teoria/main.pdf (livro-texto) em vez da apostila
 ./quiz.py --hoje     # so o quiz, sem abrir a apostila
 ./quiz.py --resumo hoje   # resumo de conteudo dos blocos do dia
 ./quiz.py --dica hoje     # dica de banca dos blocos do dia
@@ -23,7 +24,20 @@ quiz — `./estudar.sh java redes -n 15`, `./estudar.sh --simulado`,
 `./estudar.sh --dia ontem` — e repassa o que for do bloco/`--dia`/`--quem`
 tambem pra apostila. So funciona em Linux com zathura (WSLg no Windows); pra
 so ver onde ler sem abrir PDF, use `./quiz.py --apostila <bloco>`; pra abrir
-a apostila sem rodar o quiz, `./apostila.py <bloco>`.
+a apostila sem rodar o quiz, `./apostila.py <bloco>`. Pra abrir o
+`teoria/main.pdf` (livro-texto, ver abaixo) em vez da apostila, some `--teoria`
+em qualquer um desses tres: `./estudar.sh --teoria java`, `./apostila.py
+--teoria java`.
+
+**Apostila x `teoria/`.** A `apostila/` e enxuta de proposito — feita pra
+revisar em 11 semanas, com foco em pegadinha de banca. O `teoria/` e um
+livro-texto complementar, com a mesma identidade visual mas conteudo de
+aprendizado profundo: cada conceito ganha definicao, mecanismo/porque e
+exemplo resolvido, sem o filtro "o que cai em prova". Use a apostila pra
+revisar o que voce ja sabe; abra o capitulo correspondente do `teoria/`
+quando um conceito nao estiver fixado de verdade. Os capitulos e a numeracao
+batem entre os dois livros (ex: Capitulo 12 e Governanca nos dois), entao
+`--teoria` sempre abre o mesmo assunto que a apostila abriria.
 
 **Tudo puxa do roteiro.** Cada dia tem dois assuntos (um especifico + um
 geral, ex: "banco-dados + rlm"). O `--hoje` cobre os dois automaticamente, e

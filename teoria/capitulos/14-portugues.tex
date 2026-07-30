@@ -1,0 +1,826 @@
+\chapter{Língua Portuguesa}
+\label{cap:portugues-teoria}
+
+\begin{edital}
+Compreensão e interpretação de textos; tipos e gêneros textuais; ortografia;
+coesão (referenciação, conectores, tempos/modos verbais); estrutura
+morfossintática (classes de palavras, coordenação, subordinação, pontuação,
+concordância verbal e nominal, regência, crase, colocação pronominal);
+reescrita e significação.
+\end{edital}
+
+Este capítulo cobre cada tópico do edital do zero, com a definição, o
+raciocínio por trás da regra e exemplos resolvidos. A versão resumida ---
+focada só no que costuma virar pegadinha de prova --- está no capítulo
+correspondente da \texttt{apostila/}; aqui o objetivo é fixar o conceito de
+verdade, não só reconhecer o padrão de banca.
+
+\section{Compreensão e interpretação de textos}
+
+\subsection{Três níveis de leitura}
+
+Toda questão de interpretação testa um destes três níveis, e a maior parte
+dos erros acontece por confundir um com o outro:
+
+\begin{conceito}[Informação explícita, inferência e opinião]
+\begin{itemize}
+\item \textbf{Informação explícita}: está escrita literalmente no texto. A
+pergunta se responde apontando a frase. Erro típico: não achar a frase por
+estar em outro parágrafo, ou porque o examinador parafraseou (trocou as
+palavras mas manteve o sentido).
+\item \textbf{Inferência}: não está escrita, mas é a única conclusão possível
+a partir do que está escrito + conhecimento de mundo compartilhado. Uma
+inferência válida é \textbf{obrigatória}, não uma entre várias leituras
+possíveis --- se dá pra imaginar um cenário em que a inferência é falsa, ela
+não é uma inferência válida, é um chute.
+\item \textbf{Opinião/juízo de valor}: pertence ao autor do texto (ou a um
+personagem citado), não ao leitor nem ao examinador. A alternativa erra
+quando atribui ao autor uma opinião que ele não expressou, ou quando o
+candidato concorda/discorda pessoalmente do texto em vez de reportar o que o
+texto diz.
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Explícito vs.\ inferência vs.\ extrapolação]
+Texto: \textit{"Depois de três tentativas frustradas de aprovar o projeto, a
+diretoria decidiu arquivá-lo."}
+
+\begin{itemize}
+\item Explícito: "a diretoria arquivou o projeto" --- está escrito.
+\item Inferência válida: "o projeto não foi aprovado nas tentativas
+anteriores" --- não está escrito com essas palavras, mas é a única leitura
+possível de "três tentativas frustradas".
+\item Extrapolação (não é inferência válida): "a diretoria considera o
+projeto inviável para sempre" --- o texto não diz isso; arquivar não é o
+mesmo que descartar definitivamente. É o tipo de leitura que parece razoável
+mas vai além do que o texto sustenta.
+\end{itemize}
+\end{exemplo}
+
+\begin{cuidado}[Extrapolar não é inferir]
+A diferença entre inferência válida e extrapolação é a diferença entre
+"a única leitura possível" e "uma leitura plausível". Toda vez que uma
+alternativa usa um verbo mais forte que o texto (o texto "sugere" e a
+alternativa diz que ele "prova"; o texto descreve uma dificuldade e a
+alternativa diz que é "impossível"), desconfie: é extrapolação.
+\end{cuidado}
+
+\subsection{Tipos textuais x gêneros textuais}
+
+Esse par é cobrado quase sempre em conjunto e a diferença entre os dois
+conceitos é a base de qualquer questão sobre "que tipo de texto é este":
+
+\begin{conceito}[Tipo é a estrutura; gênero é a embalagem social]
+\textbf{Tipo textual} é uma categoria \textbf{estrutural}, definida pela
+natureza linguística predominante da composição --- são poucos e fixos:
+
+\begin{itemize}
+\item \textbf{Narração}: fatos organizados no tempo, com personagens, enredo,
+conflito (verbos de ação, tempo passado predominante).
+\item \textbf{Descrição}: apresenta características de algo/alguém, sem
+progressão temporal (predomínio de adjetivos, verbos de estado).
+\item \textbf{Dissertação/argumentação}: defende um ponto de vista com
+argumentos, geralmente sobre um tema abstrato.
+\item \textbf{Exposição}: explica, informa, expõe um assunto sem
+necessariamente defender uma tese (diferença sutil com a dissertação: expor é
+informar, dissertar é convencer).
+\item \textbf{Injunção}: instrui, ordena, orienta uma ação (verbos no
+imperativo ou infinitivo).
+\end{itemize}
+
+\textbf{Gênero textual} é a forma \textbf{social e concreta} que um texto
+assume no mundo real, definida pela função comunicativa e pelo suporte ---
+são inúmeros e mudam com o tempo (um gênero pode nascer com uma nova
+tecnologia, como "post de rede social"): notícia, editorial, bula de remédio,
+receita culinária, carta, e-mail, resenha, ata de reunião, edital,
+regulamento, poema, conto, contrato.
+\end{conceito}
+
+\begin{exemplo}[Um gênero mistura tipos]
+Uma \textbf{bula de remédio} (gênero) é predominantemente \textbf{injuntiva}
+("tome 1 comprimido a cada 8 horas") mas tem trechos \textbf{descritivos}
+("comprimido branco, redondo") e \textbf{expositivos} ("o princípio ativo age
+bloqueando..."). Isso é a prova de que tipo e gênero são eixos diferentes: um
+gênero (categoria fixa, social) é composto de vários tipos (categorias
+estruturais) misturados.
+\end{exemplo}
+
+\begin{regrapratica}
+Se a pergunta é "que \textbf{tipo}" de trecho é esse, procure a estrutura
+predominante (tem verbo de ação e linha do tempo? narração. Só adjetivos,
+sem ação? descrição). Se a pergunta é "que \textbf{gênero}" é o texto,
+procure o nome social que ele teria fora da prova (editorial, e-mail, bula).
+Uma reportagem de jornal (gênero) é majoritariamente narrativa com trechos
+expositivos (tipo) --- a pergunta certa nunca mistura os dois níveis.
+\end{regrapratica}
+
+\subsection{Coerência x coesão}
+
+\begin{conceito}[Dois requisitos diferentes de um texto bem construído]
+\textbf{Coerência} é a lógica \textbf{do sentido}: as ideias do texto não se
+contradizem e formam um todo que faz sentido para quem lê --- é uma
+propriedade semântica/pragmática, depende do conhecimento de mundo do leitor.
+\textbf{Coesão} é a amarração \textbf{gramatical} entre as partes do texto:
+os recursos linguísticos visíveis (pronomes, conectores, repetição
+controlada) que ligam frase a frase, parágrafo a parágrafo.
+
+Um texto pode ser \textbf{coeso e incoerente}: todas as frases conectadas
+gramaticalmente, mas o conteúdo é contraditório ou absurdo. E pode ser
+\textbf{coerente e pouco coeso}: o sentido geral se entende, mas faltam
+conectivos, e a leitura fica truncada. Os dois são independentes.
+\end{conceito}
+
+\section{Ortografia}
+
+A ortografia da FGV cai pouco isoladamente (mais como parte de reescrita ou
+concordância) porque o vigente é o Acordo Ortográfico de 1990, já
+consolidado no ensino desde 2016. Os pontos que ainda geram dúvida real:
+
+\begin{conceito}[Casos que sobrevivem como pegadinha]
+\begin{itemize}
+\item \textbf{Trema}: extinto para o português do Brasil (não se escreve mais
+"lingüiça", "seqüência" --- ficou "linguiça", "sequência"). Só permanece em
+nomes próprios e suas derivações (Müller, mülleriano).
+\item \textbf{Hífen em palavras compostas com prefixo}: a regra prática (não
+memorize todos os prefixos, olhe a \textbf{terminação do prefixo} x
+\textbf{início da palavra seguinte}): mesma letra em ambos $\to$ hífen
+("micro-ondas", "anti-inflamatório", com prefixo terminado em vogal + palavra
+iniciada pela mesma vogal, ou prefixo terminado em consoante + palavra
+iniciada pela mesma consoante, como "inter-regional"); prefixo terminado em
+vogal + palavra iniciada em \textbf{r} ou \textbf{s} $\to$ dobra a letra, sem
+hífen ("antirreligioso", "contrassenso"); demais casos, funde sem hífen
+("autoescola", "extraoficial").
+\item \textbf{Acentuação de ditongos abertos "ei" e "oi" em paroxítonas}: não
+se acentuam mais ("ideia", "plateia", "heroico", "jiboia" --- antes eram
+"idéia", "platéia", "heróico"). Continuam acentuados os ditongos abertos em
+\textbf{oxítonas} ("herói", "chapéu", "céu").
+\item \textbf{Acento diferencial}: caiu na reforma, com poucas exceções que
+sobrevivem (\textbf{pôde} passado x \textbf{pode} presente; \textbf{pôr}
+verbo x \textbf{por} preposição). "Para" (verbo parar, 3ª pessoa) e "pára"
+não se distinguem mais por acento.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Reforma ortográfica não é "fonte volátil qualquer"]
+O Acordo Ortográfico de 1990 está em vigor no Brasil desde 1º de janeiro de
+2016 (fim do período de transição). Se uma questão datada de antes de 2016
+usar "idéia" ou "vôo" com acento, não é erro do material --- é o texto
+escrito sob a norma anterior. Não corrija exemplo histórico citado como
+histórico.
+\end{cuidado}
+
+\section{Coesão textual: referenciação, conectores e tempos verbais}
+
+\subsection{Coesão referencial}
+
+\begin{conceito}[Anáfora, catáfora e elipse]
+São os três mecanismos que evitam repetir a mesma palavra o tempo todo:
+
+\begin{itemize}
+\item \textbf{Anáfora}: um termo retoma algo já dito \textbf{antes}. É o caso
+mais comum. \textit{"O relatório chegou atrasado. \textbf{Ele} continha
+erros."} ("ele" retoma "o relatório").
+\item \textbf{Catáfora}: um termo \textbf{anuncia} algo que só vem depois.
+\textit{"Só quero uma coisa: \textbf{que você estude}."} (o "isso" implícito
+aponta para frente).
+\item \textbf{Elipse}: o termo é \textbf{omitido}, mas recuperável pelo
+contexto. \textit{"Ele estudou de manhã; ela, à tarde."} (omitiu-se
+"estudou" na segunda oração --- também chamado de zeugma quando a omissão é
+de um termo já citado).
+\end{itemize}
+
+O que retoma pode ser um \textbf{pronome} (ele, o qual, isso), um
+\textbf{sinônimo} ou \textbf{hiperônimo} (repetir "o documento" chamando de
+"o papel" ou de "o texto"), ou uma \textbf{elipse}.
+\end{conceito}
+
+\subsection{Conectores e o valor semântico que carregam}
+
+A reescrita/interpretação cobra menos o nome da conjunção e mais \textbf{que
+relação lógica} ela expressa --- porque a mesma relação pode ser expressa por
+conectores de classes gramaticais diferentes.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.4cm}@{}}
+\toprule
+\textbf{Relação} & \textbf{Conectores que a expressam} \\
+\midrule
+Adição & e, nem, também, além disso, ainda \\
+Oposição/contraste & mas, porém, contudo, todavia, entretanto, no entanto,
+embora, ainda que, apesar de \\
+Causa & porque, já que, uma vez que, visto que, por causa de, devido a \\
+Consequência & portanto, logo, por isso, de modo que, de forma que \\
+Condição & se, caso, contanto que, desde que, a menos que \\
+Finalidade & para que, a fim de que, com o objetivo de \\
+Tempo & quando, enquanto, assim que, logo que, antes que, depois que \\
+Comparação & como, tal qual, assim como, mais/menos... do que \\
+Conformidade & conforme, segundo, de acordo com, consoante \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{cuidado}[O mesmo conector muda de valor com o contexto]
+"Como" pode ser causal ("Como chovia, não saiu" = "porque chovia"),
+comparativo ("Ele é como o pai") ou conformativo ("Como diz o ditado...").
+"Que" pode ser conjunção integrante (introduz substantiva), pronome relativo
+(introduz adjetiva) ou até conjunção consecutiva ("tão cansado que
+dormiu"). A prova nunca pergunta só "que classe é esta palavra" --- pergunta
+"que \textbf{relação}/\textbf{função} ela introduz \textbf{neste}
+contexto", e a resposta muda frase a frase.
+\end{cuidado}
+
+\subsection{Correlação/sequência de tempos verbais}
+\label{sec:correlacao}
+
+\begin{conceito}[O tempo da oração principal governa o da subordinada]
+Quando duas orações do período estão relacionadas no tempo, o verbo da
+subordinada tem que ser compatível com o tempo do verbo da principal --- é a
+mesma lógica do "sequence of tenses" do inglês, só que menos rígida em
+português. Padrões mais cobrados:
+
+\begin{itemize}
+\item Principal no \textbf{presente} $\to$ subordinada pode ir para
+qualquer tempo compatível com o sentido: \textit{"Acho que ele
+\textbf{chegou}/\textbf{chega}/\textbf{vai chegar}."}
+\item Principal no \textbf{pretérito} $\to$ a subordinada tende a
+"puxar" para o pretérito também (discurso indireto clássico):
+\textit{"Ele disse que \textbf{viria}"} (não "que virá") --- futuro do
+pretérito no lugar do futuro do presente, porque a fala foi relatada no
+passado.
+\item \textbf{Condicional}: "se" + \textbf{pretérito imperfeito do
+subjuntivo} na condição pede \textbf{futuro do pretérito} (não futuro do
+presente) na consequência: \textit{"Se eu \textbf{tivesse} tempo, eu
+\textbf{estudaria}"} (não "eu estudarei"). É um dos erros mais comuns de
+concordância verbal em prova de reescrita.
+\end{itemize}
+\end{conceito}
+
+\section{Classes de palavras}
+
+\begin{conceito}[As dez classes, divididas em variáveis e invariáveis]
+\textbf{Variáveis} (flexionam em gênero, número, e às vezes grau/pessoa/modo/tempo):
+substantivo, artigo, adjetivo, numeral, pronome, verbo.
+\textbf{Invariáveis} (forma fixa): advérbio, preposição, conjunção,
+interjeição.
+
+O ponto que a prova explora não é decorar a lista, é reconhecer que
+\textbf{a mesma palavra muda de classe conforme a função na frase}
+(derivação imprópria / hibridismo funcional):
+\begin{itemize}
+\item "Amanhã" $\to$ substantivo ("o amanhã é incerto") ou advérbio
+("chego amanhã").
+\item "Que" $\to$ pronome relativo, conjunção integrante, conjunção
+consecutiva, ou interjeição de espanto ("Que confusão!").
+\item "Mal" $\to$ advérbio ("ele foi mal") ou substantivo ("um mal
+necessário") --- não confundir com "mau" (adjetivo, antônimo de "bom").
+\end{itemize}
+\end{conceito}
+
+\begin{regrapratica}
+Para classificar uma palavra ambígua, \textbf{substitua-a mantendo a
+função}: se dá para trocar por "isso"/"aquilo" e ainda ocupar posição de
+sujeito/objeto, é substantivo; se modifica um verbo/adjetivo/outro advérbio
+sem flexionar, é advérbio. Nunca classifique a palavra isolada --- classifique
+a palavra \textbf{na frase dada}.
+\end{regrapratica}
+
+\section{Sintaxe do período: coordenação e subordinação}
+
+\subsection{Oração e período}
+
+\begin{conceito}[Contando orações]
+\textbf{Oração} é todo enunciado organizado em torno de um núcleo verbal
+(verbo ou locução verbal). \textbf{Período simples} tem uma oração só;
+\textbf{período composto} tem duas ou mais. Truque de contagem: conte os
+verbos/locuções verbais do período --- cada núcleo verbal é, em regra, uma
+oração (locução verbal conta como uma só).
+\end{conceito}
+
+\begin{exemplo}
+\textit{"O candidato estudou muito porque a prova é difícil."} $\to$ dois
+núcleos verbais ("estudou", "é") $\to$ período composto de duas orações.
+\end{exemplo}
+
+O período composto se organiza por dois mecanismos: \textbf{coordenação}
+(orações independentes entre si) e \textbf{subordinação} (uma oração é termo
+sintático da outra). Os dois podem coexistir no mesmo período (período
+misto).
+
+\subsection{Coordenação}
+
+\begin{conceito}[Orações coordenadas]
+São \textbf{sintaticamente independentes}: nenhuma delas exerce função de
+termo (sujeito, objeto etc.) dentro da outra --- cada uma "sobrevive
+sozinha" gramaticalmente. Podem vir \textbf{sem} conectivo
+(\textbf{assindéticas}, separadas por vírgula/ponto e vírgula: \textit{"Cheguei,
+vi, venci"}) ou \textbf{com} conjunção coordenativa (\textbf{sindéticas}),
+que se dividem em cinco tipos:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.8cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Conjunções típicas} & \textbf{Ideia} \\
+\midrule
+Aditiva & e, nem, mas também & soma \\
+Adversativa & mas, porém, contudo, todavia, entretanto, no entanto & contraste/oposição \\
+Alternativa & ou, ou...ou, ora...ora, seja...seja & escolha/alternância \\
+Conclusiva & logo, portanto, por isso, pois (depois do verbo) & conclusão \\
+Explicativa & pois (antes do verbo), porque, que & justificativa \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{cuidado}[A conjunção "pois" muda de classe com a posição]
+\textit{"Estude, pois a prova é difícil."} --- "pois" logo depois da vírgula,
+\textbf{antes} do verbo $\to$ \textbf{explicativa} (equivale a "porque").
+\textit{"A prova é difícil; estude, pois."} / \textit{"Estude; a prova, pois,
+é difícil."} --- "pois" deslocado, intercalado \textbf{no meio ou no fim} da
+oração $\to$ \textbf{conclusiva} (equivale a "portanto"). Regra prática:
+pois colado após a vírgula = explicativa; pois "solto" no meio da frase =
+conclusivo.
+\end{cuidado}
+
+\subsection{Subordinação}
+
+\begin{conceito}[Orações subordinadas]
+Uma oração \textbf{depende sintaticamente} da outra: ela ocupa, sozinha, a
+função que uma \textbf{palavra} ocuparia (sujeito, objeto, adjunto...). A
+pergunta-chave para classificar é sempre: \textbf{"que classe gramatical essa
+oração inteira está imitando?"} --- substantivo, adjetivo ou advérbio. Daí os
+três grandes grupos: \textbf{substantivas}, \textbf{adjetivas},
+\textbf{adverbiais}.
+\end{conceito}
+
+\subsubsection{Substantivas}
+\label{sec:substantivas}
+
+\begin{conceito}[A oração no lugar de um substantivo]
+Iniciadas por conjunção \textbf{integrante} ("que" ou "se" --- não confundir
+com pronome relativo). Teste rápido: troque a oração inteira por
+\textbf{"isso"}; se a frase continuar de pé, é substantiva, e a posição de
+"isso" na frase revela a função:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.8cm}p{6.6cm}@{}}
+\toprule
+\textbf{Subtipo} & \textbf{Função} & \textbf{Exemplo} \\
+\midrule
+Subjetiva & sujeito & \textit{É necessário \textbf{que você estude}.} ("Isso é necessário") \\
+Objetiva direta & objeto direto & \textit{Espero \textbf{que você passe}.} ("Espero isso") \\
+Objetiva indireta & objeto indireto & \textit{Preciso \textbf{de que você me ajude}.} ("Preciso disso") \\
+Completiva nominal & completa um nome & \textit{Tenho certeza \textbf{de que ele passou}.} ("Tenho certeza disso") \\
+Predicativa & predicativo do sujeito & \textit{O problema é \textbf{que faltou tempo}.} ("O problema é isso") \\
+Apositiva & aposto & \textit{Só quero uma coisa: \textbf{que você estude}.} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{cuidado}[Objetiva indireta x completiva nominal]
+As duas têm preposição, e é fácil trocar uma pela outra. O critério: se a
+preposição é \textbf{exigida pelo verbo} (regência verbal), é objetiva
+indireta; se é exigida por um \textbf{nome abstrato} da oração principal
+(substantivo/adjetivo como "certeza", "medo", "necessidade", "capaz"), é
+completiva nominal. \textit{"Preciso \underline{de} que você ajude"} (verbo
+"precisar" rege "de") é objetiva indireta; \textit{"Tenho certeza
+\underline{de} que ele passou"} ("certeza de" --- o nome "certeza" rege "de")
+é completiva nominal.
+\end{cuidado}
+
+\subsubsection{Adjetivas}
+
+\begin{conceito}[A oração no lugar de um adjetivo]
+Sempre iniciadas por \textbf{pronome relativo} (que, quem, o qual, cujo,
+onde, quando referidos a um antecedente), caracterizam um substantivo/pronome
+da oração principal (o \textbf{antecedente}). Dividem-se em:
+
+\begin{itemize}
+\item \textbf{Restritivas} (\textbf{sem} vírgula): delimitam o universo do
+antecedente --- retirar a oração \textbf{muda o sentido} da frase.
+\textit{"Os candidatos que estudaram passaram."} (só os que estudaram, não
+todos).
+\item \textbf{Explicativas} (\textbf{com} vírgula): acrescentam uma
+informação extra sobre \textbf{todo} o antecedente --- retirar a oração
+\textbf{não muda} o sentido essencial. \textit{"Os candidatos, que
+estudaram muito, passaram."} (todos estudaram; é um comentário à parte).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[A vírgula muda o sentido da frase inteira]
+Este é o ponto mais cobrado do capítulo inteiro de sintaxe: a mesma
+sequência de palavras, com e sem vírgula, afirma coisas diferentes.
+\textit{"Os alunos que estudaram passaram"} não garante que todos os alunos
+passaram (só os que estudaram); \textit{"Os alunos, que estudaram,
+passaram"} afirma que \textbf{todos} os alunos estudaram e \textbf{todos}
+passaram. Ao comparar duas versões de uma frase numa questão de reescrita,
+a vírgula antes do "que" é o primeiro lugar a olhar.
+\end{cuidado}
+
+\begin{regrapratica}[Cujo]
+"Cujo" é sempre pronome relativo (introduz adjetiva), concorda em
+gênero/número com a coisa \textbf{possuída} (não com o possuidor), e nunca
+vem seguido de artigo. \textit{"O candidato cujo caderno sumiu"} (não "cujo
+o caderno").
+\end{regrapratica}
+
+\subsubsection{Adverbiais}
+
+\begin{conceito}[A oração no lugar de um advérbio]
+Fazem o papel de adjunto adverbial (circunstância) da oração principal. Nove
+tipos, decorados pela conjunção-gatilho:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.8cm}p{4.6cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Conjunções típicas} & \textbf{Ideia} \\
+\midrule
+Causal & porque, já que, uma vez que, visto que & causa \\
+Consecutiva & que (após "tão, tal, tanto") & consequência \\
+Condicional & se, caso, contanto que, desde que & condição \\
+Concessiva & embora, ainda que, mesmo que & concessão \\
+Comparativa & como, (do) que & comparação \\
+Conformativa & conforme, segundo, como & conformidade \\
+Final & para que, a fim de que & finalidade \\
+Temporal & quando, enquanto, assim que, logo que & tempo \\
+Proporcional & à medida que, à proporção que & proporção \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{cuidado}[Causal x consecutiva]
+\textit{"Estudou tanto que passou."} \textbf{Não} é causal --- é
+\textbf{consecutiva}: a conjunção correlata é "tanto...que", e a ideia é
+consequência (o resultado de estudar tanto foi passar), não a causa de algo.
+\end{cuidado}
+
+\begin{cuidado}[Concessiva não é "adversativa disfarçada"]
+As duas contrapõem ideias, mas por mecanismos sintáticos diferentes.
+\textbf{Adversativa} é \textbf{coordenação}: duas orações independentes
+contrapostas (\textit{"Estudou, mas não passou"}). \textbf{Concessiva} é
+\textbf{subordinação}: uma oração se subordina admitindo um obstáculo que
+não impede a outra (\textit{"Embora tenha estudado, não passou"}). Trocar
+"mas" por "embora" (ou vice-versa) muda a estrutura sintática do período
+inteiro, não só o conectivo.
+\end{cuidado}
+
+\subsection{Orações reduzidas}
+
+\begin{conceito}[Sem conectivo, sem verbo flexionado]
+Quando a subordinada não tem conectivo nem verbo flexionado (infinitivo,
+gerúndio ou particípio), ela é \textbf{reduzida}. A versão com conectivo e
+verbo flexionado é a \textbf{desenvolvida}.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}p{5.2cm}@{}}
+\toprule
+\textbf{Forma nominal} & \textbf{Reduzida} & \textbf{Desenvolvida equivalente} \\
+\midrule
+Infinitivo & \textit{Ao chegar, avisou.} & \textit{Quando chegou, avisou.} (valor temporal) \\
+Gerúndio & \textit{Estudando, você passa.} & \textit{Se você estudar, você passa.} (valor condicional) \\
+Particípio & \textit{Terminada a prova, saiu.} & \textit{Quando a prova terminou, saiu.} (valor temporal) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{regrapratica}
+Para classificar uma reduzida, \textbf{desenvolva-a mentalmente} (acrescente
+o conectivo que faz sentido) e classifique pelo \textbf{valor semântico}
+resultante (causal, temporal, condicional...) --- a forma nominal
+(infinitivo/gerúndio/particípio) é só a "casca"; o sentido é que define o
+subtipo, porque não há conjunção explícita ali para entregar a resposta.
+\end{regrapratica}
+
+\subsection{Roteiro de classificação}
+
+\begin{regrapratica}[Ordem de decisão para classificar um período composto]
+\begin{enumerate}
+\item Conte os núcleos verbais $\to$ quantas orações tem o período.
+\item Cada oração (a partir da segunda) é independente ou depende de outra
+como se fosse um termo dela?
+\begin{itemize}
+\item Independente $\to$ \textbf{coordenada}: identifique a conjunção,
+classifique (aditiva/adversativa/alternativa/conclusiva/explicativa) ou
+marque assindética.
+\item Depende (funciona como termo da outra) $\to$ \textbf{subordinada}:
+pergunte que classe gramatical ela imita.
+\begin{itemize}
+\item Substantivo $\to$ substantiva $\to$ identifique a função sintática
+(troque por "isso") $\to$ subtipo.
+\item Adjetivo (tem antecedente + pronome relativo) $\to$ adjetiva $\to$ tem
+vírgula? restritiva/explicativa.
+\item Advérbio (circunstância) $\to$ adverbial $\to$ identifique a
+conjunção-gatilho $\to$ subtipo.
+\end{itemize}
+\end{itemize}
+\item Verbo no infinitivo/gerúndio/particípio sem conectivo? $\to$
+\textbf{reduzida}, classifique pelo sentido (desenvolva mentalmente).
+\end{enumerate}
+\end{regrapratica}
+
+\section{Pontuação}
+
+\begin{conceito}[A vírgula tem uma lista curta e fechada de usos válidos]
+Cada vírgula "correta" cabe em uma destas categorias --- se não cabe em
+nenhuma, está errada:
+
+\begin{itemize}
+\item \textbf{Enumeração}: separa itens de uma série (\textit{"Trouxe
+caneta, lápis, borracha e régua."} --- repare que não há vírgula antes do
+último item ligado por "e", salvo se os itens tiverem sujeitos diferentes).
+\item \textbf{Aposto}: explica/identifica um termo, isolado por vírgulas
+(\textit{"Machado de Assis, o maior escritor brasileiro, nasceu no Rio."}).
+\item \textbf{Vocativo}: chama alguém (\textit{"Lucas, venha aqui."}).
+\item \textbf{Oração intercalada}: interrompe a frase principal
+(\textit{"O réu, segundo o juiz, mentiu."}).
+\item \textbf{Adjunto adverbial deslocado}: quando o adjunto sai do lugar
+padrão (fim da frase) e vai para o início/meio (\textit{"Ontem, o sistema
+caiu."} --- vírgula opcional se curto, recomendada se longo).
+\item \textbf{Oração subordinada adverbial anteposta à principal}
+(\textit{"Se chover, cancelamos o evento."} --- a vírgula aqui é
+\textbf{obrigatória}; se a ordem inverter, \textit{"Cancelamos o evento se
+chover"}, some).
+\item \textbf{Oração adjetiva explicativa} (ver seção anterior).
+\item \textbf{Elipse de verbo} (\textit{"Ele estudou de manhã; ela, à
+tarde."}).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Vírgula proibida]
+Nunca se separa por vírgula: sujeito do predicado (\textit{"O candidato,
+passou"} está errado), verbo do complemento (\textit{"Ele precisa, de
+ajuda"} está errado), salvo quando entre eles se intercala aposto ou oração
+intercalada (aí a vírgula existe por causa do intercalado, não "entre sujeito
+e verbo").
+\end{cuidado}
+
+\begin{conceito}[Ponto e vírgula e dois-pontos]
+\textbf{Ponto e vírgula}: separa orações coordenadas quando pelo menos uma já
+tem vírgula interna (evita ambiguidade), ou itens de uma enumeração longa
+com sub-itens. \textbf{Dois-pontos}: anuncia uma enumeração, uma citação, uma
+explicação ou um aposto que resume o que veio antes (\textit{"Só quero uma
+coisa: que você estude."}).
+\end{conceito}
+
+\section{Concordância verbal}
+
+\subsection{Regra geral e sujeito composto}
+
+\begin{conceito}[O verbo concorda com o sujeito]
+Regra base: o verbo flexiona em número e pessoa para concordar com o núcleo
+do sujeito. Com \textbf{sujeito composto} anteposto ao verbo, o verbo vai
+para o \textbf{plural} (\textit{"João e Maria \textbf{chegaram}."}). Com
+sujeito composto \textbf{posposto} ao verbo, admite-se concordância no plural
+\textbf{ou} com o núcleo mais próximo (\textit{"\textbf{Chegaram}
+João e Maria"} ou, mais raro em prova, \textit{"Chegou João e Maria"}).
+\end{conceito}
+
+\subsection{Verbos impessoais}
+
+\begin{conceito}[Verbos sem sujeito ficam travados na 3ª pessoa do singular]
+Um pequeno grupo de verbos, em certos sentidos, \textbf{não tem sujeito}
+--- e por isso nunca vão para o plural, não importa o que venha depois deles:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{3.6cm}p{5.2cm}@{}}
+\toprule
+\textbf{Verbo} & \textbf{Quando é impessoal} & \textbf{Certo (e o erro comum)} \\
+\midrule
+\textbf{fazer} & tempo decorrido & \textit{Faz} dois anos --- nunca "Fazem dois anos" \\
+\textbf{haver} & sentido de "existir" ou tempo & \textit{Havia} muitas falhas --- nunca "Haviam muitas falhas" \\
+\textbf{haver} + auxiliar & o auxiliar também trava & \textit{Deve haver} relatórios --- nunca "Devem haver" \\
+\textbf{existir} & \textbf{não} é impessoal, tem sujeito & \textit{Existem} muitos processos --- nunca "Existe muitos processos" \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O contraste que a banca explora: "haver" (no sentido de existir) e "existir"
+significam quase a mesma coisa, mas um é impessoal (não varia) e o outro tem
+sujeito (varia normalmente).
+\end{conceito}
+
+\subsection{Sujeito coletivo e sujeito oracional}
+
+\begin{conceito}
+\textbf{Sujeito coletivo} (multidão, maioria, grupo, equipe) concorda no
+\textbf{singular} quando não especificado (\textit{"A maioria
+\textbf{chegou}."}), mas admite plural quando o coletivo vem seguido de um
+complemento no plural (\textit{"A maioria dos candidatos
+\textbf{chegou}/\textbf{chegaram}"} --- as duas são aceitas; a FGV costuma
+cobrar a forma no singular como a "mais formal/tradicional").
+\textbf{Sujeito oracional}: quando o sujeito é uma oração subordinada
+substantiva subjetiva inteira, o verbo da principal fica sempre no
+\textbf{singular} (\textit{"\textbf{É} preciso que todos estudem."} --- não
+"são preciso").
+\end{conceito}
+
+\section{Concordância nominal}
+
+\begin{conceito}[Adjetivo concorda com o substantivo a que se refere]
+Regra geral simples; os casos que a prova cobra são os que \textbf{parecem}
+exceção mas seguem lógica própria:
+
+\begin{itemize}
+\item \textbf{"Anexo", "incluso", "obrigado", "próprio", "mesmo", "quite"}:
+são \textbf{adjetivos} e concordam normalmente (\textit{"Seguem
+\textbf{anexas} as fotos."}, \textit{"Ela mesma resolveu."}, \textit{"Ele
+está \textbf{obrigado}, ela está \textbf{obrigada}."}) --- o erro comum é
+tratá-los como advérbios invariáveis.
+\item \textbf{"Meio" advérbio (= "um pouco")} é \textbf{invariável}
+(\textit{"Ela está \textbf{meio} confusa."} --- não "meia confusa"); "meio"
+\textbf{numeral} (= metade) concorda (\textit{"Comeu \textbf{meia}
+maçã."}).
+\item \textbf{"É proibido/necessário/preciso" + substantivo}: fica
+\textbf{invariável} (masculino singular) quando o substantivo \textbf{não}
+tem determinante (artigo/pronome) antes (\textit{"\textbf{É proibido}
+entrada."}); \textbf{concorda} quando o substantivo vem com determinante
+(\textit{"\textbf{É proibida} \underline{a} entrada."}).
+\item \textbf{"Bastante"}: como advérbio (modifica verbo/adjetivo) é
+invariável (\textit{"Elas estudaram \textbf{bastante}."}); como
+adjetivo/pronome (modifica substantivo, = "muitos/muitas") concorda
+(\textit{"\textbf{Bastantes} candidatos desistiram."}).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[O padrão por trás de "é proibido"/"é bastante"]
+Não são regras soltas: a lógica comum é \textbf{"a palavra concorda quando
+funciona como adjetivo do substantivo; fica fixa quando funciona como
+advérbio/predicativo genérico sem se prender a um substantivo
+determinado"}. Uma vez internalizado esse padrão, "meio", "bastante" e "é
+proibido" deixam de ser três regras decoradas e viram uma regra só aplicada
+três vezes.
+\end{cuidado}
+
+\section{Regência verbal e nominal}
+
+\begin{conceito}[Regência é sobre a preposição que o verbo/nome exige]
+\textbf{Regência verbal}: a preposição (ou ausência dela) que cada verbo
+exige para introduzir seu complemento --- e o mesmo verbo pode mudar de
+sentido conforme a regência:
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.4cm}@{}}
+\toprule
+\textbf{Verbo} & \textbf{Regência e sentido} & \textbf{Exemplo} \\
+\midrule
+assistir & "a" = ver/presenciar (transitivo indireto) & Assisti \textbf{ao} filme. \\
+assistir & sem prep.\ = ajudar, dar assistência (transitivo direto) & O médico assistiu o paciente. \\
+visar & "a" = ter como objetivo (formal) & O projeto visa \textbf{a} reduzir custos. \\
+visar & sem prep.\ = mirar, rubricar & Visou o documento; visou o alvo. \\
+obedecer / desobedecer & sempre "a" (transitivo indireto) & Obedeça \textbf{às} normas. \\
+esquecer & sem prep.\ (transitivo direto) OU pronominal "esquecer-se de" & Esqueci o nome. / Esqueci-me \textbf{do} nome. \\
+lembrar & sem prep.\ (transitivo direto) OU pronominal "lembrar-se de" & Lembrei o nome. / Lembrei-me \textbf{do} nome. \\
+implicar & sem prep.\ = acarretar (transitivo direto, sentido de "causar") & O atraso implicou \textbf{a} perda do prazo. \\
+preferir & "a" (nunca "do que") na norma culta & Prefiro café \textbf{a} chá. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Regência nominal}: substantivos e adjetivos abstratos também exigem
+preposição fixa (\textit{"obediente \textbf{a}"}, \textit{"apto
+\textbf{para}"}, \textit{"cheio \textbf{de}"}, \textit{"certeza
+\textbf{de}"}) --- é a mesma preposição que aparece na oração completiva
+nominal (ver Seção~\ref{sec:substantivas} deste capítulo).
+\end{conceito}
+
+\begin{cuidado}[Regência com duplo regime é área de controvérsia gramatical]
+Alguns pares de regência têm \textbf{mais de uma forma aceita} pela norma
+culta (ex.: "namorar" pode ou não levar preposição conforme a gramática
+consultada; "chegar/ir a/para" varia por região e por tradição/permanência
+pretendida). Nesses casos não existe "a" resposta absoluta --- a banca, ao
+cobrar, costuma usar o caso \textbf{mais consolidado} (assistir, obedecer,
+visar, preferir da tabela acima), não os limítrofes. Se um caso limítrofe
+aparecer, desconfie de alternativas que tratam a variação como erro
+categórico.
+\end{cuidado}
+
+\section{Crase}
+
+\begin{conceito}[Crase é a fusão da preposição "a" com o "a" artigo/pronome]
+Crase só existe quando \textbf{duas condições se encontram ao mesmo tempo}:
+(1) um termo antes que \textbf{exige a preposição "a"} (regência verbal ou
+nominal) e (2) um termo depois que \textbf{admite artigo feminino "a(s)"}.
+Faltando qualquer uma das duas, não há crase.
+
+\begin{itemize}
+\item \textbf{Obrigatória}: locuções adverbiais femininas de instrumento/modo/causa
+("à mão", "às pressas", "à força"); locuções conjuntivas/prepositivas
+femininas ("à medida que", "à proporção que"); antes de "moda"/"maneira"
+subentendida ("sapato à Luís XV" = "à moda de"); horas determinadas quando
+o contexto pede "a" ("Cheguei às 8h").
+\item \textbf{Proibida}: antes de verbo (\textit{"Começou \textbf{a}
+estudar"}, nunca "à estudar"); antes de palavra masculina (\textit{"Andar
+\textbf{a} cavalo"}); antes de pronome que não admite artigo (\textit{"Entreguei
+\textbf{a} ela"}, nunca "à ela" --- pronomes pessoais não levam artigo,
+salvo exceções específicas); entre palavras repetidas (\textit{"cara a
+cara", "dia a dia"}); antes de "casa" (sem especificador) e "terra" (sentido
+de chão firme, oposto a bordo) no sentido genérico.
+\item \textbf{Facultativa}: antes de pronome possessivo feminino
+(\textit{"Entreguei a/à sua filha"}); antes de nome próprio de mulher
+(\textit{"Entreguei a/à Maria"}); depois da preposição "até"
+(\textit{"Foi até a/à porta"}).
+\end{itemize}
+\end{conceito}
+
+\begin{regrapratica}[Teste da substituição por palavra masculina]
+Troque o termo depois do "a" por um equivalente \textbf{masculino}. Se o
+masculino pede "ao", o feminino leva crase; se o masculino pede só "o" (sem
+preposição) ou "a" (sem artigo), não há crase. \textit{"Foi à escola"}
+$\to$ masculino: "Foi \textbf{ao} colégio" $\to$ crase confirmada.
+\textit{"Foi a pé"} $\to$ masculino: "Foi \textbf{a} cavalo" (não "ao
+cavalo") $\to$ sem crase.
+\end{regrapratica}
+
+\begin{cuidado}[Crase em caso limítrofe também tem controvérsia gramatical]
+Casos como crase antes de nomes de lugares que admitem artigo de forma
+variável ("Vou a Bahia" x "Vou à Bahia", dependendo se o falante entende
+"Bahia" como admitindo artigo) ou antes de pronomes possessivos são
+\textbf{genuinamente controversos} entre gramáticos — não é uma lacuna do
+material, é a língua tendo duplo regime ali. A banca, quando quer resposta
+inequívoca, usa os casos obrigatórios/proibidos da lista acima, não os
+facultativos.
+\end{cuidado}
+
+\section{Colocação pronominal}
+
+\begin{conceito}[Próclise, mesóclise e ênclise]
+Trata da posição do pronome oblíquo átono (me, te, se, o, a, lhe, nos, vos,
+lhes) em relação ao verbo:
+
+\begin{itemize}
+\item \textbf{Próclise} (pronome \textbf{antes} do verbo): puxada por uma
+\textbf{palavra atrativa} antes do verbo --- palavra de sentido negativo
+("Não \textbf{me} diga"), pronome relativo ("o homem que \textbf{me}
+ajudou"), conjunção subordinativa ("quando \textbf{se} formou"), advérbio
+sem vírgula depois ("Aqui \textbf{se} vive bem"), pronome indefinido ou
+interrogativo ("Ninguém \textbf{me} avisou", "Quem \textbf{te} contou?").
+\item \textbf{Mesóclise} (pronome \textbf{no meio} do verbo): só ocorre com
+verbo no \textbf{futuro do presente} ou \textbf{futuro do pretérito}, e
+apenas quando não há palavra atrativa antes (\textit{"Dir-\textbf{lhe}-ei a
+verdade"}; se houvesse atrativa antes, viraria próclise: "Não \textbf{lhe}
+direi").
+\item \textbf{Ênclise} (pronome \textbf{depois} do verbo): a posição
+"neutra"/padrão quando não há atrativa antes e o verbo não está no
+futuro --- é a posição de \textbf{início de frase} (\textit{"\textbf{Diga}-me
+a verdade"}) e a recomendada na norma culta escrita quando não há motivo
+para próclise.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Início de frase nunca leva próclise na norma culta escrita]
+\textit{"Me diga a verdade"} é falado corrente no Brasil, mas na norma culta
+escrita (a que a prova cobra) frase iniciada por verbo exige ênclise:
+\textbf{"Diga-me a verdade."} É um dos pontos onde o português informal
+brasileiro mais diverge da norma cobrada em concurso.
+\end{cuidado}
+
+\section{Reescrita e significação}
+
+\begin{conceito}[O que muda e o que não pode mudar numa reescrita]
+Questão de reescrita pede para reescrever um trecho \textbf{mudando a forma
+sem mudar o sentido} (ou, menos comum, mudando intencionalmente o sentido, e
+aí a pergunta avisa). O que se testa:
+
+\begin{itemize}
+\item \textbf{Sinonímia}: troca de palavra por um sinônimo que preserva o
+sentido \textbf{no contexto} (nem todo sinônimo de dicionário serve em toda
+frase --- "grande" pode ser "amplo" em um contexto e "importante" em outro).
+\item \textbf{Denotação x conotação}: sentido \textbf{literal/dicionário}
+(denotação) x sentido \textbf{figurado/contextual} (conotação). Reescrever
+trocando um sentido conotativo por uma paráfrase literal do mesmo sentido
+(não pelo sentido literal da palavra) é o padrão mais cobrado.
+\item \textbf{Ambiguidade}: mais de uma leitura sintática/semântica possível
+para a mesma frase --- reescrita "corrige" ambiguidade reordenando termos ou
+trocando um pronome vago por um termo específico (\textit{"João disse a
+Pedro que \textbf{ele} passou"} --- "ele" é ambíguo; a reescrita sem
+ambiguidade precisa nomear quem passou).
+\item \textbf{Voz ativa x passiva (apassivação)}: mesma informação,
+estrutura sintática diferente (\textit{"O réu cometeu o crime"} $\leftrightarrow$
+\textit{"O crime foi cometido pelo réu"}) --- o sujeito da ativa vira agente
+da passiva, o objeto direto da ativa vira sujeito da passiva.
+\item \textbf{Discurso direto x indireto}: o direto reproduz literalmente a
+fala (aspas/travessão, verbo de elocução: "disse:", "perguntou:"); o
+indireto relata a fala dentro de uma oração subordinada, com os ajustes de
+pessoa e tempo verbal da Seção~\ref{sec:correlacao} (\textit{"Ele disse: 'Eu
+vou'"} $\to$ \textit{"Ele disse que \textbf{iria}"}).
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Reescrita preservando sentido]
+Original: \textit{"Embora tenha estudado bastante, ele não passou."}
+Reescritas equivalentes: \textit{"Ele estudou bastante, mas não passou."}
+(concessiva $\to$ adversativa, mudou de subordinação para coordenação, mesmo
+sentido); \textit{"Apesar de ter estudado bastante, ele não passou."}
+(troca de conjunção concessiva por locução prepositiva + infinitivo,
+reduzida).
+\end{exemplo}
+
+\begin{regrapratica}
+Para validar uma reescrita, pergunte: \textbf{quem} fez \textbf{o quê}
+\textbf{a quem}, mudou? Se as relações de sujeito/objeto/causa/consequência
+continuam as mesmas e só a \textbf{forma} (ordem das palavras, voz, classe
+gramatical do conectivo) mudou, a reescrita é válida. Se alguma relação
+lógica se inverteu ou sumiu, não é reescrita equivalente --- é outra frase.
+\end{regrapratica}

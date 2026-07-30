@@ -1,0 +1,485 @@
+\chapter{Segurança da Informação}
+\label{cap:seguranca-teoria}
+
+\begin{edital}
+Políticas e procedimentos de segurança; ISO/IEC 27001:2022 e 27002:2022;
+confidencialidade, integridade e disponibilidade; mecanismos de segurança
+(controle de acesso, OAuth2, SSO); gestão de riscos (ameaça, vulnerabilidade,
+impacto); SDL e OWASP Top 10; análise estática e dinâmica de código (SAST e
+DAST). Também: HTTPS, SSL/TLS.
+\end{edital}
+
+\section{A tríade CIA: o critério que organiza tudo}
+
+\begin{conceito}[Cada controle existe para sustentar um dos três pilares]
+A tríade não é uma lista decorativa de três palavras --- é o
+\textbf{critério de classificação} de todo o resto do capítulo. Cada
+controle (cifra, hash, backup, RBAC, WAF) existe para sustentar um dos
+três pilares, e a pergunta que resolve metade das questões do bloco é
+sempre a mesma: \textit{qual pilar este controle protege?}
+
+\begin{itemize}
+\item \textbf{Confidencialidade}: só quem tem direito acessa/\textbf{vê}
+o dado (cifra, controle de acesso, mascaramento).
+\item \textbf{Integridade}: o dado permanece \textbf{íntegro}, não
+alterado indevidamente (hash, assinatura digital, trilha de auditoria).
+\item \textbf{Disponibilidade}: o dado/serviço fica \textbf{acessível}
+quando necessário (redundância, backup, plano de continuidade).
+\item Complementos frequentes: autenticidade, não repúdio, legalidade.
+\end{itemize}
+
+O detalhe que separa quem entendeu de quem decorou: os três pilares
+\textbf{competem entre si}. Aumentar confidencialidade quase sempre custa
+disponibilidade --- um segundo fator de autenticação barra o invasor e
+também atrasa o usuário legítimo que perdeu o celular; cifrar o backup
+protege o dado roubado, mas o torna inútil se a chave de cifra se perder.
+Por isso uma questão de cenário raramente pede "o mais seguro" --- pede o
+\textbf{equilíbrio adequado ao contexto}, e a alternativa que maximiza um
+pilar ignorando os outros costuma ser a errada.
+\end{conceito}
+
+\begin{cuidado}
+Mapeie o verbo do cenário para o pilar certo: "restringir quem vê" é
+confidencialidade, não integridade; "ficar no ar" é disponibilidade;
+"alteração indevida do conteúdo" é integridade.
+\end{cuidado}
+
+\section{Criptografia}
+
+\begin{conceito}[Assimétrica: a mesma matemática, duas direções, dois objetivos]
+O par de chaves tem uma propriedade central, e ela é a origem de toda a
+confusão sobre o tema: \textbf{o que uma chave fecha, só a outra abre}.
+Como as duas direções funcionam, a mesma matemática serve a dois objetivos
+diferentes --- e é a \textbf{direção escolhida} que decide qual.
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Para SIGILO} & \textbf{Para ASSINATURA} \\
+\midrule
+Cifra com & a \textbf{pública do destinatário} & a \textbf{privada do
+emissor} \\
+Abre com & a \textbf{privada do destinatário} & a \textbf{pública do
+emissor} \\
+Quem consegue ler & só o destinatário --- só ele tem a privada &
+\textbf{qualquer um}: a pública é pública \\
+Logo, garante & \textbf{confidencialidade} & \textbf{autenticidade,
+integridade e não repúdio} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A lógica de cada uma, resumida numa frase: para \textbf{sigilo}, eu quero
+que \textit{só você} leia, então uso o cadeado que \textit{só você} abre
+--- sua chave pública. Para \textbf{assinatura}, eu quero provar que
+\textit{fui eu}, então uso a chave que \textit{só eu} tenho --- minha
+privada; que qualquer um consiga abrir e verificar não é defeito, é o
+ponto central: é assim que qualquer pessoa consegue confirmar a
+assinatura.
+
+Duas notas importantes. Primeira: assina-se o \textbf{hash} do documento,
+não o documento inteiro --- criptografia assimétrica é lenta, e o hash tem
+tamanho fixo e pequeno. Segunda: na prática, nem o \textbf{sigilo} usa
+assimétrica para o volume de dados. O TLS faz o que se chama de
+\textbf{envelope}: usa a assimétrica \textbf{só para combinar} uma chave
+simétrica de sessão entre as partes, e daí em diante cifra tudo com a
+simétrica, que é rápida. "A assimétrica substituiu a simétrica" é falso
+--- elas se combinam, cada uma no papel em que é boa.
+\end{conceito}
+
+\begin{conceito}[Simétrica x assimétrica, lado a lado]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Simétrica} & \textbf{Assimétrica (chave pública)} \\
+\midrule
+Chaves & uma chave secreta compartilhada & par: pública + privada \\
+Velocidade & rápida & lenta \\
+Uso & cifrar o volume de dados & troca de chave, assinatura \\
+Exemplos & AES, DES/3DES & RSA, ECC \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{conceito}[Hash, assinatura, certificado, TDE, esteganografia]
+\textbf{Hash} (MD5, SHA-256): resumo de tamanho fixo, \textbf{unidirecional}
+--- não existe "descriptografar" um hash. Garante \textbf{integridade}, não
+confidencialidade (MD5 e SHA-1 hoje são considerados fracos, com colisões
+conhecidas). \textbf{Assinatura digital}: o hash do documento é cifrado
+com a \textbf{chave privada} do emissor $\to$ garante autenticidade,
+integridade e não repúdio ao mesmo tempo. \textbf{Certificado digital /
+ICP-Brasil}: vincula uma identidade a uma chave pública, emitido por uma
+AC (Autoridade Certificadora) --- é o que resolve o problema de "como sei
+que esta chave pública é realmente da pessoa X". \textbf{TDE
+(\textit{Transparent Data Encryption})}: cifra os dados \textbf{em
+repouso} (arquivos do banco/disco), de forma transparente à aplicação ---
+protege contra o \textbf{roubo do arquivo físico}, não contra acesso
+lógico já autorizado ao banco. \textbf{Esteganografia} é diferente de
+criptografia: ela \textbf{oculta a existência} da mensagem (esconde dado
+dentro de uma imagem/áudio), enquanto a criptografia oculta o
+\textbf{conteúdo}, sem esconder que há uma mensagem.
+\end{conceito}
+
+\begin{conceito}[HMAC: o cenário do \textit{webhook}]
+\textbf{HMAC} (\textit{Hash-based Message Authentication Code}) é um hash
+\textbf{combinado a uma chave secreta compartilhada}. Como só quem tem a
+chave produz o código correto, o HMAC entrega \textbf{integridade} (a
+mensagem não foi alterada) \textbf{e} \textbf{autenticidade} (veio de
+quem tem a chave). O que ele \textbf{não} entrega: \textbf{confidencialidade}
+(a mensagem viaja legível, só o código de autenticação vai junto) e
+\textbf{não repúdio} (a chave é \textbf{simétrica}, e as duas pontas
+conseguem gerar o mesmo código --- então não dá para provar, perante um
+terceiro, qual das duas partes gerou a mensagem).
+
+O cenário clássico: um sistema externo envia um \textit{webhook} (uma
+chamada HTTP de notificação) e é preciso garantir que a requisição veio
+mesmo do parceiro combinado, e não foi adulterada no caminho. A resposta é
+assinar o corpo com \textbf{HMAC} usando um segredo combinado entre os
+dois lados, e o receptor recalcular o código e comparar. Hash puro não
+serve (qualquer um recalcularia sem precisar de segredo); cifrar o corpo
+resolveria confidencialidade, que não é o problema descrito.
+\end{conceito}
+
+\begin{cuidado}
+HMAC \textbf{não} garante confidencialidade (não há cifra do conteúdo em
+si) nem não repúdio (para isso é preciso \textbf{assinatura digital} com
+chave \textbf{privada}, que só o emissor possui). Guarde o corte: chave
+\textbf{simétrica} $\to$ autenticidade + integridade; chave
+\textbf{privada} $\to$ acrescenta o não repúdio.
+\end{cuidado}
+
+\section{HTTPS, SSL e TLS}
+
+\begin{conceito}
+\textbf{HTTPS = HTTP sobre TLS/SSL}. Garante confidencialidade,
+integridade e autenticação do servidor (o cliente sabe que está falando
+com o servidor legítimo). \textbf{TLS substitui o SSL}: corrige
+vulnerabilidades conhecidas das versões antigas do SSL. SSL está
+obsoleto; TLS 1.2/1.3 é o padrão atual.
+\end{conceito}
+
+\begin{cuidado}
+SSL \textbf{não} é mais seguro/moderno que TLS --- é o contrário: TLS
+sucedeu e corrigiu o SSL. Os dois não são intercambiáveis apesar de
+frequentemente citados juntos.
+\end{cuidado}
+
+\section{Controle de acesso}
+
+\begin{conceito}[Quatro políticas, quatro bases de decisão diferentes]
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{8.2cm}@{}}
+\toprule
+\textbf{Política} & \textbf{Base da decisão} \\
+\midrule
+DAC (discricionário) & o \textbf{dono do recurso} concede acesso, a seu
+critério \\
+MAC (mandatório) & \textbf{rótulos de segurança} comparados a
+autorizações; a regra é central e o usuário \textbf{não decide} \\
+RBAC (por papéis) & acesso concedido via \textbf{papéis/funções}
+organizacionais \\
+ABAC (por atributos) & decisão calculada a partir de \textbf{atributos}
+de usuário, recurso e contexto no momento do acesso \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Princípio do menor privilégio}: conceder só o acesso estritamente
+necessário para a função (um gerente de RH acessa só o que sua função
+exige, não tudo que tecnicamente seria possível liberar).
+\end{conceito}
+
+\begin{conceito}[OAuth2, OIDC e SSO]
+\textbf{OAuth2}: protocolo de \textbf{autorização delegada} baseado em
+tokens --- resolve "este aplicativo pode agir em meu nome, com este
+escopo de permissão limitado", \textbf{sem} entregar a senha ao
+aplicativo. É diferente de autenticação. \textbf{OpenID Connect (OIDC)}:
+construído \textbf{sobre} o OAuth2, é quem efetivamente faz
+\textbf{autenticação} --- adiciona um ID Token com \textit{claims}
+padronizados: \textbf{iat} (\textit{issued at}, momento da emissão),
+\textbf{exp} (expiração), \textbf{sub} (\textit{subject}, identificador
+único do usuário), \textbf{jti} (identificador único do próprio token).
+\textbf{SSO (\textit{Single Sign-On})}: um único login dá acesso a vários
+sistemas, sem repetir autenticação em cada um.
+\end{conceito}
+
+\begin{cuidado}
+MAC significa rótulos e classificações impostos pelo \textbf{sistema} (o
+usuário não decide, diferente do DAC, em que o \textbf{proprietário}
+decide). OAuth2 é \textbf{autorização}, não autenticação --- confundir os
+dois é o erro mais comum do tema.
+\end{cuidado}
+
+\section{OWASP Top 10}
+
+\begin{conceito}[Duas edições vigentes: 2025 (atual) e 2021 (a mais citada em prova)]
+A edição \textbf{vigente} é a \textbf{2025} (oitava da série). A
+\textbf{2021} continua relevante como referência amplamente citada em
+provas. Ao ler qualquer enunciado sobre o tema, \textbf{verificar qual ano
+ele cita} antes de contar posição é essencial, porque a ordem e até a
+existência de categorias mudou entre as duas edições.
+
+\begin{center}
+\begin{tabular}{@{}p{1.3cm}p{5.3cm}p{5.3cm}@{}}
+\toprule
+\# & \textbf{Top 10:2025} & \textbf{Top 10:2021} \\
+\midrule
+1 & Broken Access Control (absorveu o SSRF) & Broken Access Control \\
+2 & Security Misconfiguration (subiu de 5º) & Cryptographic Failures \\
+3 & Software Supply Chain Failures (nova) & Injection (SQLi; \textbf{XSS
+absorvido aqui}) \\
+4 & Cryptographic Failures (caiu de 2º) & Insecure Design (nova em 2021) \\
+5 & Injection (caiu de 3º) & Security Misconfiguration \\
+6 & Insecure Design & Vulnerable and Outdated Components \\
+7 & Authentication Failures & Identification and Authentication Failures \\
+8 & Software \textit{or} Data Integrity Failures & Software \textit{and}
+Data Integrity Failures \\
+9 & Security Logging and \textbf{Alerting} Failures & Security Logging
+and \textbf{Monitoring} Failures \\
+10 & Mishandling of Exceptional Conditions (nova) & Server-Side Request
+Forgery (SSRF) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O que mudou de 2021 para 2025: \textbf{duas categorias novas} (Software
+Supply Chain Failures e Mishandling of Exceptional Conditions) e
+\textbf{uma consolidação} (o SSRF, que era categoria própria em 2021, foi
+absorvido pelo Broken Access Control). Três categorias só \textbf{mudaram
+de nome}, mantendo a essência.
+\end{conceito}
+
+\begin{cuidado}
+Desde 2021, \textbf{XSS entrou dentro de Injection} (era categoria própria
+até 2017) --- não é mais listado separadamente. Itens como "proteção da
+cadeia de suprimentos/pipeline", "treinamento operacional" pertencem a
+outros frameworks (CI/CD, SSDF), não ao OWASP Top 10 do lado
+\textit{web} tradicional --- exceto que, a partir de 2025, cadeia de
+suprimentos \textbf{de software} virou categoria própria (A03), o que não
+retroage para tornar isso item de 2021.
+\end{cuidado}
+
+\section{Desenvolvimento seguro}
+
+\begin{conceito}
+\textbf{SDL} (\textit{Security Development Lifecycle}): incorpora
+segurança em \textbf{todo} o ciclo de desenvolvimento, não só numa
+revisão final. \textbf{SAST} (estática): analisa o \textbf{código-fonte}
+\textbf{sem executá-lo} --- é caixa-branca. \textbf{DAST} (dinâmica):
+testa a \textbf{aplicação em execução}, sem olhar o código-fonte --- é
+caixa-preta. \textbf{IAST}: combina os dois, instrumentando a aplicação
+em tempo de execução para observar o comportamento interno enquanto ela
+roda. \textbf{DevSecOps}: automatiza essas verificações de segurança
+dentro do próprio pipeline de CI/CD.
+\end{conceito}
+
+\begin{cuidado}
+SAST analisa código \textbf{parado}; DAST testa aplicação \textbf{rodando}
+--- não inverter os dois.
+\end{cuidado}
+
+\section{X.800: a arquitetura de segurança OSI}
+
+\begin{conceito}[Vocabulário comum a normas e bancas]
+A recomendação X.800 (ITU-T) dá o vocabulário de segurança usado por
+diversas normas posteriores. Divide o assunto em três: \textbf{ataques},
+\textbf{serviços} e \textbf{mecanismos}. O foco cobrado em prova é a
+divisão dos \textbf{mecanismos}.
+
+Os cinco \textbf{serviços} de segurança: autenticação, controle de
+acesso, confidencialidade, integridade e \textbf{não repúdio} (a
+disponibilidade aparece como categoria adicional, fora dos cinco
+clássicos).
+
+\textbf{Mecanismos}, divididos em dois grupos:
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{8.6cm}@{}}
+\toprule
+\textbf{Específicos} (ligados a uma camada e a um serviço) & cifração,
+assinatura digital, controle de acesso, integridade de dados, troca de
+autenticação, \textbf{preenchimento de tráfego} (\textit{traffic
+padding}), controle de roteamento e \textbf{notarização} \\
+\textbf{Disseminados} (\textit{pervasive}, não específicos de uma camada)
+& funcionalidade confiável, \textbf{rótulos de segurança}, detecção de
+eventos, \textbf{trilha de auditoria} de segurança e recuperação de
+segurança \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O critério de corte: um mecanismo \textbf{específico} implementa
+\textbf{um serviço} numa \textbf{camada} determinada; um mecanismo
+\textbf{disseminado} é de gestão, e vale para o sistema inteiro, sem se
+prender a uma camada só. \textbf{Preenchimento de tráfego} e
+\textbf{controle de roteamento} costumam surpreender por serem
+específicos --- eles servem à confidencialidade do \textbf{fluxo} de
+comunicação (esconder padrões de tráfego), não à confidencialidade do
+\textbf{conteúdo}.
+\end{conceito}
+
+\section{Gestão de riscos}
+
+\begin{conceito}[Ameaça + vulnerabilidade = risco, resultando em impacto]
+Um risco existe quando \textbf{uma ameaça encontra uma vulnerabilidade},
+e disso resulta um \textbf{impacto} potencial. Retirar qualquer um dos
+três elementos e o risco desaparece.
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{9cm}@{}}
+\toprule
+\textbf{Ameaça} & o evento indesejado \textbf{em potencial} --- incêndio,
+invasor, funcionário descuidado, \textit{ransomware}. Vem de fora do seu
+controle direto: você \textbf{não elimina} a ameaça em si. \\
+\textbf{Vulnerabilidade} & a fraqueza que permite a ameaça se
+concretizar --- servidor sem \textit{patch}, senha fraca, ausência de
+\textit{backup}. É o \textbf{único dos três} sobre o qual você age
+diretamente. \\
+\textbf{Impacto} & o dano, se a ameaça se concretizar. Você não impede o
+impacto em si, mas pode \textbf{reduzi-lo} (segmentar a rede, cifrar o
+dado que seria roubado) ou \textbf{transferi-lo} (seguro). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O \textbf{risco} é a combinação de \textbf{probabilidade} $\times$
+\textbf{impacto} --- é exatamente isso que uma matriz de risco 5$\times$5
+desenha: probabilidade num eixo, impacto no outro, e a cor da célula
+indica a prioridade de tratamento. Consequência importante: um evento
+catastrófico mas muito improvável pode ficar \textbf{abaixo}, na
+prioridade, de um evento pequeno mas frequente.
+\end{conceito}
+
+\begin{conceito}[As quatro formas de tratar o risco]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.4cm}@{}}
+\toprule
+\textbf{Mitigar} (reduzir) & implanta um controle e \textbf{diminui} a
+probabilidade ou o impacto --- é o caso mais comum: aplicar
+\textit{patch}, instalar um WAF, treinar a equipe. \\
+\textbf{Transferir} (compartilhar) & passa a consequência
+\textbf{financeira} a um terceiro --- seguro, terceirização com cláusula
+de responsabilidade. Transferir \textbf{não reduz} a probabilidade de o
+evento acontecer, só redistribui quem paga a conta. \\
+\textbf{Evitar} & \textbf{deixa de fazer} a atividade que gera o risco ---
+descontinuar um sistema legado, não coletar um dado sensível
+desnecessário. \\
+\textbf{Aceitar} (reter) & decide conviver com o risco,
+\textbf{formalmente} e no nível hierárquico adequado, porque o controle
+custaria mais que o dano potencial. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Risco residual} é o que \textbf{sobra depois} do tratamento
+aplicado --- nunca é zero, e a norma exige que seja \textbf{aceito
+formalmente} por quem tem alçada para isso; aceitar risco residual é
+decisão de gestão, não do time técnico isoladamente.
+\end{conceito}
+
+\begin{cuidado}
+Transferir o risco \textbf{não elimina} o risco --- o seguro paga o
+prejuízo, mas o incidente acontece do mesmo jeito; quem reduz a
+\textbf{chance} de acontecer é mitigar. \textbf{Aceitar} não é o mesmo
+que \textbf{ignorar}: aceitar é um ato formal, documentado e aprovado;
+deixar sem tratamento por simples omissão não é uma das quatro opções
+formais.
+\end{cuidado}
+
+\section{Continuidade de negócio: RTO x RPO}
+
+\begin{conceito}[Dois objetivos, guardados pela unidade do que se perde]
+\begin{center}
+\begin{tabular}{@{}p{1.6cm}p{4.4cm}p{6cm}@{}}
+\toprule
+\textbf{Sigla} & \textbf{Nome} & \textbf{O que limita} \\
+\midrule
+\textbf{RTO} & \textit{Recovery} \textbf{Time} \textit{Objective} &
+\textbf{TEMPO}: quanto o serviço pode ficar indisponível até ser
+restabelecido \\
+\textbf{RPO} & \textit{Recovery} \textbf{Point} \textit{Objective} &
+\textbf{DADO}: até que ponto no passado se aceita perder informação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+É o \textbf{RPO} que determina a \textbf{frequência do backup}: aceitar
+perder no máximo 15 minutos de dado obriga a proteger os dados a cada 15
+minutos, no máximo. O RTO, por sua vez, cobra da infraestrutura de
+recuperação (redundância, sítio alternativo, tempo de restauração).
+
+Siglas vizinhas frequentemente oferecidas junto: \textbf{MTBF}
+(\textit{Mean Time Between Failures}, tempo médio \textbf{entre} falhas
+sucessivas --- métrica de confiabilidade, não objetivo de plano);
+\textbf{MTTR} (\textit{Mean Time To Repair}, tempo médio de reparo);
+\textbf{SLA} (\textit{Service Level Agreement}, o \textbf{acordo}
+contratual de nível de serviço, não uma métrica em si).
+\end{conceito}
+
+\begin{cuidado}
+Ancore numa letra: \textbf{T} de RTO é \textbf{Tempo}; \textbf{P} de RPO
+é \textbf{Ponto} no tempo (dado). Um cenário que dá dois números na ordem
+"pode ficar fora X, pode perder Y" e depois inverte as siglas na resposta
+é o erro clássico deste tema.
+\end{cuidado}
+
+\section{Detecção e resposta a incidentes}
+
+\begin{conceito}
+\textbf{IDS} (\textit{Intrusion Detection System}): \textbf{alerta} sobre
+uma intrusão, de forma passiva --- não bloqueia. \textbf{IPS}
+(\textit{Intrusion Prevention System}): \textbf{bloqueia} ativamente,
+posicionado \textit{inline} no caminho do tráfego. \textbf{SIEM}
+(\textit{Security Information and Event Management}): correlaciona
+\textit{logs} e eventos de várias fontes para detecção e resposta.
+
+\textbf{Resposta a incidentes} (referência: NIST SP 800-61), em quatro
+fases ordenadas:
+\begin{enumerate}
+\item \textbf{Preparação}: antes de qualquer incidente --- time,
+ferramentas, políticas prontas.
+\item \textbf{Detecção e Análise}: identificar que um incidente está
+ocorrendo e entender sua natureza.
+\item \textbf{Contenção, Erradicação e Recuperação}: isolar o problema,
+remover a causa raiz, restaurar serviços e dados.
+\item \textbf{Atividade pós-incidente / Lições Aprendidas}: documentar o
+ocorrido e ajustar controles para prevenir recorrência --- essa fase
+realimenta a Preparação, fechando o ciclo.
+\end{enumerate}
+\end{conceito}
+
+\begin{cuidado}
+Detecção e Análise vêm \textbf{antes} da Contenção --- não se contém o
+que ainda não foi identificado. Depois de conter e erradicar, vem
+\textbf{recuperação seguida de lições aprendidas} --- essa ordem costuma
+ser embaralhada em prova.
+\end{cuidado}
+
+\section{ISO/IEC 27001 e 27002}
+
+\begin{conceito}[SGSI x guia de controles]
+A \textbf{ISO/IEC 27001:2022} especifica os \textbf{requisitos} de um
+Sistema de Gestão de Segurança da Informação (SGSI), incluindo seu Anexo
+A. A \textbf{ISO/IEC 27002:2022} é o \textbf{guia de controles} detalhado
+--- \textbf{93 controles}, organizados em \textbf{4 temas}:
+organizacionais (37), pessoas (8), físicos (14), tecnológicos (34).
+
+Exemplos de classificação temática: trabalho remoto $\to$ tema de
+\textbf{pessoas}; mídia de armazenamento $\to$ tema \textbf{físico};
+criptografia $\to$ tema \textbf{tecnológico}; definição de políticas
+$\to$ tema \textbf{organizacional}.
+\end{conceito}
+
+\begin{conceito}[NIST Cybersecurity Framework e STRIDE]
+\textbf{NIST CSF 1.1}: cinco funções --- \textit{Identify, Protect,
+Detect, Respond, Recover}; a versão \textbf{2.0} acrescentou uma sexta
+função, \textbf{Govern}, no centro do modelo.
+
+\textbf{STRIDE} (modelagem de ameaças): seis categorias --- \textit{
+Spoofing} (falsificar identidade), \textit{Tampering} (adulterar dado),
+\textit{Repudiation} (negar uma ação realizada), \textit{Information
+disclosure} (vazamento de informação), \textit{Denial of service}
+(indisponibilidade forçada), \textit{Elevation of privilege} (ganhar
+mais permissão do que deveria).
+\end{conceito}

@@ -1,0 +1,506 @@
+\chapter{Legislação --- Segurança da Informação e Proteção de Dados}
+\label{cap:legislacao-teoria}
+
+Este capítulo explica o \textbf{porquê} por trás de cada regra das quatro
+leis do edital --- não é decoreba de número de artigo, é entender \emph{que
+problema} cada dispositivo resolve e \emph{como as peças se encaixam} entre
+si (quem decide, quem executa, quem fiscaliza, o que acontece se algo dá
+errado). Os números e prazos específicos já foram conferidos contra a fonte
+primária no processo de auditoria do repositório; aqui o foco é fixar a
+lógica que sustenta cada um deles, para que o conhecimento resista mesmo
+quando um detalhe pontual for atualizado.
+
+\section{LGPD (Lei 13.709/2018)}
+
+\subsection{Dado pessoal e dado pessoal sensível}
+
+\begin{conceito}[Duas categorias, dois regimes de proteção]
+\textbf{Dado pessoal} (art.\ 5º, I) é qualquer informação relacionada a
+pessoa natural \textbf{identificada ou identificável} --- nome, endereço,
+telefone, e-mail, placa de veículo, CPF. \textbf{Dado pessoal sensível}
+(art.\ 5º, II) é um \textbf{subconjunto fechado e menor}: origem racial ou
+étnica, convicção religiosa, opinião política, filiação sindical ou a
+organização de caráter religioso/filosófico/político, dado sobre
+\textbf{saúde} ou \textbf{vida sexual}, dado \textbf{genético} ou
+\textbf{biométrico}.
+
+A razão de existir uma segunda categoria: esses dados específicos, se
+expostos ou usados indevidamente, geram um risco de \textbf{discriminação}
+muito maior do que um dado comum como um endereço --- por isso a lei impõe
+um regime de tratamento \textbf{mais restrito} (art.\ 11) para eles, com
+menos hipóteses legais disponíveis para justificar o tratamento. Sensível
+não significa "proibido de tratar" --- significa "tratado sob critério mais
+apertado".
+\end{conceito}
+
+\subsection{Agentes de tratamento: o papel vem do poder de decisão}
+
+\begin{conceito}[Controlador, operador e encarregado --- o critério é a decisão, não o acesso físico]
+A LGPD distribui obrigações por \textbf{quem decide} sobre o tratamento de
+dados, não por quem fisicamente manipula o dado:
+
+\begin{itemize}
+\item \textbf{Controlador}: a quem competem as decisões referentes ao
+tratamento --- define a \textbf{finalidade} (para quê) e os \textbf{meios}
+(como).
+\item \textbf{Operador}: realiza o tratamento \textbf{em nome do
+controlador} --- executa segundo instruções, não escolhe a finalidade.
+\item \textbf{Encarregado (DPO)}: pessoa indicada como \textbf{canal de
+comunicação} entre controlador, titulares e ANPD --- não decide, não
+executa, apenas intermedeia.
+\end{itemize}
+
+O art.\ 5º, IX define \textbf{agentes de tratamento} como \textbf{apenas o
+controlador e o operador} --- o encarregado \textbf{não é agente de
+tratamento}. É uma consequência direta do papel de cada um: quem
+\textbf{responde} perante a ANPD é quem decide ou executa; o encarregado é
+o telefone de contato, não o responsável pela decisão.
+\end{conceito}
+
+\begin{exemplo}[O papel muda conforme o tratamento, não é um rótulo fixo]
+Um ministério contrata uma estatal de TI para processar sua folha de
+pagamento. O ministério decidiu a finalidade (processar a folha) e os
+meios: é o \textbf{controlador}. A estatal executa segundo essas
+instruções, mesmo sendo dela o banco de dados, os servidores e a equipe: é
+a \textbf{operadora}.
+
+Agora a mesma estatal resolve, por conta própria, usar essa base para
+treinar um modelo interno de detecção de fraude. Nesse tratamento
+\textbf{novo}, foi ela quem decidiu a finalidade --- e, só para esse
+tratamento, ela \textbf{vira controladora}. O papel é definido \textbf{por
+tratamento}, não é um crachá permanente da empresa.
+\end{exemplo}
+
+\subsection{Bases legais: duas listas diferentes, arts.\ 7º e 11}
+
+\begin{conceito}[Todo tratamento precisa de base legal escolhida antes de tratar]
+Consentimento é \textbf{apenas uma} das bases legais disponíveis --- e a
+\textbf{mais frágil} de todas, porque o titular pode revogá-la a qualquer
+momento. A lei fixa duas listas separadas de bases legais, uma para cada
+categoria de dado:
+
+\begin{itemize}
+\item \textbf{Dado comum (art.\ 7º)}: dez hipóteses --- consentimento;
+cumprimento de obrigação legal ou regulatória; execução de políticas
+públicas; realização de estudos por órgão de pesquisa; execução de
+contrato; exercício regular de direitos; proteção da vida; tutela da
+saúde; \textbf{legítimo interesse}; e \textbf{proteção do crédito}.
+\item \textbf{Dado sensível (art.\ 11)}: lista \textbf{própria e menor} ---
+consentimento específico e destacado, ou, sem consentimento, sete
+hipóteses em que o tratamento seja \textbf{indispensável} (obrigação
+legal, políticas públicas, estudos por órgão de pesquisa, exercício
+regular de direitos, proteção da vida, tutela da saúde, e prevenção à
+fraude/segurança nos processos de identificação e autenticação).
+\end{itemize}
+
+O que \textbf{não} está na lista do art.\ 11 é justamente o ponto mais
+testado: \textbf{legítimo interesse} e \textbf{proteção do crédito}
+\textbf{não} autorizam o tratamento de dado sensível --- são bases
+exclusivas do dado comum, porque a lei reservou hipóteses mais restritas
+para o dado de maior risco.
+\end{conceito}
+
+\begin{exemplo}[Trocar o artigo troca a lista inteira de opções disponíveis]
+Guardar o CPF de um usuário para executar um contrato entra pelo art.\
+7º, V (execução de contrato). Guardar a \textbf{digital} do mesmo usuário
+para liberar uma catraca é dado \textbf{biométrico} --- portanto sensível
+--- e não adianta invocar legítimo interesse (não está na lista do art.\
+11); a base correta é a hipótese de prevenção à fraude/segurança nos
+processos de identificação. Trocar de um dado comum para um sensível
+troca inteiramente o conjunto de justificativas legais disponíveis.
+\end{exemplo}
+
+\subsection{Princípios (art.\ 6º): finalidade, adequação e necessidade}
+
+\begin{conceito}[Três princípios que soam sinônimos e não são]
+São dez princípios ao todo; três costumam ser confundidos entre si porque
+tratam de aspectos vizinhos do mesmo tratamento:
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9cm}@{}}
+\toprule
+\textbf{Princípio} & \textbf{O que exige} \\
+\midrule
+\textbf{Finalidade} & propósitos \textbf{legítimos, específicos e
+explícitos}, \textbf{informados ao titular}, sem uso posterior
+incompatível \\
+\textbf{Adequação} & \textbf{compatibilidade} do tratamento com as
+finalidades informadas, \textbf{conforme o contexto} \\
+\textbf{Necessidade} & tratamento \textbf{limitado ao mínimo}
+indispensável para atingir a finalidade \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A palavra-chave de cada um resolve a confusão: \textbf{finalidade} =
+"para quê, e o titular foi avisado"; \textbf{adequação} = "o que está
+sendo feito \textbf{combina} com o que foi avisado"; \textbf{necessidade}
+= "só o \textbf{mínimo}, nada além". Um tratamento pode ter finalidade bem
+informada, mas violar a adequação se o uso real não combinar com o que
+foi avisado (mesmo dado, contexto diferente do prometido); ou pode ser
+adequado ao contexto, mas violar a necessidade se coletar mais dado do que
+o estritamente exigido para aquele fim.
+\end{conceito}
+
+\subsection{Decisão automatizada e explicabilidade (art.\ 20)}
+
+\begin{conceito}[O direito à revisão e o dever de explicar]
+Quando um sistema decide \textbf{sozinho} sobre algo que afeta um
+titular (score de crédito, triagem de currículo, concessão de benefício),
+o art.\ 20 garante ao titular o direito de \textbf{solicitar a revisão} de
+decisões tomadas \textbf{unicamente} com base em tratamento automatizado
+que afetem seus interesses --- inclusive as que definem perfil pessoal,
+profissional, de consumo ou de crédito. O \textbf{controlador} deve
+fornecer, quando solicitado, informações \textbf{claras e adequadas} sobre
+os critérios e procedimentos usados na decisão, \textbf{respeitados os
+segredos comercial e industrial}.
+
+O mecanismo por trás da ressalva de segredo industrial: a lei equilibra
+dois interesses --- o direito do titular de entender por que foi
+decidido contra ele, e o interesse legítimo da empresa de não expor o
+funcionamento interno completo de seu sistema (o código-fonte, os pesos
+exatos de um modelo). O que se garante ao titular são os \textbf{fatores
+considerados} e o \textbf{procedimento seguido}, em linguagem
+compreensível --- não o mecanismo técnico interno linha a linha.
+\end{conceito}
+
+\begin{exemplo}[O que "explicabilidade" concretamente garante]
+Um sistema recusa automaticamente um pedido de benefício. O titular pode
+pedir revisão e pode saber \textbf{quais critérios} pesaram na decisão ---
+não o código-fonte nem os pesos do modelo (protegidos por segredo
+industrial), mas os fatores considerados e o procedimento seguido, de
+forma que um humano leigo consiga entender. Essa é exatamente a definição
+de \textbf{explicabilidade} de um sistema de IA: a propriedade de expressar
+os fatores importantes de uma decisão de maneira compreensível a humanos
+--- não é o mesmo que "o modelo é simples" nem "o humano tende a confiar
+na decisão" (isso seria viés de automação, um fenômeno diferente).
+\end{exemplo}
+
+\subsection{Segurança e boas práticas (Capítulo VII): a lei que vira requisito de sistema}
+
+\begin{conceito}[Os quatro deveres operacionais]
+Enquanto os capítulos anteriores da lei dizem \emph{o que} pode ser
+tratado e \emph{por quem}, o Capítulo VII diz \emph{como} --- é a parte
+que vira requisito técnico de projeto, não política de gaveta:
+
+\begin{itemize}
+\item \textbf{Segurança desde a concepção (art.\ 46)}: os agentes devem
+adotar medidas técnicas e administrativas de proteção, observadas
+\textbf{desde a fase de concepção} do produto/serviço até sua execução ---
+é o \textit{privacy by design} com força de lei: segurança é requisito de
+projeto desde o início, não uma etapa final adicionada depois de pronto.
+\item \textbf{Sigilo que sobrevive ao fim (art.\ 47)}: a obrigação de
+segurança alcança todos que intervêm em qualquer fase do tratamento,
+\textbf{mesmo depois} de ele terminar.
+\item \textbf{Comunicação de incidente (art.\ 48)}: o \textbf{controlador}
+deve comunicar \textbf{à ANPD e ao titular} incidente que possa acarretar
+\textbf{risco ou dano relevante}, em prazo razoável --- regulamentado hoje
+em \textbf{3 dias úteis} (Resolução CD/ANPD nº 15/2024), contados do
+conhecimento do incidente. O controlador deve ainda registrar
+\textbf{todos} os incidentes (inclusive os não comunicados) por, no
+mínimo, 5 anos.
+\item \textbf{Governança em privacidade (art.\ 50)}: controladores e
+operadores podem formular boas práticas e programa de governança,
+proporcional à estrutura, escala e sensibilidade dos dados tratados.
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Um vazamento e os três erros comuns de leitura]
+Um vazamento expõe e-mails e CPFs de mil titulares. Primeiro erro:
+achar que basta avisar a ANPD --- a lei exige avisar \textbf{também} o
+titular. Segundo erro: achar que só se comunica vazamento de dado
+\textbf{sensível} --- o critério é \textbf{risco ou dano relevante}, não a
+categoria específica do dado. Terceiro erro, o mais sutil: confundir o
+prazo da \textbf{lei} (que fala em "prazo razoável", sem número) com o
+prazo do \textbf{regulamento} da ANPD (que fixa 3 dias úteis) --- dizer
+que "a LGPD estabelece 72 horas" confunde a lei brasileira com o
+regulamento europeu (GDPR) e atribui à lei um número que só está no
+regulamento infralegal.
+\end{exemplo}
+
+\subsection{Sanções administrativas (art.\ 52): um regime, não uma tabela de multa}
+
+\begin{conceito}[Quem aplica, sob qual rito, com quais critérios]
+O art.\ 52 não é uma tabela de preços --- é um \textbf{regime} completo:
+define quem aplica (a \textbf{ANPD}, sobre os \textbf{agentes de
+tratamento}), sob que rito (\textbf{procedimento administrativo} com ampla
+defesa, aplicação \textbf{gradativa, isolada ou cumulativa} --- nunca
+sanção direta sem processo), com que critérios de dosagem (onze
+parâmetros: gravidade, boa-fé, vantagem auferida, condição econômica,
+reincidência, grau do dano, cooperação, mecanismos de mitigação,
+governança, medidas corretivas, proporcionalidade --- \textbf{nacionalidade
+do infrator não é um deles}).
+
+\textbf{A gradação}: as três sanções mais severas (suspensão parcial do
+banco de dados, suspensão da atividade, proibição parcial ou total) só
+podem ser aplicadas \textbf{depois} de já ter sido imposta, no mesmo caso,
+ao menos uma das sanções intermediárias (multa simples, multa diária,
+publicização, bloqueio ou eliminação) --- a \textbf{advertência sozinha
+não satisfaz} esse requisito de gradação. A lógica: a lei constrói uma
+escada de severidade, e não permite pular direto para o topo sem passar
+por um degrau intermediário primeiro.
+
+\textbf{Multa simples}: até \textbf{2\%} do faturamento no Brasil no
+\textbf{último exercício}, excluídos tributos, limitada a \textbf{R\$ 50
+milhões por infração}. \textbf{Órgão público não leva multa} --- aplicam-se
+apenas as sanções não pecuniárias (advertência, publicização, bloqueio,
+eliminação, suspensão, proibição). O \textbf{destino} da multa é o Fundo
+de Defesa de Direitos Difusos, \textbf{não} o titular lesado diretamente
+--- a reparação individual do titular corre por via \textbf{civil}
+separada, não pela sanção administrativa.
+\end{conceito}
+
+\begin{cuidado}[Duas confusões estruturais frequentes]
+Achar que o dinheiro da multa vai para quem sofreu o dano é misturar duas
+vias diferentes: a sanção administrativa financia um fundo
+\textbf{coletivo}; a reparação do titular específico vem de uma ação
+\textbf{civil} separada. E achar que "já ter sido advertido antes"
+habilita a ANPD a aplicar direto a suspensão de atividade ignora que a
+advertência \textbf{não conta} como uma das sanções que abrem caminho para
+as três mais severas --- é preciso uma sanção do grupo intermediário
+(multa, publicização, bloqueio, eliminação) primeiro.
+\end{cuidado}
+
+\subsection{ANPD e CNPD: dois órgãos com funções opostas}
+
+\begin{conceito}[Quem decide e quem só aconselha]
+\textbf{ANPD} é a autoridade: \textbf{fiscaliza, regulamenta e aplica
+sanção}. \textbf{CNPD} é \textbf{consultivo}: propõe diretrizes,
+elabora estudos, \textbf{sugere} ações à ANPD, dissemina conhecimento ---
+nenhum verbo do CNPD é verbo de decisão. Estruturalmente, o \textbf{CNPD
+integra a estrutura da ANPD} (não o contrário) --- é um conselho
+\textbf{dentro} da autoridade, não uma instância superior a ela.
+
+Não confundir com o \textbf{Conselho Diretor}: esse é o órgão máximo de
+direção da própria ANPD (cinco diretores, mandato de quatro anos) ---
+diferente do CNPD, que é o colegiado consultivo externo com representantes
+de governo, sociedade civil, academia e setor empresarial.
+
+A ANPD passou por uma trajetória institucional: nasceu como \textbf{órgão}
+da administração federal vinculado à Presidência da República (natureza
+declaradamente transitória), tornou-se \textbf{autarquia de natureza
+especial}, e depois passou a \textbf{Agência} Nacional de Proteção de
+Dados, vinculada ao Ministério da Justiça e Segurança Pública, com
+autonomia funcional, técnica, decisória, administrativa e financeira.
+Alternativas que a descrevam presa a um estágio anterior dessa trajetória
+(órgão da administração direta, vinculada à Presidência) descrevem um
+desenho já superado.
+\end{conceito}
+
+\section{Marco Civil da Internet (Lei 12.965/2014)}
+\label{sec:marco-civil-teoria}
+
+\subsection{Guarda de registros}
+
+\begin{conceito}[Dois prazos, dois tipos de provedor]
+\textbf{Registros de conexão}: guarda obrigatória por \textbf{1 ano} (dever
+do provedor de \textbf{conexão} --- quem dá acesso à Internet).
+\textbf{Registros de acesso a aplicações}: guarda por \textbf{6 meses}
+(dever do provedor de \textbf{aplicação} --- quem oferece o serviço/site
+específico). São obrigações \textbf{diferentes}, atribuídas a
+\textbf{papéis} diferentes na cadeia --- um mesmo incidente pode envolver
+os dois provedores, cada um com seu prazo próprio de guarda.
+\end{conceito}
+
+\subsection{Neutralidade de rede}
+
+\begin{conceito}[Tratar todo pacote de forma isonômica --- e as duas exceções]
+O art.\ 9º impõe ao responsável pela transmissão/comutação/roteamento o
+dever de tratar de forma \textbf{isonômica} qualquer pacote de dados, sem
+distinção por conteúdo, origem, destino, serviço, terminal ou aplicação.
+Na prática: o provedor não pode degradar, priorizar ou bloquear tráfego
+\textbf{por causa do que ele carrega} ou \textbf{de quem ele vem}. As
+únicas exceções (§1º) são requisitos técnicos \textbf{indispensáveis} à
+prestação adequada dos serviços, e priorização de serviços de
+\textbf{emergência} --- e mesmo essas exceções dependem de
+regulamentação, não são livre critério do provedor.
+
+A razão de existir essa regra: sem neutralidade, o provedor de acesso
+poderia favorecer certos serviços (os seus próprios, ou os de quem paga
+mais) em detrimento de outros, distorcendo a concorrência na Internet a
+partir do controle da infraestrutura de transporte --- que é, por
+natureza, um ponto de passagem obrigatório.
+\end{conceito}
+
+\begin{cuidado}[Discriminação "por eficiência" ainda é discriminação]
+Reduzir a velocidade de um \textbf{tipo específico} de tráfego (ex.:
+vídeo) no horário de pico, para "aliviar a rede", soa como uma medida
+técnica razoável --- mas é discriminação \textbf{por aplicação}, que não
+está entre as exceções do §1º (essas cobrem requisito técnico
+\textbf{geral} de operação da rede, não a escolha de penalizar um tipo de
+conteúdo específico). O teste é sempre: a medida distingue pacotes
+\textbf{pelo conteúdo/origem/aplicação}, ou é uma exigência técnica que
+se aplicaria igualmente a qualquer tráfego?
+\end{cuidado}
+
+\subsection{Sanções do art.\ 12}
+
+\begin{conceito}[Quatro sanções, aplicáveis isolada ou cumulativamente]
+Advertência (com prazo para correção); \textbf{multa de até 10\%} do
+faturamento do grupo econômico \textbf{no Brasil}, no \textbf{último
+exercício}, excluídos tributos --- \textbf{sem} teto nominal fixo (ao
+contrário da LGPD); suspensão temporária das atividades; proibição do
+exercício das atividades. Para empresa estrangeira, a filial/sucursal
+situada no país responde \textbf{solidariamente} pela multa --- não há
+brecha para empresa estrangeira operar sem responsabilidade só por não ter
+sede formal no Brasil.
+\end{conceito}
+
+\begin{cuidado}[Não troque o percentual entre Marco Civil e LGPD]
+São regimes de multa \textbf{estruturalmente diferentes}: Marco Civil ---
+até \textbf{10\%} do faturamento, \textbf{sem} teto nominal em reais; LGPD
+--- até \textbf{2\%}, com teto de \textbf{R\$ 50 milhões por infração}.
+Guardar só um dos dois números e aplicá-lo à lei errada é o erro mais
+previsível dessa seção --- decore o par completo (percentual + presença
+ou ausência de teto), não o número isolado.
+\end{cuidado}
+
+\subsection{Art.\ 19: responsabilidade dos provedores por conteúdo de terceiros}
+
+\begin{conceito}[O problema que o art.\ 19 resolve]
+Quando um usuário publica conteúdo ofensivo/ilegal numa plataforma
+(post, comentário, vídeo), até que ponto a \textbf{plataforma} (não o
+autor do conteúdo) responde civilmente por isso? É o problema que o art.\
+19 do Marco Civil endereça --- e a resposta \textbf{mudou} depois de uma
+decisão do STF de 26/06/2025 (Temas 987 e 533, repercussão geral, 8 votos
+a 3), que declarou a redação original do artigo parcial e
+progressivamente inconstitucional.
+\end{conceito}
+
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Antes (redação original)} & \textbf{Agora (pós-STF)} \\
+\midrule
+Regra geral & provedor só responde se descumprir \textbf{ordem judicial
+específica} de remoção & \textbf{notice-and-takedown}: notificação
+\textbf{extrajudicial} já pode responsabilizar o provedor \\
+Crimes contra a honra (calúnia, injúria, difamação) & exigia ordem
+judicial & \textbf{continua exigindo} ordem judicial --- única categoria
+que preserva a regra antiga \\
+Conteúdo de risco grave (crime contra o Estado, terrorismo, incitação ao
+racismo, risco à vida) & tratamento igual ao geral & exige atuação
+\textbf{proativa} do provedor, sem sequer esperar notificação \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{conceito}[Por que a mudança faz sentido como escala de gravidade]
+A nova estrutura não é uma regra única aplicada a tudo --- é uma
+\textbf{escala}, proporcional à gravidade do conteúdo e à urgência de agir:
+para a maioria dos casos, uma notificação já move o dever de agir
+(equilíbrio entre proteger a vítima e não impor censura prévia
+generalizada); para os crimes contra a honra, mantém-se a exigência de
+ordem judicial (porque a fronteira entre crítica legítima e ofensa é mais
+sujeita a interpretação, exigindo um juiz para decidir); para risco grave
+à vida ou à ordem democrática, o provedor não pode esperar nem
+notificação --- o dever de cuidado exige ação proativa, dada a gravidade
+do dano potencial de esperar.
+\end{conceito}
+
+\begin{cuidado}[Nem "nada mudou" nem "tudo mudou" --- é uma reforma proporcional]
+Dois erros simétricos de leitura: (1) aplicar a redação \textbf{antiga}
+como se ainda fosse a regra geral (válida só até 25/06/2025); (2) achar
+que o STF \textbf{extinguiu totalmente} a exigência de ordem judicial ---
+falso, ela permanece para os crimes contra a honra. E o novo regime de
+notificação não é "censura prévia" --- é reação a uma notificação sobre
+conteúdo \textbf{já publicado}, não filtragem antes da publicação. A
+mudança veio de uma \textbf{decisão do STF} em controle de
+constitucionalidade, válida até que o Congresso legisle especificamente
+sobre o tema --- não veio de uma lei nova aprovada pelo Legislativo.
+\end{cuidado}
+
+\section{LAI --- Lei de Acesso à Informação (Lei 12.527/2011)}
+
+\begin{conceito}[Publicidade é a regra; sigilo é a exceção que precisa de prazo]
+O princípio estruturante da LAI é a inversão da lógica antiga: informação
+pública é, por padrão, \textbf{acessível} --- sigilo é a
+\textbf{exceção}, e toda exceção precisa de justificativa e de
+\textbf{prazo máximo}, nunca sigilo indefinido:
+
+\begin{center}
+\begin{tabular}{@{}p{4cm}p{6cm}@{}}
+\toprule
+\textbf{Classificação} & \textbf{Prazo máximo de restrição} \\
+\midrule
+Reservada & 5 anos \\
+Secreta & 15 anos \\
+Ultrassecreta & 25 anos (prorrogável \textbf{uma única vez}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os prazos contam da \textbf{data de produção} da informação. Informação
+sobre \textbf{violação de direitos humanos} por agente público \textbf{não
+pode} ser objeto de restrição --- é uma exceção à exceção, porque o
+interesse público em apurar violação de direitos humanos supera o
+interesse do sigilo.
+\end{conceito}
+
+\begin{conceito}[A classificação não é definitiva nem discricionária]
+Três mecanismos garantem que o sigilo não vire permanente por inércia:
+\begin{itemize}
+\item \textbf{Findo o prazo}, a informação se torna \textbf{automaticamente}
+pública --- não é preciso procedimento próprio nem decisão específica para
+liberar; o decurso do tempo já produz o efeito por si só.
+\item A lei permite tanto \textbf{desclassificar} quanto \textbf{reduzir o
+prazo} originalmente fixado, a qualquer momento --- a reavaliação cabe à
+autoridade classificadora ou a autoridade hierarquicamente superior, de
+ofício ou mediante provocação.
+\item A decisão de classificar é \textbf{vinculada} a balizas legais
+(grau, prazo máximo, competência de quem pode classificar em cada grau)
+--- não é escolha livre e discricionária do agente público.
+\end{itemize}
+\end{conceito}
+
+\begin{conceito}[Transparência ativa x passiva, e os decretos regulamentadores]
+\textbf{Transparência ativa}: o órgão publica a informação \textbf{de
+ofício} (ex.: portal de transparência), sem que ninguém precise pedir.
+\textbf{Transparência passiva}: o cidadão solicita informação
+especificamente, via e-SIC. \textbf{Decreto 7.724/2012}: regulamenta os
+procedimentos de acesso no Executivo federal (e-SIC, prazo de resposta de
+\textbf{20 dias}, prorrogável por mais \textbf{10}, recursos,
+competências de classificação). \textbf{Decreto 7.845/2012}: regula
+procedimentos de \textbf{credenciamento de segurança} e o tratamento de
+informação já classificada (custódia, acesso, controle).
+\end{conceito}
+
+\section{Delitos informáticos: invasão de dispositivo (art.\ 154-A do CP)}
+
+\begin{conceito}[O que caracteriza o crime, e o que não é elementar do tipo]
+A Lei 12.737/2012 tipificou a \textbf{invasão de dispositivo informático}
+--- invadir dispositivo alheio, conectado ou não à rede, mediante
+violação indevida de mecanismo de segurança, para obter, adulterar ou
+destruir dados/informações, ou instalar vulnerabilidade. O ponto que mais
+gera confusão: a conexão à rede \textbf{não é elementar do tipo} --- o
+crime se configura mesmo num dispositivo \textbf{offline}, desde que haja
+violação indevida de mecanismo de segurança. A pena aumenta conforme o
+sujeito passivo (autoridades específicas) e o prejuízo causado.
+\end{conceito}
+
+\begin{cuidado}[Não exigir conexão à rede é o ponto central do tipo]
+Uma descrição do crime que exija "o dispositivo estar conectado à
+Internet no momento da invasão" está errada --- o bem jurídico protegido é
+a \textbf{segurança do dispositivo em si} (a violação do mecanismo de
+proteção), não a segurança da comunicação em rede. Um pendrive ou um
+notebook desconectado, invadido fisicamente com violação de mecanismo de
+segurança, já configura o tipo.
+\end{cuidado}
+
+\section{Roteiro de revisão do capítulo}
+
+\begin{regrapratica}[Os pares e números que este capítulo mais confunde]
+\textbf{LGPD}: controlador (decide) $\times$ operador (executa) $\times$
+encarregado (não é agente); dez bases no art.\ 7º, sete indispensáveis no
+art.\ 11 (legítimo interesse e proteção do crédito \textbf{não} servem
+para dado sensível); multa até \textbf{2\%}, teto \textbf{R\$ 50 milhões};
+ANPD (decide e sanciona) $\times$ CNPD (só aconselha, integra a estrutura
+da ANPD). \textbf{Marco Civil}: guarda de conexão \textbf{1 ano} $\times$
+aplicações \textbf{6 meses}; multa até \textbf{10\%}, sem teto nominal;
+art.\ 19 pós-STF --- notificação extrajudicial basta, \textbf{exceto}
+crimes contra a honra (ordem judicial) e conteúdo de risco grave (dever
+proativo). \textbf{LAI}: reservada \textbf{5}, secreta \textbf{15},
+ultrassecreta \textbf{25} anos (só esta prorroga, uma vez); sigilo é
+exceção, desclassificação automática ao fim do prazo. \textbf{Art.\
+154-A}: invasão independe de conexão à rede.
+\end{regrapratica}

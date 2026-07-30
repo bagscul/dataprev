@@ -81,6 +81,33 @@ tem de descer para as outras três**, senão o `./valida.py` acusa drift — e o
 Lucas decora a versão errada. Ao terminar, recompile
 (`cd apostila && latexmk -pdf main.tex`) e rode `./valida.py`.
 
+## Mexer no livro-texto (`teoria/`)
+
+`teoria/` é um livro-texto complementar à `apostila/`, mesma identidade
+visual (compartilha o espírito de `apostila/preambulo.tex`, mas com
+`teoria/preambulo.tex` próprio), conteúdo de aprendizado profundo em vez de
+revisão rápida — cada conceito ganha definição, mecanismo/porquê e exemplo
+resolvido, sem as caixas de estratégia de prova (pegadinha/comosair/jacaiu/peso)
+da apostila. Ele reaproveita fatos já auditados na apostila (não é um
+processo de verificação novo) e troca só a didática.
+
+- Cada capítulo usa `\label{cap:<slug>-teoria}` e seções reaproveitadas entre
+  capítulos usam `\label{sec:<nome>-teoria}` — mantenha esse sufixo para não
+  colidir com os labels da apostila (que não o usam).
+- Caixas próprias: `conceito` (definição + mecanismo), `cuidado` (confusão
+  conceitual comum — sem framing de "banca"), `regrapratica` (regra
+  prática/mnemônico), `exemplo` (roxo, exemplo resolvido).
+- **A numeração dos capítulos bate com a apostila de propósito**
+  (`teoria/main.tex` fixa `\setcounter{chapter}{2}` antes do primeiro
+  `\include`, porque a apostila reserva os capítulos 1–2 para
+  como-usar/técnica-fgv, ausentes no `teoria/`). Se adicionar ou remover um
+  capítulo em qualquer um dos dois livros, confira se a numeração ainda bate
+  — é o que `./apostila.py --teoria <bloco>` usa para abrir a página certa.
+- Não toque a `apostila/` ao editar `teoria/` — são livros irmãos, não uma
+  substituição um do outro. Ao terminar, recompile
+  (`cd teoria && latexmk -pdf main.tex`) e confira que não sobrou overfull/
+  underfull nem referência quebrada no `main.log`.
+
 ## Caderno de erros — registrar sempre
 
 Depois de explicar, **sempre** proponha (ou já edite direto, se o bloco for

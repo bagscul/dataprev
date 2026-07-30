@@ -1,0 +1,532 @@
+\chapter{Arquitetura de Software}
+\label{cap:arquitetura-teoria}
+
+\begin{edital}
+Arquitetura de software; interoperabilidade; arquitetura e linguagem
+orientada a serviços; web services; mensageria; API, Swagger; arquitetura
+orientada a objetos; aplicações para ambiente web; servidor de aplicações x
+servidor web; internet/extranet/intranet/portal; arquitetura hexagonal;
+microsserviços (orquestração e API gateway); containers; transações
+distribuídas.
+\end{edital}
+
+\section{Servidor web x servidor de aplicação}
+
+\begin{conceito}[Onde a requisição HTTP para, e onde a lógica de negócio roda]
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Servidor web} & \textbf{Servidor de aplicação} \\
+\midrule
+Função & atende HTTP, serve conteúdo estático/dinâmico & executa
+\textbf{lógica de negócio}, integra com banco de dados \\
+Exemplos & Apache, NGINX & JBoss/WildFly, WebLogic \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No mundo Java a distinção é literal, não só uma divisão de responsabilidade
+conceitual: o servidor de aplicação implementa a especificação
+\textbf{Java EE/Jakarta EE completa} --- ele traz o \textbf{container web}
+(que processa Servlet/JSP, a mesma coisa que um servidor web faz)
+\textbf{e, além disso}, o \textbf{container EJB} para os componentes de
+negócio, mais transações distribuídas, JMS (mensageria) e injeção de
+dependência. O Tomcat, por causa disso, é um caso interessante: ele é
+servidor web \textbf{mais} container web, mas \textbf{não} é um servidor de
+aplicação completo, porque não tem o container EJB.
+\end{conceito}
+
+\begin{cuidado}
+Servidor web \textbf{não} processa lógica de negócio --- ele recebe a
+requisição HTTP e serve conteúdo; quem executa a regra de negócio é o
+servidor de aplicação. Servidor de aplicação não é "sempre mais leve"
+(é o oposto: carrega containers a mais), não "dispensa a JVM" (roda sobre
+ela) e não "deixa de suportar HTTP" (suporta, porque contém o próprio
+container web dentro de si).
+\end{cuidado}
+
+\section{Estilos de arquitetura: uma sequência histórica}
+
+\begin{conceito}[Cada estilo nasceu resolvendo a dor do anterior]
+Os estilos de arquitetura não são uma lista de opções paralelas e
+equivalentes --- eles formam uma \textbf{sequência histórica}, e entender
+por que cada um surgiu é o que permite responder a uma questão de cenário
+("qual estilo resolve esta dor"), em vez de decorar definições soltas.
+
+O \textbf{monólito} incomodava porque uma equipe travava a outra: subir a
+correção de uma única tela obrigava a reimplantar o sistema inteiro. A
+\textbf{SOA} respondeu quebrando o sistema em \textbf{serviços} com
+contrato explícito e baixo acoplamento --- mas concentrou a inteligência de
+integração num \textbf{barramento} central (o ESB), e esse barramento
+virou o novo gargalo e ponto único de falha. Os \textbf{microsserviços}
+responderam à SOA invertendo a filosofia: em vez de um barramento
+inteligente com canais burros, a ideia virou \textbf{canais burros e
+serviços espertos} --- cada serviço decide sozinho, sem depender de um
+intermediário central pesado.
+
+\begin{itemize}
+\item \textbf{Monolítica}: tudo num artefato único, implantado junto.
+Simples de começar; acopla e dificulta escalar partes isoladamente.
+\item \textbf{Cliente-servidor, N camadas, P2P, barramento de mensagens}:
+formas intermediárias de distribuir responsabilidade entre nós.
+\item \textbf{SOA (orientada a serviços)}: serviços reutilizáveis, contrato
+explícito, baixo acoplamento, interoperabilidade entre sistemas
+heterogêneos. Web services são a tecnologia comum de implementação. O
+barramento típico é o \textbf{ESB (Enterprise Service Bus)}: o
+intermediário que \textbf{roteia}, \textbf{transforma} (converte
+formato/protocolo entre sistemas que não se falam nativamente) e
+\textbf{orquestra} as mensagens entre serviços.
+\item \textbf{Microsserviços}: serviços pequenos, autônomos,
+\textbf{implantáveis independentemente}, cada um com \textbf{seu próprio
+banco de dados} (não compartilham base --- isso é o que reduz o
+acoplamento). Comunicação leve, tipicamente REST ou mensageria.
+\item \textbf{Arquitetura hexagonal (\textit{Ports \& Adapters})}: separa a
+\textbf{lógica de negócio} do mundo externo através de \textbf{portas}
+(interfaces que o núcleo define) e \textbf{adaptadores} (implementações
+concretas dessas portas) --- permite trocar UI, banco de dados ou serviço
+externo sem tocar no núcleo de negócio.
+\end{itemize}
+\end{conceito}
+
+\begin{conceito}[O preço dos microsserviços --- por que nem sempre valem a pena]
+Todo ganho de microsserviço vem com uma conta correspondente:
+
+\begin{center}
+\begin{tabular}{@{}p{5.4cm}p{7cm}@{}}
+\toprule
+\textbf{Ganho} & \textbf{Preço correspondente} \\
+\midrule
+implantar um serviço sem tocar nos outros & precisa de automação de
+\textit{deploy} e observabilidade distribuída --- sem isso, achar a causa
+de um erro fica pior do que num monólito \\
+escalar só a parte que aperta & a chamada entre serviços virou
+\textbf{chamada de rede}: pode falhar, tem latência, exige repetição e
+\textit{timeout} \\
+cada serviço com seu próprio banco & acabou o \texttt{JOIN} entre eles, e
+acabou a transação ACID atravessando os dois --- daí a necessidade de
+padrões como Saga e a aceitação de consistência eventual (ver
+Seção~\ref{sec:transacoes-dist}) \\
+equipes autônomas por serviço & só compensa se as equipes \textbf{forem}
+realmente várias; para um time pequeno, é custo sem benefício
+correspondente \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A regra prática: microsserviço resolve um problema \textbf{organizacional}
+(várias equipes que precisam trabalhar em paralelo sem se travar) e de
+\textbf{escala independente} (um componente específico recebe muito mais
+carga que os outros). Se o cenário descreve sistema pequeno, equipe única
+ou forte necessidade de consistência transacional entre módulos, um
+monólito (eventualmente modular internamente) costuma ser a resposta mais
+apropriada.
+\end{conceito}
+
+\begin{cuidado}
+Microsserviços \textbf{não} compartilham o mesmo banco de dados ---
+compartilhar aumentaria o acoplamento, contrariando o princípio central do
+estilo. Baixo acoplamento significa que uma mudança em um serviço
+\textbf{não} obriga mudança em outro. Um item que descreve "o barramento
+que intermedeia, roteia e transforma mensagens entre serviços" está
+descrevendo um \textbf{ESB} --- não confundir com ETL (move dados para um
+\textit{data warehouse}), CDN (entrega conteúdo estático) ou DNS (resolve
+nomes).
+\end{cuidado}
+
+\subsection{Camadas lógicas (\textit{layers}) x camadas físicas (\textit{tiers})}
+
+\begin{conceito}[Duas ideias que o português funde numa palavra só]
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{8.6cm}@{}}
+\toprule
+\textbf{Layer (lógica)} & como as \textbf{responsabilidades} do software
+estão organizadas: apresentação, negócio, persistência \\
+\textbf{Tier (física)} & em \textbf{quantos nós} o software está implantado:
+máquinas, processos, servidores diferentes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uma coisa não obriga a outra. Uma aplicação pode ter \textbf{três layers e
+um único tier}: as três responsabilidades bem separadas no código-fonte
+(classes de apresentação, de negócio, de persistência, cada uma no seu
+lugar), mas tudo rodando dentro do mesmo processo, na mesma máquina --- e a
+aplicação continua sendo, do ponto de vista de implantação,
+\textbf{monolítica}. O inverso também existe: um cliente-servidor com dois
+tiers físicos pode manter apresentação e negócio bem separados
+logicamente dentro de cada tier.
+\end{conceito}
+
+\begin{cuidado}
+Não inverta as definições (layer é organização lógica de responsabilidade;
+tier é distribuição física em nós). E desconfie de "três camadas lógicas
+são \textbf{necessariamente} implantadas em três nós físicos" --- não são;
+o MVC, por exemplo, é um padrão de organização \textbf{lógica}
+(apresentação/modelo/controle), não um padrão de implantação em tiers.
+\end{cuidado}
+
+\section{Integração: REST, SOAP e web services}
+
+\begin{conceito}[O que REST é de verdade --- recurso, representação, verbo]
+REST não é "API que devolve JSON" --- é um \textbf{estilo arquitetural}
+com uma ideia central: tudo que interessa é um \textbf{recurso},
+identificado por uma URI, e o cliente nunca manipula o recurso diretamente
+--- ele troca \textbf{representações} dele (JSON, XML, HTML). Dessa ideia
+central decorrem as restrições do estilo:
+
+\begin{itemize}
+\item \textbf{Interface uniforme}: o conjunto de verbos é fixo e igual para
+todo recurso --- \texttt{GET} lê, \texttt{POST} cria, \texttt{PUT}
+substitui por inteiro, \texttt{PATCH} altera em parte, \texttt{DELETE}
+remove. Por isso a URI deve nomear uma \textbf{coisa}, não uma
+\textbf{ação}: \texttt{/pedidos/42} está de acordo com o estilo;
+\texttt{/buscarPedido?id=42} contraria, porque põe o verbo na URI quando
+ele já deveria estar só no método HTTP.
+\item \textbf{Sem estado (\textit{stateless})}: cada requisição carrega
+tudo o que é necessário para ser entendida sozinha, sem depender de uma
+sessão guardada no servidor. O ganho não é ideológico: se o servidor não
+guarda sessão, \textbf{qualquer} instância do servidor consegue atender
+\textbf{qualquer} requisição --- e é exatamente isso que permite colocar um
+balanceador de carga na frente e escalar horizontalmente sem precisar de
+"afinidade de sessão" (a mesma requisição sempre indo para a mesma
+instância).
+\item \textbf{Cliente-servidor, cache, sistema em camadas}: o cliente não
+precisa saber se está falando com o servidor final ou com um
+intermediário --- por isso um proxy, um gateway ou uma CDN cabem no
+caminho da requisição sem quebrar nada do lado do cliente.
+\end{itemize}
+
+A corrente de raciocínio que sustenta "por que REST escala bem": ausência
+de estado no servidor $\to$ qualquer instância pode atender qualquer
+requisição $\to$ escala horizontal sem restrição de afinidade.
+\end{conceito}
+
+\begin{conceito}[REST x SOAP]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{REST} & \textbf{SOAP} \\
+\midrule
+Natureza & estilo arquitetural, sobre HTTP & protocolo baseado em XML \\
+Formato & JSON (comum), leve & XML (envelope), verboso \\
+Contrato & OpenAPI/Swagger & WSDL \\
+Estado & \textbf{stateless} por definição & pode incorporar padrões WS-* \\
+Vantagem & leve, escala, independe de plataforma & contratos formais,
+padrões de segurança (WS-Security) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{cuidado}
+\textbf{Cacheável} é uma restrição \textbf{distinta} de \textit{stateless}
+--- a resposta se declara cacheável ou não, e quem a guarda pode ser o
+\textbf{cliente} ou um \textbf{intermediário} (proxy, gateway, CDN). Cache
+no caminho é \textbf{permitido} pelo REST, é o que deixa uma CDN servir
+conteúdo estático de um nó próximo do usuário. O que \textbf{não} pode
+ficar guardado no servidor é o \textbf{estado da sessão}, não o cache da
+resposta --- não confunda os dois. \textbf{PUT} substitui o recurso
+\textbf{inteiro}; \textbf{PATCH} altera só uma \textbf{parte} dele. Dizer
+que "SOAP não tem contrato formal" contradiz o próprio SOAP, que usa WSDL
+como contrato.
+\end{cuidado}
+
+\begin{conceito}[UDDI, WSDL, SOAP: três papéis, não um sinônimo do outro]
+O trio clássico dos web services WS-*: \textbf{SOAP} é o formato de
+\textbf{mensagem} trocada; \textbf{WSDL} é o \textbf{contrato} (descreve
+o que o serviço oferece, quais operações, quais parâmetros); \textbf{UDDI}
+é o diretório (legado) para \textbf{descoberta/registro} de web services
+--- onde procurar quem oferece o quê. \textbf{Swagger/OpenAPI} cumpre, no
+mundo REST, o papel que o WSDL cumpre no mundo SOAP: \textbf{OpenAPI} é a
+especificação padrão para documentar/contratar APIs REST (endpoints,
+parâmetros, respostas); \textbf{Swagger} é o conjunto de ferramentas
+(Swagger UI, editor, geração de código) construído em cima dela.
+\end{conceito}
+
+\subsection{Mensageria: comunicação assíncrona}
+
+\begin{conceito}[Desacopla quem envia de quem processa]
+Numa chamada REST síncrona, quem envia \textbf{espera} a resposta. Na
+mensageria, quem produz a mensagem \textbf{não espera} quem a consome ---
+os dois lados só compartilham um intermediário, o \textbf{broker}
+(RabbitMQ, Kafka).
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{4.6cm}p{3cm}@{}}
+\toprule
+\textbf{Modelo} & \textbf{Como funciona} & \textbf{Exemplo} \\
+\midrule
+Fila (\textit{queue}) & mensagem consumida por \textbf{um} consumidor
+(\textit{point-to-point}) & RabbitMQ, SQS \\
+\textit{Publish/Subscribe} (tópico) & mensagem entregue a \textbf{vários}
+assinantes ao mesmo tempo & Kafka, SNS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Apache Kafka} é uma plataforma de \textbf{\textit{streaming} de
+eventos}: produtores publicam em \textbf{tópicos} (particionados para
+paralelismo), consumidores leem organizados em \textbf{grupos}, e a
+plataforma guarda o \textbf{log de eventos} (o que permite reprocessar
+mensagens antigas, diferente de uma fila tradicional que descarta a
+mensagem ao ser consumida).
+
+Benefícios da mensageria: \textbf{desacoplamento} (produtor e consumidor
+não precisam estar disponíveis ao mesmo tempo), \textbf{absorção de picos}
+(a fila funciona como \textit{buffer} quando o consumidor não acompanha o
+ritmo do produtor), \textbf{resiliência} (se o consumidor cair, a mensagem
+espera na fila). Casa naturalmente com \textbf{microsserviços} e com os
+padrões \textbf{Saga} (Seção~\ref{sec:transacoes-dist}) e
+\textbf{Event Sourcing} (guardar o histórico de eventos como fonte da
+verdade, em vez de só o estado final).
+\end{conceito}
+
+\begin{cuidado}
+Fila entrega para \textbf{um} consumidor; tópico/\textit{pub-sub} entrega
+para \textbf{vários} --- não inverta os dois. Mensageria é sempre
+\textbf{assíncrona}, ao contrário de uma chamada REST tradicional, que é
+síncrona.
+\end{cuidado}
+
+\section{Ambientes de rede corporativa}
+
+\begin{conceito}
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9cm}@{}}
+\toprule
+\textbf{Termo} & \textbf{Alcance} \\
+\midrule
+Internet & rede pública global \\
+Intranet & rede interna da organização (acesso só de funcionários) \\
+Extranet & acesso controlado estendido a parceiros/clientes externos
+autorizados --- o meio-termo entre intranet e internet \\
+Portal & ponto único que centraliza acesso a informação/serviços diversos \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\section{Nuvem e escalabilidade}
+\label{sec:nuvem-teoria}
+
+\begin{conceito}[IaaS, PaaS, SaaS --- onde passa a linha de responsabilidade]
+Os três modelos respondem à mesma pergunta: \textbf{até onde vai o
+provedor, e onde começa a sua responsabilidade}. A pilha completa de uma
+aplicação é sempre a mesma --- rede, armazenamento, servidores,
+virtualização, sistema operacional, \textit{middleware}, tempo de
+execução, dados, aplicação --- e cada modelo apenas move a linha de corte
+mais para cima na pilha.
+
+\begin{center}
+\begin{tabular}{@{}p{2cm}p{4.6cm}p{5.4cm}@{}}
+\toprule
+& \textbf{Você cuida de} & \textbf{Exemplo típico} \\
+\midrule
+\textbf{IaaS} & sistema operacional para cima: \textit{patch}, tempo de
+execução, aplicação, dados & máquina virtual alugada \\
+\textbf{PaaS} & aplicação e dados; o resto é responsabilidade do provedor
+& plataforma que recebe seu código-fonte e o executa \\
+\textbf{SaaS} & só os \textbf{dados} e a configuração de uso & software
+pronto, acessado pelo navegador \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Duas consequências importantes. Primeira: \textbf{quanto mais "as a
+Service"}, \textbf{menos controle} você tem --- não é só menos trabalho
+operacional, é também menos liberdade para customizar a infraestrutura
+subjacente. Segunda, a \textbf{responsabilidade compartilhada em
+segurança}: mesmo em SaaS, \textbf{o dado continua sendo seu} --- o
+provedor responde pela segurança \textit{da} nuvem (a infraestrutura em
+si), e o cliente responde pela segurança \textit{na} nuvem (quem tem
+acesso, como o dado é classificado, se a conta usa segundo fator de
+autenticação). A afirmação de que SaaS "transfere integralmente a
+responsabilidade pelos dados ao provedor" é falsa.
+\end{conceito}
+
+\begin{conceito}[Escalabilidade horizontal x vertical]
+\textbf{Escalabilidade vertical (\textit{scale up})}: adicionar recursos à
+\textbf{instância existente} (mais CPU, mais RAM na mesma máquina) ---
+tem um teto físico e costuma exigir reinício.
+\textbf{Escalabilidade horizontal (\textit{scale out})}: \textbf{adicionar
+mais instâncias/nós} rodando em paralelo --- teoricamente sem teto, mas
+exige que a aplicação seja capaz de distribuir carga entre instâncias (o
+que REST \textit{stateless} viabiliza diretamente).
+
+\textbf{Elasticidade}: ajustar a capacidade \textbf{automaticamente}
+conforme a demanda sobe e desce, sem intervenção manual. \textbf{Cloud
+bursting}: uma aplicação que roda normalmente em infraestrutura própria
+"estoura" para a nuvem pública só nos picos de demanda, voltando ao normal
+depois.
+\end{conceito}
+
+\begin{conceito}[Serverless / FaaS]
+"Sem servidor" é um nome enganoso: \textbf{existe} servidor, só que é o
+\textbf{provedor} quem o gerencia, não o cliente. O código é publicado como
+uma \textbf{função} e o provedor a executa em resposta a \textbf{eventos}
+(uma requisição HTTP, uma mensagem numa fila, um arquivo novo num
+\textit{bucket}).
+
+Características cobradas em prova: escala \textbf{de zero} até muitas
+execuções simultâneas conforme os eventos chegam; \textbf{cobrança pelo
+tempo e pelos recursos efetivamente consumidos} durante a execução (não
+por instância ficando parada); execução \textbf{sem estado} entre uma
+invocação e a próxima (o estado precisa ir para um armazenamento externo,
+como um banco); \textbf{\textit{cold start}} --- a latência maior na
+primeira invocação depois de um período ocioso, porque o ambiente de
+execução precisa ser inicializado; e um \textbf{limite de tempo por
+execução}, que desaconselha serverless para processamento longo e
+contínuo.
+\end{conceito}
+
+\begin{exemplo}[Balanceador de carga x CDN --- gargalos diferentes]
+Um site de e-commerce está lento para \textbf{todos} os usuários porque as
+poucas instâncias da aplicação estão sobrecarregadas de processamento
+$\to$ a solução é um \textbf{balanceador de carga}, que reparte as
+requisições entre mais instâncias. O mesmo site está rápido para usuários
+no Brasil, mas lento para usuários na Europa, ao carregar imagens e
+arquivos estáticos $\to$ a solução é uma \textbf{CDN}, que replica esse
+conteúdo estático em pontos de presença geograficamente distribuídos e o
+entrega do nó mais próximo do usuário. Os dois atacam gargalos diferentes
+(processamento x latência geográfica de conteúdo estático) e por isso se
+somam na prática, em vez de serem alternativas mutuamente exclusivas.
+\end{exemplo}
+
+\begin{cuidado}
+"Adicionar recursos à instância" é sempre \textbf{vertical}, nunca
+horizontal. Em serverless: "não há servidor, o código roda no dispositivo
+que dispara o evento" é falso (há servidor, do lado do provedor); "o
+estado da execução anterior permanece disponível" é falso (é sem estado
+entre invocações); "a latência da primeira invocação é igual à das
+demais" ignora o \textit{cold start}; "remove o limite de tempo por
+execução" é falso --- o limite existe e é justamente o que desaconselha
+processamento longo em FaaS.
+\end{cuidado}
+
+\subsection{Containers e virtualização}
+
+\begin{conceito}
+\textbf{Container (Docker) x máquina virtual}: container compartilha o
+\textbf{kernel} do sistema operacional hospedeiro (por isso é leve e sobe
+rápido); máquina virtual tem um \textbf{sistema operacional convidado
+completo}, rodando sobre um \textbf{hipervisor} (isola mais, mas pesa mais
+e sobe mais devagar). \textbf{Kubernetes} orquestra containers em escala
+(agenda onde cada container roda, reinicia os que caem, distribui carga
+entre eles).
+
+\textbf{Hipervisor Tipo 1} (\textit{bare-metal}, roda diretamente sobre o
+hardware, sem sistema operacional hospedeiro no meio: ESXi, Hyper-V, KVM)
+x \textbf{Tipo 2} (\textit{hosted}, roda como um programa em cima de um
+sistema operacional já instalado: VirtualBox, VMware Workstation).
+
+\textbf{Virtualização total} (o sistema operacional convidado não sabe que
+está virtualizado, roda sem modificação) x \textbf{paravirtualização} (o
+sistema operacional convidado é modificado para cooperar diretamente com o
+hipervisor via \textit{hypercalls}, o que é mais rápido por evitar
+simulação completa de hardware).
+\end{conceito}
+
+\begin{cuidado}
+Container \textbf{não} é sinônimo de VM --- a diferença central é
+compartilhar o kernel (container) versus ter sistema operacional próprio
+completo (VM).
+\end{cuidado}
+
+\section{Transações distribuídas}
+\label{sec:transacoes-dist}
+
+\begin{conceito}[O problema nasce quando cada serviço ganha o próprio banco]
+Dentro de um único SGBD, o ACID (Capítulo \ref{cap:banco-dados-teoria}) é
+"de graça": existe um só log de transações, um só gerenciador de
+bloqueios, e ele decide sozinho se a transação efetiva ou desfaz.
+Distribuído entre vários bancos (um por microsserviço), não há árbitro
+único --- "debitar no serviço de contas e reservar no serviço de estoque"
+são \textbf{duas} transações, em \textbf{dois} bancos diferentes, ligadas
+por uma rede que pode falhar no meio do caminho. Não existe uma operação
+que efetive as duas ao mesmo tempo de forma atômica; o que existe são
+\textbf{protocolos que tentam coordenar} isso, cada um pagando um preço
+diferente.
+
+\begin{itemize}
+\item \textbf{2PC (\textit{Two-Phase Commit})}: um coordenador central
+pergunta a todos os participantes se estão prontos para efetivar; só faz o
+\textit{commit} se \textbf{todos} confirmarem (unanimidade). É
+\textbf{bloqueante}: se o coordenador cair no meio do processo, os
+participantes ficam travados esperando, sem saber se devem efetivar ou
+desfazer.
+\item \textbf{Saga}: uma sequência de transações locais independentes, cada
+uma com uma ação de \textbf{compensação} correspondente caso algo dê
+errado mais adiante na sequência (se reservar estoque funcionou mas debitar
+o cartão falhou, uma ação compensatória libera o estoque reservado). É o
+padrão típico para transações que atravessam microsserviços.
+\item \textbf{Raft}: algoritmo de \textbf{consenso}, que resolve um
+problema \textbf{diferente} do 2PC --- não pergunta "todos aceitam
+efetivar esta transação?", pergunta "em que \textbf{sequência de
+operações} este grupo de réplicas concorda?". Funciona por
+\textbf{eleição de líder} (o líder ordena as operações e replica o log
+para os demais) e decide por \textbf{maioria} (quórum) --- o que o torna
+\textbf{tolerante a falhas}: o sistema sobrevive à queda de uma minoria
+das réplicas, inclusive do próprio líder, que é substituído por uma nova
+eleição. É o algoritmo que sustenta o \textit{etcd} (e, por consequência,
+o próprio Kubernetes).
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[2PC x Raft --- o par central desta seção]
+O 2PC é \textbf{commit atômico}: exige \textbf{unanimidade} e
+\textbf{bloqueia} se o coordenador cair (ponto único de falha). O Raft é
+\textbf{consenso}: decide por \textbf{maioria} e \textbf{continua
+funcionando} mesmo com uma minoria de réplicas fora do ar. Trocar
+"unanimidade" por "maioria" de um algoritmo para o outro é o erro mais
+comum ao descrevê-los, e afirmar que o 2PC "tolera a falha do coordenador"
+é falso --- é exatamente a fraqueza estrutural do protocolo.
+\end{cuidado}
+
+\section{Tópicos complementares}
+
+\begin{conceito}[DDD --- Domain-Driven Design]
+Abordagem de modelagem que organiza o software em torno do
+\textbf{domínio de negócio}, não da tecnologia. Conceitos centrais:
+\textbf{Aggregate} (fronteira de consistência transacional --- protege as
+invariantes de um conjunto de entidades relacionadas, e não expõe
+referência direta a cada entidade interna a quem está fora do agregado),
+\textbf{Repository} (abstração de coleção/persistência do agregado, sem
+que classes externas instanciem entidades internas diretamente),
+\textbf{Factory} (encapsula a criação de objetos complexos do domínio),
+\textbf{Ubiquitous Language} (vocabulário compartilhado entre
+especialistas de domínio e código-fonte --- o nome da classe no código
+deve ser o mesmo termo que o especialista de negócio usa). Eventos de
+domínio são tipicamente \textbf{imutáveis}, porque registram um fato que
+já ocorreu no passado (não faz sentido "editar" um fato passado).
+\end{conceito}
+
+\begin{conceito}[Service mesh x API gateway]
+\textbf{API gateway}: ponto único de entrada dos microsserviços,
+cuidando do tráfego \textbf{norte-sul} (de fora para dentro do sistema) ---
+roteamento, autenticação, limitação de taxa, agregação de respostas.
+\textbf{Service mesh} (ex.: Istio): cuida da comunicação
+\textbf{serviço-a-serviço}, tráfego \textbf{leste-oeste} (dentro do
+sistema, entre os próprios microsserviços) --- descoberta de serviço,
+balanceamento, retentativa, criptografia entre serviços, tudo de forma
+transparente à aplicação.
+\end{conceito}
+
+\begin{conceito}[Kubernetes: taint e toleration]
+Funcionam de um jeito contraintuitivo em relação ao nome. O
+\textbf{taint} é aplicado ao \textbf{nó} e \textbf{afasta} pods: "não
+escalone nada aqui, a menos que aceite esta marca". A \textbf{toleration}
+é aplicada ao \textbf{pod} e diz "eu tolero essa marca", tornando o pod
+\textbf{elegível} para aquele nó --- útil para reservar nós especiais
+(com GPU, banco de dados, ou o nó mestre) só para cargas de trabalho
+específicas. Tolerar \textbf{não é atrair}: um pod que tolera o taint
+\textbf{pode} ser escalonado para lá, não é \textbf{obrigado} a ir --- quem
+efetivamente atrai um pod para um nó específico é \textit{node
+affinity}/\textit{nodeSelector}, um mecanismo diferente.
+\end{conceito}
+
+\begin{conceito}[IaC --- Infraestrutura como Código]
+Provisiona ambiente de infraestrutura de forma \textbf{declarativa}
+(descreve o estado desejado, não o passo a passo) e \textbf{versionada}
+(o ambiente vira arquivo de texto sob controle de versão, revisável e
+reproduzível). Ferramentas típicas: Terraform, Ansible.
+\end{conceito}

@@ -1,0 +1,483 @@
+\chapter{Business Intelligence (BI)}
+\label{cap:bi-teoria}
+
+\begin{edital}
+Conceitos, fundamentos, técnicas e métodos de BI; sistemas de suporte à
+decisão (SSD) e gestão de conteúdo; arquitetura e aplicações de data
+warehouse com ETL e OLAP; data warehouse e data mining; visualização (BD
+individuais e cubos); mapeamento das fontes de dados; arquitetura de BI.
+\end{edital}
+
+\section{O que é BI, e por que não basta consultar o banco transacional}
+
+\begin{conceito}[A pergunta que fundou o assunto]
+BI é o conjunto de conceitos e ferramentas para transformar \textbf{dado}
+em \textbf{informação} e apoiar a \textbf{tomada de decisão} --- a
+pirâmide clássica é dado $\to$ informação $\to$ conhecimento $\to$
+inteligência/sabedoria, cada nível agregando contexto e interpretação ao
+anterior.
+
+A pergunta concreta que justifica o assunto existir: \textit{por que não
+rodar o relatório direto no banco do sistema transacional?} Três motivos:
+
+\begin{itemize}
+\item \textbf{Concorrência}: uma consulta que varre cinco anos de vendas
+segura recursos que o sistema transacional precisa para atender o caixa
+\textbf{agora} --- rodar os dois no mesmo banco compete pelo mesmo
+recurso.
+\item \textbf{História}: o banco transacional guarda o estado
+\textbf{atual} --- ele sabe onde o cliente mora \textbf{hoje}, não onde
+morava quando fez a compra que se quer analisar.
+\item \textbf{Integração} (o motivo mais caro de resolver): os dados
+relevantes estão espalhados em vários sistemas que discordam entre si --- a
+mesma unidade organizacional com dois códigos diferentes em dois sistemas,
+a mesma data em dois formatos.
+\end{itemize}
+
+O BI existe para resolver os três de uma vez, e a arquitetura descrita a
+seguir é a solução estruturada para isso.
+\end{conceito}
+
+\begin{conceito}[Arquitetura de BI: o caminho do dado, ponta a ponta]
+\begin{center}
+fontes (OLTP, planilhas, externas) $\to$ \textbf{extração} $\to$
+\textit{staging} $\to$ \textbf{transformação} $\to$ \textbf{DW} (e seus
+\textit{data marts}) $\to$ \textbf{OLAP/cubo} $\to$ visualização
+\end{center}
+
+Cada etapa existe por um motivo específico: a \textbf{extração} lê das
+fontes sem incomodá-las mais do que o necessário (janela de carga, leitura
+incremental do que mudou desde a última vez). A \textbf{\textit{staging
+area}} é o pouso intermediário --- dado bruto já fora da fonte, ainda não
+tratado --- e existe para que a fonte seja liberada rapidamente e para que
+o tratamento possa ser refeito sem precisar consultar a fonte de novo. A
+\textbf{transformação} é onde a integração de fato acontece --- é a etapa
+cara do processo, não a simples cópia. O \textbf{DW} guarda o resultado:
+integrado, histórico e \textbf{não volátil} (não se atualiza um fato
+passado; acrescenta-se um novo). \textbf{OLAP e visualização} são
+\textbf{consumo} --- nenhum dos dois transforma dado; quem transforma é o
+ETL, e essa separação de responsabilidade é a resposta de vários itens de
+prova sobre "em que etapa isso acontece".
+
+O \textbf{\textit{data mart}} é o recorte do DW por assunto ou
+departamento (vendas, RH) --- não é uma cópia menor por economia, é a
+entrega organizada no vocabulário de quem vai efetivamente usar aquele
+recorte.
+\end{conceito}
+
+\section{Data Warehouse}
+
+\begin{conceito}[As quatro características de Inmon]
+Repositório central de dados \textbf{integrados, históricos e orientados a
+assunto}, destinado a análise, não a transação. As quatro características
+canônicas (Inmon): \textbf{orientado a assunto} (organizado em torno de
+temas de negócio, como "vendas" ou "cliente", não em torno de processos de
+sistema), \textbf{integrado} (dados de fontes diferentes reconciliados num
+formato e vocabulário únicos), \textbf{não volátil} (dado carregado não é
+alterado nem apagado, só acrescentado), \textbf{variante no tempo} (cada
+registro carrega uma dimensão temporal, permitindo reconstruir o estado
+passado).
+\end{conceito}
+
+\begin{conceito}[Data Warehouse x Data Lake x Lakehouse]
+\textbf{DW}: guarda dado \textbf{tratado e modelado}
+(\textit{schema-on-write} --- a estrutura é imposta antes de gravar).
+\textbf{Data Lake}: guarda dado \textbf{bruto}, estruturado e não
+estruturado (\textit{schema-on-read} --- a estrutura só é imposta na hora
+de ler). \textbf{Lakehouse}: une a governança do DW com a flexibilidade do
+Lake, tipicamente em camadas: \textbf{Bronze} (bruto, como chegou da
+fonte) $\to$ \textbf{Silver} (limpo, deduplicado, com tipos corretos)
+$\to$ \textbf{Gold} (modelado dimensionalmente, pronto para consumo de
+BI). Um projeto de Machine Learning costuma consumir o \textit{Bronze} ou
+\textit{Silver} (quer o dado com o máximo de granularidade e liberdade);
+um dashboard de BI consome o \textit{Gold}.
+\end{conceito}
+
+\begin{cuidado}
+Data Lake \textbf{não substitui} o DW, e não guarda só dado estruturado
+(guarda os dois tipos). Lakehouse \textbf{combina} os dois --- não é
+sinônimo de nenhum isoladamente.
+\end{cuidado}
+
+\subsection{Inmon x Kimball: por onde se começa a construir}
+
+\begin{conceito}[Duas escolas, duas ordens de construção, dois riscos opostos]
+As duas escolas discordam sobre \textbf{qual peça se constrói primeiro} ---
+e essa discordância tem consequência prática direta no cronograma e no
+risco do projeto.
+
+\textbf{Inmon (\textit{top-down})}: constrói-se primeiro o \textbf{DW
+corporativo}, normalizado (até a 3FN), como fonte única de verdade da
+organização inteira; os \textbf{data marts} dimensionais são
+\textbf{derivados} dele depois. Integra melhor e resiste melhor a
+mudanças, mas o primeiro relatório demora --- a área usuária espera o
+modelo corporativo inteiro ficar pronto antes de ver qualquer valor.
+
+\textbf{Kimball (\textit{bottom-up})}: começa-se por um \textbf{data mart
+dimensional} de um único processo de negócio (vendas, por exemplo), já em
+esquema estrela, e vão se acrescentando outros processos aos poucos.
+Entrega valor cedo. A integração entre os marts não vem de um modelo
+central --- vem das \textbf{dimensões conformadas}: a mesma dimensão
+\texttt{Produto}, com a mesma chave e o mesmo significado, compartilhada
+por todos os marts (a \textit{bus architecture}).
+
+O risco de cada abordagem é o espelho do outro: em Inmon, o risco é o
+projeto longo que nunca chega ao usuário; em Kimball, o risco é o
+\textbf{silo} --- marts que não conversam entre si porque as dimensões não
+foram conformadas de propósito. É por isso que "dimensão conformada" não é
+um detalhe de vocabulário: é a peça que faz o \textit{bottom-up}
+efetivamente funcionar como um todo coerente, e não como ilhas isoladas.
+\end{conceito}
+
+\section{ETL: a ponte para o DW}
+
+\begin{conceito}[O que pertence a cada fase]
+\textit{Extract $\to$ Transform $\to$ Load}. O objetivo é extrair de
+várias fontes, transformar num formato padronizado e consistente, e
+carregar no DW. ETL \textbf{não} é "criar dashboards" nem "treinar modelo
+de aprendizado de máquina" --- isso vem depois, como consumo do dado já
+carregado.
+
+Como quase tudo interessante acontece dentro do \textit{Transform}, o
+critério para separar as fases precisa ser mais fino que "transformar é
+mudar o dado":
+
+\begin{center}
+\begin{tabular}{@{}p{2.1cm}p{9.6cm}@{}}
+\toprule
+\textbf{Fase} & \textbf{O que é dela} \\
+\midrule
+\textbf{Extract} & ler das fontes (banco, arquivo, API), tipicamente só o
+que mudou desde a última carga. \textbf{Sem regra de negócio} --- ela lê,
+não julga o conteúdo \\
+\textbf{Transform} & \textbf{limpeza} (nulos, formatos, valores
+inválidos), \textbf{padronização/conformidade} (o "de-para" que faz dois
+sistemas falarem a mesma língua), \textbf{deduplicação}, \textbf{junção}
+de fontes diferentes, \textbf{derivação} de medidas calculadas, geração da
+\textbf{chave \textit{surrogate}} e aplicação da regra de SCD \\
+\textbf{Load} & gravar no destino --- \textbf{dimensões antes da fato}
+(porque a fato referencia as chaves das dimensões, então elas precisam já
+existir), carga completa x incremental, índices e agregados construídos
+no fim \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A regra prática que resolve a maior parte das questões de "a que fase
+pertence esta tarefa": se a tarefa \textbf{decide} alguma coisa sobre o
+conteúdo --- padronizar, deduplicar, casar duas fontes, calcular ---, é
+\textbf{Transform}. Ler é \textit{Extract}; gravar é \textit{Load}.
+\end{conceito}
+
+\section{OLAP e modelagem dimensional}
+
+\begin{conceito}[Cubo: dimensões + medidas]
+Um \textbf{cubo} organiza os dados em \textbf{dimensões} (tempo, produto,
+local --- os eixos pelos quais se quer olhar o dado) e
+\textbf{métricas/fatos} (vendas, quantidade --- os números que se quer
+medir).
+
+Três formas de \textbf{armazenar} fisicamente o cubo: \textbf{ROLAP} (o
+dado fica em tabelas relacionais comuns, e o cubo é montado sob demanda
+por consulta --- escala melhor para grandes volumes), \textbf{MOLAP} (o
+cubo é pré-calculado e guardado numa estrutura própria --- consulta mais
+rápida, mas carga mais pesada e demorada) e \textbf{HOLAP} (híbrido:
+detalhe fica no relacional, agregados mais usados ficam pré-calculados).
+\end{conceito}
+
+\begin{cuidado}
+O modelo multidimensional serve para \textbf{análise}, não para
+transação --- quem serve à transação é o modelo relacional/OLTP. Ao
+lembrar de ROLAP x MOLAP: o \textbf{M} de MOLAP é de
+\textit{multidimensional}, o cubo já pré-calculado. "Ferramentas de BI
+são incompatíveis com tabelas normalizadas" é falso --- desnormalizar é
+uma escolha de desempenho, não uma exigência técnica das ferramentas.
+\end{cuidado}
+
+\begin{conceito}[As operações OLAP]
+\begin{center}
+\begin{tabular}{@{}p{3cm}p{8.6cm}@{}}
+\toprule
+\textbf{Operação} & \textbf{O que faz} \\
+\midrule
+\textit{Drill-down} & desce ao detalhe (ano $\to$ mês $\to$ dia) \\
+\textit{Roll-up} (\textit{drill-up}) & sobe à agregação (dia $\to$ mês
+$\to$ ano) \\
+\textit{Slice} & fatia \textbf{uma} dimensão (fixa um único valor nela) \\
+\textit{Dice} & subcubo --- filtra em \textbf{várias} dimensões e valores
+ao mesmo tempo \\
+\textit{Pivot} (\textit{rotate}) & gira a visão, trocando quais dimensões
+aparecem em linha e em coluna \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\subsection{Star Schema x Snowflake Schema}
+
+\begin{conceito}[A mesma decisão de desnormalizar ou não, aplicada às dimensões]
+\textbf{Star Schema}: uma tabela fato central + dimensões
+\textbf{desnormalizadas} (cada dimensão numa única tabela larga, mesmo que
+isso repita dado). Menos \textit{joins}, consulta mais rápida --- é o
+padrão recomendado por Kimball.
+
+\textbf{Snowflake Schema}: as dimensões são \textbf{normalizadas} em
+várias tabelas relacionadas entre si (por exemplo, \texttt{Produto}
+aponta para \texttt{Categoria}, que aponta para \texttt{Departamento}).
+Mais \textit{joins}, mais lento para consulta analítica, mas economiza
+espaço e facilita manter a integridade de hierarquias que mudam.
+\end{conceito}
+
+\begin{exemplo}[Contando joins: por que o Star ganha em velocidade]
+Para responder "vendas do \textbf{departamento} X no trimestre":
+
+\begin{center}
+\begin{tabular}{@{}p{2.5cm}p{9.2cm}@{}}
+\toprule
+\textbf{Estrela} & \texttt{Produto} já guarda categoria e departamento
+como colunas suas (desnormalizada): \textbf{2 joins} --- fato $\to$
+Produto, fato $\to$ Tempo \\
+\textbf{Floco de neve} & \texttt{Produto} $\to$ \texttt{Categoria} $\to$
+\texttt{Departamento}, cada uma em sua própria tabela: \textbf{4 joins}
+para chegar à mesma resposta \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Menos \textit{joins} $\to$ consulta mais rápida $\to$ é por isso que o
+esquema estrela é o padrão recomendado para BI. O floco de neve troca essa
+velocidade por economia de espaço e integridade de hierarquia --- uma
+escolha legítima em certos contextos, só não é o padrão default.
+\end{exemplo}
+
+\begin{cuidado}
+Não inverta os nomes: "estrela" com dimensão normalizada em várias
+tabelas é, na verdade, floco de neve. Snowflake \textbf{não} é o padrão
+recomendado por Kimball --- é o Star.
+\end{cuidado}
+
+\subsection{Montando um esquema estrela: as quatro decisões, em ordem}
+
+\begin{conceito}[O projeto dimensional tem uma ordem fixa]
+\begin{enumerate}
+\item \textbf{Escolher o processo de negócio}: por exemplo, a venda no
+varejo.
+\item \textbf{Declarar o grão}: "\textbf{uma linha por item de um
+pedido}" --- é a decisão que governa todo o resto do projeto (ver
+Seção~\ref{sec:granularidade}).
+\item \textbf{Escolher as dimensões}: tudo que responde a "por qual
+recorte eu quero olhar isto?" --- \texttt{Tempo}, \texttt{Produto},
+\texttt{Loja}, \texttt{Cliente}.
+\item \textbf{Escolher as medidas}: o que é \textbf{numérico e somável}
+no grão declarado --- \texttt{quantidade}, \texttt{valor\_unitário},
+\texttt{valor\_total}, \texttt{desconto}.
+\end{enumerate}
+
+O resultado é uma \textbf{tabela fato} que contém \textbf{só duas
+coisas}: as \textbf{chaves estrangeiras} para as dimensões e as
+\textbf{medidas numéricas}. Nenhum texto descritivo mora na fato --- o
+nome do produto fica na dimensão \texttt{Produto}. A única exceção com
+"nome próprio" é a \textbf{dimensão degenerada}: o
+\texttt{número\_do\_pedido} fica na fato porque é um identificador que não
+tem atributo nenhum ao redor que justifique uma dimensão própria.
+\end{conceito}
+
+\subsection{Granularidade: o grão da fato}
+\label{sec:granularidade}
+
+\begin{conceito}[O que uma linha da tabela fato representa]
+Definir o grão é a \textbf{primeira} decisão do projeto dimensional, e é
+\textbf{irreversível} na prática: tudo o mais (dimensões, medidas,
+agregações possíveis) é escolhido depois dela, em função dela.
+
+\begin{center}
+\begin{tabular}{@{}p{3.4cm}p{7.6cm}@{}}
+\toprule
+\textbf{Grão} & \textbf{Consequência} \\
+\midrule
+\textbf{Fino} (detalhado) --- "uma linha por atendimento" & \textbf{amplia}
+as análises possíveis (dá para agregar depois em qualquer nível desejado);
+volume maior de dados \\
+\textbf{Grosso} (agregado) --- "uma linha por unidade por dia" & tabela
+menor e consulta mais rápida, mas o detalhe está \textbf{perdido para
+sempre} --- não dá para desagregar depois \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Regra de Kimball: \textbf{declare o grão no nível mais atômico que a fonte
+de dados permitir}. Agregados são construídos \textbf{a partir} do
+detalhe, como tabelas adicionais complementares --- nunca no lugar do
+detalhe.
+\end{conceito}
+
+\begin{cuidado}
+Escolher o grão mais detalhado \textbf{amplia} as análises possíveis (não
+restringe) --- quem restringe é o agregado. Granularidade é definida pelo
+que \textbf{uma linha da fato representa}, não pela quantidade de
+dimensões. Não confundir \textbf{grão} (decisão do modelo, fixa desde a
+construção) com \textbf{nível de agregação de uma consulta} (decisão de
+quem consulta, via \textit{drill-up}, variável a cada consulta).
+\end{cuidado}
+
+\subsection{Tipos de fato}
+
+\begin{conceito}
+\textbf{Fato aditivo}: soma corretamente em \textbf{todas} as dimensões
+(ex.: valor de vendas --- somar vendas de vários dias, produtos ou lojas
+sempre faz sentido). \textbf{Fato semiaditivo}: \textbf{não} soma em
+todas as dimensões, tipicamente não soma no eixo do \textbf{tempo} (ex.:
+saldo bancário, nível de estoque --- somar o saldo de hoje com o de ontem
+não produz nada útil, mas somar o saldo de várias contas num mesmo dia
+faz sentido). \textbf{Fato não aditivo}: razões, percentuais, médias ---
+nunca somam de forma útil em nenhuma dimensão. \textbf{Dimensão
+degenerada}: atributo de identificação (número do pedido) que fica na
+própria tabela fato, sem ganhar uma dimensão própria.
+\end{conceito}
+
+\subsection{Dimensões lentamente mutantes (SCD)}
+
+\begin{conceito}[O que fazer quando um atributo de dimensão muda com o tempo]
+Um atributo de dimensão muda (o cliente troca de cidade, o produto troca
+de categoria). \textbf{SCD} (\textit{Slowly Changing Dimension}) é a
+técnica que decide o que fazer com o histórico correspondente:
+
+\begin{center}
+\begin{tabular}{@{}p{1.9cm}p{4cm}p{5.2cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{O que faz} & \textbf{Efeito no histórico} \\
+\midrule
+\textbf{Tipo 1} & \textbf{sobrescreve} o valor antigo & histórico
+\textbf{perdido}; os fatos passados passam a ser lidos com o valor novo \\
+\textbf{Tipo 2} & \textbf{insere um novo registro} versionado (nova chave
+\textit{surrogate}, com \texttt{data\_início}/\texttt{data\_fim} ou
+\textit{flag} de corrente) & \textbf{preserva o histórico completo} ---
+cada fato continua ligado à versão vigente na época em que ocorreu \\
+\textbf{Tipo 3} & guarda o \textbf{valor anterior em outra coluna} da
+mesma linha & preserva só \textbf{uma} mudança (o "valor anterior"), não a
+série toda de mudanças \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+É o \textbf{Tipo 2} que responde ao cenário clássico: "as vendas antigas
+devem continuar associadas à cidade em que o cliente morava na época da
+compra". E é ele que justifica a \textbf{chave \textit{surrogate}} da
+dimensão (Capítulo \ref{cap:banco-dados-teoria}): como a mesma chave
+natural passa a ter várias versões ao longo do tempo, a fato precisa
+apontar para uma chave artificial que identifique a \textbf{versão}
+específica, não apenas a entidade genérica.
+\end{conceito}
+
+\begin{cuidado}
+Aplicar Tipo 1 (sobrescrever) a um cenário que pede preservação de
+histórico é erro; aplicar Tipo 2 a um cenário de simples \textbf{correção
+de erro de digitação} também é erro no sentido oposto --- correção de erro
+não é "mudança de negócio a preservar", é sobrescrita legítima (Tipo 1).
+O Tipo 3 preserva histórico só do \textbf{valor imediatamente anterior},
+não da série completa --- é o distrator "quase certo" mais comum entre os
+três.
+\end{cuidado}
+
+\section{Sistemas de suporte à decisão (SSD/DSS)}
+
+\begin{conceito}
+Apoiam gestores em problemas \textbf{estruturados, semiestruturados e não
+estruturados} --- a característica central é oferecer flexibilidade
+suficiente para vários contextos de decisão diferentes, não se limitar a
+um único tipo de problema.
+\end{conceito}
+
+\section{Mapeamento de fontes de dados}
+
+\begin{conceito}[Boas práticas, referenciadas pelo DAMA-DMBOK]
+\textbf{Fazer}: entrevistar \textit{stakeholders}, analisar sistemas
+existentes, avaliar a \textbf{qualidade} e adequação do dado antes de
+usá-lo, documentar as fontes como parte da governança de dados.
+\textbf{Não fazer}: coletar \textbf{tudo sem discriminação}, incluindo
+dados inconsistentes ou irrelevantes, só "para maximizar a quantidade" ---
+essa é a prática explicitamente \textbf{não} recomendada.
+\end{conceito}
+
+\section{Data Mining}
+
+\begin{conceito}[Quatro tarefas, divididas por ter ou não rótulo prévio]
+\textbf{Data Mining} é o processo de descobrir padrões, correlações e
+conhecimento não trivial em grandes volumes de dados.
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{3.2cm}p{4.4cm}@{}}
+\toprule
+\textbf{Tarefa} & \textbf{Tem rótulo?} & \textbf{Cenário típico} \\
+\midrule
+Classificação & \textbf{sim} (supervisionada) & prever se o cliente vai
+inadimplir (classes já conhecidas de antemão) \\
+Regressão & \textbf{sim} (supervisionada) & prever um \textbf{valor
+numérico} (faturamento do próximo mês) \\
+Clusterização & \textbf{não} (não supervisionada) & \textbf{descobrir
+grupos} de clientes com comportamento parecido, sem rótulo definido
+previamente \\
+Regras de associação & não & descobrir \textbf{o que é comprado junto}
+(análise de cesta de compras) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Em regras de associação: \textbf{suporte} é a frequência do conjunto de
+itens no total de transações (quantas vezes A e B aparecem juntos, sobre o
+total); \textbf{confiança} é a força da implicação A $\to$ B (das vezes
+que A aparece, em quantas B também aparece).
+\end{conceito}
+
+\begin{cuidado}
+Classificação x clusterização é o par mais confundido: se o enunciado diz
+"sem rótulos prévios" ou "descobrir grupos desconhecidos", é
+clusterização; se as classes já existem e o modelo aprende a atribuí-las
+a novos casos, é classificação. "Produtos comprados juntos" é sempre
+\textbf{regra de associação}, nunca clusterização, mesmo que ambas sejam
+técnicas não supervisionadas.
+\end{cuidado}
+
+\subsection{CRISP-DM: o ciclo de um projeto de mineração}
+
+\begin{conceito}[Seis fases, iterativas, começando pelo negócio]
+\begin{center}
+\begin{tabular}{@{}p{0.6cm}p{3.6cm}p{6.8cm}@{}}
+\toprule
+& \textbf{Fase} & \textbf{O que acontece} \\
+\midrule
+1 & Entendimento do \textbf{negócio} & objetivos e critérios de sucesso do
+negócio --- é por aqui que o ciclo começa, não pelos dados \\
+2 & Entendimento dos \textbf{dados} & coleta inicial, exploração,
+avaliação de qualidade \\
+3 & \textbf{Preparação} dos dados & limpeza, seleção, integração,
+formatação \\
+4 & \textbf{Modelagem} & escolha da técnica, treino, ajuste de parâmetros
+\\
+5 & \textbf{Avaliação} & os resultados atendem aos \textbf{objetivos de
+negócio} definidos na fase 1? \\
+6 & \textbf{Implantação} & colocar o modelo em operação e monitorá-lo \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O ciclo é \textbf{iterativo}, não uma cascata rígida: volta-se de
+qualquer fase para uma anterior conforme necessário, e a seta entre
+implantação e entendimento do negócio fecha o círculo, reiniciando o
+ciclo com o aprendizado acumulado.
+\end{conceito}
+
+\begin{cuidado}
+Não confundir a \textbf{avaliação} (fase 5, mede contra os objetivos de
+\textbf{negócio}) com a validação técnica do modelo (métricas
+estatísticas), que é parte da \textbf{modelagem} (fase 4). O ciclo não
+começa pelo entendimento \textbf{dos dados} --- começa pelo
+\textbf{negócio}.
+\end{cuidado}
+
+\begin{conceito}[KPI x métrica]
+Toda métrica é um número medido; \textbf{KPI} (\textit{Key Performance
+Indicator}) é uma métrica \textbf{especificamente atrelada a um objetivo
+estratégico} da organização --- nem toda métrica é KPI, mas todo KPI é uma
+métrica.
+\end{conceito}

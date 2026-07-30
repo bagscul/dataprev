@@ -1,0 +1,68 @@
+\documentclass[11pt,oneside]{book}
+\input{preambulo}
+
+\title{Teoria Completa --- Dataprev 2026\\\Large Analista de TI --- Perfil 3: Desenvolvimento de Software}
+\author{Material de estudo de Lucas}
+\date{Prova: 11/10/2026 --- FGV}
+
+\begin{document}
+
+% ---------------- Capa ----------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Huge\bfseries\color{dpazul} Teoria Completa}\\[6pt]
+{\Large\bfseries\color{dpazul} Dataprev 2026}\\[4pt]
+{\large Analista de Tecnologia da Informação --- Perfil 3}\\
+{\large Desenvolvimento de Software}\\[2cm]
+
+\rule{0.6\textwidth}{0.6pt}\\[1cm]
+
+{\large Banca: \textbf{FGV} \quad$\cdot$\quad Prova: \textbf{11/10/2026, 13h--17h} \quad$\cdot$\quad Lotação: \textbf{Natal/RN}}\\[0.5cm]
+{\large Módulo I (Gerais) + Módulo II (Específicos, peso 2,5)}\\[2cm]
+
+\rule{0.6\textwidth}{0.6pt}\\[1cm]
+
+{\large Complemento da \texttt{apostila/} (revisão rápida, com dicas de banca):\\
+aqui cada conceito do edital é explicado do zero, com exemplos resolvidos,\\
+sem pressa e sem atalho. Use a apostila para revisar; use este livro\\
+quando um conceito não estiver fixado.}\\[2cm]
+
+{\normalsize Compilado em \today}
+
+\vfill
+{\small Uso pessoal de estudo --- material derivado, não substitui o edital oficial.}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+% Alinha a numeracao com a apostila/, que reserva os capitulos 1-2 para
+% como-usar/tecnica-fgv (ausentes aqui): 02-eng-software.tex vira Capitulo 3,
+% igual na apostila -- mantem o mapeamento bloco->capitulo do quiz.py valido
+% para os dois livros (usado por apostila.py --teoria).
+\setcounter{chapter}{2}
+
+\part{Módulo II --- Conhecimentos Específicos (peso 2,5, 30 questões)}
+\include{capitulos/02-eng-software}
+\include{capitulos/03-padroes-uml}
+\include{capitulos/04-arquitetura}
+\include{capitulos/05-banco-dados}
+\include{capitulos/06-bi}
+\include{capitulos/07-seguranca}
+\include{capitulos/08-programacao}
+\include{capitulos/09-java}
+\include{capitulos/10-frontend}
+\include{capitulos/11-governanca}
+\include{capitulos/12-redes}
+\include{capitulos/13-orfaos}
+
+\part{Módulo I --- Conhecimentos Gerais (peso 1, 40 questões)}
+\include{capitulos/14-portugues}
+\include{capitulos/15-ingles}
+\include{capitulos/16-rlm}
+\include{capitulos/17-atualidades}
+\include{capitulos/18-legislacao}
+
+\end{document}

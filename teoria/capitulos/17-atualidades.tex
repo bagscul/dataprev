@@ -1,0 +1,423 @@
+\chapter{Atualidades e Inteligência Artificial}
+\label{cap:atualidades-teoria}
+
+Este capítulo cobre as duas partes do bloco de Atualidades: o viés
+socioambiental clássico de prova de conhecimentos gerais, e o bloco novo de
+Inteligência Artificial (que entrou no edital da Dataprev só em 2026). Como
+é o capítulo mais volátil do livro --- números, status de projeto de lei e
+métricas de mercado mudam --- o objetivo aqui é fixar o \textbf{mecanismo}
+de cada conceito (por que ESG mede o que mede, por que viés e variância se
+comportam de forma oposta, por que um LLM alucina) para que o entendimento
+sobreviva mesmo quando o número específico for atualizado antes da prova.
+
+\section{Atualidades: o viés socioambiental}
+
+\begin{conceito}[ESG --- avaliando o que o balanço financeiro não mostra]
+\textbf{ESG} (\textit{Environmental, Social and Governance} ---
+\textbf{A}mbiental, \textbf{S}ocial e \textbf{G}overnança) é o conjunto de
+critérios usado para avaliar o desempenho \textbf{não financeiro} de uma
+organização --- o que o balanço contábil tradicional não captura, mas que
+afeta o risco e a reputação de longo prazo do negócio:
+
+\begin{itemize}
+\item \textbf{Ambiental (E)}: emissões de carbono, consumo de energia e
+água, gestão de resíduos, biodiversidade, exposição a mudanças climáticas.
+\item \textbf{Social (S)}: condições de trabalho, diversidade e inclusão,
+direitos humanos, relação com comunidades afetadas, práticas na cadeia de
+fornecedores.
+\item \textbf{Governança (G)}: composição e independência do conselho de
+administração, ética corporativa, transparência, combate à corrupção,
+prestação de contas aos acionistas e à sociedade.
+\end{itemize}
+
+O motivo de existir como critério \textbf{formal} de investimento e
+relatório corporativo: investidores e reguladores perceberam que riscos
+não financeiros (um desastre ambiental, um escândalo de corrupção) também
+destroem valor financeiro --- então passaram a exigir que esse risco seja
+\textbf{medido e divulgado}, não só descoberto depois que já aconteceu.
+\end{conceito}
+
+\begin{cuidado}[O "G" não é "Gestão", "Global" nem "Growth"]
+"Governança" é especificamente sobre \textbf{como a organização é dirigida
+e controlada} (estrutura de poder, prestação de contas) --- não é
+sinônimo genérico de "boa gestão" nem está relacionado a expansão
+("Growth") ou alcance internacional ("Global"). Da mesma forma, o "S" é
+\textbf{Social}, não "Sustentável" --- sustentabilidade é o conceito
+guarda-chuva que o ESG inteiro serve, não uma das três letras
+especificamente.
+\end{cuidado}
+
+\begin{regrapratica}[Como filtrar item de atualidades socioambientais]
+Esse tipo de questão costuma vir ancorada num \textbf{texto-base}, no
+formato de julgar afirmativas (I, II, III). Dois filtros rápidos, antes de
+reler o texto com calma: (1) item com termo \textbf{absoluto}
+("invariavelmente", "sempre", "nunca", "exclusivamente") é quase sempre
+\textbf{falso} --- a realidade socioambiental raramente é tão categórica;
+(2) item com dado \textbf{numérico} precisa ser \textbf{conferido contra o
+texto-base}, nunca aceito de memória --- é comum a alternativa inflar ou
+distorcer um número que o texto deu de forma mais modesta.
+\end{regrapratica}
+
+\section{Fundamentos de Inteligência Artificial}
+
+\subsection{IA, Machine Learning e Deep Learning: uma relação de contêiner}
+
+\begin{conceito}[Três círculos concêntricos, não três coisas separadas]
+\begin{itemize}
+\item \textbf{Inteligência Artificial (IA)}: o campo mais amplo ---
+qualquer sistema capaz de executar tarefas que, se feitas por um humano,
+exigiriam inteligência (raciocinar, perceber, decidir).
+\item \textbf{Machine Learning (ML)}: um \textbf{subcampo} da IA em que o
+sistema \textbf{aprende padrões a partir de dados} e melhora seu
+desempenho com a experiência, em vez de seguir regras explicitamente
+programadas por um humano para cada situação.
+\item \textbf{Deep Learning}: um \textbf{subcampo do ML} que usa
+\textbf{redes neurais com muitas camadas} (daí "profundo",
+\textit{deep}) para aprender representações cada vez mais abstratas dos
+dados, camada após camada.
+\end{itemize}
+A relação é de \textbf{contenção}: IA $\supset$ ML $\supset$ Deep
+Learning --- todo Deep Learning é ML, todo ML é IA, mas a recíproca não
+vale (existe IA que não usa aprendizado de máquina, como sistemas
+baseados puramente em regras lógicas escritas à mão).
+\end{conceito}
+
+\subsection{Tipos de aprendizado}
+
+\begin{conceito}[O que diferencia os três --- o que o sistema recebe como sinal de aprendizado]
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.8cm}p{2.6cm}p{3cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Dados de treino} & \textbf{Objetivo} & \textbf{Exemplos} \\
+\midrule
+Supervisionado & \textbf{rotulados} (resposta certa conhecida) & prever o
+rótulo de casos novos & classificação, regressão \\
+Não supervisionado & \textbf{sem rótulo} & achar estrutura escondida nos
+dados & \textit{clustering} (K-Means), associação, PCA \\
+Por reforço & recompensa/punição a cada ação & aprender uma
+\textbf{política} de ação ótima & agentes, jogos, robótica \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O critério que separa os três é \textbf{que tipo de sinal} orienta o
+aprendizado: no supervisionado, o sinal é "aqui está a resposta certa
+para este exemplo"; no não supervisionado, não há resposta certa dada,
+só os dados brutos; no aprendizado por reforço, o sinal é indireto ---
+"essa sequência de ações rendeu recompensa X", sem dizer qual ação
+específica foi a certa.
+\end{conceito}
+
+\begin{cuidado}["Aprende com os dados e melhora ao longo do tempo" não é lógica booleana]
+Um enunciado que descreve um sistema "que aprende com a experiência e
+melhora seu desempenho ao longo do tempo" está descrevendo \textbf{redes
+neurais/aprendizado de máquina} --- não lógica booleana clássica nem
+programação linear determinística, que executam sempre a mesma regra fixa
+e não mudam de comportamento sozinhas com o uso.
+\end{cuidado}
+
+\section{Viés e variância: o trade-off central do aprendizado supervisionado}
+
+\begin{conceito}[Dois jeitos opostos de um modelo errar]
+Todo modelo supervisionado comete um dos dois tipos de erro sistemático
+(ou uma combinação dos dois), e eles têm causas \textbf{opostas}:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.4cm}p{4.4cm}@{}}
+\toprule
+& \textbf{Alto viés (\textit{bias})} & \textbf{Alta variância (\textit{variance})} \\
+\midrule
+Causa & modelo \textbf{simples demais} para captar o padrão real dos
+dados & modelo \textbf{complexo demais}, ajusta-se a ruído específico do
+treino \\
+Sintoma & erra \textbf{tanto no treino quanto no teste} --- nem decorou o
+treino direito & acerta muito bem o treino, erra feio em dados novos ---
+"decorou" em vez de generalizar \\
+Nome do fenômeno & \textbf{underfitting} & \textbf{overfitting} \\
+Como combater & modelo mais expressivo, mais atributos relevantes &
+regularização (L1/L2), validação cruzada, mais dados de treino \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O motivo de ser um \textbf{trade-off} (e não duas falhas independentes que
+dá para zerar ao mesmo tempo): reduzir a complexidade do modelo para
+combater a variância tende a aumentar o viés (o modelo fica simples
+demais de novo); aumentar a complexidade para combater o viés tende a
+aumentar a variância (o modelo passa a se ajustar a detalhes específicos
+do treino). O objetivo prático não é zerar os dois, é achar o ponto de
+\textbf{equilíbrio} que minimiza o erro total em dados novos.
+\end{conceito}
+
+\begin{cuidado}[Não inverta viés com variância]
+"Viés alto" \textbf{não} é o modelo que "decorou" o treino --- isso é
+\textbf{variância alta} (overfitting). O jeito de fixar sem trocar: viés
+alto = modelo \textbf{"burro"} (simples demais até para o próprio treino);
+variância alta = modelo que \textbf{"decorou"} (bom no treino, ruim fora
+dele). E regularização combate especificamente a \textbf{variância/
+overfitting}, não o viés --- regularizar um modelo que já sofre de viés
+alto (underfitting) só pioraria a situação, tornando-o ainda mais
+restrito.
+\end{cuidado}
+
+\section{Métricas de avaliação}
+
+\begin{conceito}[Classificação: quatro métricas a partir da matriz de confusão]
+\begin{itemize}
+\item \textbf{Acurácia} = acertos totais / total de casos. Parece a
+métrica mais natural, mas é \textbf{enganosa em bases desbalanceadas}.
+\item \textbf{Precisão}: dos casos que o modelo \textbf{apontou como
+positivos}, quantos realmente eram --- importa quando o custo de um
+\textbf{falso positivo} é alto (ex.: barrar um e-mail legítimo como se
+fosse spam).
+\item \textbf{Recall} (revocação/sensibilidade): dos casos que
+\textbf{realmente eram positivos}, quantos o modelo conseguiu capturar ---
+importa quando o custo de um \textbf{falso negativo} é alto (ex.: deixar
+passar uma fraude).
+\item \textbf{F1-score}: a \textbf{média harmônica} entre precisão e
+recall --- harmônica, e não aritmética, justamente porque a média
+harmônica \textbf{pune mais} o desequilíbrio entre as duas (um modelo com
+precisão 100\% e recall 1\% teria média aritmética de 50,5\%, uma nota
+enganosamente alta; a harmônica cairia para perto de 2\%, refletindo
+melhor que o modelo é inútil na prática).
+\end{itemize}
+\end{conceito}
+
+\begin{exemplo}[Por que acurácia engana em base desbalanceada]
+Um conjunto de e-mails tem 99\% legítimos e 1\% spam. Um modelo "burro"
+que \textbf{sempre} responde "legítimo", sem olhar o conteúdo, acerta
+\textbf{99\% de acurácia} --- um número que parece excelente --- mas
+detecta \textbf{zero} spam (recall igual a zero para a classe que
+realmente importa detectar). É exatamente o cenário que a prova costuma
+montar (spam, fraude, doença rara) para testar se o candidato confia
+demais na acurácia isolada.
+\end{exemplo}
+
+\begin{conceito}[Regressão: MAE, RMSE e R²]
+Para prever um \textbf{número} (não uma classe), as métricas de
+classificação (acurácia, precisão, F1) não se aplicam --- usam-se
+\textbf{MAE} (erro médio absoluto, na mesma unidade do valor previsto),
+\textbf{RMSE} (raiz do erro quadrático médio --- penaliza mais erros
+grandes, por elevar ao quadrado antes de tirar a média) e \textbf{R²}
+(quanto da variação dos dados o modelo consegue explicar, de 0 a 1). Usar
+uma métrica de classificação num problema de regressão (ou vice-versa) é
+um distrator comum --- confirme sempre se a saída do modelo é uma
+\textbf{categoria} ou um \textbf{número} antes de escolher a métrica.
+\end{conceito}
+
+\section{Modelos generativos e LLMs}
+
+\begin{conceito}[Modelo generativo: aprende a distribuição para criar exemplos novos]
+Um \textbf{modelo generativo} aprende a \textbf{distribuição estatística}
+dos dados de treino e usa esse aprendizado para \textbf{gerar exemplos
+novos}, plausíveis dentro daquela distribuição --- texto, imagem, áudio ---
+em vez de apenas classificar ou prever um rótulo sobre um exemplo já
+existente (o que seria um modelo \textbf{discriminativo}).
+\end{conceito}
+
+\begin{conceito}[LLM: linguagem em escala, via Transformer e atenção]
+Um \textbf{LLM} (\textit{Large Language Model}) é um modelo de linguagem
+treinado sobre um volume massivo de texto, tipicamente com a arquitetura
+\textbf{Transformer} e seu \textbf{mecanismo de atenção} --- que permite ao
+modelo, ao processar cada palavra, "prestar atenção" dinamicamente em
+\textbf{quais outras palavras do contexto} são mais relevantes para aquele
+ponto, em vez de processar a sequência de forma estritamente linear e
+igualmente ponderada. É esse mecanismo que permite ao modelo capturar
+dependências de longo alcance no texto (uma referência no início do
+parágrafo que só faz sentido lida junto com uma palavra no final).
+\end{conceito}
+
+\begin{conceito}[RAG: buscar antes de gerar]
+\textbf{RAG} (\textit{Retrieval-Augmented Generation}) combina o LLM com
+uma etapa de \textbf{busca} (\textit{retrieval}) numa base de conhecimento
+externa \textbf{antes} de gerar a resposta --- em vez de responder só com
+o que aprendeu durante o treinamento (que tem uma data de corte e pode
+estar desatualizado ou não cobrir um domínio específico), o modelo recebe
+trechos relevantes recuperados da base e os usa como contexto adicional
+para fundamentar a resposta. É a técnica típica para tornar respostas mais
+\textbf{atuais} e \textbf{rastreáveis} a uma fonte.
+\end{conceito}
+
+\begin{conceito}[Alucinação: resposta fluente, mas não fundamentada]
+\textbf{Alucinação} é quando o modelo gera uma resposta \textbf{plausível
+e bem escrita}, mas \textbf{factualmente incorreta} ou inventada --- o
+modelo não "sabe que não sabe": ele continua produzindo texto
+estatisticamente coerente mesmo quando não tem base real para a afirmação.
+É a razão pela qual saída de LLM em contexto que afeta decisão real (um
+atendimento ao cidadão, uma análise jurídica) exige \textbf{validação},
+não confiança cega.
+\end{conceito}
+
+\section{Ética, governança e privacidade em IA}
+
+\begin{conceito}[Viés algorítmico: o modelo herda o viés dos dados, não o inventa]
+\textbf{Viés algorítmico} ocorre quando os \textbf{dados de treino}
+refletem desigualdades ou padrões históricos discriminatórios, e o modelo
+\textbf{aprende e reproduz} esse padrão em suas decisões --- o algoritmo
+não é "preconceituoso" por conta própria, ele generaliza exatamente o que
+os dados de treino mostraram, inclusive quando esses dados carregam
+discriminação histórica.
+\end{conceito}
+
+\begin{cuidado}[Não usar o atributo sensível diretamente não elimina o viés]
+Um modelo que não usa "raça" ou "gênero" como atributo de entrada
+\textbf{não} está automaticamente livre de viés --- outras variáveis
+(CEP, escola frequentada, histórico de consumo) podem funcionar como
+\textbf{proxy}, recriando indiretamente a mesma discriminação através de
+uma correlação estatística. A alternativa que descreve isso como "o
+modelo é neutro porque não usa o atributo sensível" é o distrator clássico
+de "neutralidade tecnológica" --- neutralidade de dado não é garantida
+só por omitir uma coluna.
+\end{cuidado}
+
+\begin{conceito}[Explicabilidade x acurácia: são eixos independentes]
+\textbf{Explicabilidade} é a capacidade de o modelo (ou de quem o opera)
+\textbf{justificar} uma decisão de forma compreensível a humanos.
+\textbf{Acurácia} é o quanto o modelo acerta. Os dois não andam
+necessariamente juntos: um modelo pode ser \textbf{muito acurado e pouco
+explicável} (as redes neurais profundas são o exemplo clássico de
+"caixa-preta" --- acertam muito, mas é difícil apontar exatamente
+\emph{por quê} decidiram assim). Essa tensão é o que justifica exigir
+explicabilidade como requisito \textbf{separado} de desempenho em
+contextos de decisão sensível (crédito, benefício social, Justiça).
+\end{conceito}
+
+\begin{conceito}[LGPD, art.\ 20 --- direito à revisão de decisão automatizada]
+A LGPD garante ao titular de dados o direito de \textbf{solicitar revisão}
+de decisões tomadas \textbf{unicamente} com base em tratamento
+automatizado que afetem seus interesses --- incluindo decisões que
+definam perfil pessoal, profissional, de consumo ou de crédito. É a base
+legal que ancora cenários de prova envolvendo score de crédito, triagem de
+currículo automatizada ou concessão de benefício público por algoritmo:
+sistema que decide \textbf{sozinho}, sem qualquer possibilidade de revisão
+humana, contraria essa garantia.
+\end{conceito}
+
+\section{Regulação da IA: em vigor x ainda em tramitação}
+
+\begin{conceito}[A distinção de estado que a prova mais explora]
+Duas normas de referência sobre IA existem hoje em estágios
+\textbf{completamente diferentes}, e confundir os dois estágios é o erro
+mais fácil de cometer por quem só acompanha manchete de notícia:
+
+\begin{itemize}
+\item \textbf{União Europeia --- Regulamento (UE) 2024/1689 ("AI Act")}:
+\textbf{já está em vigor} (desde 01/08/2024), com aplicação
+\textbf{escalonada} no tempo (as proibições entraram primeiro; as
+obrigações de sistemas de alto risco entram depois). Por ser um
+\textbf{regulamento} europeu, aplica-se diretamente nos Estados-membros,
+sem precisar de uma lei nacional para "ativá-lo". Estrutura-se por
+\textbf{nível de risco}: risco \textbf{inaceitável} (práticas proibidas,
+como pontuação social do cidadão pelo Estado), \textbf{alto risco}
+(obrigações pesadas de conformidade e supervisão humana), \textbf{risco
+limitado} (dever de transparência --- avisar que se está interagindo com
+uma IA) e \textbf{risco mínimo} (sem obrigação especial).
+\item \textbf{Brasil --- PL 2338/2023}: \textbf{ainda é projeto de lei}
+--- não é lei em vigor. Segue o mesmo desenho baseado em \textbf{nível de
+risco} do modelo europeu, prevê \textbf{direitos} das pessoas afetadas
+(informação prévia, explicação da decisão, contestação e revisão humana),
+cria um sistema nacional de governança de IA sob coordenação da ANPD, e
+prevê multa por infração.
+\end{itemize}
+
+O mecanismo comum aos dois textos: quanto maior o \textbf{risco} que um
+sistema de IA representa para direitos das pessoas, maior a
+\textbf{obrigação} de conformidade imposta a quem o opera --- é uma
+regulação \textbf{proporcional ao risco}, não uma proibição genérica de
+IA.
+\end{conceito}
+
+\begin{cuidado}[As trocas de estado que passam despercebidas]
+\begin{itemize}
+\item Dizer que o \textbf{Brasil já tem} uma lei específica de IA em
+vigor é falso --- o que está em vigor no Brasil e toca IA é a
+\textbf{LGPD} (por tabela, via o art.\ 20 sobre decisão automatizada), não
+uma lei de IA dedicada.
+\item Dizer que o \textbf{AI Act ainda é uma proposta} em discussão é
+falso --- é regulamento \textbf{vigente} desde agosto de 2024.
+\item Atribuir ao PL 2338 uma abordagem "baseada em princípios, sem
+classificação de risco" é falso --- ele é, como o europeu,
+\textbf{baseado em nível de risco}.
+\end{itemize}
+Como este é o assunto mais volátil do livro, \textbf{confira o estágio
+atual do PL 2338} próximo à data da prova --- se ele for sancionado como
+lei antes disso, deixa de ser "projeto" e a resposta correta muda de
+categoria.
+\end{cuidado}
+
+\section{Reconhecendo o padrão em cenários de IA aplicada}
+
+\begin{conceito}[Quatro padrões de cenário que a prova reaproveita]
+O edital pede "fundamentos \textbf{e aplicações}" --- ou seja, a mesma
+pergunta técnica pode vir embrulhada num cenário concreto (um órgão
+público, um banco, uma prefeitura). Reconhecer o padrão por trás do
+cenário resolve a questão:
+
+\begin{itemize}
+\item \textbf{Triagem/priorização de atendimento} (fila de posto de
+saúde, concessão de benefício, análise de currículo): tipicamente
+\textbf{classificação supervisionada} (existe um rótulo conhecido:
+aprovado/negado, prioritário/não) --- e o cenário costuma testar se há
+\textbf{direito a explicação/revisão humana} da decisão.
+\item \textbf{Detecção de fraude ou anomalia} (transação suspeita, glosa
+irregular): tipicamente \textbf{não supervisionado} ou semissupervisionado
+--- porque casos rotulados de fraude são raros e o padrão fraudulento
+\textbf{muda com o tempo} (concept drift, ver Capítulo
+\ref{cap:orfaos-teoria}).
+\item \textbf{Chatbot/atendimento ao cidadão via LLM}: testa se o
+candidato reconhece o risco de \textbf{alucinação} e a necessidade de
+\textbf{validação humana} antes que a resposta do modelo produza efeito
+sobre um direito do cidadão.
+\item \textbf{Score de crédito/seguro/benefício por algoritmo}: cenário
+clássico de \textbf{viés algorítmico} --- se o histórico de treino
+reflete desigualdade passada, o modelo tende a reproduzi-la, mesmo sem
+usar diretamente o atributo sensível (via proxy).
+\end{itemize}
+\end{conceito}
+
+\section{Interseção IA $\times$ ESG: energia e sustentabilidade}
+
+\begin{conceito}[Por que IA e sustentabilidade aparecem juntas em prova]
+O crescimento do uso de IA em escala tem um custo energético real, e é
+exatamente o tipo de interseção que uma prova de "Atualidades e IA" gosta
+de explorar --- une os dois temas mais recorrentes do bloco:
+\begin{itemize}
+\item O consumo de um data center se divide, a grosso modo, entre
+\textbf{processamento} (a maior fatia) e \textbf{resfriamento}
+(refrigerar o hardware para não superaquecer é, depois do próprio
+processamento, o maior custo energético de operar um data center em
+escala).
+\item \textbf{PUE} (\textit{Power Usage Effectiveness}): métrica-padrão de
+eficiência energética de data center --- razão entre a energia total
+consumida e a energia usada especificamente pela TI. Quanto mais próximo
+de 1,0, mais eficiente (menos energia "desperdiçada" em overhead como
+refrigeração).
+\item Como parte da energia elétrica que alimenta data centers ainda vem
+de fontes fósseis, a expansão acelerada de IA \textbf{pressiona} as metas
+de descarbonização --- é a mesma preocupação de mudança climática que já
+aparece na Parte 1 deste capítulo, agora aplicada especificamente à
+infraestrutura digital.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[Não caia no absoluto em nenhuma das duas direções]
+Dizer que a infraestrutura de IA usa "majoritariamente energia limpa" é
+otimismo não sustentado (a menos que o texto-base afirme isso
+explicitamente); dizer que IA é "incompatível com sustentabilidade" é o
+absoluto oposto, igualmente errado. O tratamento realista do tema é o
+\textbf{dilema}: benefício tecnológico \textbf{e} custo ambiental
+coexistindo, não um veredito fechado num sentido ou no outro.
+\end{cuidado}
+
+\section{Roteiro de revisão do capítulo}
+
+\begin{regrapratica}[Os pares que este capítulo mais inverte]
+Supervisionado (rotulado) $\times$ não supervisionado (sem rótulo); viés
+alto/underfitting (modelo simples demais, erra em tudo) $\times$ variância
+alta/overfitting (modelo decorou o treino); precisão (foco no falso
+positivo) $\times$ recall (foco no falso negativo); F1 é média
+\textbf{harmônica}, não aritmética; AI Act (\textbf{em vigor}) $\times$ PL
+2338 (\textbf{ainda projeto}); explicabilidade $\times$ acurácia (eixos
+independentes); "não usa o atributo sensível" não é o mesmo que "livre de
+viés" (cuidado com proxy).
+\end{regrapratica}

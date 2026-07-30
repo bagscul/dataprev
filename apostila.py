@@ -10,6 +10,8 @@ Uso:
     ./apostila.py --dia ontem    capitulos do plano de outro dia (ontem,
                                  anteontem, -3, ou AAAA-MM-DD)
     ./apostila.py --quem geys hoje
+    ./apostila.py --teoria java  abre teoria/main.pdf (livro-texto) em vez
+                                 da apostila, mesmo mapeamento de capitulo
 
 Descobre a pagina inicial de cada capitulo lendo o cabecalho de pagina do PDF
 ("Capitulo N ... Dataprev 2026 — Perfil 3") via pdftotext, entao nao depende
@@ -24,17 +26,16 @@ import sys
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
-PDF = BASE / "apostila" / "main.pdf"
 
 sys.path.insert(0, str(BASE))
 import roteiro  # noqa: E402
 from quiz import APOSTILA, csv_de  # noqa: E402
 
 
-def mapa_paginas():
+def mapa_paginas(pdf):
     """cap (int) -> (pagina_inicial, pagina_final), 1-indexado, fisico no PDF."""
     texto = subprocess.run(
-        ["pdftotext", "-layout", str(PDF), "-"],
+        ["pdftotext", "-layout", str(pdf), "-"],
         capture_output=True, text=True, check=True,
     ).stdout
     paginas = texto.split("\x0c")
@@ -72,10 +73,13 @@ def main():
     p.add_argument("blocos", nargs="*", default=["hoje"])
     p.add_argument("--quem", default="lucas")
     p.add_argument("--dia", default=None)  # ontem, anteontem, -2, AAAA-MM-DD
+    p.add_argument("--teoria", action="store_true", help="abre teoria/main.pdf em vez de apostila/main.pdf")
     a = p.parse_args()
 
-    if not PDF.exists():
-        sys.exit(f"nao achei {PDF} — compile a apostila primeiro (cd apostila && latexmk -pdf main.tex)")
+    pdf = BASE / ("teoria" if a.teoria else "apostila") / "main.pdf"
+    if not pdf.exists():
+        alvo = "teoria" if a.teoria else "apostila"
+        sys.exit(f"nao achei {pdf} — compile primeiro (cd {alvo} && latexmk -pdf main.tex)")
 
     data = None
     if a.dia is not None:
@@ -87,7 +91,7 @@ def main():
     if not blocos:
         sys.exit("nenhum bloco pra mostrar (plano do dia vazio?)")
 
-    faixas = mapa_paginas()
+    faixas = mapa_paginas(pdf)
 
     titulos = {}
     for b in blocos:
@@ -108,7 +112,7 @@ def main():
         ini, _fim = faixas[cap]
         print(f"abrindo Cap. {cap} — {titulo}  (pagina {ini} do PDF) no zathura")
         subprocess.Popen(
-            ["zathura", "--fork", "-P", str(ini), str(PDF)],
+            ["zathura", "--fork", "-P", str(ini), str(pdf)],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
         )
 

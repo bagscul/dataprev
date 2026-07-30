@@ -1,0 +1,474 @@
+\chapter{Redes de Computadores}
+\label{cap:redes-teoria}
+
+Este capítulo cobre os fundamentos de redes que aparecem na prova, com a
+mecânica por trás de cada conceito --- não só o rótulo. A versão resumida,
+com o recorte do que realmente cai no Perfil 3, está na
+\texttt{apostila/}; aqui o objetivo é entender \textbf{por que} a pilha de
+protocolos funciona do jeito que funciona.
+
+\section{Modelos de referência: OSI e TCP/IP}
+
+\subsection{Encapsulamento: a ideia que sustenta o modelo em camadas}
+
+\begin{conceito}[Camada é divisão de trabalho, não gaveta de classificação]
+O problema de fazer dois programas em máquinas diferentes conversarem é
+grande demais para resolver de uma vez --- envolve sinal elétrico, entrega
+ao vizinho físico, roteamento entre redes, garantia de entrega, e o
+significado dos dados em si. O modelo em camadas \textbf{divide esse
+problema} em fatias menores, cada uma resolvida por uma camada diferente,
+que não precisa saber como as outras resolvem o próprio pedaço.
+
+O mecanismo que viabiliza isso é o \textbf{encapsulamento}: ao descer a
+pilha (enviando), cada camada recebe os dados da camada de cima, faz seu
+trabalho e \textbf{acrescenta um cabeçalho próprio} antes de passar adiante.
+Ao subir a pilha (recebendo), cada camada \textbf{remove} o cabeçalho que
+corresponde a ela e entrega o resto para cima. É como uma carta dentro de
+um envelope, dentro de uma caixa, dentro de outra caixa --- cada camada só
+abre a própria embalagem.
+\end{conceito}
+
+\begin{conceito}[OSI --- 7 camadas]
+\begin{center}
+\begin{tabular}{@{}p{0.6cm}p{2.2cm}p{4.4cm}p{3.4cm}@{}}
+\toprule
+\# & \textbf{Camada} & \textbf{Problema que resolve} & \textbf{Exemplos} \\
+\midrule
+7 & Aplicação & serviço que o usuário/programa efetivamente quer & HTTP,
+DNS, SMTP \\
+6 & Apresentação & formato dos dados --- tradução, cifra, compressão &
+codificação, TLS (discutível) \\
+5 & Sessão & controle do diálogo --- abrir, manter, retomar de um
+\textit{checkpoint} & --- \\
+4 & Transporte & entregar ao \textbf{processo} certo (porta), com ou sem
+garantia de ordem/entrega & TCP, UDP \\
+3 & Rede & achar o caminho \textbf{entre redes diferentes} & IP, roteador \\
+2 & Enlace & entregar ao vizinho \textbf{dentro do mesmo segmento} físico
+(endereço MAC) & switch, Ethernet \\
+1 & Física & converter bits em sinal no meio físico & cabo, rádio \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Cada camada tem uma unidade de dados própria (PDU), e o nome dessa unidade
+denuncia a camada em qualquer questão: \textbf{segmento} (TCP) na
+Transporte, \textbf{pacote} na Rede, \textbf{quadro} na Enlace, \textbf{bit}
+na Física.
+\end{conceito}
+
+\begin{conceito}[TCP/IP --- 4 camadas, a pilha realmente implementada]
+O modelo OSI é o \textbf{referencial de ensino} (didático, nunca foi
+implementado à risca como está descrito); a pilha que roda de verdade na
+Internet é a \textbf{TCP/IP}, mais enxuta: Acesso à Rede (funde OSI 1--2),
+Internet (equivale a OSI 3), Transporte (equivale a OSI 4), Aplicação (funde
+OSI 5--7). Quando um enunciado menciona "camada de sessão" ou "camada de
+apresentação", está necessariamente falando do modelo \textbf{OSI} --- essas
+duas não têm correspondência separada no TCP/IP.
+\end{conceito}
+
+\begin{exemplo}[Identificando a camada pela função descrita, não pelo nome]
+"Um protocolo insere marcadores no fluxo de dados para permitir que, se a
+conexão cair no meio de uma transferência grande, ela retome do ponto
+interrompido em vez de recomeçar do zero." $\to$ isso é controle de
+\textbf{diálogo com checkpoint} $\to$ camada de \textbf{Sessão} (OSI 5) ---
+não é Transporte (que garante entrega e ordem, mas não gerencia retomada de
+diálogo em alto nível) nem Apresentação (que trata de formato dos dados).
+
+"Um roteador recebe um pacote e decide por qual próximo salto encaminhá-lo,
+com base no endereço de destino." $\to$ camada de \textbf{Rede} (OSI 3) ---
+é sobre achar caminho entre redes.
+
+"Um switch recebe um quadro e decide para qual porta física repassá-lo, com
+base na tabela de endereços MAC aprendidos." $\to$ camada de \textbf{Enlace}
+(OSI 2) --- a decisão fica dentro do mesmo segmento físico.
+\end{exemplo}
+
+\begin{regrapratica}[Roteiro para identificar a camada em qualquer cenário]
+Pergunte, nesta ordem: o problema é \textbf{entre duas máquinas do mesmo
+segmento físico}? Enlace. É \textbf{entre redes diferentes} (precisa
+escolher rota)? Rede. Chegou \textbf{à máquina certa mas falta garantir
+processo/porta, ordem ou retransmissão}? Transporte. É sobre
+\textbf{retomar/gerenciar um diálogo} (checkpoint, sessão)? Sessão. É sobre
+\textbf{formato, cifra ou compressão} dos dados em si? Apresentação. É o
+\textbf{serviço final} que o usuário/programa pediu? Aplicação. A banca
+sempre descreve o comportamento, nunca pergunta "qual é o número da camada
+X" isoladamente --- o número é consequência de identificar a função.
+\end{regrapratica}
+
+\section{Equipamentos de rede por camada}
+
+\begin{conceito}[Hub, switch e roteador --- a inteligência cresce com a camada]
+\begin{itemize}
+\item \textbf{Hub} (camada 1 --- Física): recebe um sinal em uma porta e
+\textbf{repete para todas as outras}, sem entender endereço nenhum. É "burro"
+por definição --- não sabe distinguir destinatários, então gera colisão e
+desperdiça banda.
+\item \textbf{Switch} (camada 2 --- Enlace): aprende quais endereços
+\textbf{MAC} estão em quais portas (observando o tráfego que passa) e
+encaminha cada quadro \textbf{só para a porta certa} --- elimina a
+repetição cega do hub.
+\item \textbf{Roteador} (camada 3 --- Rede): usa o endereço \textbf{IP} de
+destino para decidir por qual interface encaminhar um pacote, inclusive
+\textbf{entre redes diferentes} --- é o único dos três capaz de interligar
+duas redes distintas.
+\end{itemize}
+Existe switch de camada 3 (que também roteia), mas o par cobrado com mais
+frequência é a associação direta \textbf{switch = camada 2}, \textbf{roteador
+= camada 3}.
+\end{conceito}
+
+\section{TCP $\times$ UDP}
+
+\begin{conceito}[Os dois protocolos de transporte resolvem trade-offs opostos]
+Ambos entregam dados a um \textbf{processo} (via porta), mas fazem
+concessões diferentes entre confiabilidade e velocidade:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{TCP} & \textbf{UDP} \\
+\midrule
+Conexão & orientado a conexão (estabelece com \textit{handshake} de 3 vias
+antes de trocar dados) & sem conexão --- envia direto \\
+Confiabilidade & garante entrega e ordem (retransmite o que se perde,
+reordena o que chega fora de ordem) & não garante nada disso --- se um
+pacote se perde, não há retransmissão automática \\
+Custo & mais overhead (cabeçalho maior, controle de estado da conexão) &
+mais leve e rápido \\
+Uso típico & web, e-mail, transferência de arquivo --- onde perder um byte
+é inaceitável & streaming, DNS, VoIP --- onde chegar rápido importa mais
+que chegar perfeito (um pacote perdido de voz não vale a pena retransmitir,
+já ficou velho) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{conceito}[O \textit{three-way handshake} do TCP]
+Antes de trocar qualquer dado, as duas pontas trocam três mensagens para
+\textbf{sincronizar números de sequência} --- o mecanismo que depois
+permite ao TCP detectar perda e reordenar:
+\begin{enumerate}
+\item \textbf{SYN}: o cliente propõe um número de sequência inicial.
+\item \textbf{SYN-ACK}: o servidor confirma o número do cliente e propõe o
+próprio.
+\item \textbf{ACK}: o cliente confirma o número do servidor.
+\end{enumerate}
+Depois desse acordo, as duas pontas sabem contar exatamente quais bytes já
+chegaram e quais faltam --- é isso que viabiliza a garantia de entrega e
+ordem. O handshake \textbf{não autentica} identidade, \textbf{não negocia}
+criptografia, e \textbf{não controla fluxo} de vazão --- essas são outras
+funções (a autenticação/criptografia fica a cargo de camadas superiores
+como TLS; o controle de fluxo é outro mecanismo do TCP, separado do
+handshake). E só existe no TCP: o UDP não tem handshake porque não
+estabelece conexão.
+\end{conceito}
+
+\section{Endereçamento e roteamento IP}
+
+\subsection{IPv4, IPv6 e faixas privadas}
+
+\begin{conceito}[Tamanho do endereço e por que existem faixas privadas]
+\textbf{IPv4}: endereço de \textbf{32 bits}, escrito em 4 octetos decimais
+(0--255). O espaço de endereços é finito (cerca de 4,3 bilhões), e não é
+suficiente para dar um endereço público único a cada dispositivo do mundo
+--- daí a RFC 1918 reservar faixas \textbf{privadas}, que podem ser
+reutilizadas livremente dentro de redes internas diferentes (porque nunca
+saem para a Internet pública diretamente): \texttt{10.0.0.0/8},
+\texttt{172.16.0.0/12}, \texttt{192.168.0.0/16}. O NAT (adiante) é o que
+permite esses endereços privados acessarem a Internet pública.
+
+\textbf{IPv6}: endereço de \textbf{128 bits}, criado justamente para
+resolver a escassez do IPv4 --- o espaço de endereços é astronomicamente
+maior, o que elimina a necessidade estrutural de NAT (ainda que ele possa
+existir por outros motivos). Prefixo de sub-rede típico: \texttt{/64}.
+\end{conceito}
+
+\begin{conceito}[Notação simplificada do IPv6]
+Um endereço IPv6 completo tem 8 grupos de 4 dígitos hexadecimais. Duas
+regras de abreviação, aplicadas \textbf{nesta ordem}:
+\begin{enumerate}
+\item Apague os \textbf{zeros à esquerda} de cada grupo individualmente
+(\texttt{0DB8} $\to$ \texttt{DB8}; \texttt{0001} $\to$ \texttt{1}; um grupo
+totalmente zero, \texttt{0000}, vira só \texttt{0}).
+\item Substitua \textbf{uma única} sequência contígua de grupos
+inteiramente nulos por \texttt{::} --- só pode ser usada \textbf{uma vez}
+no endereço inteiro, porque usá-la duas vezes tornaria impossível saber
+quantos grupos cada \texttt{::} está escondendo.
+\end{enumerate}
+\end{conceito}
+
+\begin{exemplo}[Abreviando um endereço IPv6]
+Endereço completo: \texttt{2001:0DB8:0000:0000:0000:0000:FE00:0001}.
+
+Passo 1 (zeros à esquerda de cada grupo): \texttt{2001:DB8:0:0:0:0:FE00:1}.
+
+Passo 2 (a maior sequência de grupos zerados vira \texttt{::} --- aqui, os
+quatro grupos \texttt{0:0:0:0} no meio): \texttt{2001:DB8::FE00:1}.
+\end{exemplo}
+
+\subsection{Sub-redes: calculando hosts utilizáveis}
+
+\begin{conceito}[Por que se subtrai 2 do total de endereços]
+Um endereço IPv4 tem 32 bits, divididos entre a parte de \textbf{rede} e a
+parte de \textbf{host}. O prefixo \texttt{/n} informa que os primeiros $n$
+bits identificam a rede, sobrando $h = 32 - n$ bits para identificar hosts
+dentro dela. Com $h$ bits, existem $2^h$ combinações possíveis --- mas duas
+delas são \textbf{reservadas} e não podem ser atribuídas a um host:
+
+\begin{itemize}
+\item o endereço com todos os bits de host em \textbf{0} identifica a
+\textbf{própria rede} (não um host);
+\item o endereço com todos os bits de host em \textbf{1} é o
+\textbf{broadcast} da sub-rede (não um host).
+\end{itemize}
+
+Por isso, \textbf{hosts utilizáveis $= 2^h - 2$}.
+\end{conceito}
+
+\begin{exemplo}[Aplicando a fórmula]
+\begin{center}
+\begin{tabular}{@{}p{1.6cm}p{3.6cm}p{2.2cm}p{3.4cm}@{}}
+\toprule
+\textbf{Prefixo} & \textbf{Máscara} & \textbf{Bits de host ($h$)} & \textbf{Hosts utilizáveis ($2^h{-}2$)} \\
+\midrule
+/24 & 255.255.255.0 & 8 & $2^8-2=254$ \\
+/25 & 255.255.255.128 & 7 & $2^7-2=126$ \\
+/26 & 255.255.255.192 & 6 & $2^6-2=62$ \\
+/27 & 255.255.255.224 & 5 & $2^5-2=30$ \\
+/28 & 255.255.255.240 & 4 & $2^4-2=14$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{exemplo}
+
+\begin{regrapratica}[Do requisito de hosts para a máscara certa]
+Quando o enunciado dá uma necessidade ("a sub-rede precisa comportar até 30
+hosts") e pede a máscara, procure a \textbf{menor} sub-rede (o maior
+prefixo \texttt{/n}) que ainda \textbf{comporta} o número pedido --- usar
+uma sub-rede maior que o necessário desperdiça endereços. Trinta hosts
+cabem exatamente em \texttt{/27} (30 utilizáveis); \texttt{/28} (14) não
+cabe; \texttt{/26} (62) cabe mas desperdiça 32 endereços à toa.
+\end{regrapratica}
+
+\subsection{Roteamento e distância administrativa}
+
+\begin{conceito}[Rota estática $\times$ dinâmica, e como o roteador desempata]
+\textbf{Rota estática}: configurada manualmente pelo administrador, fixa até
+alguém mudar. \textbf{Rota dinâmica}: aprendida automaticamente por um
+protocolo de roteamento que troca informação com outros roteadores (OSPF,
+RIP, BGP) --- se adapta sozinha a mudanças na topologia.
+
+Quando o roteador aprende \textbf{mais de uma rota} para o mesmo destino,
+por fontes diferentes, ele precisa de um critério de desempate: a
+\textbf{distância administrativa} (um número que representa a
+"confiabilidade" atribuída a cada fonte de rota, menor = mais confiável).
+Valores padrão (Cisco): rede diretamente conectada = 0, rota estática = 1,
+OSPF = 110, RIP = 120. \textbf{A menor distância administrativa vence},
+sempre --- é um critério puramente numérico, sem exceção por "protocolo
+mais moderno" ou situação especial.
+\end{conceito}
+
+\begin{cuidado}[Não existe prioridade "inteligente" no roteamento]
+Alternativas que descrevem comportamento adaptativo além da distância
+administrativa --- "OSPF sempre tem prioridade sobre rota estática",
+"o roteador faz balanceamento de carga automático entre rotas
+concorrentes", "descarta pacotes quando há rotas conflitantes" --- estão
+inventando comportamento. A regra real é mecânica e determinística: compara
+a distância administrativa das rotas disponíveis para o mesmo destino e
+usa a menor. Ponto.
+\end{cuidado}
+
+\subsection{ACL Cisco e \textit{wildcard mask}}
+
+\begin{conceito}[Wildcard mask é o inverso lógico da máscara de sub-rede]
+Uma \textit{wildcard mask} usa a lógica oposta da máscara normal: bit
+\textbf{0} significa "esse bit \textbf{tem} que bater exatamente" e bit
+\textbf{1} significa "esse bit é \textbf{ignorado}" (pode ser qualquer
+valor). É obtida invertendo cada bit da máscara de sub-rede correspondente.
+\end{conceito}
+
+\begin{exemplo}[Construindo a wildcard mask para "só endereços ímpares"]
+Um endereço IPv4 é ímpar quando o \textbf{bit menos significativo do último
+octeto} vale 1. Para uma ACL casar \emph{apenas} endereços ímpares, esse
+bit específico precisa estar \textbf{fixo} (wildcard = 0 nesse bit), e
+todos os demais bits do último octeto podem ser qualquer coisa (wildcard =
+1). Isso dá, no último octeto, \texttt{11111110} em binário $=$
+\texttt{254} em decimal. Wildcard resultante: \texttt{0.0.0.254}. O
+raciocínio é sempre \textbf{bit a bit}: monte o octeto em binário decidindo
+"fixo (0)" ou "livre (1)" posição por posição, e só depois converta para
+decimal --- decorar valores prontos leva a erro quando o padrão muda.
+\end{exemplo}
+
+\subsection{MPLS, VLAN e NAT}
+
+\begin{conceito}[Três mecanismos que resolvem problemas diferentes na rede]
+\begin{itemize}
+\item \textbf{MPLS} (\textit{Multiprotocol Label Switching}): em vez de
+cada roteador olhar o endereço IP de destino e recalcular a rota a cada
+salto, o MPLS anexa um \textbf{rótulo} (\textit{label}) simples ao pacote
+na entrada da rede, e os roteadores internos só olham o rótulo para
+encaminhar --- muito mais rápido que analisar IP a cada salto. Por operar
+"entre" a camada de enlace e a de rede (usa rótulos como a camada 2, mas
+serve para encaminhar como a camada 3), é apelidado de \textbf{"camada
+2.5"}. Permite criar caminhos dedicados (LSP) para engenharia de tráfego e
+qualidade de serviço (QoS).
+\item \textbf{VLAN} (\textit{Virtual LAN}): segmenta \textbf{logicamente} a
+camada 2 --- cria domínios de \textbf{broadcast} separados dentro do
+\textbf{mesmo} switch físico, sem precisar de switches físicos distintos
+para cada grupo de máquinas. Um pacote de broadcast de uma VLAN não vaza
+para outra, mesmo compartilhando o mesmo hardware.
+\item \textbf{NAT} (\textit{Network Address Translation}): traduz
+endereços \textbf{privados} (dentro da rede interna) para um endereço
+\textbf{público} (ao sair para a Internet) e vice-versa na volta ---
+resolve dois problemas ao mesmo tempo: economiza endereços IPv4 públicos
+(muitos hosts internos compartilham um só IP público) e oculta a topologia
+interna da rede de quem está de fora.
+\end{itemize}
+\end{conceito}
+
+\begin{cuidado}[MPLS não é "roteamento IP mais rápido"; VLAN não é segmentação física]
+MPLS não substitui o roteamento IP --- ele acelera o encaminhamento
+\textbf{depois} que a rota já foi decidida, usando rótulo em vez de
+recalcular IP a cada salto; não é a mesma coisa que "um protocolo de
+roteamento melhor". VLAN segmenta a camada \textbf{2} (domínio de
+broadcast) por configuração lógica --- não é uma separação de cabos ou
+hardware, é a mesma infraestrutura física dividida por software.
+\end{cuidado}
+
+\section{Tipos de rede corporativa}
+
+\begin{conceito}[Internet, intranet, extranet e portal]
+Os quatro termos descrevem \textbf{quem tem acesso} a uma rede, não sua
+tecnologia (todos rodam sobre a mesma pilha TCP/IP):
+\begin{itemize}
+\item \textbf{Internet}: rede \textbf{pública} e global, acessível a
+qualquer um.
+\item \textbf{Intranet}: rede \textbf{interna} de uma organização, acesso
+restrito aos seus membros.
+\item \textbf{Extranet}: extensão controlada da intranet para
+\textbf{parceiros ou clientes externos específicos} --- não é pública como
+a Internet, mas também não é fechada só aos funcionários como a intranet;
+é um meio-termo de acesso seletivo.
+\item \textbf{Portal}: um \textbf{ponto único de acesso} organizado a
+serviços/informações (pode ser a interface tanto de uma intranet quanto de
+uma extranet).
+\end{itemize}
+\end{conceito}
+
+\section{Segurança de rede}
+
+\subsection{Firewall: \textit{stateless} $\times$ \textit{stateful}}
+
+\begin{conceito}[A diferença é lembrar (ou não) do que já aconteceu]
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+& \textbf{Stateless} (filtro de pacotes) & \textbf{Stateful} (com estado) \\
+\midrule
+O que examina & cada pacote \textbf{isoladamente} --- IP origem/destino,
+porta, protocolo & o pacote \textbf{no contexto da conexão/sessão} a que
+pertence \\
+Como decide & aplica a regra estática ao pacote, sem memória do que passou
+antes & mantém uma \textbf{tabela de estado} das conexões ativas e usa esse
+histórico na decisão \\
+Consequência prática & para permitir a resposta de uma conexão, é preciso
+escrever uma regra explícita de volta & a resposta de uma conexão iniciada
+de dentro é aceita \textbf{automaticamente}, porque o firewall já sabe que
+ela pertence a uma sessão legítima \\
+\bottomrule
+\end{tabular}
+\end{center}
+Ambos operam nas camadas 3 e 4 (IP e porta). Quem inspeciona o
+\textbf{conteúdo} da camada de aplicação (camada 7) é outra categoria de
+equipamento --- o \textbf{firewall de próxima geração} (NGFW) ou o
+\textbf{WAF} (\textit{Web Application Firewall}).
+\end{conceito}
+
+\begin{cuidado}[Não misture "com estado" com "opera na aplicação"]
+Dizer que o firewall \textit{stateful} "atua exclusivamente na camada de
+aplicação" é um absoluto errado --- ele continua trabalhando nas camadas
+3/4, só que \textbf{lembrando} do contexto da conexão. Subir até a camada 7
+é uma capacidade \textbf{adicional} de outra categoria de equipamento
+(NGFW/WAF), não uma consequência automática de ser \textit{stateful}.
+\end{cuidado}
+
+\subsection{SSH substituindo o Telnet}
+
+\begin{conceito}[A mesma função, com e sem cifra]
+Telnet e SSH resolvem o mesmo problema --- \textbf{administração remota de
+outro equipamento pela rede} --- mas com uma diferença que os tornou
+incompatíveis em qualquer ambiente que leve segurança a sério:
+
+\begin{itemize}
+\item \textbf{Telnet} (porta 23): transmite \textbf{tudo em texto claro},
+inclusive o usuário e a senha do administrador. Qualquer um capaz de
+capturar o tráfego no caminho (um \textit{sniffer} na mesma rede, por
+exemplo) lê a sessão inteira, senha incluída.
+\item \textbf{SSH} (porta 22): faz o mesmo trabalho, mas \textbf{cifra toda
+a comunicação}, incluindo a etapa de autenticação --- ninguém capturando o
+tráfego consegue ler usuário, senha ou comandos.
+\end{itemize}
+
+A razão de o SSH ter substituído o Telnet é estritamente \textbf{segurança
+(criptografia)}, não velocidade ou qualquer outra vantagem operacional.
+\end{conceito}
+
+\subsection{TLS: por que a criptografia é híbrida}
+
+\begin{conceito}[Assimétrica só para combinar a chave; simétrica para o volume]
+O TLS (o que torna HTTP em HTTPS) resolve dois problemas que pedem
+ferramentas diferentes, e por isso combina os dois tipos de criptografia:
+
+\begin{itemize}
+\item \textbf{Criptografia assimétrica --- só no \textit{handshake}}: o
+certificado digital do servidor comprova sua identidade (é ele mesmo quem
+diz ser), e o par de chaves pública/privada permite às duas pontas
+\textbf{combinarem uma chave simétrica de sessão} \textbf{sem que ela
+trafegue em claro} pela rede.
+\item \textbf{Criptografia simétrica --- para todo o resto}: uma vez
+combinada a chave de sessão, \textbf{todo} o volume de dados trocado
+durante a conexão é cifrado com ela, porque criptografia simétrica é
+\textbf{ordens de magnitude mais rápida} que assimétrica.
+\end{itemize}
+
+O motivo do híbrido: a assimétrica sozinha seria lenta demais para cifrar
+todo o tráfego de uma sessão inteira; a simétrica sozinha não resolveria o
+problema de \emph{como} as duas pontas combinam uma chave secreta por um
+canal que, até aquele momento, ainda não é seguro.
+\end{conceito}
+
+\begin{cuidado}[O que o handshake NÃO faz]
+A parte assimétrica do TLS \textbf{não} cifra o tráfego inteiro da sessão
+(só participa da negociação da chave) e \textbf{não} autentica o usuário
+final por login/senha --- ela autentica o \textbf{servidor}, via
+certificado digital. Autenticação do usuário (se houver) é uma camada
+posterior, dentro da aplicação, não parte do handshake TLS.
+\end{cuidado}
+
+\begin{cuidado}[SSL não é "mais moderno" que TLS]
+TLS é o \textbf{sucessor} do SSL, criado justamente para corrigir
+vulnerabilidades encontradas no protocolo antigo. Qualquer alternativa que
+descreva o SSL como mais seguro, mais recente ou mais recomendado que o TLS
+inverteu a linha do tempo.
+\end{cuidado}
+
+\section{Roteiro de revisão do capítulo}
+
+\begin{regrapratica}[Sequência de raciocínio para qualquer questão de redes]
+\begin{enumerate}
+\item O enunciado descreve uma \textbf{função}? Identifique a camada OSI
+pelo comportamento (Seção anterior), não tente decorar "camada X = tal
+coisa" sem entender o porquê.
+\item Envolve \textbf{dois hosts trocando dados}? Pergunte se é TCP
+(precisa de confiabilidade/ordem) ou UDP (velocidade importa mais).
+\item Envolve \textbf{endereçamento}? Verifique se é cálculo de sub-rede
+($2^h - 2$), faixa privada (RFC 1918) ou notação IPv6.
+\item Envolve \textbf{decisão de caminho}? Verifique se é rota
+estática/dinâmica e aplique a distância administrativa (menor vence).
+\item Envolve \textbf{segurança}? Separe o que é do protocolo de
+transporte/rede (TCP handshake, firewall stateful) do que é de
+criptografia de aplicação (TLS, SSH) --- são mecanismos independentes que a
+prova gosta de combinar no mesmo cenário.
+\end{enumerate}
+\end{regrapratica}
