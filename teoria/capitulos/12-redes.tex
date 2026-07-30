@@ -1,6 +1,18 @@
 \chapter{Redes de Computadores}
 \label{cap:redes-teoria}
 
+\begin{conceito}[Fora do edital do Perfil 3, mas cai na prova mesmo assim]
+Redes de Computadores enquanto disciplina \textbf{não é conteúdo do Perfil
+3} (Desenvolvimento de Software) --- é conteúdo dos Perfis 2 e 5. Ainda
+assim, a \textbf{Dataprev 2024 trouxe uma questão genuinamente fora do
+edital} (X.800, arquitetura de segurança do modelo OSI). Uma segunda
+questão parece a mesma pegada (ambientes de Internet, intranet, extranet e
+portal), mas pertence a outro item do próprio edital de Desenvolvimento de
+Sistemas --- não é conteúdo ``de fora''. Vale estudar o essencial deste
+capítulo mesmo sem cobertura formal no edital: historicamente é ponto
+barato e recorrente.
+\end{conceito}
+
 Este capítulo cobre os fundamentos de redes que aparecem na prova, com a
 mecânica por trás de cada conceito --- não só o rótulo. A versão resumida,
 com o recorte do que realmente cai no Perfil 3, está na
@@ -163,6 +175,47 @@ como TLS; o controle de fluxo é outro mecanismo do TCP, separado do
 handshake). E só existe no TCP: o UDP não tem handshake porque não
 estabelece conexão.
 \end{conceito}
+
+\section{Protocolos e portas comuns}
+
+\begin{conceito}[Porta identifica o processo, não a máquina]
+Dentro da camada de Transporte (Seção anterior), a \textbf{porta} é o que
+diz ao sistema operacional \emph{qual processo}, na máquina de destino,
+deve receber os dados --- é por isso que um mesmo servidor consegue rodar
+web, e-mail e SSH ao mesmo tempo sem um serviço interferir no outro. Os
+protocolos de aplicação mais comuns têm porta \textbf{padronizada por
+convenção} (registrada pela IANA), o que permite ao cliente abrir a
+conexão direto, sem precisar negociar antes qual porta usar:
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{2.3cm}p{6.3cm}@{}}
+\toprule
+\textbf{Protocolo} & \textbf{Porta} & \textbf{Papel} \\
+\midrule
+HTTP & 80 & tráfego web em texto claro \\
+HTTPS & 443 & o mesmo serviço, cifrado com TLS --- porta separada porque o
+cliente precisa saber, já ao abrir a conexão, se deve iniciar o handshake
+TLS antes de falar HTTP \\
+FTP & 21 (controle) / 20 (dados) & transferência de arquivos --- usa
+\textbf{duas conexões}: uma para comandos (21), outra para o fluxo de bytes
+do arquivo em si (20) \\
+SSH & 22 & acesso remoto com toda a comunicação cifrada (ver adiante, seção
+sobre SSH substituindo o Telnet) \\
+SMTP & 25 & envio de e-mail entre servidores \\
+DNS & 53 & tradução de nome de domínio para endereço IP \\
+POP3 / IMAP & 110 / 143 & leitura de e-mail --- POP3 baixa as mensagens
+para o cliente e normalmente as remove do servidor; IMAP mantém as
+mensagens no servidor e sincroniza o estado entre vários dispositivos \\
+DHCP & 67 (servidor) / 68 (cliente) & atribuição automática de endereço IP
+a um host que entra na rede \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\textit{Observação:} porta específica não apareceu na amostra de provas
+reais analisadas; a FGV preferiu raciocínio de rota, camada e ACL. Está no
+edital, mas priorize os padrões já estudados nas seções anteriores.
 
 \section{Endereçamento e roteamento IP}
 
