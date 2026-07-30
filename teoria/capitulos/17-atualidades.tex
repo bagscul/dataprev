@@ -37,12 +37,12 @@ destroem valor financeiro --- então passaram a exigir que esse risco seja
 \textbf{medido e divulgado}, não só descoberto depois que já aconteceu.
 \end{conceito}
 
-\begin{cuidado}[O "G" não é "Gestão", "Global" nem "Growth"]
-"Governança" é especificamente sobre \textbf{como a organização é dirigida
+\begin{cuidado}[O “G” não é “Gestão”, “Global” nem “Growth”]
+“Governança” é especificamente sobre \textbf{como a organização é dirigida
 e controlada} (estrutura de poder, prestação de contas) --- não é
-sinônimo genérico de "boa gestão" nem está relacionado a expansão
-("Growth") ou alcance internacional ("Global"). Da mesma forma, o "S" é
-\textbf{Social}, não "Sustentável" --- sustentabilidade é o conceito
+sinônimo genérico de “boa gestão” nem está relacionado a expansão
+(“Growth”) ou alcance internacional (“Global”). Da mesma forma, o “S” é
+\textbf{Social}, não “Sustentável” --- sustentabilidade é o conceito
 guarda-chuva que o ESG inteiro serve, não uma das três letras
 especificamente.
 \end{cuidado}
@@ -51,7 +51,7 @@ especificamente.
 Esse tipo de questão costuma vir ancorada num \textbf{texto-base}, no
 formato de julgar afirmativas (I, II, III). Dois filtros rápidos, antes de
 reler o texto com calma: (1) item com termo \textbf{absoluto}
-("invariavelmente", "sempre", "nunca", "exclusivamente") é quase sempre
+(“invariavelmente”, “sempre”, “nunca”, “exclusivamente”) é quase sempre
 \textbf{falso} --- a realidade socioambiental raramente é tão categórica;
 (2) item com dado \textbf{numérico} precisa ser \textbf{conferido contra o
 texto-base}, nunca aceito de memória --- é comum a alternativa inflar ou
@@ -72,7 +72,7 @@ sistema \textbf{aprende padrões a partir de dados} e melhora seu
 desempenho com a experiência, em vez de seguir regras explicitamente
 programadas por um humano para cada situação.
 \item \textbf{Deep Learning}: um \textbf{subcampo do ML} que usa
-\textbf{redes neurais com muitas camadas} (daí "profundo",
+\textbf{redes neurais com muitas camadas} (daí “profundo”,
 \textit{deep}) para aprender representações cada vez mais abstratas dos
 dados, camada após camada.
 \end{itemize}
@@ -101,16 +101,16 @@ Por reforço & recompensa/punição a cada ação & aprender uma
 \end{center}
 
 O critério que separa os três é \textbf{que tipo de sinal} orienta o
-aprendizado: no supervisionado, o sinal é "aqui está a resposta certa
-para este exemplo"; no não supervisionado, não há resposta certa dada,
+aprendizado: no supervisionado, o sinal é “aqui está a resposta certa
+para este exemplo”; no não supervisionado, não há resposta certa dada,
 só os dados brutos; no aprendizado por reforço, o sinal é indireto ---
-"essa sequência de ações rendeu recompensa X", sem dizer qual ação
+“essa sequência de ações rendeu recompensa X”, sem dizer qual ação
 específica foi a certa.
 \end{conceito}
 
-\begin{cuidado}["Aprende com os dados e melhora ao longo do tempo" não é lógica booleana]
-Um enunciado que descreve um sistema "que aprende com a experiência e
-melhora seu desempenho ao longo do tempo" está descrevendo \textbf{redes
+\begin{cuidado}[“Aprende com os dados e melhora ao longo do tempo” não é lógica booleana]
+Um enunciado que descreve um sistema “que aprende com a experiência e
+melhora seu desempenho ao longo do tempo” está descrevendo \textbf{redes
 neurais/aprendizado de máquina} --- não lógica booleana clássica nem
 programação linear determinística, que executam sempre a mesma regra fixa
 e não mudam de comportamento sozinhas com o uso.
@@ -132,7 +132,7 @@ dados & modelo \textbf{complexo demais}, ajusta-se a ruído específico do
 treino \\
 Sintoma & erra \textbf{tanto no treino quanto no teste} --- nem decorou o
 treino direito & acerta muito bem o treino, erra feio em dados novos ---
-"decorou" em vez de generalizar \\
+“decorou” em vez de generalizar \\
 Nome do fenômeno & \textbf{underfitting} & \textbf{overfitting} \\
 Como combater & modelo mais expressivo, mais atributos relevantes &
 regularização (L1/L2), validação cruzada, mais dados de treino \\
@@ -150,10 +150,10 @@ do treino). O objetivo prático não é zerar os dois, é achar o ponto de
 \end{conceito}
 
 \begin{cuidado}[Não inverta viés com variância]
-"Viés alto" \textbf{não} é o modelo que "decorou" o treino --- isso é
+“Viés alto” \textbf{não} é o modelo que “decorou” o treino --- isso é
 \textbf{variância alta} (overfitting). O jeito de fixar sem trocar: viés
-alto = modelo \textbf{"burro"} (simples demais até para o próprio treino);
-variância alta = modelo que \textbf{"decorou"} (bom no treino, ruim fora
+alto = modelo \textbf{“burro”} (simples demais até para o próprio treino);
+variância alta = modelo que \textbf{“decorou”} (bom no treino, ruim fora
 dele). E regularização combate especificamente a \textbf{variância/
 overfitting}, não o viés --- regularizar um modelo que já sofre de viés
 alto (underfitting) só pioraria a situação, tornando-o ainda mais
@@ -184,8 +184,8 @@ melhor que o modelo é inútil na prática).
 \end{conceito}
 
 \begin{exemplo}[Por que acurácia engana em base desbalanceada]
-Um conjunto de e-mails tem 99\% legítimos e 1\% spam. Um modelo "burro"
-que \textbf{sempre} responde "legítimo", sem olhar o conteúdo, acerta
+Um conjunto de e-mails tem 99\% legítimos e 1\% spam. Um modelo “burro”
+que \textbf{sempre} responde “legítimo”, sem olhar o conteúdo, acerta
 \textbf{99\% de acurácia} --- um número que parece excelente --- mas
 detecta \textbf{zero} spam (recall igual a zero para a classe que
 realmente importa detectar). É exatamente o cenário que a prova costuma
@@ -219,7 +219,7 @@ existente (o que seria um modelo \textbf{discriminativo}).
 Um \textbf{LLM} (\textit{Large Language Model}) é um modelo de linguagem
 treinado sobre um volume massivo de texto, tipicamente com a arquitetura
 \textbf{Transformer} e seu \textbf{mecanismo de atenção} --- que permite ao
-modelo, ao processar cada palavra, "prestar atenção" dinamicamente em
+modelo, ao processar cada palavra, “prestar atenção” dinamicamente em
 \textbf{quais outras palavras do contexto} são mais relevantes para aquele
 ponto, em vez de processar a sequência de forma estritamente linear e
 igualmente ponderada. É esse mecanismo que permite ao modelo capturar
@@ -241,7 +241,7 @@ para fundamentar a resposta. É a técnica típica para tornar respostas mais
 \begin{conceito}[Alucinação: resposta fluente, mas não fundamentada]
 \textbf{Alucinação} é quando o modelo gera uma resposta \textbf{plausível
 e bem escrita}, mas \textbf{factualmente incorreta} ou inventada --- o
-modelo não "sabe que não sabe": ele continua produzindo texto
+modelo não “sabe que não sabe”: ele continua produzindo texto
 estatisticamente coerente mesmo quando não tem base real para a afirmação.
 É a razão pela qual saída de LLM em contexto que afeta decisão real (um
 atendimento ao cidadão, uma análise jurídica) exige \textbf{validação},
@@ -254,19 +254,19 @@ não confiança cega.
 \textbf{Viés algorítmico} ocorre quando os \textbf{dados de treino}
 refletem desigualdades ou padrões históricos discriminatórios, e o modelo
 \textbf{aprende e reproduz} esse padrão em suas decisões --- o algoritmo
-não é "preconceituoso" por conta própria, ele generaliza exatamente o que
+não é “preconceituoso” por conta própria, ele generaliza exatamente o que
 os dados de treino mostraram, inclusive quando esses dados carregam
 discriminação histórica.
 \end{conceito}
 
 \begin{cuidado}[Não usar o atributo sensível diretamente não elimina o viés]
-Um modelo que não usa "raça" ou "gênero" como atributo de entrada
+Um modelo que não usa “raça” ou “gênero” como atributo de entrada
 \textbf{não} está automaticamente livre de viés --- outras variáveis
 (CEP, escola frequentada, histórico de consumo) podem funcionar como
 \textbf{proxy}, recriando indiretamente a mesma discriminação através de
-uma correlação estatística. A alternativa que descreve isso como "o
-modelo é neutro porque não usa o atributo sensível" é o distrator clássico
-de "neutralidade tecnológica" --- neutralidade de dado não é garantida
+uma correlação estatística. A alternativa que descreve isso como “o
+modelo é neutro porque não usa o atributo sensível” é o distrator clássico
+de “neutralidade tecnológica” --- neutralidade de dado não é garantida
 só por omitir uma coluna.
 \end{cuidado}
 
@@ -276,7 +276,7 @@ só por omitir uma coluna.
 \textbf{Acurácia} é o quanto o modelo acerta. Os dois não andam
 necessariamente juntos: um modelo pode ser \textbf{muito acurado e pouco
 explicável} (as redes neurais profundas são o exemplo clássico de
-"caixa-preta" --- acertam muito, mas é difícil apontar exatamente
+“caixa-preta” --- acertam muito, mas é difícil apontar exatamente
 \emph{por quê} decidiram assim). Essa tensão é o que justifica exigir
 explicabilidade como requisito \textbf{separado} de desempenho em
 contextos de decisão sensível (crédito, benefício social, Justiça).
@@ -301,12 +301,12 @@ Duas normas de referência sobre IA existem hoje em estágios
 mais fácil de cometer por quem só acompanha manchete de notícia:
 
 \begin{itemize}
-\item \textbf{União Europeia --- Regulamento (UE) 2024/1689 ("AI Act")}:
+\item \textbf{União Europeia --- Regulamento (UE) 2024/1689 (“AI Act”)}:
 \textbf{já está em vigor} (desde 01/08/2024), com aplicação
 \textbf{escalonada} no tempo (as proibições entraram primeiro; as
 obrigações de sistemas de alto risco entram depois). Por ser um
 \textbf{regulamento} europeu, aplica-se diretamente nos Estados-membros,
-sem precisar de uma lei nacional para "ativá-lo". Estrutura-se por
+sem precisar de uma lei nacional para “ativá-lo”. Estrutura-se por
 \textbf{nível de risco}: risco \textbf{inaceitável} (práticas proibidas,
 como pontuação social do cidadão pelo Estado), \textbf{alto risco}
 (obrigações pesadas de conformidade e supervisão humana), \textbf{risco
@@ -335,20 +335,20 @@ vigor é falso --- o que está em vigor no Brasil e toca IA é a
 uma lei de IA dedicada.
 \item Dizer que o \textbf{AI Act ainda é uma proposta} em discussão é
 falso --- é regulamento \textbf{vigente} desde agosto de 2024.
-\item Atribuir ao PL 2338 uma abordagem "baseada em princípios, sem
-classificação de risco" é falso --- ele é, como o europeu,
+\item Atribuir ao PL 2338 uma abordagem “baseada em princípios, sem
+classificação de risco” é falso --- ele é, como o europeu,
 \textbf{baseado em nível de risco}.
 \end{itemize}
 Como este é o assunto mais volátil do livro, \textbf{confira o estágio
 atual do PL 2338} próximo à data da prova --- se ele for sancionado como
-lei antes disso, deixa de ser "projeto" e a resposta correta muda de
+lei antes disso, deixa de ser “projeto” e a resposta correta muda de
 categoria.
 \end{cuidado}
 
 \section{Reconhecendo o padrão em cenários de IA aplicada}
 
 \begin{conceito}[Quatro padrões de cenário que a prova reaproveita]
-O edital pede "fundamentos \textbf{e aplicações}" --- ou seja, a mesma
+O edital pede “fundamentos \textbf{e aplicações}” --- ou seja, a mesma
 pergunta técnica pode vir embrulhada num cenário concreto (um órgão
 público, um banco, uma prefeitura). Reconhecer o padrão por trás do
 cenário resolve a questão:
@@ -379,7 +379,7 @@ usar diretamente o atributo sensível (via proxy).
 
 \begin{conceito}[Por que IA e sustentabilidade aparecem juntas em prova]
 O crescimento do uso de IA em escala tem um custo energético real, e é
-exatamente o tipo de interseção que uma prova de "Atualidades e IA" gosta
+exatamente o tipo de interseção que uma prova de “Atualidades e IA” gosta
 de explorar --- une os dois temas mais recorrentes do bloco:
 \begin{itemize}
 \item O consumo de um data center se divide, a grosso modo, entre
@@ -390,7 +390,7 @@ escala).
 \item \textbf{PUE} (\textit{Power Usage Effectiveness}): métrica-padrão de
 eficiência energética de data center --- razão entre a energia total
 consumida e a energia usada especificamente pela TI. Quanto mais próximo
-de 1,0, mais eficiente (menos energia "desperdiçada" em overhead como
+de 1,0, mais eficiente (menos energia “desperdiçada” em overhead como
 refrigeração).
 \item Como parte da energia elétrica que alimenta data centers ainda vem
 de fontes fósseis, a expansão acelerada de IA \textbf{pressiona} as metas
@@ -401,9 +401,9 @@ infraestrutura digital.
 \end{conceito}
 
 \begin{cuidado}[Não caia no absoluto em nenhuma das duas direções]
-Dizer que a infraestrutura de IA usa "majoritariamente energia limpa" é
+Dizer que a infraestrutura de IA usa “majoritariamente energia limpa” é
 otimismo não sustentado (a menos que o texto-base afirme isso
-explicitamente); dizer que IA é "incompatível com sustentabilidade" é o
+explicitamente); dizer que IA é “incompatível com sustentabilidade” é o
 absoluto oposto, igualmente errado. O tratamento realista do tema é o
 \textbf{dilema}: benefício tecnológico \textbf{e} custo ambiental
 coexistindo, não um veredito fechado num sentido ou no outro.
@@ -418,6 +418,6 @@ alta/overfitting (modelo decorou o treino); precisão (foco no falso
 positivo) $\times$ recall (foco no falso negativo); F1 é média
 \textbf{harmônica}, não aritmética; AI Act (\textbf{em vigor}) $\times$ PL
 2338 (\textbf{ainda projeto}); explicabilidade $\times$ acurácia (eixos
-independentes); "não usa o atributo sensível" não é o mesmo que "livre de
-viés" (cuidado com proxy).
+independentes); “não usa o atributo sensível” não é o mesmo que “livre de
+viés” (cuidado com proxy).
 \end{regrapratica}

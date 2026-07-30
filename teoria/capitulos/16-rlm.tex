@@ -3,7 +3,7 @@
 
 Este capítulo cobre as duas frentes do RLM --- matemática aplicada e lógica
 formal --- com o raciocínio por trás de cada fórmula, não só a fórmula
-pronta. Decorar "a fórmula de juro composto é $M=C(1+i)^n$" sem entender
+pronta. Decorar “a fórmula de juro composto é $M=C(1+i)^n$” sem entender
 \emph{por que} ela tem essa cara falha assim que o enunciado troca o
 contexto; entender o mecanismo generaliza para qualquer variação que a
 prova inventar.
@@ -12,23 +12,23 @@ prova inventar.
 
 \begin{conceito}[Por que aumentos sucessivos se multiplicam, não se somam]
 Aplicar um aumento de $30\%$ sobre um valor $V$ resulta em $V \times 1{,}30$
---- o \textbf{fator multiplicativo} $1{,}30$ já representa "o valor
-original mais 30\% dele". Se depois aplicarmos outro aumento de $10\%$,
+--- o \textbf{fator multiplicativo} $1{,}30$ já representa “o valor
+original mais 30\% dele”. Se depois aplicarmos outro aumento de $10\%$,
 esse segundo aumento incide sobre o valor \textbf{já aumentado}, não sobre
 o original: $V \times 1{,}30 \times 1{,}10$. Por isso os fatores se
 \textbf{multiplicam}, e o aumento total \textbf{não} é a soma ingênua
 ($30\%+10\%=40\%$) --- o fator composto é $1{,}30 \times 1{,}10 = 1{,}43$,
 ou seja, aumento real de \textbf{43\%}. A diferença entre 40\% e 43\% é
-exatamente o "juro sobre o aumento": os 10\% do segundo aumento incidiram
+exatamente o “juro sobre o aumento”: os 10\% do segundo aumento incidiram
 também sobre os 30\% do primeiro.
 \end{conceito}
 
 \begin{exemplo}[Taxa média de dois aumentos sucessivos]
 Um produto sofre dois reajustes de 20\% cada, em meses seguidos. Qual o
 aumento acumulado? Fator composto: $1{,}20 \times 1{,}20 = 1{,}44$ ---
-aumento acumulado de \textbf{44\%} (não 40\%). Se a pergunta fosse "qual a
+aumento acumulado de \textbf{44\%} (não 40\%). Se a pergunta fosse “qual a
 taxa \textbf{mensal única} que, aplicada duas vezes, produz o mesmo
-efeito", a resposta é a raiz quadrada do fator composto: $\sqrt{1{,}44} =
+efeito”, a resposta é a raiz quadrada do fator composto: $\sqrt{1{,}44} =
 1{,}2$, ou seja, a própria taxa de 20\% (porque os dois aumentos já eram
 iguais). Quando os dois aumentos são diferentes, a taxa média não é a
 média aritmética dos dois percentuais --- é a raiz do produto dos fatores.
@@ -72,10 +72,10 @@ ordem importa}?
 
 \begin{itemize}
 \item \textbf{Arranjo} $A(n,p) = \dfrac{n!}{(n-p)!}$: a ordem \textbf{importa}
---- "primeiro e segundo colocados" é diferente de "segundo e primeiro".
+--- “primeiro e segundo colocados” é diferente de “segundo e primeiro”.
 \item \textbf{Combinação} $C(n,p) = \dfrac{n!}{p!(n-p)!}$: a ordem \textbf{não
 importa} --- escolher um grupo de 3 pessoas para uma comissão não distingue
-quem foi "escolhido primeiro".
+quem foi “escolhido primeiro”.
 \end{itemize}
 
 A combinação é o arranjo \textbf{dividido} por $p!$ (o número de formas de
@@ -85,24 +85,24 @@ dele, e a combinação quer contá-lo \textbf{uma vez só}.
 \end{conceito}
 
 \begin{exemplo}[Identificando arranjo x combinação num enunciado]
-"De um grupo de 10 pessoas, quantas comissões de 3 pessoas podem ser
-formadas?" --- ordem não importa (a comissão {A, B, C} é a mesma comissão
+“De um grupo de 10 pessoas, quantas comissões de 3 pessoas podem ser
+formadas?” --- ordem não importa (a comissão {A, B, C} é a mesma comissão
 não importa a ordem de escolha) $\to$ \textbf{combinação}: $C(10,3) =
 \frac{10!}{3! \cdot 7!} = 120$.
 
-"De um grupo de 10 pessoas, de quantas formas posso eleger presidente,
-vice e secretário?" --- ordem importa (ser presidente é diferente de ser
+“De um grupo de 10 pessoas, de quantas formas posso eleger presidente,
+vice e secretário?” --- ordem importa (ser presidente é diferente de ser
 secretário, mesmo sendo a mesma pessoa escolhida) $\to$ \textbf{arranjo}:
 $A(10,3) = \frac{10!}{7!} = 720$.
 \end{exemplo}
 
 \begin{regrapratica}[Grafo completo e o atalho $C(n,2)$]
-Quando o problema pede "quantas conexões/apertos de mão/estradas entre
-$n$ pontos, ligando todos os pares", é uma combinação de $n$ elementos
+Quando o problema pede “quantas conexões/apertos de mão/estradas entre
+$n$ pontos, ligando todos os pares”, é uma combinação de $n$ elementos
 tomados 2 a 2 (cada par se conecta uma única vez, sem ordem) ---
 $C(n,2) = \frac{n(n-1)}{2}$. É a fórmula do número de arestas de um grafo
-completo de $n$ vértices, e aparece disfarçada em problemas de "cada
-pessoa cumprimenta todas as outras uma vez".
+completo de $n$ vértices, e aparece disfarçada em problemas de “cada
+pessoa cumprimenta todas as outras uma vez”.
 \end{regrapratica}
 
 \section{Probabilidade}
@@ -138,8 +138,8 @@ o conjunto tem \textit{outliers}.
 \end{conceito}
 
 \begin{cuidado}[Esquecer de ordenar antes de tirar a mediana]
-A mediana só funciona no conjunto \textbf{ordenado}. Pegar "o valor do
-meio" na ordem em que os dados foram apresentados no enunciado --- sem
+A mediana só funciona no conjunto \textbf{ordenado}. Pegar “o valor do
+meio” na ordem em que os dados foram apresentados no enunciado --- sem
 antes reordená-los do menor para o maior --- é o passo que a banca conta
 que o candidato pule, e produz um valor errado que geralmente ainda parece
 plausível.
@@ -151,7 +151,7 @@ $\text{Média ponderada} = \dfrac{\sum(\text{valor} \times \text{peso})}
 \textbf{peso}, não igualmente. Consequência que a prova explora: colocar a
 \textbf{menor} nota no \textbf{maior} peso derruba a média final mais do
 que colocar a mesma nota baixa num peso pequeno --- então uma afirmativa
-do tipo "a média \textbf{necessariamente} fica acima de X" pode ser falsa
+do tipo “a média \textbf{necessariamente} fica acima de X” pode ser falsa
 dependendo de \textbf{qual} nota recebeu o maior peso, não só de quais
 notas existem.
 \end{conceito}
@@ -164,11 +164,11 @@ média} e desvios padrão bem diferentes: a de \textbf{menor} desvio é mais
 tem valores mais espalhados, para cima e para baixo.
 \end{conceito}
 
-\begin{cuidado}[Desvio padrão não é amplitude, e "menor desvio" não implica "menor média"]
+\begin{cuidado}[Desvio padrão não é amplitude, e “menor desvio” não implica “menor média”]
 Dois erros recorrentes: tratar o desvio padrão como se fosse a
 \textbf{amplitude} (a diferença entre o maior e o menor valor --- são
-conceitos diferentes, embora relacionados) e concluir que "desvio padrão
-menor" significa "média menor" (a média pode ser \textbf{idêntica}; o que
+conceitos diferentes, embora relacionados) e concluir que “desvio padrão
+menor” significa “média menor” (a média pode ser \textbf{idêntica}; o que
 muda é só o quanto os valores variam ao redor dela).
 \end{cuidado}
 
@@ -195,8 +195,8 @@ mesmos R\$ 10.000 do 1º ano.
 R\$ 12.100 --- o juro do 2º ano incidiu sobre R\$ 11.000 (o montante já
 com o juro do 1º ano), dando R\$ 1.100.
 
-A diferença de R\$ 100 é exatamente "o juro sobre o juro do primeiro
-ano" ($10\%$ de $1.000$) --- a assinatura do regime composto.
+A diferença de R\$ 100 é exatamente “o juro sobre o juro do primeiro
+ano” ($10\%$ de $1.000$) --- a assinatura do regime composto.
 \end{exemplo}
 
 \section{Progressões aritmética e geométrica}
@@ -213,8 +213,8 @@ e último termo, vezes a quantidade de termos).
 
 \begin{cuidado}[O expoente/multiplicador é $n-1$, não $n$]
 O termo geral conta quantas vezes a razão foi aplicada \textbf{a partir do
-primeiro termo} --- o próprio $a_1$ já é o "termo zero de aplicações da
-razão", então o $n$-ésimo termo aplicou a razão $n-1$ vezes, não $n$.
+primeiro termo} --- o próprio $a_1$ já é o “termo zero de aplicações da
+razão”, então o $n$-ésimo termo aplicou a razão $n-1$ vezes, não $n$.
 Exemplo: com $a_1=7$ e $r=4$, o 10º termo é $a_{10} = 7 + 9 \times 4 = 43$
 --- usar $n=10$ no lugar de $n-1=9$ daria erradamente $7+10\times4=47$.
 \end{cuidado}
@@ -224,7 +224,7 @@ Exemplo: com $a_1=7$ e $r=4$, o 10º termo é $a_{10} = 7 + 9 \times 4 = 43$
 \begin{conceito}[Multiplicação de matrizes: a regra das dimensões]
 O produto $A \cdot B$ só existe quando o número de \textbf{colunas de $A$}
 é igual ao número de \textbf{linhas de $B$} --- é essa igualdade que
-permite "casar" cada linha de $A$ com cada coluna de $B$ elemento a
+permite “casar” cada linha de $A$ com cada coluna de $B$ elemento a
 elemento na soma de produtos. A matriz resultante herda as
 \textbf{linhas de $A$} e as \textbf{colunas de $B$}:
 $(m \times n) \cdot (n \times p) = (m \times p)$.
@@ -246,7 +246,7 @@ subtrair a interseção corrige essa dupla contagem, deixando cada elemento
 contado exatamente uma vez.
 \end{conceito}
 
-\begin{exemplo}[Aplicando com "quem está fora dos dois"]
+\begin{exemplo}[Aplicando com “quem está fora dos dois”]
 De 60 candidatos, 35 sabem Java, 28 sabem Python, e 12 sabem os dois.
 Quantos sabem \textbf{pelo menos um} dos dois? $|Java \cup Python| = 35 +
 28 - 12 = 51$. Quantos \textbf{não sabem nenhum} dos dois? $60 - 51 = 9$
@@ -270,8 +270,8 @@ a fórmula com um cateto no lugar da hipotenusa.
 \begin{conceito}[Proposição: uma sentença que é verdadeira ou falsa, nunca as duas]
 Uma \textbf{proposição} é uma sentença declarativa com valor lógico
 definido --- verdadeira (V) ou falsa (F), nunca ambígua, nunca as duas ao
-mesmo tempo. "Está chovendo" é proposição; "Feche a porta!" (imperativo) e
-"Que dia é hoje?" (pergunta) não são --- não têm valor V/F.
+mesmo tempo. “Está chovendo” é proposição; “Feche a porta!” (imperativo) e
+“Que dia é hoje?” (pergunta) não são --- não têm valor V/F.
 \end{conceito}
 
 \begin{conceito}[Os cinco conectivos e quando cada um dá falso]
@@ -284,16 +284,16 @@ padrão de falsidade:
 \toprule
 \textbf{Conectivo} & \textbf{Símbolo} & \textbf{É falso quando} \\
 \midrule
-Conjunção ("e") & $p \land q$ & \textbf{ao menos um} dos dois é falso ---
+Conjunção (“e”) & $p \land q$ & \textbf{ao menos um} dos dois é falso ---
 precisa dos \textbf{dois} verdadeiros para ser verdadeira \\
-Disjunção ("ou") & $p \lor q$ & \textbf{ambos} são falsos --- basta
+Disjunção (“ou”) & $p \lor q$ & \textbf{ambos} são falsos --- basta
 \textbf{um} verdadeiro para ser verdadeira \\
-Condicional ("se...então") & $p \to q$ & \textbf{só} no caso
-V$\to$F --- o antecedente verdadeiro "prometeu" o consequente e ele não
+Condicional (“se...então”) & $p \to q$ & \textbf{só} no caso
+V$\to$F --- o antecedente verdadeiro “prometeu” o consequente e ele não
 veio \\
-Bicondicional ("se e somente se") & $p \leftrightarrow q$ & os dois têm
+Bicondicional (“se e somente se”) & $p \leftrightarrow q$ & os dois têm
 valores \textbf{diferentes} \\
-Disjunção exclusiva ("ou...ou") & $p \oplus q$ & os dois têm valores
+Disjunção exclusiva (“ou...ou”) & $p \oplus q$ & os dois têm valores
 \textbf{iguais} \\
 \bottomrule
 \end{tabular}
@@ -301,10 +301,10 @@ Disjunção exclusiva ("ou...ou") & $p \oplus q$ & os dois têm valores
 \end{conceito}
 
 \begin{cuidado}[O condicional só é falso em um único caso --- V $\to$ F]
-É a linha da tabela-verdade que mais gera confusão: "se $p$ então $q$" é
+É a linha da tabela-verdade que mais gera confusão: “se $p$ então $q$” é
 \textbf{verdadeira} sempre que $p$ é falso, \textbf{não importa} o valor
 de $q$ (uma promessa condicionada a algo que nunca aconteceu não pode ser
-quebrada). "Se chover, levo guarda-chuva" continua \textbf{verdadeira}
+quebrada). “Se chover, levo guarda-chuva” continua \textbf{verdadeira}
 mesmo num dia sem chuva, \textbf{mesmo que} eu não leve guarda-chuva ---
 porque a condição ($p$=chover) nunca se realizou.
 \end{cuidado}
@@ -314,20 +314,20 @@ porque a condição ($p$=chover) nunca se realizou.
 \begin{conceito}[Contrapositiva --- a única reformulação que preserva o valor lógico]
 $p \to q \equiv \lnot q \to \lnot p$ (\textbf{contrapositiva}): logicamente
 \textbf{idêntica} à condicional original --- ambas verdadeiras ou ambas
-falsas nas mesmas circunstâncias. "Se é fã, então assiste ao show" $\equiv$
-"se \textbf{não} assiste, então \textbf{não} é fã".
+falsas nas mesmas circunstâncias. “Se é fã, então assiste ao show” $\equiv$
+“se \textbf{não} assiste, então \textbf{não} é fã”.
 
 A \textbf{recíproca} ($q \to p$) e a \textbf{inversa} ($\lnot p \to \lnot
 q$) \textbf{não} são equivalentes à condicional original --- podem ter
-valor lógico diferente. "Se é fã, então assiste" não garante "se assiste,
-então é fã" (a recíproca): alguém pode assistir sem ser fã.
+valor lógico diferente. “Se é fã, então assiste” não garante “se assiste,
+então é fã” (a recíproca): alguém pode assistir sem ser fã.
 \end{conceito}
 
 \begin{conceito}[Condicional como disjunção, e sua negação]
 $p \to q \equiv \lnot p \lor q$ --- outra forma de escrever a mesma
 condicional. Daí decorre a \textbf{negação da condicional}: $\lnot(p \to
-q) \equiv p \land \lnot q$ --- negar "se $p$ então $q$" não é "se $p$
-então não $q$" (erro comum), é afirmar que \textbf{$p$ aconteceu e $q$
+q) \equiv p \land \lnot q$ --- negar “se $p$ então $q$” não é “se $p$
+então não $q$” (erro comum), é afirmar que \textbf{$p$ aconteceu e $q$
 não} (a única situação que torna o condicional original falso).
 \end{conceito}
 
@@ -335,23 +335,23 @@ não} (a única situação que torna o condicional original falso).
 $\lnot(p \land q) \equiv \lnot p \lor \lnot q$;\quad
 $\lnot(p \lor q) \equiv \lnot p \land \lnot q$.
 
-O mecanismo: negar uma conjunção ("os dois acontecem") é dizer que
-\textbf{pelo menos um não acontece} (vira "ou"); negar uma disjunção ("pelo
-menos um acontece") é dizer que \textbf{nenhum} acontece, ou seja,
-\textbf{os dois} deixam de acontecer (vira "e"). O conectivo sempre
+O mecanismo: negar uma conjunção (“os dois acontecem”) é dizer que
+\textbf{pelo menos um não acontece} (vira “ou”); negar uma disjunção (“pelo
+menos um acontece”) é dizer que \textbf{nenhum} acontece, ou seja,
+\textbf{os dois} deixam de acontecer (vira “e”). O conectivo sempre
 \textbf{troca de tipo} ao atravessar a negação.
 \end{conceito}
 
 \begin{exemplo}[Aplicando De Morgan]
-"Não é verdade que o sistema está online e seguro" $\equiv$ "o sistema não
-está online \textbf{ou} não está seguro" (não necessariamente os dois ao
+“Não é verdade que o sistema está online e seguro” $\equiv$ “o sistema não
+está online \textbf{ou} não está seguro” (não necessariamente os dois ao
 mesmo tempo --- basta um dos dois falhar para a afirmação original ser
 falsa).
 \end{exemplo}
 
 \section{Argumentação: validade e falácias}
 
-\begin{conceito}[Um argumento é válido pela forma, não pelo conteúdo ser "verdadeiro no mundo real"]
+\begin{conceito}[Um argumento é válido pela forma, não pelo conteúdo ser “verdadeiro no mundo real”]
 Um argumento é \textbf{válido} quando, \textbf{se} todas as premissas forem
 verdadeiras, a conclusão \textbf{necessariamente} também é --- é uma
 propriedade da \textbf{estrutura} lógica, independente de as premissas
@@ -361,10 +361,10 @@ conteúdo.
 
 \begin{conceito}[As formas válidas e as duas falácias mais cobradas]
 \begin{itemize}
-\item \textbf{Modus ponens} (válido): $p \to q,\; p \;\vdash\; q$. Se "se
-$p$ então $q$" e "$p$ é verdade", conclui-se $q$.
+\item \textbf{Modus ponens} (válido): $p \to q,\; p \;\vdash\; q$. Se “se
+$p$ então $q$” e “$p$ é verdade”, conclui-se $q$.
 \item \textbf{Modus tollens} (válido): $p \to q,\; \lnot q \;\vdash\;
-\lnot p$. Se "se $p$ então $q$" e "$q$ é falso", conclui-se que $p$
+\lnot p$. Se “se $p$ então $q$” e “$q$ é falso”, conclui-se que $p$
 também é falso --- é exatamente a lógica da contrapositiva aplicada.
 \item \textbf{Silogismo hipotético} (válido): $p \to q,\; q \to r
 \;\vdash\; p \to r$ --- encadeia duas condicionais.
@@ -377,19 +377,19 @@ verdadeiro por outro motivo.
 \end{itemize}
 \end{conceito}
 
-\begin{exemplo}[Por que "afirmar o consequente" falha]
-"Se chove, a rua fica molhada. A rua está molhada. Logo, choveu." ---
+\begin{exemplo}[Por que “afirmar o consequente” falha]
+“Se chove, a rua fica molhada. A rua está molhada. Logo, choveu.” ---
 \textbf{inválido}: a rua pode estar molhada porque alguém lavou a calçada,
 sem ter chovido. A condicional original só garante o caminho $p \to q$; não
 proíbe $q$ de acontecer por outras causas.
 \end{exemplo}
 
 \begin{cuidado}[As duas falácias parecem modus ponens/tollens de relance]
-"Afirmar o consequente" parece com modus ponens porque também parte de uma
+“Afirmar o consequente” parece com modus ponens porque também parte de uma
 premissa verdadeira reconhecida no condicional --- a diferença é \textbf{qual}
 lado da condicional foi confirmado: modus ponens confirma o
 \textbf{antecedente} ($p$); a falácia confirma o \textbf{consequente}
-($q$). "Negar o antecedente" parece com modus tollens pelo mesmo motivo
+($q$). “Negar o antecedente” parece com modus tollens pelo mesmo motivo
 invertido: modus tollens nega o \textbf{consequente} ($\lnot q$); a
 falácia nega o \textbf{antecedente} ($\lnot p$). Sempre confira \textbf{que
 lado} da condicional a segunda premissa afirma ou nega antes de validar o
@@ -405,7 +405,7 @@ argumento.
 \textbf{Afirmação} & \textbf{Significado} & \textbf{Negação correta} \\
 \midrule
 Todo A é B & \textbf{cada} elemento de A também é B, sem exceção & \textbf{Algum}
-A \textbf{não} é B --- basta \textbf{um} contraexemplo para derrubar o "todo" \\
+A \textbf{não} é B --- basta \textbf{um} contraexemplo para derrubar o “todo” \\
 Algum A é B & \textbf{existe pelo menos um} elemento de A que é B & \textbf{Nenhum}
 A é B --- nem um único caso \\
 Nenhum A é B & \textbf{não existe} elemento de A que seja B &
@@ -414,18 +414,18 @@ Nenhum A é B & \textbf{não existe} elemento de A que seja B &
 \end{tabular}
 \end{center}
 
-O mecanismo por trás: negar "todo" não vira "nenhum" --- vira "existe pelo
-menos uma exceção" (algum não). Para derrubar "todo A é B" basta \textbf{um
+O mecanismo por trás: negar “todo” não vira “nenhum” --- vira “existe pelo
+menos uma exceção” (algum não). Para derrubar “todo A é B” basta \textbf{um
 único} A que não seja B; não é preciso que \textbf{nenhum} A seja B (isso
 seria uma afirmação bem mais forte que a simples negação exige).
 \end{conceito}
 
-\begin{cuidado}[O erro mais comum: negar "todo" como "nenhum"]
-"Todo desenvolvedor testa o próprio código" --- a negação \textbf{não} é
-"nenhum desenvolvedor testa o próprio código" (isso seria uma afirmação
+\begin{cuidado}[O erro mais comum: negar “todo” como “nenhum”]
+“Todo desenvolvedor testa o próprio código” --- a negação \textbf{não} é
+“nenhum desenvolvedor testa o próprio código” (isso seria uma afirmação
 adicional muito mais forte, não a simples negação lógica). A negação
-correta é "\textbf{algum} desenvolvedor \textbf{não} testa o próprio
-código" --- basta um único caso contrário para a afirmação original cair.
+correta é “\textbf{algum} desenvolvedor \textbf{não} testa o próprio
+código” --- basta um único caso contrário para a afirmação original cair.
 \end{cuidado}
 
 \begin{conceito}[Diagramas lógicos: testar o que é necessário, não o que é possível]
@@ -450,8 +450,8 @@ B|$; produto de matrizes $(m\times n)\cdot(n\times p)=(m\times p)$;
 ordene a série antes de tirar a mediana.
 
 \textbf{Lógica}: condicional só é falsa em V$\to$F; contrapositiva
-equivale, recíproca \textbf{não}; De Morgan sempre troca "e" por "ou" (e
+equivale, recíproca \textbf{não}; De Morgan sempre troca “e” por “ou” (e
 vice-versa) ao negar; modus ponens/tollens são válidos, afirmar o
-consequente/negar o antecedente são falácias; negar "todo" dá "algum não"
-(nunca "nenhum").
+consequente/negar o antecedente são falácias; negar “todo” dá “algum não”
+(nunca “nenhum”).
 \end{regrapratica}

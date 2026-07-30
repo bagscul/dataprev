@@ -61,25 +61,25 @@ O modelo OSI é o \textbf{referencial de ensino} (didático, nunca foi
 implementado à risca como está descrito); a pilha que roda de verdade na
 Internet é a \textbf{TCP/IP}, mais enxuta: Acesso à Rede (funde OSI 1--2),
 Internet (equivale a OSI 3), Transporte (equivale a OSI 4), Aplicação (funde
-OSI 5--7). Quando um enunciado menciona "camada de sessão" ou "camada de
-apresentação", está necessariamente falando do modelo \textbf{OSI} --- essas
+OSI 5--7). Quando um enunciado menciona “camada de sessão” ou “camada de
+apresentação”, está necessariamente falando do modelo \textbf{OSI} --- essas
 duas não têm correspondência separada no TCP/IP.
 \end{conceito}
 
 \begin{exemplo}[Identificando a camada pela função descrita, não pelo nome]
-"Um protocolo insere marcadores no fluxo de dados para permitir que, se a
+“Um protocolo insere marcadores no fluxo de dados para permitir que, se a
 conexão cair no meio de uma transferência grande, ela retome do ponto
-interrompido em vez de recomeçar do zero." $\to$ isso é controle de
+interrompido em vez de recomeçar do zero.” $\to$ isso é controle de
 \textbf{diálogo com checkpoint} $\to$ camada de \textbf{Sessão} (OSI 5) ---
 não é Transporte (que garante entrega e ordem, mas não gerencia retomada de
 diálogo em alto nível) nem Apresentação (que trata de formato dos dados).
 
-"Um roteador recebe um pacote e decide por qual próximo salto encaminhá-lo,
-com base no endereço de destino." $\to$ camada de \textbf{Rede} (OSI 3) ---
+“Um roteador recebe um pacote e decide por qual próximo salto encaminhá-lo,
+com base no endereço de destino.” $\to$ camada de \textbf{Rede} (OSI 3) ---
 é sobre achar caminho entre redes.
 
-"Um switch recebe um quadro e decide para qual porta física repassá-lo, com
-base na tabela de endereços MAC aprendidos." $\to$ camada de \textbf{Enlace}
+“Um switch recebe um quadro e decide para qual porta física repassá-lo, com
+base na tabela de endereços MAC aprendidos.” $\to$ camada de \textbf{Enlace}
 (OSI 2) --- a decisão fica dentro do mesmo segmento físico.
 \end{exemplo}
 
@@ -91,8 +91,8 @@ processo/porta, ordem ou retransmissão}? Transporte. É sobre
 \textbf{retomar/gerenciar um diálogo} (checkpoint, sessão)? Sessão. É sobre
 \textbf{formato, cifra ou compressão} dos dados em si? Apresentação. É o
 \textbf{serviço final} que o usuário/programa pediu? Aplicação. A banca
-sempre descreve o comportamento, nunca pergunta "qual é o número da camada
-X" isoladamente --- o número é consequência de identificar a função.
+sempre descreve o comportamento, nunca pergunta “qual é o número da camada
+X” isoladamente --- o número é consequência de identificar a função.
 \end{regrapratica}
 
 \section{Equipamentos de rede por camada}
@@ -100,7 +100,7 @@ X" isoladamente --- o número é consequência de identificar a função.
 \begin{conceito}[Hub, switch e roteador --- a inteligência cresce com a camada]
 \begin{itemize}
 \item \textbf{Hub} (camada 1 --- Física): recebe um sinal em uma porta e
-\textbf{repete para todas as outras}, sem entender endereço nenhum. É "burro"
+\textbf{repete para todas as outras}, sem entender endereço nenhum. É “burro”
 por definição --- não sabe distinguir destinatários, então gera colisão e
 desperdiça banda.
 \item \textbf{Switch} (camada 2 --- Enlace): aprende quais endereços
@@ -243,8 +243,8 @@ Por isso, \textbf{hosts utilizáveis $= 2^h - 2$}.
 \end{exemplo}
 
 \begin{regrapratica}[Do requisito de hosts para a máscara certa]
-Quando o enunciado dá uma necessidade ("a sub-rede precisa comportar até 30
-hosts") e pede a máscara, procure a \textbf{menor} sub-rede (o maior
+Quando o enunciado dá uma necessidade (“a sub-rede precisa comportar até 30
+hosts”) e pede a máscara, procure a \textbf{menor} sub-rede (o maior
 prefixo \texttt{/n}) que ainda \textbf{comporta} o número pedido --- usar
 uma sub-rede maior que o necessário desperdiça endereços. Trinta hosts
 cabem exatamente em \texttt{/27} (30 utilizáveis); \texttt{/28} (14) não
@@ -262,18 +262,18 @@ RIP, BGP) --- se adapta sozinha a mudanças na topologia.
 Quando o roteador aprende \textbf{mais de uma rota} para o mesmo destino,
 por fontes diferentes, ele precisa de um critério de desempate: a
 \textbf{distância administrativa} (um número que representa a
-"confiabilidade" atribuída a cada fonte de rota, menor = mais confiável).
+“confiabilidade” atribuída a cada fonte de rota, menor = mais confiável).
 Valores padrão (Cisco): rede diretamente conectada = 0, rota estática = 1,
 OSPF = 110, RIP = 120. \textbf{A menor distância administrativa vence},
-sempre --- é um critério puramente numérico, sem exceção por "protocolo
-mais moderno" ou situação especial.
+sempre --- é um critério puramente numérico, sem exceção por “protocolo
+mais moderno” ou situação especial.
 \end{conceito}
 
-\begin{cuidado}[Não existe prioridade "inteligente" no roteamento]
+\begin{cuidado}[Não existe prioridade “inteligente” no roteamento]
 Alternativas que descrevem comportamento adaptativo além da distância
-administrativa --- "OSPF sempre tem prioridade sobre rota estática",
-"o roteador faz balanceamento de carga automático entre rotas
-concorrentes", "descarta pacotes quando há rotas conflitantes" --- estão
+administrativa --- “OSPF sempre tem prioridade sobre rota estática”,
+“o roteador faz balanceamento de carga automático entre rotas
+concorrentes”, “descarta pacotes quando há rotas conflitantes” --- estão
 inventando comportamento. A regra real é mecânica e determinística: compara
 a distância administrativa das rotas disponíveis para o mesmo destino e
 usa a menor. Ponto.
@@ -283,12 +283,12 @@ usa a menor. Ponto.
 
 \begin{conceito}[Wildcard mask é o inverso lógico da máscara de sub-rede]
 Uma \textit{wildcard mask} usa a lógica oposta da máscara normal: bit
-\textbf{0} significa "esse bit \textbf{tem} que bater exatamente" e bit
-\textbf{1} significa "esse bit é \textbf{ignorado}" (pode ser qualquer
+\textbf{0} significa “esse bit \textbf{tem} que bater exatamente” e bit
+\textbf{1} significa “esse bit é \textbf{ignorado}” (pode ser qualquer
 valor). É obtida invertendo cada bit da máscara de sub-rede correspondente.
 \end{conceito}
 
-\begin{exemplo}[Construindo a wildcard mask para "só endereços ímpares"]
+\begin{exemplo}[Construindo a wildcard mask para “só endereços ímpares”]
 Um endereço IPv4 é ímpar quando o \textbf{bit menos significativo do último
 octeto} vale 1. Para uma ACL casar \emph{apenas} endereços ímpares, esse
 bit específico precisa estar \textbf{fixo} (wildcard = 0 nesse bit), e
@@ -296,7 +296,7 @@ todos os demais bits do último octeto podem ser qualquer coisa (wildcard =
 1). Isso dá, no último octeto, \texttt{11111110} em binário $=$
 \texttt{254} em decimal. Wildcard resultante: \texttt{0.0.0.254}. O
 raciocínio é sempre \textbf{bit a bit}: monte o octeto em binário decidindo
-"fixo (0)" ou "livre (1)" posição por posição, e só depois converta para
+“fixo (0)” ou “livre (1)” posição por posição, e só depois converta para
 decimal --- decorar valores prontos leva a erro quando o padrão muda.
 \end{exemplo}
 
@@ -309,9 +309,9 @@ cada roteador olhar o endereço IP de destino e recalcular a rota a cada
 salto, o MPLS anexa um \textbf{rótulo} (\textit{label}) simples ao pacote
 na entrada da rede, e os roteadores internos só olham o rótulo para
 encaminhar --- muito mais rápido que analisar IP a cada salto. Por operar
-"entre" a camada de enlace e a de rede (usa rótulos como a camada 2, mas
-serve para encaminhar como a camada 3), é apelidado de \textbf{"camada
-2.5"}. Permite criar caminhos dedicados (LSP) para engenharia de tráfego e
+“entre” a camada de enlace e a de rede (usa rótulos como a camada 2, mas
+serve para encaminhar como a camada 3), é apelidado de \textbf{“camada
+2.5”}. Permite criar caminhos dedicados (LSP) para engenharia de tráfego e
 qualidade de serviço (QoS).
 \item \textbf{VLAN} (\textit{Virtual LAN}): segmenta \textbf{logicamente} a
 camada 2 --- cria domínios de \textbf{broadcast} separados dentro do
@@ -327,11 +327,11 @@ interna da rede de quem está de fora.
 \end{itemize}
 \end{conceito}
 
-\begin{cuidado}[MPLS não é "roteamento IP mais rápido"; VLAN não é segmentação física]
+\begin{cuidado}[MPLS não é “roteamento IP mais rápido”; VLAN não é segmentação física]
 MPLS não substitui o roteamento IP --- ele acelera o encaminhamento
 \textbf{depois} que a rota já foi decidida, usando rótulo em vez de
-recalcular IP a cada salto; não é a mesma coisa que "um protocolo de
-roteamento melhor". VLAN segmenta a camada \textbf{2} (domínio de
+recalcular IP a cada salto; não é a mesma coisa que “um protocolo de
+roteamento melhor”. VLAN segmenta a camada \textbf{2} (domínio de
 broadcast) por configuração lógica --- não é uma separação de cabos ou
 hardware, é a mesma infraestrutura física dividida por software.
 \end{cuidado}
@@ -385,9 +385,9 @@ equipamento --- o \textbf{firewall de próxima geração} (NGFW) ou o
 \textbf{WAF} (\textit{Web Application Firewall}).
 \end{conceito}
 
-\begin{cuidado}[Não misture "com estado" com "opera na aplicação"]
-Dizer que o firewall \textit{stateful} "atua exclusivamente na camada de
-aplicação" é um absoluto errado --- ele continua trabalhando nas camadas
+\begin{cuidado}[Não misture “com estado” com “opera na aplicação”]
+Dizer que o firewall \textit{stateful} “atua exclusivamente na camada de
+aplicação” é um absoluto errado --- ele continua trabalhando nas camadas
 3/4, só que \textbf{lembrando} do contexto da conexão. Subir até a camada 7
 é uma capacidade \textbf{adicional} de outra categoria de equipamento
 (NGFW/WAF), não uma consequência automática de ser \textit{stateful}.
@@ -446,7 +446,7 @@ certificado digital. Autenticação do usuário (se houver) é uma camada
 posterior, dentro da aplicação, não parte do handshake TLS.
 \end{cuidado}
 
-\begin{cuidado}[SSL não é "mais moderno" que TLS]
+\begin{cuidado}[SSL não é “mais moderno” que TLS]
 TLS é o \textbf{sucessor} do SSL, criado justamente para corrigir
 vulnerabilidades encontradas no protocolo antigo. Qualquer alternativa que
 descreva o SSL como mais seguro, mais recente ou mais recomendado que o TLS
@@ -458,8 +458,8 @@ inverteu a linha do tempo.
 \begin{regrapratica}[Sequência de raciocínio para qualquer questão de redes]
 \begin{enumerate}
 \item O enunciado descreve uma \textbf{função}? Identifique a camada OSI
-pelo comportamento (Seção anterior), não tente decorar "camada X = tal
-coisa" sem entender o porquê.
+pelo comportamento (Seção anterior), não tente decorar “camada X = tal
+coisa” sem entender o porquê.
 \item Envolve \textbf{dois hosts trocando dados}? Pergunte se é TCP
 (precisa de confiabilidade/ordem) ou UDP (velocidade importa mais).
 \item Envolve \textbf{endereçamento}? Verifique se é cálculo de sub-rede

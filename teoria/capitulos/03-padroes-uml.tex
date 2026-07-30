@@ -2,8 +2,8 @@
 \label{cap:padroes-uml-teoria}
 
 \begin{edital}
-"Padrões de projeto", "design de software", "padrões de desenvolvimento e
-reuso", "análise e projeto orientados a objetos". UML não está listada com
+“Padrões de projeto”, “design de software”, “padrões de desenvolvimento e
+reuso”, “análise e projeto orientados a objetos”. UML não está listada com
 todas as letras no edital do Perfil 3 (aparece explícita no Perfil 2), mas é
 vizinha direta desses itens e a FGV cobra com frequência em provas de TI.
 \end{edital}
@@ -40,9 +40,9 @@ Por trás da variedade, a maioria dos padrões do catálogo faz a
 interface estável}, e prefere \textbf{composição a herança} para poder
 trocar essa parte variável em tempo de execução, sem recompilar nem alterar
 quem usa a interface. É o fio que liga Strategy, State, Bridge, Decorator,
-Abstract Factory e a maior parte dos outros --- e é por isso que "programe
-para uma interface, não para uma implementação" e "prefira composição a
-herança" são os dois lemas mais citados do livro original.
+Abstract Factory e a maior parte dos outros --- e é por isso que “programe
+para uma interface, não para uma implementação” e “prefira composição a
+herança” são os dois lemas mais citados do livro original.
 
 O que muda de família para família é \textbf{o que} exatamente está sendo
 isolado:
@@ -52,14 +52,14 @@ isolado:
 \toprule
 \textbf{Família} & \textbf{Isola\ldots} & \textbf{Pergunta que ela responde} \\
 \midrule
-Criacionais (5) & \textit{qual} objeto se instancia, e quando & "como criar
-isto sem amarrar o código à classe concreta?" \\
-Estruturais (7) & \textit{como} as peças se encaixam & "como
+Criacionais (5) & \textit{qual} objeto se instancia, e quando & “como criar
+isto sem amarrar o código à classe concreta?” \\
+Estruturais (7) & \textit{como} as peças se encaixam & “como
 compor/embrulhar objetos para obter uma interface ou um comportamento
-novo?" \\
+novo?” \\
 Comportamentais (11) & \textit{quem} conversa com quem, e qual algoritmo
-roda & "como distribuir a responsabilidade da interação em tempo de
-execução?" \\
+roda & “como distribuir a responsabilidade da interação em tempo de
+execução?” \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -74,18 +74,18 @@ execução?" \\
 \textbf{Padrão} & \textbf{Intenção (gatilho no enunciado)} \\
 \midrule
 Singleton & garantir \textbf{uma única instância} e ponto global de acesso
-("apenas uma conexão/configuração no sistema todo") \\
+(“apenas uma conexão/configuração no sistema todo”) \\
 Factory Method & delegar a criação a \textbf{subclasses}; criar objeto
-\textbf{sem acoplar à classe concreta} ("decidir em runtime qual objeto
-criar", via herança) \\
+\textbf{sem acoplar à classe concreta} (“decidir em runtime qual objeto
+criar”, via herança) \\
 Abstract Factory & criar \textbf{famílias} inteiras de objetos relacionados
-sem especificar classes concretas ("kit de componentes de UI para Windows e
-para Mac") \\
+sem especificar classes concretas (“kit de componentes de UI para Windows e
+para Mac”) \\
 Builder & construir objeto complexo \textbf{passo a passo}, separando o
-processo de construção da representação final ("montar um objeto com
-muitos parâmetros opcionais") \\
+processo de construção da representação final (“montar um objeto com
+muitos parâmetros opcionais”) \\
 Prototype & criar novos objetos \textbf{clonando} um protótipo existente
-("copiar um objeto já configurado em vez de criar do zero") \\
+(“copiar um objeto já configurado em vez de criar do zero”) \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -101,7 +101,7 @@ objetos, delegada a subclasses por herança.
 
 Agora imagine que o sistema de UI precisa gerar um \textbf{conjunto
 inteiro} de componentes visualmente consistentes: botão, campo de texto e
-janela, todos no estilo "Windows" ou todos no estilo "Mac", nunca
+janela, todos no estilo “Windows” ou todos no estilo “Mac”, nunca
 misturados. Uma \texttt{UIFactory} abstrata declara \texttt{criarBotao()},
 \texttt{criarCampo()}, \texttt{criarJanela()}; \texttt{WindowsFactory} e
 \texttt{MacFactory} implementam a família inteira de uma vez --- isso é
@@ -114,7 +114,7 @@ Factory Method resolve \textbf{um} produto por vez, via herança (uma
 subclasse por variante). Abstract Factory resolve uma \textbf{família}
 inteira de produtos relacionados, via composição (a fábrica concreta é
 injetada, não subclassificada por quem a usa). Singleton é sempre
-\textbf{uma} instância --- nunca "mais de uma quando necessário", isso
+\textbf{uma} instância --- nunca “mais de uma quando necessário”, isso
 descaracteriza o padrão.
 \end{cuidado}
 
@@ -127,13 +127,13 @@ descaracteriza o padrão.
 \textbf{Padrão} & \textbf{Intenção (gatilho)} \\
 \midrule
 Adapter & fazer interfaces \textbf{incompatíveis} trabalharem juntas
-("adaptar uma API legada à interface nova que o sistema espera") \\
-Facade & interface \textbf{simplificada} para um subsistema complexo ("uma
-fachada única escondendo vários serviços internos") \\
+(“adaptar uma API legada à interface nova que o sistema espera”) \\
+Facade & interface \textbf{simplificada} para um subsistema complexo (“uma
+fachada única escondendo vários serviços internos”) \\
 Proxy & um \textbf{substituto} que controla o acesso ao objeto real
 (carregamento tardio, cache, controle de permissão) \\
 Decorator & adicionar responsabilidades a um objeto \textbf{dinamicamente},
-sem usar herança ("empilhar comportamentos em tempo de execução") \\
+sem usar herança (“empilhar comportamentos em tempo de execução”) \\
 Composite & tratar objeto individual e composição de objetos \textbf{de
 forma uniforme} (estrutura em árvore, relação todo-parte recursiva) \\
 Bridge & separar \textbf{abstração} de \textbf{implementação} para as duas
@@ -177,7 +177,7 @@ acrescentar comportamento novo à funcionalidade em si.
 \end{exemplo}
 
 \begin{cuidado}[A diferença que sobra depois da estrutura parecida]
-Adapter, Facade e Decorator todos "envolvem" outro objeto, e por isso a
+Adapter, Facade e Decorator todos “envolvem” outro objeto, e por isso a
 estrutura de código fica parecida. O que os separa é a \textbf{intenção}:
 Adapter \textbf{traduz} uma interface existente para outra que o cliente
 espera (o objetivo é compatibilidade); Facade \textbf{simplifica} o acesso
@@ -198,8 +198,8 @@ delega, e soma algo à resposta.
 \textbf{Padrão} & \textbf{Intenção (gatilho)} \\
 \midrule
 Strategy & família de algoritmos \textbf{intercambiáveis}, escolhidos por
-\textbf{quem usa}, em runtime ("trocar a regra de cálculo sem um
-\texttt{if} gigante") \\
+\textbf{quem usa}, em runtime (“trocar a regra de cálculo sem um
+\texttt{if} gigante”) \\
 Observer & notificar automaticamente \textbf{dependentes} quando o estado
 de um objeto muda (\textit{publish-subscribe}, sistema de eventos) \\
 Command & encapsular uma \textbf{requisição como objeto} (permite
@@ -214,7 +214,7 @@ manipuladores até que algum a trate \\
 Mediator & centraliza a comunicação entre vários objetos, reduzindo
 acoplamento \textbf{N-para-N} para N-para-1 \\
 Memento & captura e restaura o estado interno de um objeto sem violar seu
-encapsulamento (\textit{snapshot}, base do "desfazer") \\
+encapsulamento (\textit{snapshot}, base do “desfazer”) \\
 Visitor & adiciona novas operações a uma estrutura de objetos \textbf{sem
 alterar as classes} dessa estrutura \\
 Interpreter & define uma \textbf{gramática} para uma linguagem simples e um
@@ -252,7 +252,7 @@ estratégia é \textbf{o cliente}, de fora, e as estratégias não sabem umas
 das outras (trocar o cálculo de frete não afeta o cálculo de imposto). No
 \textbf{State}, quem troca é \textbf{o próprio objeto}, conforme seu estado
 interno, e os estados costumam conhecer para qual estado ir a seguir
-("pedido pago" sabe que o próximo é "pedido enviado"). Regra de leitura: se
+(“pedido pago” sabe que o próximo é “pedido enviado”). Regra de leitura: se
 o enunciado descreve um \textbf{ciclo de vida com transições} (pedido
 pendente $\to$ pago $\to$ enviado $\to$ entregue), é State; se descreve
 \textbf{alternativas equivalentes} para fazer a mesma tarefa (calcular
@@ -262,7 +262,7 @@ frete de três jeitos diferentes), é Strategy.
 \begin{cuidado}[Observer x Mediator]
 \textbf{Observer} é o padrão de notificação: um sujeito muda de estado e
 \textbf{avisa} uma lista de interessados que se inscreveram para saber
-disso (a comunicação é sempre "sujeito $\to$ observadores", um-para-muitos).
+disso (a comunicação é sempre “sujeito $\to$ observadores”, um-para-muitos).
 \textbf{Mediator} \textbf{centraliza a comunicação} entre vários objetos
 que, de outra forma, teriam que se conhecer uns aos outros (N-para-N vira
 N-para-1 através do mediador) --- não é sobre notificar mudança de estado,
@@ -280,8 +280,8 @@ responsabilidade}: Information Expert, Creator, Controller, Low Coupling,
 High Cohesion, Polymorphism, Pure Fabrication, Indirection, Protected
 Variations.
 
-Dois deles resolvem sozinhos a maior parte das perguntas de "a qual classe
-cabe esta responsabilidade":
+Dois deles resolvem sozinhos a maior parte das perguntas de “a qual classe
+cabe esta responsabilidade”:
 
 \begin{itemize}
 \item \textbf{Information Expert}: a responsabilidade vai para a classe
@@ -323,7 +323,7 @@ mudar a altura (mantendo os lados iguais) --- um código que usa
 \texttt{Retangulo} esperando poder mudar largura e altura independentemente
 quebra quando recebe um \texttt{Quadrado}.
 \item \textbf{I --- \textit{Interface Segregation}}: várias interfaces
-\textbf{pequenas e específicas} são melhores que uma interface "gorda" que
+\textbf{pequenas e específicas} são melhores que uma interface “gorda” que
 obriga quem implementa a fornecer métodos que não usa.
 \item \textbf{D --- \textit{Dependency Inversion}}: módulos de alto nível
 não devem depender de módulos de baixo nível --- ambos devem depender de
@@ -333,7 +333,7 @@ não devem depender de módulos de baixo nível --- ambos devem depender de
 \end{conceito}
 
 \begin{cuidado}[ISP x SRP]
-Os dois falam em "pequeno e específico", e por isso se confundem, mas
+Os dois falam em “pequeno e específico”, e por isso se confundem, mas
 tratam de coisas diferentes: \textbf{SRP} é sobre quantas
 \textbf{responsabilidades} uma \textbf{classe} tem; \textbf{ISP} é sobre
 quantos \textbf{métodos desnecessários} uma \textbf{interface} obriga a
@@ -362,8 +362,8 @@ lógica de negócio, usado só para transportar dados entre camadas.
 \subsection{Reuso e anti-padrões}
 
 \begin{conceito}
-\textbf{Reuso por herança} ("é-um": \texttt{Cachorro extends Animal}) x
-\textbf{reuso por composição} ("tem-um": \texttt{Carro} tem um
+\textbf{Reuso por herança} (“é-um”: \texttt{Cachorro extends Animal}) x
+\textbf{reuso por composição} (“tem-um”: \texttt{Carro} tem um
 \texttt{Motor}). A recomendação consolidada é \textbf{preferir composição a
 herança} (\textit{favor composition over inheritance}) sempre que a
 relação não for genuinamente um tipo-subtipo estável, porque herança
@@ -473,9 +473,9 @@ existindo (podem ser realocados para outro departamento):
 \begin{cuidado}[Extremidade de associação como atributo, e associação qualificada]
 Cada ponta de uma associação tem papel, multiplicidade e navegabilidade
 --- e uma ponta navegável \textbf{pode ser representada como atributo} da
-classe do outro lado. "\texttt{Pedido} associa-se a 1 \texttt{Cliente}"
-desenhado como linha e "\texttt{Pedido} tem o atributo \texttt{cliente:
-Cliente}" escrito no compartimento de atributos dizem a \textbf{mesma}
+classe do outro lado. “\texttt{Pedido} associa-se a 1 \texttt{Cliente}”
+desenhado como linha e “\texttt{Pedido} tem o atributo \texttt{cliente:
+Cliente}” escrito no compartimento de atributos dizem a \textbf{mesma}
 coisa em UML --- são duas notações de um único modelo, não duas
 modelagens diferentes. Uma \textbf{associação qualificada} (um qualificador
 desenhado como um pequeno retângulo na ponta da linha, geralmente uma
@@ -497,11 +497,11 @@ dentro).
 
 \begin{itemize}
 \item \textbf{«include»}: o comportamento incluído é \textbf{sempre}
-executado como parte do caso de uso base (obrigatório) --- ex.: "Fazer
-Pedido" \textit{include} "Autenticar Usuário".
+executado como parte do caso de uso base (obrigatório) --- ex.: “Fazer
+Pedido” \textit{include} “Autenticar Usuário”.
 \item \textbf{«extend»}: o comportamento é \textbf{opcional/condicional},
-só ocorre em certas circunstâncias --- ex.: "Fazer Pedido" pode ser
-\textit{extended} por "Aplicar Cupom de Desconto", que só roda se o
+só ocorre em certas circunstâncias --- ex.: “Fazer Pedido” pode ser
+\textit{extended} por “Aplicar Cupom de Desconto”, que só roda se o
 cliente tiver um cupom.
 \end{itemize}
 \end{conceito}
@@ -509,8 +509,8 @@ cliente tiver um cupom.
 \begin{cuidado}
 Include é o comportamento que \textbf{sempre} acontece; extend é o que
 \textbf{às vezes} acontece. É comum a leitura inverter os dois --- o teste
-mental é: "esse passo é parte obrigatória do fluxo principal, ou é um
-desvio condicional que só ocorre em certas situações?"
+mental é: “esse passo é parte obrigatória do fluxo principal, ou é um
+desvio condicional que só ocorre em certas situações?”
 \end{cuidado}
 
 \subsection{Os quatro diagramas de interação}

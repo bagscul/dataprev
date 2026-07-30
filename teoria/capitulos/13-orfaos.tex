@@ -7,7 +7,7 @@ não cobre, focado que está em modelagem e SQL), arquitetura de computadores
 e sistema operacional, sistemas de informação corporativos, e aprendizado de
 máquina. São temas que aparecem em prova mas não têm um capítulo natural no
 edital do Perfil 3 --- daí o nome. No fim do capítulo há um mapa indicando
-onde os demais temas "coringa" (blockchain, virtualização, 2PC etc.) estão
+onde os demais temas “coringa” (blockchain, virtualização, 2PC etc.) estão
 tratados em profundidade nos outros capítulos deste livro.
 
 \section{Administração de Dados $\times$ Administração de Banco de Dados}
@@ -15,7 +15,7 @@ tratados em profundidade nos outros capítulos deste livro.
 \begin{conceito}[Dois papéis com o mesmo objeto e focos opostos]
 Os dois cuidam do mesmo recurso --- o dado da organização --- mas em níveis
 de abstração diferentes, e é essa diferença de \textbf{nível}, não de
-"quem é mais importante", que a prova cobra:
+“quem é mais importante”, que a prova cobra:
 
 \begin{center}
 \begin{tabular}{@{}p{2.2cm}p{4.6cm}p{4.6cm}@{}}
@@ -43,8 +43,8 @@ dado efetivamente vai residir.
 \end{conceito}
 
 \begin{cuidado}[Não inverta os dois papéis]
-Descrever a AD como "quem cuida do servidor de banco" ou o DBA como "quem
-define a política corporativa de qualidade de dados" troca os dois níveis
+Descrever a AD como “quem cuida do servidor de banco” ou o DBA como “quem
+define a política corporativa de qualidade de dados” troca os dois níveis
 entre si. A pergunta de desempate: a atividade descrita \textbf{depende de
 qual produto de SGBD está instalado}? Se sim, é DBA. Se a resposta seria a
 mesma independentemente do SGBD escolhido, é AD.
@@ -76,7 +76,7 @@ gravadas) no momento da queda.
 \item \textbf{Redo} (Refazer): reaplica \textbf{todas} as operações
 registradas no log a partir do ponto identificado --- inclusive as de
 transações que \textbf{não chegaram a confirmar} (\textit{commit}). O
-princípio é "\textit{repeating history}": primeiro reconstrói o estado
+princípio é “\textit{repeating history}”: primeiro reconstrói o estado
 exato de antes da queda, sem julgar ainda o que deveria ou não ter
 acontecido.
 \item \textbf{Undo} (Desfazer): só depois de reconstruído o estado exato do
@@ -97,8 +97,8 @@ quebraria a garantia de consistência que o protocolo promete.
 \end{exemplo}
 
 \begin{cuidado}[A troca mais comum: inverter Redo e Undo]
-Um enunciado que descreve a recuperação como "primeiro desfaz as
-transações não confirmadas, depois refaz as confirmadas" inverteu a lógica
+Um enunciado que descreve a recuperação como “primeiro desfaz as
+transações não confirmadas, depois refaz as confirmadas” inverteu a lógica
 do ARIES. A ordem correta refaz \textbf{tudo primeiro} (inclusive o que
 depois será desfeito) e só desfaz \textbf{depois}, num segundo momento.
 \end{cuidado}
@@ -155,14 +155,14 @@ A escolha entre índice B+ Tree, hash e bitmap já está detalhada na Seção de
 decidem o tipo certo são \textit{a consulta pede faixa ou igualdade?} e
 \textit{quantos valores distintos tem a coluna?}. Não repita esse
 raciocínio do zero aqui; ele é o mesmo independentemente de o cenário vir
-rotulado como "administração de BD" ou "modelagem".
+rotulado como “administração de BD” ou “modelagem”.
 \end{regrapratica}
 
 \section{Backup e recuperação}
 
 \begin{conceito}[Completo, incremental e diferencial --- a diferença é a referência]
 Os três tipos de backup diferem em \textbf{a partir de que ponto} eles
-medem "o que mudou":
+medem “o que mudou”:
 
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{8.4cm}@{}}
@@ -234,7 +234,7 @@ acessa esquema de outro sistema que não lhe diz respeito.
 O edital do Perfil 3 fala em arquitetura \emph{de software}
 (Capítulo \ref{cap:arquitetura-teoria}), não em arquitetura \emph{de
 hardware}. Ainda assim, provas de concurso costumam reaproveitar questões
-de "informática básica"/arquitetura de computadores entre perfis
+de “informática básica”/arquitetura de computadores entre perfis
 diferentes, e esse conteúdo aparece. É rápido de cobrir e vale a pena
 saber.
 \end{conceito}
@@ -311,19 +311,19 @@ Para representar números negativos em binário sem precisar de um circuito
 separado para subtração, usa-se o \textbf{complemento de dois}: para negar
 um número, inverte-se todos os bits (complemento de um) e soma-se 1. A
 vantagem é que \textbf{a mesma unidade de soma} da ULA resolve subtração
-também --- "$A - B$" vira "$A + (\text{complemento de dois de } B)$", sem
+também --- “$A - B$” vira “$A + (\text{complemento de dois de } B)$”, sem
 circuito dedicado.
 \end{conceito}
 
-\begin{conceito}[\textit{Overflow} $\times$ \textit{carry} --- dois tipos de "estourou"]
+\begin{conceito}[\textit{Overflow} $\times$ \textit{carry} --- dois tipos de “estourou”]
 \begin{itemize}
 \item \textbf{Carry} (vai-um): ocorre quando uma soma \textbf{sem sinal}
-ultrapassa a capacidade de bits disponível --- é o "vai um" que sobra da
+ultrapassa a capacidade de bits disponível --- é o “vai um” que sobra da
 última posição.
 \item \textbf{Overflow}: ocorre quando o resultado de uma operação
 \textbf{com sinal} (complemento de dois) produz um valor que \textbf{não
 cabe} na faixa representável com aquele número de bits --- por exemplo,
-somar dois números positivos grandes e o resultado "virar" negativo por
+somar dois números positivos grandes e o resultado “virar” negativo por
 estourar o bit de sinal.
 \end{itemize}
 Os dois podem ocorrer independentemente um do outro na mesma operação ---
@@ -346,7 +346,7 @@ com o resto do sistema através de controladores e barramentos de E/S.
 \subsection{Memória virtual: paginação, MMU, TLB e \textit{thrashing}}
 
 \begin{conceito}[O problema: programas maiores que a RAM física disponível]
-\textbf{Memória virtual} é a técnica que permite a um programa "enxergar"
+\textbf{Memória virtual} é a técnica que permite a um programa “enxergar”
 mais memória do que a RAM física realmente tem, usando o disco como
 extensão. O sistema operacional divide a memória em blocos de tamanho fixo
 chamados \textbf{páginas}, e mantém uma \textbf{tabela de páginas} que
@@ -371,7 +371,7 @@ processos ativos realmente precisam a cada instante, o sistema passa a
 gastar mais tempo \textbf{trocando páginas entre RAM e disco}
 (\textit{swapping}) do que executando trabalho útil --- esse colapso de
 desempenho é o \textbf{thrashing}. O sintoma característico é a CPU parecer
-\textbf{ociosa} mesmo com processos "rodando": na verdade eles estão
+\textbf{ociosa} mesmo com processos “rodando”: na verdade eles estão
 travados esperando página chegar do disco, não executando instrução.
 \end{conceito}
 
@@ -413,7 +413,7 @@ operacionais em \textbf{relatórios} para a gerência tática acompanhar
 desempenho.
 \item \textbf{SAD/SSD} (Sistema de Apoio/Suporte à Decisão): fornece
 \textbf{análise} para decisões \textbf{não estruturadas} ou semiestruturadas,
-tipicamente de nível mais estratégico --- simulações, cenários "e se".
+tipicamente de nível mais estratégico --- simulações, cenários “e se”.
 \item \textbf{ERP} (\textit{Enterprise Resource Planning}): integra
 processos de \textbf{múltiplas} áreas (financeiro, estoque, produção,
 RH) num único sistema com base de dados compartilhada, eliminando
@@ -440,11 +440,11 @@ A distinção central é se os dados de treino trazem \textbf{rótulo}
 \begin{itemize}
 \item \textbf{Supervisionado}: treina com dados \textbf{rotulados} ---
 cada exemplo já vem com a resposta esperada. Usado em
-\textbf{classificação} (rótulo categórico: "é spam?") e \textbf{regressão}
-(rótulo numérico: "qual será o preço?").
+\textbf{classificação} (rótulo categórico: “é spam?”) e \textbf{regressão}
+(rótulo numérico: “qual será o preço?”).
 \item \textbf{Não supervisionado}: treina com dados \textbf{sem
 rótulo} --- o algoritmo busca \textbf{estrutura} escondida nos próprios
-dados, sem saber de antemão qual é a "resposta certa". Usado em
+dados, sem saber de antemão qual é a “resposta certa”. Usado em
 \textbf{clusterização} (agrupar exemplos parecidos) e \textbf{associação}
 (achar padrões de coocorrência).
 \item \textbf{Semissupervisionado}: usa uma \textbf{pequena} quantidade de
@@ -454,9 +454,9 @@ bruto é barato.
 \end{itemize}
 \end{conceito}
 
-\begin{cuidado}[Não inverta "rotulado" entre os dois]
-Um enunciado que descreve o \textbf{não supervisionado} como "usa dados
-rotulados para prever categorias" trocou a definição com o
+\begin{cuidado}[Não inverta “rotulado” entre os dois]
+Um enunciado que descreve o \textbf{não supervisionado} como “usa dados
+rotulados para prever categorias” trocou a definição com o
 \textbf{supervisionado}. O critério de desempate é sempre: \textbf{existe
 resposta certa conhecida de antemão no conjunto de treino, ou o algoritmo
 tem que descobrir a estrutura sozinho?}
@@ -497,7 +497,7 @@ todos os atributos permanecem, com peso menor \\
 A razão da diferença está no \textbf{formato} da penalidade: elevar ao
 quadrado (L2) pune muito um coeficiente grande e quase nada um já pequeno
 --- não compensa terminar de zerá-lo. A L1 pune o mesmo valor por unidade
-em qualquer faixa, então zerar de vez sai "de graça" e compensa. Use L1
+em qualquer faixa, então zerar de vez sai “de graça” e compensa. Use L1
 quando o objetivo é \textbf{descartar} atributos irrelevantes de um
 conjunto com muitas variáveis; use L2 quando o objetivo é apenas
 \textbf{estabilizar} um modelo com atributos correlacionados, mantendo
@@ -518,7 +518,7 @@ de 1 a área sob a curva (AUC), melhor a separação.
 
 \begin{conceito}[Drift: o modelo não piora sozinho, o mundo muda ao redor]
 Um modelo em produção perde acurácia ao longo do tempo mesmo sem nenhuma
-mudança de código, porque foi treinado numa "fotografia" da realidade que
+mudança de código, porque foi treinado numa “fotografia” da realidade que
 deixa de valer. Duas causas distintas:
 
 \begin{center}
@@ -547,7 +547,7 @@ do monitoramento contínuo de modelos em produção (MLOps).
 
 \section{Mapa: onde estão os demais temas coringa}
 
-Vários temas que também caem sob a etiqueta "sem capítulo próprio" já
+Vários temas que também caem sob a etiqueta “sem capítulo próprio” já
 recebem tratamento profundo em outros capítulos deste livro --- não os
 repita aqui, use este mapa:
 
@@ -567,7 +567,7 @@ Capítulo \ref{cap:arquitetura-teoria} \\
 Low-code / no-code & Capítulo \ref{cap:programacao-teoria} \\
 RPA (\textit{Robotic Process Automation}) & Capítulo
 \ref{cap:eng-software-teoria} \\
-Os "V"s do Big Data & Capítulo \ref{cap:banco-dados-teoria} \\
+Os “V”s do Big Data & Capítulo \ref{cap:banco-dados-teoria} \\
 Índices (B+ Tree, hash, bitmap) & Capítulo \ref{cap:banco-dados-teoria} \\
 Internet $\times$ intranet $\times$ extranet $\times$ portal & Capítulo
 \ref{cap:redes-teoria} \\

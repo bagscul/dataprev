@@ -14,13 +14,13 @@ acessibilidade, usabilidade).
 Visualmente, \texttt{<div class="menu">} e \texttt{<nav>} podem
 renderizar de forma idêntica --- a diferença é que só o segundo
 \textbf{informa o papel} daquele bloco de conteúdo. Quem lê esse papel
-são \textbf{programas}: o leitor de tela, que anuncia "navegação" e
+são \textbf{programas}: o leitor de tela, que anuncia “navegação” e
 permite ao usuário saltar direto para ela; o buscador, que pondera o
 conteúdo de \texttt{<main>} de forma diferente do conteúdo de
 \texttt{<footer>}; e o próprio navegador, que já entrega comportamento de
 teclado pronto em elementos nativos (como \texttt{<button>} responder a
-Enter e Espaço automaticamente). É daí que vem a "regra número um do
-ARIA" vista adiante: se existe tag nativa com a semântica certa, ela
+Enter e Espaço automaticamente). É daí que vem a “regra número um do
+ARIA” vista adiante: se existe tag nativa com a semântica certa, ela
 vence qualquer atributo acrescentado depois. A separação clássica ---
 \textbf{HTML estrutura, CSS apresenta, JS comporta} --- é a mesma lógica
 de baixo acoplamento aplicada à construção de uma página.
@@ -73,8 +73,8 @@ condição de mídia como parâmetro.
 \end{conceito}
 
 \begin{cuidado}
-Padding é interno, margin é externo --- não inverter. "A última regra
-declarada sempre vence" é falso: só vence entre especificidades
+Padding é interno, margin é externo --- não inverter. “A última regra
+declarada sempre vence” é falso: só vence entre especificidades
 \textbf{iguais}; um seletor de \texttt{id} ganha de um de classe mesmo
 declarado antes dele no arquivo.
 \end{cuidado}
@@ -111,8 +111,8 @@ pilar da PWA: define nome, ícones e modo de exibição que permitem a
 
 \begin{cuidado}
 Service Worker é característica da \textbf{PWA}, não requisito de SPA
---- atribuí-lo à SPA é um erro comum. "SPA se instala no sistema
-operacional como um app nativo" é também característica de \textbf{PWA},
+--- atribuí-lo à SPA é um erro comum. “SPA se instala no sistema
+operacional como um app nativo” é também característica de \textbf{PWA},
 não de SPA em si. Nenhuma das duas depende exclusivamente de um
 framework específico --- ambas podem ser feitas com JavaScript puro.
 \end{cuidado}
@@ -149,7 +149,7 @@ nova publicação \\
 \textbf{\textit{Hydration}} é o que costura SSR e SPA no mesmo produto: o
 servidor manda HTML já pintado visualmente, mas HTML puro não tem
 comportamento interativo --- quando o JavaScript chega ao navegador, ele
-"hidrata" aquela marcação, reassociando componentes, estado interno e
+“hidrata” aquela marcação, reassociando componentes, estado interno e
 ouvintes de evento a ela. A consequência prática que costuma virar item
 de prova: existe uma \textbf{janela de tempo} em que a página
 \textbf{parece pronta visualmente e não responde a cliques}, porque foi
@@ -196,7 +196,7 @@ ser invertido em prova.
 servidor sem recarregar a página inteira --- é a base do comportamento de
 uma SPA. Hoje implementado tipicamente via \texttt{fetch} ou
 \texttt{XMLHttpRequest} (XHR), com dados trafegando majoritariamente em
-JSON, apesar do "X" histórico do nome se referir a XML.
+JSON, apesar do “X” histórico do nome se referir a XML.
 \end{conceito}
 
 \section{UX, usabilidade e acessibilidade}
@@ -250,8 +250,8 @@ sempre avaliados \textbf{num contexto de uso} explicitamente declarado
 \end{conceito}
 
 \begin{cuidado}
-"Eficácia" pertence à lista da ISO 9241-11; "memorabilidade" e "poucos
-erros" pertencem à lista de Nielsen --- misturar as duas listas é o erro
+“Eficácia” pertence à lista da ISO 9241-11; “memorabilidade” e “poucos
+erros” pertencem à lista de Nielsen --- misturar as duas listas é o erro
 mais comum ao responder sobre o tema.
 \end{cuidado}
 
@@ -333,7 +333,7 @@ transversal} --- trocar os dois é o distrator mais comum de layout.
 Um \texttt{<span data-nivel="urgente">} com CSS
 \texttt{span::before \{ content: attr(data-nivel) ": "; font-weight:
 bold; \}} produz, \textbf{antes} do texto original do \texttt{span}, o
-literal \textbf{"urgente: "} em negrito --- não o texto
+literal \textbf{“urgente: ”} em negrito --- não o texto
 \texttt{"data-nivel"} (o nome do atributo, e não seu valor, que é o erro
 mais comum de leitura de \texttt{attr()}).
 \end{exemplo}
@@ -408,7 +408,7 @@ chamar a função que atualiza o estado \textbf{não} atualiza a variável
 \textbf{na mesma linha} de código --- o novo valor só se reflete na
 \textbf{próxima renderização} do componente. Um trecho que chama
 \texttt{setContador(contador + 1)} duas vezes seguidas \textbf{não} soma
-2 ao contador, porque as duas chamadas leem o mesmo valor "antigo" de
+2 ao contador, porque as duas chamadas leem o mesmo valor “antigo” de
 \texttt{contador} dentro do mesmo ciclo de evento --- para acumular
 corretamente usa-se a forma funcional \texttt{setContador(c => c + 1)},
 que recebe o valor mais atualizado em cada chamada.

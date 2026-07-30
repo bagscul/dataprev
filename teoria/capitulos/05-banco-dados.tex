@@ -23,7 +23,7 @@ um \texttt{CREATE TABLE} com tipos concretos, um índice na coluna de busca
 e uma escolha de armazenamento.
 
 A separação não é burocracia: os três níveis \textbf{mudam em ritmos
-diferentes}. A regra "todo dependente pertence a um servidor" sobrevive à
+diferentes}. A regra “todo dependente pertence a um servidor” sobrevive à
 troca do SGBD Oracle pelo PostgreSQL; o tipo \texttt{NUMBER(5)} específico
 do Oracle não sobrevive. Quem mistura os níveis (decide tipo de coluna
 enquanto ainda discute com o usuário o que é uma entidade) acaba
@@ -52,8 +52,8 @@ grafo) e traduz o conceitual para ele --- entidades viram tabelas,
 relacionamentos viram chaves estrangeiras ou tabelas associativas --- mas
 ainda \textbf{não} escolheu o produto/SGBD. O \textbf{físico} já escolheu o
 produto e decide o que só existe ali dentro: tipo exato de coluna, índice,
-partição, \textit{tablespace} --- é o único nível em que "desempenho" é uma
-resposta legítima à pergunta "por que essa decisão".
+partição, \textit{tablespace} --- é o único nível em que “desempenho” é uma
+resposta legítima à pergunta “por que essa decisão”.
 
 A informação \textbf{só se acrescenta} de um nível para o outro: cada nível
 carrega tudo que o anterior decidiu e soma o seu. É por isso que a ordem
@@ -66,9 +66,9 @@ não é invertível --- não se parte de um índice físico para descobrir qual
 \begin{conceito}[Metadado é dado sobre o dado, não o dado]
 \textbf{Metadado} descreve a estrutura, o significado, a origem e as
 regras de um dado --- nunca o valor dele. Se \texttt{"1988-10-05"} é o
-dado, o metadado é "a coluna chama-se \texttt{data\_admissao}, é do tipo
+dado, o metadado é “a coluna chama-se \texttt{data\_admissao}, é do tipo
 \texttt{DATE}, não aceita nulo, veio do sistema de folha de pagamento e
-significa a data de entrada em exercício do servidor". Divide-se em três
+significa a data de entrada em exercício do servidor”. Divide-se em três
 famílias:
 
 \begin{center}
@@ -89,14 +89,14 @@ transformações passou \\
 \end{center}
 
 A \textbf{linhagem} é a que mais rende em questão de cenário: quando um
-relatório não fecha, é ela que responde "de onde saiu este número, e o que
-foi feito com ele no caminho". Sem metadado operacional, um pipeline de
+relatório não fecha, é ela que responde “de onde saiu este número, e o que
+foi feito com ele no caminho”. Sem metadado operacional, um pipeline de
 ETL vira uma caixa-preta --- ninguém consegue dizer qual regra transformou
 o quê.
 \end{conceito}
 
 \begin{cuidado}
-Metadado \textbf{não é} o conteúdo/valor da coluna ("o CPF do servidor" é
+Metadado \textbf{não é} o conteúdo/valor da coluna (“o CPF do servidor” é
 dado, não metadado) --- metadado é a \textbf{descrição} desse dado.
 Dicionário de dados (catálogo \textbf{técnico}) e glossário de negócio
 (definições em linguagem de \textbf{negócio}) não são a mesma coisa.
@@ -105,7 +105,7 @@ Dicionário de dados (catálogo \textbf{técnico}) e glossário de negócio
 \subsection{Avaliação de modelos de dados}
 
 \begin{conceito}[Critérios objetivos, não gosto pessoal]
-"O modelo está bom?" tem critérios concretos, não é opinião:
+“O modelo está bom?” tem critérios concretos, não é opinião:
 
 \begin{itemize}
 \item \textbf{Completude}: o modelo cobre todos os requisitos levantados
@@ -127,8 +127,8 @@ redesenhar meia base.
 \end{itemize}
 
 O corte que decide entre os dois primeiros critérios: \textbf{completude}
-pergunta "falta algo?"; \textbf{corretude} pergunta "o que está lá está
-certo?". Um modelo pode ser \textbf{completo e errado} (tem tudo, mas com
+pergunta “falta algo?”; \textbf{corretude} pergunta “o que está lá está
+certo?”. Um modelo pode ser \textbf{completo e errado} (tem tudo, mas com
 uma cardinalidade invertida) ou \textbf{correto e incompleto} (o que está
 desenhado está certo, mas faltou modelar o requisito de auditoria).
 \end{conceito}
@@ -166,10 +166,10 @@ existe, ou é nula.
 \end{itemize}
 \end{conceito}
 
-\begin{conceito}[As ações referenciais: o que fazer quando o "pai" é apagado]
+\begin{conceito}[As ações referenciais: o que fazer quando o “pai” é apagado]
 A pergunta que \texttt{ON DELETE} responde: apagaram o servidor 47, e
 existem dependentes apontando para ele. O que acontece com os
-"dependentes órfãos"?
+“dependentes órfãos”?
 
 \begin{center}
 \begin{tabular}{@{}p{2.8cm}p{9.2cm}@{}}
@@ -209,8 +209,8 @@ um único \texttt{DELETE}.
 \midrule
 1:1 & FK em uma das duas tabelas (de preferência no lado de participação
 obrigatória), com restrição de unicidade \\
-1:N & \textbf{FK no lado N} --- a tabela "muitos" guarda a chave da tabela
-"um" \\
+1:N & \textbf{FK no lado N} --- a tabela “muitos” guarda a chave da tabela
+“um” \\
 \textbf{N:M} & \textbf{tabela associativa} (intermediária), com as FKs das
 duas pontas formando a chave primária composta \\
 \bottomrule
@@ -255,7 +255,7 @@ associativa).
 \begin{cuidado}
 Entidade fraca \textbf{não dispensa} a chave do proprietário --- é
 exatamente o oposto: sem ela, a entidade fraca não se identifica sozinha.
-Ter atributos próprios \textbf{não} torna uma entidade "forte"; o que
+Ter atributos próprios \textbf{não} torna uma entidade “forte”; o que
 define força é conseguir se identificar sozinha, sem depender da chave de
 outra entidade.
 \end{cuidado}
@@ -270,7 +270,7 @@ guarda \textbf{dois assuntos ao mesmo tempo}.
 \end{conceito}
 
 \begin{conceito}[Dependência funcional --- a ferramenta que sustenta tudo]
-Escreve-se \textbf{A $\to$ B} e lê-se "\textbf{A determina B}": dado um
+Escreve-se \textbf{A $\to$ B} e lê-se “\textbf{A determina B}”: dado um
 valor de A, existe \textbf{um único} valor de B possível. \texttt{CPF
 $\to$ nome} é dependência funcional --- um CPF corresponde a um único
 nome. \texttt{nome $\to$ CPF} \textbf{não} é --- homônimos existem, o mesmo
@@ -278,7 +278,7 @@ nome pode ter CPFs diferentes.
 
 Toda forma normal é uma restrição sobre \textbf{quais} dependências
 funcionais uma tabela tem o direito de conter. A chave determina todo o
-resto --- isso é literalmente o que significa "ser chave". O que a
+resto --- isso é literalmente o que significa “ser chave”. O que a
 normalização proíbe, forma a forma, é que \textbf{algo além da chave
 inteira} determine outra coisa:
 
@@ -393,8 +393,8 @@ a última matrícula de alguém não apaga o registro do aluno.
 \end{exemplo}
 
 \begin{regrapratica}[Achar a chave a partir das dependências funcionais]
-A FGV costuma cobrar assim: "considere $R(A,B,C,D,E)$ e $F = \{A \to B,
-BC \to DE, \ldots\}$; qual a forma normal mais alta?". O procedimento é
+A FGV costuma cobrar assim: “considere $R(A,B,C,D,E)$ e $F = \{A \to B,
+BC \to DE, \ldots\}$; qual a forma normal mais alta?”. O procedimento é
 mecânico: parta dos atributos que \textbf{nunca aparecem do lado direito}
 de nenhuma dependência --- eles obrigatoriamente fazem parte de toda chave
 candidata. Feche esse conjunto aplicando as dependências até parar de
@@ -413,7 +413,7 @@ com \texttt{ROLLBACK}. DML muda os \textbf{dados} dentro de uma
 transação, e por isso é desfazível. É essa diferença de comportamento
 transacional --- não a semelhança do efeito visível --- que separa
 \texttt{TRUNCATE} (DDL) de \texttt{DELETE} (DML), mesmo que os dois
-"esvaziem a tabela".
+“esvaziem a tabela”.
 
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{4cm}p{4.5cm}@{}}
@@ -571,8 +571,8 @@ aplicação lembrar de chamá-la & rotina de negócio chamada sob demanda \\
 \bottomrule
 \end{tabular}
 \end{center}
-Palavra-chave para reconhecer o gatilho num enunciado: "\textbf{sem
-depender de a aplicação lembrar}".
+Palavra-chave para reconhecer o gatilho num enunciado: “\textbf{sem
+depender de a aplicação lembrar}”.
 \end{conceito}
 
 \section{Propriedades ACID}
@@ -585,8 +585,8 @@ aceitável.
 
 \begin{itemize}
 \item \textbf{A}tomicidade --- \textit{tudo ou nada}. Se o servidor cair
-entre o débito e o crédito, o débito é desfeito. Nunca existe "saiu de A
-e não chegou em B". Quem entrega: \texttt{ROLLBACK} e o log de
+entre o débito e o crédito, o débito é desfeito. Nunca existe “saiu de A
+e não chegou em B”. Quem entrega: \texttt{ROLLBACK} e o log de
 transações.
 \item \textbf{C}onsistência --- \textit{estado válido antes, estado
 válido depois}. A soma dos saldos não mudou, e nenhuma restrição
@@ -607,7 +607,7 @@ entrega: a gravação do log em disco \textbf{antes} da confirmação (WAL,
 \begin{cuidado}
 Consistência x isolamento se confundem: a primeira olha para as
 \textbf{regras declaradas} do banco; a segunda olha para \textbf{outras
-transações} concorrentes. Não confundir com o "C" do teorema CAP
+transações} concorrentes. Não confundir com o “C” do teorema CAP
 (Seção~\ref{sec:cap-teoria}) --- lá, consistência significa que todas as
 réplicas mostram o mesmo dado, um conceito diferente.
 \end{cuidado}
@@ -615,7 +615,7 @@ réplicas mostram o mesmo dado, um conceito diferente.
 \section{Concorrência: níveis de isolamento}
 
 \begin{conceito}[Quatro níveis, cada um admitindo certos fenômenos]
-O "I" do ACID não é tudo-ou-nada: o padrão SQL define quatro níveis, e
+O “I” do ACID não é tudo-ou-nada: o padrão SQL define quatro níveis, e
 cada um \textbf{admite} certos fenômenos de concorrência. Quanto maior o
 isolamento, \textbf{menor} a concorrência possível --- é uma troca
 (\textit{trade-off}), não um ganho de graça.
@@ -660,7 +660,7 @@ $\to$ não repetível; linha \textbf{nova que aparece} $\to$ fantasma.
 O sistema que registra uma venda precisa gravar \textbf{uma linha por
 vez, muitas vezes por segundo}, sem perder nada --- a normalização serve
 bem a ele, porque cada fato mora num único lugar e a escrita fica barata.
-O sistema que responde "quanto vendemos por região no último trimestre"
+O sistema que responde “quanto vendemos por região no último trimestre”
 precisa \textbf{varrer milhões de linhas e somar} --- e aí a
 normalização vira inimiga, porque cada \texttt{JOIN} a mais é trabalho a
 mais numa consulta que já é pesada.
@@ -702,7 +702,7 @@ leitura por coluna em grandes volumes.
 \textbf{relacionamentos} complexos (rede social, detecção de fraude).
 \end{itemize}
 
-Banco NoSQL \textbf{não} é "sempre grafo" e não segue ACID estritamente
+Banco NoSQL \textbf{não} é “sempre grafo” e não segue ACID estritamente
 por padrão --- e não substitui um ERP/CRM fortemente transacional sem
 uma análise cuidadosa do que se perde.
 \end{conceito}
@@ -727,10 +727,10 @@ operação. Abriu-se mão de \textbf{A} para manter \textbf{C}: perfil
 \end{itemize}
 
 Não existe terceira saída --- é por isso que é um teorema, não uma
-recomendação. "Escolha 2 de 3" é uma simplificação didática: numa rede
+recomendação. “Escolha 2 de 3” é uma simplificação didática: numa rede
 real, a partição \textbf{não é opcional} (cabo cai eventualmente); P está
 sempre presente, e a escolha verdadeira é sempre entre \textbf{C ou A}. Um
-banco monolítico rodando num servidor só \textbf{não é "CA"} --- ele
+banco monolítico rodando num servidor só \textbf{não é “CA”} --- ele
 simplesmente não é um sistema distribuído, e o teorema não se aplica a
 ele.
 \end{conceito}
@@ -757,7 +757,7 @@ qualidade do warehouse.
 
 \section{ETL x ELT}
 
-\begin{conceito}[A posição do "T" muda tudo]
+\begin{conceito}[A posição do “T” muda tudo]
 \begin{center}
 \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{4.3cm}@{}}
 \toprule
@@ -786,8 +786,8 @@ valores de uma coluna já \textbf{organizados}, junto com o endereço da
 linha correspondente. Não muda a tabela em si: acrescenta um caminho de
 acesso a mais. A troca é sempre a mesma --- \textbf{leitura mais rápida,
 escrita mais lenta} (todo \texttt{INSERT} precisa atualizar o índice
-também) e mais espaço em disco. Índice não é grátis, e "criar índice em
-tudo" nunca é a resposta certa.
+também) e mais espaço em disco. Índice não é grátis, e “criar índice em
+tudo” nunca é a resposta certa.
 
 \begin{itemize}
 \item \textbf{B+ Tree}: árvore balanceada com os valores \textbf{ordenados}
@@ -795,9 +795,9 @@ nas folhas, encadeadas entre si. Como está ordenado, atende faixa
 (\texttt{BETWEEN}, \texttt{>}, \texttt{<}), \texttt{ORDER BY} \textbf{e}
 igualdade. É o padrão em todo SGBD, ideal para colunas de \textbf{alta
 cardinalidade} (muitos valores distintos: CPF, data, valor monetário).
-\item \textbf{Hash}: aplica uma função ao valor e vai direto ao "balde"
+\item \textbf{Hash}: aplica uma função ao valor e vai direto ao “balde”
 correspondente. Ótimo para \texttt{=} e \textbf{inútil} para faixa --- o
-hash embaralha a ordem de propósito, então "entre 10 e 20" não significa
+hash embaralha a ordem de propósito, então “entre 10 e 20” não significa
 nada dentro dele.
 \item \textbf{Bitmap}: um vetor de bits por valor distinto. Só compensa em
 \textbf{baixa cardinalidade} (ex.: coluna ativo/inativo, ou UF com 27
@@ -811,14 +811,14 @@ As duas perguntas que decidem o tipo certo: \textit{a consulta pede faixa
 ou igualdade?} e \textit{quantos valores distintos a coluna tem?}
 \end{conceito}
 
-\section{Big Data: os "V"s}
+\section{Big Data: os “V”s}
 
 \begin{conceito}[O trio clássico, e o que veio depois]
 O trio \textbf{original} (Gartner, 2001) é \textbf{Volume, Velocidade e
 Variedade}. \textbf{Veracidade} e \textbf{Valor} são \textbf{extensões}
-posteriores (por isso os modelos "4V" e "5V"), assim como
+posteriores (por isso os modelos “4V” e “5V”), assim como
 \textbf{Variabilidade}. Saber qual é o trio original importa porque a
 pergunta clássica de prova troca um membro do trio por um V de extensão
-("volume, velocidade e valor" ou "volume, variedade e veracidade" soam
+(“volume, velocidade e valor” ou “volume, variedade e veracidade” soam
 plausíveis mas não são o trio original).
 \end{conceito}

@@ -102,19 +102,19 @@ objeto, decidido em \textbf{tempo de execução} \\
 \end{center}
 
 Duas confusões comuns sobre esses pilares. \textbf{Encapsulamento não é
-"gerar getter e setter para todo atributo"}: um \texttt{setSaldo} público
+“gerar getter e setter para todo atributo”}: um \texttt{setSaldo} público
 expõe o estado tão livremente quanto um atributo público faria, e a regra
-de negócio ("não sacar além do saldo") fica sem dono. Encapsular é expor
+de negócio (“não sacar além do saldo”) fica sem dono. Encapsular é expor
 \textbf{comportamento} controlado, não simplesmente esconder o campo atrás
 de dois métodos que fazem a mesma coisa que acesso direto faria. O
 \textbf{polimorfismo que importa} é o de \textbf{sobrescrita}, resolvido
 em \textit{runtime} pela classe real do objeto --- a sobrecarga é
 resolvida em \textbf{compilação}, pelos tipos declarados, e por isso
-alguns autores nem a contam como polimorfismo "de verdade".
+alguns autores nem a contam como polimorfismo “de verdade”.
 
 Herança é o pilar com \textbf{contraindicação}: ela acopla a subclasse à
-implementação interna do pai. Quando a relação real é "\textbf{tem-um}" e
-não "é-um", a escolha correta é \textbf{composição} (Capítulo
+implementação interna do pai. Quando a relação real é “\textbf{tem-um}” e
+não “é-um”, a escolha correta é \textbf{composição} (Capítulo
 \ref{cap:padroes-uml-teoria}).
 \end{conceito}
 
@@ -215,7 +215,7 @@ subclasses; use interface quando o que importa é apenas o
 
 \begin{cuidado}
 Desde o Java 8, interfaces têm métodos \texttt{default} com corpo
-implementado --- "interface não pode ter implementação" está
+implementado --- “interface não pode ter implementação” está
 desatualizado e é falso hoje. O que a interface continua \textbf{sem
 ter} é \textbf{construtor} e \textbf{atributo de instância} --- é por aí
 que a distinção real se sustenta. Java não tem herança múltipla de
@@ -262,8 +262,8 @@ nem retorna um código de erro. \texttt{==} compara \textbf{referência}
 (mesmo objeto na memória); \texttt{.equals()} compara \textbf{conteúdo}.
 \end{conceito}
 
-\begin{conceito}[O contrato equals/hashCode: por que um objeto "desaparece" de um HashSet]
-Coleções com "Hash" no nome não procuram um elemento comparando com
+\begin{conceito}[O contrato equals/hashCode: por que um objeto “desaparece” de um HashSet]
+Coleções com “Hash” no nome não procuram um elemento comparando com
 \textbf{todos} os demais --- elas calculam o \texttt{hashCode()} do
 objeto para achar o \textbf{compartimento} correto, e só dentro dele usam
 \texttt{equals()} para confirmar a igualdade exata. Isso impõe um
@@ -280,14 +280,14 @@ esperado).
 
 A consequência prática cobrada em prova: sobrescrever \texttt{equals} e
 \textbf{esquecer} de sobrescrever \texttt{hashCode} junto produz um bug
-silencioso. Dois objetos considerados "iguais" pelo \texttt{equals} caem
+silencioso. Dois objetos considerados “iguais” pelo \texttt{equals} caem
 em compartimentos \textbf{diferentes} do hash (porque o \texttt{hashCode}
 herdado de \texttt{Object} usa identidade de memória), então o
 \texttt{HashSet} aceita a duplicata sem reclamar, e
 \texttt{contains}/\texttt{get} de um \texttt{HashMap} \textbf{não
 encontra} um objeto que está fisicamente lá dentro. Nada estoura --- só dá
 a resposta errada silenciosamente, o pior desenho possível para um item de
-"qual a saída deste código".
+“qual a saída deste código”.
 
 \texttt{TreeSet} e \texttt{TreeMap} \textbf{não} usam \texttt{hashCode}
 --- eles ordenam os elementos, e por isso dependem de
@@ -300,7 +300,7 @@ mesmo tempo funciona perfeitamente bem num \texttt{HashSet}.
 \subsection{String: imutabilidade e StringBuilder}
 
 \begin{conceito}
-\texttt{String} é \textbf{imutável}: toda operação que parece "alterar"
+\texttt{String} é \textbf{imutável}: toda operação que parece “alterar”
 (\texttt{concat}, \texttt{+}, \texttt{replace}, \texttt{toUpperCase})
 na verdade devolve um \textbf{objeto novo}, deixando o original intacto.
 Por isso, concatenar dentro de um laço cria um objeto novo descartado a
@@ -317,7 +317,7 @@ mesmo com o mesmo conteúdo. Comparação de conteúdo deve sempre usar
 \end{conceito}
 
 \begin{cuidado}
-"\texttt{String} é mutável porque posso reatribuir a variável" é falso:
+“\texttt{String} é mutável porque posso reatribuir a variável” é falso:
 o que muda ao reatribuir é a \textbf{referência} guardada na variável, não
 o objeto \texttt{String} original, que permanece intacto na memória.
 \texttt{StringBuilder} (não sincronizado, mais rápido) e
@@ -353,7 +353,7 @@ ainda os alcançar \\
 \end{center}
 
 A variável local mora na \textit{stack}; o objeto que ela referencia mora
-no \textit{heap}. É por isso que "passar o objeto" para um método é, na
+no \textit{heap}. É por isso que “passar o objeto” para um método é, na
 prática, passar uma cópia da referência (Capítulo
 \ref{cap:programacao-teoria}) --- e é por isso que a \textit{stack} é
 literalmente uma pilha (a mesma estrutura LIFO da Seção
@@ -365,7 +365,7 @@ execução): recursão sem fim estoura a pilha
 \textbf{Coleta de lixo (\textit{garbage collection})}: o coletor libera o
 que \textbf{não é mais alcançável} a partir das raízes (variáveis vivas
 nas pilhas de todas as threads, campos estáticos) --- não simplesmente o
-que "não está mais sendo usado" no sentido intuitivo. Consequências
+que “não está mais sendo usado” no sentido intuitivo. Consequências
 cobradas: Java \textbf{não tem destrutor determinístico} (não se sabe
 \textbf{quando} exatamente um objeto será coletado) e
 \texttt{System.gc()} é apenas uma \textbf{sugestão} à JVM, não uma ordem
@@ -392,8 +392,8 @@ otimizada, só quando necessário.
 \end{conceito}
 
 \begin{cuidado}
-Diante do problema N+1, "usar EAGER em tudo" ou "deixar o JPA decidir
-sozinho" não são a solução --- a resposta correta é \texttt{LAZY} como
+Diante do problema N+1, “usar EAGER em tudo” ou “deixar o JPA decidir
+sozinho” não são a solução --- a resposta correta é \texttt{LAZY} como
 padrão, combinado com \texttt{JOIN FETCH} pontual na consulta que precisa
 da relação.
 \end{cuidado}
@@ -532,10 +532,10 @@ precisar de lógica mais elaborada num ramo).
 \end{conceito}
 
 \begin{cuidado}
-"\texttt{var} torna a variável de tipo dinâmico" é falso: depois de
+“\texttt{var} torna a variável de tipo dinâmico” é falso: depois de
 inferido, atribuir um valor de tipo incompatível continua sendo erro de
-compilação. "O \texttt{record} gera \textit{getters} no padrão
-\texttt{getX()}" é falso --- o acessor chama-se apenas \texttt{x()}, sem
+compilação. “O \texttt{record} gera \textit{getters} no padrão
+\texttt{getX()}” é falso --- o acessor chama-se apenas \texttt{x()}, sem
 prefixo. \texttt{sealed} \textbf{não é sinônimo} de \texttt{final}: o
 \texttt{final} proíbe qualquer herança; o \texttt{sealed} permite herança
 apenas pelos tipos explicitamente autorizados.
@@ -580,10 +580,10 @@ compila, por redundância.
 \begin{cuidado}
 Um bloco com a ordem dos \texttt{catch} invertida (genérico antes do
 específico) \textbf{não compila e não funciona normalmente} --- é erro
-de compilação, não um comportamento "que funciona mas é estranho". Uma
+de compilação, não um comportamento “que funciona mas é estranho”. Uma
 exceção \textbf{checked} lançada dentro de um método sem
 \texttt{throws} e sem \texttt{try-catch} \textbf{não compila} --- não é
-"ignorada silenciosamente em runtime". Erro de compilação e exceção em
+“ignorada silenciosamente em runtime”. Erro de compilação e exceção em
 tempo de execução são fenômenos diferentes, e a prova testa se essa
 distinção está clara.
 \end{cuidado}
@@ -604,8 +604,8 @@ de inicializada) --- código que reatribui essa variável depois de criar a
 lambda \textbf{não compila}.
 \item \textbf{Escopo de bloco em \texttt{for}}: uma variável declarada
 \textbf{dentro} do cabeçalho do \texttt{for} não existe fora dele ---
-usá-la depois do laço termina é erro de compilação, não um "valor
-residual" da última iteração.
+usá-la depois do laço termina é erro de compilação, não um “valor
+residual” da última iteração.
 \end{itemize}
 \end{conceito}
 

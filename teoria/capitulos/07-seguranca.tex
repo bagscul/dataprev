@@ -33,15 +33,15 @@ O detalhe que separa quem entendeu de quem decorou: os três pilares
 disponibilidade --- um segundo fator de autenticação barra o invasor e
 também atrasa o usuário legítimo que perdeu o celular; cifrar o backup
 protege o dado roubado, mas o torna inútil se a chave de cifra se perder.
-Por isso uma questão de cenário raramente pede "o mais seguro" --- pede o
+Por isso uma questão de cenário raramente pede “o mais seguro” --- pede o
 \textbf{equilíbrio adequado ao contexto}, e a alternativa que maximiza um
 pilar ignorando os outros costuma ser a errada.
 \end{conceito}
 
 \begin{cuidado}
-Mapeie o verbo do cenário para o pilar certo: "restringir quem vê" é
-confidencialidade, não integridade; "ficar no ar" é disponibilidade;
-"alteração indevida do conteúdo" é integridade.
+Mapeie o verbo do cenário para o pilar certo: “restringir quem vê” é
+confidencialidade, não integridade; “ficar no ar” é disponibilidade;
+“alteração indevida do conteúdo” é integridade.
 \end{cuidado}
 
 \section{Criptografia}
@@ -83,7 +83,7 @@ tamanho fixo e pequeno. Segunda: na prática, nem o \textbf{sigilo} usa
 assimétrica para o volume de dados. O TLS faz o que se chama de
 \textbf{envelope}: usa a assimétrica \textbf{só para combinar} uma chave
 simétrica de sessão entre as partes, e daí em diante cifra tudo com a
-simétrica, que é rápida. "A assimétrica substituiu a simétrica" é falso
+simétrica, que é rápida. “A assimétrica substituiu a simétrica” é falso
 --- elas se combinam, cada uma no papel em que é boa.
 \end{conceito}
 
@@ -104,14 +104,14 @@ Exemplos & AES, DES/3DES & RSA, ECC \\
 
 \begin{conceito}[Hash, assinatura, certificado, TDE, esteganografia]
 \textbf{Hash} (MD5, SHA-256): resumo de tamanho fixo, \textbf{unidirecional}
---- não existe "descriptografar" um hash. Garante \textbf{integridade}, não
+--- não existe “descriptografar” um hash. Garante \textbf{integridade}, não
 confidencialidade (MD5 e SHA-1 hoje são considerados fracos, com colisões
 conhecidas). \textbf{Assinatura digital}: o hash do documento é cifrado
 com a \textbf{chave privada} do emissor $\to$ garante autenticidade,
 integridade e não repúdio ao mesmo tempo. \textbf{Certificado digital /
 ICP-Brasil}: vincula uma identidade a uma chave pública, emitido por uma
-AC (Autoridade Certificadora) --- é o que resolve o problema de "como sei
-que esta chave pública é realmente da pessoa X". \textbf{TDE
+AC (Autoridade Certificadora) --- é o que resolve o problema de “como sei
+que esta chave pública é realmente da pessoa X”. \textbf{TDE
 (\textit{Transparent Data Encryption})}: cifra os dados \textbf{em
 repouso} (arquivos do banco/disco), de forma transparente à aplicação ---
 protege contra o \textbf{roubo do arquivo físico}, não contra acesso
@@ -192,8 +192,8 @@ exige, não tudo que tecnicamente seria possível liberar).
 
 \begin{conceito}[OAuth2, OIDC e SSO]
 \textbf{OAuth2}: protocolo de \textbf{autorização delegada} baseado em
-tokens --- resolve "este aplicativo pode agir em meu nome, com este
-escopo de permissão limitado", \textbf{sem} entregar a senha ao
+tokens --- resolve “este aplicativo pode agir em meu nome, com este
+escopo de permissão limitado”, \textbf{sem} entregar a senha ao
 aplicativo. É diferente de autenticação. \textbf{OpenID Connect (OIDC)}:
 construído \textbf{sobre} o OAuth2, é quem efetivamente faz
 \textbf{autenticação} --- adiciona um ID Token com \textit{claims}
@@ -252,8 +252,8 @@ de nome}, mantendo a essência.
 
 \begin{cuidado}
 Desde 2021, \textbf{XSS entrou dentro de Injection} (era categoria própria
-até 2017) --- não é mais listado separadamente. Itens como "proteção da
-cadeia de suprimentos/pipeline", "treinamento operacional" pertencem a
+até 2017) --- não é mais listado separadamente. Itens como “proteção da
+cadeia de suprimentos/pipeline”, “treinamento operacional” pertencem a
 outros frameworks (CI/CD, SSDF), não ao OWASP Top 10 do lado
 \textit{web} tradicional --- exceto que, a partir de 2025, cadeia de
 suprimentos \textbf{de software} virou categoria própria (A03), o que não
@@ -420,7 +420,7 @@ contratual de nível de serviço, não uma métrica em si).
 \begin{cuidado}
 Ancore numa letra: \textbf{T} de RTO é \textbf{Tempo}; \textbf{P} de RPO
 é \textbf{Ponto} no tempo (dado). Um cenário que dá dois números na ordem
-"pode ficar fora X, pode perder Y" e depois inverte as siglas na resposta
+“pode ficar fora X, pode perder Y” e depois inverte as siglas na resposta
 é o erro clássico deste tema.
 \end{cuidado}
 

@@ -13,7 +13,7 @@ Engenharia de software é a disciplina de organizar \textbf{como} um sistema é
 construído, não o que ele faz por dentro (isso é o Capítulo
 \ref{cap:programacao-teoria}) nem como seus componentes se distribuem (isso é
 o Capítulo \ref{cap:arquitetura-teoria}). Este capítulo segue uma ordem
-lógica: primeiro os \textbf{modelos de processo} (o "formato" do projeto do
+lógica: primeiro os \textbf{modelos de processo} (o “formato” do projeto do
 início ao fim), depois \textbf{maturidade organizacional}, depois os
 \textbf{blocos que preenchem qualquer processo} --- requisitos, testes,
 metodologias ágeis, medição, entrega e design.
@@ -37,12 +37,12 @@ caminho, porque o modelo não tem mecanismo para incorporar mudança sem
 recomeçar.
 \item \textbf{Incremental}: o sistema é entregue em \textbf{pedaços
 funcionais que se somam} ao longo do tempo --- cada incremento já é
-utilizável. Reduz o risco de "só ver o produto pronto no fim".
+utilizável. Reduz o risco de “só ver o produto pronto no fim”.
 \item \textbf{Iterativo}: o mesmo produto é \textbf{refinado} em ciclos
 sucessivos (a primeira versão é rascunho grosseiro, a segunda melhora, e
 assim por diante) --- o foco é refinar, não necessariamente entregar pedaço
 novo a cada ciclo (a diferença com incremental é sutil e por isso a maioria
-dos processos modernos combina os dois: "iterativo-incremental").
+dos processos modernos combina os dois: “iterativo-incremental”).
 \item \textbf{Espiral (Boehm)}: iterativo, mas com um passo extra em cada
 volta da espiral --- \textbf{análise de risco explícita} antes de seguir
 adiante. Nasceu para projetos grandes e arriscados, onde o custo de errar é
@@ -59,18 +59,18 @@ mudança.
 \end{conceito}
 
 \begin{exemplo}[Reconhecendo o modelo pelo enunciado]
-"O projeto define todo o escopo antes de iniciar a codificação; cada fase
-só começa quando a anterior está formalmente aprovada" $\to$ \textbf{cascata}
-(sequencial, sem sobreposição, aprovação formal entre fases). "A equipe
+“O projeto define todo o escopo antes de iniciar a codificação; cada fase
+só começa quando a anterior está formalmente aprovada” $\to$ \textbf{cascata}
+(sequencial, sem sobreposição, aprovação formal entre fases). “A equipe
 constrói uma versão simplificada da tela principal só para o cliente
-confirmar o fluxo antes de programar o sistema de verdade" $\to$
+confirmar o fluxo antes de programar o sistema de verdade” $\to$
 \textbf{prototipação} (o objetivo é validar requisito, não entregar
 produto).
 \end{exemplo}
 
 \begin{cuidado}[Incremental e iterativo não são sinônimos, embora andem juntos]
-\textbf{Incremental} responde "o que é entregue" (pedaços que se somam,
-cada um com valor de uso). \textbf{Iterativo} responde "como se chega lá"
+\textbf{Incremental} responde “o que é entregue” (pedaços que se somam,
+cada um com valor de uso). \textbf{Iterativo} responde “como se chega lá”
 (ciclos que refinam o que já existe). É possível ser incremental sem ser
 muito iterativo (entregar módulo A, depois B, depois C, sem voltar a
 refinar A) e vice-versa. Scrum, na prática, é os dois ao mesmo tempo: cada
@@ -81,7 +81,7 @@ ser descritos com o termo composto.
 
 \subsection{Modelo V: cada fase de construção tem seu par de teste}
 
-\begin{conceito}[A lógica "quem definiu, confere"]
+\begin{conceito}[A lógica “quem definiu, confere”]
 O Modelo V é uma variação do cascata desenhada em V: o \textbf{ramo
 descendente} (esquerda) vai do requisito ao código, detalhando cada vez
 mais; o \textbf{ramo ascendente} (direita) sobe testando, e cada nível de
@@ -115,7 +115,7 @@ visão do usuário), e código não casa com aceitação.
 \subsection{Verificação x validação}
 
 \begin{conceito}[Duas perguntas diferentes sobre o mesmo software]
-O Modelo V chama de "verificação" todo o ramo ascendente, mas os dois
+O Modelo V chama de “verificação” todo o ramo ascendente, mas os dois
 termos não são sinônimos --- e a confusão entre eles é o distrator mais
 recorrente de todo o bloco, porque as duas palavras soam parecidas em
 português e a resposta muda inteira conforme qual delas o enunciado
@@ -126,8 +126,8 @@ descreve.
 \toprule
 & \textbf{Verificação} & \textbf{Validação} \\
 \midrule
-A pergunta & "estamos construindo o produto \textbf{corretamente}?" &
-"estamos construindo o \textbf{produto certo}?" \\
+A pergunta & “estamos construindo o produto \textbf{corretamente}?” &
+“estamos construindo o \textbf{produto certo}?” \\
 Compara com & a \textbf{especificação} (documento da fase anterior) &
 a \textbf{necessidade real} do usuário \\
 Quando & ao longo de todo o desenvolvimento, fase a fase & principalmente
@@ -154,10 +154,10 @@ divergir do que a especificação escrita dizia.
 \end{conceito}
 
 \begin{cuidado}[Os dois erros de troca mais comuns]
-Definir \textbf{validação} como "conformidade com a especificação" (isso é
-verificação); ou definir \textbf{verificação} como "atendimento às
-necessidades do usuário" (isso é validação). Um terceiro erro: tratar as
-duas como sinônimos de "teste" --- teste é uma \textbf{técnica}, usada
+Definir \textbf{validação} como “conformidade com a especificação” (isso é
+verificação); ou definir \textbf{verificação} como “atendimento às
+necessidades do usuário” (isso é validação). Um terceiro erro: tratar as
+duas como sinônimos de “teste” --- teste é uma \textbf{técnica}, usada
 pelas duas (existe teste de unidade, que verifica, e teste de aceitação,
 que valida). No Modelo V, a ponta de baixo (unidade/integração/sistema) é
 verificação; a ponta de cima (aceitação) é validação.
@@ -178,10 +178,10 @@ Projeto, Implementação, Teste, Implantação, mais as de apoio (Gerência de
 Projeto, Configuração e Mudança, Ambiente).
 
 O ponto central: \textbf{as disciplinas atravessam todas as fases}. Não
-existe "a fase de testes" --- testa-se em todas as quatro fases, só que em
+existe “a fase de testes” --- testa-se em todas as quatro fases, só que em
 intensidade diferente a cada uma (o gráfico clássico do RUP desenha as
 fases como colunas e as disciplinas como linhas horizontais; cada linha tem
-uma "corcova" de maior intensidade em certa coluna, mas nenhuma linha
+uma “corcova” de maior intensidade em certa coluna, mas nenhuma linha
 começa e termina dentro de uma coluna só).
 
 \begin{center}
@@ -204,10 +204,10 @@ Construção é caro demais para corrigir.
 \end{conceito}
 
 \begin{cuidado}[Erros de leitura comuns no RUP]
-Tratar disciplina como fase ("a fase de testes do RUP" não existe: teste é
+Tratar disciplina como fase (“a fase de testes do RUP” não existe: teste é
 disciplina, presente nas quatro fases). Deslocar o risco para a Concepção
 (lá se avalia viabilidade, não se ataca risco técnico) ou para a Construção
-(lá já é tarde e caro). Chamar o RUP de "cascata": ele é iterativo
+(lá já é tarde e caro). Chamar o RUP de “cascata”: ele é iterativo
 \textbf{dentro} de cada fase; o que é sequencial é só a \textbf{ordem} das
 quatro fases, não o trabalho interno de cada uma.
 \end{cuidado}
@@ -258,18 +258,18 @@ projeto reconhece o jeito de trabalhar, e o aprendizado de um projeto vira
 ativo de todos.
 
 Do 3 para cima, a evolução é sobre \textbf{medir}: no \textbf{nível 4}, a
-organização não diz mais "costuma dar certo", diz "a densidade de defeito
-fica entre tais limites" --- previsibilidade quantitativa. No \textbf{nível
+organização não diz mais “costuma dar certo”, diz “a densidade de defeito
+fica entre tais limites” --- previsibilidade quantitativa. No \textbf{nível
 5}, essa medição é usada para \textbf{mudar o processo de propósito} e
 verificar se a mudança realmente melhorou o resultado --- melhoria contínua
 baseada em dado, não em opinião.
 
 \textbf{Duas representações, duas perguntas diferentes:} a representação
-\textbf{por estágios} (a tabela acima) responde "que nota tem esta
-\textbf{organização}?" --- um número só, comparável entre fornecedores, e
+\textbf{por estágios} (a tabela acima) responde “que nota tem esta
+\textbf{organização}?” --- um número só, comparável entre fornecedores, e
 foi para isso que o modelo nasceu. A representação \textbf{contínua}
-responde "quão \textbf{capaz} somos \textbf{nesta área específica}
-(por exemplo, só Engenharia de Requisitos)?" --- permite investir numa área
+responde “quão \textbf{capaz} somos \textbf{nesta área específica}
+(por exemplo, só Engenharia de Requisitos)?” --- permite investir numa área
 sem ter de elevar tudo junto. Por isso o vocabulário muda: estágios dá
 \textbf{maturidade} à organização inteira; contínua dá \textbf{capacidade} a
 cada área de processo isolada.
@@ -285,7 +285,7 @@ topo.
 \end{conceito}
 
 \begin{cuidado}[Trocas clássicas nos dois modelos]
-Chamar o nível 3 do CMMI de "Gerenciado" (ele é o \textbf{Definido} --- o
+Chamar o nível 3 do CMMI de “Gerenciado” (ele é o \textbf{Definido} --- o
 Gerenciado é o 2). Inverter a ordem do topo, pondo Gerenciado
 Quantitativamente depois de Em Otimização (a ordem certa é Definido $\to$
 Gerenciado Quantitativamente $\to$ Em Otimização). Achar que o MPS.BR
@@ -305,39 +305,39 @@ contagem.
 \textbf{Tipo} & \textbf{O que descreve} & \textbf{Exemplo} \\
 \midrule
 \textbf{Funcional (RF)} & O QUE o sistema faz --- uma função, um
-comportamento observável & "emitir saldo da conta" \\
+comportamento observável & “emitir saldo da conta” \\
 \textbf{Não funcional (RNF)} & COMO / QUÃO BEM --- uma qualidade ou
-restrição sobre como as funções se comportam & "saldo em tempo real",
+restrição sobre como as funções se comportam & “saldo em tempo real”,
 desempenho, segurança, usabilidade, disponibilidade \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 O mecanismo por trás da distinção: um RF sobrevive sozinho como frase com
-verbo de ação ("o sistema deve emitir", "o usuário deve poder cadastrar").
+verbo de ação (“o sistema deve emitir”, “o usuário deve poder cadastrar”).
 Um RNF \textbf{qualifica} um RF ou o sistema como um todo --- ele não tem
-sentido sem alguma função para qualificar ("rápido" --- rápido fazendo o
+sentido sem alguma função para qualificar (“rápido” --- rápido fazendo o
 quê?). Por isso RNF costuma vir como adjetivo/advérbio de qualidade
-("seguro", "disponível 99,9\% do tempo", "em tempo real"), enquanto RF vem
+(“seguro”, “disponível 99,9\% do tempo”, “em tempo real”), enquanto RF vem
 como verbo de ação.
 \end{conceito}
 
 \begin{exemplo}[Separando RF de RNF num enunciado]
-"O sistema deve permitir que o usuário emita boletos (1). O sistema deve
+“O sistema deve permitir que o usuário emita boletos (1). O sistema deve
 processar até 1000 requisições por segundo (2). O boleto deve ser emitido
 em até 2 segundos após a solicitação (3). O sistema deve estar em
-conformidade com a LGPD (4)." --- (1) é RF (ação: emitir boletos); (2), (3)
+conformidade com a LGPD (4).” --- (1) é RF (ação: emitir boletos); (2), (3)
 e (4) são RNF (desempenho, desempenho/tempo de resposta, e conformidade
-legal, respectivamente --- este último é um RNF do tipo "externo/legal").
+legal, respectivamente --- este último é um RNF do tipo “externo/legal”).
 \end{exemplo}
 
 \begin{regrapratica}
 Ao ler um enunciado longo, marque cada \textbf{verbo de ação} do sistema
-(RF) e cada palavra de \textbf{qualidade/restrição} ("deve ser
-rápido/seguro/disponível/acessível/auditável") (RNF). RNF se subdivide em
+(RF) e cada palavra de \textbf{qualidade/restrição} (“deve ser
+rápido/seguro/disponível/acessível/auditável”) (RNF). RNF se subdivide em
 tipos (desempenho, usabilidade, segurança, produto, organizacional,
 externo/legal) --- quando a questão pede o \textbf{tipo} de RNF, não só
-"é RNF", associe a palavra-chave ao tipo correspondente.
+“é RNF”, associe a palavra-chave ao tipo correspondente.
 \end{regrapratica}
 
 \subsection{Processo de engenharia de requisitos}
@@ -358,10 +358,10 @@ existentes (manuais, sistemas legados).
 \end{conceito}
 
 \begin{cuidado}
-Brainstorming não é técnica "informal demais para prova de requisito" ---
+Brainstorming não é técnica “informal demais para prova de requisito” ---
 é técnica de elicitação plenamente válida e cobrada como tal. E a ordem do
 processo é sempre elicitar \textbf{antes} de codificar, nunca o inverso ---
-requisito que "surge depois da implementação" é sinal de processo mal
+requisito que “surge depois da implementação” é sinal de processo mal
 seguido, não de uma etapa válida do processo.
 \end{cuidado}
 
@@ -369,12 +369,12 @@ seguido, não de uma etapa válida do processo.
 
 \subsection{Scrum: framework, não metodologia}
 
-\begin{conceito}[Por que "framework" e não "metodologia"]
+\begin{conceito}[Por que “framework” e não “metodologia”]
 Scrum define \textbf{papéis, eventos e artefatos} --- uma estrutura mínima
 --- mas não dita \textbf{como} o time deve executar cada atividade dentro
-dela (isso é "metodologia": um passo a passo prescritivo). O Scrum Guide é
-propositalmente enxuto: ele diz "existe um Sprint Planning", não "faça o
-Sprint Planning exatamente assim". Por isso é chamado de framework: a
+dela (isso é “metodologia”: um passo a passo prescritivo). O Scrum Guide é
+propositalmente enxuto: ele diz “existe um Sprint Planning”, não “faça o
+Sprint Planning exatamente assim”. Por isso é chamado de framework: a
 moldura é fixa, o conteúdo dentro dela é decidido pelo time.
 
 O trabalho é organizado em \textbf{Sprints}: ciclos de tamanho fixo
@@ -413,7 +413,7 @@ longo prazo \\
 Sprint Backlog & \textbf{Meta da Sprint} (Sprint Goal) & o objetivo único
 da Sprint \\
 Increment & \textbf{Definition of Done} & o padrão de qualidade do
-"pronto" \\
+“pronto” \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -437,7 +437,7 @@ mais comum é ligar Definition of Done ao Product Backlog ou ao Sprint
 Backlog (ela é sempre do \textbf{Incremento}) e a Meta do Produto ao
 Incremento (ela é sempre do \textbf{Product Backlog}). Guie-se pelo
 horizonte de tempo: produto (longo prazo) $\to$ Product Backlog; Sprint
-(curto prazo, uma iteração) $\to$ Sprint Backlog; "está pronto ou não"
+(curto prazo, uma iteração) $\to$ Sprint Backlog; “está pronto ou não”
 $\to$ Incremento. E no Daily, quando surge risco à Sprint, o Scrum Master
 \textbf{facilita a solução do time} --- não redistribui tarefas sozinho,
 nem assume a tarefa do desenvolvedor: quem decide como resolver é o
@@ -469,7 +469,7 @@ execução interna em Sprints). \\
 \end{conceito}
 
 \begin{cuidado}
-Kanban \textbf{não} tem Sprint --- "Kanban organiza o trabalho em sprints"
+Kanban \textbf{não} tem Sprint --- “Kanban organiza o trabalho em sprints”
 é sempre falso. Scrum \textbf{tem} \textit{time-box} fixo; Kanban é fluxo
 contínuo, sem prazo fechado por ciclo (o controle é pelo limite de WIP, não
 pelo calendário).
@@ -502,7 +502,7 @@ principais, para decidir se vale a pena testar o resto \\
 
 \subsection{Testes de desempenho: carga, estresse, volume}
 
-\begin{conceito}[Os três se confundem porque todos "sobrecarregam" o sistema]
+\begin{conceito}[Os três se confundem porque todos “sobrecarregam” o sistema]
 O que muda entre eles é \textbf{até onde} se vai e \textbf{o que} está
 sendo sobrecarregado:
 
@@ -520,12 +520,12 @@ muitos usuários simultâneos.
 \end{conceito}
 
 \begin{cuidado}
-"Ultrapassar o previsto até o sistema deixar de responder" é
-\textbf{estresse}; "comportar-se bem no volume contratado/esperado" é
+“Ultrapassar o previsto até o sistema deixar de responder” é
+\textbf{estresse}; “comportar-se bem no volume contratado/esperado” é
 \textbf{carga}. O gatilho textual é a palavra \textbf{além}/\textbf{ultrapassa}
 (estresse) versus \textbf{esperado}/\textbf{previsto} (carga). Volume é
 massa de \textbf{dados}, não de usuários simultâneos --- não confunda com
-carga só porque os dois envolvem "muito".
+carga só porque os dois envolvem “muito”.
 \end{cuidado}
 
 \subsection{Técnicas de teste caixa-preta: partição de equivalência e valor limite}
@@ -540,12 +540,12 @@ de entrada:
 \item \textbf{Partição de equivalência}: divide as entradas possíveis em
 \textbf{classes} que, supõe-se, o sistema trata do mesmo jeito --- testando
 \textbf{um} valor de cada classe, testa-se a classe inteira. Para um campo
-que aceita idade de 18 a 65, há três classes: "menor que 18" (inválida),
-"18 a 65" (válida), "maior que 65" (inválida) --- basta um valor de cada.
+que aceita idade de 18 a 65, há três classes: “menor que 18” (inválida),
+“18 a 65” (válida), “maior que 65” (inválida) --- basta um valor de cada.
 \item \textbf{Análise de valor limite}: em vez de um valor qualquer da
 classe, testa \textbf{exatamente as fronteiras} entre classes (17, 18, 65,
 66) --- porque é ali que a maioria dos defeitos reais de código acontece
-(erro de "$>$" no lugar de "$\geq$", por exemplo).
+(erro de “$>$” no lugar de “$\geq$”, por exemplo).
 \end{itemize}
 As duas se complementam: partição de equivalência decide \textbf{onde}
 procurar; valor limite decide o \textbf{ponto exato} mais eficiente dentro
@@ -627,7 +627,7 @@ Adaptativa & acompanhar \textbf{mudança do ambiente} externo ao software:
 sistema operacional, SGBD, plataforma, hardware, legislação \\
 Perfectiva & \textbf{melhorar} o que já funciona: desempenho,
 manutenibilidade, requisito novo pedido pelo usuário (sem que nada
-estivesse "quebrado") \\
+estivesse “quebrado”) \\
 Preventiva & corrigir uma \textbf{falha latente} antes que ela se
 manifeste --- reduzir risco futuro identificado numa análise, não um
 defeito já relatado \\
@@ -637,9 +637,9 @@ defeito já relatado \\
 \end{conceito}
 
 \begin{exemplo}[Classificando um caso ambíguo]
-"O time atualizou o driver de conexão com o banco de dados porque o
+“O time atualizou o driver de conexão com o banco de dados porque o
 fabricante descontinuou a versão anterior, sem que houvesse defeito
-relatado nem funcionalidade nova." --- é \textbf{adaptativa}: a causa é o
+relatado nem funcionalidade nova.” --- é \textbf{adaptativa}: a causa é o
 \textbf{ambiente} (o fabricante mudou algo fora do controle do sistema).
 Não é corretiva (não havia defeito a corrigir), não é perfectiva (não se
 melhorou nada do ponto de vista do usuário) e não é preventiva (não havia
@@ -647,7 +647,7 @@ uma falha latente identificada e sim uma obsolescência externa).
 \end{exemplo}
 
 \begin{cuidado}
-"Evolutiva" não é um dos quatro tipos da classificação --- é um rótulo
+“Evolutiva” não é um dos quatro tipos da classificação --- é um rótulo
 informal que às vezes aparece em prova como se fosse categoria da norma,
 mas a ISO/IEC 14764 reconhece só as quatro da tabela acima.
 \end{cuidado}
@@ -736,7 +736,7 @@ A confusão mais comum inverte os dois: dizer que Story Point é objetivo e
 comparável entre times, ou que serve a contrato de escopo fechado --- é
 exatamente o oposto. Ponto de Função é o \textbf{padronizado e comparável};
 Story Points é o \textbf{relativo ao time que o usa}, e por isso não deveria
-ser usado para comparar a "produtividade" de dois times diferentes.
+ser usado para comparar a “produtividade” de dois times diferentes.
 \end{conceito}
 
 \section{DevOps e estratégias de entrega}
@@ -746,13 +746,13 @@ ser usado para comparar a "produtividade" de dois times diferentes.
 (idealmente a cada \textit{commit}), pegando conflitos e regressões cedo.
 \textbf{CD}: tem dois sentidos que convivem --- \textbf{Entrega Contínua}
 (o software fica sempre em estado \textbf{pronto para ir} a produção,
-mesmo que o "ir" seja manual) e \textbf{Implantação Contínua} (o "ir" para
-produção também é automático). Na prática de prova, "fornecer rapidamente
-uma nova versão em produção" é sempre \textbf{CD}, nunca CI --- CI para
+mesmo que o “ir” seja manual) e \textbf{Implantação Contínua} (o “ir” para
+produção também é automático). Na prática de prova, “fornecer rapidamente
+uma nova versão em produção” é sempre \textbf{CD}, nunca CI --- CI para
 antes de chegar a produção.
 
 \textbf{DevOps} une desenvolvimento e operações num fluxo só, reduzindo o
-atrito entre "quem constrói" e "quem opera". \textbf{DevSecOps} injeta
+atrito entre “quem constrói” e “quem opera”. \textbf{DevSecOps} injeta
 verificações de segurança dentro desse mesmo pipeline, em vez de deixar a
 segurança para uma revisão isolada no fim.
 \end{conceito}
@@ -789,7 +789,7 @@ métodos, algoritmos, estruturas de dados específicas.
 \textbf{Arquitetura} trata de decisões \textbf{amplas e estruturais}
 (quais componentes existem, como se comunicam); \textbf{design} (no sentido
 estrito) trata de decisões \textbf{detalhadas} dentro de um componente já
-definido. Não é verdade que "arquitetura só importa em projeto grande" ---
+definido. Não é verdade que “arquitetura só importa em projeto grande” ---
 toda aplicação tem uma arquitetura, ainda que implícita e não documentada;
 o risco de não decidir conscientemente é que ela emerja de forma
 desorganizada.

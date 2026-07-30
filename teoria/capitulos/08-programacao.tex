@@ -70,8 +70,8 @@ garantias diferentes.
 
 \begin{cuidado}
 Spring Boot \textbf{não exige} configuração manual de servidor (ele
-embute o Tomcat) nem um servidor de aplicação \textit{standalone}; "Spring
-só serve para monólito" é falso. Hibernate é ORM/persistência, não
+embute o Tomcat) nem um servidor de aplicação \textit{standalone}; “Spring
+só serve para monólito” é falso. Hibernate é ORM/persistência, não
 framework de teste. JUnit testa, não faz mapeamento objeto-relacional.
 Spring Cloud endereça sistemas \textbf{distribuídos}; Spring Boot serve a
 uma aplicação \textbf{individual}.
@@ -132,7 +132,7 @@ desenvolvimento por manter um único código-fonte.
 
 \textbf{Low-code/no-code}: desenvolvimento visual, com pouca ou nenhuma
 escrita manual de código; acelera a entrega e permite que pessoas sem
-formação em programação ("\textit{citizen developers}") construam
+formação em programação (“\textit{citizen developers}”) construam
 soluções --- mas limita customização e pode gerar dependência
 (\textit{lock-in}) da plataforma escolhida.
 \end{conceito}
@@ -186,7 +186,7 @@ $\xrightarrow{\texttt{git push}}$ remoto
 O \texttt{commit} grava \textbf{o que está no stage}, não o que está no
 diretório de trabalho. Editar um arquivo já versionado e fazer commit
 \textbf{sem} \texttt{git add} antes não inclui a alteração no commit --- o
-commit sai "vazio" daquela mudança específica, silenciosamente, sem
+commit sai “vazio” daquela mudança específica, silenciosamente, sem
 erro nenhum.
 \end{conceito}
 
@@ -221,7 +221,7 @@ branch atual \\
 \textbf{Regra de ouro do rebase}: ele reescreve commits (produz novos
 identificadores para eles). Não deve ser usado numa branch já
 compartilhada com outras pessoas --- é a razão de ser chamado de
-"perigoso" nesse contexto: quem já baixou os commits antigos entra em
+“perigoso” nesse contexto: quem já baixou os commits antigos entra em
 conflito com os reescritos.
 
 \textbf{Fluxos de trabalho comuns}: branch por funcionalidade + \textit{pull
@@ -234,13 +234,13 @@ diretamente no tronco principal, casa melhor com integração contínua).
 \begin{cuidado}
 \texttt{fetch} \textbf{não} altera a cópia de trabalho (só atualiza
 referências locais do remoto); \texttt{pull} altera, porque integra
-automaticamente. Se o enunciado disser "\textbf{sem alterar} a cópia de
-trabalho", é \texttt{fetch}.
+automaticamente. Se o enunciado disser “\textbf{sem alterar} a cópia de
+trabalho”, é \texttt{fetch}.
 \end{cuidado}
 
 \section{CI, entrega contínua e implantação contínua}
 
-\begin{conceito}[Três práticas, cada uma "terminando" num ponto diferente]
+\begin{conceito}[Três práticas, cada uma “terminando” num ponto diferente]
 \begin{center}
 \begin{tabular}{@{}p{4.4cm}p{6.8cm}@{}}
 \toprule
@@ -258,7 +258,7 @@ vai a produção \textbf{automaticamente}, sem intervenção humana \\
 \end{center}
 
 Entrega contínua \textbf{pressupõe} integração contínua --- não dá para
-ter um artefato "sempre pronto" sem antes integrar e testar
+ter um artefato “sempre pronto” sem antes integrar e testar
 continuamente. \textbf{DevOps}: cultura de aproximar desenvolvimento e
 operação, com automação, medição e responsabilidade compartilhada pelo
 que está em produção. \textbf{DevSecOps}: desloca a segurança para a
@@ -333,10 +333,10 @@ executável armazenado e rodado na própria cadeia).
 \label{sec:estruturas-dados-teoria}
 
 \begin{conceito}[Cada estrutura é um contrato de custo, não uma definição solta]
-A forma mais útil de entender estrutura de dados não é decorar "o que é
-uma pilha" --- é reconhecer, diante de um \textbf{requisito}
-("inserções e remoções frequentes no meio", "busca por chave em tempo
-constante", "listar em ordem e consultar por faixa"), qual estrutura
+A forma mais útil de entender estrutura de dados não é decorar “o que é
+uma pilha” --- é reconhecer, diante de um \textbf{requisito}
+(“inserções e remoções frequentes no meio”, “busca por chave em tempo
+constante”, “listar em ordem e consultar por faixa”), qual estrutura
 atende com o menor custo. A escolha da estrutura fixa o custo de cada
 operação antes mesmo da primeira linha de código, e é uma escolha cara de
 desfazer depois, porque todo o código em volta se apoia nela.
@@ -398,7 +398,7 @@ cada posição comporta uma única chave, $\alpha \le 1$ \textbf{sempre} ---
 \end{itemize}
 
 Caso concreto: endereçamento aberto com \textbf{sondagem linear}
-("ocupado? tente a próxima posição") sob ocupação alta, $\alpha \approx
+(“ocupado? tente a próxima posição”) sob ocupação alta, $\alpha \approx
 0{,}8$. Só uma posição em cinco está livre, e as ocupadas tendem a se
 juntar em \textbf{blocos contíguos}. Uma chave que caia em \textbf{
 qualquer} ponto de um bloco precisa caminhar até o fim dele --- e, ao se
@@ -439,13 +439,13 @@ interpretador, anotando o estado das variáveis num rascunho.
 \begin{enumerate}
 \item \textbf{Não leia por cima}: releia a linha inteira antes de assumir
 o que ela faz --- é comum um enunciado mudar um único parâmetro, operador
-ou índice em relação ao que "pareceria óbvio" numa leitura apressada.
+ou índice em relação ao que “pareceria óbvio” numa leitura apressada.
 \item \textbf{Anote o estado}: para cada variável relevante, escreva o
 valor depois de cada linha executada --- não confie na memória depois da
 terceira linha de código.
 \item \textbf{Desconfie de referência x cópia}: a armadilha mais comum em
 qualquer linguagem --- duas variáveis apontando para o \textbf{mesmo}
-objeto/array, de modo que mudar uma "muda" a outra também, ou o contrário,
+objeto/array, de modo que mudar uma “muda” a outra também, ou o contrário,
 quando a API faz uma cópia de fato.
 \item \textbf{Confirme contra a assinatura real} da função/método, não
 contra o que pareceria fazer sentido.
@@ -460,7 +460,7 @@ contra o que pareceria fazer sentido.
 executa comando a comando --- o mesmo erro só aparece \textbf{na linha em
 que a execução chega}. \textbf{Java} é o meio-termo: compila para
 \textbf{bytecode} (\texttt{.class}), e a \textbf{JVM} executa esse
-bytecode, compilando os trechos "quentes" para código nativo em tempo de
+bytecode, compilando os trechos “quentes” para código nativo em tempo de
 execução (JIT --- \textit{Just-In-Time}).
 \item \textbf{Passagem por valor x por referência}: em Java e em Python,
 o que se passa para uma função é sempre o \textbf{valor da referência} ao
@@ -468,8 +468,8 @@ objeto. Consequência prática: \textbf{reatribuir} o parâmetro dentro da
 função \textbf{não} muda a variável de quem chamou; \textbf{mutar} o
 objeto apontado (alterar seu conteúdo interno) muda para os dois lados,
 porque ambos apontam para o mesmo objeto. Diante do código, a pergunta
-certa não é "é por valor ou por referência?" --- é "esta linha reatribui
-ou muda internamente (\textit{muta}) o objeto?".
+certa não é “é por valor ou por referência?” --- é “esta linha reatribui
+ou muda internamente (\textit{muta}) o objeto?”.
 \item \textbf{Imutável x mutável}: em Python, \texttt{str}, \texttt{int}
 e \texttt{tuple} são imutáveis; \texttt{list}, \texttt{dict} e
 \texttt{set} são mutáveis. A consequência cobrada: só um objeto imutável

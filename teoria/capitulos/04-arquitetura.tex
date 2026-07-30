@@ -39,9 +39,9 @@ aplicação completo, porque não tem o container EJB.
 \begin{cuidado}
 Servidor web \textbf{não} processa lógica de negócio --- ele recebe a
 requisição HTTP e serve conteúdo; quem executa a regra de negócio é o
-servidor de aplicação. Servidor de aplicação não é "sempre mais leve"
-(é o oposto: carrega containers a mais), não "dispensa a JVM" (roda sobre
-ela) e não "deixa de suportar HTTP" (suporta, porque contém o próprio
+servidor de aplicação. Servidor de aplicação não é “sempre mais leve”
+(é o oposto: carrega containers a mais), não “dispensa a JVM” (roda sobre
+ela) e não “deixa de suportar HTTP” (suporta, porque contém o próprio
 container web dentro de si).
 \end{cuidado}
 
@@ -51,7 +51,7 @@ container web dentro de si).
 Os estilos de arquitetura não são uma lista de opções paralelas e
 equivalentes --- eles formam uma \textbf{sequência histórica}, e entender
 por que cada um surgiu é o que permite responder a uma questão de cenário
-("qual estilo resolve esta dor"), em vez de decorar definições soltas.
+(“qual estilo resolve esta dor”), em vez de decorar definições soltas.
 
 O \textbf{monólito} incomodava porque uma equipe travava a outra: subir a
 correção de uma única tela obrigava a reimplantar o sistema inteiro. A
@@ -126,8 +126,8 @@ apropriada.
 Microsserviços \textbf{não} compartilham o mesmo banco de dados ---
 compartilhar aumentaria o acoplamento, contrariando o princípio central do
 estilo. Baixo acoplamento significa que uma mudança em um serviço
-\textbf{não} obriga mudança em outro. Um item que descreve "o barramento
-que intermedeia, roteia e transforma mensagens entre serviços" está
+\textbf{não} obriga mudança em outro. Um item que descreve “o barramento
+que intermedeia, roteia e transforma mensagens entre serviços” está
 descrevendo um \textbf{ESB} --- não confundir com ETL (move dados para um
 \textit{data warehouse}), CDN (entrega conteúdo estático) ou DNS (resolve
 nomes).
@@ -159,8 +159,8 @@ logicamente dentro de cada tier.
 
 \begin{cuidado}
 Não inverta as definições (layer é organização lógica de responsabilidade;
-tier é distribuição física em nós). E desconfie de "três camadas lógicas
-são \textbf{necessariamente} implantadas em três nós físicos" --- não são;
+tier é distribuição física em nós). E desconfie de “três camadas lógicas
+são \textbf{necessariamente} implantadas em três nós físicos” --- não são;
 o MVC, por exemplo, é um padrão de organização \textbf{lógica}
 (apresentação/modelo/controle), não um padrão de implantação em tiers.
 \end{cuidado}
@@ -168,7 +168,7 @@ o MVC, por exemplo, é um padrão de organização \textbf{lógica}
 \section{Integração: REST, SOAP e web services}
 
 \begin{conceito}[O que REST é de verdade --- recurso, representação, verbo]
-REST não é "API que devolve JSON" --- é um \textbf{estilo arquitetural}
+REST não é “API que devolve JSON” --- é um \textbf{estilo arquitetural}
 com uma ideia central: tudo que interessa é um \textbf{recurso},
 identificado por uma URI, e o cliente nunca manipula o recurso diretamente
 --- ele troca \textbf{representações} dele (JSON, XML, HTML). Dessa ideia
@@ -188,7 +188,7 @@ sessão guardada no servidor. O ganho não é ideológico: se o servidor não
 guarda sessão, \textbf{qualquer} instância do servidor consegue atender
 \textbf{qualquer} requisição --- e é exatamente isso que permite colocar um
 balanceador de carga na frente e escalar horizontalmente sem precisar de
-"afinidade de sessão" (a mesma requisição sempre indo para a mesma
+“afinidade de sessão” (a mesma requisição sempre indo para a mesma
 instância).
 \item \textbf{Cliente-servidor, cache, sistema em camadas}: o cliente não
 precisa saber se está falando com o servidor final ou com um
@@ -196,7 +196,7 @@ intermediário --- por isso um proxy, um gateway ou uma CDN cabem no
 caminho da requisição sem quebrar nada do lado do cliente.
 \end{itemize}
 
-A corrente de raciocínio que sustenta "por que REST escala bem": ausência
+A corrente de raciocínio que sustenta “por que REST escala bem”: ausência
 de estado no servidor $\to$ qualquer instância pode atender qualquer
 requisição $\to$ escala horizontal sem restrição de afinidade.
 \end{conceito}
@@ -227,7 +227,7 @@ conteúdo estático de um nó próximo do usuário. O que \textbf{não} pode
 ficar guardado no servidor é o \textbf{estado da sessão}, não o cache da
 resposta --- não confunda os dois. \textbf{PUT} substitui o recurso
 \textbf{inteiro}; \textbf{PATCH} altera só uma \textbf{parte} dele. Dizer
-que "SOAP não tem contrato formal" contradiz o próprio SOAP, que usa WSDL
+que “SOAP não tem contrato formal” contradiz o próprio SOAP, que usa WSDL
 como contrato.
 \end{cuidado}
 
@@ -332,16 +332,16 @@ pronto, acessado pelo navegador \\
 \end{tabular}
 \end{center}
 
-Duas consequências importantes. Primeira: \textbf{quanto mais "as a
-Service"}, \textbf{menos controle} você tem --- não é só menos trabalho
+Duas consequências importantes. Primeira: \textbf{quanto mais “as a
+Service”}, \textbf{menos controle} você tem --- não é só menos trabalho
 operacional, é também menos liberdade para customizar a infraestrutura
 subjacente. Segunda, a \textbf{responsabilidade compartilhada em
 segurança}: mesmo em SaaS, \textbf{o dado continua sendo seu} --- o
 provedor responde pela segurança \textit{da} nuvem (a infraestrutura em
 si), e o cliente responde pela segurança \textit{na} nuvem (quem tem
 acesso, como o dado é classificado, se a conta usa segundo fator de
-autenticação). A afirmação de que SaaS "transfere integralmente a
-responsabilidade pelos dados ao provedor" é falsa.
+autenticação). A afirmação de que SaaS “transfere integralmente a
+responsabilidade pelos dados ao provedor” é falsa.
 \end{conceito}
 
 \begin{conceito}[Escalabilidade horizontal x vertical]
@@ -356,12 +356,12 @@ que REST \textit{stateless} viabiliza diretamente).
 \textbf{Elasticidade}: ajustar a capacidade \textbf{automaticamente}
 conforme a demanda sobe e desce, sem intervenção manual. \textbf{Cloud
 bursting}: uma aplicação que roda normalmente em infraestrutura própria
-"estoura" para a nuvem pública só nos picos de demanda, voltando ao normal
+“estoura” para a nuvem pública só nos picos de demanda, voltando ao normal
 depois.
 \end{conceito}
 
 \begin{conceito}[Serverless / FaaS]
-"Sem servidor" é um nome enganoso: \textbf{existe} servidor, só que é o
+“Sem servidor” é um nome enganoso: \textbf{existe} servidor, só que é o
 \textbf{provedor} quem o gerencia, não o cliente. O código é publicado como
 uma \textbf{função} e o provedor a executa em resposta a \textbf{eventos}
 (uma requisição HTTP, uma mensagem numa fila, um arquivo novo num
@@ -393,13 +393,13 @@ somam na prática, em vez de serem alternativas mutuamente exclusivas.
 \end{exemplo}
 
 \begin{cuidado}
-"Adicionar recursos à instância" é sempre \textbf{vertical}, nunca
-horizontal. Em serverless: "não há servidor, o código roda no dispositivo
-que dispara o evento" é falso (há servidor, do lado do provedor); "o
-estado da execução anterior permanece disponível" é falso (é sem estado
-entre invocações); "a latência da primeira invocação é igual à das
-demais" ignora o \textit{cold start}; "remove o limite de tempo por
-execução" é falso --- o limite existe e é justamente o que desaconselha
+“Adicionar recursos à instância” é sempre \textbf{vertical}, nunca
+horizontal. Em serverless: “não há servidor, o código roda no dispositivo
+que dispara o evento” é falso (há servidor, do lado do provedor); “o
+estado da execução anterior permanece disponível” é falso (é sem estado
+entre invocações); “a latência da primeira invocação é igual à das
+demais” ignora o \textit{cold start}; “remove o limite de tempo por
+execução” é falso --- o limite existe e é justamente o que desaconselha
 processamento longo em FaaS.
 \end{cuidado}
 
@@ -437,10 +437,10 @@ completo (VM).
 
 \begin{conceito}[O problema nasce quando cada serviço ganha o próprio banco]
 Dentro de um único SGBD, o ACID (Capítulo \ref{cap:banco-dados-teoria}) é
-"de graça": existe um só log de transações, um só gerenciador de
+“de graça”: existe um só log de transações, um só gerenciador de
 bloqueios, e ele decide sozinho se a transação efetiva ou desfaz.
 Distribuído entre vários bancos (um por microsserviço), não há árbitro
-único --- "debitar no serviço de contas e reservar no serviço de estoque"
+único --- “debitar no serviço de contas e reservar no serviço de estoque”
 são \textbf{duas} transações, em \textbf{dois} bancos diferentes, ligadas
 por uma rede que pode falhar no meio do caminho. Não existe uma operação
 que efetive as duas ao mesmo tempo de forma atômica; o que existe são
@@ -460,9 +460,9 @@ errado mais adiante na sequência (se reservar estoque funcionou mas debitar
 o cartão falhou, uma ação compensatória libera o estoque reservado). É o
 padrão típico para transações que atravessam microsserviços.
 \item \textbf{Raft}: algoritmo de \textbf{consenso}, que resolve um
-problema \textbf{diferente} do 2PC --- não pergunta "todos aceitam
-efetivar esta transação?", pergunta "em que \textbf{sequência de
-operações} este grupo de réplicas concorda?". Funciona por
+problema \textbf{diferente} do 2PC --- não pergunta “todos aceitam
+efetivar esta transação?”, pergunta “em que \textbf{sequência de
+operações} este grupo de réplicas concorda?”. Funciona por
 \textbf{eleição de líder} (o líder ordena as operações e replica o log
 para os demais) e decide por \textbf{maioria} (quórum) --- o que o torna
 \textbf{tolerante a falhas}: o sistema sobrevive à queda de uma minoria
@@ -477,8 +477,8 @@ O 2PC é \textbf{commit atômico}: exige \textbf{unanimidade} e
 \textbf{bloqueia} se o coordenador cair (ponto único de falha). O Raft é
 \textbf{consenso}: decide por \textbf{maioria} e \textbf{continua
 funcionando} mesmo com uma minoria de réplicas fora do ar. Trocar
-"unanimidade" por "maioria" de um algoritmo para o outro é o erro mais
-comum ao descrevê-los, e afirmar que o 2PC "tolera a falha do coordenador"
+“unanimidade” por “maioria” de um algoritmo para o outro é o erro mais
+comum ao descrevê-los, e afirmar que o 2PC “tolera a falha do coordenador”
 é falso --- é exatamente a fraqueza estrutural do protocolo.
 \end{cuidado}
 
@@ -497,7 +497,7 @@ que classes externas instanciem entidades internas diretamente),
 especialistas de domínio e código-fonte --- o nome da classe no código
 deve ser o mesmo termo que o especialista de negócio usa). Eventos de
 domínio são tipicamente \textbf{imutáveis}, porque registram um fato que
-já ocorreu no passado (não faz sentido "editar" um fato passado).
+já ocorreu no passado (não faz sentido “editar” um fato passado).
 \end{conceito}
 
 \begin{conceito}[Service mesh x API gateway]
@@ -513,9 +513,9 @@ transparente à aplicação.
 
 \begin{conceito}[Kubernetes: taint e toleration]
 Funcionam de um jeito contraintuitivo em relação ao nome. O
-\textbf{taint} é aplicado ao \textbf{nó} e \textbf{afasta} pods: "não
-escalone nada aqui, a menos que aceite esta marca". A \textbf{toleration}
-é aplicada ao \textbf{pod} e diz "eu tolero essa marca", tornando o pod
+\textbf{taint} é aplicado ao \textbf{nó} e \textbf{afasta} pods: “não
+escalone nada aqui, a menos que aceite esta marca”. A \textbf{toleration}
+é aplicada ao \textbf{pod} e diz “eu tolero essa marca”, tornando o pod
 \textbf{elegível} para aquele nó --- útil para reservar nós especiais
 (com GPU, banco de dados, ou o nó mestre) só para cargas de trabalho
 específicas. Tolerar \textbf{não é atrair}: um pod que tolera o taint

@@ -57,7 +57,7 @@ integrado, histórico e \textbf{não volátil} (não se atualiza um fato
 passado; acrescenta-se um novo). \textbf{OLAP e visualização} são
 \textbf{consumo} --- nenhum dos dois transforma dado; quem transforma é o
 ETL, e essa separação de responsabilidade é a resposta de vários itens de
-prova sobre "em que etapa isso acontece".
+prova sobre “em que etapa isso acontece”.
 
 O \textbf{\textit{data mart}} é o recorte do DW por assunto ou
 departamento (vendas, RH) --- não é uma cópia menor por economia, é a
@@ -71,7 +71,7 @@ recorte.
 Repositório central de dados \textbf{integrados, históricos e orientados a
 assunto}, destinado a análise, não a transação. As quatro características
 canônicas (Inmon): \textbf{orientado a assunto} (organizado em torno de
-temas de negócio, como "vendas" ou "cliente", não em torno de processos de
+temas de negócio, como “vendas” ou “cliente”, não em torno de processos de
 sistema), \textbf{integrado} (dados de fontes diferentes reconciliados num
 formato e vocabulário únicos), \textbf{não volátil} (dado carregado não é
 alterado nem apagado, só acrescentado), \textbf{variante no tempo} (cada
@@ -124,7 +124,7 @@ por todos os marts (a \textit{bus architecture}).
 O risco de cada abordagem é o espelho do outro: em Inmon, o risco é o
 projeto longo que nunca chega ao usuário; em Kimball, o risco é o
 \textbf{silo} --- marts que não conversam entre si porque as dimensões não
-foram conformadas de propósito. É por isso que "dimensão conformada" não é
+foram conformadas de propósito. É por isso que “dimensão conformada” não é
 um detalhe de vocabulário: é a peça que faz o \textit{bottom-up}
 efetivamente funcionar como um todo coerente, e não como ilhas isoladas.
 \end{conceito}
@@ -134,13 +134,13 @@ efetivamente funcionar como um todo coerente, e não como ilhas isoladas.
 \begin{conceito}[O que pertence a cada fase]
 \textit{Extract $\to$ Transform $\to$ Load}. O objetivo é extrair de
 várias fontes, transformar num formato padronizado e consistente, e
-carregar no DW. ETL \textbf{não} é "criar dashboards" nem "treinar modelo
-de aprendizado de máquina" --- isso vem depois, como consumo do dado já
+carregar no DW. ETL \textbf{não} é “criar dashboards” nem “treinar modelo
+de aprendizado de máquina” --- isso vem depois, como consumo do dado já
 carregado.
 
 Como quase tudo interessante acontece dentro do \textit{Transform}, o
-critério para separar as fases precisa ser mais fino que "transformar é
-mudar o dado":
+critério para separar as fases precisa ser mais fino que “transformar é
+mudar o dado”:
 
 \begin{center}
 \begin{tabular}{@{}p{2.1cm}p{9.6cm}@{}}
@@ -151,7 +151,7 @@ mudar o dado":
 que mudou desde a última carga. \textbf{Sem regra de negócio} --- ela lê,
 não julga o conteúdo \\
 \textbf{Transform} & \textbf{limpeza} (nulos, formatos, valores
-inválidos), \textbf{padronização/conformidade} (o "de-para" que faz dois
+inválidos), \textbf{padronização/conformidade} (o “de-para” que faz dois
 sistemas falarem a mesma língua), \textbf{deduplicação}, \textbf{junção}
 de fontes diferentes, \textbf{derivação} de medidas calculadas, geração da
 \textbf{chave \textit{surrogate}} e aplicação da regra de SCD \\
@@ -163,8 +163,8 @@ no fim \\
 \end{tabular}
 \end{center}
 
-A regra prática que resolve a maior parte das questões de "a que fase
-pertence esta tarefa": se a tarefa \textbf{decide} alguma coisa sobre o
+A regra prática que resolve a maior parte das questões de “a que fase
+pertence esta tarefa”: se a tarefa \textbf{decide} alguma coisa sobre o
 conteúdo --- padronizar, deduplicar, casar duas fontes, calcular ---, é
 \textbf{Transform}. Ler é \textit{Extract}; gravar é \textit{Load}.
 \end{conceito}
@@ -189,8 +189,8 @@ detalhe fica no relacional, agregados mais usados ficam pré-calculados).
 O modelo multidimensional serve para \textbf{análise}, não para
 transação --- quem serve à transação é o modelo relacional/OLTP. Ao
 lembrar de ROLAP x MOLAP: o \textbf{M} de MOLAP é de
-\textit{multidimensional}, o cubo já pré-calculado. "Ferramentas de BI
-são incompatíveis com tabelas normalizadas" é falso --- desnormalizar é
+\textit{multidimensional}, o cubo já pré-calculado. “Ferramentas de BI
+são incompatíveis com tabelas normalizadas” é falso --- desnormalizar é
 uma escolha de desempenho, não uma exigência técnica das ferramentas.
 \end{cuidado}
 
@@ -229,7 +229,7 @@ espaço e facilita manter a integridade de hierarquias que mudam.
 \end{conceito}
 
 \begin{exemplo}[Contando joins: por que o Star ganha em velocidade]
-Para responder "vendas do \textbf{departamento} X no trimestre":
+Para responder “vendas do \textbf{departamento} X no trimestre”:
 
 \begin{center}
 \begin{tabular}{@{}p{2.5cm}p{9.2cm}@{}}
@@ -251,7 +251,7 @@ escolha legítima em certos contextos, só não é o padrão default.
 \end{exemplo}
 
 \begin{cuidado}
-Não inverta os nomes: "estrela" com dimensão normalizada em várias
+Não inverta os nomes: “estrela” com dimensão normalizada em várias
 tabelas é, na verdade, floco de neve. Snowflake \textbf{não} é o padrão
 recomendado por Kimball --- é o Star.
 \end{cuidado}
@@ -262,11 +262,11 @@ recomendado por Kimball --- é o Star.
 \begin{enumerate}
 \item \textbf{Escolher o processo de negócio}: por exemplo, a venda no
 varejo.
-\item \textbf{Declarar o grão}: "\textbf{uma linha por item de um
-pedido}" --- é a decisão que governa todo o resto do projeto (ver
+\item \textbf{Declarar o grão}: “\textbf{uma linha por item de um
+pedido}” --- é a decisão que governa todo o resto do projeto (ver
 Seção~\ref{sec:granularidade}).
-\item \textbf{Escolher as dimensões}: tudo que responde a "por qual
-recorte eu quero olhar isto?" --- \texttt{Tempo}, \texttt{Produto},
+\item \textbf{Escolher as dimensões}: tudo que responde a “por qual
+recorte eu quero olhar isto?” --- \texttt{Tempo}, \texttt{Produto},
 \texttt{Loja}, \texttt{Cliente}.
 \item \textbf{Escolher as medidas}: o que é \textbf{numérico e somável}
 no grão declarado --- \texttt{quantidade}, \texttt{valor\_unitário},
@@ -277,7 +277,7 @@ O resultado é uma \textbf{tabela fato} que contém \textbf{só duas
 coisas}: as \textbf{chaves estrangeiras} para as dimensões e as
 \textbf{medidas numéricas}. Nenhum texto descritivo mora na fato --- o
 nome do produto fica na dimensão \texttt{Produto}. A única exceção com
-"nome próprio" é a \textbf{dimensão degenerada}: o
+“nome próprio” é a \textbf{dimensão degenerada}: o
 \texttt{número\_do\_pedido} fica na fato porque é um identificador que não
 tem atributo nenhum ao redor que justifique uma dimensão própria.
 \end{conceito}
@@ -295,10 +295,10 @@ agregações possíveis) é escolhido depois dela, em função dela.
 \toprule
 \textbf{Grão} & \textbf{Consequência} \\
 \midrule
-\textbf{Fino} (detalhado) --- "uma linha por atendimento" & \textbf{amplia}
+\textbf{Fino} (detalhado) --- “uma linha por atendimento” & \textbf{amplia}
 as análises possíveis (dá para agregar depois em qualquer nível desejado);
 volume maior de dados \\
-\textbf{Grosso} (agregado) --- "uma linha por unidade por dia" & tabela
+\textbf{Grosso} (agregado) --- “uma linha por unidade por dia” & tabela
 menor e consulta mais rápida, mas o detalhe está \textbf{perdido para
 sempre} --- não dá para desagregar depois \\
 \bottomrule
@@ -354,15 +354,15 @@ técnica que decide o que fazer com o histórico correspondente:
 \textit{flag} de corrente) & \textbf{preserva o histórico completo} ---
 cada fato continua ligado à versão vigente na época em que ocorreu \\
 \textbf{Tipo 3} & guarda o \textbf{valor anterior em outra coluna} da
-mesma linha & preserva só \textbf{uma} mudança (o "valor anterior"), não a
+mesma linha & preserva só \textbf{uma} mudança (o “valor anterior”), não a
 série toda de mudanças \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-É o \textbf{Tipo 2} que responde ao cenário clássico: "as vendas antigas
+É o \textbf{Tipo 2} que responde ao cenário clássico: “as vendas antigas
 devem continuar associadas à cidade em que o cliente morava na época da
-compra". E é ele que justifica a \textbf{chave \textit{surrogate}} da
+compra”. E é ele que justifica a \textbf{chave \textit{surrogate}} da
 dimensão (Capítulo \ref{cap:banco-dados-teoria}): como a mesma chave
 natural passa a ter várias versões ao longo do tempo, a fato precisa
 apontar para uma chave artificial que identifique a \textbf{versão}
@@ -373,9 +373,9 @@ específica, não apenas a entidade genérica.
 Aplicar Tipo 1 (sobrescrever) a um cenário que pede preservação de
 histórico é erro; aplicar Tipo 2 a um cenário de simples \textbf{correção
 de erro de digitação} também é erro no sentido oposto --- correção de erro
-não é "mudança de negócio a preservar", é sobrescrita legítima (Tipo 1).
+não é “mudança de negócio a preservar”, é sobrescrita legítima (Tipo 1).
 O Tipo 3 preserva histórico só do \textbf{valor imediatamente anterior},
-não da série completa --- é o distrator "quase certo" mais comum entre os
+não da série completa --- é o distrator “quase certo” mais comum entre os
 três.
 \end{cuidado}
 
@@ -395,7 +395,7 @@ um único tipo de problema.
 existentes, avaliar a \textbf{qualidade} e adequação do dado antes de
 usá-lo, documentar as fontes como parte da governança de dados.
 \textbf{Não fazer}: coletar \textbf{tudo sem discriminação}, incluindo
-dados inconsistentes ou irrelevantes, só "para maximizar a quantidade" ---
+dados inconsistentes ou irrelevantes, só “para maximizar a quantidade” ---
 essa é a prática explicitamente \textbf{não} recomendada.
 \end{conceito}
 
@@ -431,9 +431,9 @@ que A aparece, em quantas B também aparece).
 
 \begin{cuidado}
 Classificação x clusterização é o par mais confundido: se o enunciado diz
-"sem rótulos prévios" ou "descobrir grupos desconhecidos", é
+“sem rótulos prévios” ou “descobrir grupos desconhecidos”, é
 clusterização; se as classes já existem e o modelo aprende a atribuí-las
-a novos casos, é classificação. "Produtos comprados juntos" é sempre
+a novos casos, é classificação. “Produtos comprados juntos” é sempre
 \textbf{regra de associação}, nunca clusterização, mesmo que ambas sejam
 técnicas não supervisionadas.
 \end{cuidado}
