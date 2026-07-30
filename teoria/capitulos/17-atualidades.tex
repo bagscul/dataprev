@@ -289,9 +289,24 @@ automatizado que afetem seus interesses --- incluindo decisões que
 definam perfil pessoal, profissional, de consumo ou de crédito. É a base
 legal que ancora cenários de prova envolvendo score de crédito, triagem de
 currículo automatizada ou concessão de benefício público por algoritmo:
-sistema que decide \textbf{sozinho}, sem qualquer possibilidade de revisão
-humana, contraria essa garantia.
+sistema que decide \textbf{sozinho}, sem \textbf{nenhum} mecanismo de
+revisão disponível ao titular, contraria essa garantia.
 \end{conceito}
+
+\begin{cuidado}[A lei garante revisão --- não garante explicitamente que seja \emph{humana}]
+A redação original de 2018 previa revisão \textbf{“por pessoa natural”}.
+Essa expressão foi \textbf{retirada} pela Lei 13.853/2019, e o parágrafo
+que a reintroduziria (o §3º do art.\ 20) foi \textbf{vetado} --- veto
+\textbf{mantido} pelo Congresso. Hoje o texto vigente garante apenas
+“revisão” da decisão, \textbf{sem} exigir explicitamente que um humano a
+conduza --- diferente do art.\ 22 do GDPR europeu, que garante intervenção
+humana de forma expressa. Uma alternativa que descreva a LGPD como
+equivalente ao GDPR nesse ponto específico (“garante revisão humana”, sem
+ressalva) superestima a proteção do texto brasileiro vigente --- é a
+armadilha mais provável deste artigo, porque a leitura intuitiva (e a
+comparação automática com o GDPR) sugere humano, mas o texto vetado diz o
+contrário.
+\end{cuidado}
 
 \section{Regulação da IA: em vigor x ainda em tramitação}
 
@@ -358,7 +373,8 @@ cenário resolve a questão:
 saúde, concessão de benefício, análise de currículo): tipicamente
 \textbf{classificação supervisionada} (existe um rótulo conhecido:
 aprovado/negado, prioritário/não) --- e o cenário costuma testar se há
-\textbf{direito a explicação/revisão humana} da decisão.
+\textbf{direito a explicação/revisão} da decisão (art.\ 20 da LGPD --- sem
+exigir explicitamente revisor humano, ver cuidado acima).
 \item \textbf{Detecção de fraude ou anomalia} (transação suspeita, glosa
 irregular): tipicamente \textbf{não supervisionado} ou semissupervisionado
 --- porque casos rotulados de fraude são raros e o padrão fraudulento
