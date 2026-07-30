@@ -287,8 +287,9 @@ aparece em Governança (Capítulo \ref{cap:governanca}) e em Segurança
 \item \textbf{Triagem/priorização de atendimento} (fila de posto de saúde,
 concessão de benefício social, análise de currículos): pede se o modelo é
 \textbf{classificação supervisionada} (rótulo conhecido: aprovado/negado,
-prioritário/não) e se há \textbf{direito a explicação/revisão humana} da
-decisão automatizada.
+prioritário/não) e se há \textbf{direito a explicação/revisão} da decisão
+automatizada (art.\ 20 da LGPD --- ver Capítulo \ref{cap:legislacao}: a lei
+garante revisão, \textbf{não} exige explicitamente que seja humana).
 \item \textbf{Detecção de fraude ou anomalia} (glosa de conta pública,
 fraude em benefício, transação bancária suspeita): em geral
 \textbf{não supervisionado} ou semissupervisionado, porque o padrão fraudulento
@@ -315,10 +316,14 @@ RH automatizado ou benefício público.
 
 \begin{pegadinha}[Como a FGV arma a pegadinha em cenários de IA aplicada]
 \begin{itemize}
-\item O cenário descreve um sistema que \textbf{decide sozinho, sem qualquer
-revisão humana}, e a alternativa correta chama isso de boa prática ---
-\textbf{descarte}: LGPD garante revisão humana de decisão automatizada
-relevante.
+\item O cenário descreve um sistema que \textbf{decide sozinho, sem nenhum
+mecanismo de revisão}, e a alternativa correta chama isso de boa prática ---
+\textbf{descarte}: LGPD garante revisão de decisão automatizada relevante
+(art.\ 20). Cuidado para não superestimar a garantia: a lei \textbf{não}
+exige explicitamente revisor \textbf{humano} (o trecho ``por pessoa
+natural'' foi vetado --- ver Capítulo \ref{cap:legislacao}) --- diferente
+do GDPR europeu. Uma alternativa que cobre isso como ``a LGPD garante
+revisão humana'', sem ressalva, também é uma armadilha.
 \item ``O modelo de IA é neutro porque não usa o atributo raça/gênero
 diretamente'' --- \textbf{falso}: variáveis \textbf{proxy} (CEP, escola,
 histórico de consumo) podem recriar o viés indiretamente. Ignorar isso é o
@@ -395,8 +400,9 @@ Clima, Protocolo de Quioto).
 provas): a hierarquia IA $\supset$ ML $\supset$ Deep Learning; LLM e
 Transformer; RAG; alucinação; \textbf{viés algorítmico} em decisão
 automatizada (o ``viés'' que caiu no TJ-RJ é o \emph{estatístico} do
-trade-off, conceito diferente); \textbf{direito à revisão humana} da LGPD,
-art.\ 20 --- a explicabilidade do art.\ 20 caiu, mas no bloco de
+trade-off, conceito diferente); \textbf{direito à revisão} da LGPD,
+art.\ 20 (sem exigir revisor humano --- ver Capítulo \ref{cap:legislacao})
+--- a explicabilidade do art.\ 20 caiu, mas no bloco de
 \textbf{Legislação} do TJ-RJ, não aqui; a abordagem baseada em risco do AI
 Act e o PL 2338/2023; ESG por extenso; PUE e matriz energética de data
 center; métricas de classificação.

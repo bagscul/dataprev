@@ -69,6 +69,7 @@ def mostrar_hoje(linhas):
     elif tipo == "revisao":
         print(cor("  Dia de revisao:", "bold"))
         print("    ./estudar.sh            apostila do dia + quiz --hoje")
+        print("    ./estudar.sh --teoria   idem, mas abre teoria/main.pdf (livro-texto)")
         print("    ./quiz.py --hoje        so o quiz, refaz erradas (originais + provas)")
     elif tipo == "simulado":
         print(cor("  Dia de simulado:", "bold"))
@@ -77,6 +78,7 @@ def mostrar_hoje(linhas):
     else:  # conteudo
         print(cor("  Estudar hoje:", "bold"))
         print("    ./estudar.sh            apostila do dia + quiz --hoje")
+        print("    ./estudar.sh --teoria   idem, mas abre teoria/main.pdf (livro-texto)")
         print("    ./quiz.py --hoje        so o quiz, questoes dos blocos do dia")
         for b in plano["blocos"]:
             atalhos = []

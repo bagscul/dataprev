@@ -158,7 +158,7 @@ da situação. É o mesmo estilo de pegadinha por cenário de `governanca.md` e
 
 | Cenário | Conceito que ele testa |
 |---|---|
-| **Triagem/priorização** (fila de posto de saúde, concessão de benefício, análise de currículos) | **classificação supervisionada** (o rótulo é conhecido: aprovado/negado, prioritário/não) + direito a **explicação e revisão humana** |
+| **Triagem/priorização** (fila de posto de saúde, concessão de benefício, análise de currículos) | **classificação supervisionada** (o rótulo é conhecido: aprovado/negado, prioritário/não) + direito a **explicação e revisão** (art. 20 LGPD — sem exigir revisor humano) |
 | **Detecção de fraude ou anomalia** (glosa de conta pública, benefício, transação suspeita) | em geral **não supervisionado**/semissupervisionado — o padrão fraudulento muda com o tempo (**concept drift**) e caso rotulado é raro |
 | **Chatbot de atendimento ao cidadão com LLM** | a resposta pode **alucinar**; decisão que afeta direito exige **validação humana**, não a saída do modelo sozinha |
 | **Score algorítmico** (crédito, seguro, benefício) | **viés algorítmico**: se o dado de treino reflete desigualdade histórica, o modelo a **reproduz e amplifica** |
@@ -169,8 +169,11 @@ automatizado que afete seus interesses, incluindo as decisões destinadas a
 definir seu perfil pessoal, profissional, de consumo e de crédito.
 
 Pegadinhas de IA aplicada:
-- O cenário descreve um sistema que **decide sozinho, sem revisão humana**, e a
-  alternativa chama isso de boa prática — descarte.
+- O cenário descreve um sistema que **decide sozinho, sem nenhum mecanismo de
+  revisão**, e a alternativa chama isso de boa prática — descarte (art. 20
+  LGPD garante revisão). Cuidado com o exagero oposto: dizer que a lei
+  garante revisão **humana**, sem ressalva, também é armadilha — o trecho
+  "por pessoa natural" foi vetado (ver `legislacao.md`), diferente do GDPR.
 - "O modelo é neutro porque **não usa** raça/gênero diretamente" — falso:
   variáveis **proxy** (CEP, escola, histórico de consumo) recriam o viés por
   via indireta. É o distrator da "neutralidade tecnológica".

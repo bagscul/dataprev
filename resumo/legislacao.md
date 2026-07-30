@@ -126,6 +126,12 @@ os segredos comercial e industrial — é a base legal da **explicabilidade** em
 IA, e ancora todos os cenários de IA aplicada do bloco de
 [atualidades](atualidades.md).
 
+**Cuidado com a redação antiga:** o texto original de 2018 previa revisão
+**"por pessoa natural"**. A Lei 13.853/2019 retirou essa expressão, e o
+parágrafo que a reintroduziria (§3º) foi **vetado** — veto mantido pelo
+Congresso. Hoje a lei **não exige revisor humano**; alternativa que exige
+"revisão por pessoa natural" está errada.
+
 ## Marco Civil (Lei 12.965/2014) — guarda de registros
 
 - **Registros de conexão:** guarda obrigatória por **1 ano** (provedor de
