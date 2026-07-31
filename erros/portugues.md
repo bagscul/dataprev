@@ -27,3 +27,15 @@
 - **E:** 'Raízes que precisamos preservar' equivale a 'raízes preserváveis / a serem preservadas'. 'Preservativas' significa 'que preservam' (sentido ativo) — inverte a voz. Regra prática: adjetivos em -ivo costumam ter valor ativo; para o valor passivo da oração adjetiva, procure sufixos como -vel.
 - Apostila Cap. 15 — Língua Portuguesa
 - FGV tjrj1 Q17 | 29/07
+
+## Observe a seguinte frase <!-- auto mpu:15 -->
+- **Errei:** marquei C, a correta era A
+- **E:** Na frase-base, 'assistir' significa ver/presenciar (mesmo que o candidato use a regência coloquial sem 'a'). Em 'Não se pode assistir parado a uma agressão dessas', 'assistir' é igualmente presenciar, com a regência culta 'assistir a'. Regra prática FGV: assistir = ver/presenciar → verbo transitivo indireto (assistir A algo); assistir = ajudar/prestar assistência → transitivo direto; assistir = caber/pertencer (direito) → transitivo indireto de pessoa.
+- Apostila Cap. 15 — Língua Portuguesa
+- FGV mpu Q15 | 30/07
+
+## A frase abaixo – retirada do romance O Mulato , de Aluísio Azevedo –… <!-- auto tjrj1:10 -->
+- **Errei:** marquei E, a correta era C
+- **E:** No trecho, 'não que acreditasse nessas coisas' retoma as superstições (chinela emborcada, cortar cabelo na lua crescente) — o que se acredita ou não são crenças/superstições, não 'tradições'. O teste é substituir a palavra e ver se o referente continua o mesmo; aqui o valor referencial muda.
+- Apostila Cap. 15 — Língua Portuguesa
+- FGV tjrj1 Q10 | 30/07
