@@ -252,6 +252,19 @@ na primeira vez, `progresso-<nome>.csv` e criado a partir do roteiro com
 tudo zerado, e o historico vai para `historico-<nome>.json`. Sem `--quem`,
 roda como Lucas (`progresso.csv`), como sempre foi.
 
+O `status.py` (painel de acompanhamento) acompanha o mesmo `--quem`, e tem
+um modo de comparacao lado a lado:
+
+```bash
+./status.py --quem geys        # painel completo dela (aderencia, sequencia, blocos)
+./status.py --quem geys hoje   # so o conteudo de hoje, do lado dela
+./status.py --vs geys          # lucas x geys lado a lado, bloco a bloco
+```
+
+O `--vs` mostra quem esta na frente em cada bloco (diferenca >= 10 pontos) e
+lista os blocos em que os DOIS estao abaixo de 60% — esses sao os bons
+candidatos pra estudar junto em vez de sozinho.
+
 O caderno de erros em `erros/*.md` e compartilhado de proposito — errar
 junto e ver o erro do outro e parte do metodo.
 

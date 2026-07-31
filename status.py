@@ -2,8 +2,11 @@
 """Painel de acompanhamento — Concurso Dataprev 2026.
 
 Uso:
-    python3 status.py              painel completo
+    python3 status.py              painel completo (lucas)
     python3 status.py hoje         so o conteudo de hoje
+    python3 status.py --quem geys          painel completo dela
+    python3 status.py --quem geys hoje     conteudo de hoje, dela
+    python3 status.py --vs geys            compara lucas x geys lado a lado
 """
 
 import csv
@@ -16,6 +19,14 @@ import roteiro  # leitura compartilhada do plano do dia
 BASE = Path(__file__).parent
 PROVA = date(2026, 10, 11)
 CSV = BASE / "progresso.csv"
+
+
+def csv_de(quem):
+    """Caminho do progresso.csv de uma pessoa. 'lucas' usa o arquivo
+    original; qualquer outro nome usa progresso-<quem>.csv, criado pelo
+    ./quiz.py --quem <nome> na primeira vez que ela roda o quiz."""
+    quem = (quem or "lucas").strip().lower()
+    return CSV if quem == "lucas" else BASE / f"progresso-{quem}.csv"
 
 # tags que nao contam como "bloco de conteudo" para fins de revisitacao
 NAO_CONTEUDO = {"revisao", "simulado", "descanso", "prova"}
@@ -36,8 +47,8 @@ def barra(pct, largura=20):
     return "#" * cheio + "." * (largura - cheio)
 
 
-def carregar():
-    with open(CSV) as f:
+def carregar(csv_path=CSV):
+    with open(csv_path) as f:
         linhas = list(csv.DictReader(f))
     for l in linhas:
         l["data"] = datetime.strptime(l["data"], "%Y-%m-%d").date()
@@ -47,7 +58,7 @@ def carregar():
     return linhas
 
 
-def mostrar_hoje(linhas):
+def mostrar_hoje(linhas, csv_path=CSV):
     hoje = date.today()
     l = next((x for x in linhas if x["data"] == hoje), None)
     if l is None:
@@ -59,7 +70,7 @@ def mostrar_hoje(linhas):
     print(f"  {cor('Foco:', 'ciano')} {l['foco']}")
     print(f"  {cor('Tambem:', 'ciano')} {l['secundario']}")
 
-    plano = roteiro.plano_de_hoje(CSV)
+    plano = roteiro.plano_de_hoje(csv_path)
     tipo = plano["tipo"]
     print()
     if tipo == "descanso":
@@ -91,9 +102,11 @@ def mostrar_hoje(linhas):
     print()
 
 
-def painel(linhas):
-    hoje = date.today()
-    faltam = (PROVA - hoje).days
+def resumo(linhas, hoje=None):
+    """Calcula as metricas do painel para uma pessoa: aderencia, sequencia,
+    taxa de acerto geral e desempenho por bloco. Usado pelo painel individual
+    e pela comparacao (--vs)."""
+    hoje = hoje or date.today()
 
     passados = [l for l in linhas if l["data"] < hoje and l["tag"] not in {"descanso", "prova"}]
     feitos = [l for l in passados if l["feito"]]
@@ -102,42 +115,15 @@ def painel(linhas):
     total_q = sum(l["questoes"] for l in com_q)
     total_a = sum(l["acertos"] for l in com_q)
     taxa = total_a / total_q * 100 if total_q else 0
-
     aderencia = len(feitos) / len(passados) * 100 if passados else 100
 
-    print()
-    print(cor("=" * 52, "azul"))
-    print(cor("  DATAPREV 2026 — Desenvolvimento de Software", "bold"))
-    print(cor("=" * 52, "azul"))
-    print()
-
-    c = "verde" if faltam > 30 else "amarelo" if faltam > 7 else "vermelho"
-    print(f"  Faltam {cor(str(faltam), c)} dias para a prova (11/10)")
-    print()
-
-    # aderencia
-    c = "verde" if aderencia >= 85 else "amarelo" if aderencia >= 65 else "vermelho"
-    print(f"  Aderencia ao roteiro  {barra(aderencia)} {cor(f'{aderencia:.0f}%', c)}"
-          f"  ({len(feitos)}/{len(passados)} dias)")
-
-    # sequencia
     seq = 0
     for l in reversed([l for l in linhas if l["data"] < hoje]):
         if l["feito"]:
             seq += 1
         else:
             break
-    print(f"  Sequencia atual       {cor(str(seq), 'bold')} dias seguidos")
-    print()
 
-    # questoes
-    print(f"  Questoes resolvidas   {cor(str(total_q), 'bold')}")
-    if total_q:
-        c = "verde" if taxa >= 75 else "amarelo" if taxa >= 60 else "vermelho"
-        print(f"  Taxa de acerto geral  {barra(taxa)} {cor(f'{taxa:.0f}%', c)}")
-    print()
-
-    # desempenho por bloco
     blocos = {}
     for l in com_q:
         t = l["tag"]
@@ -147,14 +133,60 @@ def painel(linhas):
         blocos[t][0] += l["questoes"]
         blocos[t][1] += l["acertos"]
 
-    if blocos:
+    return {
+        "total_q": total_q, "taxa": taxa, "aderencia": aderencia,
+        "feitos": len(feitos), "passados": len(passados),
+        "seq": seq, "blocos": blocos,
+    }
+
+
+def painel(linhas, quem="lucas"):
+    hoje = date.today()
+    faltam = (PROVA - hoje).days
+    r = resumo(linhas, hoje)
+
+    print()
+    print(cor("=" * 52, "azul"))
+    print(cor("  DATAPREV 2026 — Desenvolvimento de Software", "bold"))
+    if quem != "lucas":
+        print(cor(f"  sessao de: {quem}", "ciano"))
+    print(cor("=" * 52, "azul"))
+    print()
+
+    c = "verde" if faltam > 30 else "amarelo" if faltam > 7 else "vermelho"
+    print(f"  Faltam {cor(str(faltam), c)} dias para a prova (11/10)")
+    print()
+
+    # aderencia
+    aderencia = r["aderencia"]
+    c = "verde" if aderencia >= 85 else "amarelo" if aderencia >= 65 else "vermelho"
+    pct_aderencia = cor(f"{aderencia:.0f}%", c)
+    print(f"  Aderencia ao roteiro  {barra(aderencia)} {pct_aderencia}"
+          f"  ({r['feitos']}/{r['passados']} dias)")
+
+    # sequencia
+    print(f"  Sequencia atual       {cor(str(r['seq']), 'bold')} dias seguidos")
+    print()
+
+    # questoes
+    print(f"  Questoes resolvidas   {cor(str(r['total_q']), 'bold')}")
+    if r["total_q"]:
+        taxa = r["taxa"]
+        c = "verde" if taxa >= 75 else "amarelo" if taxa >= 60 else "vermelho"
+        pct_taxa = cor(f"{taxa:.0f}%", c)
+        print(f"  Taxa de acerto geral  {barra(taxa)} {pct_taxa}")
+    print()
+
+    # desempenho por bloco
+    if r["blocos"]:
         print(cor("  Desempenho por bloco", "bold"))
-        ordenado = sorted(blocos.items(), key=lambda x: x[1][1] / x[1][0])
+        ordenado = sorted(r["blocos"].items(), key=lambda x: x[1][1] / x[1][0])
         for tag, (q, a) in ordenado:
             p = a / q * 100
             c = "verde" if p >= 75 else "amarelo" if p >= 60 else "vermelho"
             alerta = cor("  <-- atencao", "vermelho") if p < 60 else ""
-            print(f"    {tag:<16} {barra(p, 12)} {cor(f'{p:>3.0f}%', c)}  ({a}/{q}){alerta}")
+            pct = cor(f"{p:>3.0f}%", c)
+            print(f"    {tag:<16} {barra(p, 12)} {pct}  ({a}/{q}){alerta}")
         print()
 
     # revisitacao — a regra dos 15 dias
@@ -179,12 +211,103 @@ def painel(linhas):
         print()
 
     print(cor("-" * 52, "dim"))
-    mostrar_hoje(linhas)
+    mostrar_hoje(linhas, csv_de(quem))
+
+
+def comparar(nome_a, linhas_a, nome_b, linhas_b):
+    """Painel lado a lado de duas pessoas: quem esta na frente em cada bloco
+    e onde os dois estao fracos ao mesmo tempo (prioridade pra estudar juntos)."""
+    hoje = date.today()
+    faltam = (PROVA - hoje).days
+    ra, rb = resumo(linhas_a, hoje), resumo(linhas_b, hoje)
+
+    print()
+    print(cor("=" * 52, "azul"))
+    print(cor(f"  DATAPREV 2026 — {nome_a.capitalize()} vs {nome_b.capitalize()}", "bold"))
+    print(cor("=" * 52, "azul"))
+    print()
+    c = "verde" if faltam > 30 else "amarelo" if faltam > 7 else "vermelho"
+    print(f"  Faltam {cor(str(faltam), c)} dias para a prova (11/10)")
+    print()
+
+    def linha(rotulo, va, vb, fmt="{}"):
+        print(f"  {rotulo:<22} {nome_a:<8} {fmt.format(va):<8} {nome_b:<8} {fmt.format(vb)}")
+
+    linha("Questoes resolvidas", ra["total_q"], rb["total_q"])
+    linha("Taxa de acerto geral", ra["taxa"], rb["taxa"], "{:.0f}%")
+    linha("Aderencia ao roteiro", ra["aderencia"], rb["aderencia"], "{:.0f}%")
+    linha("Sequencia atual", ra["seq"], rb["seq"], "{} dias")
+    print()
+
+    tags = sorted(set(ra["blocos"]) | set(rb["blocos"]))
+    if tags:
+        print(cor(f"  Desempenho por bloco ({nome_a} | {nome_b})", "bold"))
+        fracos_comuns = []
+        for tag in tags:
+            qa, aa = ra["blocos"].get(tag, (0, 0))
+            qb, ab = rb["blocos"].get(tag, (0, 0))
+            pa = aa / qa * 100 if qa else None
+            pb = ab / qb * 100 if qb else None
+            txt_a = f"{pa:>3.0f}%" if pa is not None else "  - "
+            txt_b = f"{pb:>3.0f}%" if pb is not None else "  - "
+            marca = ""
+            if pa is not None and pb is not None:
+                if pa - pb >= 10:
+                    marca = cor(f"  <-- {nome_a} na frente", "verde")
+                elif pb - pa >= 10:
+                    marca = cor(f"  <-- {nome_b} na frente", "verde")
+                if pa < 60 and pb < 60:
+                    fracos_comuns.append(tag)
+            print(f"    {tag:<16} {txt_a}  |  {txt_b}{marca}")
+        if fracos_comuns:
+            print()
+            print(cor("  Fracos nos dois — bom pra estudar junto:", "amarelo"))
+            for t in fracos_comuns:
+                print(f"    {t}")
+        print()
+
+
+def _resolver_args(args):
+    """Le --quem <nome>, --vs <nome> e 'hoje' de sys.argv[1:]. Devolve
+    (modo, quem, outro, ver_hoje) onde modo e 'painel' ou 'vs'."""
+    args = list(args)
+    outro = None
+    pediu_vs = "--vs" in args
+    if pediu_vs:
+        i = args.index("--vs")
+        outro = args[i + 1] if i + 1 < len(args) else None
+        del args[i:i + 2]
+    quem = "lucas"
+    if "--quem" in args:
+        i = args.index("--quem")
+        quem = args[i + 1] if i + 1 < len(args) else "lucas"
+        del args[i:i + 2]
+    ver_hoje = "hoje" in args
+    modo = "vs" if pediu_vs else "painel"
+    return modo, quem, outro, ver_hoje
 
 
 if __name__ == "__main__":
-    dados = carregar()
-    if len(sys.argv) > 1 and sys.argv[1] == "hoje":
-        mostrar_hoje(dados)
+    modo, quem, outro, ver_hoje = _resolver_args(sys.argv[1:])
+
+    if modo == "vs":
+        if not outro:
+            print(cor("\n  uso: ./status.py --vs <nome>\n", "vermelho"))
+            sys.exit(1)
+        arq_outro = csv_de(outro)
+        if not arq_outro.exists():
+            print(cor(f"\n  {arq_outro.name} nao existe ainda — peca pra {outro} rodar "
+                       f"./quiz.py --quem {outro} --hoje pelo menos uma vez.\n", "amarelo"))
+            sys.exit(1)
+        comparar("lucas", carregar(CSV), outro, carregar(arq_outro))
     else:
-        painel(dados)
+        arq = csv_de(quem)
+        if quem != "lucas" and not arq.exists():
+            print(cor(f"\n  {arq.name} nao existe ainda — rode ./quiz.py --quem {quem} --hoje "
+                       "pelo menos uma vez.\n", "amarelo"))
+            sys.exit(1)
+        dados = carregar(arq)
+        if ver_hoje:
+            mostrar_hoje(dados, arq)
+        else:
+            painel(dados, quem)
