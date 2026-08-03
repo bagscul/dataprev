@@ -30,7 +30,7 @@ em qualquer um desses tres: `./estudar.sh --teoria java`, `./apostila.py
 --teoria java`.
 
 **Apostila x `teoria/`.** A `apostila/` e enxuta de proposito — feita pra
-revisar em 11 semanas, com foco em pegadinha de banca. O `teoria/` e um
+revisar em 10 semanas, com foco em pegadinha de banca. O `teoria/` e um
 livro-texto complementar, com a mesma identidade visual mas conteudo de
 aprendizado profundo: cada conceito ganha definicao, mecanismo/porque e
 exemplo resolvido, sem o filtro "o que cai em prova". Use a apostila pra
@@ -287,8 +287,8 @@ Em `erros/<bloco>.md`, tres linhas. O "errei" e a parte que importa:
   Ingles, qua RLM, qui Legislacao, sex Atualidades).
 - Nas semanas tematicas o bloco domina os 5 dias; o reencontro vem pelas
   **revisitas** marcadas, pelos **simulados** e pelo `--erradas`.
-- Simulado **domingo, 13h**, cronometrado. Mesmo horario da prova. Sao 11 no
-  total — dez aos domingos e o ultimo na quarta da semana da prova.
+- Simulado **domingo, 13h**, cronometrado. Mesmo horario da prova. Sao 10 no
+  total — nove aos domingos e o ultimo na sexta da semana da prova.
 - No simulado: **especificos primeiro** (valem 2,5x), gerais depois.
 
 ## Onde a prova se decide

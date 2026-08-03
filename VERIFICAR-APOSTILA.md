@@ -109,7 +109,7 @@ Se um número desses cair, explique por quê.
 
 - Não reescreva capítulo inteiro por preferência de estilo. O alvo é erro,
   desatualização e lacuna — não gosto pessoal.
-- Não infle o texto. O livro é para revisar em 11 semanas, não para ser completo.
+- Não infle o texto. O livro é para revisar em 10 semanas, não para ser completo.
 - Não invente "caiu na prova tal" sem confirmação em `banco-provas.json` ou no
   PDF oficial em `provas/`.
 - Não conserte o que não está quebrado só para ter o que reportar. "Conferi X e
