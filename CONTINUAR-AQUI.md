@@ -146,13 +146,15 @@ I" e o texto não estiver no campo `q`, o conserto é no `importar_provas.py`.
 > <https://conhecimento.fgv.br/concursos/navbrasil26>. Se mudar para E, basta
 > escrever a explicação; se continuar C, a questão vale como anotada.
 
-> **`cprm-ads` Q17 depende da figura e não está marcada como tal.** São as 17
-> caixas cúbicas empilhadas: o enunciado cita "a Figura", mas o importador não
-> extraiu a imagem nem ligou o `requer_imagem`. A explicação já está escrita
-> pelo caminho que a questão pede (contar as 12 caixas visíveis e subtrair de
-> 17), só que no quiz o item aparece sem o desenho. Como `requer_imagem` **não
-> sobrevive à reimportação**, o conserto é na regra do `importar_provas.py`, e
-> não à mão no JSON.
+> **`cprm-ads` Q17 — resolvida em 07/08, e o modo de resolver vale de exemplo.**
+> A questão das 17 caixas empilhadas depende do desenho, mas escapava da regra
+> (diz "**A Figura mostra**", e a lista de dêixis só tinha o particípio). Virou
+> **exceção declarada** no `importar_provas.py`, em `DEPENDE_DE_FIGURA_MANUAL`,
+> e não regra nova: acrescentar os verbos no presente trancaria a `nav-med` Q23,
+> a `nav-med` Q30 e a `nav-eng` Q70, que se sustentam sozinhas. Se aparecer um
+> segundo caso, compare os dois antes de generalizar — regra ajustada a um
+> exemplo só costuma custar caro aqui (a versão antiga da heurística trancava
+> 51 questões, 45 delas sem necessidade).
 
 > **`cprm-ads` Q59 — nomenclatura frouxa da banca.** O objeto que comporta
 > ilhas (polígonos) e boias (pontos) é uma **coleção heterogênea** do Oracle
@@ -161,11 +163,19 @@ I" e o texto não estiver no campo `q`, o conserto é no `importar_provas.py`.
 > foi tocado e a explicação usa o nome correto. Não gere questão nova a partir
 > dela — banco geoespacial está fora do edital.
 
-**Limitação conhecida do extrator:** `pdftotext`/`pypdf` não preserva
-sublinhado, então questões que dizem "o termo sublinhado" perdem a marcação
-(português da `nav-tec` Q6/Q17/Q19 e do `nav-med` Q1 e Q6). As explicações
-dessas questões foram escritas cobrindo **todas** as alternativas, o que
-mantém o item utilizável — faça o mesmo nas próximas.
+**Marcação da banca — parcialmente recuperada em 07/08.** O `pypdf` não
+preserva sublinhado, mas no PDF ele é um retângulo fino desenhado sob a
+palavra, e o **PyMuPDF** lê esses desenhos: o importador agora restaura o
+grifo entre `«…»`. São **18 das 42** questões que citam a marcação — entre elas
+a `dataprev2024` Q16 (`«Thus,»`), a `nav-med` Q1 (os três verbos) e a Q5
+(`«À medida em que»`).
+
+As outras 24 seguem sem marca, e há uma regra a respeitar se for mexer nisso:
+**ou todas as alternativas recebem marca, ou nenhuma recebe.** Marcação parcial
+é pior que nenhuma — na `cnsal-ads` Q7 a única alternativa que ficaria sem
+grifo era justamente o gabarito. Para essas, o caminho continua sendo a
+explicação cobrindo **todas** as alternativas, que é o que mantém o item
+utilizável.
 
 **Gabaritos preliminares:** todo o `nav-med` (prova de 02/08/2026) está com
 gabarito preliminar. Quando sair o definitivo, reconferir as 45 e verificar se

@@ -2,6 +2,58 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — o sublinhado da banca volta ao quiz, e a Q17 do CPRM sai do sorteio
+
+Duas correções no `importar_provas.py`, as duas sobre o mesmo tema: o que a
+camada de texto do PDF joga fora.
+
+**1. A marcação da banca, recuperada.** A FGV sublinha o termo que a questão
+manda analisar ("assinale a opção em que o termo sublinhado…", "o elemento
+destacado em…"). Nem o `pypdf` nem o `pdftotext` preservam sublinhado, então
+esse termo chegava ao quiz indistinguível do resto da frase — e a questão
+virava adivinhação. São **42 questões** que citam a marcação, quase todas de
+português, o bloco mais pesado do Módulo I.
+
+No PDF o sublinhado não é atributo de fonte: é um retângulo fino desenhado sob
+a palavra. O **PyMuPDF** lê esses desenhos, e o texto recortado logo acima de
+cada reta é exatamente o trecho grifado. Agora ele volta ao banco entre
+`«…»` — e o ganho aparece justo onde doía: a `dataprev2024` Q16 recuperou o
+`«Thus,»` do "underlined linker", a `nav-med` Q1 recuperou os três verbos
+(`«realizou,»`, `«foi presidida»`, `«contou»`), a `nav-med` Q5 recuperou o
+`«À medida em que»` e a `dataprev2024` Q9, o `«de modo que»`.
+
+**Placar: 18 das 42** — 7 com a marca nas alternativas e 11 no enunciado ou no
+texto-base. As outras 24 ficaram como estavam, e três travas explicam por quê:
+
+- **só a questão que pede a marca é marcada.** A FGV sublinha por ênfase em
+  muito lugar, e marcar tudo trocaria 42 questões por 351: borda de tabela e
+  régua de rodapé entram como falso sublinhado (a `cnsal-ads` Q51 chegou a
+  receber `«Título_PL»` e `«150»`, que são células de uma tabela).
+- **a marca tem de identificar um trecho só.** Um grifo curto da Q9 ("de um",
+  "alguns") casava em dezenas de outras questões; vale apenas a marca que
+  aparece em **um único** campo do caderno.
+- **ou todas as alternativas, ou nenhuma.** Esta é a mais importante:
+  marcação parcial é *pior* que nenhuma. Em 18 questões o recorte só recuperava
+  parte dos grifos — e na `cnsal-ads` Q7 a única alternativa que ficaria sem
+  marca era exatamente o gabarito. O candidato acertaria pelo artefato, não
+  pelo português. Nessas, o texto fica como veio.
+
+**2. `cprm-ads` Q17 fora do sorteio.** A questão das 17 caixas empilhadas
+depende do desenho, mas escapava da regra: ela diz "**A Figura mostra** como…",
+e a lista de dêixis só tinha o particípio ("mostrada"), não a forma do
+presente. Virou exceção declarada no código (`DEPENDE_DE_FIGURA_MANUAL`), e
+não regra nova — acrescentar os verbos no presente trancaria outras três
+questões que se sustentam sozinhas: a `nav-med` Q23 traz os pontos A(3,1) e
+B(6,3) no próprio texto, a `nav-med` Q30 teve a tabela transcrita na extração,
+e a `nav-eng` Q70 **narra** o diagrama BPMN por escrito, sem imprimi-lo. Dá
+para calibrar um regex de três condições que acerte só a Q17, mas seria regra
+ajustada a um único exemplo; enquanto o caso for um, a lista é mais honesta —
+e, por morar no parser e não no JSON, sobrevive à reimportação.
+
+Conferido por diff nas duas mudanças: 19 questões alteradas ao todo, `ans`,
+`why`, `erradas` e `sub` preservados, e o importador continua devolvendo o
+arquivo byte-idêntico.
+
 ## 2026-08-07 — as 73 questões novas explicadas e o parser aprendendo a quinta e a sexta marca de texto-base
 
 Fecha a pendência aberta pela importação da EPE, da Receita Federal e do CPRM

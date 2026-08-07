@@ -137,8 +137,27 @@ ARTEFATO_INLINE = re.compile(
 )
 
 
-def depende_de_figura(enunciado, alts):
+# Excecao declarada, e nao regra: questao em que a figura E o dado, mas cuja
+# redacao nao aciona a REFERE_IMAGEM. A cprm-ads Q17 diz "A Figura mostra como
+# 17 caixas cubicas foram organizadas" — o artefato e SUJEITO do verbo, e a
+# lista de deixis so tem o participio ("mostrada"), nao a forma do presente.
+#
+# Por que uma lista e nao mais uma regra: acrescentar os verbos no presente
+# trancaria outras tres questoes que se sustentam sozinhas — a nav-med Q23 traz
+# os pontos A(3,1) e B(6,3) no texto, a nav-med Q30 teve a tabela transcrita na
+# extracao, e a nav-eng Q70 NARRA o diagrama BPMN por escrito, sem imprimi-lo.
+# Da para calibrar um regex de tres condicoes que acerte so a Q17, mas seria
+# uma regra ajustada a um unico exemplo. Enquanto o caso for um, a lista e mais
+# honesta — e, por morar aqui e nao no JSON, sobrevive a reimportacao.
+DEPENDE_DE_FIGURA_MANUAL = {
+    ("cprm-ads", 17),  # 17 caixas empilhadas: a contagem so existe no desenho
+}
+
+
+def depende_de_figura(enunciado, alts, prova=None, num=None):
     """A questao e irrespondivel sem o que o PDF perdeu?"""
+    if (prova, num) in DEPENDE_DE_FIGURA_MANUAL:
+        return True
     if any(not a.strip() for a in alts):
         return True
     if ARTEFATO_INLINE.search(enunciado):
@@ -283,6 +302,145 @@ def tags_do_mapa(prova):
             for n in range(int(m.group(2)), int(m.group(3)) + 1):
                 tags.setdefault(n, t)
     return tags
+
+
+# A FGV SUBLINHA o termo que a questao manda analisar ("assinale a opcao em que
+# o termo sublinhado...", "o elemento destacado em..."). Nem o pypdf nem o
+# pdftotext preservam sublinhado, entao esse termo chegava ao quiz indistinguivel
+# do resto da frase — e a questao virava adivinhacao: das 44 questoes que citam a
+# marcacao, a maioria e de portugues, o bloco mais pesado do Modulo I.
+#
+# No PDF o sublinhado nao e atributo de fonte: e um retangulo fino desenhado sob
+# a palavra. O PyMuPDF le esses desenhos, e o texto recortado logo acima de cada
+# reta e exatamente o trecho sublinhado. Conferido nas 15 provas: das 125 retas
+# encontradas, as unicas que nao casam com nenhuma questao sao as da capa
+# ("caderno de provas", "Boa prova!").
+#
+# Marcamos com «...» — o quiz mostra assim, e o candidato ve o que a banca
+# grifou. Palavra de comando ja enfatizada pela banca (nao, incorreta, exceto)
+# fica de fora: ela nao muda a resposta e so poluiria o enunciado.
+MARCADOR = ("«", "»")
+
+# So restauramos a marca na questao que PEDE a marca. A FGV sublinha por
+# enfase em muito lugar, e marcar tudo cria ruido — pior, borda de tabela e
+# reta de rodape entram como falso sublinhado (a cnsal-ads Q51 recebeu
+# «Título_PL» e «150», que sao celulas de uma tabela). Quando o enunciado nao
+# manda olhar a marca, a ausencia dela nao atrapalha ninguem.
+CITA_MARCACAO = re.compile(
+    r"sublinhad\w+|underlined|em negrito|em destaque|destacad\w+|grifad\w+",
+    re.IGNORECASE,
+)
+COMANDO_ENFATIZADO = {
+    "nao", "incorreta", "incorreto", "correta", "correto", "exceto",
+    "apenas", "somente", "incorretamente", "corretamente",
+}
+
+
+def _compacto(texto):
+    """Devolve (texto sem espacos e sem acento, mapa de indices para o original)."""
+    saida, mapa = [], []
+    for i, c in enumerate(texto):
+        if c.isspace():
+            continue
+        base = unicodedata.normalize("NFKD", c)
+        base = "".join(ch for ch in base if not unicodedata.combining(ch)).lower()
+        base = {"“": '"', "”": '"', "’": "'", "‘": "'", "–": "-"}.get(base, base)
+        if base:
+            saida.append(base[0])
+            mapa.append(i)
+    return "".join(saida), mapa
+
+
+def marcacoes_do_pdf(caminho):
+    """Trechos sublinhados no PDF, do mais longo para o mais curto."""
+    try:
+        import fitz
+    except ImportError:  # sem PyMuPDF o importador segue funcionando, sem marca
+        return []
+    doc = fitz.open(caminho)
+    achados = set()
+    for pagina in doc:
+        for desenho in pagina.get_drawings():
+            r = desenho["rect"]
+            # reta fina e do tamanho de uma palavra ou trecho: e sublinhado.
+            # Larguras maiores sao regua de cabecalho e borda de tabela.
+            if r.height >= 2.0 or not (8 < r.width < 260):
+                continue
+            faixa = fitz.Rect(r.x0 - 1, r.y0 - 9.5, r.x1 + 1, r.y0 - 0.5)
+            trecho = " ".join(pagina.get_text("text", clip=faixa).split())
+            if not trecho or len(trecho) > 120:
+                continue
+            nucleo = re.sub(r"^\W+|\W+$", "", trecho).lower()
+            if len(nucleo) < 3 or sem_acento(nucleo) in COMANDO_ENFATIZADO:
+                continue
+            achados.add(trecho)
+    return sorted(achados, key=len, reverse=True)
+
+
+def marcas_uteis(marcas, campos):
+    """Filtra as marcas que identificam um trecho SO.
+
+    O sublinhado vive numa alternativa especifica, mas a lista vem da prova
+    inteira — e sem esta trava um trecho curto grifado na Q9 ("de um",
+    "alguns") era marcado tambem na Q40, em toda parte onde a sequencia de
+    letras aparecesse. Foram 351 questoes alteradas na primeira tentativa,
+    para 42 que precisavam. Vale a marca que casa em UM unico campo do
+    caderno: e o proprio sinal de que ela identifica aquele trecho.
+    """
+    compactos = [_compacto(c)[0] for c in campos]
+    uteis = []
+    for m in marcas:
+        agulha, _ = _compacto(m)
+        if agulha and sum(1 for c in compactos if agulha in c) == 1:
+            uteis.append(m)
+    return uteis
+
+
+def marcar(texto, marcas):
+    """Envolve em «...» os trechos que a banca sublinhou."""
+    if not texto or not marcas:
+        return texto
+    alvo, mapa = _compacto(texto)
+    intervalos = []
+    for m in marcas:
+        agulha, _ = _compacto(m)
+        if not agulha:
+            continue
+        pos = alvo.find(agulha)
+        if pos < 0:
+            continue
+        ini, fim = mapa[pos], mapa[pos + len(agulha) - 1] + 1
+        # o recorte do PDF as vezes corta palavra no meio ("Após d", "aprese"):
+        # se o trecho nao comeca e termina em fronteira de palavra, e lixo.
+        antes = texto[ini - 1] if ini > 0 else " "
+        depois = texto[fim] if fim < len(texto) else " "
+        if antes.isalnum() or depois.isalnum():
+            continue
+        # nao marca dentro de trecho ja marcado (o mais longo entrou primeiro)
+        if any(a <= ini < b or a < fim <= b for a, b in intervalos):
+            continue
+        intervalos.append((ini, fim))
+    saida = texto
+    for ini, fim in sorted(intervalos, reverse=True):
+        saida = saida[:ini] + MARCADOR[0] + saida[ini:fim] + MARCADOR[1] + saida[fim:]
+    return saida
+
+
+def marcar_alternativas(alts, marcas):
+    """Marca as alternativas — ou todas, ou nenhuma.
+
+    Marcacao PARCIAL e pior do que nenhuma: quando a banca sublinha um termo em
+    cada alternativa e o recorte so recupera parte deles, a formatacao vira
+    pista. Na cnsal-ads Q7 a unica alternativa que ficaria sem marca era
+    exatamente o gabarito — o candidato acertaria pelo artefato, nao pelo
+    portugues. Sao 18 questoes nessa situacao; nelas o texto fica como veio, e
+    a explicacao (que cobre as cinco alternativas) sustenta o item.
+    """
+    marcadas = [marcar(a, marcas) for a in alts]
+    if any(MARCADOR[0] in a for a in marcadas) and not all(
+            MARCADOR[0] in a for a in marcadas):
+        return alts
+    return marcadas
 
 
 def texto_do_pdf(caminho):
@@ -522,9 +680,11 @@ def main():
             print(f"  {prova}: PDF nao encontrado, pulando.")
             continue
         tags = tags_do_mapa(prova)
+        marcas = marcacoes_do_pdf(pdf)
         linhas = texto_do_pdf(pdf)
         qs = parsear(linhas)
         bases = textos_base(linhas)
+        marcas = marcas_uteis(marcas, [c for q in qs for c in [q["q"], *q["alts"]]])
         if prova in ja_tem and not tudo:
             fora = [q["num"] for q in qs if (prova, q["num"]) not in antigo]
             if fora:
@@ -535,20 +695,23 @@ def main():
             chave = (prova, q["num"])
             anterior = antigo.get(chave, {})
             base = bases.get(q["num"])
+            texto_q = f"{base}\n\n{q['q']}" if base else q["q"]
+            pede = bool(CITA_MARCACAO.search(q["q"]))
             banco.append(
                 {
                     "prova": prova,
                     "num": q["num"],
                     "tag": tags.get(q["num"], "orfaos"),
-                    "q": f"{base}\n\n{q['q']}" if base else q["q"],
-                    "alts": q["alts"],
+                    "q": texto_q if not pede else marcar(texto_q, marcas),
+                    "alts": marcar_alternativas(q["alts"], marcas) if pede
+                            else q["alts"],
                     # gabarito: preenchido por ./gabarito.py, nunca por chute
                     "ans": anterior.get("ans"),
                     "why": anterior.get("why", ""),
                     "erradas": anterior.get("erradas", {}),
                     "fonte": f"FGV {prova} Q{q['num']}",
                     # o PDF perdeu a figura/codigo: nao da pra responder no terminal
-                    "requer_imagem": depende_de_figura(q["q"], q["alts"]),
+                    "requer_imagem": depende_de_figura(q["q"], q["alts"], prova, q["num"]),
                     # anulada e marcada a mao; preserva entre reimportacoes
                     "anulada": anterior.get("anulada", False),
                 }
