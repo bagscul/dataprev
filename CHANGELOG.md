@@ -2,6 +2,52 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — as 106 questões do CPRM e do `nav-med` ganham explicação (`valida.py`: 214 → 2 avisos)
+
+Fecha a pendência aberta pela importação da manhã. As **106 questões
+explicáveis** das duas provas novas passam a ter `why` e `erradas` completos —
+o banco volta ao padrão de **todas** as provas reais explicadas, com a única
+exceção conhecida (`nav-tec` Q58, divergência de gabarito registrada e não
+consertada).
+
+Ordem de trabalho, do maior para o menor retorno:
+
+| lote | o que entrou | qtd |
+|---|---|---|
+| específicos do `cprm-ads` (31–70) | segurança, arquitetura, banco de dados, BI, eng. de software, java, redes, governança, LGPD | 39 |
+| atualidades (`cprm-ads` 21–30) | o bloco mais escasso do banco | 10 |
+| inglês (`nav-med` 41–60) | as 16 que não dependem de figura | 16 |
+| RLM (`cprm-ads` 11–20, `nav-med` 21–33) | | 22 |
+| português (`cprm-ads` 1–10, `nav-med` 1–10) | | 19 |
+
+**Fonte primária antes de escrever**, como manda o `CLAUDE.md`: as dez de
+atualidades eram o ponto mais exposto. Conferidos o acordo de minerais
+EUA–Ucrânia (assinado em **30/04/2025**, com lítio e titânio entre os minerais
+críticos nomeados), o poço **Bumerangue** da bp (Bacia de Santos, anúncio de
+**04/08/2025**, lâmina d'água de 2.372 m), o **Jabuti Acadêmico 2025** de
+História e Arqueologia (Lilia Moritz Schwarcz, *Imagens da branquitude*) e o
+**art. 12 da LGPD**, que a Q38 cobra quase ao pé da letra.
+
+**82 questões de prova ganharam `sub` de quebra** — a etiquetagem subiu de 385
+para **467** das 1.029 (45%). Saíram do zero três microtópicos:
+`backup-recuperacao` (cprm Q35), `atualidades-socioambiental` (ODS, marco
+temporal, pré-sal) e, em inglês, `julgamento-afirmativas` e `verbos-modais`.
+
+Nenhuma divergência nova com o gabarito definitivo do CPRM. Duas observações
+que ficam registradas:
+
+- **`cprm-ads` Q17 depende da figura** (as 17 caixas empilhadas) e o
+  importador não a marcou como tal — o enunciado cita "a Figura", mas a
+  imagem não foi extraída. A explicação foi escrita mesmo assim, pelo caminho
+  que a questão pede (contar as 12 visíveis e subtrair de 17), mas no quiz o
+  item aparece sem o desenho. Conserto de verdade é no `importar_provas.py`,
+  não à mão no JSON.
+- **`cprm-ads` Q59** (Oracle Spatial) tem nomenclatura frouxa no gabarito: o
+  objeto que comporta ilhas (polígonos) e boias (pontos) é uma **coleção
+  heterogênea** (`SDO_GTYPE` terminado em 4, COLLECTION), não um
+  "multipolígono", que por definição é homogêneo. A alternativa marcada é a
+  única viável e o `ans` não foi tocado; a explicação usa o nome correto.
+
 ## 2026-08-07 — CPRM 2025 e NAV Brasil nível médio importadas: +115 questões, o inglês sobe 30%
 
 As duas provas verificadas na busca da véspera entraram no banco. Pool

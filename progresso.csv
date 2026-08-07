@@ -3,7 +3,7 @@ data,dia,semana,foco,tag,secundario,questoes,acertos,feito
 2026-08-04,ter,1,Eng. Software: engenharia de requisitos,eng-software,Ingles: reading comprehension,0,0,0
 2026-08-05,qua,1,"BD: modelo conceitual, logico, fisico; ER",banco-dados,RLM: aritmetica,0,0,0
 2026-08-06,qui,1,"BD: normalizacao 1FN-3FN, integridade referencial",banco-dados,Legislacao: LGPD cap I-II,0,0,0
-2026-08-07,sex,1,"Eng. Software: ageis - Scrum, Kanban, XP, Lean",eng-software,"Atualidades: conceitos de IA, ML",0,0,0
+2026-08-07,sex,1,"Eng. Software: ageis - Scrum, Kanban, XP, Lean",eng-software,"Atualidades: conceitos de IA, ML",0,0,1
 2026-08-08,sab,1,Revisao do caderno de erros + questoes mistas,revisao,Caderno de erros,0,0,0
 2026-08-09,dom,1,SIMULADO 1,simulado,Correcao comentada,0,0,0
 2026-08-10,seg,2,"BD: SQL - DDL, DML, joins, subconsultas",banco-dados,Portugues: sintaxe (periodo composto),0,0,0

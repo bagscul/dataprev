@@ -3444,11 +3444,19 @@
    "Parte-se de uma analogia para relativizar as conclusões a que se pode chegar."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O primeiro parágrafo enfileira fatos observados — chuvas apocalípticas no Rio Grande do Sul, secas extremas no Pantanal e na Amazônia, inundações na Ásia e na Europa, ondas de calor — e só depois conclui que \"algo está profundamente errado no clima planetário\". Do particular observado para a generalização: é indução.",
+  "erradas": {
+   "0": "Descreve o movimento dedutivo, do geral para o particular — exatamente o inverso do parágrafo. É a alternativa que pega quem troca indução por dedução.",
+   "2": "Não há explicação prévia do tema nem hipótese ao final: o parágrafo fecha com uma constatação, não com uma suposição a ser testada.",
+   "3": "O autor não faz um recorte único, e sim acumula casos; além disso, a frase final constata um estado de coisas em vez de fundar uma verdade científica.",
+   "4": "Analogia exigiria comparação entre domínios diferentes, que não aparece — e o parágrafo reforça a conclusão em vez de relativizá-la."
+  },
   "fonte": "FGV cprm-ads Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3463,11 +3471,19 @@
    "Oração subordinada adverbial consecutiva."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A oração introduzida por \"de que\" completa o sentido do substantivo \"dúvida\" — dúvida de quê? —, e não o de um verbo. Termo preposicionado que completa um nome é complemento nominal; em forma de oração, subordinada substantiva completiva nominal.",
+  "erradas": {
+   "0": "Adverbial causal responderia \"por quê?\" e viria por porque, já que, visto que; aqui o conector se prende ao substantivo anterior.",
+   "1": "Objetiva indireta completaria um verbo transitivo indireto (\"necessito de que...\"). O teste é procurar o verbo regente — e não há nenhum antes do \"de que\".",
+   "3": "Adjetiva restritiva seria introduzida por pronome relativo, com antecedente a ser caracterizado; aqui o \"que\" é conjunção integrante e a oração equivale a um substantivo.",
+   "4": "Consecutiva exprimiria consequência e pediria um intensificador correlato (\"tão... que\", \"tanto... que\"), ausente no trecho."
+  },
   "fonte": "FGV cprm-ads Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3482,11 +3498,19 @@
    "a du pla concordância só seria possível se a expressão fosse “grande parte de”."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Na estrutura \"um dos + substantivo plural + que\", a norma admite as duas concordâncias: plural, concordando com \"gases\" (vários gases potencializam, e o metano é um deles), ou singular, concordando com \"um\" (só ele potencializa). O plural é a forma preferida, mas não a única correta.",
+  "erradas": {
+   "0": "\"Obrigatoriamente\" é o absoluto que derruba o item — o plural é preferencial, não imposto pela gramática.",
+   "2": "Não se trata de tolerância do uso popular: as duas formas são amparadas pela norma culta e registradas nas gramáticas.",
+   "3": "Nada no trecho impõe o singular; ao contrário, é justamente a leitura plural que costuma prevalecer.",
+   "4": "\"Grande parte de\" também admite dupla concordância, mas isso não é condição para a estrutura \"um dos que\" — a alternativa inventa uma exclusividade que não existe."
+  },
   "fonte": "FGV cprm-ads Q3",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "concordancia-verbal"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3501,11 +3525,19 @@
    "uma conjunção integrante."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Em \"mostrar-se\", o pronome integra o próprio verbo, usado como pronominal no sentido de \"revelar-se\", \"parecer\". Ele não retoma o sujeito nem indetermina nada: é parte pronominal do verbo, e some se trocarmos por \"parecer\" (\"enfrentar as causas tem parecido uma tarefa complexa\").",
+  "erradas": {
+   "0": "Pronome apassivador exige verbo transitivo direto com sujeito paciente (\"vendem-se casas\"). Aqui o verbo liga o sujeito ao predicativo \"uma tarefa imensamente complexa\".",
+   "1": "Reflexivo implicaria sujeito que pratica e recebe a ação (ele se olha), leitura impossível para \"enfrentar as suas causas\".",
+   "2": "Índice de indeterminação aparece com verbo na 3ª pessoa do singular sem sujeito expresso (\"precisa-se de...\"); aqui o sujeito está claro — enfrentar as suas causas.",
+   "4": "Conjunção integrante é o \"que\" que introduz oração substantiva; o \"se\" pronominal não conecta orações."
+  },
   "fonte": "FGV cprm-ads Q4",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3520,8 +3552,13 @@
    "aumentar - aumento"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Derivação regressiva forma substantivo a partir do verbo pela redução da forma verbal: queimar → queima, combater → combate, estudar → estudo, aumentar → aumento. \"Libera\" não é palavra nova: é a própria forma verbal flexionada na 3ª pessoa, e por isso não há derivação alguma.",
+  "erradas": {
+   "0": "\"Queima\" é substantivo deverbal — o texto mesmo o usa em \"a queima de petróleo e seus derivados\".",
+   "1": "\"Combate\" também nasce por regressão, e aparece no último parágrafo em \"um combate firme do desmatamento\".",
+   "3": "\"Estudo\" é o deverbal de estudar, presente em \"após décadas de estudos e medições\".",
+   "4": "\"Aumento\" é o deverbal de aumentar, que o texto emprega em \"investindo no aumento da produtividade\"."
+  },
   "fonte": "FGV cprm-ads Q5",
   "requer_imagem": false,
   "anulada": false
@@ -3539,11 +3576,19 @@
    "Função subjetiva, devido às inúmeras inscrições de ponto de vista do autor, como “apocalípticas” e “mortíferas”."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O foco do texto está no referente: causas do aquecimento global, dados da pesquisa Datafolha, a particularidade da matriz brasileira de emissões. Quando o conteúdo se sobrepõe ao emissor e à forma, a função predominante é a referencial (ou denotativa).",
+  "erradas": {
+   "0": "A função fática cuida do contato entre emissor e receptor (\"alô?\", \"entende?\"); a justificativa apresentada, de apelo ao leitor, descreveria a conativa — a alternativa se contradiz.",
+   "1": "Metalinguística é a linguagem falando de si mesma, e o texto em nenhum momento discute seus próprios procedimentos de escrita.",
+   "2": "A conativa se centra no receptor, com imperativos e vocativos; e a justificativa dada (canal de recepção) é a definição da fática, o que derruba o item duas vezes.",
+   "4": "Adjetivos avaliativos como \"apocalípticas\" e \"mortíferas\" existem, mas são pontuais e não deslocam a predominância — além disso, o nome consagrado da função centrada no emissor é emotiva ou expressiva, não \"subjetiva\"."
+  },
   "fonte": "FGV cprm-ads Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3558,11 +3603,19 @@
    "Segundo a pesquisa Datafolha, 77% da população brasileira vivenciou recentemente algum evento desse tipo."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "\"Felizmente\" não modifica o verbo: comenta o enunciado inteiro e revela a avaliação de quem escreve. \"Curiosamente\", em \"o Brasil curiosamente desponta\", faz exatamente o mesmo — é modalizador de atitude, e não circunstância do processo.",
+  "erradas": {
+   "1": "\"Amplamente\" intensifica o adjetivo em \"amplamente baseada no petróleo\": advérbio de intensidade, sem juízo sobre o fato.",
+   "2": "\"Não\" é advérbio de negação, operador lógico que inverte o valor da afirmação e nada avalia.",
+   "3": "\"Como\" nesse trecho introduz comparação (\"como nas outras grandes economias\"), e sequer é modalizador.",
+   "4": "\"Recentemente\" situa o fato no tempo — circunstância temporal, sem opinião embutida."
+  },
   "fonte": "FGV cprm-ads Q7",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3577,11 +3630,19 @@
    "peculiar."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo: procura-se o termo que não serve de sinônimo. \"Singular\" quer dizer único, fora do comum, distinto; \"prosaico\" significa o oposto — trivial, banal, sem nada de notável.",
+  "erradas": {
+   "1": "\"Própria\", no sentido de característica ou peculiar a alguém, cabe no lugar de singular.",
+   "2": "\"Particular\" traduz a ideia de específico, que é o núcleo do sentido em jogo.",
+   "3": "\"Distinta\" carrega o valor de diferenciada, coerente com o destaque que o texto dá ao caso brasileiro.",
+   "4": "\"Peculiar\" é o sinônimo mais direto de singular e por isso ficaria estranho como resposta de um comando negativo."
+  },
   "fonte": "FGV cprm-ads Q8",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3596,11 +3657,19 @@
    "à medida que."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "\"Por mais que\" introduz concessão: admite um fato que contraria a expectativa criada para a oração principal. \"Conquanto\" equivale a \"embora\" e é a única conjunção concessiva da lista.",
+  "erradas": {
+   "0": "\"Porquanto\" é causal/explicativa (vale por \"porque\"). A semelhança gráfica com conquanto é exatamente a armadilha montada aqui.",
+   "2": "\"Dado que\" também exprime causa, e trocaria a relação de contraste por uma de fundamento.",
+   "3": "\"Como\" no início da oração costuma valer por causa (\"como chovia, ficamos\") ou por comparação, nunca por concessão.",
+   "4": "\"À medida que\" é proporcional: marca duas ações que progridem juntas, o que não é o caso do trecho."
+  },
   "fonte": "FGV cprm-ads Q9",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3615,11 +3684,19 @@
    "Média."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Petróleo, bênção, agronegócio e média são paroxítonas terminadas em ditongo, e é essa a regra que as acentua. \"Raízes\" foge disso: o \"i\" tônico forma hiato com a vogal anterior e fica sozinho na sílaba (ra-í-zes), que é a regra do hiato.",
+  "erradas": {
+   "0": "\"Petróleo\" termina no ditongo crescente -eo e é paroxítona — mesma regra das outras três.",
+   "1": "\"Bênção\" é paroxítona terminada no ditongo -ão; o til marca nasalidade, e quem responde pela acentuação é o circunflexo.",
+   "3": "\"Agronegócio\" fecha em -io, ditongo crescente, em palavra paroxítona.",
+   "4": "\"Média\" repete o padrão com o ditongo -ia, e é o exemplo mais simples do grupo."
+  },
   "fonte": "FGV cprm-ads Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ortografia"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -9300,11 +9377,19 @@
    "O uso do presente no título revela uma inadequação linguística, já que os fatos narrados no corpo do texto ocorreram anteriormente."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "É o chamado presente jornalístico: o título usa o presente para aproximar o fato do leitor e criar efeito de atualidade, enquanto o corpo da notícia narra tudo no pretérito (\"realizou\", \"foi presidida\"). O contraste entre os dois tempos é proposital e característico do gênero.",
+  "erradas": {
+   "1": "O fato está concluído — a cerimônia ocorreu em 10/02 e a publicação é do dia seguinte. O presente aqui não marca ação inacabada.",
+   "2": "Simultaneidade real com a leitura é impossível numa notícia sobre evento já ocorrido; a alternativa toma o efeito estilístico por tempo cronológico.",
+   "3": "Ação habitual seria algo como \"o Destacamento troca de comandante todo ano\". O título relata um episódio único, com data determinada.",
+   "4": "Não há inadequação alguma: o uso é consagrado no jornalismo e produz sentido; considerá-lo erro é justamente ignorar a convenção do gênero."
+  },
   "fonte": "FGV nav-med Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9319,11 +9404,19 @@
    "divulgar eventos gratuitos realizados na capital paulista."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Com sujeito do tipo agenda, plano ou edital, contemplar vale por incluir, abranger, prever. É polissemia resolvida pelo contexto — e a banca conta com o candidato que decide pelo sentido mais frequente da palavra.",
+  "erradas": {
+   "0": "Admirar atentamente é a acepção primeira de contemplar, mas ela exige um sujeito que olha; uma agenda não admira nada.",
+   "2": "Financiar corresponde a \"contemplar com recursos\", acepção que depende de um complemento de benefício ausente na frase.",
+   "3": "Avaliar não é acepção de contemplar em português — a alternativa simplesmente atribui ao verbo um sentido que ele não tem.",
+   "4": "Divulgar é efeito da agenda, não o significado do verbo: o que ela faz na frase é reunir as iniciativas, e a divulgação vem por consequência."
+  },
   "fonte": "FGV nav-med Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9338,8 +9431,13 @@
    "pela combinação de prefix o e sufixo, criando uma expressão que valoriza práticas religiosas de ajuda ao próximo."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O prefixo des- exprime negação ou ação contrária: descaridades são atos sem caridade. No contexto — \"Deus estava vendo tudo e não tolerava descaridades\" — o neologismo reforça a crítica à falta de solidariedade daquele lugar.",
+  "erradas": {
+   "0": "Des- não intensifica; intensificação seria papel de super-, ultra- ou arqui-, e ainda inverteria o sentido do trecho.",
+   "1": "Repetição é a ideia de re-, como em rever e refazer. Nada em des- indica frequência.",
+   "2": "O sufixo -dade realmente forma substantivo abstrato, mas ele já está em \"caridade\": o que cria a palavra nova é o prefixo acrescentado depois.",
+   "4": "Valorizar práticas de ajuda ao próximo contraria o texto, que usa o termo para nomear justamente a ausência dessas práticas."
+  },
   "fonte": "FGV nav-med Q3",
   "requer_imagem": false,
   "anulada": false
@@ -9357,11 +9455,19 @@
    "criticar o modo como os formulários do censo classificam as ocupações exercidas pelas mulheres."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O marido fica \"mais alto\" e precisa \"baixar a cabeça\" para falar com a esposa, que aceita \"lá de baixo\": a oposição espacial materializa uma hierarquia e a desvalorização da personagem feminina, confirmada pelo \"Do lar\" que ela declara ao censo. É metáfora de poder, não descrição física.",
+  "erradas": {
+   "0": "Apresentar a diferença como consequência natural do casamento é repetir o discurso que o excerto ironiza; o texto denuncia a hierarquia, não a naturaliza.",
+   "2": "Eurídice de fato acha que \"não valia muito\", mas o trecho liga isso ao lugar que lhe é socialmente atribuído, e não a traços pessoais dela.",
+   "3": "Não há aproximação emocional: o movimento descrito é de distanciamento e submissão, com o marido falando de cima para baixo.",
+   "4": "O formulário do censo é ilustração pontual; a crítica do trecho é mais ampla e recai sobre a relação entre os cônjuges."
+  },
   "fonte": "FGV nav-med Q4",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9376,11 +9482,19 @@
    "Quando as línguas de sinais garantirem maior aceitação, especialmente em círculos escolares, registrar -se-á aumento no vocabulário denotando referentes técnicos."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "\"À medida que\" exprime proporcionalidade: duas grandezas que avançam juntas. A estrutura correlata \"quanto mais... mais...\" é a paráfrase exata desse valor, e é a única opção que preserva a progressão simultânea.",
+  "erradas": {
+   "0": "\"Embora\" é concessivo: transformaria o aumento do vocabulário em fato que contraria a maior aceitação, invertendo a lógica do período.",
+   "1": "\"Como\" no início da oração vale por causa. Fica perto do sentido, mas troca a progressão contínua por uma relação pontual de causa e efeito.",
+   "3": "\"Ainda que\" repete o valor concessivo de embora, com o mesmo estrago no sentido.",
+   "4": "\"Quando\", com verbos no futuro, joga tudo para o porvir e apresenta como ainda não realizado um processo que o texto descreve em curso."
+  },
   "fonte": "FGV nav-med Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9395,11 +9509,19 @@
    "“acreditar” e “que”."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Cada preposição é exigida por um termo regente anterior: \"acreditar em\" (regência verbal, verbo transitivo indireto) e \"certeza de\" (regência nominal, o substantivo pede complemento preposicionado). Quem manda na preposição é sempre a palavra que vem antes, nunca o conector que abre a oração seguinte.",
+  "erradas": {
+   "0": "\"Completamente\" é advérbio e não rege complemento preposicionado; ele apenas modifica o verbo acreditar.",
+   "1": "\"Como\" e \"que\" iniciam as orações completivas, mas são introdutores — a preposição já vinha exigida pelo termo anterior a eles.",
+   "2": "Acumula os dois erros: mantém o advérbio como regente e ainda entrega ao \"que\" a preposição que pertence a \"certeza\".",
+   "4": "Acerta o primeiro par e erra o segundo: em \"a certeza de que\", quem pede o \"de\" é o substantivo certeza."
+  },
   "fonte": "FGV nav-med Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "regencia"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9414,11 +9536,19 @@
    "a tentativa de representar dificuldades de fala causadas pela limitação vocabular das crianças pequenas."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "\"Pi-to-qui-nho\" e \"pe-ti-ti-ti-ca\" reproduzem o modo como se fala com bebê: diminutivos afetivos, sílabas alongadas, repetição lúdica. O narrador incorpora esse registro justamente para tratar da memória da primeira infância.",
+  "erradas": {
+   "1": "Não há termo técnico algum — as formas são coloquiais e afetivas, o oposto do vocabulário científico sobre aquisição da linguagem.",
+   "2": "A norma-padrão formal não admite essas grafias silabadas; a alternativa é desmentida pelo próprio exemplo que cita.",
+   "3": "Não são regionalismos: nada ali marca origem geográfica ou social, apenas o registro afetivo dirigido à criança.",
+   "4": "Inverte quem fala: a dificuldade não é da criança, e sim a imitação, pelo adulto, do jeito de conversar com ela."
+  },
   "fonte": "FGV nav-med Q7",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9433,8 +9563,13 @@
    "emprega linguagem formal para demonstrar a eficiência real do projeto apresentado."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "\"Solucionática\" combina \"solução\" com a terminação de \"problemática\", pondo no molde de uma palavra a ideia contrária da outra. O humor nasce dessa substituição inesperada — anuncia-se solução exatamente onde se esperava o problema.",
+  "erradas": {
+   "0": "Não há crítica a tecnologia importada: o efeito cômico está na palavra criada, não no objeto representado.",
+   "2": "Não é erro de ortografia nem marca de fala popular; é criação lexical intencional, montada por analogia com uma palavra existente.",
+   "3": "Não se trata de expressão regional preexistente — o termo nasce ali, na charge, e não teria sentido fora dela.",
+   "4": "A palavra não pertence ao registro formal, e a charge não sustenta eficiência real alguma: o tom é humorístico do começo ao fim."
+  },
   "fonte": "FGV nav-med Q8",
   "requer_imagem": true,
   "anulada": false
@@ -9452,11 +9587,19 @@
    "Expressa desprezo de um personagem pelo outro."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "\"Cabra\", no Nordeste, é tratamento genérico para sujeito, indivíduo — regionalismo consolidado, e é assim que João Grilo se dirige a Chicó. Suassuna constrói boa parte do humor da peça com esse registro regional.",
+  "erradas": {
+   "1": "O sentido literal não cabe: quem é interpelado é Chicó, uma pessoa, e não o animal.",
+   "2": "Não há parentesco entre os dois personagens — são sócios e parceiros de trapaça.",
+   "3": "O termo não designa ofício algum; profissão do sertão seria vaqueiro ou cabreiro, palavras diferentes.",
+   "4": "Há reprovação na fala, mas ela vem do adjetivo \"safado\" e do tom, não de \"cabra\", que sozinho é neutro. É a quase certa, que empresta ao substantivo o valor do adjetivo vizinho."
+  },
   "fonte": "FGV nav-med Q9",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9471,11 +9614,19 @@
    "comparativa."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Os dois pontos abrem o esclarecimento do que acabou de ser negado: depois de dizer que o espaço de memória \"é mais do que um simples local geográfico ou uma construção física\", o texto explica o que ele é — \"um repositório de histórias, emoções e experiências\". Valor explicativo.",
+  "erradas": {
+   "0": "Há de fato três substantivos em série, mas eles vêm dentro da definição; os dois pontos anunciam o esclarecimento, e não uma lista de itens.",
+   "1": "Conclusão exigiria uma dedução do que veio antes, do tipo introduzido por portanto ou logo; o que segue é definição, não consequência.",
+   "3": "Exemplificação apresentaria casos concretos de lugares de memória, e o texto não cita nenhum.",
+   "4": "A comparação com o \"simples local geográfico\" está antes dos dois pontos — é justamente a frase que eles se encarregam de esclarecer."
+  },
   "fonte": "FGV nav-med Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pontuacao"
+  ]
  },
  {
   "prova": "nav-med",
