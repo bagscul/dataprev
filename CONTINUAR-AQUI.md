@@ -38,9 +38,37 @@ Números de referência (medidos em 07/08, não precisa remedir):
 
 ---
 
-## 1. Pendência 1 — explicar as 86 questões novas
+## 1. Pendência 1 — explicar as 86 questões novas ✅ FEITA em 07/08/2026
 
-### O problema
+**Resolvida.** 85 das 86 foram explicadas (`why` + `erradas` + `sub`), e o
+`./valida.py` saiu de 172 para **2 avisos**. Os 2 que sobraram são a única
+questão deixada de fora de propósito:
+
+> **`nav-tec` Q58 — divergência real de gabarito, não conserto silencioso.**
+> O enunciado descreve dependência transitiva (`Nome_Fabricante` →
+> `ID_Fabricante` → `ID_Veiculo`) e pede o que remover para atingir a 3FN: isso
+> é a letra **E**. O gabarito oficial da FGV marca **C** ("superchave que viola
+> as invariantes da Forma Normal de Boyce-Codd"), que não descreve o caso.
+> Conferido: o caderno é TIPO 1 e o gabarito lido é o do TIPO 1 (as demais
+> questões da mesma faixa batem — Q57 state locking C, Q59 ISO C, Q60 POST A),
+> então não é desalinhamento de importação. O `ans` **não** foi alterado e a
+> questão segue sem explicação. O gabarito publicado é o **preliminar**
+> (`nav-brasil-gabaritos-publicacao-v2.pdf`); quando sair o definitivo, reconferir
+> em <https://conhecimento.fgv.br/concursos/navbrasil26> — se mudar para E, é só
+> escrever a explicação; se continuar C, a questão vale como anotada.
+
+Também foram consertados dois defeitos de importação achados no caminho: os
+textos-base compartilhados pelas questões 4–5 e 6–7 de português tinham ficado
+grudados na alternativa (E) da questão anterior (os quatro itens estavam
+irrespondíveis no quiz), e o cabeçalho "Informática" do PDF havia colado na
+última alternativa da Q28 de RLM.
+
+**Limitação conhecida que sobrou:** o `pdftotext` não preserva sublinhado, então
+questões que dizem "o termo sublinhado" (português Q6, Q17, Q19) perderam a
+marcação. As explicações foram escritas cobrindo as cinco alternativas, o que
+mantém o item utilizável, mas o enunciado continua menos preciso que o do papel.
+
+### O problema (histórico)
 
 As 89 questões da NAV Brasil entraram com gabarito oficial, mas **sem `why` e
 sem `erradas`**. Todas as outras sete provas do banco têm explicação completa —

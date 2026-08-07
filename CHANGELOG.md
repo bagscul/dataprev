@@ -2,6 +2,32 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — as 86 questões da NAV Brasil ganham explicação (`valida.py`: 172 → 2 avisos)
+
+As 89 questões importadas da NAV Brasil entraram com gabarito oficial mas sem
+`why` e sem `erradas` — o quiz corrigia, e não ensinava. Agora **85 das 86
+explicáveis** têm explicação completa, no padrão do resto do banco: `why`
+analítico e uma entrada de `erradas` para cada alternativa incorreta, com o
+mecanismo do distrator tecido na frase (inversão de par, absoluto,
+extrapolação, quase-certa). Todas ganharam `sub`, com duas exceções de RLM
+(problema de álgebra de dígitos e de idades) para as quais o vocabulário de
+`subtags.py` não tem microtópico — melhor sem etiqueta do que com etiqueta
+errada poluindo o `./fraquezas.py`.
+
+**Uma questão ficou de fora, de propósito:** `nav-tec` Q58 (3FN). O gabarito
+oficial da FGV (TIPO 1, conferido no PDF) marca **C** — "superchave que viola
+as invariantes lógicas da Forma Normal de Boyce-Codd" —, mas o enunciado
+descreve dependência transitiva (`Nome_Fabricante` → `ID_Fabricante` →
+`ID_Veiculo`), que é a letra **E**. O `ans` não foi alterado e a questão segue
+sem explicação para não ensinar a versão errada. O gabarito publicado ainda é o
+**preliminar**; vale reconferir quando sair o definitivo.
+
+Dois defeitos de importação corrigidos no caminho: o texto-base compartilhado
+pelas questões 4–5 e 6–7 de português tinha ficado grudado na alternativa (E)
+da questão anterior, deixando quatro itens sem o texto que eles pedem para
+serem respondidos; e o cabeçalho de seção "Informática" do PDF havia colado na
+última alternativa da Q28 de RLM.
+
 ## 2026-08-07 — NAV Brasil 2026 importada: +89 questões reais e o Módulo II fecha o déficit
 
 Duas provas da FGV aplicadas em **02/08/2026** (NAV Brasil, Edital 01/2026):

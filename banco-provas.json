@@ -6788,11 +6788,19 @@
    "Facade."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Interface incompatível entre um emissor que já existe e não pode ser tocado e um consumidor que espera outro formato é a definição do Adapter: ele traduz o objeto ASTERIX para a sintaxe XML do WXXM sem alterar as classes originais. A FGV monta o cenário inteiro em torno de duas expressões do padrão — “sem alterar as classes originais” e “ocultando a incompatibilidade de interfaces”.",
+  "erradas": {
+   "0": "Strategy também vive de intercambialidade, mas de algoritmos: encapsula variações de um mesmo comportamento para trocar em tempo de execução, e não converte o formato do dado entre duas interfaces alheias.",
+   "2": "Observer resolve notificação um-para-muitos; o módulo até poderia se inscrever para receber os alvos, mas continuaria recebendo objetos ASTERIX — o problema do enunciado é de formato, não de disparo de evento.",
+   "3": "Singleton é criacional e responde “quantas instâncias existem”, pergunta ortogonal à tradução entre dois padrões de mensagem.",
+   "4": "Facade é a quase-certa do item, por também ser estrutural e por também “esconder” algo: ele simplifica um subsistema complexo atrás de uma interface única, mas não adapta uma interface existente a um contrato incompatível."
+  },
   "fonte": "FGV nav-eng Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "padroes-projeto"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6807,11 +6815,19 @@
    "Gravação Fantasma ( Phantom Write ) e nível Snapshot Isolation."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Reexecutar a mesma consulta dentro da transação e enxergar uma LINHA NOVA, inserida e confirmada por outra, é leitura fantasma: a anomalia atinge o conjunto de linhas que satisfaz o predicado, não o valor de um registro. Na tabela ANSI SQL, o único nível que a elimina por completo é o Serializable.",
+  "erradas": {
+   "0": "Leitura suja é enxergar dado ainda não confirmado; aqui T2 deu commit, e o Read Committed já barraria a suja de qualquer forma.",
+   "1": "É a quase-certa e o distrator mais perigoso: a não-repetível também aparece ao reler, só que o que muda é o valor de uma linha já existente (UPDATE/DELETE). Como surgiu linha nova, o Repeatable Read não resolve.",
+   "3": "Perda de atualização é a sobrescrita de uma gravação por outra concorrente, e o Read Uncommitted é o nível mais permissivo do padrão — não impede fenômeno nenhum.",
+   "4": "“Gravação fantasma” não é anomalia do padrão ANSI, e o Snapshot Isolation sequer está entre os quatro níveis que ele define."
+  },
   "fonte": "FGV nav-eng Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "concorrencia"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6826,11 +6842,19 @@
    "Bi-directional Traceability."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Rastreabilidade bidirecional é a que percorre a cadeia nos dois sentidos: da origem do requisito até a arquitetura, o código e os testes, e de qualquer artefato de volta ao requisito que o motivou. O enunciado pede exatamente os dois sentidos, que é o que a homologação regulatória cobra.",
+  "erradas": {
+   "0": "Backward cobre só metade do caminho — do artefato de volta à origem — e não sustenta a pergunta “que código nasceu deste requisito?”.",
+   "1": "A horizontal liga artefatos de um mesmo nível de abstração (requisito com requisito, teste com teste), e o cenário atravessa níveis diferentes.",
+   "2": "A vertical é a quase-certa, porque de fato atravessa níveis: só que o item enfatiza o duplo sentido dos elos, e é isso que dá nome ao tipo pedido.",
+   "3": "Forward é a outra metade, da origem em direção à implementação; sozinha não permite voltar do código ao requisito de segurança."
+  },
   "fonte": "FGV nav-eng Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6845,11 +6869,19 @@
    "altera dinamicamente o comportamento de bytecode compilado para emular o comportamento de um agente invasor."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O SAST analisa código-fonte ou bytecode sem executar a aplicação, enxergando todos os caminhos — inclusive os que nenhuma requisição externa alcançou em homologação. O DAST não ter conseguido explorar a falha não prova ausência de vulnerabilidade: prova só que aquele caminho não foi exercitado.",
+  "erradas": {
+   "1": "Executar a aplicação em contêiner sob estresse descreve teste dinâmico; o SAST não chega a rodar o software.",
+   "2": "Monitorar sessão HTTPS ativa é observação em tempo de execução, ou seja, DAST — a alternativa inverte as duas técnicas.",
+   "3": "Nenhuma ferramenta dispensa regras e heurísticas; o SAST é conhecido justamente pelo volume de falso positivo que elas produzem, e o verbo “dispensa” é o exagero do distrator.",
+   "4": "Alterar bytecode em tempo de execução para emular invasor é instrumentação dinâmica (IAST/DAST), o oposto de análise estática."
+  },
   "fonte": "FGV nav-eng Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "desenvolvimento-seguro"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6864,11 +6896,19 @@
    "Níveis de Capacidade de Processo."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "No COBIT 2019 os fatores de design são os parâmetros de contexto — estratégia, metas corporativas, perfil de risco, cenário de ameaças, requisitos de conformidade, papel da TI, modelo de sourcing, tamanho da empresa — que calibram a priorização dos objetivos e customizam o sistema de governança. É a principal novidade da versão 2019 frente ao COBIT 5.",
+  "erradas": {
+   "0": "Os componentes (processos, estruturas organizacionais, cultura, fluxos de informação, pessoas, serviços e infraestrutura) são o que compõe o sistema de governança — resultado da calibração, não o parâmetro que a faz.",
+   "2": "Área de foco é um tema específico de governança (nuvem, DevOps, segurança, risco) tratado por um conjunto de objetivos: recorte de assunto, não de contexto organizacional.",
+   "3": "“Áreas de visão do alinhamento de TI” não é categoria do COBIT 2019 — nome fabricado com vocabulário do framework.",
+   "4": "Nível de capacidade mede o quanto um processo é bem executado, na escala de 0 a 5; avalia desempenho, não descreve o cenário da instituição."
+  },
   "fonte": "FGV nav-eng Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "cobit-2019"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6883,11 +6923,19 @@
    "15 semanas."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Lei de Little: WIP = vazão × tempo de ciclo, logo tempo de ciclo = WIP / vazão = 12 / 3 = 4 semanas. A unidade sai da vazão — como a entrega é medida por semana de calendário, o ciclo vem em semanas.",
+  "erradas": {
+   "0": "36 semanas vem de multiplicar 12 × 3 em vez de dividir; é a inversão clássica da fórmula, e a banca sempre deixa esse produto no cardápio.",
+   "1": "0,25 semana inverte o quociente (3/12) e responde outra pergunta: quanto de vazão cabe em cada item, não quanto tempo o item leva para atravessar o fluxo.",
+   "3": "9 semanas sai de subtrair 12 menos 3, operação sem sentido dimensional — WIP é quantidade de itens e vazão é itens por semana.",
+   "4": "Somar os dois números esbarra no mesmo problema: itens e itens/semana são grandezas diferentes e não se somam."
+  },
   "fonte": "FGV nav-eng Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6902,11 +6950,19 @@
    "garantir a integridade referencial distribuída por intermédio de protocolos síncronos bidirecionais de duas fases (2PC)."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O que separa o broker de log distribuído do ESB é o modelo de consumo: a mensagem permanece no log imutável e é o consumidor quem guarda o próprio offset de leitura. Sem rastrear estado por cliente, o broker sustenta vazão alta, releitura do histórico e vários consumidores independentes sobre o mesmo fluxo de radar.",
+  "erradas": {
+   "1": "SOAP síncrono é justamente o mundo pesado que os arquitetos rejeitaram; o broker é agnóstico ao formato do payload e não impõe conversão.",
+   "2": "Broker é software de camada de aplicação — rotear pacote em switch gerenciável pertence a outra camada inteira do modelo.",
+   "3": "Centralizar orquestração e lógica de negócio é a marca do ESB: a alternativa descreve o que foi descartado, invertendo os polos da comparação.",
+   "4": "O 2PC é protocolo de transação distribuída síncrona, o oposto do desacoplamento assíncrono buscado; broker de log trabalha com garantias de entrega e ordenação por partição, não com commit em duas fases."
+  },
   "fonte": "FGV nav-eng Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6940,11 +6996,19 @@
    "Gestão de Incidentes de Segurança Cibernética."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Levantar ativos, traçar fronteiras de confiança, desenhar diagramas de fluxo de dados e enumerar ameaças pelo STRIDE, ainda na fase de design e antes de existir código, é modelagem de ameaças — a atividade preventiva por excelência do Secure SDLC.",
+  "erradas": {
+   "0": "Pentest de caixa preta ataca um sistema já em execução e sem conhecimento interno; não cabe antes da primeira linha de código.",
+   "1": "O DAST também exige aplicação rodando, e o enunciado situa a atividade explicitamente na fase de design.",
+   "3": "Auditoria de conformidade é posterior à implantação e verifica aderência a controles; não simula a anatomia do ataque para orientar o projeto.",
+   "4": "Gestão de incidentes é reativa, entra depois que o ataque acontece — está no extremo oposto do ciclo."
+  },
   "fonte": "FGV nav-eng Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "desenvolvimento-seguro"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6959,11 +7023,19 @@
    "Funciona de forma ideal quando os requisitos técnicos de comunicação via satélite são voláteis e mudam semanalmente."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "No Cascata as fases são sequenciais e a validação só chega perto do fim; erro de especificação descoberto na fase de testes obriga a voltar ao início da cadeia, e o custo do retrabalho cresce quanto mais tarde o defeito aparece. É a desvantagem que a banca cobra junto com a vantagem (previsibilidade) já descrita no cenário.",
+  "erradas": {
+   "0": "Redefinir escopo a cada iteração quinzenal descreve processo ágil/iterativo; o Cascata congela o escopo na fase de requisitos justamente para viabilizar a homologação regulatória.",
+   "2": "Entrega de incremento operacional desde o primeiro mês é de modelo incremental e do Scrum — no Cascata o software executável só aparece depois da implementação.",
+   "3": "Inverte o modelo: o Cascata é o mais documental de todos, com artefato aprovado servindo de critério de passagem entre fases.",
+   "4": "Requisito volátil é exatamente o cenário em que o Cascata falha; a alternativa contradiz a premissa do próprio enunciado, que descreve requisitos estáveis e rígidos."
+  },
   "fonte": "FGV nav-eng Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-de-processo"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6978,11 +7050,19 @@
    "O isolamento entre as camadas impede que o sistema funcione em servidores distintos, exigindo uma implantação monolítica."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Na arquitetura em camadas a dependência é unidirecional: apresentação usa negócio, negócio usa persistência. Manter a lógica de negócio livre dos detalhes de interface é o que permite trocar a UI — web, desktop, mobile — sem tocar nas regras.",
+  "erradas": {
+   "0": "Apresentação conversando direto com o driver de banco é o rompimento clássico da hierarquia e mata a separação de conceitos que o time foi buscar.",
+   "1": "Se mexer na persistência obriga a reescrever toda a interface, a separação falhou; o objetivo do padrão é exatamente conter o impacto na camada vizinha.",
+   "3": "Acesso irrestrito de qualquer camada a qualquer outra descreve um sistema sem camadas — o padrão vive da restrição de dependência, e o absoluto “sem respeitar a hierarquia” denuncia o distrator.",
+   "4": "Camada é divisão lógica e não impede distribuir os níveis em servidores distintos; a alternativa confunde camada (lógica) com nível de implantação (física)."
+  },
   "fonte": "FGV nav-eng Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -6997,11 +7077,19 @@
    "A classe deve receber ainda mais responsabilidades, como autenticação de usuários, para garantir que o código fique unificado."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Uma classe que lê arquivo de configuração, imprime relatório e conversa com o banco acumula responsabilidades sem relação entre si: isso é baixa coesão, e viola o Princípio da Responsabilidade Única — uma classe deve ter um só motivo para mudar. A correção é extrair classes menores e focadas.",
+  "erradas": {
+   "0": "Alta coesão é o contrário do descrito: significa que os membros da classe colaboram para uma única finalidade, e não que uma classe dá conta de tudo.",
+   "2": "Acoplamento não desaparece por centralização — a classe continua dependendo de arquivo, impressão e banco; as dependências só ficaram escondidas dentro das 5.000 linhas.",
+   "3": "Confunde modularidade com concentração: modularidade é decompor o sistema em partes com interface bem definida, e um arquivo único gigante é o antônimo disso.",
+   "4": "Ampliar as responsabilidades agrava o defeito; é o distrator de inversão, que oferece como solução exatamente a causa do problema."
+  },
   "fonte": "FGV nav-eng Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "design-software"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7016,11 +7104,19 @@
    "O sistema deve disponibilizar um filtro de busca para localizar controladores aptos com base no tipo de habilitação de radar."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Requisito não funcional descreve COMO o sistema se comporta — atributos de qualidade e restrições globais. Criptografia AES-256 (segurança) e resposta em menos de 2 segundos (desempenho) são qualidades do sistema, não funções entregues ao usuário.",
+  "erradas": {
+   "0": "Cadastrar controlador com CPF, nome e licença da ANAC é função do sistema: entra dado, o sistema faz algo com ele.",
+   "1": "Emitir alerta ao ultrapassar o limite legal de horas parece qualidade por citar norma, mas descreve comportamento observável disparado por uma condição de negócio — funcional.",
+   "3": "Gerar relatório mensal é funcionalidade; o formato PDF é detalhe da saída, não atributo de qualidade.",
+   "4": "Disponibilizar filtro de busca é serviço oferecido ao usuário. A FGV disfarça requisito funcional com vocabulário técnico, mas o teste continua sendo “o sistema faz o quê” contra “o sistema é como”."
+  },
   "fonte": "FGV nav-eng Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7035,11 +7131,19 @@
    "Modelo Conceitual do Banco de Dados Relacional."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A matriz de rastreabilidade é o artefato que liga cada requisito à sua origem, ao projeto, ao código e aos casos de teste, permitindo navegar para a frente (requisito → teste) e para trás (defeito → requisito que o originou). É literalmente a pergunta feita pela diretoria.",
+  "erradas": {
+   "0": "O diagrama de implantação mostra nós físicos e artefatos executáveis distribuídos na infraestrutura, não a linhagem de um requisito.",
+   "2": "Gantt é ferramenta de cronograma: informa quando o trabalho acontece, não qual requisito originou qual teste.",
+   "3": "Plano de contas trata de custo e sequer pertence à engenharia de requisitos — é o distrator inventado do item.",
+   "4": "Modelo conceitual descreve entidades e relacionamentos do domínio de dados; cobre o dado, não o vínculo requisito-código-teste."
+  },
   "fonte": "FGV nav-eng Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7054,11 +7158,19 @@
    "Teste de Carga, projetado para estressar a infraestrutura de servidores de rede."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Teste de unidade exercita a menor parte testável do software — método, função ou classe — isolada de banco, rede e demais módulos, que quando necessários viram dublês (mock/stub). É exatamente o escopo descrito.",
+  "erradas": {
+   "0": "Teste de sistema exercita a aplicação inteira já integrada, em ambiente próximo do de produção: o oposto do isolamento pedido.",
+   "1": "O teste de integração começa onde o unitário para — verifica a comunicação entre módulos que já passaram isoladamente.",
+   "3": "Aceitação é validação conduzida pelo usuário contra a necessidade de negócio, e não verificação técnica de uma função de cálculo.",
+   "4": "Carga é teste não funcional de desempenho sob volume; nada diz sobre a correção do cálculo da distância entre coordenadas."
+  },
   "fonte": "FGV nav-eng Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "testes"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7073,11 +7185,19 @@
    "Product Backlog Refinement."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O Sprint Planning abre a Sprint: o time inspeciona o Product Backlog, define a Meta da Sprint e monta o plano de trabalho — o que será entregue e como. O Guia do Scrum separa os eventos por propósito, e é por esse propósito que a banca cobra.",
+  "erradas": {
+   "0": "A Daily inspeciona o progresso rumo à Meta e replaneja o dia; acontece dentro da Sprint, não a inicia.",
+   "1": "A Retrospectiva encerra a Sprint olhando para o processo — pessoas, interações e ferramentas —, não para o que será construído a seguir.",
+   "2": "A Review também fica no fim e inspeciona o Incremento com os stakeholders; ela pode alimentar o Backlog, mas quem converte isso no plano da iteração seguinte é o Planning.",
+   "4": "O Refinamento é a quase-certa: mexe no Product Backlog, só que como atividade contínua de detalhar e ordenar itens, sem time-box próprio e sem produzir a Meta da Sprint."
+  },
   "fonte": "FGV nav-eng Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7092,11 +7212,19 @@
    "Devem ser criadas tabelas separadas para cada linha inserida, garantindo que o banco não cresça horizontalmente ao longo do tempo."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A 2FN exige duas coisas ao mesmo tempo: já estar na 1FN e não ter dependência parcial — nenhum atributo não chave pode depender de apenas parte de uma chave primária composta. Detalhe que a banca adora: onde a chave é simples, a 2FN é satisfeita automaticamente.",
+  "erradas": {
+   "1": "Valor atômico, sem grupo repetitivo, é a definição da 1FN; a alternativa desce um degrau na escada das formas normais.",
+   "2": "Descreve a 3FN (dependência transitiva) e ainda inverte a ordem — é a 3FN que exige estar na 2FN, e não o contrário.",
+   "3": "Chave estrangeira apontando para primária é integridade referencial; o tipo autoincremento é escolha de implementação, sem qualquer relação com forma normal.",
+   "4": "Criar uma tabela por linha não é normalização nem faz sentido no modelo relacional — é o distrator absurdo do item."
+  },
   "fonte": "FGV nav-eng Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "normalizacao"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7111,11 +7239,19 @@
    "ALTER TABLE Logs_Antigos_2020 DROP ALL;"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "DROP TABLE é o comando DDL que remove o objeto inteiro: estrutura, dados, índices e restrições. A distinção cobrada é DDL contra DML — DELETE apaga linhas e mantém a tabela, TRUNCATE esvazia preservando a definição, e só o DROP elimina a tabela.",
+  "erradas": {
+   "0": "DELETE existe, mas é DML e opera sobre linhas; a sintaxe correta seria DELETE FROM tabela, e ainda assim a estrutura continuaria de pé.",
+   "1": "REMOVE FROM TABLE não existe no SQL padrão — comando inventado.",
+   "3": "TRUNCATE é comando real e apaga todas as linhas rapidamente, porém preserva a definição da tabela; e “TRUNCATE ROW” nem é sintaxe válida.",
+   "4": "ALTER TABLE altera a definição do objeto (acrescenta ou remove coluna e restrição); “DROP ALL” não é cláusula do padrão, e usar ALTER aqui confunde alterar com destruir."
+  },
   "fonte": "FGV nav-eng Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7130,11 +7266,19 @@
    "Disponibilidade."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Atomicidade é o “tudo ou nada”: a transação se completa por inteiro ou é desfeita por inteiro, sem estado intermediário válido. O cenário — exclusão feita no servidor A e inserção não feita no B — é exatamente o estado que ela existe para impedir.",
+  "erradas": {
+   "1": "Consistência garante que a transação leve o banco de um estado válido a outro, respeitando as restrições de integridade; é o efeito pretendido, e se apoia na atomicidade para acontecer.",
+   "2": "Isolamento trata da interferência entre transações concorrentes, e o cenário descreve falha de energia, não concorrência.",
+   "3": "Durabilidade assegura que o que já teve commit sobrevive à queda de energia; ela cuida do que foi confirmado, não do que ficou pela metade.",
+   "4": "Disponibilidade é o A do teorema CAP, não do ACID — a troca entre as duas siglas é armadilha recorrente da banca."
+  },
   "fonte": "FGV nav-eng Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "propriedades-acid"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7149,11 +7293,19 @@
    "Não repúdio, visto que o sistema perdeu a capacidade de auditar e comprovar legalmente a autoria das requisições web externas."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O DDoS derruba o acesso sem ler nem alterar dado: o que se perde é a disponibilidade, a garantia de que o recurso está acessível ao usuário legítimo quando ele precisa. Repare que cada alternativa nomeia um princípio e depois inventa um fato que o enunciado não relatou — é assim que a FGV monta esse tipo de item.",
+  "erradas": {
+   "0": "Confidencialidade cairia por vazamento ou visualização indevida, e nada no incidente indica acesso a dado sigiloso.",
+   "1": "Integridade se rompe quando o dado é alterado ou corrompido; aqui os planos de voo seguiram íntegros, apenas inacessíveis.",
+   "3": "Autenticidade trata da garantia de identidade da origem — inundar o servidor de tráfego não falsifica identidade de piloto.",
+   "4": "Não repúdio é a impossibilidade de negar autoria e depende de registro/assinatura; a indisponibilidade temporária do site não o viola."
+  },
   "fonte": "FGV nav-eng Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "triade-cia"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7168,11 +7320,19 @@
    "Gestão de Ativos de TI."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Na ITIL 4, incidente é a interrupção não planejada de um serviço ou a redução de sua qualidade, e a prática de gerenciamento de incidentes existe para restaurar a operação normal o mais rápido possível — inclusive por solução de contorno, sem depender de achar a causa raiz.",
+  "erradas": {
+   "0": "Gestão de problemas persegue a causa raiz de incidentes recorrentes; reduz incidência futura, mas não é quem restabelece o serviço agora.",
+   "2": "Habilitação de mudanças autoriza e controla mudanças com risco avaliado; a troca do cabo pode até tramitar como mudança padrão, mas o chamado nasce e é tratado como incidente.",
+   "3": "Gestão de liberação cuida de disponibilizar para uso serviços e componentes novos ou alterados — vocabulário de entrega, não de restauração.",
+   "4": "Gestão de ativos controla ciclo de vida e inventário; sabe que o cabo existe, mas não é a prática que trata a interrupção."
+  },
   "fonte": "FGV nav-eng Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7187,11 +7347,19 @@
    "garantir a compatibilidade do código-fonte do portal web com impressoras matriciais industriais antigas de relatórios."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O atributo alt fornece a alternativa textual da imagem, que o leitor de tela vocaliza para quem não enxerga o gráfico. É o critério 1.1.1 do WCAG (conteúdo não textual): toda imagem significativa precisa de equivalente em texto — e a puramente decorativa recebe alt vazio, para ser ignorada pela tecnologia assistiva.",
+  "erradas": {
+   "0": "O alt não esconde nada de buscador; pelo contrário, é lido por indexadores e costuma ajudar o SEO — a alternativa inverte o efeito.",
+   "2": "Compressão é assunto de formato e otimização de entrega; um atributo textual não altera um único byte do PNG ou do JPEG.",
+   "3": "Não há animação alguma envolvida: quando a imagem falha ao carregar, o navegador exibe justamente o texto do alt.",
+   "4": "Compatibilidade com impressora matricial não é objetivo do WCAG nem função do atributo — distrator inventado."
+  },
   "fonte": "FGV nav-eng Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ux-acessibilidade"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7206,11 +7374,19 @@
    "a Instanciação Estática."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Referência declarada com o tipo da superclasse apontando para um objeto de subclasse e executando a implementação da subclasse em tempo de execução é polimorfismo de subtipo, viabilizado pela sobrescrita e resolvido por ligação tardia.",
+  "erradas": {
+   "0": "Encapsulamento é esconder o estado interno e expor comportamento por uma interface; não tem participação na escolha de qual implementação roda.",
+   "2": "Java não admite herança múltipla de classes, e mesmo onde ela existe trata de quantas superclasses se herda — não de despacho dinâmico.",
+   "3": "Sobrecarga é a coexistência de métodos de mesmo nome com assinaturas diferentes, resolvida em tempo de compilação; trocar sobrecarga (overload) por sobrescrita (override) é a confusão que a banca planta.",
+   "4": "“Instanciação estática” não é conceito de orientação a objetos, e o que é estático liga-se à classe, ficando fora do polimorfismo de instância."
+  },
   "fonte": "FGV nav-eng Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "polimorfismo"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7225,11 +7401,19 @@
    "Etnografia ou Observação."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Etnografia (observação) é a técnica em que o analista acompanha o usuário no ambiente real de trabalho sem intervir, captando o conhecimento tácito — o que o operador faz mas não sabe verbalizar. É o que o enunciado pede ao falar em rotina dinâmica e estressante, sem interferência do analista.",
+  "erradas": {
+   "0": "Brainstorming gera ideias em grupo, em sala: capta o que as pessoas dizem sobre o trabalho, não como ele acontece no posto de operação.",
+   "1": "Prototipação valida uma solução já proposta e exige interação ativa do usuário, o contrário da observação sem interferência.",
+   "2": "Questionário fechado escala bem, mas só devolve resposta às perguntas já formuladas — a rotina que ninguém antecipou fica de fora.",
+   "3": "Engenharia reversa recupera regras de um sistema legado a partir do esquema; olha para o código antigo, não para o comportamento humano."
+  },
   "fonte": "FGV nav-eng Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7263,11 +7447,19 @@
    "O COBIT 2019 eliminou o conceito de gestão em sua última versão, restando apenas processos focados em segurança física e patrimonial."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O COBIT 2019 separa os dois pela natureza da atividade: governança avalia, dirige e monitora (domínio EDM, responsabilidade do conselho), enquanto a gestão planeja, constrói, executa e monitora (APO, BAI, DSS, MEA) dentro da direção que a governança definiu. A alternativa reproduz essa divisão.",
+  "erradas": {
+   "0": "Inverte os papéis: quem planeja, constrói e executa é a gestão — e a governança não se resume a auditar contrato financeiramente.",
+   "2": "Igualar governança e gestão contraria o princípio central do modelo, e concentrar ambas no CIO ignora o papel do conselho de administração.",
+   "3": "Troca os polos outra vez e ainda rebaixa a governança a configurar servidor, atividade operacional, o mais distante possível dela.",
+   "4": "O COBIT 2019 mantém os objetivos de gestão distribuídos em quatro domínios; dizer que a versão eliminou a gestão é simplesmente falso."
+  },
   "fonte": "FGV nav-eng Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "cobit-2019"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7282,11 +7474,19 @@
    "um Evento de Início de Mensagem posicionado estrategicamente na extremidade inferior da piscina do participante regulador."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Evento de tempo anexado à borda de uma atividade dispara quando o prazo se esgota; sendo interrompente (borda de linha contínua), ele cancela a atividade em espera e leva o token pelo fluxo de exceção — a rota de contingência do timeout. Prazo máximo somado a desvio de fluxo é a assinatura do boundary timer interrompente.",
+  "erradas": {
+   "1": "Fluxo de sequência condicional escolhe caminho por expressão avaliada na passagem do token; não conta tempo nem interrompe atividade em andamento.",
+   "2": "Gateway inclusivo habilita um ou mais caminhos conforme condições, mas igualmente não tem noção de decurso de prazo.",
+   "3": "Tarefa de script executa código dentro do processo, e um loop infinito de varredura não modela timeout — travaria a instância em vez de desviá-la.",
+   "4": "Evento de início de mensagem inicia um processo ao receber uma mensagem: está no lugar errado do fluxo e reage a mensagem, não a tempo."
+  },
   "fonte": "FGV nav-eng Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "bpmn"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7301,11 +7501,19 @@
    "Acessibilidade Universal, que valida se o sistema roda adequadamente em sistemas operacionais legados sem suporte a CSS3."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Na ISO 9241-11 a usabilidade se mede por três dimensões: eficácia (concluir a tarefa, com que precisão e completude), eficiência (a que custo de recursos — tempo, esforço, cliques) e satisfação. Cronometrar o tempo até a conclusão bem-sucedida mede recurso gasto, portanto eficiência.",
+  "erradas": {
+   "1": "É a quase-certa, e o texto da própria alternativa entrega a diferença: eficácia avalia precisão e completude “independentemente do tempo gasto”, e foi exatamente o tempo que os engenheiros mediram.",
+   "2": "Satisfação é dimensão subjetiva, colhida por questionário ou escala de percepção; sensor biométrico embutido no mouse é acréscimo fantasioso.",
+   "3": "“Taxa de rejeição de código” é métrica de esteira de desenvolvimento e nada tem a ver com o desempenho do usuário na interface.",
+   "4": "Acessibilidade é outro atributo de qualidade; e rodar em sistema legado sem CSS3 descreve compatibilidade, não acessibilidade."
+  },
   "fonte": "FGV nav-eng Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ux-acessibilidade"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -7320,11 +7528,19 @@
    "A sintaxe está perfeita, desde que a ponta da seta esteja apontada exclusivamente para um gateway do tipo exclusivo baseado em eventos."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Regra dura do BPMN 2.0: fluxo de sequência (linha contínua com seta cheia) só existe dentro de uma mesma pool; a comunicação entre pools distintas é obrigatoriamente fluxo de mensagem (linha tracejada, ponta vazada). Duas organizações são duas piscinas, logo message flow.",
+  "erradas": {
+   "1": "Não há permissão para fluxo de sequência cruzar piscina — a alternativa inventa uma flexibilidade que a especificação nega expressamente.",
+   "2": "Associação liga artefato (anotação, objeto de dados) a elemento de fluxo, e não uma tarefa a outra tarefa em organização distinta.",
+   "3": "Trocar pools por lanes mudaria o sentido do modelo: lane é subdivisão interna de um mesmo participante, e o cenário tem duas organizações independentes.",
+   "4": "Nenhuma condição sobre o destino conserta a sintaxe: o defeito está no tipo do conector, não em para onde a seta aponta."
+  },
   "fonte": "FGV nav-eng Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "bpmn"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7339,11 +7555,19 @@
    "Os termos “legais”, “conflitos”, “negociações”, “organização” e “empresa” mostram vocábulos do campo semântico do Direito."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Todas as atribuições da série abrem por infinitivo (emitir, redigir, elaborar, revisar, representar, proteger, mediar, participar, promover). Repetir a mesma estrutura sintática ao longo de uma enumeração é exatamente o paralelismo, recurso padrão de texto normativo e de edital.",
+  "erradas": {
+   "0": "“Bem como” é conector aditivo, equivalente a “e também”; acrescenta o último item à lista em vez de compará-lo a algo.",
+   "2": "Não há narração: os infinitivos enunciam atribuições permanentes do cargo, sem progressão temporal nem encadeamento de fatos.",
+   "3": "A ambiguidade é só aparente — “seus interesses” remete à organização, único referente compatível com “representar legalmente a organização, proteger seus interesses”.",
+   "4": "“Organização” e “empresa” pertencem ao vocabulário da administração, e não ao campo semântico jurídico; basta um termo fora da lista para derrubar a generalização."
+  },
   "fonte": "FGV nav-tec Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7358,11 +7582,19 @@
    "F – F – F."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "As três são falsas. O paralelismo se rompe no fecho (“focado na capacitação...”, particípio no singular em meio a infinitivos); o primeiro segmento é apenas mais um item da enumeração, e não um resumo dos demais; e “didáticos” e “educativas” classificam o substantivo — dizem que tipo de material e de atividade —, sem emitir juízo de valor.",
+  "erradas": {
+   "0": "V–V–V exigiria paralelismo íntegro, primeiro segmento resumidor e adjetivos avaliativos; nenhuma das três condições se verifica.",
+   "1": "F–V–F acerta as pontas, mas aceita que “avaliar necessidades de aprendizagem” resuma a lista — ele apenas a abre.",
+   "2": "V–V–F ainda enxerga paralelismo perfeito, que o particípio final desfaz, e mantém a leitura equivocada do primeiro segmento.",
+   "3": "F–F–V trata “didáticos” e “educativas” como opinativos; trocá-los mudaria o tipo do material, não a avaliação de quem escreve — é a marca do adjetivo classificador."
+  },
   "fonte": "FGV nav-tec Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7374,20 +7606,28 @@
    "“criar materiais didáticos” / criatividade de materiais didáticos.",
    "“conduzir atividades educativas” / condução de atividades educativas.",
    "“desenvolver programas educacionais” / desenvolvimento de programas educacionais.",
-   "“implementar programas educacionais” / implementação de programas educacionais. Atenção! O texto a seguir refere-se às duas próximas questões. Um controlador de voo redigiu o seguinte comunicado ao chefe: Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou -se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida."
+   "“implementar programas educacionais” / implementação de programas educacionais."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A nominalização de “criar” é “criação”. “Criatividade” nomeia uma aptidão, uma qualidade de quem cria, e não o ato — por isso “criatividade de materiais didáticos” não equivale a “criar materiais didáticos”. As demais trocas são substantivos deverbais regulares.",
+  "erradas": {
+   "0": "“Avaliação” é o deverbal exato de avaliar, e a estrutura mantém intacto o sentido de aferir necessidades.",
+   "2": "“Condução” corresponde ponto a ponto a conduzir, preservando o complemento.",
+   "3": "“Desenvolvimento” nomeia a ação de desenvolver, sem deslocamento de sentido.",
+   "4": "“Implementação” é a nominalização direta de implementar, e a frase resultante diz o mesmo que a original."
+  },
   "fonte": "FGV nav-tec Q3",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "nav-tec",
   "num": 4,
   "tag": "portugues",
-  "q": "Esse texto mostra o seguinte modo de organização discursiva:",
+  "q": "Leia o texto a seguir. Um controlador de voo redigiu o seguinte comunicado ao chefe: “Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou-se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.”\n\nEsse texto mostra o seguinte modo de organização discursiva:",
   "alts": [
    "narração + descrição.",
    "narração + dissertação expositiva.",
@@ -7396,17 +7636,25 @@
    "exclusivamente narração."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O comunicado encadeia fatos em progressão temporal — desceu, aterrissou, chocou-se, foram acionados, foi limpa —, o que caracteriza a narração; e intercala estados que caracterizam o cenário (“a pista estava desocupada”, “estava totalmente desimpedida”), o que é descrição. Não há tese nem explanação de conceito.",
+  "erradas": {
+   "1": "Dissertação expositiva pressupõe explicar um tema ou conceito; o texto apenas relata o que aconteceu na pista.",
+   "2": "Faltam as duas: não há exposição de assunto nem defesa de ponto de vista em nenhum trecho.",
+   "3": "Só descrição não explicaria os verbos de ação em sequência cronológica, que são o esqueleto do relato.",
+   "4": "Só narração deixaria de fora os trechos de estado, que caracterizam a pista antes e depois do acidente — é a quase-certa do item."
+  },
   "fonte": "FGV nav-tec Q4",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
   "num": 5,
   "tag": "portugues",
-  "q": "O texto apresenta um erro de escritura, que é:",
+  "q": "Leia o texto a seguir. Um controlador de voo redigiu o seguinte comunicado ao chefe: “Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou-se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.”\n\nO texto apresenta um erro de escritura, que é:",
   "alts": [
    "a crase indevida em “à noite”.",
    "a forma da abreviação de “horas”.",
@@ -7415,17 +7663,25 @@
    "a troca indevida de “contra” por “com”."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Pela norma de datar, h, min e s são símbolos (sem ponto e sem plural), e a indicação rigorosa de horas com minutos é “20h30min”. A forma “20h30” é a redução usual do dia a dia, mas não a abreviação correta — que é o erro que a banca quer.",
+  "erradas": {
+   "0": "A crase está certa: “à noite” é locução adverbial feminina, caso clássico de crase obrigatória.",
+   "2": "O ponto e vírgula após “desocupada” separa adequadamente duas informações de mesmo nível dentro do período.",
+   "3": "“Aterrissou” está grafado corretamente; o verbo é dicionarizado, ao lado da variante “aterrizar”.",
+   "4": "“Chocar-se com” é regência normal do verbo; “chocar-se contra” também existe, então não há troca indevida."
+  },
   "fonte": "FGV nav-tec Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ortografia"
+  ]
  },
  {
   "prova": "nav-tec",
   "num": 6,
   "tag": "portugues",
-  "q": "Assinale a opção cujo termo sublinhado tem uma função sintática diferente da dos demais.",
+  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: “A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.”\n\nAssinale a opção cujo termo sublinhado tem uma função sintática diferente da dos demais.",
   "alts": [
    "“conjunto de técnicas, estudos e procedimentos”.",
    "“leitura de mapas”.",
@@ -7434,8 +7690,13 @@
    "“formação de pilotos e comissários”."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Em “leitura de mapas”, “uso de instrumentos”, “análise de condições meteorológicas” e “formação de pilotos” o núcleo é substantivo abstrato derivado de verbo, e o termo preposicionado é o alvo daquela ação: complemento nominal. Já “conjunto” não deriva de verbo nem pede complemento — “de técnicas, estudos e procedimentos” apenas especifica de que é feito o conjunto, funcionando como adjunto adnominal.",
+  "erradas": {
+   "1": "Quem faz leitura lê alguma coisa: “de mapas” completa o sentido do substantivo abstrato, como nas outras três.",
+   "2": "“Uso” pede aquilo que é usado; o termo preposicionado é o complemento exigido pelo nome.",
+   "3": "“Análise” carrega a ideia de analisar algo, e “de condições meteorológicas” é justamente esse algo.",
+   "4": "Em “formação de pilotos e comissários”, quem é formado são os pilotos — o termo é paciente da ação nominalizada, e não uma especificação do tipo de formação."
+  },
   "fonte": "FGV nav-tec Q6",
   "requer_imagem": false,
   "anulada": false
@@ -7444,7 +7705,7 @@
   "prova": "nav-tec",
   "num": 7,
   "tag": "portugues",
-  "q": "Assinale a oração a seguir que recebe uma classificação diferente das demais.",
+  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: “A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.”\n\nAssinale a oração a seguir que recebe uma classificação diferente das demais.",
   "alts": [
    "“que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência”.",
    "“que garantem”.",
@@ -7453,11 +7714,19 @@
    "“que se voltam para a ANAC”."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Em A, B, D e E o “que” é pronome relativo e retoma um antecedente, formando oração subordinada adjetiva. Em C, “que” é conjunção integrante: a oração completa o verbo “garantem” (garantem o quê?), sendo subordinada substantiva objetiva direta.",
+  "erradas": {
+   "0": "Retoma “técnicas, estudos e procedimentos” — adjetiva restritiva.",
+   "1": "Tem por antecedente “diversos outros fatores”, e também é adjetiva.",
+   "3": "Refere-se a “assuntos”, delimitando quais; adjetiva outra vez.",
+   "4": "Antecede-lhe “exames e simulados”, e o “que” continua funcionando como relativo — quatro adjetivas contra uma substantiva é o desenho do item."
+  },
   "fonte": "FGV nav-tec Q7",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7472,11 +7741,19 @@
    "O texto incentiva a procura pela carreira de controlador de voo, mostrando vantagens da profissão."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O texto abre afirmando que manter a segurança dos passageiros é “a principal missão” do controlador, e o restante apenas detalha e contextualiza. A alternativa reproduz essa hierarquia sem acrescentar nada ao que está escrito — critério que resolve quase toda questão de compreensão da FGV.",
+  "erradas": {
+   "0": "O primeiro período antecipa a ideia central, mas não resume os demais: nada nele prenuncia o edital, a data de publicação ou a origem da NAV Brasil.",
+   "1": "Texto publicitário promove produto ou serviço; este é informativo e jornalístico, e em nenhum momento elogia a empresa.",
+   "2": "“Todas as missões” é absoluto: o texto cita orientar, coordenar e monitorar, sem qualquer indicação de que a lista se esgote aí.",
+   "4": "O texto constata que o interesse cresceu — constatar não é incentivar, e nenhuma vantagem da profissão chega a ser enumerada."
+  },
   "fonte": "FGV nav-tec Q8",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7491,11 +7768,19 @@
    "Exemplifica um texto argumentativo que defende um ponto de vista positivo sobre a navegação aérea."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A estrutura “X é o conjunto de...” é a fórmula canônica da definição: termo definido, classe a que pertence e traço que o especifica. Não há explicação de processo, tese nem juízo de valor.",
+  "erradas": {
+   "1": "O fragmento define a navegação aérea; o controlador de voo sequer é mencionado.",
+   "2": "É a quase-certa: o trecho realmente diz o que a navegação permite, mas isso integra a definição — esclarecimento de finalidade seria um texto voltado ao “para que serve”, não ao “o que é”.",
+   "3": "Não há qualificação de mérito: “técnicas e procedimentos” delimita a classe, sem exaltar lado científico algum.",
+   "4": "Argumentação exigiria tese e defesa; o período é neutro e não sustenta ponto de vista."
+  },
   "fonte": "FGV nav-tec Q9",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7510,11 +7795,19 @@
    "“com segurança e precisão” poderia ser substituído por “segura e precisamente”."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "“Com segurança e precisão” é adjunto adverbial de modo formado por preposição mais substantivo, e a troca por advérbios em -mente mantém função e sentido. A forma “segura e precisamente” inclusive segue o padrão da língua, que suprime o -mente nos elementos anteriores da série.",
+  "erradas": {
+   "0": "“Técnicas” e “procedimentos” não são sinônimos — técnica é o saber-fazer, procedimento é a sequência de passos —, então não há redundância.",
+   "1": "O antecedente de “que” é “técnicas e procedimentos”, e a prova está na própria concordância: “permitem”, no plural.",
+   "2": "Não há erro de concordância; trocar por “permite” é que criaria um, ao desligar o verbo do sujeito plural.",
+   "3": "A ordem está invertida: “de um ponto” marca a origem e “a outro”, o destino."
+  },
   "fonte": "FGV nav-tec Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7529,11 +7822,19 @@
    "Para o sábio basta apenas uma palavra."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A frase reescreve o provérbio “Quem vê cara não vê coração”, mantendo a primeira metade intacta e desviando o fecho para um remate humorístico. É intertextualidade: a graça só existe porque o leitor reconhece o texto de origem.",
+  "erradas": {
+   "0": "Aforismo autoral sobre a moda, construído por paradoxo (ridicularizam e obedecem); não retoma texto anterior algum.",
+   "1": "Frase de efeito sustentada pelo contraste entre beleza e insignificância, sem base em texto prévio.",
+   "3": "Sentença original sobre beleza — nenhum provérbio ou obra é retomado.",
+   "4": "É a quase-certa: ecoa o tom de “a bom entendedor, meia palavra basta”, mas apenas imita o registro sentencioso, sem a retomada literal e reconhecível que caracteriza a alternativa correta."
+  },
   "fonte": "FGV nav-tec Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7548,11 +7849,19 @@
    "Nada é tão inútil como uma máxima de ordem geral. / Nada é tão inútil como uma máxima generalista."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "“Máxima de ordem geral” e “máxima generalista” conservam a ideia daquilo que vale para todos os casos — é a única troca em que o adjetivo preserva o sentido da locução. Nas demais, o adjetivo existe na língua, mas significa outra coisa: essa é a armadilha padrão do item de adjetivação.",
+  "erradas": {
+   "0": "“Animalesca” carrega valor pejorativo, de bicho ou grosseiro, e não a simples relação “de um animal”.",
+   "1": "“Interrogatório” remete a inquirição, sobretudo judicial; o adjetivo relacional adequado a “da interrogação” seria “interrogativo”.",
+   "2": "“Mundana” quer dizer frívola, ligada à vida social; para “do mundo” caberia “mundial”.",
+   "3": "“Comemorativa” prende-se a comemorar, não a memória — e é a semelhança sonora que torna a troca tentadora."
+  },
   "fonte": "FGV nav-tec Q12",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7567,11 +7876,19 @@
    "Um livro que nada ensina não é um livro, é um brinquedo. / Um livro ignorante não é um livro, é um brinquedo."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "“Inofensiva” condensa em um único adjetivo exatamente o que a oração dizia (“que não é perigosa”): a subordinada adjetiva vira adjunto adnominal sem perda de sentido, que é o que o comando pede.",
+  "erradas": {
+   "1": "“Movimentos lineares” não equivale a “movimentos que ultrapassam as linhas” — a redução troca a ideia de transgressão pela de forma reta.",
+   "2": "Inverte o sentido: “que não possuem instrução” resulta em “não instruídas”, e a alternativa escreve justamente o contrário.",
+   "3": "“Conscientes” não recupera “que resumissem a sabedoria universal”; perde-se o núcleo da afirmação.",
+   "4": "“Livro ignorante” desloca para o livro um traço de quem ignora; o original diz que ele nada ensina, o que pediria algo como “um livro que não instrui”."
+  },
   "fonte": "FGV nav-tec Q13",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7586,11 +7903,19 @@
    "A resposta dele não foi clara, pois ele usou uma língua estrangeira. / logo."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "“À medida que” e “à proporção que” são conectores proporcionais: exprimem duas ações que variam juntas. A substituição preserva integralmente a relação lógica, único critério que o item avalia.",
+  "erradas": {
+   "0": "“Enquanto” marca aqui simultaneidade com leve contraste entre as duas leituras; “embora” é concessivo e criaria uma oposição que a frase não sustenta.",
+   "1": "“Como” está em estrutura comparativa de superlativo (“tão inútil como”); trocá-lo por “do mesmo modo que” desmonta a correlação com o “tão”.",
+   "3": "“Quando” tem valor temporal-condicional no aforismo; “pois” é explicativo e inverteria o sentido da relação.",
+   "4": "“Pois” introduz a causa da falta de clareza; “logo” apresentaria conclusão, trocando causa por consequência."
+  },
   "fonte": "FGV nav-tec Q14",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7605,11 +7930,19 @@
    "Procurei fazer o bem sem olhar a quem."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "“Fazê-lo” é verbo vicário: retoma inteira a oração anterior — “constituir uma obra” —, evitando repeti-la. O pronome “o” é a marca do procedimento, porque encapsula todo o predicado já enunciado.",
+  "erradas": {
+   "1": "Em “eles não sabem o que fazem”, o verbo tem sentido pleno de praticar e traz objeto próprio.",
+   "2": "“Fazemos o que está a nosso alcance” também usa o verbo com significado próprio; o objeto é a oração relativa, não uma retomada.",
+   "3": "“Fazem brinquedos” é o uso concreto de fabricar, sem recuperar nada do que veio antes.",
+   "4": "“Fazer o bem” traz objeto explícito e nenhuma função de substituição."
+  },
   "fonte": "FGV nav-tec Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7624,11 +7957,19 @@
    "Aqui digo uma frase de gênio: Para saber falar é preciso saber escutar."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A frase anuncia quatro medalhas e enumera três — a da verdade, a da amizade e a da solidariedade. Os dois-pontos criam a expectativa de que a lista cumpra o número prometido, e é esse descompasso entre anúncio e desenvolvimento que configura a falha.",
+  "erradas": {
+   "0": "As duas classes anunciadas são efetivamente apresentadas: os livros do momento e os de todos os tempos.",
+   "1": "A conta fecha: três pessoas anunciadas, e a enumeração traz o pai mais os vizinhos, no plural.",
+   "3": "Anuncia a idade e a informa em seguida; não há lista pendente.",
+   "4": "Promete uma frase e apresenta uma frase — a promessa se cumpre integralmente."
+  },
   "fonte": "FGV nav-tec Q16",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7643,11 +7984,19 @@
    "As mulheres preferem tabloides porque seus braços são mais curtos."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Nas outras quatro frases o termo em destaque é anafórico e recupera algo já dito: “nele” retoma o espelho, “cujo” retoma o selo, “ele mesmo” retoma o homem e “seus” retoma as mulheres. Na frase da bofetada não há antecedente algum — o termo destacado introduz informação nova e não amarra o texto a nada anterior.",
+  "erradas": {
+   "0": "“Nele” aponta para o espelho da primeira oração: coesão referencial explícita.",
+   "1": "O relativo “cujo” liga o destino ao selo, que é seu antecedente.",
+   "2": "“Ele mesmo” retoma “o homem”, mencionado na oração anterior.",
+   "4": "“Seus” recupera “as mulheres”, sujeito do período — mais um caso de retomada."
+  },
   "fonte": "FGV nav-tec Q17",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7662,11 +8011,19 @@
    "A condição soberana da sabedoria é o silêncio, porquê?"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Em “Felizes os povos sem correio porque neles não há o enfado...”, o “porque” é conjunção causal ligando duas orações: grafia junta e sem acento, que é a forma correta. As outras quatro erram na escolha entre as quatro grafias possíveis.",
+  "erradas": {
+   "0": "A oração exprime a causa da pregação, então caberia “porque” junto; “por que” separado só vale em pergunta ou no sentido de “pelo qual”.",
+   "2": "Pergunta direta iniciada pela expressão pede “Por que”, separado e sem acento.",
+   "3": "Precedido de artigo, o termo se substantiva e se escreve “porquê”, junto e com acento.",
+   "4": "No fim de frase interrogativa vale a forma tônica “por quê”, separada e com circunflexo."
+  },
   "fonte": "FGV nav-tec Q18",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ortografia"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7681,11 +8038,19 @@
    "Quando necessito ler um livro, eu mesmo escrevo."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A frase sobre citação está sintaticamente completa — sujeito, verbo de ligação e predicativo —, sem nenhum termo subentendido. Nas outras quatro há omissão: elipse quando o termo se recupera pelo contexto sem nunca ter sido dito, zeugma quando ele já apareceu antes e é retomado por omissão.",
+  "erradas": {
+   "1": "Falta o verbo, recuperável pelo contexto (“exige-se”, “é preciso”): elipse.",
+   "2": "O verbo “provar” não se repete antes de “a verdade” — zeugma clássico.",
+   "3": "A segunda oração omite a repetição do sujeito e do conectivo (“que o Universo se cale e que ele me escute”).",
+   "4": "Em “eu mesmo escrevo” fica subentendido “um livro”, termo já enunciado na oração anterior."
+  },
   "fonte": "FGV nav-tec Q19",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7700,11 +8065,19 @@
    "O silêncio é a maior persecução; os santos nunca se calaram."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A vírgula separa “um matemático” do termo que o caracteriza (“capaz de argumentação”), rompendo um bloco que deve permanecer unido: não se separa por vírgula o adjunto adnominal restritivo do nome a que ele se prende.",
+  "erradas": {
+   "0": "A vírgula marca corretamente a oração adverbial temporal antecipada à principal — uso obrigatório quando ela vem antes.",
+   "1": "Isola o adjunto adverbial deslocado (“principalmente quando fala do outro”), pontuação legítima.",
+   "3": "As vírgulas separam orações coordenadas e isolam o adjunto intercalado; nada há de irregular.",
+   "4": "O ponto e vírgula divide duas orações independentes de mesmo nível, uso previsto pela norma."
+  },
   "fonte": "FGV nav-tec Q20",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pontuacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7719,11 +8092,19 @@
    "Z disse a verdade e X é o culpado."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Como o culpado é o único mentiroso, basta testar as três hipóteses. Com Y culpado: a fala de Y (“Z é o culpado”) é falsa, a de X (“Y é o culpado”) é verdadeira e a de Z (“Y mentiu”) também — um mentiroso e dois sinceros, exatamente o exigido. Com X culpado, Y seria sincero e apontaria Z; com Z culpado, X sincero apontaria Y. Ambas caem em contradição.",
+  "erradas": {
+   "1": "X só fala a verdade se o culpado for Y; afirmar X sincero e Z culpado é contraditório dentro da própria alternativa.",
+   "2": "Se Y disse a verdade, o culpado é Z — mas então X, que seria inocente e portanto sincero, teria acusado Y erradamente, criando um segundo mentiroso.",
+   "3": "Y verdadeiro leva a Z culpado, nunca a X; a alternativa costura duas conclusões que não convivem.",
+   "4": "Z de fato é sincero na solução, mas o culpado é Y — o erro está só na segunda metade, no formato clássico da quase-certa."
+  },
   "fonte": "FGV nav-tec Q21",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "logica-sentencial"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7738,11 +8119,19 @@
    "se o liquidificador não é preto, então a batedeira é preta."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "A frase é a conjunção L ∧ B. Sendo ela falsa, vale a negação ¬L ∨ ¬B: pelo menos um dos dois não é preto. E ¬L ∨ ¬B é equivalente a B → ¬L, que é o que a alternativa D afirma.",
+  "erradas": {
+   "0": "Negar “os dois são pretos” não autoriza “nenhum é preto”: basta que um deles não seja. É a negação exagerada da conjunção, e a pegadinha central do item.",
+   "1": "Nada garante que o liquidificador seja preto — ele pode ser justamente o que não é.",
+   "2": "Vale o mesmo para a batedeira: nada a obriga a ser preta.",
+   "4": "¬L → B equivale a L ∨ B, ou seja, “pelo menos um é preto” — e a falsidade da conjunção admite que nenhum dos dois seja."
+  },
   "fonte": "FGV nav-tec Q22",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equivalencias-logicas"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7757,11 +8146,19 @@
    "45."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Os nove números formam uma PA de razão 2, de 5 a 21, com termo central 13; a soma total é 9 × 13 = 117. As três linhas cobrem todos os elementos e têm somas iguais, logo cada uma vale 117/3 = 39. Atalho: em quadrado mágico 3×3 a constante é sempre três vezes o termo central.",
+  "erradas": {
+   "0": "37 exigiria soma total de 111, abaixo dos 117 que o conjunto oferece.",
+   "2": "41 implicaria total de 123 — mais do que a soma de todos os números disponíveis.",
+   "3": "43 levaria a 129, ainda mais distante do total real.",
+   "4": "45 é a constante do quadrado mágico clássico com os números de 1 a 9, e está aqui para pegar quem recorreu à memória em vez de somar este conjunto."
+  },
   "fonte": "FGV nav-tec Q23",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "matrizes"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7776,11 +8173,19 @@
    "17."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Seja H o total de homens: analistas passam de 0,425H para 1,2 × 0,425H = 0,51H, então os técnicos caem para 0,49H = 98, dando H = 200. Os técnicos eram 0,575 × 200 = 115 e ficaram 98 — foram promovidos 115 − 98 = 17.",
+  "erradas": {
+   "0": "Com 21 promovidos sobrariam 94 técnicos, e o aumento dos analistas seria de 24,7%: falha nas duas condições.",
+   "1": "20 atrai por repetir o “20%” do enunciado, mas os 20% incidem sobre os 85 analistas iniciais — e 20% de 85 é 17, não 20.",
+   "2": "19 promovidos deixariam 96 técnicos, e o crescimento seria de 22,4%.",
+   "3": "18 deixaria 97 técnicos; é o vizinho mais próximo do gabarito, plantado para punir arredondamento."
+  },
   "fonte": "FGV nav-tec Q24",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "porcentagem"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7795,8 +8200,13 @@
    "maior que 29 e menor que 40."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O número original é 10a + b; com o zero inserido no meio vira 100a + b. A diferença é (100a + b) − (10a + b) = 90a = 270, logo a = 3 — o algarismo das unidades se cancela e não interfere. O número está entre 30 e 39.",
+  "erradas": {
+   "0": "Faixa 70–79 significaria a = 7, e 90 × 7 = 630, muito acima de 270.",
+   "1": "Com a = 6 a diferença seria 540.",
+   "2": "a = 5 produziria 450.",
+   "3": "a = 4 dá 360 — é o vizinho do gabarito, e pega quem tropeça na divisão 270 ÷ 90."
+  },
   "fonte": "FGV nav-tec Q25",
   "requer_imagem": false,
   "anulada": false
@@ -7814,8 +8224,13 @@
    "78 anos."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Do enunciado saem P − 8 = 3(F − 8) e P + 12 = 2(F + 12). A primeira dá P = 3F − 16; substituindo na segunda, 3F − 4 = 2F + 24, logo F = 28 e P = 68. A diferença de idades é fixa em 40 anos, então, quando a filha fizer 35, o pai fará 75.",
+  "erradas": {
+   "0": "72 corresponderia a uma diferença de 37 anos, que não satisfaz nenhuma das duas condições.",
+   "1": "74 suporia diferença de 39 — erro típico de deslocar um ano ao montar o “há 8 anos”.",
+   "3": "76 exige diferença de 41, o desvio simétrico do anterior.",
+   "4": "78 implicaria 43 anos de diferença; conferindo na primeira condição, há 8 anos o pai não teria o triplo da idade da filha."
+  },
   "fonte": "FGV nav-tec Q26",
   "requer_imagem": false,
   "anulada": false
@@ -7833,11 +8248,19 @@
    "9/16."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "P(preto) = 2/6 = 1/3 e P(vermelho) = 4/6 = 2/3. Resultados diferentes ocorrem em duas ordens — preto seguido de vermelho ou vermelho seguido de preto —, logo P = 2 × (1/3) × (2/3) = 4/9.",
+  "erradas": {
+   "0": "2/9 é o produto (1/3)(2/3) sem multiplicar pelas duas ordens possíveis; esquecer esse fator 2 é o erro mais comum do item.",
+   "2": "4/15 nasce de tratar o experimento como retirada sem reposição, com denominador 6 × 5 — mas o enunciado afirma que os lançamentos são independentes.",
+   "3": "8/15 tem a mesma origem, já com o fator 2 aplicado sobre a base errada.",
+   "4": "9/16 pressuporia probabilidades de 1/4 e 3/4, isto é, um dado com outra divisão de cores."
+  },
   "fonte": "FGV nav-tec Q27",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "probabilidade"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7849,14 +8272,22 @@
    "(4,2).",
    "(3,1).",
    "(3,2).",
-   "(2,1). Informática"
+   "(2,1)."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Como cada movimento altera um eixo só, basta somar por eixo: x = 0 + 3 + 1 = 4 e y = 0 + 2 − 1 = 1. A partícula para em (4,1).",
+  "erradas": {
+   "1": "(4,2) ignora o terceiro movimento, que recua 1 unidade em y.",
+   "2": "(3,1) deixa de fora o último passo, de +1 em x.",
+   "3": "(3,2) perde os dois: o recuo em y e o avanço final em x.",
+   "4": "(2,1) troca os eixos no primeiro movimento, lançando o 2 em x em vez de y."
+  },
   "fonte": "FGV nav-tec Q28",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "geometria-plana"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7871,11 +8302,19 @@
    "a situação III comprova que os impactos da inteligência artificial independem das estratégias de adaptação adotadas por trabalhadores, empresas e governos."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O estudo separa exposição de impacto. I e II descrevem IA que altera o COMO da tarefa — rascunho e triagem automáticos — mantendo o humano na validação e na decisão de exceção: transformação da ocupação, não eliminação. III apenas constata potencial de automação, e potencial não é desfecho.",
+  "erradas": {
+   "0": "“Necessariamente eliminadas” é absoluto e contraria a tese central do estudo, que é a transformação das ocupações.",
+   "1": "Troca exposição por consequência: identificar alto potencial de automação não autoriza concluir substituição inevitável — é justamente o erro que a metodologia da OIT alerta.",
+   "3": "Inverte o que I e II dizem; nos dois casos o humano permanece validando e decidindo exceções, ou seja, a supervisão continua indispensável.",
+   "4": "Afirmar que os impactos independem das estratégias de adaptação nega o papel de trabalhadores, empresas e governos que o próprio estudo destaca."
+  },
   "fonte": "FGV nav-tec Q33",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ia-aplicada-cenarios"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7890,11 +8329,19 @@
    "os Serviços de Domínio ( Domain Services ) detêm a responsabilidade exclusiva de instanciar entidades que possuam identidade própria."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A regra tática do DDD é que o Agregado é a fronteira de consistência: referências externas só podem apontar para a Raiz, e toda alteração no interior passa por ela, que aplica as invariantes. Repositório próprio para Vistoria abre um caminho lateral que fura essa fronteira.",
+  "erradas": {
+   "0": "Inverte a regra do padrão: há um repositório por Agregado, não por entidade — dar repositório a cada classe é justamente o erro que o desenvolvedor cometeu.",
+   "2": "Objeto de Valor não tem identidade nem ciclo de vida próprio; é persistido junto da entidade que o contém, e a exigência de tabela separada é invenção.",
+   "3": "Consistência eventual descreve o que vale ENTRE Agregados diferentes; dentro da fronteira de um mesmo Agregado a transação é atômica, então a alternativa troca o lado da fronteira.",
+   "4": "Serviço de Domínio existe para a operação que não pertence naturalmente a nenhuma entidade; instanciar entidade não é atribuição exclusiva dele, e a própria Raiz costuma criar seus filhos."
+  },
   "fonte": "FGV nav-tec Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "design-software"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7909,11 +8356,19 @@
    "falha ao não discriminar as ferramentas de monitoramento sintético que validarão o sucesso da implantação do patch."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "RTO é o tempo máximo aceitável para restabelecer o serviço depois da interrupção. Um rollback que depende de restaurar cold backup em 14 horas significa que, se a mudança falhar, a arrecadação fica fora do ar por 14 horas — muito além da janela e do RTO pactuado. Plano de reversão que não cabe no RTO derruba a mudança.",
+  "erradas": {
+   "0": "MTBF mede o intervalo médio entre falhas, indicador de confiabilidade do ativo; nada informa sobre quanto tempo se leva para voltar depois da parada.",
+   "1": "MTPD é a quase-certa, por também medir tempo tolerável de indisponibilidade, só que é conceito de continuidade de negócio e não é fixado em planejamento de capacidade; o parâmetro avaliado pelo CAB numa janela de mudança é o RTO.",
+   "2": "Integridade referencial e chave substituta são temas de modelagem de dados, sem qualquer relação com o tempo de reversão do patch.",
+   "4": "A ausência de monitoramento sintético até seria uma crítica possível ao plano, mas o enunciado é explícito: o que barrou a mudança foram as 14 horas."
+  },
   "fonte": "FGV nav-tec Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7928,11 +8383,19 @@
    "Gráfico de Velocidade Acumulada do Trem."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O Program Board é o artefato do PI Planning que expõe, numa grade de iterações por time, as features planejadas e — ligadas por fios/setas — as dependências entre equipes e os marcos. É sobre ele que o RTE conduz a negociação e o tratamento dos riscos antes de o ART começar a execução.",
+  "erradas": {
+   "0": "Burnup mostra escopo entregue contra escopo total ao longo do tempo: é acompanhamento de progresso, e nem existe antes de a execução do PI começar.",
+   "2": "O diagrama de fluxo acumulado é métrica de fluxo Kanban — dá WIP e lead time pela espessura das faixas, sempre a posteriori, e não planeja precedência entre times.",
+   "3": "O Kanban de Portfólio opera um nível acima, no fluxo de épicos estratégicos; dependência técnica entre três times do mesmo ART é assunto do nível de programa.",
+   "4": "Velocidade acumulada mede capacidade histórica e serve para dimensionar quanto cabe no PI; ajuda a estimar, mas não mostra quem depende de quem."
+  },
   "fonte": "FGV nav-tec Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7947,11 +8410,19 @@
    "Rastreamento Distribuído ( Distributed Tracing com IDs de correlação)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "CPU baixa em todas as máquinas somada a latência alta no total é sintoma de tempo perdido ENTRE os serviços, não dentro deles. O rastreamento distribuído propaga um ID de correlação por toda a cadeia e reconstrói a linha do tempo em spans, mostrando qual salto consumiu os segundos.",
+  "erradas": {
+   "0": "Heap dump investiga o consumo de memória de um processo específico; não diz onde a requisição perdeu tempo ao atravessar cinco componentes.",
+   "1": "Injeção de dependência é técnica de desacoplamento de código — refatorar não diagnostica nada, e o analista precisa medir antes de mexer.",
+   "2": "Agente de sistema operacional entrega justamente as métricas que já foram observadas (CPU, memória, disco por máquina) e que não explicaram o problema; é a quase-certa, por parecer “monitoramento”.",
+   "3": "Cobertura de testes mede quanto do código é exercitado pela suíte: indicador de qualidade estática, sem relação com latência em produção."
+  },
   "fonte": "FGV nav-tec Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7966,11 +8437,19 @@
    "fragmentar as histórias de usuário em tarefas menores mantendo o mesmo volume de WIP."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Pela Lei de Little, lead time = WIP / vazão. Como o enunciado proíbe mexer no tamanho da equipe (a vazão), o único termo que resta é o WIP — daí o limite explícito na coluna congestionada, que obriga o time a terminar antes de começar.",
+  "erradas": {
+   "0": "Radiador de informação é justamente o que torna o gargalo visível; removê-lo esconde o problema, e controlar hora individual não altera nem WIP nem vazão.",
+   "1": "Ampliar a entrada engorda a fila: mais itens dentro do sistema aumentam o lead time, exatamente o inverso do que a fórmula recomenda.",
+   "3": "Cortar a retrospectiva economiza reunião, não fila — as 25 tarefas continuam paradas na Homologação para dois analistas.",
+   "4": "É a quase-certa: fragmentar história é boa prática, só que a própria alternativa faz questão de manter o mesmo volume de WIP, e é o WIP que sustenta o congestionamento."
+  },
   "fonte": "FGV nav-tec Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -7985,11 +8464,19 @@
    "Problema e Requisição de Serviço."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Impressora que para de funcionar é interrupção não planejada de um serviço: incidente. Pedido de instalação de software já homologado é demanda rotineira e pré-aprovada: requisição de serviço. A ITIL 4 separa as duas pelo gatilho — algo quebrou contra algo foi solicitado.",
+  "erradas": {
+   "1": "Inverte exatamente os dois casos; é o distrator preferido da banca nesse tipo de item, e passa despercebido por quem lê rápido a ordem “respectivamente”.",
+   "2": "Problema é a causa subjacente de um ou mais incidentes, e o chamado Y não investiga causa nenhuma — apenas solicita um software.",
+   "3": "Evento é mudança de estado detectada por monitoração, em geral automática; e mudança emergencial pressupõe urgência e risco que a instalação rotineira não tem.",
+   "4": "Atolamento de papel é o incidente em si: classificá-lo como problema exigiria investigação de causa raiz de ocorrências repetidas."
+  },
   "fonte": "FGV nav-tec Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8004,11 +8491,19 @@
    "Modelo Unificado Racional (RUP)."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O Espiral (Boehm) é o modelo evolucionário organizado em voltas concêntricas, e cada volta repete o mesmo quarteto: definir objetivos, avaliar alternativas e riscos, desenvolver/verificar e planejar o ciclo seguinte. Análise formal de risco como motor do processo é a assinatura do modelo, e é o que o enunciado descreve.",
+  "erradas": {
+   "0": "O Cascata é linear e sequencial; se trata risco, trata fora do processo — não há iteração concêntrica alguma nele.",
+   "1": "XP é ágil e leve, guiado por práticas de código (programação em par, TDD, integração contínua), e o enunciado pede explicitamente um modelo tradicional.",
+   "2": "A prototipação reduz risco de requisito ao materializar a interface cedo, mas é técnica de elicitação e validação, não um ciclo de vida governado por avaliação de risco a cada volta.",
+   "4": "O RUP é a quase-certa: também é iterativo e também ataca cedo os itens de maior risco, na fase de Elaboração. Ele porém se organiza em quatro fases com disciplinas e artefatos UML, e não em espiras cuja força motriz seja a análise de risco."
+  },
   "fonte": "FGV nav-tec Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-de-processo"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8023,11 +8518,19 @@
    "Repositórios de Metadados Isolados."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Radiador de informação é o termo ágil (Cockburn) para o display grande e público — quadro, burndown, painel — que entrega o status a quem passa, sem que ninguém precise perguntar nem convocar reunião. O critério é a visibilidade passiva descrita no cenário.",
+  "erradas": {
+   "0": "Baseline pertence à gerência de configuração: é a versão aprovada e congelada de um conjunto de artefatos, alterável só por controle formal de mudança.",
+   "1": "OLA é acordo interno entre áreas de TI que sustenta um SLA — vocabulário de ITIL, sem relação com exposição de progresso.",
+   "3": "Plano de continuidade trata de manter o negócio operando depois de um desastre; nada tem a ver com transparência de andamento de projeto.",
+   "4": "Repositório de metadados isolado é o distrator inventado do item, e o próprio adjetivo “isolado” contradiz a ideia de informação exposta em corredor."
+  },
   "fonte": "FGV nav-tec Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8042,11 +8545,19 @@
    "separação clara de responsabilidades e a facilidade de substituição ou manutenção de cada nível isolado."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A vantagem central do padrão em camadas é a separação de responsabilidades: cada nível tem papel definido e conversa apenas com o vizinho, o que permite manter ou substituir um deles isoladamente. É a leitura direta do sistema de três níveis descrito pelo arquiteto.",
+  "erradas": {
+   "0": "Execução sem servidor caracteriza serverless/FaaS, um modelo de implantação, e não um benefício de organizar o código em camadas.",
+   "1": "Desnormalizar em massa é decisão de modelagem de dados, frequentemente contrária à integridade referencial; camadas não pedem nem produzem isso.",
+   "2": "Nenhuma arquitetura elimina backup e plano de continuidade — o absoluto “eliminação completa” já entrega a alternativa.",
+   "3": "Concentrar regra de negócio em script embutido no HTML é o oposto do padrão: mistura apresentação com negócio, prática que a arquitetura em camadas existe para evitar."
+  },
   "fonte": "FGV nav-tec Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8061,11 +8572,19 @@
    "o custo financeiro total do projeto e o número de programadores alocados no time."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Risco, tanto no PMBOK quanto no COBIT, é o evento incerto que, se ocorrer, afeta objetivos; sua magnitude vem do par probabilidade de ocorrência × impacto sobre os objetivos. É esse par que estrutura qualquer matriz de risco.",
+  "erradas": {
+   "0": "Servidor virtual e licença ativa compõem inventário de ativos: contam o que existe, não o que pode dar errado.",
+   "2": "Tempo médio de conserto e linhas de código são métricas de manutenção e de tamanho de software; nenhuma carrega a ideia de incerteza.",
+   "3": "Versão de patch e chamados fechados são dados operacionais do suporte, sem componente probabilístico.",
+   "4": "Custo total e número de programadores dimensionam esforço e orçamento — entram na análise do projeto, mas não definem risco."
+  },
   "fonte": "FGV nav-tec Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "gestao-riscos-iso31000"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8080,11 +8599,19 @@
    "Increment Validation Cycle."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A Sprint é o contêiner: Planning, Daily, Review e Retrospective acontecem todos dentro dela, e sua duração é fixa em no máximo um mês. Uma Sprint começa imediatamente após o término da anterior, o que produz a cadência e a previsibilidade citadas.",
+  "erradas": {
+   "0": "O Refinamento é atividade contínua de detalhar e ordenar o Product Backlog; o Guia do Scrum nem o lista entre os eventos formais com time-box.",
+   "2": "A Daily dura 15 minutos e é um dos eventos contidos na Sprint — trocar o contêiner por um dos conteúdos é exatamente o erro que a alternativa explora.",
+   "3": "“Release Train Iteration” mistura vocabulário do SAFe com o do Scrum; o termo não existe no Guia.",
+   "4": "“Increment Validation Cycle” é nome fabricado: no Scrum o Incremento é artefato, não ciclo."
+  },
   "fonte": "FGV nav-tec Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8099,11 +8626,19 @@
    "API (Application Programming Interface)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Conjunto de endpoints HTTP com contrato de payload definido, expondo funcionalidade sem revelar implementação nem dar acesso às tabelas físicas, é a definição de API. O enunciado descreve o conceito por extenso e cobra apenas o acrônimo.",
+  "erradas": {
+   "0": "MVC organiza o interior de uma aplicação em modelo, visão e controlador; não é interface de integração entre dois órgãos.",
+   "1": "SLA é acordo de nível de serviço: fixa metas de disponibilidade e desempenho, e não a interface técnica pela qual os sistemas conversam.",
+   "2": "DDD é abordagem de modelagem centrada no domínio — orienta como estruturar o software, não como expor funcionalidade pela web.",
+   "3": "BCP pertence à gestão de continuidade de negócio; entra no item apenas como ruído de sigla."
+  },
   "fonte": "FGV nav-tec Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8118,11 +8653,19 @@
    "eliminar o uso de transações baseadas no modelo BASE para garantir a latência em cache."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "No sharding a chave de estilhaçamento decide em que nó cada linha vive. Chave mal escolhida concentra gravação e leitura num único shard (hotspot) e força consultas a varrer todos os nós para juntar resultado, anulando o ganho de escala — por isso ela é a decisão arquitetural central.",
+  "erradas": {
+   "0": "Replicar índice de texto completo é detalhe de implementação, e a 1FN diz respeito a atomicidade de atributo, nada tendo a ver com distribuição física de linhas.",
+   "2": "Extensão procedural do SGBD não roda no espaço de endereçamento do kernel; isolamento de processo não é problema de quem fragmenta tabela entre servidores.",
+   "3": "Particionamento vertical separa colunas, e o enunciado descreve explicitamente o horizontal, que separa linhas; a exigência de chave estrangeira composta é acréscimo inventado.",
+   "4": "Inverte o sentido do trade-off: arquitetura distribuída costuma relaxar o ACID em direção ao BASE, e não eliminá-lo — além de latência de cache não ser o desafio central aqui."
+  },
   "fonte": "FGV nav-tec Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8137,11 +8680,19 @@
    "a verificação de segurança é executada apenas no momento do login inicial do usuário para poupar processamento."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Zero Trust parte de “nunca confie, sempre verifique”: não existe rede interna confiável, e cada requisição é inspecionada, autenticada, autorizada e cifrada por si mesma, com decisão tomada a cada acesso e no menor privilégio possível.",
+  "erradas": {
+   "0": "Conferir confiança implícita depois da VPN é precisamente o modelo de perímetro que o analista está substituindo.",
+   "1": "Tratar o tráfego da rede local como seguro é a premissa clássica de borda — a primeira que o Zero Trust descarta.",
+   "2": "Privilégio estático por cargo ignora contexto (dispositivo, postura, comportamento), enquanto o modelo exige avaliação dinâmica e contínua.",
+   "4": "Verificar apenas no login inicial cria a sessão confiável perpétua, que a verificação contínua existe para eliminar."
+  },
   "fonte": "FGV nav-tec Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8156,11 +8707,19 @@
    "calcular a taxa de compressão que o algoritmo de backup deve aplicar aos arquivos de dump transacionais."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O error budget converte o SLO em moeda de troca entre os times: enquanto sobra orçamento, Dev pode lançar recurso novo; quando ele se esgota, a prioridade vira estabilidade (congelar release, trabalhar em confiabilidade). É esse mecanismo que substitui a queda de braço entre Dev e Ops por um número acordado.",
+  "erradas": {
+   "0": "Penalidade financeira é cláusula de SLA contratual; o SLO é meta interna, e o SRE separa deliberadamente os dois níveis.",
+   "1": "Rejeitar chamado não tem relação com o indicador: o orçamento é consumido por requisição fora do alvo de latência, não por demanda de suporte.",
+   "3": "Volume de log é dimensionamento de observabilidade — mede o que se guarda sobre o serviço, não o quanto ele pode falhar.",
+   "4": "Taxa de compressão de backup não é métrica de confiabilidade de serviço; é distrator montado com vocabulário técnico plausível."
+  },
   "fonte": "FGV nav-tec Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "devops-entrega"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8175,11 +8734,19 @@
    "a falta de ativação de extensões procedurais voltadas à otimização estática de subconsultas correlacionadas."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O otimizador é baseado em custo e estima a seletividade do predicado a partir das estatísticas de distribuição dos dados. Desatualizadas, elas o levam a acreditar que a consulta devolve boa parte das 80 milhões de linhas, situação em que a varredura sequencial realmente custaria menos que o acesso via índice. A correção é recoletar as estatísticas.",
+  "erradas": {
+   "1": "Nível de isolamento afeta bloqueio e visibilidade de dados, não a escolha do caminho de acesso; e a alternativa ainda chama de estrito o Read Uncommitted, que é o mais permissivo do padrão.",
+   "2": "UUID e autoincremento são coisas distintas — a alternativa funde dois conceitos incompatíveis, e o tipo da chave primária não faz o otimizador descartar índice existente.",
+   "3": "COMMIT e ROLLBACK são comandos de controle de transação, não DDL; a classificação já cai antes mesmo do mérito técnico.",
+   "4": "Otimização de subconsulta correlacionada é trabalho do próprio otimizador e não depende de “extensão procedural” — distrator montado com vocabulário verossímil."
+  },
   "fonte": "FGV nav-tec Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8194,11 +8761,19 @@
    "balanceamento dinâmico de carga síncrona focado na normalização de tabelas relacionais em cache."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O Terraform guarda no state file o mapeamento entre o código e os recursos reais provisionados; dois “apply” simultâneos sobre o mesmo estado o corromperiam. Por isso o backend adquire um lock antes de escrever e o libera ao final — quem chega depois recebe justamente o erro de estado bloqueado.",
+  "erradas": {
+   "0": "O Terraform não compila binário em tempo de execução: ele monta um grafo de dependências e chama as APIs dos providers.",
+   "1": "Namespace de kernel isola processo em contêiner e nada tem a ver com escrita concorrente em arquivo; permissão IAM, por sua vez, é avaliada na nuvem, não pelo lock.",
+   "3": "Criptografar o estado é boa prática, porque ele guarda dado sensível, mas confidencialidade não impede escrita simultânea — e nada nela proíbe versionar módulo.",
+   "4": "Balanceamento de carga e normalização de tabelas pertencem a outro domínio inteiro; a alternativa só empilha termos técnicos."
+  },
   "fonte": "FGV nav-tec Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "devops-entrega"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8232,11 +8807,19 @@
    "Confidencialidade, Integridade, Disponibilidade e Autenticidade."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A ISO/IEC 27002:2022 reagrupou os controles em quatro temas — organizacionais, de pessoas, físicos e tecnológicos —, no lugar das 14 seções da versão de 2013, e acrescentou os atributos (tipo de controle, propriedades de segurança, conceitos de cibersegurança, capacidades operacionais, domínios de segurança) como forma de obter outras visões do mesmo conjunto.",
+  "erradas": {
+   "0": "Estratégico, tático e operacional é divisão de níveis de decisão organizacional, e não a taxonomia adotada pela norma.",
+   "1": "Preventivo, detectivo e corretivo classifica os controles por tipo — na 27002:2022 isso existe, mas como atributo, não como os quatro temas.",
+   "3": "Redes, sistemas, aplicativos e bancos de dados é recorte de infraestrutura; a norma cobre segurança da informação por inteiro, incluindo pessoas e processos.",
+   "4": "Confidencialidade, integridade, disponibilidade e autenticidade são propriedades da informação, também presentes como atributo — a alternativa troca propriedade por tema."
+  },
   "fonte": "FGV nav-tec Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "iso-27001-27002"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8251,11 +8834,19 @@
    "POST e método idempotente."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Criar um recurso inédito a cada chamada, com o servidor atribuindo o identificador, é POST — e o POST é não idempotente por definição: repetir a requisição gera outra manifestação, com novo ID. A banca cobra o par método + propriedade justamente porque GET, PUT e DELETE são idempotentes e o POST não.",
+  "erradas": {
+   "1": "PUT é idempotente e serve para criar ou substituir um recurso em URI já conhecida pelo cliente; repetido, deixa o mesmo estado final — o contrário do “recurso inédito a cada chamada”.",
+   "2": "GET é seguro e idempotente: apenas recupera representação, e não deve provocar efeito colateral, muito menos gravar registro.",
+   "3": "PATCH aplica modificação parcial em recurso que já existe; a classificação como não idempotente até se sustenta, mas o método está errado para criação.",
+   "4": "É a quase-certa perfeita: acerta o método e erra a propriedade. Se a repetição gera novo ID, como diz o enunciado, o método não pode ser idempotente."
+  },
   "fonte": "FGV nav-tec Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8270,11 +8861,19 @@
    "proibição do uso de ferramentas de Business Intelligence e dashboards automatizados na camada semântica de análise."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O Lakehouse mantém os dados em arquivos de formato aberto sobre armazenamento de objetos — barato e flexível como o data lake — e acrescenta uma camada de metadados transacionais que entrega ACID, imposição de esquema, versionamento e governança, o que antes era exclusividade do data warehouse. É essa combinação que define o conceito.",
+  "erradas": {
+   "1": "O modelo não abandona a nuvem: ele nasce do armazenamento de objetos em nuvem, e o absoluto “eliminação completa” já denuncia o distrator.",
+   "2": "Concentrar toda transformação em trigger dentro do SGBD é o oposto da arquitetura, que separa armazenamento de processamento.",
+   "3": "Não há substituição de HTTP/REST por mensageria — a alternativa mistura vocabulário de integração com arquitetura analítica.",
+   "4": "Proibir BI e dashboard contraria a própria finalidade do Lakehouse, que existe para servir análise sobre os mesmos dados."
+  },
   "fonte": "FGV nav-tec Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fontes-de-dados"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8289,11 +8888,19 @@
    "leitura, escrita e execução; leitura e execução; apenas leitura."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A string tem dez caracteres: o primeiro indica o tipo (“-” para arquivo comum) e os nove seguintes formam três ternos rwx. Em -rwxr-xr--, o dono tem rwx (ler, escrever e executar), o grupo tem r-x (ler e executar) e os outros têm r-- (apenas ler) — o modo 754.",
+  "erradas": {
+   "0": "Descreve rw-r--r-x, que não é a string exibida, e ainda daria execução a “outros”, justamente quem tem o menor privilégio no caso.",
+   "1": "Isolar um direito por terno ignora que as letras aparecem combinadas nos dois primeiros grupos; nenhum terno da string tem permissão única.",
+   "2": "Lê a string ao contrário: o terno mais permissivo está no proprietário, e ninguém além dele possui rwx.",
+   "3": "Atribui rwx ao grupo e escrita a outros, mas a letra w não aparece em nenhum dos dois ternos finais."
+  },
   "fonte": "FGV nav-tec Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8308,11 +8915,19 @@
    "Tabela de Junção Associativa Anêmica."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Tabela central com as métricas numéricas do negócio e as chaves estrangeiras que amarram as dimensões é a tabela de fatos; as periféricas com atributos descritivos (professor, escola, disciplina) são as dimensões. O desenho radial descrito é o esquema estrela.",
+  "erradas": {
+   "0": "Dimensão guarda o contexto descritivo pelo qual se filtra e agrupa a análise, e não as medidas — a alternativa troca o centro pela periferia.",
+   "2": "“Tabela de metadados isolados” não existe na modelagem dimensional; é nome fabricado.",
+   "3": "Matriz de transição de estado pertence a modelagem de comportamento e processos estocásticos, não a data warehouse.",
+   "4": "Tabela associativa resolve relacionamento N:N no modelo relacional; o adjetivo “anêmica” só reforça que o termo foi inventado para o item."
+  },
   "fonte": "FGV nav-tec Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8327,11 +8942,19 @@
    "algo que você sabe (senha) e algo onde você está (geolocalização física)."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A senha é fator de conhecimento (algo que você sabe) e o código de seis dígitos gerado pelo aplicativo depende de estar com o aparelho, portanto é fator de posse (algo que você tem). O MFA se caracteriza por combinar fatores de categorias diferentes, e não por somar duas senhas.",
+  "erradas": {
+   "1": "Nem biometria nem assinatura gráfica aparecem no caso; “algo que você faz” seria fator comportamental, ausente do cenário.",
+   "2": "É a quase-certa: acerta a senha e troca a posse pela inerência — não há reconhecimento facial, e sim um token gerado no celular.",
+   "3": "Há token, mas não há digitação cadenciada; e a alternativa ainda deixa de fora a senha, que é o primeiro fator descrito.",
+   "4": "Geolocalização é fator contextual e não foi citada; o item substitui o aplicativo por localização física."
+  },
   "fonte": "FGV nav-tec Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8346,11 +8969,19 @@
    "a paridade distribuída recalculará os bits perdidos restaurando as informações em tempo real."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "RAID 0 é apenas striping: os blocos são distribuídos entre os discos sem paridade nem espelho. Perder um disco rompe a sequência de blocos de praticamente todos os arquivos, e o volume inteiro se perde. Ganha-se desempenho e capacidade somada ao custo de tolerância zero a falhas.",
+  "erradas": {
+   "0": "Operar degradado sem perda é comportamento de RAID 1, 5 ou 6, que mantêm redundância; no RAID 0 não há o que degradar.",
+   "2": "Não existe espelhamento no RAID 0 — a alternativa lhe empresta a característica do RAID 1 e ainda inventa um disco reserva.",
+   "3": "É a quase-certa e o raciocínio intuitivo errado: como cada arquivo foi fatiado entre os quatro discos, não sobra “o resto íntegro”; os 6 TB restantes guardam pedaços inúteis.",
+   "4": "Paridade distribuída é do RAID 5 (e dupla, do RAID 6), e o enunciado afirma explicitamente que não houve investimento em redundância."
+  },
   "fonte": "FGV nav-tec Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "armazenamento-fisico"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8365,11 +8996,19 @@
    "Protocolos de Roteamento Dinâmico (OSPF)."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Subdividir logicamente um switch de camada 2 em domínios de broadcast independentes, identificados por IDs (10 para finanças, 20 para laboratórios), é a definição de VLAN. Cada VLAN se comporta como uma rede separada sobre o mesmo hardware, e o tráfego entre elas só passa por roteamento.",
+  "erradas": {
+   "0": "VPN cria túnel cifrado sobre rede pública para ligar usuários ou sites remotos; não divide domínio de difusão dentro de um switch local.",
+   "1": "NAT traduz endereços entre redes, normalmente privada e pública: atua sobre endereçamento na camada 3, não sobre segmentação de broadcast.",
+   "2": "SAN é rede dedicada a armazenamento em bloco — resolve acesso a disco, e não isolamento entre setores administrativos.",
+   "4": "OSPF é protocolo de roteamento dinâmico: distribui rotas entre redes que já existem, em vez de criar os segmentos."
+  },
   "fonte": "FGV nav-tec Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mpls-vlan-nat"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8384,11 +9023,19 @@
    "Informações de Interesse Governamental Soberano."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O art. 5º, II, da Lei nº 13.709/2018 define dado pessoal sensível por lista fechada: origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico. O enunciado reproduz a lista e cobra apenas o nome da categoria.",
+  "erradas": {
+   "0": "Dado anonimizado é o que perdeu a possibilidade de associação ao titular e, em regra, sai do escopo da lei — o oposto do regime reforçado do sensível.",
+   "1": "“Acesso público irrestrito” não é categoria da LGPD; e dado tornado público continua protegido, inclusive quando sensível.",
+   "3": "“Atributo multivalorado” é termo de modelagem de banco de dados, sem qualquer existência jurídica na lei.",
+   "4": "“Informação de interesse governamental soberano” não consta da LGPD — distrator com aparência jurídica."
+  },
   "fonte": "FGV nav-tec Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "principios-lgpd"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8403,11 +9050,19 @@
    "são armazenadas em arquivos de texto bruto imutáveis sem permissão para a criação de nenhum índice físico."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "No esquema estrela puro cada dimensão é uma única tabela desnormalizada ligada diretamente à fato, com as hierarquias achatadas em colunas da própria dimensão. Normalizar essas hierarquias em tabelas auxiliares converte o estrela em floco de neve (snowflake) — e é essa fronteira que a questão cobra.",
+  "erradas": {
+   "0": "Normalização profunda com ramificações em cadeia descreve exatamente o snowflake, o modelo que o estrela puro evita para poupar junções.",
+   "1": "As dimensões se conectam à fato justamente por chaves estrangeiras; eliminá-las desmontaria o modelo.",
+   "2": "Dimensão é feita de atributos descritivos, em geral textuais; valor numérico agregável é característica da fato, e hash não cumpre papel algum aqui.",
+   "4": "Arquivo de texto bruto imutável e sem índice descreve um data lake, e ainda inviabilizaria o desempenho de consulta que o modelo dimensional busca."
+  },
   "fonte": "FGV nav-tec Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "inmon-kimball"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8422,11 +9077,19 @@
    "reter o pagamento integral de todos os outros contratos ativos do fornecedor até que a cobertura suba para 100%."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O gestor técnico que fiscaliza o contrato tem dever de agir vinculado: constatada a desconformidade com a meta pactuada, ele registra formalmente a ocorrência, aplica as glosas ou sanções previstas e exige a correção. Cronograma apertado do fornecedor não é causa que afaste obrigação contratual.",
+  "erradas": {
+   "0": "Reescrever o SLA retroativamente para acomodar o descumprimento fere a vinculação ao contrato e expõe o próprio fiscal a responsabilização.",
+   "1": "Aprovar sem ressalva chancela o débito técnico e configura omissão na fiscalização — é justamente a conduta que gera responsabilidade pessoal.",
+   "3": "O fiscal não gerencia a equipe da contratada; ingerência sobre a mão de obra terceirizada é vedada e ainda aproxima o contrato de vínculo empregatício.",
+   "4": "Reter pagamento de outros contratos, estranhos à ocorrência, extrapola o objeto e a proporcionalidade — e exigir 100% de cobertura vai além da meta acordada, que era 80%."
+  },
   "fonte": "FGV nav-tec Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -8441,11 +9104,19 @@
    "Desvio de Dados (Data Drift)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Infraestrutura saudável com acurácia despencando, por mudança gradual na distribuição estatística das variáveis de entrada, é data drift: os dados de produção deixaram de se parecer com os do treino. A resposta usual é monitorar a distribuição e retreinar o modelo.",
+  "erradas": {
+   "0": "Buffer overflow é falha de memória em código nativo; produziria erro, travamento ou brecha de segurança, jamais degradação silenciosa de acurácia.",
+   "1": "Condição de corrida é defeito de concorrência entre processos, e resultaria em resultado inconsistente ou impasse, não em perda gradual de poder preditivo.",
+   "2": "Fragmentação de índice degrada desempenho de banco de dados — afeta tempo de resposta, e o enunciado descarta a infraestrutura como causa.",
+   "3": "Compilação JIT é técnica de execução de código, sem qualquer relação com a distribuição dos dados de telemetria."
+  },
   "fonte": "FGV nav-tec Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metricas-ml"
+  ]
  },
  {
   "prova": "tjrj1",
