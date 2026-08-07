@@ -209,10 +209,13 @@ pena — já está coberto. O alvo é **inglês**, e depois atualidades.
 
 ### Detalhes operacionais do site da FGV (custaram tempo na sessão passada)
 
-- As páginas de concurso (`conhecimento.fgv.br/concursos/<slug>`) são
-  **renderizadas por JavaScript**: buscar o conteúdo delas com WebFetch volta
-  vazio. Use busca restrita ao domínio (`allowed_domains`) para achar o link
-  direto do PDF, e então baixe o PDF.
+- ~~As páginas de concurso são renderizadas por JavaScript e o WebFetch volta
+  vazio.~~ **Desatualizado (reconferido em 07/08/2026):** o WebFetch agora lê
+  `conhecimento.fgv.br/concursos/<slug>` normalmente e devolve a lista de
+  cadernos por cargo com os links diretos. É o caminho mais rápido — pedir a
+  lista de PDFs da página do concurso, em vez de garimpar por busca. A página
+  índice `conhecimento.fgv.br/concursos` também abre (são 6 páginas de
+  resultados).
 - Editais, cadernos e gabaritos ficam todos sob
   `https://conhecimento.fgv.br/sites/default/files/concursos/<arquivo>.pdf`.
 - O WebFetch não lê o texto desses PDFs (voltam como binário), **mas salva o
@@ -227,17 +230,40 @@ pena — já está coberto. O alvo é **inglês**, e depois atualidades.
 
 ### O que já foi verificado — não repita
 
-**Achado e ainda não baixado (melhor retorno disponível):**
+**Prontas para importar (verificadas no edital + caderno em 07/08/2026):**
 
-- **NAV Brasil 2026, caderno de NÍVEL MÉDIO** — cargo *Técnico de Navegação
-  Aérea – Operador de Torre de Controle*, 60 questões: **inglês 20**, RLM 15,
-  português 10. Mesma aplicação de 02/08/2026 cujos cadernos de nível superior
-  já foram importados. Levaria inglês de 53 → 73, e zeraria português e RLM.
-  Página: <https://conhecimento.fgv.br/concursos/navbrasil26> · gabaritos:
-  <https://conhecimento.fgv.br/sites/default/files/concursos/nav-brasil-gabaritos-publicacao-v2.pdf>
-  *Ressalva:* é nível médio, então o texto é mais simples que o da sua prova;
-  o inglês é de comércio exterior/logística, não de TI. As habilidades cobradas
-  (skimming, scanning, inferência, sinonímia, coesão) são as mesmas.
+1. **NAV Brasil 2026, NÍVEL MÉDIO** — *Profissional Técnico de Navegação Aérea –
+   Operador de Torre de Controle*, aplicada em **02/08/2026**, 60 questões.
+   Composição conferida no próprio caderno: português 1–10, legislação/ética
+   11–20 (*descartar* — ética e direito genéricos), RLM 21–35, informática 36–40
+   (*descartar*), **inglês 41–60**. Aproveitáveis: **45** (inglês 20, RLM 15,
+   português 10) — leva inglês de 53 → 73.
+   Caderno TIPO 1: <https://conhecimento.fgv.br/sites/default/files/concursos/cnm101-profissional-tecnico-de-navegacao-aerea-operador-de-torre-de-controle-cnm101-tipo-1.pdf>
+   Gabarito (o do repo já é o arquivo completo de 20 páginas; Operador de Torre
+   é a **primeira** tabela): `gabaritos/nav-brasil-gabaritos-publicacao-v2.pdf`.
+   *Conferido:* o português do médio não repete o do superior (o médio usa
+   notícias da FAB e da Agenda Viva SP; o superior usava atribuições do edital),
+   então a regra 3 de importação está satisfeita.
+   *Ressalva:* é nível médio — texto mais simples, e o inglês não é de TI.
+
+2. **CPRM 2025 (Serviço Geológico do Brasil), Edital 01/2025** — prova aplicada
+   em **02/12/2025**, com **gabarito DEFINITIVO** publicado (08/01/2026):
+   <https://conhecimento.fgv.br/sites/default/files/concursos/gabarito-definitivo-cprm.pdf>
+   Dois cadernos interessam, por motivos diferentes:
+   - *Analista em Geociências – **Análise e Desenvolvimento de Sistemas*** (70
+     questões): português 1–10, RLM 11–20, **atualidades 21–30**, ADS 31–70.
+     **É cargo de TI**, e as atualidades caem no bloco mais escasso — as questões
+     conferidas cobrem ética da IA (acordo da UNESCO), ODS/Agenda 2030 e
+     geopolítica de minerais estratégicos, ou seja, `etica-ia`, `regulacao-ia` e
+     `atualidades-socioambiental` (que hoje tem **zero** questão).
+     <https://conhecimento.fgv.br/sites/default/files/concursos/analista-em-geociencias-analise-e-desenvolvimento-de-sistemas-cns02e02-tipo-1.pdf>
+   - *Pesquisador em Geociências* (qualquer área — o edital diz no item 12.2 que
+     **o Módulo I é comum a todas**, então basta **um** caderno): português 10,
+     **inglês 5**, metodologia científica 5, RLM 5, estatística 5.
+     <https://conhecimento.fgv.br/sites/default/files/concursos/pesquisador-em-geociencias-hidrogeologia-cns01e05-tipo-1.pdf>
+
+   Rendimento somado do CPRM: **inglês 5, atualidades 10, RLM 15, português 20**
+   (+ 40 de ADS, sem déficit mas recentes e de cargo de TI).
 
 **Já verificado e descartado:**
 
@@ -249,6 +275,8 @@ pena — já está coberto. O alvo é **inglês**, e depois atualidades.
 | PSS IBGE (FGV) | é FGV mesmo (PSS nº 04/2025, provas em 2026), mas APM e SCQ são **nível médio** e não têm inglês |
 | SEEC-RN 2025 — Professor de Inglês | inglês avançado/pedagógico, calibração errada para o seu exame |
 | PM-SP Aluno-Oficial 2025 (FGV, 13/07/2025) | **tem prova de inglês** — não cheguei a confirmar quantas questões. Vale checar |
+| CGE-SP — Auditor Estadual de Controle Interno / **Tecnologia da Informação** | cargo de TI e prova recente, mas o caderno é **60 questões de Conhecimentos Específicos e mais nada**: zero Módulo I. Só serviria para calibração de estilo do Módulo II, que já não tem déficit. Caderno: `cns2a02-auditor-estadual-de-controle-cge-tecnologia-da-informacao-cns2a02-tipo-1.pdf` |
+| CPRM — cadernos de **Analista** que não sejam ADS | o Módulo I varia por área e nenhuma outra é de TI; e o inglês do CPRM só existe no **Pesquisador**, não no Analista (armadilha: a notícia fala "CPRM tem inglês" sem dizer para qual cargo) |
 
 ### Regras de importação — não repita erros já cometidos
 
