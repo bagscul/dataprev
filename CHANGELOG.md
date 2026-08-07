@@ -2,6 +2,52 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — as 73 questões novas explicadas e o parser aprendendo a quinta e a sexta marca de texto-base
+
+Fecha a pendência aberta pela importação da EPE, da Receita Federal e do CPRM
+Pesquisador. `./valida.py` volta a **2 avisos** — os dois da `nav-tec` Q58, a
+divergência de gabarito registrada. **Todas as 15 provas reais do banco estão
+com explicação completa.**
+
+| lote | qtd |
+|---|---|
+| específicos da `epe-ti` (36–80) — eng. de software, arquitetura/nuvem, banco de dados, BI, segurança, Python, JavaScript, HTML5 | 40 |
+| inglês da `epe-ti` (11–20) | 10 |
+| inglês da `rfb-ana` (16–25) | 10 |
+| inglês da `rfb-aud` (11–18) | 8 |
+| inglês da `cprm-pesq` (11–15) | 5 |
+
+**Conserto no `importar_provas.py`, achado no meio do trabalho:** as questões
+de inglês da Receita Federal entraram **sem o texto-base**. O parser só
+reconhecia texto anunciado por fórmula ("Use the following TEXT to answer the
+next six questions"), e a RFB não anuncia nada — imprime só `Text I` e emenda o
+texto. O CPRM, por sua vez, usa uma sexta forma, em português ("As questões da
+prova de Língua Inglesa referem-se ao TEXTO a seguir"). Agora as duas são
+reconhecidas, e como nenhuma delas informa **quantas** questões o texto cobre,
+o alcance passou a sair da posição: cada texto vale até a questão anterior ao
+próximo marcador, e o último vale até o cabeçalho da seção seguinte.
+
+Duas armadilhas apareceram no caminho, e as duas viraram regra no código:
+
+- **a redação do CPRM também abre com "TEXTO I"** — e, sem corte, o texto da
+  discursiva era prefixado nas 30 questões objetivas do começo do caderno. Além
+  do corte pelo cabeçalho (`Redação`, `Prova Discursiva`, `Rascunho`), há uma
+  trava geral: a questão que abre o grupo tem de vir **depois** das já vistas.
+- **o pôster e o cartum da NAV Brasil delimitam grupo mesmo sem texto.** Na
+  primeira versão da função, o `Text I` da `nav-med` se espalhou por cima das
+  questões do pôster (Q51–Q56), porque as marcas sem prosa eram descartadas
+  antes de servirem de fronteira. Agora elas entram na lista como divisor, e
+  só não produzem texto.
+
+Resultado da mudança, conferido por diff antes de commitar: **33 questões
+ganharam o texto-base** (`rfb-ana` 16–25, `rfb-aud` 11–18, `cprm-pesq` 11–15 e,
+de brinde, as 10 de português do `cprm-ads`, que se apoiam em "O Brasil na
+crise do clima"). Nenhuma questão encolheu, nenhuma mudou de `requer_imagem` e
+`ans`, `why` e `sub` seguem preservados. `./importar_provas.py` continua
+devolvendo o arquivo byte-idêntico.
+
+A etiquetagem por microtópico subiu de 467 para **533 das 1103** (48%).
+
 ## 2026-08-07 — EPE 2024, as duas da Receita Federal e o CPRM Pesquisador: +74 questões e o inglês quase fecha
 
 As quatro provas verificadas na busca da noite entraram. Pool utilizável de

@@ -1,9 +1,9 @@
-# Continuar de onde paramos — 07/08/2026 (noite, depois da importação)
+# Continuar de onde paramos — 07/08/2026 (fim do dia)
 
-Arquivo de retomada. As quatro provas verificadas na busca da noite **foram
-importadas**, e o inglês quase fechou: falta 18 de 51. Sobrou a pendência de
-sempre depois de importar — as **73 questões novas estão sem explicação**.
-Leia na ordem: estado → pendência → o que vem depois.
+Arquivo de retomada. **Não há pendência aberta.** As quatro provas da busca da
+noite foram importadas *e* explicadas no mesmo dia, e o inglês quase fechou:
+falta 18 de 51. O que sobra é escolha de trabalho, não dívida. Leia na ordem:
+estado → o que fazer → o que já foi descartado.
 
 ---
 
@@ -15,15 +15,17 @@ Números de referência (medidos em 07/08/2026, não precisa remedir):
 
 - `banco.json` 403 · `banco-provas.json` 700 · **1080 utilizáveis no quiz**
 - **15 provas reais** importadas
-- `./valida.py`: 0 erros, **148 avisos** — 73 questões novas sem explicação
-  (a pendência do §1) mais os 2 da `nav-tec` Q58 (§3)
-- `sub` (microtópico): **467 das 1029** questões dos dois bancos (45%)
+- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§2)
+- **as 15 provas estão com explicação completa**; a Q58 é a única exceção
+- `sub` (microtópico): **533 das 1103** questões dos dois bancos (48%)
 
-O que entrou no dia (detalhe no `CHANGELOG.md`, cinco entradas de 07/08): as
-provas `cprm-ads` e `nav-med`, as quatro correções do `importar_provas.py`, as
-**106 explicações** que fecharam a pendência daquelas duas e, à noite, a busca
-que trouxe `epe-ti`, `rfb-ana`, `rfb-aud` e `cprm-pesq` (+74 questões, o
-inglês de 69 para 102).
+O que entrou no dia (detalhe no `CHANGELOG.md`, seis entradas de 07/08): as
+provas `cprm-ads` e `nav-med` com suas **106 explicações**; a busca que trouxe
+`epe-ti`, `rfb-ana`, `rfb-aud` e `cprm-pesq` (+74 questões, o inglês de 69 para
+102); as **73 explicações** dessas quatro; e seis correções no
+`importar_provas.py` — quatro pela manhã e mais duas à noite, quando o parser
+aprendeu as marcas de texto-base da Receita Federal (`Text I` solto) e do CPRM
+("As questões da prova de Língua Inglesa referem-se ao TEXTO a seguir").
 
 Garantias que valem conhecer antes de mexer:
 
@@ -32,47 +34,16 @@ Garantias que valem conhecer antes de mexer:
   sinal de que alguém consertou dado à mão no JSON em vez de no parser.
 - A reimportação **preserva** `ans`, `why`, `erradas`, `anulada` e `sub`.
   **Não preserva `requer_imagem`** — ver a ressalva da Q17, logo abaixo.
+- Texto-base: o parser reconhece **seis** marcas. Quatro trazem a contagem na
+  própria fórmula; as duas novas (RFB e CPRM) não trazem, e nelas o alcance sai
+  da posição — até o próximo marcador, ou até o cabeçalho da seção seguinte.
+  Se for mexer nisso, confira o efeito com um diff do `banco-provas.json`
+  antes de commitar: na primeira tentativa a regra espalhou o texto da redação
+  do CPRM por cima de 30 questões objetivas.
 
 ---
 
-## 1. Pendência — explicar as 73 questões novas
-
-As quatro provas entraram com **gabarito definitivo** mas **sem `why` e sem
-`erradas`**. É a mesma situação das duas importações anteriores, e o mesmo
-caminho de saída. Distribuição:
-
-| bloco | qtd | | bloco | qtd |
-|---|---|---|---|---|
-| inglês | 33 | | banco-dados | 4 |
-| eng-software | 12 | | programação | 4 |
-| arquitetura | 8 | | frontend | 2 |
-| BI | 5 | | redes | 1 |
-| segurança | 5 | | | |
-
-Para listar as pendentes a qualquer momento:
-
-```bash
-python3 -c "
-import json
-b=json.load(open('banco-provas.json',encoding='utf-8'))
-f=[q for q in b if q.get('ans') is not None and not q.get('requer_imagem')
-   and not q.get('anulada') and not (q.get('why','').strip() and q.get('erradas'))]
-print(len(f)); [print(q['prova'], q['num'], q['tag']) for q in f[:10]]"
-```
-
-**Como fazer**, que é o que funcionou nas duas vezes anteriores: lotes de 10
-por bloco, começando pelos **específicos da `epe-ti`** (36–80: são de cargo de
-TI de 2024 e batem no seu Módulo II), depois o **inglês** das quatro. Ao fim de
-cada lote, `./valida.py`. As regras estão na seção 5 do
-`CONTRIBUINDO-QUESTOES.md` e em "Estilo de questão" do `CLAUDE.md`; o gabarito
-é oficial e **intocável** — divergência vira anotação, como a `nav-tec` Q58.
-
-Uma questão de figura na faixa nova: `epe-ti` Q58 (malwares) saiu do sorteio
-sozinha, marcada pelo importador. Não há o que editar nela.
-
----
-
-## 2. Depois da pendência — falta pouco, e só de dois blocos
+## 1. O que fazer agora — falta pouco, e só de dois blocos
 
 Medido contra a demanda de **10 simulados** do roteiro (cada um: 40 gerais na
 proporção do edital + 30 específicos):
@@ -149,15 +120,20 @@ Atenção: `./importar_provas.py` **com** argumento sobrescreve o
 Confira o **tipo** do caderno contra o **tipo** da tabela do gabarito antes de
 colar: no CPRM as tabelas se chamam "ADS – 1" e "ADS – 2", e a "1" é a TIPO 1.
 
-**Depois de importar, explique no mesmo dia.** As duas últimas importações
-deixaram 86 e 106 questões sem `why`/`erradas` para o dia seguinte. O caminho
-que funcionou nas duas vezes: lotes de 10 por bloco, começando pelos
-específicos (maior retorno), atualidades depois, português por último; a cada
-lote, `./valida.py`.
+**Depois de importar, explique no mesmo dia.** Duas importações deixaram 86 e
+106 questões sem `why`/`erradas` para o dia seguinte; a terceira (as quatro
+provas de 07/08 à noite) foi explicada na mesma sessão e é o padrão a seguir. O
+caminho que funcionou nas três vezes: lotes de 10 por bloco, começando pelos
+**específicos** (maior retorno), atualidades depois, inglês e RLM na sequência,
+português por último; a cada lote, `./valida.py`.
+
+E confira o texto-base antes de escrever: foi ao explicar o inglês da Receita
+Federal que apareceu a lacuna do parser. Se o enunciado disser "Based on Text
+I" e o texto não estiver no campo `q`, o conserto é no `importar_provas.py`.
 
 ---
 
-## 3. Ressalvas registradas — não são bugs a consertar às pressas
+## 2. Ressalvas registradas — não são bugs a consertar às pressas
 
 > **`nav-tec` Q58 — divergência real de gabarito, não conserto silencioso.**
 > O enunciado descreve dependência transitiva (`Nome_Fabricante` →

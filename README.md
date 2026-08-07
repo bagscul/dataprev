@@ -97,7 +97,7 @@ a mesma errada duas vezes nao vira duas anotacoes). Para nao gravar, use
 progresso.csv (entao nao use ./feito.sh para as questoes do quiz).
 
 403 questoes originais em estilo FGV (todas com gabarito auditado contra
-fonte) + questoes reais de 11 provas da FGV = **~1007 questoes utilizaveis**.
+fonte) + questoes reais de 15 provas da FGV = **~1080 questoes utilizaveis**.
 As explicacoes ja vem gravadas no banco: o quiz roda offline, sem chave de
 API e sem custo — entao qualquer pessoa com o repo roda no terminal dela.
 
@@ -142,8 +142,8 @@ de erros. Sao **167 microtopicos** em `subtags.py` (fonte unica: `quiz.py`,
 `valida.py` e `fraquezas.py` leem de la), quase todos derivados das secoes do
 `teoria/` e da apostila — a taxonomia do edital, ja auditada. `./quiz.py --tags`
 lista todos por bloco. Questao nova do `banco.json` e obrigada a trazer `sub`
-(o `./valida.py` bloqueia). Hoje 385 das 1029 questoes dos dois bancos ja tem
-`sub` (37%) — 303 das 403 originais e 82 das reais; o resto ficou sem etiqueta
+(o `./valida.py` bloqueia). Hoje 533 das 1103 questoes dos dois bancos ja tem
+`sub` (48%) — 303 das 403 originais e 230 das reais; o resto ficou sem etiqueta
 de proposito, por falta de evidencia — etiquete a mao quando esbarrar numa
 delas.
 

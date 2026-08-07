@@ -27,8 +27,10 @@ texto antes de importar, que é a regra 3 do fluxo de importação.
 | Auditoria | 55–62 | **descartar** (fora do edital) |
 | Contabilidade Geral e Pública | 63–80 | **descartar** (fora do edital) |
 
-As 8 importadas se apoiam em um único texto, sobre a dimensão moral das
-decisões de tributação e gasto público.
+As 8 importadas se apoiam em **dois** textos: **Text I** ("Adding ethics to
+public finance", sobre a dimensão moral das decisões de tributação e gasto)
+nas questões 11–15 e **Text II** ("How trade can become a gateway to climate
+resilience", sobre café, cacau e resiliência climática) nas questões 16–18.
 
 Nenhuma questão da faixa importada foi anulada — as anuladas do caderno são a
 Q21 e a Q22, de RLM, já fora do recorte.

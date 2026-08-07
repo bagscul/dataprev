@@ -7,19 +7,21 @@ e com que números ele foi dimensionado — leia antes de mudar as cotas.
 ## Por que só os gerais
 
 > **As cotas deste arquivo estão desatualizadas.** Elas foram dimensionadas
-> antes das importações de 07/08/2026 (NAV Brasil e CPRM), que trouxeram 204
-> questões de blocos gerais. **Português e RLM saíram do déficit** e não
-> precisam de questão nova nenhuma; o buraco caiu de 137 para **63**, quase
-> tudo inglês. A metodologia e o rateio por microtópico continuam válidos —
-> recalcule as cotas antes de usar, e corte português e RLM do lote.
+> antes das importações de 07/08/2026, que trouxeram 237 questões de blocos
+> gerais em seis provas (NAV Brasil, CPRM ADS e Pesquisador, EPE e as duas da
+> Receita Federal). **Português, RLM e legislação saíram do déficit** e não
+> precisam de questão nova nenhuma; o buraco caiu de 137 para **30**, dividido
+> entre inglês e atualidades. A metodologia e o rateio por microtópico
+> continuam válidos — recalcule as cotas antes de usar, e deixe no lote apenas
+> esses dois blocos.
 
-Medido em 07/08/2026 **depois das importações**, contra a demanda de **10
-simulados** do roteiro (cada um com 70 questões: 40 gerais na proporção do
-edital + 30 específicos):
+Medido em 07/08/2026 **depois de todas as importações do dia**, contra a
+demanda de **10 simulados** do roteiro (cada um com 70 questões: 40 gerais na
+proporção do edital + 30 específicos):
 
 | bloco | por simulado | precisa (10×) | pool hoje | déficit |
 |---|---|---|---|---|
-| inglês | 12 | 120 | 69 | **+51** |
+| inglês | 12 | 120 | 102 | **+18** |
 | atualidades | 6 | 60 | 48 | **+12** |
 | português | 12 | 120 | 129 | −9 |
 | RLM | 5 | 50 | 65 | −15 |

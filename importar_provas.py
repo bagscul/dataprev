@@ -157,6 +157,8 @@ CABECALHO_SECAO = re.compile(
     r"|atualidades"
     r"|informática"
     r"|conhecimentos específicos"
+    r"|metodologia científica"
+    r"|estatística"
     r"|módulo\s+[IVX]+"
     r"|legislação (?:específica|institucional)"
     r"|legislação e noções de ética"
@@ -200,6 +202,26 @@ NUM_EXTENSO = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
                "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
                "duas": 2, "três": 3, "tres": 3, "quatro": 4, "cinco": 5,
                "seis": 6, "sete": 7, "oito": 8, "nove": 9, "dez": 10}
+
+# Quarta forma, e a mais economica de todas: a Receita Federal 2023 e o
+# Pesquisador do CPRM 2025 nao escrevem formula nenhuma — imprimem so "Text I"
+# e emendam o texto. Sem a formula nao ha numero por extenso dizendo quantas
+# questoes o texto cobre, entao o alcance vem da POSICAO: cada texto vale ate o
+# proximo marcador, e o ultimo vale ate o cabecalho da secao seguinte.
+# Duas marcas sem contagem, tratadas pela mesma regra de alcance por posicao:
+# o "Text I" solto da Receita Federal 2023 e a abertura de secao do CPRM 2025
+# ("As questoes da prova de Lingua Inglesa referem-se ao TEXTO a seguir:"),
+# que vale para o bloco inteiro.
+MARCA_TEXTO_NUA = re.compile(
+    r"^TEXTO?\s+[IVX]+$"
+    r"|^as quest[õo]es da prova de .{3,40}?\s+refere[m]?-se ao(?:\s+TEXTO a)?$",
+    re.IGNORECASE,
+)
+
+# Onde a prova objetiva acaba: dali em diante nao ha questao numerada, e
+# qualquer "TEXTO I" pertence a discursiva ou ao rascunho.
+FIM_DA_OBJETIVA = re.compile(
+    r"^(?:prova discursiva|reda[çc][ãa]o|rascunho|realização)$", re.IGNORECASE)
 
 
 def quantas_questoes(m):
@@ -326,7 +348,87 @@ def textos_base(linhas):
             for k in range(inicio, inicio + quantas):
                 mapa[k] = texto
         i = max(j, i + 1)
+    for k, texto in textos_base_nus(linhas).items():
+        mapa.setdefault(k, texto)  # a formula explicita, quando existe, manda
     return mapa
+
+
+def textos_base_nus(linhas):
+    """{numero_da_questao: texto} dos textos marcados so por "Text I".
+
+    Sem a formula que diz quantas questoes o texto cobre, o alcance sai da
+    posicao: um texto vale ate a questao anterior ao proximo marcador, e o
+    ultimo vale ate a ultima questao antes do cabecalho da secao seguinte.
+    """
+    marcas = []
+    ultima_vista = 0
+    for i, (linha, _) in enumerate(linhas):
+        s0 = linha.strip()
+        # A discursiva do CPRM tambem abre com "TEXTO I", so que ali nao ha
+        # questao numerada: sem este corte, o texto da redacao era prefixado
+        # nas 30 questoes objetivas do inicio do caderno.
+        if FIM_DA_OBJETIVA.match(s0):
+            break
+        n = re.match(r"^\s*(\d{1,2})\s*$", s0)
+        if n:
+            ultima_vista = max(ultima_vista, int(n.group(1)))
+        if not MARCA_TEXTO_NUA.match(s0):
+            continue
+        corpo, j, inicio = [], i + 1, None
+        while j < len(linhas):
+            s = linhas[j][0].strip()
+            n = re.match(r"^\s*(\d{1,2})\s*$", s)
+            if n:
+                inicio = int(n.group(1))
+                break
+            if MARCA_TEXTO_NUA.match(s) or CABECALHO_SECAO.match(s):
+                break
+            # O PDF quebra "...refere-se ao TEXTO a / seguir:" em duas linhas;
+            # a segunda e rabo do marcador, nao inicio do texto.
+            if not corpo and re.match(r"^(?:TEXTO\s+a\s+)?seguir:?$", s,
+                                      re.IGNORECASE):
+                j += 1
+                continue
+            corpo.append(s)
+            j += 1
+        # A questao que abre o grupo tem de vir DEPOIS das ja vistas. Se o
+        # numero encontrado retrocede, o "texto" nao pertence a prova objetiva
+        # (e o caso da redacao, cujo comando cita "20 (vinte) linhas").
+        if inicio is None or inicio <= ultima_vista:
+            continue
+        # prosa() barra o poster e o cartum, em que o "texto" e uma imagem e a
+        # camada de texto do PDF devolve so o rotulo e a linha de credito.
+        # Mesmo sem corpo aproveitavel a marca entra na lista, porque ela
+        # delimita o alcance do texto ANTERIOR — foi o que faltou na primeira
+        # versao desta funcao, que estendia o Text I da NAV Brasil por cima das
+        # questoes do poster (Q51–Q56).
+        texto = re.sub(r"\s+", " ", " ".join(corpo)).strip() if prosa(corpo) else None
+        marcas.append((i, inicio, texto))
+
+    mapa = {}
+    for k, (linha_marca, inicio, texto) in enumerate(marcas):
+        if not texto:
+            continue
+        if k + 1 < len(marcas):
+            fim = marcas[k + 1][1] - 1
+        else:
+            fim = ultima_questao_da_secao(linhas, linha_marca)
+        for n in range(inicio, (fim or inicio) + 1):
+            mapa[n] = texto
+    return mapa
+
+
+def ultima_questao_da_secao(linhas, desde):
+    """Numero da ultima questao antes do proximo cabecalho de secao."""
+    ultima = None
+    for linha, _ in linhas[desde:]:
+        s = linha.strip()
+        if CABECALHO_SECAO.match(s):
+            break
+        n = re.match(r"^\s*(\d{1,2})\s*$", s)
+        if n:
+            ultima = int(n.group(1))
+    return ultima
 
 
 def parsear(linhas):

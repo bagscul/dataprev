@@ -110,15 +110,16 @@ numa tem de descer para as outras, e o `./valida.py` acusa quando não desce.
 | **Apostila** | `apostila/main.pdf` (150 páginas, 21 capítulos) | teoria explicada, com exemplos e caixas de pegadinha | quando erra por **não saber o conceito** |
 | **Resumo** | `resumo/<bloco>.md` | o mesmo conteúdo condensado, para reler rápido | revisão de sábado, véspera de simulado |
 | **Dicas de banca** | `dicas/<bloco>.md` | como a **FGV** cobra aquele bloco e arma a pegadinha | antes de atacar um bloco novo |
-| **Banco de questões** | `banco.json` + `banco-provas.json` | 403 originais auditadas + 626 de onze provas reais | todo dia, é o método de estudo |
+| **Banco de questões** | `banco.json` + `banco-provas.json` | 403 originais auditadas + 700 de quinze provas reais | todo dia, é o método de estudo |
 
-As onze provas reais são Dataprev 2024 (70), MPU (70), TJ-RJ 1 e 2 (69 e 70),
-CNSAL ADS (63), CNSAL BD (40), CNSAL Redes (40), NAV Brasil Analista de
-Tecnologia (59) e Engenheiro Software (30), NAV Brasil nível médio (45) e CPRM
-ADS (70) — todas FGV. Somando as duas fontes, são **1007 questões sorteáveis**
-pelo quiz, com gabarito auditado; a explicação de cada alternativa está gravada
-em todas menos as 115 importadas em 07/08/2026, que ainda esperam o `why`.
-Roda offline, sem custo.
+As quinze provas reais são Dataprev 2024 (70), MPU (70), TJ-RJ 1 e 2 (69 e 70),
+ALE-RO ADS (63), ALE-RO BD (40), ALE-RO Redes (40), NAV Brasil Analista de
+Tecnologia (59) e Engenheiro de Software (30), NAV Brasil nível médio (45),
+CPRM ADS (70) e Pesquisador (5), EPE 2024 TI (51) e Receita Federal 2023 —
+Analista-Tributário (10) e Auditor-Fiscal (8) — todas FGV. Somando as duas
+fontes, são **1080 questões sorteáveis** pelo quiz, com gabarito auditado e
+**com a explicação de cada alternativa gravada** (a única exceção é a `nav-tec`
+Q58, que tem divergência de gabarito registrada). Roda offline, sem custo.
 
 **A rotina de um dia comum**, na ordem:
 
