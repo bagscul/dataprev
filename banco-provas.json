@@ -3634,11 +3634,19 @@
    "apenas João e Maria trabalham com obras raras."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A frase é a condicional R → (J ∧ M). Pela contrapositiva, negar o consequente basta para garantir a negação do antecedente; e a negação de uma conjunção, por De Morgan, é a disjunção ¬J ∨ ¬M. Logo, João ou Maria não acompanharem é condição suficiente para não haver obra rara.",
+  "erradas": {
+   "0": "Troca duas coisas de uma vez: exige que os dois faltem (conjunção, quando De Morgan pede disjunção) e chama de necessária uma condição que é suficiente.",
+   "2": "Acerta a condição (um dos dois não acompanhar) e erra só o operador — ela é suficiente, não necessária. É a quase certa que muda apenas a palavra final, alvo predileto da banca nesse tipo de item.",
+   "3": "Inverte a condicional: da ausência de obra rara nada se conclui sobre os bibliotecários, porque a implicação só corre no sentido obra rara → acompanhamento.",
+   "4": "Extrapola o enunciado, que fala em acompanhar a visitação e nunca em quem trabalha com obras raras."
+  },
   "fonte": "FGV cprm-ads Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equivalencias-logicas"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3653,11 +3661,19 @@
    "206"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O caminho seguro é achar a produtividade unitária: 192 obras ÷ (8 bibliotecários × 6 horas) = 4 obras por bibliotecário por hora. Então 10 × 8 × 4 = 320 obras. Reduzir tudo à unidade evita errar o sentido das duas proporções ao mesmo tempo.",
+  "erradas": {
+   "0": "1280 é quatro vezes o valor correto: sai de multiplicar as 192 obras pelos novos números sem dividir pelos antigos, ignorando que o ajuste é feito pelas razões 10/8 e 8/6.",
+   "1": "640 é o dobro do resultado, típico de quem duplica uma das razões — por exemplo, tratando as 8 horas como o dobro das 6 originais.",
+   "3": "256 = 192 × 8/6: aplica só o aumento de horas e mantém a equipe de 8 pessoas, esquecendo os dois bibliotecários a mais.",
+   "4": "206 não sai de nenhuma composição das proporções; está ali, perto de 192, para capturar quem chuta um valor \"um pouco maior\"."
+  },
   "fonte": "FGV cprm-ads Q12",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "razao-proporcao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3672,11 +3688,19 @@
    "16"
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Passar de 1:120.000.000 para 1:60.000.000 dobra cada dimensão linear do desenho. Área varia com o quadrado da razão linear, então a região passa a medir 4 cm² × 2² = 16 cm².",
+  "erradas": {
+   "0": "1 cm² divide a área por 4, invertendo o sentido da mudança: denominador menor significa escala maior e desenho maior, não menor.",
+   "1": "2 cm² divide por 2 e ainda aplica à área um fator que é da dimensão linear — dois erros na mesma conta.",
+   "2": "4 cm² supõe que mudar de escala não altera o desenho, o que anularia o próprio enunciado.",
+   "3": "8 cm² é a armadilha central: dobra a área porque aplica direto a razão linear 2, esquecendo que em área o fator entra elevado ao quadrado."
+  },
   "fonte": "FGV cprm-ads Q13",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "razao-proporcao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3691,8 +3715,13 @@
    "10"
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "A forma tem período 2 (triângulo, círculo) e a cor tem período 3 (branco, cinza, preto). Para que forma e cor coincidam ao mesmo tempo, a diferença de posições precisa ser múltiplo comum dos dois ciclos — e o menor deles é o MMC(2,3) = 6.",
+  "erradas": {
+   "0": "2 sincroniza apenas a forma; a cor, com ciclo de 3, pode estar em qualquer dos três estados.",
+   "1": "3 sincroniza apenas a cor e deixa a forma alternada, já que 3 é ímpar.",
+   "2": "5 não é múltiplo de 2 nem de 3, de modo que nem a forma nem a cor voltam à mesma configuração.",
+   "4": "10 é múltiplo de 2, mas não de 3: repete a forma e erra a cor. É o distrator para quem entendeu a ideia de ciclo e escolheu o número que fecha só um deles."
+  },
   "fonte": "FGV cprm-ads Q14",
   "requer_imagem": false,
   "anulada": false
@@ -3710,11 +3739,19 @@
    "64"
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Como o grupo não tem ordem interna, cada tamanho é uma combinação: C(6,2) + C(6,3) + C(6,4) + C(6,5) = 15 + 20 + 15 + 6 = 56.",
+  "erradas": {
+   "0": "24 não corresponde à soma de nenhuma das quatro combinações do enunciado; entra na lista só para não deixar todas as alternativas com origem reconhecível.",
+   "1": "30 é 6 × 5, o arranjo de duas pessoas: conta em que a ordem importaria, e que ainda descarta os subgrupos de 3, 4 e 5.",
+   "3": "57 soma indevidamente o grupo com as seis pessoas, C(6,6) = 1, que o enunciado exclui ao limitar o subgrupo a cinco. Um a mais que a resposta é exatamente o formato de distrator que a FGV usa nesses casos.",
+   "4": "64 é 2⁶, o total de subconjuntos de um conjunto de seis elementos — inclui o vazio, os unitários e o grupo completo, todos fora do pedido."
+  },
   "fonte": "FGV cprm-ads Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "analise-combinatoria"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3729,11 +3766,19 @@
    "5%"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Do enunciado, 0,15·V1 = 0,20·V2, logo V2 = (0,15/0,20)·V1 = 0,75·V1. Ou seja, V2 é 75% de V1 — como 15% é menor que 20%, o valor V2 tinha mesmo de ser menor que V1.",
+  "erradas": {
+   "0": "95% sai de subtrair de 100 a diferença entre os dois percentuais, operação que a igualdade do enunciado não autoriza.",
+   "2": "35% é a soma de 15 com 20, como se o problema pedisse acumular os percentuais em vez de compará-los.",
+   "3": "25% é o complemento da resposta: diz quanto falta para V2 alcançar V1, e não quanto V2 representa de V1.",
+   "4": "5% é a diferença bruta entre 20% e 15%, número que salta aos olhos na leitura rápida mas não resolve a proporção."
+  },
   "fonte": "FGV cprm-ads Q16",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "porcentagem"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3748,8 +3793,13 @@
    "6"
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O enunciado já entrega o total, então não é preciso reconstruir a pilha: basta contar as caixas efetivamente desenhadas — 12 — e subtrair do total, 17 − 12 = 5. As escondidas são as que ficam atrás e embaixo dos blocos superiores, invisíveis no ângulo da figura.",
+  "erradas": {
+   "0": "2 equivale a enxergar 15 caixas na figura: conta de quem só procura vazios no topo da pilha e não olha o fundo, onde estão as encobertas.",
+   "1": "3 equivale a 14 visíveis — sobra de uma varredura incompleta da fileira de trás.",
+   "2": "4 equivale a 13 visíveis e é o erro por um mais comum: uma caixa que aparece só parcialmente acaba contada duas vezes.",
+   "4": "6 equivale a 11 visíveis, ou seja, uma caixa desenhada deixou de ser contada — normalmente a que mostra apenas uma face na lateral."
+  },
   "fonte": "FGV cprm-ads Q17",
   "requer_imagem": false,
   "anulada": false
@@ -3767,11 +3817,19 @@
    "11"
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A − B tira de A somente os elementos que também estão em B. O mínimo ocorre no cenário mais desfavorável possível: A com o menor tamanho permitido (7) e B com o maior (4), com os quatro elementos de B todos dentro de A — sobram 7 − 4 = 3.",
+  "erradas": {
+   "1": "4 é o tamanho máximo de B, e não o que resta de A depois da retirada.",
+   "2": "7 é o resultado quando nenhum elemento de B está em A; esse é o cenário de máximo para |A| = 7, o oposto do que se pede.",
+   "3": "10 é atingível se A for grande, mas o comando pede o menor valor possível — responder um valor apenas possível, em vez do mínimo, é o desvio que a questão explora.",
+   "4": "11 é a soma 7 + 4, conta que corresponderia à união de conjuntos disjuntos; a diferença nunca ultrapassa o próprio A."
+  },
   "fonte": "FGV cprm-ads Q18",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conjuntos-inclusao-exclusao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3786,11 +3844,19 @@
    "Se Maria não toma conta de sua mãe, então João não trabalha."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A condicional só é falsa em um único caso: antecedente verdadeiro e consequente falso. Se \"Se João trabalha, então Maria toma conta de sua mãe\" é falsa, então João trabalha e Maria não toma conta — e essa conjunção é a única verdade que se pode extrair.",
+  "erradas": {
+   "1": "Com o antecedente falso a condicional seria verdadeira, contrariando o enunciado.",
+   "2": "\"João não trabalha ou Maria toma conta\" é a forma equivalente da própria condicional (¬p ∨ q); se a original é falsa, essa também é.",
+   "3": "Antecedente e consequente verdadeiros tornam a condicional verdadeira — de novo o oposto do que se supôs.",
+   "4": "É a contrapositiva, logicamente equivalente à proposição dada; sendo a original falsa, ela é falsa junto. A banca gosta de oferecer a equivalente correta como armadilha em questão que pede a negação."
+  },
   "fonte": "FGV cprm-ads Q19",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "logica-sentencial"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3805,11 +3871,19 @@
    "foi ao mercado, comprou 12 produtos e foi ao cinema."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "As afirmações 3, 4 e 5 são incompatíveis entre si (5, 10 e 12 produtos), então no máximo uma pode ser verdadeira. Se alguma delas fosse verdadeira, a 1 e a 2 seriam falsas junto com as outras duas — quatro falsas, e o enunciado exige três. Logo as três falsas são a 3, a 4 e a 5, e as verdadeiras são a 1 (não foi ao mercado) e a 2 (não comprou nada e foi ao cinema).",
+  "erradas": {
+   "1": "Afirmar que foi ao mercado torna a afirmação 1 falsa e obriga uma das incompatíveis a ser verdadeira, o que quebra a contagem de exatamente três falsas.",
+   "2": "Nega também o cinema, mas a afirmação 2 é uma das verdadeiras e diz expressamente que ele foi ao cinema.",
+   "3": "Se a afirmação 3 fosse verdadeira, seriam falsas a 1, a 2, a 4 e a 5 — quatro, e não três.",
+   "4": "Mesma verificação com a afirmação 5: com 12 produtos comprados, a 1, a 2, a 3 e a 4 caem todas, somando quatro falsas."
+  },
   "fonte": "FGV cprm-ads Q20",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "logica-sentencial"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -9416,11 +9490,19 @@
    "a aeronave B não foi a segunda aeronave a decolar."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A ordem esperada é a conjunção \"A antes de B e B antes de C\". Negar uma conjunção, por De Morgan, produz uma disjunção: basta que A tenha decolado depois de B, ou que B tenha decolado depois de C, para a sequência ser outra.",
+  "erradas": {
+   "1": "Troca o \"ou\" pelo \"e\" e passa a exigir as duas inversões ao mesmo tempo — condição muito mais forte do que simplesmente diferir da ordem prevista.",
+   "2": "Monta a disjunção com o par errado: \"A depois de B ou A depois de C\" deixa de fora a ordem A–C–B, que também contraria o previsto.",
+   "3": "\"C antes de A ou C antes de B\" tampouco cobre tudo — a sequência B–A–C difere da esperada e não satisfaz nenhuma das duas condições.",
+   "4": "\"B não foi a segunda\" é suficiente para a ordem ser outra, mas não necessária: em C–B–A a ordem mudou e B continua na segunda posição."
+  },
   "fonte": "FGV nav-med Q21",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equivalencias-logicas"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9435,11 +9517,19 @@
    "48."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Com A fixa na primeira posição e F na última, restam quatro aeronaves para quatro lugares, em qualquer ordem: 4! = 24 sequências.",
+  "erradas": {
+   "0": "1 trataria as quatro aeronaves restantes como se também tivessem posição fixa, o que o enunciado não diz.",
+   "1": "4 confunde o número de aeronaves livres com o número de ordens possíveis — são quatro aeronaves, mas 4! arranjos.",
+   "2": "16 é 4², resultado de supor que cada uma das quatro possa ocupar qualquer das quatro posições independentemente, ou seja, com repetição.",
+   "4": "48 é 2 × 4!, valor de quem também permuta A e F apesar de o enunciado prender as duas pontas."
+  },
   "fonte": "FGV nav-med Q22",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "analise-combinatoria"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9454,11 +9544,19 @@
    "(12,7)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Se B está a um terço do trajeto, o deslocamento de A até B é um terço do deslocamento total. De A(3,1) a B(6,3) o avanço é (+3,+2); triplicando, (+9,+6). Logo C = (3+9, 1+6) = (12,7).",
+  "erradas": {
+   "0": "(9,4) sai de somar as coordenadas de B às de A, tratando o ponto como se fosse o vetor deslocamento — confusão entre ponto e deslocamento.",
+   "1": "(9,5) aplica o deslocamento duas vezes (A + 2·AB), como se B fosse a metade do caminho, e não um terço.",
+   "2": "(9,6) é o triplo do deslocamento isolado, sem somá-lo ao ponto de partida A.",
+   "3": "(12,4) acerta a abscissa e erra a ordenada: soma ao y o incremento do x, sinal de conta feita coordenada a coordenada sem manter o mesmo fator."
+  },
   "fonte": "FGV nav-med Q23",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "geometria-plana"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9473,11 +9571,19 @@
    "2h45min."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Se t é o tempo previsto, t + 0,1t + 45 min = 3h30. Então 1,1t = 210 − 45 = 165 min, e t = 150 min = 2h30. A conferência é imediata: 150 + 15 + 45 = 210 minutos.",
+  "erradas": {
+   "0": "2h20 (140 min) não sai nem do desconto dos 45 minutos nem da reversão do acréscimo; testando, 140 + 14 + 45 = 199 min, longe das 3h30.",
+   "1": "2h28 vem de tirar 10% de 2h45 em vez de dividir por 1,1 — descontar um percentual não desfaz o acréscimo do mesmo percentual. A verificação denuncia: 148 + 14,8 + 45 ≈ 208 min.",
+   "3": "2h40 falha no mesmo teste: 160 + 16 + 45 = 221 min, acima do combustível embarcado.",
+   "4": "2h45 é 3h30 menos 45 minutos e esquece por completo a parcela de 10%; substituindo, 165 + 16,5 + 45 ≈ 226 min."
+  },
   "fonte": "FGV nav-med Q24",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "porcentagem"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9492,11 +9598,19 @@
    "960."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O combustível ocupa 40% de 350 t, isto é, 140 t. Sobra 350 − 168 (aeronave vazia) − 140 (combustível) = 42 t para passageiros e bagagens. Como 42 t são 42.000 kg e cada pessoa conta 105 kg, cabem 400 passageiros.",
+  "erradas": {
+   "0": "182 é 350 − 168, a massa disponível antes de descontar o combustível — e ainda vem em toneladas, sem a divisão pelos 105 kg. É número lido, não calculado.",
+   "1": "210 é 350 − 140: desconta o combustível e esquece que a aeronave vazia já pesa 168 t.",
+   "2": "310 não corresponde a nenhuma combinação das três massas do enunciado; serve de ancoragem entre 210 e 400.",
+   "4": "960 exigiria mais de 100 t de passageiros, o que estouraria a massa máxima de decolagem — vale a checagem de ordem de grandeza antes de marcar."
+  },
   "fonte": "FGV nav-med Q25",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "porcentagem"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9511,11 +9625,19 @@
    "23."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Os inteiros de 1 a 9 somam 45. Distribuídos em três linhas de soma igual, cada linha vale 45 ÷ 3 = 15, e o mesmo raciocínio se aplica às colunas. É a constante do quadrado mágico de ordem 3, que independe de como as somas estavam antes.",
+  "erradas": {
+   "0": "13 não fecha o total: três linhas de 13 dariam 39, e os nove números somam 45.",
+   "2": "17 falha pela mesma verificação — três linhas de 17 somariam 51.",
+   "3": "22 orbita 45 ÷ 2, sinal de ter dividido o total pelo número errado de faixas; o painel tem três linhas, não duas.",
+   "4": "23 tem a mesma origem, e ainda é maior que a metade de 45, o que já denuncia o erro sem precisar de conta."
+  },
   "fonte": "FGV nav-med Q26",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "matrizes"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9549,11 +9671,19 @@
    "2%."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Eventos independentes: a probabilidade de os dois ocorrerem é o produto das probabilidades individuais, 0,20 × 0,10 = 0,02, ou seja, 2%. Note que o resultado é menor que cada uma das parcelas — interseção sempre reduz.",
+  "erradas": {
+   "0": "30% soma as duas probabilidades; a soma serve para união de eventos mutuamente exclusivos, não para a ocorrência simultânea.",
+   "1": "20% repete a probabilidade do primeiro voo e ignora que o evento pedido exige também o atraso do segundo.",
+   "2": "10% faz o mesmo com o segundo voo — responde a uma pergunta que não foi feita.",
+   "3": "3% não sai de nenhuma operação com 0,2 e 0,1; está na lista para atrair quem já sabe que o valor é pequeno mas não faz a multiplicação."
+  },
   "fonte": "FGV nav-med Q28",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "probabilidade"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9568,11 +9698,19 @@
    "M(0,1)."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "O ângulo em M é reto quando os vetores MA e MB são perpendiculares, isto é, quando o produto escalar é zero. Com M(−4,4): MA = (0,−3) e MB = (3,0), produto escalar nulo — um lado vertical e outro horizontal. Equivale a dizer que M está na circunferência de diâmetro AB, pelo ângulo inscrito em semicírculo.",
+  "erradas": {
+   "1": "Em M(−3,4), MA = (−1,−3) e MB = (2,0) dão produto escalar −2. O ângulo chega perto de 90°, e é justamente por isso que engana quem resolve no olho.",
+   "2": "M(−2,3) está sobre a própria reta AB (y = x + 5): A, M e B ficam alinhados e o ângulo é raso, de 180°.",
+   "3": "Em M(−2,1), MA = (−2,0) e MB = (1,3) dão produto escalar −2; a proximidade de A não torna o ângulo reto.",
+   "4": "Em M(0,1), MA = (−4,0) e MB = (−1,3) dão produto escalar 4, ângulo agudo."
+  },
   "fonte": "FGV nav-med Q29",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "geometria-plana"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9587,8 +9725,13 @@
    "95."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Igualando os dois totais: 38 + 22 + E = 14 + 81 + T, ou seja, 60 + E = 95 + T, logo E − T = 35. A diferença pedida sai direto da equação, sem precisar descobrir quantos efetivos e terceirizados há em Minas.",
+  "erradas": {
+   "1": "51 é a diferença entre os totais das duas filiais conhecidas (103 em São Paulo contra 52 no Rio) — responde a outra pergunta.",
+   "2": "52 é simplesmente o total do Rio de Janeiro (38 + 14), número copiado da tabela.",
+   "3": "60 é a soma dos efetivos já conhecidos (38 + 22), uma das parcelas da equação e não o resultado.",
+   "4": "95 é a soma dos terceirizados conhecidos (14 + 81), a outra parcela — mesmo tipo de erro, do outro lado da igualdade."
+  },
   "fonte": "FGV nav-med Q30",
   "requer_imagem": false,
   "anulada": false
@@ -9606,11 +9749,19 @@
    "900 km/h."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A distância é fixa: 750 km/h × 2 h = 1.500 km. Para cobri-la em 100 min (5/3 h), a velocidade tem de ser 1.500 ÷ (5/3) = 900 km/h. Como distância é constante, tempo e velocidade são inversamente proporcionais — menos tempo exige mais velocidade, na razão 120/100.",
+  "erradas": {
+   "0": "625 km/h aplica a proporção direta (750 × 100/120) e faz o avião ir mais devagar para chegar mais cedo — inversão do raciocínio.",
+   "1": "730 km/h é menor que a velocidade original, o que aumentaria o tempo de voo em vez de reduzi-lo.",
+   "2": "770 km/h é um acréscimo pequeno demais: cobriria os 1.500 km em cerca de 117 minutos, quase o tempo original.",
+   "3": "875 km/h fica entre 750 e 900 e sai de arredondar a razão 120/100; o fator correto é exatamente 1,2."
+  },
   "fonte": "FGV nav-med Q31",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "razao-proporcao"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9625,11 +9776,19 @@
    "algum voo sofreu atraso e foi cancelado."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Negar \"todo voo atrasou ou foi cancelado\" garante a existência de pelo menos um contraexemplo; e negar a disjunção, por De Morgan, dá \"não atrasou e não foi cancelado\". A negação de um universal é sempre existencial, nunca outro universal.",
+  "erradas": {
+   "0": "Estende a negação a todos os voos: dizer que a afirmação era incorreta não significa que nenhum voo teve problema.",
+   "2": "Exige mais de um voo sem problema, quando a negação assegura apenas um.",
+   "3": "Repete o erro de universalizar, com a agravante de negar também a disjunção para o conjunto inteiro.",
+   "4": "Afirma um voo com atraso e cancelamento simultâneos, o que reforçaria a informação original em vez de negá-la."
+  },
   "fonte": "FGV nav-med Q32",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "quantificadores"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9644,11 +9803,19 @@
    "306 kg."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Se 2/3 da massa valem 714 kg, a massa total é 714 × 3/2 = 1.071 kg. Então 1/7 dela é 1.071 ÷ 7 = 153 kg. O passo decisivo é inverter a fração para chegar ao inteiro antes de aplicar a nova fração.",
+  "erradas": {
+   "0": "68 kg sai de aplicar 2/3 de novo sobre os 714 (obtendo 476) e depois dividir por 7 — a fração foi usada no sentido errado.",
+   "1": "89 kg não decorre de nenhuma das duas etapas; é o valor quebrado que denuncia chute.",
+   "2": "102 kg é 714 ÷ 7: divide direto o valor dado, esquecendo que 714 são apenas 2/3 da aeronave.",
+   "4": "306 kg é 2/7 da massa — o dobro da resposta, de quem carrega o numerador 2 da fração original para a segunda etapa."
+  },
   "fonte": "FGV nav-med Q33",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "razao-proporcao"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9701,11 +9868,19 @@
    "F – T – T."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A primeira afirmativa contraria a abertura do texto (\"unprecedented growth\", \"has surged\"): não houve desaceleração, houve crescimento sem precedentes. As outras duas apenas parafraseiam o que está escrito — \"their unregulated use poses significant risks\" e \"outdated infrastructure\" com \"aging equipment\". Daí F–T–T.",
+  "erradas": {
+   "0": "Dá por verdadeira a desaceleração, que o verbo surged desmente, e ainda nega a defasagem da infraestrutura, descrita em detalhe no terceiro parágrafo.",
+   "1": "Acerta a primeira e a terceira, mas nega o risco dos drones — o texto diz literalmente que o uso não regulado \"poses significant risks to commercial aviation\".",
+   "2": "Erra as duas primeiras de uma vez: inventa a retração do setor e apaga o risco atribuído aos drones.",
+   "3": "Tropeça só no último item, e é a pegadinha mais provável: \"outdated infrastructure\" e \"aging equipment\" mostram que a necessidade de atualização continua de pé."
+  },
   "fonte": "FGV nav-med Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "julgamento-afirmativas"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9720,11 +9895,19 @@
    "relationship."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O prefixo un- nega a base a que se liga: unmanned é \"não tripulado\", aeronave sem piloto a bordo. O próprio parágrafo dá a confirmação ao usar unregulated com o mesmo prefixo e o mesmo valor.",
+  "erradas": {
+   "0": "Tamanho se marca com micro-, mini-, mega- e afins; un- nada diz sobre dimensão.",
+   "1": "Tempo ou repetição viriam por pre-, post- ou re-, como em pre-flight ou reschedule.",
+   "3": "Direção é o campo de sub-, trans-, inter- (submarine, transatlantic), não o de un-.",
+   "4": "Relação ou reciprocidade se expressa por co- e inter-, como em co-pilot e international."
+  },
   "fonte": "FGV nav-med Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9739,11 +9922,19 @@
    "regulations."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Em \"While drones offer various benefits, their unregulated use...\", o possessivo retoma o sujeito da oração anterior: são os drones cujo uso não regulado representa risco. A concessiva contrapõe benefício e risco do mesmo referente.",
+  "erradas": {
+   "0": "Risks é o efeito enunciado depois do possessivo; um pronome não retoma termo que ainda não apareceu na frase.",
+   "2": "Benefits é objeto de offer — falar em \"uso dos benefícios\" não faz sentido no encadeamento.",
+   "3": "Operations só surge na frase seguinte, em \"harmonizing the operations of manned and unmanned aircraft\".",
+   "4": "Regulations aparece no fim do parágrafo e contradiz o próprio adjetivo: o uso é descrito como unregulated."
+  },
   "fonte": "FGV nav-med Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referencia-pronominal-ingles"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9758,11 +9949,19 @@
    "popular."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O contexto imediato define o adjetivo: equipamento que envelhece, \"prone to failures\" e sem capacidade para o volume de tráfego, é equipamento que se torna obsoleto. A frase anterior já falava em outdated infrastructure.",
+  "erradas": {
+   "0": "Widespread trata de difusão — quão espalhado algo está —, e não da idade ou da defasagem do equipamento.",
+   "1": "Expensive introduz custo, que no texto aparece como obstáculo à adoção das novas tecnologias, não como qualidade do equipamento antigo.",
+   "2": "Necessary inverteria o juízo do parágrafo, que apresenta esse equipamento como parte do problema.",
+   "4": "Popular pertence ao campo da aceitação e do uso, sem relação com o envelhecimento descrito."
+  },
   "fonte": "FGV nav-med Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9777,11 +9976,19 @@
    "Yet."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Furthermore é conector aditivo: acrescenta mais um problema à lista que vinha sendo montada. Entre as cinco opções, Besides é o único que também soma — os demais opõem.",
+  "erradas": {
+   "0": "Nevertheless é concessivo, equivale a \"ainda assim\", e criaria contraste onde o texto acumula argumentos.",
+   "1": "However marca oposição direta entre o que vem antes e o que vem depois.",
+   "3": "Still, nessa posição de conector, vale por \"mesmo assim\" — adversativo, portanto.",
+   "4": "Yet como conector também opõe (\"contudo\"). A banca alinhou quatro adversativos contra um aditivo justamente para punir quem traduz furthermore por \"no entanto\"."
+  },
   "fonte": "FGV nav-med Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9796,11 +10003,19 @@
    "example."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Such as introduz exemplificação: automação avançada e análise de dados são exemplos das \"new technologies\" citadas antes. Equivale a for example / like.",
+  "erradas": {
+   "0": "Concessão viria por although, even though ou despite, que admitem algo contrário ao argumento.",
+   "1": "Hesitação não é função de conector, e não há no trecho marca alguma de dúvida do autor.",
+   "2": "Condição exigiria if ou unless, com uma hipótese de que o restante dependesse.",
+   "3": "Contraste pediria but, however ou whereas — mas os dois termos citados confirmam a ideia anterior em vez de se opor a ela."
+  },
   "fonte": "FGV nav-med Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9815,8 +10030,13 @@
    "present continuous, active voice."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Has been hindered é have/has + been + particípio: present perfect na voz passiva. O sujeito (their implementation) sofre a ação, e o agente vem depois, introduzido por \"by various factors\".",
+  "erradas": {
+   "0": "Simple past passivo seria was hindered — sem o has, e sem a ligação com o presente que o present perfect carrega.",
+   "1": "Simple present ativo seria hinders, com o sujeito praticando a ação em vez de sofrê-la.",
+   "3": "Past continuous passivo teria a forma was being hindered; falta o being e sobra o has.",
+   "4": "Present continuous ativo seria is hindering — voz ativa e aspecto em curso, nada disso presente na frase."
+  },
   "fonte": "FGV nav-med Q47",
   "requer_imagem": false,
   "anulada": false
@@ -9834,11 +10054,19 @@
    "trustworthy."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A concessiva faz todo o trabalho: mesmo com treinamento rigoroso, o erro humano continua sendo fator de risco relevante. Reconhecer que nem o melhor preparo elimina o erro é dizer que o ser humano é falível.",
+  "erradas": {
+   "1": "Reliable contraria o que a frase afirma — o ponto é justamente que a confiabilidade não é total.",
+   "2": "Adaptable não está em jogo: a frase fala de erro, não de capacidade de adaptação.",
+   "3": "Intelligent é elogio genérico que a sentença não faz, e não se opõe a cometer erros.",
+   "4": "Trustworthy, como reliable, inverte o sentido da concessão e transforma a ressalva em elogio."
+  },
   "fonte": "FGV nav-med Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "compreensao-global-ingles"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9853,11 +10081,19 @@
    "impossibility."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Must aqui é deôntico: exprime obrigação, os sistemas de controle de tráfego aéreo têm de ser protegidos. Em texto técnico e normativo, must é o modal da exigência.",
+  "erradas": {
+   "0": "Habilidade se expressa por can ou be able to; must nunca indica capacidade.",
+   "2": "Must também pode indicar dedução (\"he must be tired\"), mas isso exige contexto inferencial e verbo de estado — aqui, com passiva e infraestrutura crítica, o valor é de exigência.",
+   "3": "Proibição seria must not ou cannot, e a frase é afirmativa.",
+   "4": "Impossibilidade viria por can't, o oposto lógico do que a frase enuncia."
+  },
   "fonte": "FGV nav-med Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "verbos-modais"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9872,11 +10108,19 @@
    "low-cost."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O último parágrafo fala em \"multi-faceted approach\", envolvendo agências de governo, indústria e fornecedores de tecnologia. Many-sided é a tradução direta de multi-faceted — a questão testa a paráfrase do prefixo.",
+  "erradas": {
+   "0": "Eficiência energética não é discutida em momento algum do texto.",
+   "1": "Impacto ambiental tampouco aparece; a preocupação declarada é com segurança, atraso e ciberataque.",
+   "2": "Economia de tempo tem apoio parcial — o texto cita atrasos —, mas não é assim que a solução é caracterizada na conclusão.",
+   "4": "Baixo custo inverte a lógica do texto, em que o custo aparece como obstáculo à adoção das novas tecnologias."
+  },
   "fonte": "FGV nav-med Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "compreensao-global-ingles"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9967,11 +10211,19 @@
    "“flight” is to “flew”."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A relação é de derivação substantivo → adjetivo: height (altura) dá o adjetivo high. Noise → noisy repete exatamente esse sentido, com o sufixo -y formando adjetivo a partir do substantivo.",
+  "erradas": {
+   "0": "Departure → depart vai de substantivo para verbo, direção contrária e classe errada.",
+   "1": "Arrive → arrival parte do verbo e chega ao substantivo — o inverso do par proposto.",
+   "3": "Failure → fail também sai do substantivo para o verbo, e não para um adjetivo.",
+   "4": "Flight → flew liga substantivo a forma verbal de passado, relação de outra natureza."
+  },
   "fonte": "FGV nav-med Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -9986,8 +10238,13 @@
    "contraction."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Em pilot's seat o apóstrofo seguido de s marca o caso genitivo do inglês: o assento do piloto. É a construção possessiva aplicada a substantivo no singular.",
+  "erradas": {
+   "0": "Expressão idiomática teria sentido não literal e não depende de pontuação; aqui a marca é gramatical.",
+   "1": "O plural de pilot é pilots, sem apóstrofo — confundir plural com genitivo é o erro mais comum com essa marca.",
+   "2": "Vocativo é chamamento direto ao interlocutor e se marca por vírgula, não por apóstrofo.",
+   "4": "Contração com 's existe (it's = it is), mas o teste resolve: \"in the pilot is seat\" não faz sentido, logo o valor é possessivo."
+  },
   "fonte": "FGV nav-med Q56",
   "requer_imagem": false,
   "anulada": false
@@ -10005,11 +10262,19 @@
    "persuade some operators."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "É despacho de agência (Reuters): informa o que aconteceu, quem se manifestou e quanto durou a suspensão, atribuindo cada informação a uma fonte. Função referencial — registrar o incidente.",
+  "erradas": {
+   "1": "Entreter não é propósito de notícia factual; não há recurso de humor, narrativa ou suspense no texto.",
+   "2": "Ajudar a resolver o problema exigiria texto instrucional ou propositivo; aqui só se relatam as medidas que terceiros tomaram.",
+   "3": "Explicar questões delicadas pediria análise, e a causa técnica é justamente o que ficou sem detalhamento (\"without providing further details\").",
+   "4": "Persuadir operadores pressuporia tese e argumentação — o texto não defende ponto de vista algum."
+  },
   "fonte": "FGV nav-med Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "compreensao-global-ingles"
+  ]
  },
  {
   "prova": "nav-med",
@@ -10024,11 +10289,19 @@
    "cancelled."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "To resume é retomar, recomeçar depois de uma interrupção: os voos foram restabelecidos com a reabertura do espaço aéreo. É falso cognato clássico — não significa \"resumir\" (summarize) nem \"suspender\".",
+  "erradas": {
+   "0": "Paused descreve a interrupção que já terminou; o título fala do momento seguinte a ela.",
+   "2": "Disrupted aponta para o transtorno anterior, e o próprio título diz \"after brief airspace closure\".",
+   "3": "Grounded é a aeronave impedida de decolar — situação que antecede a notícia, não a que ela anuncia.",
+   "4": "Cancelled seria voo cancelado, o oposto de voo que volta a operar."
+  },
   "fonte": "FGV nav-med Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -10043,11 +10316,19 @@
    "latest."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Earlier e later são as formas comparativas opostas de early e late: mais cedo × mais tarde. No texto, earlier marca o que os operadores tinham dito antes das declarações posteriores.",
+  "erradas": {
+   "0": "Last significa \"último\" ou \"anterior\", e não é o comparativo de late.",
+   "2": "Least é superlativo de little e pertence ao campo da quantidade, não ao do tempo.",
+   "3": "Latter quer dizer \"o segundo de dois mencionados\" e se opõe a former, não a earlier.",
+   "4": "Latest é \"o mais recente\", superlativo — comparativo se opõe a comparativo, e é aí que o par se desfaz."
+  },
   "fonte": "FGV nav-med Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-med",
@@ -10062,11 +10343,19 @@
    "irrespective of."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Due to introduz causa: a suspensão ocorreu por causa do que o operador de Congonhas chamou de falha elétrica. Because of é o equivalente direto na frase.",
+  "erradas": {
+   "0": "Ahead of indica anterioridade ou posição à frente — relação temporal, não causal.",
+   "1": "Instead of expressa substituição, trocaria a causa por uma alternativa que o texto não apresenta.",
+   "3": "Regardless of é concessivo, significa \"independentemente de\", e negaria justamente o vínculo causal enunciado.",
+   "4": "Irrespective of tem o mesmo valor concessivo do anterior; ambos desfazem a causa em vez de mantê-la."
+  },
   "fonte": "FGV nav-med Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "nav-tec",
