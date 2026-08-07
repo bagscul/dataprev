@@ -2,6 +2,50 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — EPE 2024, as duas da Receita Federal e o CPRM Pesquisador: +74 questões e o inglês quase fecha
+
+As quatro provas verificadas na busca da noite entraram. Pool utilizável de
+1007 para **1080**, e o número de provas reais vai de 11 para **15**.
+
+| prova | recorte | aproveitado |
+|---|---|---|
+| `epe-ti` — EPE 2024, Analista de Gestão Corporativa – TI / Soluções (01/09/2024) | inglês 11–20 + específicos 36–80 | **51** |
+| `rfb-ana` — Receita Federal 2023, Analista-Tributário, manhã (19/03/2023) | inglês 16–25 | **10** |
+| `rfb-aud` — Receita Federal 2023, Auditor-Fiscal, manhã (19/03/2023) | inglês 11–18 | **8** |
+| `cprm-pesq` — CPRM 2025, Pesquisador em Geociências / Hidrogeologia (30/11/2025) | inglês 11–15 | **5** |
+
+Todos os gabaritos são **definitivos**. Alinhamento gabarito↔alternativa
+conferido resolvendo item por item em cada caderno: `crave` → *yearn for*
+(`cprm-pesq` Q13), oposto de `quietness` → *loudness* (`rfb-ana` Q18),
+`garnering` → *storing grains* (`rfb-aud` Q12).
+
+**O inglês era o alvo e quase fechou:**
+
+| bloco | antes | agora | precisa | falta |
+|---|---|---|---|---|
+| inglês | 69 | **102** | 120 | +18 |
+| atualidades | 48 | 48 | 60 | +12 |
+
+Os 41 específicos da EPE são bônus — o Módulo II já não tinha déficit, mas é
+prova de **cargo de TI de 2024** e o conteúdo é quase um espelho do edital:
+eng. de software 12 (XP, DevOps, BDD, design thinking, code smells, testes,
+métricas), arquitetura 8 (nuvem, escalabilidade, API, MVC), BI 5 (ETL, big
+data, Power BI), segurança 5, banco de dados 4, programação 4 (Python,
+estruturas de dados, garbage collection), frontend 2 (JavaScript, HTML5) e
+redes 1. O BI, que era o bloco mais magro do Módulo II, sobe de 37 para 42.
+
+**Descartes registrados nos mapas:** português e RLM das quatro provas (sem
+déficit); administração pública, valor público da EPE, contabilidade,
+auditoria, economia, direito tributário, metodologia científica, estatística e
+hidrogeologia (fora do edital); Informática de escritório da EPE — Q38
+(Microsoft 365) e Q39 (Excel), pela regra 2. Fora também a **Q75 da EPE,
+anulada** pela banca.
+
+**Pendência herdada:** as 73 questões novas entraram com gabarito oficial mas
+sem `why`/`erradas` — `./valida.py` passa de 2 para **148 avisos**. Mesma
+situação das duas importações anteriores, e o mesmo caminho de saída: lotes de
+10 por bloco, específicos primeiro.
+
 ## 2026-08-07 — as 106 questões do CPRM e do `nav-med` ganham explicação (`valida.py`: 214 → 2 avisos)
 
 Fecha a pendência aberta pela importação da manhã. As **106 questões

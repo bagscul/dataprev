@@ -5254,6 +5254,101 @@
   ]
  },
  {
+  "prova": "cprm-pesq",
+  "num": 11,
+  "tag": "ingles",
+  "q": "Based on the information provided by the text, mark the statements below as true (T) or false (F). ( ) Jadarite resembles to some extent a mineral previously depicted in fiction. ( ) Environmentalists support the Jadar project due to its harmless effects. ( ) Experimental work is underway to assess the possibility of producing the mineral upon request. The statements are, respectively",
+  "alts": [
+   "F – F – T.",
+   "T – F – F.",
+   "T – F – T.",
+   "F – T – F.",
+   "T – T – F."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-pesq Q11",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-pesq",
+  "num": 12,
+  "tag": "ingles",
+  "q": "In the second paragraph, the text informs that the discovery",
+  "alts": [
+   "went unnoticed.",
+   "fell on deaf ears.",
+   "was brushed aside.",
+   "dominated the news.",
+   "remained overlooked."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-pesq Q12",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-pesq",
+  "num": 13,
+  "tag": "ingles",
+  "q": "In the fragment “a chemical profile that battery makers crave” (1st paragraph), the verb is close in meaning to",
+  "alts": [
+   "put forward.",
+   "yearn for.",
+   "find out.",
+   "trade in.",
+   "dig up."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-pesq Q13",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-pesq",
+  "num": 14,
+  "tag": "ingles",
+  "q": "In the fourth paragraph, the process chemist’s opinion about the Jadar Valley is that it is",
+  "alts": [
+   "too barren.",
+   "overly arid.",
+   "quite bleak.",
+   "rather haunted.",
+   "pretty promising."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-pesq Q14",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-pesq",
+  "num": 15,
+  "tag": "ingles",
+  "q": "Based on the last paragraph, analyse the assertions below: I. Scientific experimentation might do away with the need for mining. II. Currently, interest in jadarite deposits seems to be waning. III. It is highly unlikely that the deposits found in Serbia will reshape the future of energy. Choose the correct answer.",
+  "alts": [
+   "Only I is correct.",
+   "Only II is correct.",
+   "Only III is correct.",
+   "Only I and II are correct.",
+   "All three assertions are correct. Metodologia Científica"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-pesq Q15",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
   "prova": "dataprev2024",
   "num": 1,
   "tag": "portugues",
@@ -6920,6 +7015,975 @@
    "4": "Foco exclusivo em documentação, ignorando a interação da equipe, contraria tanto o ágil quanto o gerenciamento tradicional bem feito."
   },
   "fonte": "FGV dataprev2024 Q70",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 11,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nAnalyse the statements below based on Text I. I. Before the Covid-19 pandemic, office culture was understood as a concept requiring state-of-the-art technological skills from workers. II. In the past, employees loathed going to fancy resorts. III. Post pandemic workers have priorities other than office perks. Choose the correct answer:",
+  "alts": [
+   "Only I is correct.",
+   "Only II is correct.",
+   "Only III is correct.",
+   "Both I and II are correct.",
+   "Both II and III are correct."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q11",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 12,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nThe extract Companies are clawing (in the subtitle) suggests that the effort expended by the companies is",
+  "alts": [
+   "forbearing.",
+   "thwarted.",
+   "sleazy.",
+   "fierce.",
+   "mild."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q12",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 13,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nIf stocked pantries (2nd paragraph) are available in the office, peckish employees will have a place where they can grab a(n)",
+  "alts": [
+   "quick bite.",
+   "new broom.",
+   "spare computer.",
+   "shredding machine.",
+   "embossed envelope."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q13",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 14,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nThe extract what lured in workers (3rd paragraph) implies that workers were",
+  "alts": [
+   "embellished.",
+   "embittered.",
+   "enfeebled.",
+   "endured.",
+   "enticed."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q14",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 15,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nTrust-falls (4th paragraph) are group activities aimed at",
+  "alts": [
+   "backlashing.",
+   "bickering.",
+   "bouncing.",
+   "boasting.",
+   "bonding."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q15",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 16,
+  "tag": "ingles",
+  "q": "Text I Office Culture Companies are clawing to bring back pre-pandemic perks and that 'family' feeling – but employees want something more tangible. Many employers are calling employees back into offices, trying to restore the workplace of pre -pandemic days. Along with filling seats, they're also looking to bring back another relic: office culture. Pre-2020, office culture was synonymous with the 'cool' office: think places to lounge, stocked pantries and in-office happy hours that went all out; or luxe retreats and team -building exercises meant to foster the feeling of 'family'. In p ast years, these perks drew many workers to the office – in some cases, entire companies defined themselves by their office cultures. The world of work looks and feels entirely different than just a few years ago – yet many companies are still intent on re creating the office cultures workers left behind as they abandoned their desks in 2020. While these companies are making some gestures to adapt – for instance, redesigning spaces to accommodate new preferences and hybrid-work habits – many are still set on bringing back what lured in workers before the pandemic. Yet swaths of employees simply aren't interested in going backward. Instead of trust -falls and cold brew on tap, employees are demanding flexible work, equitable pay and a focus on humanity in the workplace that transcends the perks they sought years earlier. Workers' shifting priorities are a natural consequence of the Covid-19 pandemic, says Georgina Fraser, head of human capital for global commercial real -estate firm CBRE. \"The pandemic gave us autonomy in a way that we haven't had previously,\" she says. \"It gave us the opportunity to choose how we structured our working days.\" And now that workers have experienced that level of work-life balance, they won't settle for less. Fraser adds: \"Post -pandemic, we saw a resurgence of people being very vocal about what they wanted and needed, not just from office culture, but from the wider world.\" Now, she says, workers aren't shy about \"wanting to be seen as a whole human – and that filters down to their physical location, how [employers] manage them, what support they receive and how [employers] integrate technologies between home and office in order to support them\". One major factor in this changing attitude is that many employees feel office culture sim ply isn't applicable in a remote - and hybrid -first world, where the physical office can feel superfluous. Now that the workplace doesn't serve as the culture hub it once did, \"companies have really struggled to redefine the role of the office\", says Lewis Beck, CBRE's head of workplace for Europe. Office culture that was once meant to get employees excited doesn't have the same pull when workplaces are only one- third full. Adapted from: https://www.bbc.com/worklife/article/20240229 -office-culture-is- dead\n\nWhen it is argued that workers aren't shy (7th paragraph), the author means they are",
+  "alts": [
+   "shamefaced.",
+   "forthright.",
+   "diffident.",
+   "bashful.",
+   "coy."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q16",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 17,
+  "tag": "ingles",
+  "q": "Text II A river in flux MANAUS, BRAZIL —Jochen Schöngart darts back and forth along an escarpment just above the Amazon River, a short water taxi ride from downtown Manaus, Brazil. It’s still early this October morning in 2023, but it’s already hot and his face is beaded with sweat. “Look, there’s a piece of ceramic!” he says, nodding to a worn shard lodged between boulders, likely a relic of an earlier civilization. It’s not the only one. Schöngart, a forest scientist at the National Institute of Amazon Research (INPA), stoops and stares at the bedrock at his feet. Well below the river’s normal level for this time of year, the rock bears a gallery of life -size faces, perhaps carved during a megadrought 1000 years ago. Now, they have been exposed again by a new drought, the worst in the region’s modern history. In the previous 4 months, only a few millimeters of rain have fallen in this city of 2 million at the confluence of the Negro and Amazon rivers. Normally it gets close to a half a meter during the same period. The Amazon sank steadily beginning in June, as it does most years during the dry season. But by mid -October, the port’s river gauge reached the lowest level observed since the record began in 1902. Freighters coming up from the Atlantic Ocean—the city’s primary supply lin e—were blocked by shoals. Factories furloughed workers. Making matters worse, the drought coincided with a series of week-long heat waves. In September and October, withering conditions persisted across the Amazon, and temperatures here peaked at 39°C, 6°C above normal. Desiccated jungle set ablaze by farmers enveloped the city in choking smoke. Then, in the season’s most freakish episode, a sandstorm blotted out the Sun. Drought and heat are only half of the story of the changes unfolding in the heart of t he world’s largest rainforest. Schöngart and collaborators’ research on the river here has shown that for decades, while dry-season low water has been plummeting, rainy- season high water has been rising. The city has experienced frequent major flooding in recent years because of heavy rains across much of the Amazon Basin, forcing the officials to erect temporary wooden walkways above streets of the historic waterfront. Schöngart and other researchers expect such changes to intensify as global climate warms. The current drought provided a grim preview, killing river dolphins and fish, and threatening livelihoods for communities along the river. If the combination of higher highs and lower lows becomes the new norm, the ramifications could extend throughout the Amazon Basin and even beyond, threatening the very existence of the forest —which harbors much of the planet’s biodiversity, has a far -reaching influence over regional and global climate, and sustains millions of people. “We are undergoing massive chang es in the hydrological cycle” of the Amazon Basin, Schöngart says. The question now, he says, is whether its ecosystems and people can adapt. Adapted from: https://www.science.org/content/article/amazon -river-may-altered- forever-climate-change\n\nBased on the text, mark the statements below as true (T) or false (F). ( ) To find the piece of ceramic, the scientist had to dig into the hot soil. ( ) Due to the drought, factories found themselves having to hire workers to unblock the long and narrow ridges. ( ) Thus far, the control over climate change has not been considered a given. The statements are, respectively,",
+  "alts": [
+   "T – F – T.",
+   "T – T – F.",
+   "F – F – T.",
+   "F – T – F.",
+   "F – T – T."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q17",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 18,
+  "tag": "ingles",
+  "q": "Text II A river in flux MANAUS, BRAZIL —Jochen Schöngart darts back and forth along an escarpment just above the Amazon River, a short water taxi ride from downtown Manaus, Brazil. It’s still early this October morning in 2023, but it’s already hot and his face is beaded with sweat. “Look, there’s a piece of ceramic!” he says, nodding to a worn shard lodged between boulders, likely a relic of an earlier civilization. It’s not the only one. Schöngart, a forest scientist at the National Institute of Amazon Research (INPA), stoops and stares at the bedrock at his feet. Well below the river’s normal level for this time of year, the rock bears a gallery of life -size faces, perhaps carved during a megadrought 1000 years ago. Now, they have been exposed again by a new drought, the worst in the region’s modern history. In the previous 4 months, only a few millimeters of rain have fallen in this city of 2 million at the confluence of the Negro and Amazon rivers. Normally it gets close to a half a meter during the same period. The Amazon sank steadily beginning in June, as it does most years during the dry season. But by mid -October, the port’s river gauge reached the lowest level observed since the record began in 1902. Freighters coming up from the Atlantic Ocean—the city’s primary supply lin e—were blocked by shoals. Factories furloughed workers. Making matters worse, the drought coincided with a series of week-long heat waves. In September and October, withering conditions persisted across the Amazon, and temperatures here peaked at 39°C, 6°C above normal. Desiccated jungle set ablaze by farmers enveloped the city in choking smoke. Then, in the season’s most freakish episode, a sandstorm blotted out the Sun. Drought and heat are only half of the story of the changes unfolding in the heart of t he world’s largest rainforest. Schöngart and collaborators’ research on the river here has shown that for decades, while dry-season low water has been plummeting, rainy- season high water has been rising. The city has experienced frequent major flooding in recent years because of heavy rains across much of the Amazon Basin, forcing the officials to erect temporary wooden walkways above streets of the historic waterfront. Schöngart and other researchers expect such changes to intensify as global climate warms. The current drought provided a grim preview, killing river dolphins and fish, and threatening livelihoods for communities along the river. If the combination of higher highs and lower lows becomes the new norm, the ramifications could extend throughout the Amazon Basin and even beyond, threatening the very existence of the forest —which harbors much of the planet’s biodiversity, has a far -reaching influence over regional and global climate, and sustains millions of people. “We are undergoing massive chang es in the hydrological cycle” of the Amazon Basin, Schöngart says. The question now, he says, is whether its ecosystems and people can adapt. Adapted from: https://www.science.org/content/article/amazon -river-may-altered- forever-climate-change\n\nIn the opening sentence, the forest scientist is described as moving",
+  "alts": [
+   "swiftly.",
+   "clumsily.",
+   "haltingly.",
+   "stealthily.",
+   "cautiously."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q18",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 19,
+  "tag": "ingles",
+  "q": "Text II A river in flux MANAUS, BRAZIL —Jochen Schöngart darts back and forth along an escarpment just above the Amazon River, a short water taxi ride from downtown Manaus, Brazil. It’s still early this October morning in 2023, but it’s already hot and his face is beaded with sweat. “Look, there’s a piece of ceramic!” he says, nodding to a worn shard lodged between boulders, likely a relic of an earlier civilization. It’s not the only one. Schöngart, a forest scientist at the National Institute of Amazon Research (INPA), stoops and stares at the bedrock at his feet. Well below the river’s normal level for this time of year, the rock bears a gallery of life -size faces, perhaps carved during a megadrought 1000 years ago. Now, they have been exposed again by a new drought, the worst in the region’s modern history. In the previous 4 months, only a few millimeters of rain have fallen in this city of 2 million at the confluence of the Negro and Amazon rivers. Normally it gets close to a half a meter during the same period. The Amazon sank steadily beginning in June, as it does most years during the dry season. But by mid -October, the port’s river gauge reached the lowest level observed since the record began in 1902. Freighters coming up from the Atlantic Ocean—the city’s primary supply lin e—were blocked by shoals. Factories furloughed workers. Making matters worse, the drought coincided with a series of week-long heat waves. In September and October, withering conditions persisted across the Amazon, and temperatures here peaked at 39°C, 6°C above normal. Desiccated jungle set ablaze by farmers enveloped the city in choking smoke. Then, in the season’s most freakish episode, a sandstorm blotted out the Sun. Drought and heat are only half of the story of the changes unfolding in the heart of t he world’s largest rainforest. Schöngart and collaborators’ research on the river here has shown that for decades, while dry-season low water has been plummeting, rainy- season high water has been rising. The city has experienced frequent major flooding in recent years because of heavy rains across much of the Amazon Basin, forcing the officials to erect temporary wooden walkways above streets of the historic waterfront. Schöngart and other researchers expect such changes to intensify as global climate warms. The current drought provided a grim preview, killing river dolphins and fish, and threatening livelihoods for communities along the river. If the combination of higher highs and lower lows becomes the new norm, the ramifications could extend throughout the Amazon Basin and even beyond, threatening the very existence of the forest —which harbors much of the planet’s biodiversity, has a far -reaching influence over regional and global climate, and sustains millions of people. “We are undergoing massive chang es in the hydrological cycle” of the Amazon Basin, Schöngart says. The question now, he says, is whether its ecosystems and people can adapt. Adapted from: https://www.science.org/content/article/amazon -river-may-altered- forever-climate-change\n\nDue to global warming, experts believe the changes described will tend to",
+  "alts": [
+   "drop.",
+   "abate.",
+   "vanish.",
+   "plunge.",
+   "heighten."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q19",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 20,
+  "tag": "ingles",
+  "q": "Text II A river in flux MANAUS, BRAZIL —Jochen Schöngart darts back and forth along an escarpment just above the Amazon River, a short water taxi ride from downtown Manaus, Brazil. It’s still early this October morning in 2023, but it’s already hot and his face is beaded with sweat. “Look, there’s a piece of ceramic!” he says, nodding to a worn shard lodged between boulders, likely a relic of an earlier civilization. It’s not the only one. Schöngart, a forest scientist at the National Institute of Amazon Research (INPA), stoops and stares at the bedrock at his feet. Well below the river’s normal level for this time of year, the rock bears a gallery of life -size faces, perhaps carved during a megadrought 1000 years ago. Now, they have been exposed again by a new drought, the worst in the region’s modern history. In the previous 4 months, only a few millimeters of rain have fallen in this city of 2 million at the confluence of the Negro and Amazon rivers. Normally it gets close to a half a meter during the same period. The Amazon sank steadily beginning in June, as it does most years during the dry season. But by mid -October, the port’s river gauge reached the lowest level observed since the record began in 1902. Freighters coming up from the Atlantic Ocean—the city’s primary supply lin e—were blocked by shoals. Factories furloughed workers. Making matters worse, the drought coincided with a series of week-long heat waves. In September and October, withering conditions persisted across the Amazon, and temperatures here peaked at 39°C, 6°C above normal. Desiccated jungle set ablaze by farmers enveloped the city in choking smoke. Then, in the season’s most freakish episode, a sandstorm blotted out the Sun. Drought and heat are only half of the story of the changes unfolding in the heart of t he world’s largest rainforest. Schöngart and collaborators’ research on the river here has shown that for decades, while dry-season low water has been plummeting, rainy- season high water has been rising. The city has experienced frequent major flooding in recent years because of heavy rains across much of the Amazon Basin, forcing the officials to erect temporary wooden walkways above streets of the historic waterfront. Schöngart and other researchers expect such changes to intensify as global climate warms. The current drought provided a grim preview, killing river dolphins and fish, and threatening livelihoods for communities along the river. If the combination of higher highs and lower lows becomes the new norm, the ramifications could extend throughout the Amazon Basin and even beyond, threatening the very existence of the forest —which harbors much of the planet’s biodiversity, has a far -reaching influence over regional and global climate, and sustains millions of people. “We are undergoing massive chang es in the hydrological cycle” of the Amazon Basin, Schöngart says. The question now, he says, is whether its ecosystems and people can adapt. Adapted from: https://www.science.org/content/article/amazon -river-may-altered- forever-climate-change\n\nThe situation described in the 5th paragraph is:",
+  "alts": [
+   "gory.",
+   "taxing.",
+   "exciting.",
+   "thrilling.",
+   "desirable."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q20",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 36,
+  "tag": "arquitetura",
+  "q": "A respeito dos objetivos da utilização de processamento distribuído, avalie as afirmativas a seguir: I. Garante que os dados e processos sejam protegidos contra acessos não autorizados e falhas. II. Facilita o acesso e compartilhamento de recursos remotos, como periféricos, instalações de armazenamento e serviços III. Busca ocultar a complexidade da distribuição dos processos e recursos. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas",
+   "I, II e III."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q36",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 40,
+  "tag": "banco-dados",
+  "q": "Com relação ao diagrama de entidade relacionamento no contexto da engenharia de software, analise as afirmativas a seguir. I. O diagrama é utilizado em projetos de desenvolvimento de software que não utilizam banco de dados. II. Os relacionamentos entre en tidades podem ser do tipo 1:1, 1:n ou n:n. III. No diagrama, elipses representam atributos. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q40",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 41,
+  "tag": "redes",
+  "q": "Considerando as redes de computadores e os protocolos da camada de aplicação, analise as afirmativas a seguir. I. O protocolo LDAP permite acesso a bancos de dados. II. O protocolo SMTP serve para realizar a transferência de dados remotamente. III. O proto colo HTTP possui a funcionalidade de permitir comunicação entre cliente e servidor, por meio de troca de mensagens de requisição e de resposta entre eles. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q41",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 42,
+  "tag": "eng-software",
+  "q": "A metodologia de desenvolvimento ágil eXtreme Programming (XP) visa à qualidade do software e à capacidade de resposta às mudanças de requisitos do cliente. Assinale a opção que apresenta práticas típicas da metodologia XP.",
+  "alts": [
+   "Pair programming, sprint planning e continuous integration.",
+   "refactoring, continuous integration e pair programming.",
+   "user stories, burndown charts e test-driven development.",
+   "test-driven development, retrospectives e daily stand-ups.",
+   "planning poker, refactoring e backlog grooming."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q42",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 43,
+  "tag": "eng-software",
+  "q": "Metodologias de desenvolvimento de software definem paradigmas visando promover eficiência e qualidade do produto final. Entre estas, o desenvolvimento seguindo o modelo TDD (Test Driven Development) é realizado por meio de um ciclo composto por três etapas: red, green e refactoring. Acerca dessas etapas, assinale a afirmativa correta.",
+  "alts": [
+   "Na fase red, os desenvolvedores escrevem testes de aceitação que devem falhar inicialmente.",
+   "Na fase green, os desenvolvedores escrevem o código mínimo necessário para fazer o código passar no teste.",
+   "Na fas e refactoring, os desenvolvedores buscam otimizar o código de novas funcionalidades reprovadas no teste.",
+   "Na fase red, os desenvolvedores revisam o código para identificar oportunidades de melhoria.",
+   "Na fase green, os desenvolvedores documentam as mudanças realizadas na fase refactoring."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q43",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 44,
+  "tag": "eng-software",
+  "q": "A DevOps integra desenvolvimento e operações de TI, de modo a melhorar a colaboração e a produtividade. Com o intuito de efetuar o backup dos servidores de uma empresa, observando os princípios da DevOps, o administrador deve",
+  "alts": [
+   "implementar scripts para realizar backups periódicos e solicitar à equipe de TI que execute tais scripts periodicamente.",
+   "configurar ferramentas de backup e des ignar membros da equipe para monitorar o processo de backup.",
+   "usar scripts para programar backups periódicos e verificar automaticamente sua integridade.",
+   "designar um responsável por executar os procedimentos de backup e mover os dados para um local de armazenamento seguro periodicamente.",
+   "empregar ferramentas de automatização para programar backups periódicos, e designar uma equipe para verificar sua integridade."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q44",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 45,
+  "tag": "eng-software",
+  "q": "O Desenvolvimento Orientado por Comportamento (BDD) facilita a colaboração entre as partes interessadas e desenvolvedores ao usar uma linguagem comum para descrever o comportamento do sistema. Sobre o BDD, analise as afirmativas a seguir. I. No BDD, os novos comportamentos são adicionados e testados em pequenos ciclos contínuos, sendo assim um método iterativo, mas não incremental. II. No BDD, a documentação é atualizada automaticamente a cada ciclo. III. A prática de escrever testes antes do desenvolvim ento do código é um elemento essencial do BDD. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q45",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 46,
+  "tag": "banco-dados",
+  "q": "Considere a relação a seguir. PRODUCAO ( Cod_país, Fonte_energética, Ano, Capacidade_instalada, Fator_eficiência, Produção_anual) Essa relação apresenta a capacidade instalada, o fator de eficiência e a produção anual de uma determinada fonte energética por um determinado país (Cod_país) em um determinado ano. A capacidade in stalada, o fator de eficiência e a produção anual dependem do país, da fonte energética e do ano considerado. Considere ainda que {Cod_país, Fonte_energética, Ano} é a chave primária, e que a relação apresenta ainda a dependência funcional Capacidade_instalada, Fator_eficiência -> Produção_anual. Sobre o processo de normalização e as formas normais, assinale a afirmativa correta.",
+  "alts": [
+   "A relação está na 2FN",
+   "Há dependências parciais na relação apresentada",
+   "A relação está na 3FN",
+   "Não há dependência transitiva na relação apresentada",
+   "A relação está na 4FN"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q46",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 47,
+  "tag": "banco-dados",
+  "q": "No contexto de banco de dados, há um conjunto de propriedades fundamentais para a integridade e a confiabilidade das transações em um banco de dados representadas pelo acrônimo ACID. Cada uma delas desempenha um papel crucial na manutenção da integridade dos dados e na garantia de que as transações sejam realizadas de forma correta e segura. Com isto em mente, associe as propriedades listadas a seguir, aos responsáveis, dentro ou fora do SGBD, por garanti-las. ( ) Atomicidade. ( ) Consistência. ( ) Isolamento. ( ) Durabilidade. 1. Programadores ou módulo do SGBD que impõe restrições de integridade. 2. Subsistema de recuperação. 3. Subsistema de controle de concorrência. Assinale a opção que apresenta a associação correta, na ordem apresentada.",
+  "alts": [
+   "2 – 1 – 3 – 3.",
+   "1 – 3 – 2 – 2.",
+   "2 – 2 – 1 – 3.",
+   "2 – 1 – 3 – 2.",
+   "3 – 2 – 1 – 1."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q47",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 48,
+  "tag": "banco-dados",
+  "q": "Com relação à linguagem de consulta estruturada (SQL) padrão ANSI e seus subconjuntos, analise as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa. ( ) Os comandos GRANT e REVOKE são usados para conceder e revogar privilégios aos usuários e pertencem à DTL. ( ) O comando para apagar uma tabela é o DELETE. ( ) Os comandos CREATE, ALTER e DROP pertencem a o subconjunto DDL. ( ) O comando TRUNCATE é utilizado para limpar completamente uma tabela, mantendo sua estrutura para futuras inserções de dados. Pertence ao subconjunto DDL. As afirmativas são, respetivamente,",
+  "alts": [
+   "F – V – V – F.",
+   "V – V – F – F.",
+   "F – F – V – V.",
+   "V – F – F – V.",
+   "F – V – V – V."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q48",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 49,
+  "tag": "bi",
+  "q": "Diversos processos são usados para manter a sincronização entre um armazém de dados e outras fontes de dados, como bancos de dados OLTP, por exemplo. Eles, normalmente, envolvem a cópia total de um banco de dados, a transformação dos dados e a carga em um armazém de dados. Esses processos são classificados como processos em lote",
+  "alts": [
+   "ELT.",
+   "ETL reverso.",
+   "OLAP.",
+   "ETL.",
+   "Big Data."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q49",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 50,
+  "tag": "bi",
+  "q": "Com o objetivo d e atender às necessidades específicas de processamento, acesso e análise de informações, diferentes tecnologias podem ser empregadas para o armazenamento de dados. Nesse contexto, é correto afirmar que Data Warehouses",
+  "alts": [
+   "são ideais para armazenar grandes volumes de dados estruturados e não estruturados.",
+   "separam os dados em zonas, de acordo com o nível de processamento, do mais bruto ao mais refinado.",
+   "empregam o método ELT ( Extract, Load, Transform ) no processo ingestão de dados.",
+   "são ineficazes para a realização de consultas complexas em grandes volumes de dados estruturados.",
+   "são otimizados para a geração de relatórios de dados estruturados, provenientes de diversas fontes."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q50",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 51,
+  "tag": "eng-software",
+  "q": "A respeito dos conceitos de DevOps, analise as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa. ( ) Uma das práticas da Integração Contínua é estimular que a equipe de desenvolvimento agregue código em um repositório compartilhado várias vezes ao dia. ( ) Executar c asos de teste automatizados e compilar o código - fonte são tarefas de ferramentas de automação de build, como Cucumber, Travis CI e Zabbix. ( ) Configuration Management é eficiente quando nem todas as instalações e modificações são aplicadas novamente aos servidores, atualizando apenas o comportamento alterado. As afirmativas são, respectivamente,",
+  "alts": [
+   "V – V – F.",
+   "V – F – V.",
+   "F – V – V.",
+   "V – F – F.",
+   "F – F – V."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q51",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 52,
+  "tag": "arquitetura",
+  "q": "Uma plataforma de desenvolvimento fornece recursos como servidores, bancos de dados e ambientes de desenvolvimento integrados (IDEs) necessários para criar, testar e implantar uma aplicação web. Assinale a opção que apresenta o modelo de serviço de computação em nuvem no qual essa plataforma se enquadra.",
+  "alts": [
+   "SaaS.",
+   "DaaS.",
+   "IaaS.",
+   "PaaS.",
+   "AiaaS."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q52",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 53,
+  "tag": "arquitetura",
+  "q": "Uma equipe foi contratada para resolver o problema de desempenho que um sistema apresenta em momentos de picos de carga. A equipe apresentou, como solução econômica, o uso da tecnologia que oferece aumento temporário de desempenho, mantendo dados sensíveis em um ambiente controlado. Assinale a opção que apresenta a tecnologia sugerida.",
+  "alts": [
+   "load balancing.",
+   "elastic computing.",
+   "edge computing.",
+   "cloud bursting.",
+   "serverless computing."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q53",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 54,
+  "tag": "arquitetura",
+  "q": "Uma das principais características da computação em nuvem é a abstração dos recursos de hardware para o usuário. Nesse contexto, sobre os conceitos de elasticidade e escalabilidade, assinale a afirmativa correta.",
+  "alts": [
+   "Escalabilidade é o aumento de capacidade de processamento, enquanto elasticidade está relacionada ao armazenamento de dados.",
+   "Escalabilidade é utilizada para planejamento estratégico de longo prazo, enquanto elasticidade se aplica a ajustes de recursos em tempo real.",
+   "Elasticidade lida com o crescimento gradual e planejado do sistema, enquanto escalabilidade se ajusta às flutuações da demanda.",
+   "Elasticidade e escalabilidade são abordagens de curto prazo, com o objetivo de ajustar recursos aos picos de demanda.",
+   "Um sistema de computação em nuvem escalável horizontalmente será necessariamente elástico."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q54",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 55,
+  "tag": "arquitetura",
+  "q": "Embora a computação em nuvem proporcione diversas vantagens, ela também apresenta desafios peculiares. No que diz respeito à precificação, assinale a afirmativa correta.",
+  "alts": [
+   "O modelo de precificação fixo mensal é a opção mais segura, por garantir a disponibilidade do serviço e evitar surpresas no orçamento.",
+   "O modelo de precificação em que os recursos são ajustados automaticamente é o ideal para qualquer carga de trabalho.",
+   "O modelo de precificação impacta diretamente a escalabilidade do sistema.",
+   "O modelo de precificação não afeta diretamente o desempenho das aplicações em nuvem, apenas o custo total ao final do período.",
+   "O modelo de precificação baseado em consumo pode garantir custos previsíveis, independentemente da variação na demanda por recursos."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q55",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 56,
+  "tag": "seguranca",
+  "q": "Desenvolvimento seguro é um conjunto de práticas que visam incorporar a segurança em todas as fases do ciclo de vida do desenvolvimento de software. As técnicas de análise de segurança de aplicações desempenham um papel crucial na identificação e mitigação de vulnerabilidades. Assinale a opção que indica a técnica usada para analisar o código- fonte de uma aplicação em bus ca de vulnerabilidades, sem executar essa aplicação.",
+  "alts": [
+   "DAST (Dynamic Application Security Testing).",
+   "SAST (Static Application Security Testing).",
+   "IAST (Interactive Application Security Testing).",
+   "Black Box Testing.",
+   "Fuzz Testing."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q56",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 57,
+  "tag": "seguranca",
+  "q": "Ao enviar informações sensíveis para outros colegas de sua diretoria, o analista Amon optou por utilizar um algoritmo de criptografia. Nesse contexto, analise as afirmativas a seguir. I. Se optar por usar um algoritmo assimétrico, o analist a Amon deverá compartilhar sua chave pública com seus colegas, e utilizar sua chave privada para criptografar os dados. II. Se o analista Amon pretender maior velocidade de processamento, deverá optar por algoritmos simétricos, como o AES. III. Ao optar por uma criptografia assimétrica, o analista Amon deve usar uma criptografia simétrica para realizar o envio/compartilhamento da chave. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "III, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q57",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 58,
+  "tag": "seguranca",
+  "q": "Com relação aos códigos maliciosos e malwares, analise as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa. ( ) Um vírus de macro é um tipo de vírus escrito em linguagem de script, como JavaScript. ( ) Worm é um tipo de malware que replica a si mesmo de forma automática, sendo capaz de se propagar por uma rede. Geralmente, eles consomem muitos recursos, afetando o desempenho da rede e dos computadores infectados. ( ) Um keylogger é um tipo de spyware voltado para teclados virtuais que armazena a posição do cursor e a tela quando o mouse é clicado. Dessa forma, ele pode capturar teclas selecionadas em teclados virtuais. As afirmativas são, respectivamente,",
+  "alts": [
+   "V – V – F.",
+   "V – F – F.",
+   "F – V – V.",
+   "F – V – F.",
+   "V – F – V."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q58",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 59,
+  "tag": "seguranca",
+  "q": "Um analista estava acessando uma página de Internet Banking autêntica, e realizou normalmente sua autenticação, recebendo um cookie de sessão. Em paralelo a isso, também estava verificando sua caixa de correio eletrônico, e clicou em um link suspeito que recebeu em um e- mail. Mais tarde, ao verificar seu extrato bancário, percebeu inúmeras operações que ele não realizou. Ao fazer contato com seu banco, o mesmo informou que as operações foram realizadas a partir do usuário autenticado do cliente. Com base nessas informações, assinale a opção que apresenta o ataque sofrido.",
+  "alts": [
+   "SQL Injection.",
+   "CSRF.",
+   "XSS.",
+   "Spoofing.",
+   "DDoS."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q59",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 60,
+  "tag": "seguranca",
+  "q": "Sobre o uso de assinaturas digitais e certificação digital, analise as afirmativas a seguir. I. O uso da assinatura digital garante a autenticidade, a integridade, o não repúdio e a confidencialidade. II. A assinatura digital está baseada e m criptografia assimétrica. Nesse processo, o usuário remetente utiliza sua chave privada para criptografar a mensagem. Do outro lado, o usuário destinatário utiliza a chave pública do emissor para decriptografar a mensagem. III. O certificado digital é um atestado eletrônico que guarda informações sobre seu titular, e é garantido por uma Autoridade Certificadora (AC). Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "III, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q60",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 61,
+  "tag": "eng-software",
+  "q": "O design thinking consiste em uma abordagem inovadora para a resolução de problemas, fundamentada em uma série de conceitos. No contexto do design thinking, assinale a afirmativa correta.",
+  "alts": [
+   "Os mapas de empatia analisam a experiência do usuário ao longo do tempo para identificar suas emoções e necessidades.",
+   "Para possibilitar a realização de testes eficazes, é fundamental desenvolver um MVP (Produto Mínimo Viável) durante a fase de prototipagem.",
+   "Concentra-se no brainstorming durante todo o processo, com o objetivo de estimular a criatividade.",
+   "Baseia-se apenas em dados qualitativos para tomar decisões e solucionar problemas.",
+   "Possibilita a melhoria contínua das soluções por meio da interação entre suas etapas."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q61",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 62,
+  "tag": "eng-software",
+  "q": "Histórias de usuários são fundamentais para capturar requisitos centrados no usuário em projetos ágeis. Assinale a opção que indica um exemplo de história de usuário escrito corretamente do ponto de vista da sintaxe.",
+  "alts": [
+   "O sistema deve per mitir que o usuário redefina a senha quando solicitado.",
+   "Como cliente, eu quero um botão de leitura em voz alta na tela inicial para que pessoas com necessidades possam navegar com mais facilidade.",
+   "Como gerente de projetos, eu quero visualizar o progresso das tarefas para que possa monitorar o andamento do projeto.",
+   "Como cliente, eu quero acessar o sistema de pagamentos.",
+   "Como administrador, eu quero que os clientes possam ver suas transações para aumentar sua satisfação."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q62",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 63,
+  "tag": "eng-software",
+  "q": "No desenvolvimento centrado no usuário, tanto o conceito de MVP ( Minimum Viable Product ) quanto o de protótipo são essenciais. Acerca desse assunto, analise as afirmativas a seguir. I. O protótipo permite testar ideias de produto no mercado real, reduzindo riscos financeiros ao evitar investimentos pesados antes de comprovar o interesse dos usuários. II. O MVP deve apresentar o maior número possível de funcionalidades, de modo a avaliar corretamente o seu valor para o usuário. III. Na engenharia de requisitos , os protótipos são empregados nas etapas de especificação, enquanto o MVP é empregado na validação. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "III, apenas.",
+   "I e II, apenas.",
+   "II e III, apenas."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q63",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 64,
+  "tag": "arquitetura",
+  "q": "Nas aplicações baseadas na nuvem, os componentes do sistema geralmente necessitam fornecer informações a outros entes, conforme a ocorrência de eventos. Nessa conjuntura, assinale a opção que apresenta a arquitetura de software que permite a um aplicativo anunciar eventos para vários consumidores de seu interesse, de forma assíncrona, e sem acoplamento entre remetentes e destinatários.",
+  "alts": [
+   "Injeção de Dependência.",
+   "Publisher-Subscriber.",
+   "Valet Key.",
+   "Abstract Factory.",
+   "Back-end for front-end."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q64",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 65,
+  "tag": "arquitetura",
+  "q": "A arquitetura MVC ( Model-View-Controller) sugere a divisão de aplicações em três principais grupos de componentes: Models, Views e Controllers, o que ajuda a atingir a separação de interesses. Em relação aos Controllers, anali se as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa. ( ) Atua como ponto de entrada inicial, sendo responsável por escolher os Models que serão empregados na execução bem como qual View será renderizada. ( ) Caso a lógica do Controller esteja muito complexa, é recomendável mover lógica de negócios para fora do mesmo, insira-a no modelo de domínio, por exemplo. ( ) Caso um Controller execute com frequência os mesmos tipos de ações, é uma boa prática mover essas ações comuns p ara filtros. As afirmativas são, respectivamente,",
+  "alts": [
+   "V – F – V.",
+   "V – V – F.",
+   "F – V – F.",
+   "F – F – V.",
+   "V – V – V."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q65",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 66,
+  "tag": "arquitetura",
+  "q": "Acerca de conceitos, frameworks e boas práticas no contexto de arquiteturas de sistemas, assinale a afirmativa correta.",
+  "alts": [
+   "Normalmente, conexões do tipo SOAP são mais rápidas e fáceis de usar do que as provenientes de APIs REST.",
+   "O Princípio da Substituição de Liskov afirma que os sistemas mais flexíveis são aqueles nos quais as dependências do código-fonte se referem apenas a abstrações.",
+   "O Entity Framework Core é o ORM da plataforma .NET, o qual elimina a necessidade da maioria do código de acesso a dados que os desenvolvedores geralmente precisam escrever.",
+   "O padrão Strangler permite que dese nvolvedores criem e suportem um tipo de back-end por interface de usuário.",
+   "Usar códigos de retorno ao invés de exceções e não utilizar verbos como nomes para classes são boas práticas de design de software."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q66",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 67,
+  "tag": "programacao",
+  "q": "Com relação ao algoritmo d e garbage collection (coleta de lixo) chamado mark-sweep (ou mark-and-sweep), analise as afirmativas a seguir. I. Na fase de marcar (mark), o coletor percorre o grafo de objetos e marca todos aqueles que são alcançáveis. II. Na fase de varrer ( sweep), a memória ocupada pelos objetos marcados (na fase de marcação) é liberada. III. Os objetos marcados (na fase de marcação) são realocados. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q67",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 68,
+  "tag": "frontend",
+  "q": "Com relação à linguagem de programação JavaScript , analise as afirmativas a seguir. I. Set é uma coleção de valores que não permite elementos repetidos. II. Todos os objetos são criados por meio do construtor JSON (JavaScript Object Notation). III. A sintaxe para uma declaração de função com dois parâmetros (p0 e p1) é: function nome_da_função(p0, p1) { corpo_da_função } Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "III, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q68",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 69,
+  "tag": "programacao",
+  "q": "Considere o código a seguir, escrito na linguagem de programação Python (versão 3.11.3). <1> x = {i: i ** 2 for i in range(10,0,-1)} <2> y = sorted(x) <3> z = (x[1], y[0], y[1]) Assinale a opção que indica o valor que z recebe na linha <3>.",
+  "alts": [
+   "(0, 0, 1)",
+   "(0, 1, 2)",
+   "(1, 0, 1)",
+   "(1, 0, 2)",
+   "(1, 1, 2)"
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q69",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 70,
+  "tag": "programacao",
+  "q": "Considere o código a seguir, escrito na linguagem de programação Python (versão 3.11.3). <1> x = [] <2> for i in range(1,10,2): <3> x.append(i) <4> y = x <5> x[1] = 0 <6> z = y[1] Assinale a opção que indica o valor que z recebe na linha <6>.",
+  "alts": [
+   "0",
+   "1",
+   "3",
+   "[0, 0, 0, 0, 0]",
+   "[0]"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q70",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 71,
+  "tag": "frontend",
+  "q": "Com relação à linguagem de marcação HTML 5, o elemento disponibilizado para dividir o conteúdo do documento em seções para conteúdos específicos, é o elemento",
+  "alts": [
+   "<mark>.",
+   "<aside>.",
+   "<canvas>.",
+   "<main>.",
+   "<item>."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q71",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 72,
+  "tag": "bi",
+  "q": "A produção e a disseminação de dados corporativos cresceram muito rapidamente, o que requer tecnologias de função analítica adequadas ao volume de dados envolvidos, visando extrair informações úteis e viabilizar a criação de relatórios analíticos. As tecnologias descritas recebem, na literatura, o nome de",
+  "alts": [
+   "Big Data.",
+   "Data Warehouse.",
+   "Map Reduce.",
+   "Online Analytical Processing (OLAP).",
+   "Online Transaction Processing (OLTP)."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q72",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 73,
+  "tag": "bi",
+  "q": "A execução de um projeto demanda a aquisição de diferentes dados, incluindo vídeos (I), fotos georreferenciadas (II), tabelas relacionais (III) e documentos (IV), que servirão de insumos para a análise e a tomada de decisão. Sobre os dados listados acima, os dados estruturados estão sinalizados com o(s) número(s)",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "III, apenas.",
+   "IV, apenas.",
+   "II e IV, apenas."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q73",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 74,
+  "tag": "bi",
+  "q": "Uma empresa decidiu utilizar o Power BI para poder gerenciar melhor os seus dados. Dessa forma, contratou um especialista para criar um dashboard com o objetivo de melhorar a visualização de seus negócios. Sobre as a construção de dashboards, assinale a afirmativa correta.",
+  "alts": [
+   "Pode ter uma ou mais páginas.",
+   "Está disponível no Power BI Desktop.",
+   "Não se pode definir alertas.",
+   "Não se pode assinar um dashboard.",
+   "Permitem realizar consultas de linguagem natural (P e R)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q74",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 76,
+  "tag": "programacao",
+  "q": "Com relação às estruturas de dados em listas , analise as afirmativas a seguir. I. Em uma lista não ordenada, os elementos devem estar organizados em ordem decrescente das respectivas chaves. II. Uma lista encadeada é uma estrutura de dados, na qual os objetos estão organizados em ordem linear. III. Em uma lista duplamente encadeada, cada elemento deve apontar para o elemento anterior e para o próximo. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q76",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 77,
+  "tag": "eng-software",
+  "q": "No contexto de desenvolvimento de software, code smells são sinais de possíveis problemas típicos no código. Sobre esse conceito, analise as afirmativas a seguir. I. Dividir métodos longos em partes menores pode ser uma solução para o caso de bloaters. II. Usar grupos idênticos de variáveis que se repetem ao longo do código pode melhorar a legibilidade e a consistência do código, sendo considerada uma boa prática. III. Recomenda-se refatorar o código quando um método acessa excessivamente os dados de outra classe, o que indica a presença do code smell conhecido como Feature Envy. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "I e II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q77",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 78,
+  "tag": "eng-software",
+  "q": "Após uma atualização, para garantir que partes do sistema que não foram diretamente modificadas continuem funcionando, e que o teste deve utilizar informações do código -fonte para garantir a cobertura de todas as áreas relevantes, devemos realizar testes",
+  "alts": [
+   "de regressão com abordagem de caixa branca.",
+   "de integração com abordagem de caixa preta.",
+   "de integração com abordagem de caixa branca.",
+   "unitários com abordagem de caixa branca.",
+   "de regressão com abordagem de caixa preta."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q78",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 79,
+  "tag": "eng-software",
+  "q": "As métricas de qualidade de software são medidas quantitativas que auxiliam na análise e medição de diversos aspectos. Nesse contexto, considere a seguinte função: função processarDados(entrada) { resultado = 0 i = 1 se entrada > 0 { resultado = resultado + 1 } senão se entrada < 0 { resultado = resultado - 1} senão { resultado = resultado } enquanto i < 4 { se i == entrada { resultado = resultado * 2} i = i + 1 } retornar resultado } A complexidade ciclomática da função acima vale",
+  "alts": [
+   "3.",
+   "4.",
+   "5.",
+   "6.",
+   "7."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q79",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "epe-ti",
+  "num": 80,
+  "tag": "eng-software",
+  "q": "Testes de carga são fundamentais para definir a capacidade e garantir o desempenho esperado de um sistema. Sobre a ferramenta Apache JMeter, analise as afirmativas a seguir. I. Samplers no JMeter são responsáveis por enviar requisições para os servidores, e cada tipo de Sampler é projetado para testar um protocolo ou serviço específico. II. Os usuários virtuais de um Thread Group são iniciados simultaneamente, e o JMeter utiliza Timers para adicionar atrasos nas suas requisições, simulando o comportamento realista dos usuários. III. Assertions são usadas no JMeter para verificar se as respostas dos servidores atendem aos critérios esperados, como conteúdo, tempo de resposta e código de status. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "III, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV epe-ti Q80",
   "requer_imagem": false,
   "anulada": false
  },
@@ -12083,6 +13147,348 @@
   "sub": [
    "metricas-ml"
   ]
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 16,
+  "tag": "ingles",
+  "q": "Based on Text I, mark the statements below as TRUE (T) or FALSE (F). I. In auditing, taking heed of what other parties have to say needs to be downplayed. II. Auditors are generally unobtrusive when carrying out their jobs. III. Trust is obtained when auditors eschew straightforward statements. The statements are, respectively,",
+  "alts": [
+   "F – T – F.",
+   "F – F – T.",
+   "T – F – T.",
+   "F – T – T.",
+   "T – F – F."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q16",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 17,
+  "tag": "ingles",
+  "q": "Text I suggests auditors should invest in more",
+  "alts": [
+   "dynamic surveys.",
+   "unfounded records.",
+   "provisional auditing.",
+   "constant interactions.",
+   "user-friendly programs."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q17",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 18,
+  "tag": "ingles",
+  "q": "The opposite of quietness (3rd paragraph) is",
+  "alts": [
+   "deafness.",
+   "loudness.",
+   "kindliness.",
+   "dampness.",
+   "shrewdness."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q18",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 19,
+  "tag": "ingles",
+  "q": "“Unless” in “ unless it can stake a stronger claim to supporting improvement” (7th paragraph) introduces a(n)",
+  "alts": [
+   "plea.",
+   "averral.",
+   "account.",
+   "foresight.",
+   "condition. Text II Global commerce Driverless vehicles whizz across five new berths at Tuas Mega Port, which sits on a swathe of largely reclaimed land at the western tip of Singapore. Unmanned cranes loom overhead, circled by camera-fitted drones. The berths are the first of 21 due by 2027. When it is completed in 2040, the complex will be the largest container port on Earth, boasts PSA International, its Singaporean owner. Tuas is a vision of the future on two fronts. It illustrates how port operators the world over are deploying clever technologies to meet the demand for their services in the face of obstacles to the development of new facilities, from lack of space to environmental concerns. More fundamentally, the city -state’s investment, with construction costs estimated at $15bn, is part of a wave of huge bets by the broader logistics indu stry on the rising importance of Asia, and South -East Asia in particular. The IMF expects the region’s five largest economies —Indonesia, Malaysia, Singapore, the Philippines and Thailand—to be the fastest-growing bloc in the world by trade volumes between 2022 and 2027. The result is that the map of global commerce and the blueprints for its critical nodes are being simultaneously redrawn. From: The Economist, January 14, 2023, pp. 57-58"
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q19",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 20,
+  "tag": "ingles",
+  "q": "As regards Text II, analyse the assertions below: I. The soil on which the port is being built was once parched. II. The industry is quite diffident about the success of the investment. III. From an international viewpoint the project described will have sweeping implications. Choose the correct answer:",
+  "alts": [
+   "Only I is correct.",
+   "Only II is correct.",
+   "Only III is correct.",
+   "Only II and III are correct.",
+   "All three assertions are correct."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q20",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 21,
+  "tag": "ingles",
+  "q": "The overall position of the article is rather",
+  "alts": [
+   "flimsy.",
+   "gloomy.",
+   "scornful.",
+   "awkward.",
+   "supportive."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q21",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 22,
+  "tag": "ingles",
+  "q": "The machines described in the first paragraph",
+  "alts": [
+   "look somewhat rickety.",
+   "have recently come apart.",
+   "obviate physical exertion.",
+   "are too strenuous to be run.",
+   "were devised by Asian laymen."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q22",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 23,
+  "tag": "ingles",
+  "q": "The sentence “Driverless vehicles whizz across” (1 st paragraph) introduces a sense of",
+  "alts": [
+   "speed.",
+   "height.",
+   "weight.",
+   "depth.",
+   "size."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q23",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 24,
+  "tag": "ingles",
+  "q": "The use of the verb “loom” in “Unmanned cranes loom overhead” (1st paragraph) helps build an atmosphere that is rather",
+  "alts": [
+   "flattering.",
+   "reassuring.",
+   "heartening.",
+   "frightening.",
+   "enchanting."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q24",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-ana",
+  "num": 25,
+  "tag": "ingles",
+  "q": "The word “swathe” (1 st paragraph) can also be used elsewhere in the relation to",
+  "alts": [
+   "lather.",
+   "cloth.",
+   "foam.",
+   "tide.",
+   "fire. Raciocínio Lógico Matemático e Estatística"
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-ana Q25",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 11,
+  "tag": "ingles",
+  "q": "Based on the text, mark the statements below as TRUE (T) or FALSE (F). I. The planning of fiscal strategies is impervious to moral considerations. II. Traditional public finance education based on the golden rule is wanting as regards moral choices. III. Since the 18th century, philosophers have been on the same page as regards moral dilemmas. The statements are, respectively,",
+  "alts": [
+   "T – F – T.",
+   "F – F – T.",
+   "F – T – F.",
+   "F – T – T.",
+   "T – F – F."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q11",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 12,
+  "tag": "ingles",
+  "q": "In the subtitle, “garnering” comes from the notion of",
+  "alts": [
+   "storing grains.",
+   "renting garrets.",
+   "making garlands.",
+   "lapidating garnets.",
+   "charging garrisons."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q12",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 13,
+  "tag": "ingles",
+  "q": "The adjective in “is it fair for the state to collect through taxes” (1st paragraph) is equivalent in meaning to",
+  "alts": [
+   "bewildering.",
+   "befuddling.",
+   "bemusing.",
+   "beguiling.",
+   "befitting."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q13",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 14,
+  "tag": "ingles",
+  "q": "The unde rlined expression in “ regardless of who those people are” (4 th paragraph) can be replaced wi thout change in meaning by",
+  "alts": [
+   "alike.",
+   "despite.",
+   "whereas.",
+   "however.",
+   "concerning."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q14",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 15,
+  "tag": "ingles",
+  "q": "When it is stated that “tradition [is] steeped in values of societies” (4th paragraph) it is implied that these values have been",
+  "alts": [
+   "imbued.",
+   "shunned.",
+   "debased.",
+   "withheld.",
+   "overestimated. Text II How trade can become a gateway to climate resilience Most people don't think about climate change when they lift a café latte to their lips or nibble on a square of chocolate — but this could soon change. Based on current trajectories, around a quarter of Brazil’s coffee farms and 37% of Indonesia’s are likely to be lost to climate change. Swathes of Ghana and Côte d’Ivoire — where most of the world’s chocolate is sourced — will become too hot to grow cocoa by 2050. Climate-related droughts and deadly heatwaves across the world have coincided with severe storms, cyclones, hurricanes, and, of course, a pandemic. As a consequence of these shocks, millions of people have been left without homes, and a growing number of people now face starvation and a total collapse of livelihoods as growing and exporting staple crops becomes untenable. We must immediately rethink the shape of our economies, agricultural systems and consumption patterns. Our priority is to manufacture climate resilience in global economies and societies — and we must do it quickly. Trade can kickstart the emergence of climate -resilient economies, especially in the poorest countries. Trade has a multiplier effect on economies by driving production growth and fostering the expansion of export industries. By shifting focus to production and exports that increase climate resilience, there is potential to exponentially increase the land surface and trade processes prepared to withstand the climate crisis. Adapted from: https://www.weforum.org/agenda/2022/07/trade -can-be-a- gateway-to-climate-resilience"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q15",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 16,
+  "tag": "ingles",
+  "q": "The aim of the text is to offer both",
+  "alts": [
+   "an alert and a scolding.",
+   "a query and a dismissal.",
+   "a pledge and a grievance.",
+   "a warning and a way out.",
+   "a disclaimer and a solution."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q16",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 17,
+  "tag": "ingles",
+  "q": "The position of the writer is that the situation described",
+  "alts": [
+   "could be shrugged off.",
+   "will not offer any harm.",
+   "ought to shift promptly.",
+   "should be taken lightly.",
+   "needs to be overlooked."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q17",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "rfb-aud",
+  "num": 18,
+  "tag": "ingles",
+  "q": "The adjective in “the poorest countries” (5 th paragraph) is in the same form as",
+  "alts": [
+   "All nations should be more attentive to the homeless.",
+   "Ghana will be having a fine chocolate harvest in 2050.",
+   "Brazil is one amongst many coffee-producing countries.",
+   "It is hard to point out the most comfortable places on Earth.",
+   "Hopefully by 2050 there will be fewer climate-related issues."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV rfb-aud Q18",
+  "requer_imagem": false,
+  "anulada": false
  },
  {
   "prova": "tjrj1",

@@ -1,9 +1,9 @@
-# Continuar de onde paramos — 07/08/2026 (noite)
+# Continuar de onde paramos — 07/08/2026 (noite, depois da importação)
 
-Arquivo de retomada. A pendência que abria a versão anterior deste arquivo
-— explicar as 106 questões novas — está **fechada**. O que sobra agora não é
-dívida técnica: é o buraco de conteúdo em **inglês**. Leia na ordem:
-estado → o que fazer → o que já foi descartado.
+Arquivo de retomada. As quatro provas verificadas na busca da noite **foram
+importadas**, e o inglês quase fechou: falta 18 de 51. Sobrou a pendência de
+sempre depois de importar — as **73 questões novas estão sem explicação**.
+Leia na ordem: estado → pendência → o que vem depois.
 
 ---
 
@@ -13,15 +13,17 @@ Antes de qualquer coisa, rode `git status` e `./valida.py`.
 
 Números de referência (medidos em 07/08/2026, não precisa remedir):
 
-- `banco.json` 403 · `banco-provas.json` 626 · **1007 utilizáveis no quiz**
-- **11 provas reais** importadas, **todas com explicação completa**
-- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§3)
+- `banco.json` 403 · `banco-provas.json` 700 · **1080 utilizáveis no quiz**
+- **15 provas reais** importadas
+- `./valida.py`: 0 erros, **148 avisos** — 73 questões novas sem explicação
+  (a pendência do §1) mais os 2 da `nav-tec` Q58 (§3)
 - `sub` (microtópico): **467 das 1029** questões dos dois bancos (45%)
 
-O que entrou no dia (detalhe no `CHANGELOG.md`, quatro entradas de 07/08):
-as provas `cprm-ads` (CPRM 2025, ADS, 70 questões) e `nav-med` (NAV Brasil
-2026 nível médio, 45 de 60), as quatro correções do `importar_provas.py` e,
-por último, as **106 explicações** que fecharam a pendência.
+O que entrou no dia (detalhe no `CHANGELOG.md`, cinco entradas de 07/08): as
+provas `cprm-ads` e `nav-med`, as quatro correções do `importar_provas.py`, as
+**106 explicações** que fecharam a pendência daquelas duas e, à noite, a busca
+que trouxe `epe-ti`, `rfb-ana`, `rfb-aud` e `cprm-pesq` (+74 questões, o
+inglês de 69 para 102).
 
 Garantias que valem conhecer antes de mexer:
 
@@ -33,52 +35,68 @@ Garantias que valem conhecer antes de mexer:
 
 ---
 
-## 1. O que fazer agora — o déficit é só inglês
+## 1. Pendência — explicar as 73 questões novas
+
+As quatro provas entraram com **gabarito definitivo** mas **sem `why` e sem
+`erradas`**. É a mesma situação das duas importações anteriores, e o mesmo
+caminho de saída. Distribuição:
+
+| bloco | qtd | | bloco | qtd |
+|---|---|---|---|---|
+| inglês | 33 | | banco-dados | 4 |
+| eng-software | 12 | | programação | 4 |
+| arquitetura | 8 | | frontend | 2 |
+| BI | 5 | | redes | 1 |
+| segurança | 5 | | | |
+
+Para listar as pendentes a qualquer momento:
+
+```bash
+python3 -c "
+import json
+b=json.load(open('banco-provas.json',encoding='utf-8'))
+f=[q for q in b if q.get('ans') is not None and not q.get('requer_imagem')
+   and not q.get('anulada') and not (q.get('why','').strip() and q.get('erradas'))]
+print(len(f)); [print(q['prova'], q['num'], q['tag']) for q in f[:10]]"
+```
+
+**Como fazer**, que é o que funcionou nas duas vezes anteriores: lotes de 10
+por bloco, começando pelos **específicos da `epe-ti`** (36–80: são de cargo de
+TI de 2024 e batem no seu Módulo II), depois o **inglês** das quatro. Ao fim de
+cada lote, `./valida.py`. As regras estão na seção 5 do
+`CONTRIBUINDO-QUESTOES.md` e em "Estilo de questão" do `CLAUDE.md`; o gabarito
+é oficial e **intocável** — divergência vira anotação, como a `nav-tec` Q58.
+
+Uma questão de figura na faixa nova: `epe-ti` Q58 (malwares) saiu do sorteio
+sozinha, marcada pelo importador. Não há o que editar nela.
+
+---
+
+## 2. Depois da pendência — falta pouco, e só de dois blocos
 
 Medido contra a demanda de **10 simulados** do roteiro (cada um: 40 gerais na
 proporção do edital + 30 específicos):
 
 | bloco | pool | precisa | falta |
 |---|---|---|---|
-| inglês | 69 | 120 | **+51** |
+| inglês | **102** | 120 | +18 |
 | atualidades | 48 | 60 | +12 |
 | português | 129 | 120 | ok |
 | RLM | 65 | 50 | ok |
 | legislação | 68 | 50 | ok |
 | **todo o Módulo II** | — | — | **ok, déficit zero** |
 
-Duas saídas, e agora as duas têm alvo definido:
+O déficit total caiu de 63 para **30**. Duas saídas:
 
-1. **Importar as quatro provas já verificadas** (busca de 07/08/2026, à noite —
-   composição conferida abrindo o caderno, não pelo edital). Rendem **34 de
-   inglês**, o que derruba o déficit de 51 para 17:
-
-   | prova | inglês | nível / área | por que vale |
-   |---|---|---|---|
-   | **EPE 2024** — Analista de Gestão Corporativa, TI (03/09/2024) | **11** (Q10–20) | superior, **TI** | a mais alinhada: cargo de TI, e os 45 específicos são de TI recente |
-   | **RFB 2023** — Analista-Tributário, manhã (21/03/2023) | **10** (Q16–25) | superior | inglês denso de banca grande, gabarito definitivo |
-   | **RFB 2023** — Auditor-Fiscal, manhã (21/03/2023) | **8** (Q11–18) | superior | textos diferentes do caderno de Analista (conferido) |
-   | **CPRM 2025** — Pesquisador em Geociências (30/11/2025) | **5** | superior | Módulo I comum a todas as áreas (edital, item 12.2) |
-
-   Links (todos em `https://conhecimento.fgv.br/sites/default/files/concursos/`):
-   - EPE TI–Soluções: `agc-ti-solucoescns006-tipo-1.pdf` · gabarito
-     `gabarito_definitivo_epe-gest.pdf` · composição: português 1–9,
-     **inglês 10–20**, adm. pública 21–28 (*descartar*), valor público EPE
-     29–35 (*descartar*), específicos de TI 36–80
-   - RFB Analista: `cns102-analista-tributario-da-receita-federal-do-brasil-atrfbcns102-tipo-1.pdf`
-     · gabarito `gabarito-definitivo-rfb_analista-_0.pdf`
-   - RFB Auditor: `cns101-auditor-fiscal-da-receita-federal-do-brasil-afrfbcns101-tipo-1.pdf`
-     · gabarito `serfb-gabarito-defintivo-auditor-_0.pdf`
-   - CPRM Pesquisador: `pesquisador-em-geociencias-hidrogeologia-cns01e05-tipo-1.pdf`
-     · gabarito `gabarito-definitivo-cprm.pdf`
-
-   **Bônus sem déficit, mas boa calibração:** a EPE tem *três* cadernos de TI
-   (Infraestrutura e Segurança, Soluções, Ciência de Dados). O Módulo I é o
-   mesmo nos três — **conferido** —, então o inglês entra uma vez só; os
-   específicos, porém, são diferentes, e o de Ciência de Dados alimentaria
-   `bi`, um dos blocos mais magros do Módulo II.
-
-2. **Gerar questão de inglês.** O plano está em `GERAR-LOTE-GERAIS.md`, com o
+1. **Mais provas** — o que sobrou é fino. A única pista aberta é a **PM-SP
+   Aluno-Oficial 2025** (13/07/2025, tem inglês, nível superior, mas não é
+   área de tecnologia e a contagem segue não confirmada). Os outros dois
+   cadernos de TI da EPE 2024 (Infraestrutura e Segurança, Ciência de Dados)
+   **não trazem inglês novo** — o Módulo I é o mesmo do caderno de Soluções,
+   conferido —, mas os específicos são diferentes e alimentariam `bi` e
+   `seguranca`.
+2. **Gerar questão de inglês e de atualidades.** O plano está em
+   `GERAR-LOTE-GERAIS.md`, com o
    aviso no topo: as cotas de lá são de antes das importações, e português e
    RLM têm de sair do lote. A metodologia e o rateio por microtópico continuam
    valendo. Em inglês, `julgamento-afirmativas` e `verbos-modais` saíram do
@@ -139,7 +157,7 @@ lote, `./valida.py`.
 
 ---
 
-## 2. Ressalvas registradas — não são bugs a consertar às pressas
+## 3. Ressalvas registradas — não são bugs a consertar às pressas
 
 > **`nav-tec` Q58 — divergência real de gabarito, não conserto silencioso.**
 > O enunciado descreve dependência transitiva (`Nome_Fabricante` →
