@@ -6,16 +6,27 @@ e com que números ele foi dimensionado — leia antes de mudar as cotas.
 
 ## Por que só os gerais
 
-Medido em 07/08/2026, contra a demanda de **10 simulados** do roteiro (cada um
-com 70 questões: 40 gerais na proporção do edital + 30 específicos):
+> **As cotas deste arquivo estão desatualizadas.** Elas foram dimensionadas
+> antes das importações de 07/08/2026 (NAV Brasil e CPRM), que trouxeram 204
+> questões de blocos gerais. **Português e RLM saíram do déficit** e não
+> precisam de questão nova nenhuma; o buraco caiu de 137 para **63**, quase
+> tudo inglês. A metodologia e o rateio por microtópico continuam válidos —
+> recalcule as cotas antes de usar, e corte português e RLM do lote.
+
+Medido em 07/08/2026 **depois das importações**, contra a demanda de **10
+simulados** do roteiro (cada um com 70 questões: 40 gerais na proporção do
+edital + 30 específicos):
 
 | bloco | por simulado | precisa (10×) | pool hoje | déficit |
 |---|---|---|---|---|
-| inglês | 12 | 120 | 53 | **+67** |
-| português | 12 | 120 | 90 | **+30** |
-| atualidades | 6 | 60 | 35 | **+25** |
-| RLM | 5 | 50 | 35 | **+15** |
-| legislação | 5 | 50 | 66 | −16 |
+| inglês | 12 | 120 | 69 | **+51** |
+| atualidades | 6 | 60 | 48 | **+12** |
+| português | 12 | 120 | 129 | −9 |
+| RLM | 5 | 50 | 65 | −15 |
+| legislação | 5 | 50 | 68 | −18 |
+
+A tabela original, que gerou as cotas abaixo, era esta (inglês 53, português
+90, atualidades 35, RLM 35, legislação 66 — déficit somado de 137).
 
 Os **específicos não têm déficit**: rateando a distribuição real da Dataprev 2024
 (30 questões do Módulo II, Apêndice A) pelos blocos do repo, o pior caso é

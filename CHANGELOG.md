@@ -2,6 +2,75 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — CPRM 2025 e NAV Brasil nível médio importadas: +115 questões, o inglês sobe 30%
+
+As duas provas verificadas na busca da véspera entraram no banco. Pool
+utilizável de 901 para **1007**, e o número de provas reais vai de 9 para
+**11**.
+
+**CPRM 2025 — Analista em Geociências / Análise e Desenvolvimento de
+Sistemas** (`cprm-ads`), aplicada em **30/11/2025**, gabarito **definitivo**
+(08/01/2026, nenhuma questão anulada neste caderno). Entrou o **caderno
+inteiro, 70 questões** — é a primeira prova importada sem nada a descartar:
+não tem bloco de "Informática" nem legislação genérica, e a única questão de
+lei (Q38, anonimização na LGPD) é conteúdo do edital. Vale por três motivos:
+é **cargo de TI**, traz **10 de atualidades** (o segundo bloco mais escasso —
+ética da IA pela UNESCO, ODS/Agenda 2030, minerais estratégicos) e os 40
+específicos são de ADS, o mesmo perfil da Dataprev.
+
+> Correção de data: a busca tinha registrado 02/12/2025, que era a data do
+> comunicado. O cabeçalho do gabarito definitivo diz **30/11/2025**.
+
+**NAV Brasil 2026 — nível médio, Operador de Torre de Controle**
+(`nav-med`), aplicada em 02/08/2026. Entraram **45 das 60**: inglês 41–60,
+RLM 21–35 e português 1–10. Ficaram de fora as 10 de legislação/ética
+(direito administrativo e Código de Ética da estatal) e as 5 de Informática —
+e aqui, ao contrário da `nav-tec` Q33, **nenhuma das cinco se disfarçava de
+atualidades**: era Excel, Chrome e memória cache mesmo. É a única fonte
+recente da FGV com 20 questões de inglês; a ressalva é que o caderno é de
+nível médio e o vocabulário é de aviação, não de TI.
+
+Efeito no déficit do Módulo I, medido contra os 10 simulados do roteiro:
+
+| bloco | antes | agora | precisa | falta |
+|---|---|---|---|---|
+| inglês | 53 | **69** | 120 | +51 |
+| atualidades | 37 | **48** | 60 | +12 |
+| português | 110 | **129** | 120 | ok |
+| RLM | 43 | **65** | 50 | ok |
+
+Português e RLM saíram do vermelho. **Só sobraram inglês e atualidades**, 63
+questões ao todo — antes eram 107 espalhadas por quatro blocos.
+
+**Quatro correções no `importar_provas.py`**, todas achadas por estas provas e
+todas com efeito retroativo:
+
+- **texto-base em português.** O marcador só era reconhecido em inglês, então
+  o "Atenção! O texto a seguir refere-se às duas próximas questões" da
+  `nav-tec` passava batido — o texto grudava na alternativa (E) da questão
+  anterior e as questões do grupo ficavam sem ele. Era exatamente o defeito
+  corrigido **à mão** no JSON na véspera, que a próxima reimportação teria
+  desfeito em silêncio;
+- **segunda fórmula em inglês.** A NAV Brasil escreve "Read Text IV and answer
+  the four questions that follow it", e não "Use the following TEXT..." como a
+  Dataprev 2024. Sem isso, os quatro textos de leitura do `nav-med` não se
+  ligavam a nenhuma das 20 questões de inglês;
+- **cabeçalho "Informática"** entrou na lista de títulos de seção — é o outro
+  conserto manual da véspera (`nav-tec` Q28), agora reproduzível a partir do
+  PDF;
+- **pôster e cartum contam como figura.** "The word 'because' in this poster"
+  não casa a regra geral (o dêitico está no demonstrativo, não numa palavra de
+  apontamento), mas sem a imagem a questão não existe. Quatro questões do
+  `nav-med` saíram do sorteio por isso — e as duas do mesmo grupo que se
+  sustentam sozinhas (analogia `height : high`, apóstrofo de posse) ficaram.
+
+Com isso `./importar_provas.py` volta a ser idempotente: reimportar as 9
+provas antigas devolve o mesmo conteúdo, sem desfazer conserto nenhum.
+
+**Pendência herdada:** as 115 questões novas entraram com gabarito oficial mas
+sem `why`/`erradas` — `./valida.py` passa de 2 para 214 avisos. Mesma situação
+da NAV Brasil na véspera, e o mesmo caminho de saída.
+
 ## 2026-08-07 — as 86 questões da NAV Brasil ganham explicação (`valida.py`: 172 → 2 avisos)
 
 As 89 questões importadas da NAV Brasil entraram com gabarito oficial mas sem

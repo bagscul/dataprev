@@ -3432,6 +3432,1336 @@
   "anulada": false
  },
  {
+  "prova": "cprm-ads",
+  "num": 1,
+  "tag": "portugues",
+  "q": "Assinale a opção que indica co rretamente a estratégia argumentativa utilizada no primeiro parágrafo.",
+  "alts": [
+   "Parte-se de uma premissa mais geral para se concluir um fato.",
+   "Parte-se de premissas baseadas na observação para se constatar uma ideia mais geral.",
+   "Parte-se de uma explicação sobre o tema para estabelecer uma hipótese.",
+   "Parte-se de um recorte sobre o assunto a fim de criar uma verdade científica.",
+   "Parte-se de uma analogia para relativizar as conclusões a que se pode chegar."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q1",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 2,
+  "tag": "portugues",
+  "q": "No trecho “não resta dúvida de que a causa do aquecimento global são os gases do efeito estufa emitidos por seres humanos”, assinale a opção que classifica corretamente a oração subordinada.",
+  "alts": [
+   "Oração subordinada adverbial causal.",
+   "Oração subordinada substantiva objetiva indireta.",
+   "Oração subordinada substantiva completiva nominal.",
+   "Oração subordinada adjetiva restritiva.",
+   "Oração subordinada adverbial consecutiva."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q2",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 3,
+  "tag": "portugues",
+  "q": "Quanto à concordância do trecho “um dos gases que mais potencializam o efeito estufa”, é correto afirmar que",
+  "alts": [
+   "o verbo deve estar obrigatoriamente no plural para concordar com o núcleo gases.",
+   "há possibilidade da dupla concordância.",
+   "o uso popular destas expressões permite o plural.",
+   "o elemento partitivo permite somente a concordância no singular.",
+   "a du pla concordância só seria possível se a expressão fosse “grande parte de”."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q3",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 4,
+  "tag": "portugues",
+  "q": "Em “enfrentar as suas causas tem -se mostrado uma tarefa imensamente complexa”, o elemento em destaque funciona como",
+  "alts": [
+   "um pronome apassivador.",
+   "um pronome reflexivo.",
+   "um índice de indeterminação do sujeito.",
+   "uma parte pronominal do verbo.",
+   "uma conjunção integrante."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q4",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 5,
+  "tag": "portugues",
+  "q": "Assinale a opção em que a palavra formada não se estrutura a partir de uma derivação regressiva.",
+  "alts": [
+   "queimar - queima",
+   "combater - combate",
+   "liberar - libera",
+   "estudar - estudo",
+   "aumentar - aumento"
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q5",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 6,
+  "tag": "portugues",
+  "q": "Assinale a opção em que a função de linguagem predominante no texto, e sua justificativa, está corretamente indicada.",
+  "alts": [
+   "Função fática, tendo em vista que se faz um apelo ao leitor do texto sobre os efeitos da ação humana no clima.",
+   "Função metalinguística, uma vez que há reflexões sobre os próprios procedimentos do fazer textual.",
+   "Função conativa, considerando que o canal de recepção do artigo é fundamental para seu alcance.",
+   "Função referencial, já que o conteúdo ganha destaque em relação à forma como o texto é escrito.",
+   "Função subjetiva, devido às inúmeras inscrições de ponto de vista do autor, como “apocalípticas” e “mortíferas”."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q6",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 7,
+  "tag": "portugues",
+  "q": "No trecho “Hoje, felizmente, boa parte dos produtores já entendeu isso [...]”, o modalizador destacado funciona como um avaliador afetivo, ampliando a dimensão argumentativa do ponto de vista que se deseja defender. Assinale a opção em que o advérbio em destaque apresenta esse mesmo valor semântico.",
+  "alts": [
+   "Nessa verdadeira corrida contra o tempo, o Brasil curiosamente desponta de maneira singular.",
+   "Uma mudança radical na matriz energética global, ainda amplamente baseada no petróleo.",
+   "Após décadas de estudos e medições, não resta dúvida de que a causa do aquecimento global são os gases do efeito estufa emitidos por seres humanos.",
+   "Por aqui, as principais fontes de poluição não provêm, como nas outras grandes economias do mundo, de atividades industriais e da queima de combustíveis fósseis, ma s do desmatamento.",
+   "Segundo a pesquisa Datafolha, 77% da população brasileira vivenciou recentemente algum evento desse tipo."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q7",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 8,
+  "tag": "portugues",
+  "q": "No trecho: “Nessa verdadeira corrida contra o tempo, o Brasil curiosamente desponta de maneira singular.”, o termo sublinhado não tem o significado de",
+  "alts": [
+   "prosaica.",
+   "própria.",
+   "particular.",
+   "distinta.",
+   "peculiar."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q8",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 9,
+  "tag": "portugues",
+  "q": "No trecho: “Por mais que os efeitos da mudança climática venham ficando cada dia mais evidentes no planeta, enfrentar as suas causas tem-se mostrado uma tarefa imensamente complexa.”, a locução conjuntiva em destaque poderia ser substituída, sem alteração de sentido, por",
+  "alts": [
+   "porquanto.",
+   "conquanto.",
+   "dado que.",
+   "como.",
+   "à medida que."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q9",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 10,
+  "tag": "portugues",
+  "q": "Assinale a opção em que a palavra não se acentua pelo mesmo motivo das demais.",
+  "alts": [
+   "Petróleo.",
+   "Bênção.",
+   "Raízes.",
+   "Agronegócio.",
+   "Média."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q10",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 11,
+  "tag": "rlm",
+  "q": "Em uma biblioteca, a presença de alguma obra rara no salão de leitura é suficiente para garantir que os bibliotecários João e Maria acompanharão a visitação do público. Portanto, nessa biblioteca,",
+  "alts": [
+   "o fato de João e Maria não acompanharem a visitação do público é necessário para se garantir que não há qualquer obra rara no salão de leitura.",
+   "o fato de João ou Maria não acompanharem a visitação do público é suficiente para se garantir que não há qualquer obra rara no salão de leitura.",
+   "o fato de João ou Maria não acompanharem a visitação do público é necessário para se garantir que não há qualquer obra rara no salão de leitura.",
+   "a ausência de qualquer obra rara no salão de leitura é suficiente para se garantir a dispensa de João e Maria.",
+   "apenas João e Maria trabalham com obras raras."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q11",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 12,
+  "tag": "rlm",
+  "q": "Sabe-se que uma equipe formada por 8 bibliotecários cataloga, em média, 192 obras, a cada 6 horas. Para todos os fins, considere que todos os bibliotecários trabalham em um mesmo ritmo de catalogação, por hora. Mantendo-se esse ritmo, quantas obras seriam catalogadas por 10 bibliotecários, em 8 horas de trabalho?",
+  "alts": [
+   "1280",
+   "640",
+   "320",
+   "256",
+   "206"
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q12",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 13,
+  "tag": "rlm",
+  "q": "Em um mapa desenhado em escala 1:120.000.000, a área de uma determinada região mede 4𝑐𝑚2. Se o mapa estivesse desenhado em escala 1:60.000.000, então a medida da respectiva região, em centímetro quadrado, mediria",
+  "alts": [
+   "1",
+   "2",
+   "4",
+   "8",
+   "16"
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q13",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 14,
+  "tag": "rlm",
+  "q": "A seguir, apresentam -se os cinco primeiros termos de uma sequência de figuras geométricas, que evoluem segundo dois padrões. O primeiro: as figuras geométricas se alternam entre “triângulo” e “círculo”. O segundo: as cores se alternam, sempre seguindo a ordem “branco” - “cinza” - “preto”. As figuras associadas a dois termos da seq uência são iguais, em forma e cor, se, e somente se, a diferença entre os números associados a cada uma é múltipla de",
+  "alts": [
+   "2",
+   "3",
+   "5",
+   "6",
+   "10"
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q14",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 15,
+  "tag": "rlm",
+  "q": "Em uma reunião, há 6 pessoas presentes. Ficou decidido que um subgrupo com 2, 3, 4 ou 5 pessoas presente s na reunião seria formado para participar de uma auditoria. Qual é o número máximo de grupos diferentes que poderiam ser montados para cumprir tal tarefa?",
+  "alts": [
+   "24",
+   "30",
+   "56",
+   "57",
+   "64"
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q15",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 16,
+  "tag": "rlm",
+  "q": "Sabe-se que 15% de um determinado valor 𝑉1 correspondem a 20% de um valor 𝑉2. O valor 𝑉2 corresponde a que percentual do valor 𝑉1?",
+  "alts": [
+   "95%",
+   "75%",
+   "35%",
+   "25%",
+   "5%"
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q16",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 17,
+  "tag": "rlm",
+  "q": "A Figura mostra como 17 caixas cúbicas idênticas foram organizadas, dispostas lado a lado e empilhadas, alinhadas sem espaçamentos. Por conta do ângulo de visão oferecido pela figura, algumas caixas não são diretamente visíveis, por estarem encobertas por outras. Quantas são as caixas que não são diretamente visíveis?",
+  "alts": [
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q17",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 18,
+  "tag": "rlm",
+  "q": "Dados dois conjuntos A e B não vazios, o conjunto A – B é definido por 𝐴 − 𝐵 = {𝑥 𝑥⁄ ∈ 𝐴 𝑒 𝑥 ∉ 𝐵}. Suponha que A possua, no mínimo, 7 elementos e que B possua, no máximo, 4 elementos. Nessa situação o menor número de elementos que o conjunto A – B poderá ter é",
+  "alts": [
+   "3",
+   "4",
+   "7",
+   "10",
+   "11"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q18",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 19,
+  "tag": "rlm",
+  "q": "Suponha que a proposição lógica dada a seguir é falsa: Se João trabalha, então Maria toma conta de sua mãe. Portanto, é verdadeira a proposição:",
+  "alts": [
+   "João trabalha e Maria não toma conta de sua mãe.",
+   "João não trabalha e Maria toma conta de sua mãe.",
+   "João não trabalha ou Maria toma conta de sua mãe.",
+   "João trabalha e Maria toma conta de sua mãe.",
+   "Se Maria não toma conta de sua mãe, então João não trabalha."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q19",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 20,
+  "tag": "rlm",
+  "q": "Considere as seguintes cinco afirmações acerca de Carlos, entre as quais apenas três são falsas. Afirmação 1: Carlos não foi ao mercado. Afirmação 2: Carlos comprou nada e foi ao cinema. Afirmação 3: Carlos foi ao mercado e comprou apenas 5 produtos. Afirmação 4: Carlos foi ao mercado e comprou apenas 10 produtos. Afirmação 5: Carlos foi ao mercado e comprou apenas 12 produtos. Portanto, Carlos",
+  "alts": [
+   "não foi ao mercado, mas foi ao cinema.",
+   "não foi ao cinema, mas foi ao mercado.",
+   "não foi ao mercado, nem foi no cinema.",
+   "foi ao mercado, comprou 5 produtos e foi ao cinema.",
+   "foi ao mercado, comprou 12 produtos e foi ao cinema."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q20",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 21,
+  "tag": "atualidades",
+  "q": "Em abril de 2025, os Estados Unidos assinaram um acordo estratégico com a Ucrânia para exploração de recursos minerais, como parte dos esforços de reconstrução pós-guerra. O presidente Donald Trump condicionou esse acordo às garantias de segurança fornecidas a Kiev, durante o conflito com a Rússia. Dois dos minerais considerados estratégicos nesse acordo são",
+  "alts": [
+   "ferro e carvão.",
+   "lítio e titânio.",
+   "carvão e petróleo.",
+   "ouro e prata.",
+   "urânio e magnésio."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q21",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 22,
+  "tag": "atualidades",
+  "q": "Em novembro de 2021, os Estados -membros da UNESCO adotaram o primeiro acordo global sobre ética da inteligência artificial, estabelecendo valores e princípios para o desenvolvimento responsável dessa tecnologia. Sobre os princípios fundamentais desse acordo histórico, analise os itens a seguir. I. Promoção dos direitos humanos e garantia de transparência no desenvolvimento tecnológico. II. Fomento exclusivo às parcerias entre Estados e empresas privadas. III. Preservação da privacidade e responsabilidade no uso da inteligência artificial. Está correto o que se afirma em",
+  "alts": [
+   "I, apenas.",
+   "II, apenas.",
+   "I e III, apenas.",
+   "II e III, apenas.",
+   "I, II e III."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q22",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 23,
+  "tag": "atualidades",
+  "q": "A Conferência das Nações Unidas sobre Desenvolvimento Sustentável, RIO+20, foi realizada no Rio de Janeiro, em junho de 2012. A RIO+20 deu início ao processo que resultaria nos Objetivos de Desenvolvimento Sus tentável (ODS), adotados pela ONU em 2015, como uma nova agenda global para o desenvolvimento sustentável até 2030 (Agenda 2030). Dentre os Objetivos de Desenvolvimento Sustentável, destacam - se:",
+  "alts": [
+   "Livre concorrência; Capital humano; Ação contra a mudança global do clima.",
+   "Crescimento econômico; Energia limpa e sustentável; Novas tecnologias.",
+   "Reindustrialização; Sustentabilidade ambiental; Indústria armamentista.",
+   "Erradicação da pobreza; Igualdade de gênero; Fome zero e agricultura sustentável.",
+   "Redução das desigualdades; Inteligência artificial; Ensino domiciliar."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q23",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 24,
+  "tag": "atualidades",
+  "q": "Durante a pandemia de COVID-19, o intelectual Yuval Noah Harari analisou os fatores determinantes para enfrentar crises sanitárias globais em sua obra \"Notas sobre Pandemia\". Segundo o autor, as sociedades que melhor responderam à crise priorizaram estratégias baseadas em cooperação internacional e transparência científica. De acordo com a análise de Harari, os fatores essenciais para a prevenção de futuras pandemias são",
+  "alts": [
+   "o não intervencionismo estatal e a inovação tecnológica na área médica.",
+   "a superação do globalismo e o desenvolvimento científico.",
+   "a troca de informação científica confiável e a solidariedade global.",
+   "a solidariedade global e o monopólio estatal para produção de vacinas.",
+   "a troca de informação científica confiável e o uso de inteligência artificial."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q24",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 25,
+  "tag": "atualidades",
+  "q": "O BRICS foi fundado no ano de 2009, sendo composto inicialmente por Brasil, Rússia, Índia e China. Segundo dados da COMEVIX (Balança Comercial e Estatísticas de Comércio Exterior), atualmente, em termos de comércio exterior, o Brics responde por 24% das trocas mundiais. Após a Declaração de Johanesburgo, de agosto de 2023, seis novos imigrantes foram admitidos, dentre eles,",
+  "alts": [
+   "Estados Unidos, Canadá e México.",
+   "Argentina, Uruguai e Paraguai.",
+   "Irã, Egito e Emirados Árabes Unidos.",
+   "Portugal, França e Itália.",
+   "Indonésia, Tailândia e Vietnã."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q25",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 26,
+  "tag": "atualidades",
+  "q": "O termo brain rot foi eleito expressão do ano de 2024, pelo Dicionário Oxford. Os especialistas em recursos humanos identificam que os sintomas do brain rot estão relacionados a",
+  "alts": [
+   "deterioração das habilidades cognitivas causada pelo consumo excessivo de conteúdo digital de baixa qualidade.",
+   "síndrome do esgotamento profissional em razão do tempo de deslocamento de casa para o trabalho.",
+   "dependência química causada pelo uso prolongado de dispositivos eletrônicos.",
+   "perda de memó ria temporária motivada pela realização de tarefas repetitivas no ambiente de trabalho.",
+   "transtorno obsessivo gerado pelo consumo de pornografia na internet."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q26",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 27,
+  "tag": "atualidades",
+  "q": "Em agosto de 2025, a British Petroleum (BP) anunciou a maior descoberta de petróleo e gás da empresa em 25 anos, localizada em águas profundas a 2.372 metros de profundidade, na região do pré-sal brasileiro. A descoberta da BP está situada na",
+  "alts": [
+   "Bacia do Rio Amazonas.",
+   "Bacia do Rio da Prata.",
+   "Bacia de Campos.",
+   "Bacia do Espírito Santo.",
+   "Bacia de Santos."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q27",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 28,
+  "tag": "atualidades",
+  "q": "Em 20 de outubro de 2023, entrou em vigor a Lei nº 14.701 que institui o Marco Temporal, trazendo implicações relevantes aos povos originários do Brasil. A lei é objeto de ações que questionam sua constitucionalidade no Supremo Tribunal Federal. A lei do Marco Temporal estabelece que",
+  "alts": [
+   "as mulheres indígenas só podem casar-se após 18 anos.",
+   "novas atividades de mineração, em terras indígenas, só podem ser iniciadas após a vigência da lei.",
+   "os povos indígenas têm direito de ocupar apenas as terras que ocupavam ou já disputavam na data de promulgação da Constituição Federal de 1988.",
+   "os povos indígenas têm direito de ocupar apenas as terras que ocupavam até o ano de 1500.",
+   "os povos indígenas têm direito de ocupar apenas as terras por eles ocupadas e registradas após a vigência da lei."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q28",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 29,
+  "tag": "atualidades",
+  "q": "Em 2025, o cinema brasileiro conquistou um marco histórico ao vencer o Oscar de Melhor Filme Internacional, categoria na qual o país havia sido indicado outras vezes sem conseguir a premiação máxima. O título do filme brasileiro que ganhou o Oscar de Melhor Filme Internacional, em 2025, é",
+  "alts": [
+   "Central do Brasil.",
+   "O Brutalista.",
+   "O que é isso, companheiro?",
+   "Ainda estou aqui.",
+   "Democracia em vertigem."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q29",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 30,
+  "tag": "atualidades",
+  "q": "O Prêmio Jabuti é uma das mais prestigiosas premiações da literatura brasileira, reconhecendo obras de destaque em diversas categorias. Em 2025, na categoria História e Arqueologia, foi laureada uma obra que aborda ques tões sobre identidade racial na sociedade brasileira. O nome da autora premiada com o Jabuti Acadêmico 2025, na categoria História e Arqueologia pela obra \"Imagens da branquitude: a presença da ausência\", é",
+  "alts": [
+   "Conceição Evaristo.",
+   "Lilia Moritz Schwarcz.",
+   "Clarice Lispector.",
+   "Fernanda Montenegro.",
+   "Elisa Lucinda."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q30",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 31,
+  "tag": "seguranca",
+  "q": "A técnica de controle de spams que se propõe a deliberadamente converter endereços de correio eletrônico no formato padrão (por exemplo: pessoa@servidor.com) em outro a princípio não coletável por coletores automáticos de e -mail (no exemplo anterior: pessoa em servidor ponto com) é conhecida como",
+  "alts": [
+   "diffmail.",
+   "filtragem de conteúdo.",
+   "filtragem de modelagem (shaping filters).",
+   "greylisting.",
+   "munging."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q31",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 32,
+  "tag": "redes",
+  "q": "O mecanismo de retrocesso binário exponencial ( binary exponential backoff) é uma técnica aplicada após a ocorrência de colisões em redes Ethernet que utilizam CSMA/CD. Sobre esse processo, assinale a opção correta.",
+  "alts": [
+   "A estação abandona a tentativa de transmissão após a segunda colisão, relatando erro.",
+   "Após cada colisão, a estação aguarda um tempo fixo pré - determinado antes de retransmitir, sem alteração do intervalo de espera.",
+   "O intervalo de espera aleatório é duplicado exponencialmente a cada colisão até certo limite, reduzindo a chance de novas colisões.",
+   "O retrocesso binário exponencial garante que não haverá mais colisões após a primeira retransmissão para cabos 10BASE5 maiores que 500 m.",
+   "O tempo de retrocesso aumenta linearmente a cada colisão, somando valores fixos ao atraso médio."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q32",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 33,
+  "tag": "redes",
+  "q": "Uma possível organiza ção da arquitetura do protocolo TCP/IP organiza a tarefa de comunicação em cinco camadas. Assinale a opção que estabelece a correta relação entre a camada do protocolo TCP/IP e a tecnologia / protocolo / meio de transmissão.",
+  "alts": [
+   "Aplicação – Protocolo RSVP (Resource Reservation Protocol).",
+   "Enlace – Protocolo IPv6 (Internet Protocol version 6).",
+   "Física – Protocolo OSPF (Open Shortest Path First).",
+   "Rede (Internet) – Protocolo TCP ( Transmission Control Protocol).",
+   "Transporte – Protocolo UDP (User Datagram Protocol)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q33",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 34,
+  "tag": "orfaos",
+  "q": "O striping é uma técnica de distribuição de dados entre discos utilizada em diferentes níveis de RAID. Assinale a opção que indica o nível de RAID que não adota o striping.",
+  "alts": [
+   "RAID 0",
+   "RAID 1",
+   "RAID 2",
+   "RAID 3",
+   "RAID 4"
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q34",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 35,
+  "tag": "orfaos",
+  "q": "Duas estratégias podem ser utilizadas para a criação de backups: a cópia física e a cópia lógica. Assim, é correto afirmar que, no contexto de cópia",
+  "alts": [
+   "física, blocos defeituosos visíveis para o sistema operacional serão invariavelmente copiados pelo programa de cópia física.",
+   "física, pode-se otimizar o tempo total do processo de backup configurando o programa de backup para ignorar diretórios selecionados.",
+   "física, realiza-se o backup de todos os blocos do disco original utilizando-se o conjunto de metadados do arquivo.",
+   "lógica, arquivos ligados a um número n de diretórios deve ser reconstruído n vezes, a fim de manter a consistência de dados.",
+   "lógica, reconstrói -se a lista de blocos livres, que não é um arquivo, desde o ponto de partida após o restauro de todas as cópias."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q35",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 36,
+  "tag": "seguranca",
+  "q": "O Advanced Encryption Standard (AES) é um algoritmo de criptografia simétrica por blocos, definido pelo NIST como sucessor do DES, e encontra -se amplamente empregado na proteção de dados em sistemas computacionais e redes. Com relação às características do AES, é correto afirmar que",
+  "alts": [
+   "apresenta quatro estágios (SubBytes, ShiftRows, MixColumns e AddRoundKey), os quais utilizam a chave, introduzindo segredo criptográico.",
+   "foi proposto para substituir o padrão DES ( Data Encryption Standard), implementando uma rede estrutural de Feistel.",
+   "possui cifra de decriptografia idêntica à cifra de criptografia, diferindo na forma de escalonamentos de chave para criptografia e decriptografia.",
+   "possui cifra em bloco simétr ica, projetada com blocos de tamanho de 128, 192 ou 256 bits.",
+   "utiliza, em seu algoritmo de decriptografia, a chave expandida em ordem reversa, não sendo idêntico ao algoritmo de criptografia."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q36",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 37,
+  "tag": "bi",
+  "q": "Bases de dados conhecidas como data warehouses (armazéns de dados) apresentam características específicas que as distinguem dos sistemas transacionais ou operacionais. Assinale a opção que não representa uma característica típica de um data warehouse.",
+  "alts": [
+   "Compatibilidade com OLTP.",
+   "Integração.",
+   "Orientação por assunto.",
+   "Persistência.",
+   "Variação temporal."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q37",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 38,
+  "tag": "legislacao",
+  "q": "A Lei Nº 13.709, de 14 de agosto de 2018, ou Lei Geral de Proteção de Dados Pessoais (LGPD), aborda o conceito de anonimização de dados pessoais. Considerando-se exclusivamente a LGPD, é correto afirmar que",
+  "alts": [
+   "a lei define dado anonimizado como aquele de titular submetido a algum processo criptográfico simétrico seguro e irreversível, na ocasião de seu tratamento",
+   "cabe à ANPD definir quais d ados sensíveis devem obrigatoriamente ser anonimizados antes de qualquer forma de tratamento.",
+   "dados anonimizados não são considerados dados pessoais, exceto quando o processo for reversível com meios exclusivamente próprios ou esforços razoáveis.",
+   "o escopo da LGPD alcança o tratamento de dados pessoais para fins exclusivos de segurança pública ou atividades de investigação e repressão de infrações penais.",
+   "dados anonimizados e dados pessoais sensíveis são tratados pela LGPD como categorias equivalentes."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q38",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 39,
+  "tag": "governanca",
+  "q": "A governança de dados integra tecnologia, processos e pessoas com o objetivo de estabelecer os papéis, responsabilidades e procedimentos essenciais à gestão dos dados estratégicos nas organizações. Dentre os papéis clássicos em governança de dados, temos os criadores de dados e informações, que são responsáveis por",
+  "alts": [
+   "alimentar com informações as aplicações utilizadas para armazenar dados.",
+   "empregar os dados armazenados, de forma direta ou indireta, na realização de determinado objetivo.",
+   "gerir os mecanismos de controle da governança de dados, abrangendo sua definição, implementação e avaliação contínua.",
+   "preservar e fornecer informações seguindo as normas determinadas pelos gestores das informações.",
+   "responder pelas áreas que possuem a titularidade das informações."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q39",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 40,
+  "tag": "seguranca",
+  "q": "Os ataques de negação de serviço distribuída (DDoS) configuram - se como uma ameaça relevante à disponibilidade de sistemas e serviços na Internet, tornando sua prevenção e mitigação aspectos essenciais da administração de redes computacionais Nesse contexto, é correto afirmar que o ataque",
+  "alts": [
+   "Ping of Death (PoD) envia uma solicitação de conexão enviando um flag SYN e não concluindo o three-hand shaking, deixando conexões semiabertas até esgotamento da fila.",
+   "Slowloris envia mensagens ICMP com um endereço falsificado da vítima em broadcast, recebendo uma avalanche de respostas dos receptores.",
+   "Smurf atua na camada de aplicação enviando massivas requisições HTTP GET e POST, com o objetiv o de esgotar os recursos do servidor web.",
+   "Teardrop, no protocolo IPv4, originalmente explora falhas na remontagem de pacotes IP, enviando fragmentos com campos de deslocamento inconsistentes que se sobrepõem e provocam travamento do host de destino.",
+   "UDP storm envia fragmentos IP grandes e malformados à vítima usando o comando ping, causando estouro na remontagem de fragmentos IP."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q40",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 41,
+  "tag": "seguranca",
+  "q": "Um tipo de ataque que preocupa os administradores de redes caracteriza-se pelo envio direcionado e personalizado de mensagens falsas a uma vítima ou grupo restrito, com a finalidade de induzir o fornecimento de informações confidenciais, o clique em links maliciosos ou o download de malware. O ataque que apresenta essas características é chamado",
+  "alts": [
+   "Man-in-the-Middle (MitM)",
+   "Replay attack",
+   "Session hikacking",
+   "Spam",
+   "Spear phishing"
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q41",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 42,
+  "tag": "bi",
+  "q": "No contexto de big data, existe um conjunto de características classicamente reconhecidas e representadas por “V´s”. Elas foram formuladas inicialmente pela literatura especializada em Big Data em número de três e, posteriormente, ampliadas por outros autores, considerando a descrição das características dos dados e seus desafios técnicos. Assinale a opção que não representa um “V” válido associado ao conceito de Big Data.",
+  "alts": [
+   "Variedade",
+   "Velocidade",
+   "Veracidade",
+   "Viabilidade",
+   "Volume"
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q42",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 43,
+  "tag": "bi",
+  "q": "Os data warehouses , componentes essenciais da arquitetura de Business Intelligence (BI), utilizam a modelagem multidimensional para organizar os dados em diferentes esquemas. Quando várias tabelas fato compartilham dimensões, esse tipo de modelagem é denominado esquema",
+  "alts": [
+   "drill across.",
+   "estrela.",
+   "floco de neve.",
+   "galáxia.",
+   "top down."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q43",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 44,
+  "tag": "bi",
+  "q": "No contexto do Business Intelligence (BI), dashboards constituem a camada de apresentação responsável por exibir informações consolidadas de diversas fontes de dados. Considerando suas funcionalidades tecnológicas, assinale a opção correta.",
+  "alts": [
+   "compõe o processo de ETL ( Extraction, Transform ation, Loading), atuando como etapa responsável pela transformação e preparação dos dados antes de sua carga no data warehouse.",
+   "operam diretamente sobre dados brutos de sistemas transacionais projetados segundo o modelo multidimensional de dados floco de neve.",
+   "privilegiam a apresentação de medidas precisas àquelas que mais claramente e eficientemente comunica o significado que o visualizador do dashboard deve discernir.",
+   "refinam o processo de tomada de decisão pela possibilidade de incorporação d e operações OLAP, tais como drill-down e roll-up.",
+   "revela-se inadequado para embasar análises temporais por sua característica bidimensional e detecção de desvios de dados (data drift)."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q44",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 45,
+  "tag": "atualidades",
+  "q": "O Teste de Turing, um importante referencial conceitual, foi o primeiro critério formal para se discutir inteligência em máquinas. Outros pesquisadores propuseram uma extensão dessa avaliação, denominada Teste de Turing Total. Nesse contexto, a característica exclusiva do Teste de Turing Total frente à proposta original do Teste de Turing é",
+  "alts": [
+   "o aprendizado de máquina.",
+   "o processamento de linguagem natural.",
+   "o raciocínio automatizado.",
+   "a representação de conhecimento.",
+   "a robótica."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q45",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 46,
+  "tag": "programacao",
+  "q": "A complexidade de caso médio representa o tempo de exec ução esperado de um algoritmo, considerando a distribuição típica das entradas possíveis para um conjunto de 𝑛 elementos a serem ordenados. Considerando a análise assintótica, o algoritmo de ordenação que apresenta complexidade de tempo de execução de cas o médio O(log (n)n), sendo O(.) a notação em Big-O, é o",
+  "alts": [
+   "bucket sort com insertion sort (assumindo distribuição uniforme dos elementos).",
+   "counting sort.",
+   "insertion sort.",
+   "merge sort.",
+   "radix sort."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q46",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 47,
+  "tag": "banco-dados",
+  "q": "No modelo relacional de banco de dados, restrições podem ser classificadas como implícitas, explícitas ou semânticas. Assinale a opção que corresponde a uma restrição de integridade implícita do modelo.",
+  "alts": [
+   "Assertions.",
+   "Atomicidade dos atributos.",
+   "Integridade de domínio.",
+   "Integridade de entidade.",
+   "Integridade referencial."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q47",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 48,
+  "tag": "banco-dados",
+  "q": "Considerando o contexto do modelo relacional de banco de dados, o atributo que integra alguma superchave mínima denomina -se atributo",
+  "alts": [
+   "atômico.",
+   "funcional.",
+   "multivalorado.",
+   "principal.",
+   "secundário."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q48",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 49,
+  "tag": "banco-dados",
+  "q": "No contexto de tuning de consultas em bancos de dados relacionais, certas práticas podem introduzir sobrecarga desnecessária ou impedir o uso eficiente de índices. Assinale a opção que corresponde a uma prática que deve ser evitada por resultar, em geral, em pior desempenho.",
+  "alts": [
+   "Criar uma visão (VIEW) e consultá-la em substituição às tabelas base, com o objetivo de otimizar automaticamente o desempenho.",
+   "Eliminar o uso do qualificador DISTINCT quando uma superchave mínima é listada na cláusula SELECT de uma consulta realizada sobre uma única relação.",
+   "Reescrever subconsultas correlacionadas utilizando relações temporárias obtidas por GROUP BY, de modo a reduzir varreduras redundantes.",
+   "Substituir uma consulta com operad or OR por duas consultas unidas por UNION, quando o plano de execução da consulta original não utilizar índices.",
+   "Utilizar índices de agrupamento ( clustering indexes ) em atributos envolvidos em junções para favorecer a eficiência do plano de execução."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q49",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 50,
+  "tag": "banco-dados",
+  "q": "Considere a definição das tabelas “tab1” e “tab2” a seguir: e a consulta SQL: Assinale a opção que indica corretamente uma situação válida acerca desse contexto.",
+  "alts": [
+   "A conectividade do relacionamento entre as tabelas “tab1” e “tab2” é do tipo um-para-um.",
+   "A criação das tabelas impôs sobre o atributo “d” da tabela “tab2” a restrição de integridade de entidade.",
+   "O grau da relação tab2 é igual a três, pois apresenta três atributos.",
+   "Uma ação de otimização da consulta SQL apresentada seria a substituição do produto cartesiano seguida por condição de junção por uma junção externa.",
+   "Com base na teoria do modelo relacional, a chave primária de “tab2” seria a composição dos atributos “c” e “d”, na forma primary key(c,d)."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q50",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 51,
+  "tag": "orfaos",
+  "q": "Sobre sistemas operacionais, assinale a afirmação incorreta.",
+  "alts": [
+   "O UNIX sempre foi um sistema interativo projetado para lidar com múltiplos processos e múltiplos usuários ao mesmo tempo.",
+   "O desenvolvimento do sistema operacional Windows teve várias versões, tecnicamente e substancialmente muito diferentes umas das outras.",
+   "O Linux surgiu a partir de um clone do UNIX e posteriormente evoluiu estendendo -se e acrescentando funcionalidades apesar de manter razoável compatibilidade com o UNIX.",
+   "Um Sistema Operacional po de ser visto tanto como uma máquina que fornece recursos para programadores assim como um gerenciador desses recursos.",
+   "O Android é baseado no núcleo do sistema operacional Windows 11."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q51",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 52,
+  "tag": "arquitetura",
+  "q": "Aplicações Web são",
+  "alts": [
+   "aplicações criadas unicamente para disponi bilizar conteúdo estático.",
+   "programas desenvolvidos para executar processos de negócios mediante requisições.",
+   "aplicativos que rodam exclusivamente em arquiteturas de alta escalabilidade como CGI (Common Gateway Interface).",
+   "programas com arquitetura exclusivamente em duas camadas e equivalente a arquitetura monolítica.",
+   "programas que rodam na arquitetura J2EE apesar de restringir a escalabilidade das aplicações."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q52",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 53,
+  "tag": "java",
+  "q": "Associe as características aos seguintes servidores de aplicação: 1. Apache Tomcat 2. WildFly (antigo JBoss AS) 3. GlassFish 4. IBM WebSphere Application Server ( ) É um servidor open-source com suporte completo ao Jakarta EE e arquitetura modular. ( ) Implementa as especificações Jakarta Servlet, Jakart a Expression Language e Jakarta WebSocket oficialmente. ( ) Oferece recursos corporativos robustos como alta disponibilidade, gestão em clusters e suporte a células ( cells) para administração centralizada. ( ) É a implementação de referência oficial do Jakarta EE usado na plataforma Eclipse. A sequência correta, na ordem apresentada é",
+  "alts": [
+   "2 – 1 – 4 – 3.",
+   "3 – 4 – 1 – 2.",
+   "4 – 3 – 1 – 2.",
+   "2 – 4 – 1 – 3.",
+   "3 – 1 – 4 – 2."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q53",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 54,
+  "tag": "java",
+  "q": "Quando utilizamos o framework JEE no desenvolvimento de aplicações Web, Servlets, páginas JSP e o Padrão MVC são conhecimentos imprescindíveis. Em relação a esse framework, é incorreto afirmar que",
+  "alts": [
+   "no framework JEE usando o padrão MVC em 3 camadas as Servlets desempenham o papel de controle para receber requisição de clientes.",
+   "no framework JEE usando o padrão MVC em 3 camadas a tecnologia de páginas JSP sempre desempenham o papel de acesso ao banco de dados.",
+   "o Ciclo de Vida de uma página JSP, no framework JEE, no servidor de aplicação, começa traduzindo a página JSP para uma Servlet e posteriormente compila e executa a Servlet.",
+   "a inicialização da JSP é feita após a execução da Servlet traduzida.",
+   "o método \"service\" da JSP nunca precisa ser implementado ou personalizado."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q54",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 55,
+  "tag": "frontend",
+  "q": "A estrutura do WCAG se baseia em quatro princípios norteadores da acessibilidade. Assinale a opção que não representa um desses quatro princípios.",
+  "alts": [
+   "Perceptível – Conteúdo deve ser percebido pelos usuários.",
+   "Operável – Interface deve ser totalmente utilizável.",
+   "Compreensível – Informações e operações devem ser claras.",
+   "Robusto – Conteúdo acessível a diversas tecnologias assistivas.",
+   "Consistente – Manter apresentação uniforme entre páginas."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q55",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 56,
+  "tag": "arquitetura",
+  "q": "Considerando a Arquitetura Orientada a Serviços (SOA), seus componentes e características, assinale a afirmação correta.",
+  "alts": [
+   "WSDL é um formato JSON que especifica como acessar qualquer tipo de serviço.",
+   "UDDI é um formato XML que inclui os dados que serão transmitidos ou recebidos de um serviço Web.",
+   "Os 3 principais elementos do formato SOAP são o Cabeçalho, Corpo e Envelope, sendo exclusivamente neste último, onde estão os dados.",
+   "A independência de outros sistemas da Arquitetura Orientada a Serviços é provida, em grande pa rte, pelo fraco (baixo) acoplamento.",
+   "A Arquitetura Orientada a Serviços possui padrões proprietários definidos pelos seus respectivos provedores de serviços de forma a garantir a segurança."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q56",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 57,
+  "tag": "java",
+  "q": "O JDBC é uma tecnologia importante nas aplicações WEB que utilizam a linguagem JAVA. Assinale a afirmativa incorreta sobre esta tecnologia.",
+  "alts": [
+   "JDBC é uma camada de abstração que permite que uma aplicação JAVA possa se conectar a diversos bancos de dados relacionais.",
+   "A API JDBC passa as chamadas da aplicação para um controlador que pode ter vários tipos. O Tipo 1 depende de um cliente previamente instalado na máquina enquanto que o Tipo 4 pode ser baixado da rede automaticamente.",
+   "Os Servlets são tipicamente utilizados no módulo de Visualização do padrão MVC que recupera diretamente os dados utilizando exclusivamente a API JDBC TIPO 1.",
+   "As classes de modelo, no padrão MVC implementado em JAVA, agem como intermediário entre o controlador e a API JDBC que irá prover os dados.",
+   "O comando JAVA Cl ass.forName carrega e registra o controlador JDBC."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q57",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 58,
+  "tag": "eng-software",
+  "q": "Quando escrevemos casos de uso formais seguindo as normas e padrões de documentação, aquilo que é sabido ser verdade antes da execução de todo caso de uso é chamado",
+  "alts": [
+   "objetivo no contexto.",
+   "precondição.",
+   "o evento que irá iniciar o caso de uso.",
+   "lista as ações que são requeridas pelo ator.",
+   "representação gráfica do caso de uso."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q58",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 59,
+  "tag": "banco-dados",
+  "q": "No Oracle Versão 23ai, em seu módulo GeoEspacial incorporado, quando precisamos modelar e criar no banco um obje to que represente um conjunto de ilhas junto com suas boias de medida de temperatura da água, representado por pontos, deve-se utilizar",
+  "alts": [
+   "um índice espacial R-tree para indexar dados espaciais de até quatro dimensões.",
+   "uma geometria (ou objeto geométrico) homogênea.",
+   "um multipolígono heterogêneo.",
+   "a Geocodificação das coordenadas de longitude e latitude das ilhas e pontos de medição.",
+   "o recurso GeoRaster do Oracle Spatial, já habilitado no Oracle Spatial."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q59",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 60,
+  "tag": "seguranca",
+  "q": "A ISO 27001 compreende dez cláusula s do sistema de gestão que orientam a implementação, o gerenciamento e a melhoria contínua de um SGSI. A opção que não pertence, de forma direta ou indireta, a essa lista de dez cláusulas é",
+  "alts": [
+   "contexto da organização.",
+   "liderança.",
+   "avaliação de desempenho.",
+   "suporte.",
+   "políticas de autenticação e autorização."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q60",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 61,
+  "tag": "seguranca",
+  "q": "Assinale a opção que apresenta uma definição correta de um tipo de malware.",
+  "alts": [
+   "Um spyware se propaga automaticamente pela rede sem interação do usuário.",
+   "Um worm (verme) utiliza a rede para espalhar sua infecção.",
+   "Um cavalo de Troia ( trojan) se autorreplica continuamente para esgotar os recursos do sistema.",
+   "Uma backdoor (porta dos fundos) é um malware que se replica e varre a rede automaticamente para infectar outros hosts.",
+   "Um rabbit (coelho) é um malware cujo objetivo principal é capturar credenciais e transmitir dados do usuário."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q61",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 62,
+  "tag": "eng-software",
+  "q": "O valor que não integra os princípios do Manifesto Ágil é",
+  "alts": [
+   "indivíduos e interações mais que processos e ferramentas.",
+   "qualidade do produto mais que cumprimento de prazos.",
+   "colaboração com o cliente mais que negociação de contratos.",
+   "responder a mudanças mais que seguir um plano.",
+   "software em funcionamento mais que documentação abrangente."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q62",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 63,
+  "tag": "eng-software",
+  "q": "A ação de modelagem de requisitos resulta em um ou mais tipos de modelos. Aquele que representa os elementos funcionais do sistema e como eles transformam os dados à medida que percorrem o sistema é o modelo",
+  "alts": [
+   "baseados em cenários.",
+   "de dados.",
+   "orientados a classes.",
+   "orientados a fluxos.",
+   "comportamentais."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q63",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 64,
+  "tag": "arquitetura",
+  "q": "A arquitetura limpa, proposta por Robert C. Martin (2019), é um dos conceitos mais recentes em arquitetura de software. Assinale a afirmativa incorreta sobre esse conceito.",
+  "alts": [
+   "Testabilidade deve fazer parte do design.",
+   "A arquitetura não depende dos testes, mas os testes dependem internamente dos componentes do sistema.",
+   "A função dos testes é apoiar o desenvolvimento e a operação do sistema.",
+   "O problema dos \"Testes Frágeis\" ocorre quando os testes são fortemente acoplados ao sistema.",
+   "As regras de negócio devem ser testadas sem a utilização do Front End da aplicação."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q64",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 65,
+  "tag": "eng-software",
+  "q": "Associe cada padrão de projeto às descrições listadas a seguir 1. Notifica automaticamente os dependentes quando o estado do sujeito muda. 2. Encapsula famílias de algoritmos e permite escolhê -los em tempo de execução. 3. Garante uma única instância da classe com ponto de acesso controlado. 4. Define uma interface de criação; subclasses decidem qual classe concreta instanciar. 5. Adiciona responsabilidades dinamicamente, sem alterar a classe original. ( ) Singleton ( ) Factory Method ( ) Strategy ( ) Observer ( ) Decorator A sequência correta de preenchimento dos parênteses, na ordem apresentada é",
+  "alts": [
+   "3 – 4 – 2 – 1 – 5.",
+   "4 – 3 – 1 – 2 – 5.",
+   "3 – 2 – 4 – 1 – 5",
+   "5 – 4 – 2 – 1 – 3",
+   "3 – 4 – 1 – 2 – 5"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q65",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 66,
+  "tag": "arquitetura",
+  "q": "Considere as seguintes arquiteturas: I. Arquitetura de Microsserviços; II. Framework JEE; III. Arquiteturas Centradas em Dados. É considerada arquitetura de camada o que consta em",
+  "alts": [
+   "II e III, somente.",
+   "I, somente.",
+   "II, somente.",
+   "III, somente.",
+   "I e II, somente."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q66",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 67,
+  "tag": "arquitetura",
+  "q": "Na arquitetura de microsserviços, cada camada possui uma função específica. A camada em que é implementada a descoberta de serviços é a camada de",
+  "alts": [
+   "hardware.",
+   "comunicação.",
+   "aplicação.",
+   "microsserviços.",
+   "arquitetura."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q67",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 68,
+  "tag": "arquitetura",
+  "q": "Considerando a arquitetura de aplicações web, assinale a afirmação incorreta.",
+  "alts": [
+   "A arquitetura de aplicações Web pode ser dividida em aspectos Físicos e Lógicos, sendo este último especificando, contendo, entre outras partes, a lógica de negócios.",
+   "A arquitetura de aplicações em 3 aspectos físicos destina uma máquina física ou servidor exclusivamente para o servidor de banco de dados.",
+   "A arquitetura de aplicações dividida unicamente em dois níveis físicos concentra apenas a lógica de apresentação no cliente, chamado por vezes de \"Fat Client\".",
+   "A arquitetura de aplicações dividida em 3 níveis físicos pode ter divisões lógicas diferentes em cada camada física.",
+   "A arquitetura de aplicativos do framework JEE pode ser dividida em múltiplos níveis físicos."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q68",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 69,
+  "tag": "governanca",
+  "q": "No SVS (Service Value System) da ITIL, cada componente possui um papel específico. O componente que representa um conjunto de atividades interconectadas que a organização executa para entregar um produto ou serviço valioso aos seus consumidores é chamado",
+  "alts": [
+   "Princípios orientadores.",
+   "Governança.",
+   "Cadeia de valor de serviço.",
+   "Práticas.",
+   "Melhoria contínua."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q69",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "cprm-ads",
+  "num": 70,
+  "tag": "governanca",
+  "q": "Considerando o guia do conhecimento em gerenciamento de projetos (Guia PMBOK®). 6.ed, analise as assertivas a seguir: I. Projeto é um esforço temporário empreendido para criar um produto, serviço ou resultado único. II. O principal benefício de um projet o é entregar valor quantificável III. É preciso desenvolver estratégias para identificação e engajamento das partes interessadas e seu impacto em um projeto Está correto o que se afirma em",
+  "alts": [
+   "I e II, somente.",
+   "II e III, somente.",
+   "I, II e III.",
+   "I e III, somente.",
+   "I, somente."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV cprm-ads Q70",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
   "prova": "dataprev2024",
   "num": 1,
   "tag": "portugues",
@@ -7543,6 +8873,861 @@
   ]
  },
  {
+  "prova": "nav-med",
+  "num": 1,
+  "tag": "portugues",
+  "q": "Leia a notícia a seguir, observando os verbos sublinhados: Destacamento de Controle do Espaço Aéreo de Barbacena tem novo Comandante Publicada em: 11/02/2026 10:59 Fonte: EPCAR, por Sargento Domingos Edição: Agência Força Aérea, Tenente Myrea Calazans O Destacamento de Controle do Espaço Aéreo de Barbacena (DTCEA-BQ) realizou, no dia 10/02, a cerimônia militar de transmissão do cargo de Comandante, do Capitão Especialista em Serviços de Engenharia Leonardo José Copati ao Tenente Especialista em Serviços Administrativos Claudinei Moreira. A solenidade foi presidida pelo Comandante da Escola Preparatória de Cadetes do Ar (EPCAR), Brigadeiro do Ar André Luiz Alves Ferreira, e contou com a presença do Comandante Interino do Primeiro Centro Integrado de Defesa Aérea e Controle de Tráfego Aéreo (CINDACTA I), Coronel Aviador Felipe Mo reira Faulhaber, e demais autoridades militares e civis. [...] (Fonte: https://www.fab.mil.br/noticias) Há uma diferença entre o tempo verbal empregado no título da notícia e os verbos utilizados no corpo do texto. Assinale a opção que explica corretament e o uso do presente do indicativo no título.",
+  "alts": [
+   "O emprego do presente no título busca aproximar o acontecimento do leitor, produzindo efeito de atualidade típico do gênero jornalístico.",
+   "O presente do indicativo é utilizado para indicar que o fato narrado ainda não foi concluído no momento da publicação da notícia.",
+   "O uso do presente no título demonstra que a troca de comando ocorre simultaneamente ao momento em que o leitor acessa a notícia.",
+   "O presente do indicativo é empregado no título para in dicar uma ação habitual relacionada às atividades das instituições militares.",
+   "O uso do presente no título revela uma inadequação linguística, já que os fatos narrados no corpo do texto ocorreram anteriormente."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q1",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 2,
+  "tag": "portugues",
+  "q": "Leia a notícia a seguir: Agenda Viva SP destaca aniversário do Museu da Imigração, Projeto Guri na BSP e exposição “Brasil em Todas” no MIS Experience Eventos gratuitos e acessíveis em diferentes regiões do estado celebram a história do futebol, a música e marcos históricos do Estado 23/06/2026 Da capital ao interior, a Agenda Viva SP desta semana apresenta uma seleção de experiências culturais que agitam a programação dos espaços da Secretaria da Cultura, Economia e Indústria Criativas do Estado de São Paulo. A agenda contempla iniciativas que valorizam o acesso à cultura para todos os públicos. (...) (https://www.cultura.sp.gov.br/sec_cultura/Institucional) No trecho “A agenda contempla iniciativas que valorizam o acesso à cultura para todos os públicos”, o verbo contemplar foi empregado com o sentido de",
+  "alts": [
+   "admirar atentamente as manifestações culturais promovidas.",
+   "incluir ações e atividades em sua programação.",
+   "financiar projetos culturais de artistas independentes.",
+   "avaliar a qualidade das atrações oferecidas ao público.",
+   "divulgar eventos gratuitos realizados na capital paulista."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q2",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 3,
+  "tag": "portugues",
+  "q": "Leia o fragmento de romance a seguir: “Ele não se reconhecia naquele homem que pedia pão metendo o nome de Deus na frase, mas aprendeu no Horto que a única forma de comover naquele pedaço perdido de mundo era a ameaça de que Deus estava vendo tudo e não tolerava descaridades.” ACIOLI, Socorro. A cabeça de santo. São Paulo: Cia das Letras, 2014. p. 12 (versão digital). A palavra “descaridades” constitui um neologismo criado a partir da palavra “caridades”. Considerando os sentidos produzidos no contexto, o processo de criação desse neologismo mostra que a palavra foi formada",
+  "alts": [
+   "pelo acréscimo do prefixo des-, que intensifica a ideia de atos de caridade realizados de forma exagerada.",
+   "pelo acréscimo do prefixo des -, que indica a constante repetição de atos de caridade ao longo da narrativa.",
+   "pelo acréscimo do sufixo -dade, responsável por criar um substantivo abstrato relacionado às ações humanas.",
+   "pelo acréscimo do prefixo des -, que produz a ideia de negação da caridade e reforça a crítica à falta de solidariedade.",
+   "pela combinação de prefix o e sufixo, criando uma expressão que valoriza práticas religiosas de ajuda ao próximo."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q3",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 4,
+  "tag": "portugues",
+  "q": "Leia o excerto a seguir: “Além do mais, o incidente da noite de núpcias serviu para deixá - lo mais alto, fazendo com que precisasse baixar a cabeça ao se dirigir à esposa. Lá de baixo, Eurídice aceitava. Ela sempre achou que não valia muito. Ninguém vale muito quando diz ao moço do censo que no campo de profissão ele deve escrever as palavras ‘Do lar’.” BATALHA, Martha. A vida invisível de Eurídice Gusmão. São Paulo: Cia das Letras, 2016. p. 7 (versão digital). A construção das imagens de “alto” e “baixo”, no trecho em questão, contribui para",
+  "alts": [
+   "enfatizar a diferença entre marido e esposa, apresentada como consequência natural do casamento.",
+   "sugerir, de forma implícita, uma relação de hierarquia e desvalorização social associada à personagem feminina.",
+   "demonstrar que a personagem interpretava sua posição no casamento como resultado de características pessoais.",
+   "apresentar as mudanças o corridas após o casamento como responsáveis pela aproximação emocional do casal.",
+   "criticar o modo como os formulários do censo classificam as ocupações exercidas pelas mulheres."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q4",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 5,
+  "tag": "portugues",
+  "q": "Leia o texto a seguir: “A alegação de empobrecimento lexical nas línguas de sinais surgiu a partir de uma situação sociolinguística marcada pela proibição e intolerância em relação aos sinais na sociedade e, em especial, na educação. Entretanto, sabe -se que tais línguas desenvolvem itens lexicais apropriados a situações em que são usados. À medida em que as línguas de sinais garantem maior aceitação, especialmente em círculos escolares, registra -se aumento no vocabulário denotando referentes técnicos.” QUADROS, Ronice Müller de. Língua de sinais brasileira: estudos linguísticos. Porto Alegre: Artmed, 2004. p. 35. Assinale a opção em que se reescreve o último período do texto acima, substituindo o conectivo em destaque por outro que não altere o sentido da frase.",
+  "alts": [
+   "Embora as líng uas de sinais garantam maior aceitação, especialmente em círculos escolares, registra -se aumento no vocabulário denotando referentes técnicos.",
+   "Como as línguas de sinais garantem maior aceitação, especialmente em círculos escolares, registra -se aumento no vocabulário denotando referentes técnicos.",
+   "Quanto mais as línguas de sinais garantem maior aceitação, especialmente em círculos escolares, mais se registra aumento no vocabulário denotando referentes técnicos.",
+   "Ainda que as línguas de sinais gara ntam maior aceitação, especialmente em círculos escolares, registra -se aumento no vocabulário denotando referentes técnicos.",
+   "Quando as línguas de sinais garantirem maior aceitação, especialmente em círculos escolares, registrar -se-á aumento no vocabulário denotando referentes técnicos."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q5",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 6,
+  "tag": "portugues",
+  "q": "Leia o texto a seguir: “Ainda sem acreditar completamente em como Ivan poderia ter confundido nós duas daquela maneira, continuei o papo, apenas com o esclarecimento de que não poderia ajudar com nenhuma matéria jornalística. Ela foi até o início da noite detalhando seu sonho de ser a primeira mulher negra a alcanç ar o posto mais alto da República. Reconhecia que estava longe e que não via no Brasil nada que prometesse grande coisa, mas também achava que tudo no mundo começa por um sonho, por qualquer coisa que não se diz. Na despedida, trocamos telefones por cordialidade e partimos com a certeza de que jamais nos encontraríamos de novo.” MATOS, Lucas. As coisas cômodas e as incômodas: [seguidas de dedos]. Rio de Janeiro: 7 Letras, 2021. p. 83. Assinale a opção em que se identificam, respectivamente, as palavras resp onsáveis pela ocorrência das duas preposições sublinhadas no texto.",
+  "alts": [
+   "“completamente” e “certeza”.",
+   "“como” e “que”.",
+   "“completamente” e “que”.",
+   "“acreditar” e “certeza”.",
+   "“acreditar” e “que”."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q6",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 7,
+  "tag": "portugues",
+  "q": "Leia o excerto a seguir: “Já temos MEMÓRIA desde o primeiro dia em que nos deram à luz! Temos lembranças assim que acordamos, lembramos que o mundo é magnífico, sentimos um vazio no estômago, uma fralda pesada, molhada, e lembramos que, se chorarmos, milagrosamente aparece alguém que nos livra do desconforto. Somos um pi -to-qui-nho de gente pe -ti-ti-ti-ca e temos memória, referências, jogamos com elas, calculamos nossas ações nos apoiando em lembranças (já) solidificadas. No entanto, não nos lembraremos de nada disso anos depois.” (PAIVA, Marcelo Rubens. Ainda estou aqui. Rio de Janeiro: Alfaguara, 2015. p. 16) Em sua reflexão sobre a construção da memória, o narrador menciona: “Somos um pi -to-qui-nho de gente pe -ti-ti-ti-ca”, trecho no qual se observa",
+  "alts": [
+   "a incorporação, pelo narrador, de uma forma de expressão típica da fala dirigida às crianças.",
+   "a utilização de termos técnicos ligados aos estudos linguísticos sobre o desenvolvimento infantil da linguagem.",
+   "a reprodução exata de palavras próprias da norma -padrão formal utilizada em textos científicos.",
+   "a presença de regionalismos linguísticos que caracterizam a origem geográfica e social do narrador.",
+   "a tentativa de representar dificuldades de fala causadas pela limitação vocabular das crianças pequenas."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q7",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 8,
+  "tag": "portugues",
+  "q": "Observe a charge a seguir: (Aliedo. https://ensinandoartesvisuais.blogspot.com /2007/08/medo-coletivo-de-avio.html acesso em 29.5.26) A formação da palavra “SOLUCIONÁTICA” contribui para o humor da charge porque",
+  "alts": [
+   "critica o excesso de tecnologias importadas no trânsito urbano.",
+   "substitui a ideia antônima de problema pela ideia de solução.",
+   "apresenta um erro proposital de ortografia para representar a fala popular.",
+   "recupera uma expressão regional usada para nomear invenções improvisadas.",
+   "emprega linguagem formal para demonstrar a eficiência real do projeto apresentado."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q8",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 9,
+  "tag": "portugues",
+  "q": "Leia o trecho abaixo, da peça teatral “Auto da Compadecida” do escritor pernambucano Ariano Suassuna: JOÃO GRILO — Sei não, Chicó, acho q ue a bala pegou de raspão. Fiquei com a vista escura e quando acordei estava na rede e vocês iam me enterrar. Mas tenho uma notícia horrível para você. CHICÓ — João, você tendo escapado, é o que basta. O que é que há? JOÃO GRILO — Perdi o dinheiro. CHICÓ — Que dinheiro, rapaz? JOÃO GRILO — O testamento do cachorro. Quando acordei, meti a mão no bolso e não achei nada. CHICÓ — Pode ficar descansado, João, o dinheiro da sociedade está aqui. Eu tirei de seu bolso, antes de você se enterrar. JOÃO GRILO — Ah, cabra safado, com pena de mim, mas não se esqueceu do dinheiro, hem! SUASSUNA, Ariano. Auto da Compadecida. Rio de Janeiro: Nova Fronteira, 2002. p. 151-152 Assinale a opção em que se interpreta corretamente o uso do termo “cabra” na última fala de João Grilo.",
+  "alts": [
+   "Trata-se de um regionalismo nordestino.",
+   "Refere-se literalmente ao animal homônimo.",
+   "Indica relação de parentesco entre os personagens.",
+   "Revela profissão típica do sertão brasileiro.",
+   "Expressa desprezo de um personagem pelo outro."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q9",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 10,
+  "tag": "portugues",
+  "q": "O que é um lugar de memória? Um espaço de memória é mais do que um simples local geográfico ou uma construção física: é um repositório de histórias, emoções e experiências que transcendem o tempo. Ao passo que caminhamos por esses espaços, somos transportados para momentos passados, revivendo eventos, sentimentos e memórias coletivas que moldaram o curso da história e da cultura. No cerne, um espaço de memória serve como uma ponte entre o passado e o presente. F unciona como um lembrete palpável de eventos, pessoas ou eras que deixaram uma marca indestrutível na tapeçaria cultural de uma comunidade ou nação. (...) (https://www.aqua.com.br/blog/lugares-de-memoria. Acesso em 17.4.26, Adaptado) No texto, o uso dos do is pontos (:), na segunda linha do primeiro parágrafo, tem função",
+  "alts": [
+   "enumerativa.",
+   "conclusiva.",
+   "explicativa.",
+   "exemplificativa.",
+   "comparativa."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q10",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 21,
+  "tag": "rlm",
+  "q": "Em uma operação de sequenciamento de tráfego aéreo, era esperado que as aeronaves A, B e C tivessem decolado na seguinte ordem: A (1º), B (2º) e C (3º). Apesar de as três aeronaves terem decolado em sequência, a ordem das decolagens foi outra, ou seja,",
+  "alts": [
+   "a aeronave A decolou depois da aeronave B, ou a aeronave B decolou depois da aeronave C.",
+   "a aeronave A decolou depois da aeronave B, e a aeronave B decolou depois da aeronave C.",
+   "a aeronave A decolou depois da aeronave B, ou depois da aeronave C.",
+   "a aeronave C decolou antes da aeronave A, ou antes da aeronave B.",
+   "a aeronave B não foi a segunda aeronave a decolar."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q21",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 22,
+  "tag": "rlm",
+  "q": "Seis aerona ves estão próximas de entrar em procedimento de pouso: A, B, C, D, E e F. O operador da torre de controle foi informado de que a aeronave A deve ser a primeira a pousar e que a aeronave F deve ser a última. O número total de possíveis ordens de pouso que a tendem à indicação feita ao operador é igual a",
+  "alts": [
+   "1.",
+   "4.",
+   "16.",
+   "24.",
+   "48."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q22",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 23,
+  "tag": "rlm",
+  "q": "A figura apresenta um esquema simplificado do voo de uma aeronave, representado pelo segmento de reta AC, no plano cartesiano XY. A aeronave partiu do p onto A(3,1) e, ao concluir 1/3 do comprimento do segmento, alcançou o ponto B(6,3). As coordenadas do ponto de chegada C são",
+  "alts": [
+   "(9,4).",
+   "(9,5).",
+   "(9,6).",
+   "(12,4).",
+   "(12,7)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q23",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 24,
+  "tag": "rlm",
+  "q": "Uma empresa aeroviária segue um rígido protocolo de segurança para abastecer as suas aeronaves. Cada aeronave recebe a quantidade de combustível que a permita voar por um tempo seguro, dado pela soma: “o tempo previsto de viagem” + “10% do tempo previsto de viagem” + “45 minutos”. Se uma aeronave desta empresa recebeu combustível para o tempo seguro de 3h30min, então o tempo previsto de viagem da aeronave é de",
+  "alts": [
+   "2h20min.",
+   "2h28min.",
+   "2h30min.",
+   "2h40min.",
+   "2h45min."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q24",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 25,
+  "tag": "rlm",
+  "q": "Uma grande aeronave possui massa de 168 toneladas quando vazia e a sua massa máxima autorizada para decolagem é de 350 toneladas. Para um determinado voo internacional, o avião será abastecido com uma quantidade de combustível cuja massa equivale a 40% da sua massa máxima de decolagem. A capacidade de massa restante será destinada exclusivamente aos passageiros e suas bagagens. A massa média considerada por pessoa (incluindo bagagens) é de 105 kg. O número máximo de passageiros que a aeron ave poderá transportar é igual a",
+  "alts": [
+   "182.",
+   "210.",
+   "310.",
+   "400.",
+   "960."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q25",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 26,
+  "tag": "rlm",
+  "q": "Um painel tem a forma de uma matriz 3 x 3 e foi preenchido com os números inteiros de 1 a 9, sem repetições. A seguir são indicadas as somas dos números presentes em cada linha e em cada coluna do painel. Os nove números presentes no painel serão reposicionados, de modo que todas as somas dos números presentes em uma mesma linha e todas as somas dos números presentes em uma mesma coluna sejam iguais entre si. Quando esta disposição for alcançada, todas as somas serão iguais a",
+  "alts": [
+   "13.",
+   "15.",
+   "17.",
+   "22.",
+   "23."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q26",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 27,
+  "tag": "rlm",
+  "q": "Um quadrado foi desenhado sobre uma malha quadriculada e destacado na cor cinza. Entre os polígonos apresentados a seguir, desenhados sobre a mesma malha e também coloridos de cinza, aquele cujo perímetro tem a mesma medida do perímetro do quadrado é:",
+  "alts": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q27",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 28,
+  "tag": "rlm",
+  "q": "Um passageiro fará uma viagem com conexão, pegando dois voos. Uma análise de dados meteorológicos apontou que a probabilidade do primeiro voo atrasar é de 20% e que a probabilidade de o segundo voo atrasar é de 10%. Para todos os fins, considere os dois voos como eventos independentes. A probabilidade de ambos os voos deste passageiro atrasarem é de",
+  "alts": [
+   "30%.",
+   "20%.",
+   "10%.",
+   "3%.",
+   "2%."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q28",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 29,
+  "tag": "rlm",
+  "q": "Os pontos A( -4,1) e B( -1,4) estão representados no plano cartesiano xy. Deseja -se encontrar um ponto M(x,y), tal que o ângulo 𝐴𝑀̂𝐵 meça 90 graus. Um ponto que satisfaz tal condição é",
+  "alts": [
+   "M(-4,4).",
+   "M(-3,4).",
+   "M(-2,3).",
+   "M(-2,1).",
+   "M(0,1)."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q29",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 30,
+  "tag": "rlm",
+  "q": "Uma empresa possui três filiais: uma no Rio de Janeiro, uma em São Paulo e a outra em Minas Gerais. A tabela a seguir mostra as quantidades de funcionários efetivos e terceirizados, nas filiais do Rio de Janeiro e São Paulo. Os dados referentes aos funcionários da filial de Minas Gerais não foram inseridos na tabela. RJ SP MG Efetivos 38 22 Terceirizados 14 81 Sabe-se que o total de funcionários efetivos e o total de funcionários terceirizados nas três filiais são iguais. Na filial de Minas Gerais, a diferença entre o número de funcionários efetivos e o número de funcionários terceirizados é igual a",
+  "alts": [
+   "35.",
+   "51.",
+   "52.",
+   "60.",
+   "95."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q30",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 31,
+  "tag": "rlm",
+  "q": "Uma aeronave realiza uma rota específica entre duas cidades em exatos 120 minutos, com uma velocidade média de cruzeiro de 750 km/h. Em um determinado voo, o controle de tráfego aéreo solicitou ao piloto seguir pela mesma rota, mas encurtando o tempo de vi agem para 100 minutos, por conta da aproximação de uma área de forte instabilidade no aeroporto de destino. O piloto conseguirá reduzir o tempo de viagem conforme solicitado, se a velocidade média de cruzeiro passar a ser de",
+  "alts": [
+   "625 km/h.",
+   "730 km/h.",
+   "770 km/h.",
+   "875 km/h.",
+   "900 km/h."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q31",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 32,
+  "tag": "rlm",
+  "q": "Um aeroporto informou que todos os voos de ontem sofreram atrasos ou foram cancelados. Mais tarde, no entanto, verificou-se que tal informação era incorreta. Ou seja, no dia de ontem,",
+  "alts": [
+   "todos os voos estiveram livres de atrasos e cancelamentos.",
+   "pelo menos um voo não sofreu atraso e não foi cancelado.",
+   "mais de um voo não sofreu atraso, nem cancelamento.",
+   "nenhum voo sofreu atraso ou foi cancelado.",
+   "algum voo sofreu atraso e foi cancelado."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q32",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 33,
+  "tag": "rlm",
+  "q": "Sabe-se que 2 3 da massa de uma aeronave de treinamento correspondem a 714 kg. Portanto, 1 7 da massa de tal aeronave corresponde a",
+  "alts": [
+   "68 kg.",
+   "89 kg.",
+   "102 kg.",
+   "153 kg.",
+   "306 kg."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q33",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 34,
+  "tag": "rlm",
+  "q": "Dez caixas possuem a forma de um cubo e foram empilhadas, como mostra a figura a seguir. Na figura, nem todas as caixas são diretamente visíveis, mas é possível notar que algumas delas possuem uma ou mais faces pintadas de cinza. O número total de caixas da pilha que, em princípio, poderiam ter todas as suas faces pintadas de branco é, no máximo, igual a",
+  "alts": [
+   "1.",
+   "2.",
+   "3.",
+   "5.",
+   "6."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q34",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 35,
+  "tag": "rlm",
+  "q": "No diagrama mostrado a seguir, o retângulo representa o conjunto dos pilotos que atuam em voos nacionais, o círculo representa o conjunto dos pilotos que têm 40 anos ou mais de idade, e o triângulo representa o conjunto dos pilotos que atuam em voos internacionais. A região do diagrama destacada em cinza representa o conjunto de pilotos que têm idade",
+  "alts": [
+   "de 40 anos, ou menos, e atuam em voos nacionais ou internacionais.",
+   "menor do que 40 anos, e atuam em voos nacionais ou internacionais.",
+   "menor do que 40 anos, e atuam em voos nacionais e internacionais.",
+   "menor do que 40 anos e atuam apenas em voos nacion ais, ou apenas em voos internacionais.",
+   "de 40 anos, ou menos, e atuam apenas em voos nacionais, ou apenas em voos internacionais."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q35",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 41,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nBased on Text I, mark the statements below as TRUE (T) or FALSE (F). ( ) The air transport sector has experienced a slowdown lately. ( ) The uncontrolled use of drones has raised safety risks for air travel. ( ) Traffic control infrastructure remains in need of much upgrading. The statements are, respectively:",
+  "alts": [
+   "T – T – F.",
+   "F – F – T.",
+   "T – F – T.",
+   "F – T – F.",
+   "F – T – T."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q41",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 42,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe prefix used in the word “unmanned” (2nd paragraph) implies",
+  "alts": [
+   "size.",
+   "time.",
+   "negation.",
+   "direction.",
+   "relationship."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q42",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 43,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\n“Their” in “their unregulated use” (2nd paragraph) refers to",
+  "alts": [
+   "risks.",
+   "drones.",
+   "benefits.",
+   "operations.",
+   "regulations."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q43",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 44,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe phrase “aging equipment” (3 rd paragraph) qualifies equipment that is becoming",
+  "alts": [
+   "widespread.",
+   "expensive.",
+   "necessary.",
+   "obsolete.",
+   "popular."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q44",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 45,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe first word in “Furthermore, the integration of new technologies” (4th paragraph) can be replaced, without significant change of meaning, by",
+  "alts": [
+   "Nevertheless.",
+   "However.",
+   "Besides.",
+   "Still.",
+   "Yet."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q45",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 46,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe phrase “such as” in “such as advanced automation and data analytics” (4th paragraph) signals a(n)",
+  "alts": [
+   "concession.",
+   "hesitation.",
+   "condition.",
+   "contrast.",
+   "example."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q46",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 47,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe verb phrase in “has been hindered” (4th paragraph) is in the",
+  "alts": [
+   "simple past, passive voice.",
+   "simple present, active voice.",
+   "present perfect, passive voice.",
+   "past continuous, passive voice.",
+   "present continuous, active voice."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q47",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 48,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nIn the sentence “While air traffic controllers undergo rigorous training, human error remains a sign ificant risk factor.” (5th paragraph), it is implied that humans are",
+  "alts": [
+   "fallible.",
+   "reliable.",
+   "adaptable.",
+   "intelligent.",
+   "trustworthy."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q48",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 49,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe modal verb in “must be protected from malicious actors.” (6th paragraph) indicates",
+  "alts": [
+   "ability.",
+   "necessity.",
+   "probability.",
+   "prohibition.",
+   "impossibility."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q49",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 50,
+  "tag": "ingles",
+  "q": "TEXT I The Growing Complexity of Airspace The aviation industry has witnessed unprecedented growth in recent years. The number of flights, both commercial and private, has surged, resulting in a more congested airspace. This increased traffic volume places immense strain on air traffic controllers , who must manage a complex web of aircraft movements with precision and efficiency. Moreover, the integration of unmanned aerial vehicles (UAVs or drones) into the airspace adds another layer of complexity. While drones offer various benefits, their un regulated use poses significant risks to commercial aviation. Harmonizing the operations of manned and unmanned aircraft is a major challenge that requires careful consideration and robust regulations. Despite advancements in aviation technology, the air t raffic control system still relies heavily on outdated infrastructure and systems. Many air traffic control centers operate with aging equipment that is prone to failures and lacks the capacity to handle the increasing volume of traffic. This infrastructur e gap can lead to delays, inefficiencies, and safety concerns. Furthermore, the integration of new technologies, such as advanced automation and data analytics, has been slow. While these technologies hold the potential to revolutionize air traffic management, their implementation has been hindered by various factors, including cost, interoperability, and cybersecurity concerns. Air traffic control is a high -pressure job that demands exceptional focus, decision -making skills, and situational awareness. While air traffic controllers undergo rigorous training, human error remains a significant risk factor. Factors such as fatigue, stress, and workload can contribute to mistakes that have serious consequences. […] The increasing reliance on technology in the aviation industry has made it a prime target for cyberattacks. Air traffic control systems are critical infrastructure and must be protected from malicious actors. A successful cyberattack could have catastrophic consequences, including loss of life and ec onomic damage. […] Addressing the problems facing air traffic control requires a multi-faceted approach involving collaboration between government agencies, aviation industry stakeholders, and technology providers. Adapted from https://birminghamjournal.co.uk/ problems-with-air-traffic-control-today/\n\nThe text concludes that the solution to the problems raised is",
+  "alts": [
+   "energy-efficient.",
+   "eco-friendly.",
+   "time-saving.",
+   "many-sided.",
+   "low-cost."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q50",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 51,
+  "tag": "ingles",
+  "q": "The word “because” in this poster introduces a(n)",
+  "alts": [
+   "reason.",
+   "solution.",
+   "question.",
+   "prediction.",
+   "instruction."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q51",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 52,
+  "tag": "ingles",
+  "q": "In relation to air traffic controllers, this poster expresses",
+  "alts": [
+   "rage.",
+   "disdain.",
+   "disregard.",
+   "contempt.",
+   "admiration."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q52",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 53,
+  "tag": "ingles",
+  "q": "The last word in the poster can be replaced, without significant change of meaning, by",
+  "alts": [
+   "as if.",
+   "as well.",
+   "as soon.",
+   "as much.",
+   "as though."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q53",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 54,
+  "tag": "ingles",
+  "q": "This cartoon illustrates a situation in which there has been a(n):",
+  "alts": [
+   "misunderstanding.",
+   "clarification.",
+   "agreement.",
+   "consensus.",
+   "argument."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q54",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 55,
+  "tag": "ingles",
+  "q": "“Height” is to “high” as",
+  "alts": [
+   "“departure” is to “depart”.",
+   "“arrive” is to “arrival”.",
+   "“noise” is to “noisy”.",
+   "“failure” is to “fail”.",
+   "“flight” is to “flew”."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q55",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 56,
+  "tag": "ingles",
+  "q": "The apostrophe in “In the pilot’s seat” indicates a(n):",
+  "alts": [
+   "idiom.",
+   "plural.",
+   "vocative.",
+   "possession.",
+   "contraction."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q56",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 57,
+  "tag": "ingles",
+  "q": "TEXT IV Flights resume in Sao Paulo after brief airspace closure due to technical issue SAO PAULO, April 9 (Reuters) - The airspace of Sao Paulo has been reopened following a brief closure on Thursday morning, the Congonhas and Guarulhos airports' operators and the Brazilian Air Force said in separate statements. Operators for the local Congonhas Airport and Guarulhos International Airport had said earlier that all ⁠landings and takeoffs had been suspended in the city due to what the Congonhas' operator said was an \"electrical failure.\" Brazil's Air Force, which is responsible for national air traffic, said the suspension lasted just over half an hour, adding it found a \"technical operational issue\" as the reason for the incident, without providing further details. Guarulhos' operator said the issue did not happen at ⁠its airport, the busiest in Latin America. As operators rushed to mitigate the impacts, Brazil's civil aviation regulator said it implemented a series of initial measures outlined in its pre -crisis protocol, with the ⁠aim of monitoring the consequences of the incident. Adapted from: https://www.reuters.com/world/americas/sao -paulos-airspace- temporarily-closed-one-airport-cites-electrical-failure-2026-04-09\n\nThis text intends to",
+  "alts": [
+   "record an incident.",
+   "entertain the reader.",
+   "help solve a problem.",
+   "explain sensitive issues.",
+   "persuade some operators."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q57",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 58,
+  "tag": "ingles",
+  "q": "TEXT IV Flights resume in Sao Paulo after brief airspace closure due to technical issue SAO PAULO, April 9 (Reuters) - The airspace of Sao Paulo has been reopened following a brief closure on Thursday morning, the Congonhas and Guarulhos airports' operators and the Brazilian Air Force said in separate statements. Operators for the local Congonhas Airport and Guarulhos International Airport had said earlier that all ⁠landings and takeoffs had been suspended in the city due to what the Congonhas' operator said was an \"electrical failure.\" Brazil's Air Force, which is responsible for national air traffic, said the suspension lasted just over half an hour, adding it found a \"technical operational issue\" as the reason for the incident, without providing further details. Guarulhos' operator said the issue did not happen at ⁠its airport, the busiest in Latin America. As operators rushed to mitigate the impacts, Brazil's civil aviation regulator said it implemented a series of initial measures outlined in its pre -crisis protocol, with the ⁠aim of monitoring the consequences of the incident. Adapted from: https://www.reuters.com/world/americas/sao -paulos-airspace- temporarily-closed-one-airport-cites-electrical-failure-2026-04-09\n\nIn the title, the word “resume” means that flights have been",
+  "alts": [
+   "paused.",
+   "restored.",
+   "disrupted.",
+   "grounded.",
+   "cancelled."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q58",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 59,
+  "tag": "ingles",
+  "q": "TEXT IV Flights resume in Sao Paulo after brief airspace closure due to technical issue SAO PAULO, April 9 (Reuters) - The airspace of Sao Paulo has been reopened following a brief closure on Thursday morning, the Congonhas and Guarulhos airports' operators and the Brazilian Air Force said in separate statements. Operators for the local Congonhas Airport and Guarulhos International Airport had said earlier that all ⁠landings and takeoffs had been suspended in the city due to what the Congonhas' operator said was an \"electrical failure.\" Brazil's Air Force, which is responsible for national air traffic, said the suspension lasted just over half an hour, adding it found a \"technical operational issue\" as the reason for the incident, without providing further details. Guarulhos' operator said the issue did not happen at ⁠its airport, the busiest in Latin America. As operators rushed to mitigate the impacts, Brazil's civil aviation regulator said it implemented a series of initial measures outlined in its pre -crisis protocol, with the ⁠aim of monitoring the consequences of the incident. Adapted from: https://www.reuters.com/world/americas/sao -paulos-airspace- temporarily-closed-one-airport-cites-electrical-failure-2026-04-09\n\nThe opposite of “earlier” (2nd paragraph) is",
+  "alts": [
+   "last.",
+   "later.",
+   "least.",
+   "latter.",
+   "latest."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q59",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-med",
+  "num": 60,
+  "tag": "ingles",
+  "q": "TEXT IV Flights resume in Sao Paulo after brief airspace closure due to technical issue SAO PAULO, April 9 (Reuters) - The airspace of Sao Paulo has been reopened following a brief closure on Thursday morning, the Congonhas and Guarulhos airports' operators and the Brazilian Air Force said in separate statements. Operators for the local Congonhas Airport and Guarulhos International Airport had said earlier that all ⁠landings and takeoffs had been suspended in the city due to what the Congonhas' operator said was an \"electrical failure.\" Brazil's Air Force, which is responsible for national air traffic, said the suspension lasted just over half an hour, adding it found a \"technical operational issue\" as the reason for the incident, without providing further details. Guarulhos' operator said the issue did not happen at ⁠its airport, the busiest in Latin America. As operators rushed to mitigate the impacts, Brazil's civil aviation regulator said it implemented a series of initial measures outlined in its pre -crisis protocol, with the ⁠aim of monitoring the consequences of the incident. Adapted from: https://www.reuters.com/world/americas/sao -paulos-airspace- temporarily-closed-one-airport-cites-electrical-failure-2026-04-09\n\n“Due to” in “due to what the Congonhas' operator said” (2nd paragraph) means",
+  "alts": [
+   "ahead of.",
+   "instead of.",
+   "because of.",
+   "regardless of.",
+   "irrespective of."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-med Q60",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
   "prova": "nav-tec",
   "num": 1,
   "tag": "portugues",
@@ -7627,7 +9812,7 @@
   "prova": "nav-tec",
   "num": 4,
   "tag": "portugues",
-  "q": "Leia o texto a seguir. Um controlador de voo redigiu o seguinte comunicado ao chefe: “Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou-se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.”\n\nEsse texto mostra o seguinte modo de organização discursiva:",
+  "q": "Um controlador de voo redigiu o seguinte comunicado ao chefe: Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou -se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.\n\nEsse texto mostra o seguinte modo de organização discursiva:",
   "alts": [
    "narração + descrição.",
    "narração + dissertação expositiva.",
@@ -7654,7 +9839,7 @@
   "prova": "nav-tec",
   "num": 5,
   "tag": "portugues",
-  "q": "Leia o texto a seguir. Um controlador de voo redigiu o seguinte comunicado ao chefe: “Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou-se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.”\n\nO texto apresenta um erro de escritura, que é:",
+  "q": "Um controlador de voo redigiu o seguinte comunicado ao chefe: Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou -se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida.\n\nO texto apresenta um erro de escritura, que é:",
   "alts": [
    "a crase indevida em “à noite”.",
    "a forma da abreviação de “horas”.",
@@ -7681,7 +9866,7 @@
   "prova": "nav-tec",
   "num": 6,
   "tag": "portugues",
-  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: “A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.”\n\nAssinale a opção cujo termo sublinhado tem uma função sintática diferente da dos demais.",
+  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.\n\nAssinale a opção cujo termo sublinhado tem uma função sintática diferente da dos demais.",
   "alts": [
    "“conjunto de técnicas, estudos e procedimentos”.",
    "“leitura de mapas”.",
@@ -7705,7 +9890,7 @@
   "prova": "nav-tec",
   "num": 7,
   "tag": "portugues",
-  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: “A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.”\n\nAssinale a oração a seguir que recebe uma classificação diferente das demais.",
+  "q": "Um sítio da Internet publicou o seguinte texto sobre navegação aérea: A Navegação Aérea é o conjunto de técnicas, estudos e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência. Esse processo envolve a leitura de mapas, o uso de instrumentos de voo, a análise de condições meteorológicas e diversos outros fatores que garantem que a trajetória seja cumprida da melhor forma. Por ser fundamental para a aviação, a navegação aérea é um dos assuntos que são centrais em cursos de formação de pilotos e comissários, bem como em exames e simulados que se voltam para a ANAC.\n\nAssinale a oração a seguir que recebe uma classificação diferente das demais.",
   "alts": [
    "“que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência”.",
    "“que garantem”.",

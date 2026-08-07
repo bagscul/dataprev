@@ -110,12 +110,15 @@ numa tem de descer para as outras, e o `./valida.py` acusa quando não desce.
 | **Apostila** | `apostila/main.pdf` (150 páginas, 21 capítulos) | teoria explicada, com exemplos e caixas de pegadinha | quando erra por **não saber o conceito** |
 | **Resumo** | `resumo/<bloco>.md` | o mesmo conteúdo condensado, para reler rápido | revisão de sábado, véspera de simulado |
 | **Dicas de banca** | `dicas/<bloco>.md` | como a **FGV** cobra aquele bloco e arma a pegadinha | antes de atacar um bloco novo |
-| **Banco de questões** | `banco.json` + `banco-provas.json` | 403 originais auditadas + 422 de sete provas reais | todo dia, é o método de estudo |
+| **Banco de questões** | `banco.json` + `banco-provas.json` | 403 originais auditadas + 626 de onze provas reais | todo dia, é o método de estudo |
 
-As sete provas reais são Dataprev 2024 (70), MPU (70), TJ-RJ 1 e 2 (69 e 70),
-CNSAL ADS (63), CNSAL BD (40) e CNSAL Redes (40) — todas FGV. Somando as duas
-fontes, são **815 questões sorteáveis** pelo quiz, com gabarito auditado e
-explicação de cada alternativa gravada: roda offline, sem custo.
+As onze provas reais são Dataprev 2024 (70), MPU (70), TJ-RJ 1 e 2 (69 e 70),
+CNSAL ADS (63), CNSAL BD (40), CNSAL Redes (40), NAV Brasil Analista de
+Tecnologia (59) e Engenheiro Software (30), NAV Brasil nível médio (45) e CPRM
+ADS (70) — todas FGV. Somando as duas fontes, são **1007 questões sorteáveis**
+pelo quiz, com gabarito auditado; a explicação de cada alternativa está gravada
+em todas menos as 115 importadas em 07/08/2026, que ainda esperam o `why`.
+Roda offline, sem custo.
 
 **A rotina de um dia comum**, na ordem:
 

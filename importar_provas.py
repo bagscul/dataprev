@@ -100,10 +100,24 @@ _ARTEFATO = (r"figuras?|imagem|gr[áa]ficos?|diagramas?|ilustra[çc][ãa]o"
 _DEIXIS = (r"a seguir|abaixo|acima|ao lado|adiante|seguintes?|apresentad\w+"
            r"|ilustrad\w+|mostrad\w+|exibid\w+|observe|analise")
 
+# Suporte visual que E o proprio enunciado: charge, cartum, poster. Aqui o
+# deitico esta no artigo/demonstrativo ("this poster", "a charge a seguir"), e
+# nao numa palavra de apontamento — "The word 'because' in this poster
+# introduces a(n)" nao casa nenhum dos dois lados da regra geral, mas sem a
+# imagem a questao nao existe. Vale so quando a imagem E o texto da questao:
+# "cartoon" citado dentro de uma alternativa nao tranca nada, porque a busca e
+# feita apenas no enunciado.
+_SUPORTE_VISUAL = re.compile(
+    r"\b(?:this|the|that)\s+(?:poster|cartoon|comic strip|caricature)\b"
+    r"|\b(?:a|na|da|desta?|nesta?)\s+(?:charge|tirinha|cartum)\b",
+    re.IGNORECASE,
+)
+
 REFERE_IMAGEM = re.compile(
     rf"(?:{_DEIXIS})[^.;]{{0,60}}?(?:{_ARTEFATO})"
     rf"|(?:{_ARTEFATO})[^.;]{{0,60}}?(?:{_DEIXIS})"
-    rf"|figuras?\s+\d",
+    rf"|figuras?\s+\d"
+    rf"|{_SUPORTE_VISUAL.pattern}",
     re.IGNORECASE,
 )
 
@@ -141,9 +155,11 @@ CABECALHO_SECAO = re.compile(
     r"^(?:língua (?:portuguesa|inglesa)"
     r"|raciocínio lógico[ -]matemático"
     r"|atualidades"
+    r"|informática"
     r"|conhecimentos específicos"
     r"|módulo\s+[IVX]+"
     r"|legislação (?:específica|institucional)"
+    r"|legislação e noções de ética"
     r"|noções de (?:sustentabilidade|administração pública|direito administrativo)"
     r"|história e geografia de rondônia"
     r"|realização"
@@ -165,11 +181,31 @@ CABECALHO_SECAO = re.compile(
 # ficavam literalmente irrespondiveis. O texto capturado aqui e prefixado no
 # enunciado de CADA questao do grupo, porque o quiz sorteia itens soltos e
 # cada um precisa se sustentar sozinho.
+# Tres formulas, porque a FGV nao padroniza o comando entre cadernos: a
+# Dataprev 2024 escreve "Use the following TEXT to answer the next six
+# questions"; a NAV Brasil 2026 (nivel medio) escreve "Read Text IV and answer
+# the four questions that follow it"; e o portugues da NAV Brasil (nivel
+# superior) escreve "Atencao! O texto a seguir refere-se as duas proximas
+# questoes". Nos tres casos o que interessa e o numero por extenso, entao a
+# quantidade fica num unico grupo de captura.
 MARCA_TEXTO = re.compile(
-    r"use the following TEXT to answer the next (\w+) questions?", re.IGNORECASE
+    r"(?:use the following TEXT to answer the next"
+    r"|read (?:the )?text\s+[IVX]+\s+and answer the)"
+    r"\s+(\w+)\s+questions?"
+    r"|os?\s+textos?\s+a seguir\s+refere[m]?-se\s+[àa]s\s+(\w+)\s+"
+    r"pr[óo]ximas\s+quest[õo]es",
+    re.IGNORECASE,
 )
 NUM_EXTENSO = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
-               "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
+               "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+               "duas": 2, "três": 3, "tres": 3, "quatro": 4, "cinco": 5,
+               "seis": 6, "sete": 7, "oito": 8, "nove": 9, "dez": 10}
+
+
+def quantas_questoes(m):
+    """Numero de questoes que o texto-base cobre, venha de qual grupo vier."""
+    achado = next((g for g in m.groups() if g), None)
+    return NUM_EXTENSO.get(achado.lower()) if achado else None
 
 
 def sem_acento(t):
@@ -242,6 +278,20 @@ def texto_do_pdf(caminho):
     return linhas
 
 
+def prosa(corpo):
+    """O corpo capturado e texto de leitura, ou so o rotulo e a fonte?
+
+    Quando o "texto" e uma IMAGEM (o poster e o cartum da NAV Brasil 2026), a
+    camada de texto do PDF so devolve "TEXT III" e a linha de credito. Prefixar
+    isso no enunciado suja questoes que se sustentam sozinhas (a analogia
+    "Height is to high as" nao precisa do desenho) sem devolver nada em troca.
+    """
+    util = [l for l in corpo
+            if not re.match(r"^TEXT\s+[IVX]+$", l, re.IGNORECASE)
+            and not re.match(r"^(?:adapted\s+)?from:", l, re.IGNORECASE)]
+    return len(" ".join(util).split()) >= 10
+
+
 def textos_base(linhas):
     """{numero_da_questao: texto} dos grupos que compartilham um texto-base.
 
@@ -256,16 +306,22 @@ def textos_base(linhas):
         if not m:
             i += 1
             continue
-        quantas = NUM_EXTENSO.get(m.group(1).lower())
+        quantas = quantas_questoes(m)
         corpo, j, inicio = [], i + 1, None
         while j < len(linhas):
             n = re.match(r"^\s*(\d{1,2})\s*$", linhas[j][0].strip())
             if n:
                 inicio = int(n.group(1))
                 break
+            # Outro marcador antes da primeira questao: os textos sao vizinhos
+            # de coluna na mesma pagina (NAV Brasil, TEXT II ao lado do TEXT
+            # III). Sem este corte, o comando e a fonte do texto seguinte
+            # entrariam no corpo do anterior.
+            if MARCA_TEXTO.search(linhas[j][0]):
+                break
             corpo.append(linhas[j][0].strip())
             j += 1
-        if quantas and corpo and inicio is not None:
+        if quantas and corpo and inicio is not None and prosa(corpo):
             texto = re.sub(r"\s+", " ", " ".join(corpo)).strip()
             for k in range(inicio, inicio + quantas):
                 mapa[k] = texto
@@ -395,6 +451,13 @@ def main():
                     "anulada": anterior.get("anulada", False),
                 }
             )
+            # A subtag tambem e etiquetada a mao (questao de prova nao nasce com
+            # ela) e tambem tem de sobreviver a reimportacao — senao o ranking do
+            # ./fraquezas.py perde a granularidade sem ninguem perceber. Fica
+            # ausente quando nao ha etiqueta, porque o campo e opcional: o
+            # ./valida.py so cobra 'sub' no banco.json.
+            if anterior.get("sub"):
+                banco[-1]["sub"] = anterior["sub"]
         desta = [q for q in banco if q["prova"] == prova]
         com_gab = sum(1 for q in desta if q["ans"] is not None)
         com_img = sum(1 for q in desta if q["requer_imagem"])

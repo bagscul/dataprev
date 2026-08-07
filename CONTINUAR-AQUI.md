@@ -1,91 +1,77 @@
-# Continuar de onde paramos — 07/08/2026
+# Continuar de onde paramos — 07/08/2026 (fim do dia)
 
-Arquivo de retomada. A sessão anterior acabou com duas pendências abertas e
-**nada commitado**. Leia as três seções na ordem: estado → pendência 1 →
-pendência 2.
+Arquivo de retomada. As duas pendências abertas na sessão anterior foram
+**fechadas**: as 86 questões da NAV Brasil ganharam explicação, e as duas provas
+achadas na busca foram importadas. Sobrou uma pendência nova, herdada da
+importação. Leia na ordem: estado → pendência → o que vem depois.
 
 ---
 
 ## 0. Estado do repositório — LEIA PRIMEIRO
 
-**Há trabalho não commitado de dois dias (06 e 07/08).** Antes de qualquer
-coisa, rode `git status` e `./valida.py`. Se estiver tudo íntegro, o commit
-sugerido é:
+Antes de qualquer coisa, rode `git status` e `./valida.py`.
 
-```bash
-git add -A && git commit -m "subtags viram taxonomia do edital, fraquezas.py e NAV Brasil 2026 importada"
-```
+Números de referência (medidos em 07/08/2026, não precisa remedir):
 
-O que mudou, em uma linha cada (detalhe completo no `CHANGELOG.md`, entradas de
-06 e 07/08 — **leia as duas antes de mexer em qualquer coisa**):
+- `banco.json` 403 · `banco-provas.json` 626 · **1007 utilizáveis no quiz**
+- **11 provas reais** importadas
+- `./valida.py`: 0 erros, **214 avisos** — todos da pendência abaixo
+- `sub` (microtópico): 385 das 1029 questões dos dois bancos (37%)
+
+O que entrou hoje, além das explicações (detalhe completo no `CHANGELOG.md`,
+entradas de 07/08 — são três):
 
 | arquivo | o que é |
 |---|---|
-| `subtags.py` (novo) | vocabulário fechado de **167 microtópicos**, derivado das seções do `teoria/` e da apostila |
-| `fraquezas.py` (novo) | ranqueia microtópicos por erro registrado; `--prompt` monta briefing de geração |
-| `GERAR-LOTE-GERAIS.md` (novo) | plano de geração com cotas por microtópico — **as cotas estão desatualizadas**, veja §2 |
-| `valida.py` | `sub` obrigatório em questão nova (`SUB_OBRIGATORIA_APOS = 403`, bloqueia); checa subtag no caderno de erros |
-| `quiz.py` | escreve `- **sub:**` no caderno; `--tags` lista o vocabulário; filtro por microtópico com fallback por keyword |
-| `status.py` | mostra o "ponto fraco" do dia |
-| `banco.json` / `banco-provas.json` | 497 questões ganharam `sub`; +89 questões da NAV Brasil |
-| `notas/nav-{tec,eng}-mapa.md` (novos) | classificação questão a questão das provas novas |
+| `provas/cprm-ads.pdf` + `notas/cprm-ads-mapa.md` | CPRM 2025, Analista em Geociências / ADS — **70 questões, caderno inteiro** |
+| `provas/nav-med.pdf` + `notas/nav-med-mapa.md` | NAV Brasil 2026 nível médio, Operador de Torre — **45 de 60** (inglês 20, RLM 15, português 10) |
+| `gabaritos/gabarito-definitivo-cprm.pdf` | gabarito **definitivo** do CPRM (08/01/2026) |
+| `importar_provas.py` | quatro correções de parser (veja abaixo) |
 
-Números de referência (medidos em 07/08, não precisa remedir):
+**As quatro correções do `importar_provas.py`** importam para quem for mexer
+nele: (1) o marcador de texto-base agora é reconhecido **em português**
+("Atenção! O texto a seguir refere-se às duas próximas questões"); (2) e na
+segunda fórmula em inglês da FGV ("Read Text IV and answer the four questions
+that follow it"); (3) "Informática" entrou na lista de cabeçalhos de seção; (4)
+pôster e cartum passaram a contar como figura. As duas primeiras e a terceira
+**reproduzem no parser** os consertos que na véspera tinham sido feitos à mão
+no JSON — e que a próxima reimportação teria desfeito em silêncio.
 
-- `banco.json` 403 · `banco-provas.json` 511 · **901 utilizáveis no quiz**
-- 9 provas reais importadas
-- `./valida.py`: 0 erros, **172 avisos** — todos da pendência 1
+**Bug corrigido no caminho, vale conhecer:** o importador **não preservava o
+campo `sub`**. Como a subtag de questão de prova é etiquetada à mão, qualquer
+`./importar_provas.py` apagava as 82 etiquetas existentes sem avisar (foi o que
+aconteceu nesta sessão; foram restauradas do git). Agora `sub` sobrevive à
+reimportação, junto com `ans`, `why`, `erradas` e `anulada`.
+
+**Garantia restabelecida:** `./importar_provas.py` (sem argumento) devolve o
+`banco-provas.json` **byte-idêntico**. Se algum dia parar de devolver, é sinal
+de que alguém consertou dado à mão no JSON em vez de no parser — procure a
+diferença antes de commitar.
 
 ---
 
-## 1. Pendência 1 — explicar as 86 questões novas ✅ FEITA em 07/08/2026
+## 1. Pendência — explicar as 115 questões novas
 
-**Resolvida.** 85 das 86 foram explicadas (`why` + `erradas` + `sub`), e o
-`./valida.py` saiu de 172 para **2 avisos**. Os 2 que sobraram são a única
-questão deixada de fora de propósito:
+Mesma situação da NAV Brasil na véspera, e o mesmo caminho de saída: as 115
+questões entraram com **gabarito oficial** mas **sem `why` e sem `erradas`**.
+Todas as outras nove provas do banco têm explicação completa — é o padrão do
+repositório, e é o que dá valor ao erro no quiz. Hoje o quiz corrige, mas não
+ensina.
 
-> **`nav-tec` Q58 — divergência real de gabarito, não conserto silencioso.**
-> O enunciado descreve dependência transitiva (`Nome_Fabricante` →
-> `ID_Fabricante` → `ID_Veiculo`) e pede o que remover para atingir a 3FN: isso
-> é a letra **E**. O gabarito oficial da FGV marca **C** ("superchave que viola
-> as invariantes da Forma Normal de Boyce-Codd"), que não descreve o caso.
-> Conferido: o caderno é TIPO 1 e o gabarito lido é o do TIPO 1 (as demais
-> questões da mesma faixa batem — Q57 state locking C, Q59 ISO C, Q60 POST A),
-> então não é desalinhamento de importação. O `ans` **não** foi alterado e a
-> questão segue sem explicação. O gabarito publicado é o **preliminar**
-> (`nav-brasil-gabaritos-publicacao-v2.pdf`); quando sair o definitivo, reconferir
-> em <https://conhecimento.fgv.br/concursos/navbrasil26> — se mudar para E, é só
-> escrever a explicação; se continuar C, a questão vale como anotada.
-
-Também foram consertados dois defeitos de importação achados no caminho: os
-textos-base compartilhados pelas questões 4–5 e 6–7 de português tinham ficado
-grudados na alternativa (E) da questão anterior (os quatro itens estavam
-irrespondíveis no quiz), e o cabeçalho "Informática" do PDF havia colado na
-última alternativa da Q28 de RLM.
-
-**Limitação conhecida que sobrou:** o `pdftotext` não preserva sublinhado, então
-questões que dizem "o termo sublinhado" (português Q6, Q17, Q19) perderam a
-marcação. As explicações foram escritas cobrindo as cinco alternativas, o que
-mantém o item utilizável, mas o enunciado continua menos preciso que o do papel.
-
-### O problema (histórico)
-
-As 89 questões da NAV Brasil entraram com gabarito oficial, mas **sem `why` e
-sem `erradas`**. Todas as outras sete provas do banco têm explicação completa —
-é o padrão do repositório, e é o que dá valor ao erro no quiz. Hoje o quiz
-corrige, mas não ensina.
-
-São **86 questões** a explicar (as outras 3 dependem de figura e já estão fora
+São **106 questões a explicar** (as outras 9 dependem de figura e já estão fora
 do sorteio). Distribuição:
 
 | bloco | qtd | | bloco | qtd |
 |---|---|---|---|---|
-| portugues | 20 | | arquitetura | 6 |
-| eng-software | 17 | | bi | 3 |
-| governanca | 9 | | frontend / atualidades / orfaos | 2 cada |
-| rlm | 8 | | java / redes / legislacao | 1 cada |
-| banco-dados | 7 | | | |
-| seguranca | 7 | | | |
+| português | 19 | | governança | 3 |
+| RLM | 22 | | orfãos | 3 |
+| inglês | 16 | | java | 3 |
+| atualidades | 11 | | redes | 2 |
+| segurança | 6 | | legislação / programação / frontend | 1 cada |
+| arquitetura | 6 | | | |
+| banco-dados | 4 | | | |
+| BI | 4 | | | |
+| eng-software | 4 | | | |
 
 Para listar as pendentes a qualquer momento:
 
@@ -100,22 +86,28 @@ print(len(f)); [print(q['prova'], q['num'], q['tag']) for q in f[:10]]"
 
 ### O prompt
 
-> Preciso escrever as explicações (`why` e `erradas`) das 86 questões da NAV
-> Brasil 2026 que estão em `banco-provas.json` sem elas (provas `nav-tec` e
-> `nav-eng`). Leia antes: `CONTINUAR-AQUI.md` §1, a seção 5 do
-> `CONTRIBUINDO-QUESTOES.md` (explicação que reconstrói o raciocínio) e a seção
-> "Estilo de questão" do `CLAUDE.md`.
+> Preciso escrever as explicações (`why` e `erradas`) das 106 questões que
+> estão em `banco-provas.json` sem elas (provas `cprm-ads` e `nav-med`). Leia
+> antes: `CONTINUAR-AQUI.md` §1, a seção 5 do `CONTRIBUINDO-QUESTOES.md`
+> (explicação que reconstrói o raciocínio) e a seção "Estilo de questão" do
+> `CLAUDE.md`.
 >
-> **Trabalhe em lotes de 10 questões, por bloco**, na ordem: eng-software,
-> banco-dados, arquitetura, seguranca, governanca, bi, o resto, e português/RLM
-> por último. Ao fim de cada lote rode `./valida.py` e me diga quantas faltam.
+> **Trabalhe em lotes de 10 questões, por bloco.** Comece pelos **específicos
+> do `cprm-ads`** (31–70: segurança, arquitetura, banco-dados, BI,
+> eng-software, java, redes) — são as de maior retorno, porque é cargo de TI e
+> conteúdo do meu Módulo II. Depois **atualidades** (as 10 do CPRM + a Q45 do
+> Teste de Turing Total), que é o bloco mais escasso. Inglês e RLM depois, e
+> português por último. Ao fim de cada lote rode `./valida.py` e me diga
+> quantas faltam.
 >
 > Regras que valem especificamente aqui:
 >
-> 1. **O gabarito é oficial da FGV e é intocável.** Se a sua análise discordar
->    da alternativa marcada como correta, **pare e me avise** — não reescreva a
->    explicação para forçar o gabarito, e não altere o campo `ans`. Divergência
->    real vira anotação, não conserto silencioso.
+> 1. **O gabarito é oficial da FGV e é intocável.** O do `cprm-ads` é o
+>    **definitivo**; o do `nav-med` ainda é o **preliminar**. Se a sua análise
+>    discordar da alternativa marcada como correta, **pare e me avise** — não
+>    reescreva a explicação para forçar o gabarito, e não altere o campo `ans`.
+>    Divergência real vira anotação, não conserto silencioso (o modelo é a
+>    `nav-tec` Q58, §3 abaixo).
 > 2. **`why`:** 1–3 frases, analítico — o conceito que sustenta a resposta, não
 >    "a alternativa B está correta". Pode nomear o comportamento da banca.
 > 3. **`erradas`:** uma entrada para cada uma das 4 alternativas erradas
@@ -124,182 +116,95 @@ print(len(f)); [print(q['prova'], q['num'], q['tag']) for q in f[:10]]"
 >    nada de "Distrator X:" repetido. Nomeie o mecanismo (inversão de par,
 >    absoluto, extrapolação, troca de número) tecido na explicação.
 > 4. **Não invente.** Estas são questões reais; se um item depende de um dado
->    que você não tem certeza (número de norma, artigo, versão), confira em
->    fonte primária antes — é a regra do `CLAUDE.md`.
-> 5. **Aproveite para etiquetar:** se a questão não tiver `sub`, escolha o
->    microtópico do `subtags.py` (`./quiz.py --tags` lista). Não é obrigatório
->    em questão de prova, mas fecha o ciclo do `./fraquezas.py`.
->
-> Meta: `./valida.py` sair de 172 avisos para 0.
+>    que você não tem certeza (número de norma, artigo, versão, prêmio de 2025),
+>    confira em fonte primária antes — é a regra do `CLAUDE.md`. As dez de
+>    atualidades do CPRM são o caso mais exposto a isso: falam de acordo
+>    EUA–Ucrânia, Declaração de Johanesburgo do BRICS, Lei 14.701, Oscar 2025 e
+>    Prêmio Jabuti 2025.
+> 5. **Aproveite para etiquetar:** escolha o microtópico do `subtags.py`
+>    (`./quiz.py --tags` lista). Não é obrigatório em questão de prova, mas
+>    fecha o ciclo do `./fraquezas.py` — e o `atualidades-socioambiental` e o
+>    `backup-recuperacao`, que hoje têm **zero** questão, finalmente têm
+>    candidatas.
 
 ### Contexto útil para explicar
 
-- `notas/nav-tec-mapa.md` e `notas/nav-eng-mapa.md` já trazem o **tema de cada
-  questão** classificado por conteúdo — use como ponto de partida.
-- As provas em PDF estão em `provas/nav-tec.pdf` e `provas/nav-eng.pdf`; o
-  gabarito oficial, em `gabaritos/nav-brasil-gabaritos-publicacao-v2.pdf`.
-- Questão boa para conferir se o alinhamento gabarito↔alternativa está certo:
-  `nav-eng` Q42 é **Adapter** (gabarito B), `nav-eng` Q62 é **Gestão de
-  Incidentes** (B), `nav-tec` Q65 é **perda total no RAID 0** (B).
+- `notas/cprm-ads-mapa.md` e `notas/nav-med-mapa.md` trazem o **tema de cada
+  questão** classificado por conteúdo, e as notas de classificação explicam por
+  que RAID/backup/SO foram para `orfaos` e por que o Teste de Turing Total foi
+  para `atualidades`.
+- Os PDFs estão em `provas/cprm-ads.pdf` e `provas/nav-med.pdf`; os gabaritos
+  em `gabaritos/gabarito-definitivo-cprm.pdf` (bloco "Análise e Desenvolvimento
+  de Sistemas – **1** – Turno Manhã") e
+  `gabaritos/nav-brasil-gabaritos-publicacao-v2.pdf` (Operador de Torre é a
+  **primeira** tabela).
+- Questões boas para conferir se o alinhamento gabarito↔alternativa continua
+  certo: `cprm-ads` Q34 é **RAID 1** (o nível sem striping, gabarito B), Q46 é
+  **merge sort** (D), Q43 é **esquema galáxia** (D); `nav-med` Q24 dá **2h30**
+  (C) e Q47 é **present perfect passivo** (C).
 
 ---
 
-## 2. Pendência 2 — procurar mais provas da FGV de nível superior
-
-### Onde o déficit está hoje
+## 2. Depois da pendência — o buraco que sobrou é só inglês
 
 Medido contra a demanda de **10 simulados** do roteiro (cada um: 40 gerais na
-proporção do edital + 30 específicos):
+proporção do edital + 30 específicos), **depois** das importações de hoje:
 
 | bloco | pool | precisa | falta |
 |---|---|---|---|
-| inglês | 53 | 120 | **+67** |
-| atualidades | 37 | 60 | +23 |
-| português | 110 | 120 | +10 |
-| RLM | 43 | 50 | +7 |
-| legislação | 67 | 50 | ok |
+| inglês | 69 | 120 | **+51** |
+| atualidades | 48 | 60 | +12 |
+| português | 129 | 120 | ok |
+| RLM | 65 | 50 | ok |
+| legislação | 68 | 50 | ok |
 | **todo o Módulo II** | — | — | **ok, déficit zero** |
 
-**Consequência prática:** procurar prova por causa do Módulo II não vale mais a
-pena — já está coberto. O alvo é **inglês**, e depois atualidades.
+O déficit total caiu de 107 para **63**, e agora está concentrado em dois
+blocos em vez de quatro. **Português e RLM saíram do vermelho** — não gaste
+mais busca nem geração neles.
 
-### O prompt
+Duas saídas, e a segunda é a que rende mais agora:
 
-> Preciso achar mais provas da FGV para importar, mirando o Módulo I do meu
-> edital (Dataprev 2026, Perfil 3 — prova em 11/10/2026). Leia
-> `CONTINUAR-AQUI.md` §2 antes, para não refazer busca que já foi feita.
->
-> Prioridade absoluta: **língua inglesa**. Depois: atualidades/IA. Português e
-> RLM já estão quase resolvidos e o Módulo II está coberto — não gaste busca
-> neles.
->
-> **Prefira provas de cargos de tecnologia / desenvolvimento / software /
-> computação.** Além de o Módulo II sair calibrado no meu assunto, o inglês
-> dessas provas vem com vocabulário técnico — que é o que a Dataprev cobra
-> (leitura de manual, documentação de API e artigo de TI), e não o inglês
-> comercial ou geral. Ordem de prioridade:
->
-> 1. **cargo de TI + tem inglês** — é o alvo; é exatamente o perfil da Dataprev
->    2024, que já está no banco e é a prova mais valiosa que tenho;
-> 2. **tem inglês, mas o cargo não é de TI** — serve, com a ressalva de que o
->    vocabulário é de outro domínio (foi o caso da NAV Brasil);
-> 3. **cargo de TI sem inglês** — retorno baixo agora, porque o Módulo II já
->    não tem déficit. Só vale se a prova for muito recente, e aí por calibração
->    de estilo, não por volume.
->
-> Lugares onde a FGV costuma cobrar TI em nível superior, para orientar a
-> varredura: Dataprev, Serpro, analista de TI de tribunais (TJ, TRT, TRE),
-> assembleias legislativas, agências reguladoras, MPU/MPE, bancos públicos e
-> prefeituras de capital.
->
-> Critérios: banca **FGV** (o repositório é calibrado só para ela), **nível
-> superior** de preferência, prova **já aplicada com gabarito oficial
-> publicado**, e caderno em PDF baixável.
->
-> **Método — vá pelos editais no site da FGV, não por notícia de cursinho.**
-> Percorra os concursos já aplicados em <https://conhecimento.fgv.br/concursos>,
-> e para cada um abra o **edital** e leia a tabela de composição da prova antes
-> de decidir se vale baixar o caderno. Notícia erra: nesta sessão uma delas deu
-> "inglês 20, RLM 15" como se fosse do nível superior do NAV Brasil, e o edital
-> mostrou que era do nível médio — o nível superior não tem inglês nenhum.
->
-> Para cada prova que passar no filtro, me diga: nome, data de aplicação,
-> quantas questões de cada disciplina do meu Módulo I, e os links do caderno e
-> do gabarito.
-
-### Detalhes operacionais do site da FGV (custaram tempo na sessão passada)
-
-- ~~As páginas de concurso são renderizadas por JavaScript e o WebFetch volta
-  vazio.~~ **Desatualizado (reconferido em 07/08/2026):** o WebFetch agora lê
-  `conhecimento.fgv.br/concursos/<slug>` normalmente e devolve a lista de
-  cadernos por cargo com os links diretos. É o caminho mais rápido — pedir a
-  lista de PDFs da página do concurso, em vez de garimpar por busca. A página
-  índice `conhecimento.fgv.br/concursos` também abre (são 6 páginas de
-  resultados).
-- Editais, cadernos e gabaritos ficam todos sob
-  `https://conhecimento.fgv.br/sites/default/files/concursos/<arquivo>.pdf`.
-- O WebFetch não lê o texto desses PDFs (voltam como binário), **mas salva o
-  arquivo em disco** e informa o caminho. Use `pdftotext -layout <arquivo>` e
-  leia o texto — foi assim que a composição do NAV Brasil foi conferida.
-- No edital, a tabela de composição está no **item 9** ("O quadro a seguir
-  apresenta as disciplinas e o número de questões para os cargos de nível
-  superior"). O conteúdo programático por cargo está no **Anexo II**.
-- Cuidado com o nome do cargo na busca: o edital do NAV Brasil escreve
-  "Engenheiro Software", sem o "de" — procurar por "engenheiro de software" não
-  achava nada.
-
-### O que já foi verificado — não repita
-
-**Prontas para importar (verificadas no edital + caderno em 07/08/2026):**
-
-1. **NAV Brasil 2026, NÍVEL MÉDIO** — *Profissional Técnico de Navegação Aérea –
-   Operador de Torre de Controle*, aplicada em **02/08/2026**, 60 questões.
-   Composição conferida no próprio caderno: português 1–10, legislação/ética
-   11–20 (*descartar* — ética e direito genéricos), RLM 21–35, informática 36–40
-   (*descartar*), **inglês 41–60**. Aproveitáveis: **45** (inglês 20, RLM 15,
-   português 10) — leva inglês de 53 → 73.
-   Caderno TIPO 1: <https://conhecimento.fgv.br/sites/default/files/concursos/cnm101-profissional-tecnico-de-navegacao-aerea-operador-de-torre-de-controle-cnm101-tipo-1.pdf>
-   Gabarito (o do repo já é o arquivo completo de 20 páginas; Operador de Torre
-   é a **primeira** tabela): `gabaritos/nav-brasil-gabaritos-publicacao-v2.pdf`.
-   *Conferido:* o português do médio não repete o do superior (o médio usa
-   notícias da FAB e da Agenda Viva SP; o superior usava atribuições do edital),
-   então a regra 3 de importação está satisfeita.
-   *Ressalva:* é nível médio — texto mais simples, e o inglês não é de TI.
-
-2. **CPRM 2025 (Serviço Geológico do Brasil), Edital 01/2025** — prova aplicada
-   em **02/12/2025**, com **gabarito DEFINITIVO** publicado (08/01/2026):
-   <https://conhecimento.fgv.br/sites/default/files/concursos/gabarito-definitivo-cprm.pdf>
-   Dois cadernos interessam, por motivos diferentes:
-   - *Analista em Geociências – **Análise e Desenvolvimento de Sistemas*** (70
-     questões): português 1–10, RLM 11–20, **atualidades 21–30**, ADS 31–70.
-     **É cargo de TI**, e as atualidades caem no bloco mais escasso — as questões
-     conferidas cobrem ética da IA (acordo da UNESCO), ODS/Agenda 2030 e
-     geopolítica de minerais estratégicos, ou seja, `etica-ia`, `regulacao-ia` e
-     `atualidades-socioambiental` (que hoje tem **zero** questão).
-     <https://conhecimento.fgv.br/sites/default/files/concursos/analista-em-geociencias-analise-e-desenvolvimento-de-sistemas-cns02e02-tipo-1.pdf>
-   - *Pesquisador em Geociências* (qualquer área — o edital diz no item 12.2 que
-     **o Módulo I é comum a todas**, então basta **um** caderno): português 10,
-     **inglês 5**, metodologia científica 5, RLM 5, estatística 5.
-     <https://conhecimento.fgv.br/sites/default/files/concursos/pesquisador-em-geociencias-hidrogeologia-cns01e05-tipo-1.pdf>
-
-   Rendimento somado do CPRM: **inglês 5, atualidades 10, RLM 15, português 20**
-   (+ 40 de ADS, sem déficit mas recentes e de cargo de TI).
-
-**Já verificado e descartado:**
-
-| prova | por quê |
-|---|---|
-| CNU 2025 (FGV) | não tem inglês; conhecimentos gerais são português + direito + realidade brasileira |
-| INB 2026 (FGV) | tem 10 de inglês para nível superior, mas **o edital ainda não saiu** — prova não aplicada |
-| BNDES | último concurso foi **Cesgranrio**, não FGV |
-| PSS IBGE (FGV) | é FGV mesmo (PSS nº 04/2025, provas em 2026), mas APM e SCQ são **nível médio** e não têm inglês |
-| SEEC-RN 2025 — Professor de Inglês | inglês avançado/pedagógico, calibração errada para o seu exame |
-| PM-SP Aluno-Oficial 2025 (FGV, 13/07/2025) | **tem prova de inglês** — não cheguei a confirmar quantas questões. Vale checar |
-| CGE-SP — Auditor Estadual de Controle Interno / **Tecnologia da Informação** | cargo de TI e prova recente, mas o caderno é **60 questões de Conhecimentos Específicos e mais nada**: zero Módulo I. Só serviria para calibração de estilo do Módulo II, que já não tem déficit. Caderno: `cns2a02-auditor-estadual-de-controle-cge-tecnologia-da-informacao-cns2a02-tipo-1.pdf` |
-| CPRM — cadernos de **Analista** que não sejam ADS | o Módulo I varia por área e nenhuma outra é de TI; e o inglês do CPRM só existe no **Pesquisador**, não no Analista (armadilha: a notícia fala "CPRM tem inglês" sem dizer para qual cargo) |
+1. **Mais provas.** O prompt de busca e tudo o que já foi verificado e
+   descartado ficam no `CHANGELOG.md` (entrada de 07/08, "busca de provas
+   FGV"). Duas pistas ainda abertas: o caderno de **Pesquisador em Geociências**
+   do mesmo CPRM (mais 5 de inglês, e o edital diz no item 12.2 que o Módulo I
+   é comum a todas as áreas de Pesquisador, então basta um caderno) e a
+   **PM-SP Aluno-Oficial 2025** (13/07/2025, tem prova de inglês, não cheguei a
+   confirmar quantas questões). O caminho rápido é pedir ao WebFetch a lista de
+   cadernos de `conhecimento.fgv.br/concursos/<slug>` — a página abre normal —
+   e conferir a composição no **item 9** do edital.
+2. **Gerar questão de inglês.** O plano está em `GERAR-LOTE-GERAIS.md`, com o
+   aviso no topo: as cotas de lá são de antes das importações, e português e RLM
+   têm de sair do lote. A metodologia e o rateio por microtópico continuam
+   valendo — e em inglês o `julgamento-afirmativas` ainda tem **zero** questão.
 
 ### Regras de importação — não repita erros já cometidos
 
 1. **Filtre "Legislação" de concurso genérico.** A legislação do seu edital é
    LGPD, Marco Civil e LAI. A de quase todo concurso é direito constitucional
    e administrativo — conteúdo fora do edital. O banco já carrega 42 questões
-   assim vindas do TJRJ/MPU, e elas ficaram sem microtópico justamente por isso.
-   Na NAV Brasil eu descartei 7 por esse motivo.
+   assim vindas do TJRJ/MPU. Descartei 7 na NAV Brasil superior e 10 no médio
+   por esse motivo.
 2. **Filtre "Informática"** (Word, navegador, planilha): o Perfil 3 não tem
    esse bloco.
 3. **Cheque se o Módulo I se repete entre cadernos do mesmo concurso.** Na NAV
    Brasil os dois cadernos de nível superior tinham as **mesmas 40 questões**
-   de conhecimentos básicos — importar os dois criaria 40 duplicatas. Confirme
-   comparando o texto e os gabaritos antes de importar.
-4. **Classifique por conteúdo, não pelo rótulo da banca.** Na NAV Brasil a Q33
-   estava sob "Informática" mas cobrava impacto da IA nas ocupações — é
-   `atualidades`, o bloco mais escasso. Só apareceu lendo questão por questão.
+   de conhecimentos básicos. No CPRM, o Módulo I do Analista varia por área — e
+   o do Pesquisador é comum a todas. Confirme comparando o texto e os gabaritos
+   antes de importar.
+4. **Classifique por conteúdo, não pelo rótulo da banca.** Na NAV Brasil
+   superior a Q33 estava sob "Informática" mas cobrava impacto da IA nas
+   ocupações; no CPRM a Q45 está em "Conhecimentos Específicos" mas é
+   fundamentos de IA. As duas viraram `atualidades`. Só aparece lendo questão
+   por questão — no `nav-med`, ao contrário, as cinco de Informática eram
+   Informática mesmo.
 
 ### Fluxo de importação
 
 ```bash
-# 1. PDFs em provas/<nome-curto>.pdf (nome curto: vira o id da questão)
-# 2. classifique e escreva notas/<nome>-mapa.md (veja notas/nav-tec-mapa.md de modelo)
+# 1. PDF em provas/<nome-curto>.pdf (nome curto: vira o id da questão)
+# 2. classifique e escreva notas/<nome>-mapa.md (veja notas/cprm-ads-mapa.md de modelo)
 ./importar_provas.py                 # SEM argumento: reescreve o arquivo inteiro
 # 3. remova do banco-provas.json o que ficou fora do recorte
 ./gabarito.py <nome> "1-C 2-A ..."   # gabarito OFICIAL, nunca chutado
@@ -308,13 +213,33 @@ pena — já está coberto. O alvo é **inglês**, e depois atualidades.
 
 Atenção: `./importar_provas.py` com argumento **sobrescreve** o
 `banco-provas.json` só com as provas passadas. Rode sempre sem argumento.
+Confira o **tipo** do caderno contra o **tipo** da tabela do gabarito antes de
+colar: no CPRM as tabelas se chamam "ADS – 1" e "ADS – 2", e a "1" é a TIPO 1
+(conferido resolvendo a Q12 e a Q13 de RLM à mão).
 
 ---
 
-## 3. Depois das duas pendências
+## 3. Divergência de gabarito ainda aberta
 
-Quando inglês e atualidades forem o que sobrou, o plano de geração está em
-`GERAR-LOTE-GERAIS.md` — mas **as cotas de lá estão desatualizadas**: foram
-dimensionadas antes da importação da NAV Brasil, quando faltavam 137 questões e
-o alvo era 100 por bloco. Hoje faltam 107, quase tudo inglês. Recalcule antes
-de usar; a metodologia e as cotas por microtópico continuam válidas.
+> **`nav-tec` Q58 — divergência real, não conserto silencioso.**
+> O enunciado descreve dependência transitiva (`Nome_Fabricante` →
+> `ID_Fabricante` → `ID_Veiculo`) e pede o que remover para atingir a 3FN: isso
+> é a letra **E**. O gabarito oficial da FGV marca **C** ("superchave que viola
+> as invariantes da Forma Normal de Boyce-Codd"), que não descreve o caso.
+> Conferido: o caderno é TIPO 1 e o gabarito lido é o do TIPO 1 (as demais
+> questões da mesma faixa batem), então não é desalinhamento de importação. O
+> `ans` **não** foi alterado e a questão segue sem explicação — são 2 dos avisos
+> do `./valida.py`. O gabarito publicado é o **preliminar**
+> (`nav-brasil-gabaritos-publicacao-v2.pdf`); quando sair o definitivo, reconferir
+> em <https://conhecimento.fgv.br/concursos/navbrasil26> — se mudar para E, é só
+> escrever a explicação; se continuar C, a questão vale como anotada.
+
+O mesmo vale, em menor grau, para todo o `nav-med`: o gabarito é **preliminar**
+(prova de 02/08/2026). Quando o definitivo sair, vale reconferir as 45 e
+verificar se alguma foi anulada.
+
+**Limitação conhecida:** o `pdftotext`/`pypdf` não preserva sublinhado, então
+questões que dizem "o termo sublinhado" perdem a marcação (português da
+`nav-tec` Q6/Q17/Q19 e do `nav-med` Q1 e Q6). As explicações da NAV superior
+foram escritas cobrindo as cinco alternativas, o que mantém o item utilizável —
+faça o mesmo nas novas.
