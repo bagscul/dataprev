@@ -3824,8 +3824,13 @@
    "urânio e magnésio."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O acordo assinado em 30/04/2025 criou o Fundo de Investimento para a Reconstrução EUA–Ucrânia e deu aos americanos acesso preferencial a novas licenças sobre recursos ucranianos; os minerais críticos nomeados no texto são lítio, titânio e terras raras. São insumos de bateria e de liga aeroespacial — é isso que os torna \"estratégicos\", e não o volume produzido.",
+  "erradas": {
+   "0": "Ferro e carvão a Ucrânia tem em abundância, mas são commodities tradicionais, fora da cadeia de alta tecnologia que motivou o acordo.",
+   "2": "Carvão e petróleo são energéticos fósseis. O acordo alcança hidrocarbonetos, porém o comando pede os minerais estratégicos, e é nesse desvio que a alternativa se apoia.",
+   "3": "Ouro e prata são metais preciosos, ativos de reserva de valor sem papel na pauta de minerais críticos.",
+   "4": "A Ucrânia realmente produz urânio e magnésio — e é justamente por isso que o item engana: combina um dado verdadeiro sobre o país com um par que não é o destacado no acordo."
+  },
   "fonte": "FGV cprm-ads Q21",
   "requer_imagem": false,
   "anulada": false
@@ -3843,11 +3848,19 @@
    "I, II e III."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A Recomendação da UNESCO sobre a Ética da Inteligência Artificial, adotada em novembro de 2021, foi o primeiro instrumento global do tema e traz entre seus princípios a promoção dos direitos humanos, a transparência e explicabilidade, a proteção da privacidade e a responsabilização — o que sustenta os itens I e III.",
+  "erradas": {
+   "0": "Deixar só a I de fora do conjunto ignora que privacidade e responsabilidade estão expressamente entre os princípios do documento, e não como recomendação acessória.",
+   "1": "Além de descartar dois itens corretos, mantém justamente o falso: o \"exclusivo\" da II contraria a governança multissetorial da recomendação, que prevê Estados, empresas, academia e sociedade civil.",
+   "3": "Preserva a exclusividade das parcerias com o setor privado, incompatível com um texto que insiste em cooperação internacional ampla e em supervisão pública.",
+   "4": "Aceitar tudo é o desfecho que a banca oferece a quem lê rápido: basta o advérbio \"exclusivo\" na II para eliminá-la, e advérbio absoluto em item de julgamento quase sempre é a marca do erro."
+  },
   "fonte": "FGV cprm-ads Q22",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "etica-ia"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3862,11 +3875,19 @@
    "Redução das desigualdades; Inteligência artificial; Ensino domiciliar."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Os três nomes da alternativa correspondem literalmente a objetivos da Agenda 2030: erradicação da pobreza (ODS 1), fome zero e agricultura sustentável (ODS 2) e igualdade de gênero (ODS 5). Nas demais opções sempre há termo que não consta da lista dos 17.",
+  "erradas": {
+   "0": "Ação contra a mudança global do clima é o ODS 13, mas livre concorrência e capital humano são categorias de política econômica, estranhas ao texto da agenda.",
+   "1": "Energia limpa e acessível é o ODS 7; crescimento econômico só aparece emendado ao trabalho decente (ODS 8), e \"novas tecnologias\" não nomeia objetivo algum.",
+   "2": "Indústria armamentista vai na direção oposta da agenda, que tem como ODS 16 a paz e as instituições eficazes; reindustrialização e sustentabilidade ambiental, por sua vez, são temas, não objetivos com esse título.",
+   "4": "Redução das desigualdades é o ODS 10, mas inteligência artificial e ensino domiciliar não estão na lista. Emendar um objetivo real a dois inventados é o recurso mais usado para dar verossimilhança à alternativa."
+  },
   "fonte": "FGV cprm-ads Q23",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "atualidades-socioambiental"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3881,8 +3902,13 @@
    "a troca de informação científica confiável e o uso de inteligência artificial."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A tese de Harari em \"Notas sobre a pandemia\" é que o antídoto para a epidemia não é o isolamento nacional, e sim a cooperação: circulação de informação científica confiável e solidariedade global. O próprio enunciado entrega a chave ao falar em cooperação internacional e transparência científica.",
+  "erradas": {
+   "0": "Harari não prega ausência do Estado — a confiança em instituições públicas é peça central do argumento, e inovação médica sozinha não substitui coordenação entre países.",
+   "1": "\"Superação do globalismo\" inverte a conclusão do autor: para ele o risco está no nacionalismo isolacionista, não na cooperação internacional.",
+   "3": "Solidariedade global está certa, mas monopólio estatal na produção de vacinas não é proposta do autor. Metade certa e fecho errado é o formato de distrator que a FGV mais repete.",
+   "4": "Informação científica confiável também está certa; o segundo fator, porém, é a solidariedade global — a inteligência artificial entra aqui só como isca contemporânea."
+  },
   "fonte": "FGV cprm-ads Q24",
   "requer_imagem": false,
   "anulada": false
@@ -3900,8 +3926,13 @@
    "Indonésia, Tailândia e Vietnã."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Na Declaração de Johanesburgo, da XV Cúpula (agosto de 2023), o BRICS convidou seis países: Arábia Saudita, Argentina, Egito, Emirados Árabes Unidos, Etiópia e Irã. A alternativa reúne três deles, e o eixo do convite é claro — economias emergentes do Oriente Médio e da África.",
+  "erradas": {
+   "0": "Estados Unidos, Canadá e México estão no polo oposto do agrupamento, que nasceu como articulação de emergentes fora do eixo do G7.",
+   "1": "A Argentina de fato foi convidada, mas Uruguai e Paraguai não — e a própria Argentina recuou da adesão em dezembro de 2023, antes de o ingresso se efetivar.",
+   "3": "Portugal, França e Itália são economias europeias desenvolvidas; incluí-las contradiz o próprio critério de formação do bloco.",
+   "4": "A expansão asiática soa plausível, e a Indonésia chegou mesmo a ingressar depois, em 2025 — mas nenhum dos três estava entre os seis convidados de Johanesburgo. Trocar a data de entrada é a armadilha do item."
+  },
   "fonte": "FGV cprm-ads Q25",
   "requer_imagem": false,
   "anulada": false
@@ -3919,8 +3950,13 @@
    "transtorno obsessivo gerado pelo consumo de pornografia na internet."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Eleita palavra do ano de 2024 pela Oxford, brain rot nomeia a deterioração da capacidade cognitiva atribuída ao consumo excessivo de conteúdo digital trivial — o efeito da rolagem infinita de vídeo curto. É expressão cultural sobre um padrão de consumo, não diagnóstico clínico.",
+  "erradas": {
+   "1": "Esgotamento causado por jornada e deslocamento é burnout, reconhecido pela OMS como fenômeno ocupacional; a causa apontada ali é o trabalho, não o conteúdo consumido.",
+   "2": "Dependência química pressupõe substância psicoativa. O que a expressão descreve é um padrão de comportamento de uso, sem agente químico externo.",
+   "3": "O mecanismo não é a repetição de tarefas: o que a expressão critica é o consumo passivo e fragmentado de conteúdo de baixa qualidade.",
+   "4": "Transtorno obsessivo ligado a pornografia é quadro clínico delimitado; brain rot é bem mais amplo e alcança qualquer conteúdo digital trivial."
+  },
   "fonte": "FGV cprm-ads Q26",
   "requer_imagem": false,
   "anulada": false
@@ -3938,11 +3974,19 @@
    "Bacia de Santos."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O poço Bumerangue, anunciado pela bp em 4 de agosto de 2025 como sua maior descoberta em 25 anos, fica no pré-sal da Bacia de Santos, em lâmina d'água de 2.372 metros — a mesma bacia que concentra a produção do pré-sal brasileiro.",
+  "erradas": {
+   "0": "A do rio Amazonas é bacia hidrográfica, não sedimentar marinha. A fronteira exploratória do Norte é a Margem Equatorial, na foz do Amazonas, e ali não há pré-sal.",
+   "1": "A bacia do Prata também é hidrográfica, compartilhada por Brasil, Argentina, Paraguai, Uruguai e Bolívia — nada tem a ver com exploração offshore.",
+   "2": "Campos é a bacia madura do petróleo brasileiro e tem áreas de pré-sal, o que a torna a troca mais tentadora do item; a descoberta noticiada, porém, não foi ali.",
+   "3": "A Bacia do Espírito Santo produz em escala muito menor e fica fora do polígono onde o poço foi perfurado."
+  },
   "fonte": "FGV cprm-ads Q27",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "atualidades-socioambiental"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3957,11 +4001,19 @@
    "os povos indígenas têm direito de ocupar apenas as terras por eles ocupadas e registradas após a vigência da lei."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "A Lei 14.701/2023 positivou a tese do marco temporal: só seriam tradicionalmente ocupadas as terras que estivessem na posse indígena — ou em disputa possessória — em 5 de outubro de 1988, data da promulgação da Constituição. Como o STF havia rejeitado esse critério meses antes, a lei virou objeto de ações de inconstitucionalidade.",
+  "erradas": {
+   "0": "Idade para casamento é matéria de direito civil e não tem relação com demarcação de terras; a alternativa só existe para descartar quem não lembra do conteúdo da lei.",
+   "1": "Desloca o objeto: o núcleo da lei é o critério temporal da ocupação, e a exploração mineral em terra indígena continua condicionada a autorização do Congresso Nacional, na forma do art. 231, §3º, da Constituição.",
+   "3": "1500 não é marco jurídico algum nessa discussão — toda a controvérsia gira em torno da data da promulgação da Constituição de 1988.",
+   "4": "Exigir registro posterior à vigência da lei inverte a lógica do marco temporal, que olha para trás, para a situação de posse existente em 1988."
+  },
   "fonte": "FGV cprm-ads Q28",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "atualidades-socioambiental"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -3976,8 +4028,13 @@
    "Democracia em vertigem."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "\"Ainda Estou Aqui\", de Walter Salles, venceu o Oscar de Melhor Filme Internacional em março de 2025 — a primeira estatueta do Brasil na categoria, depois de indicações anteriores que não se converteram em prêmio.",
+  "erradas": {
+   "0": "Central do Brasil, do mesmo diretor, foi indicado em 1999, quando a categoria se chamava Melhor Filme Estrangeiro, e perdeu. É exatamente a memória que a alternativa explora.",
+   "1": "O Brutalista é produção norte-americana e disputou a mesma temporada em outras categorias; filme dos EUA sequer é elegível a Melhor Filme Internacional.",
+   "2": "O Que É Isso, Companheiro? recebeu indicação em 1998 e também não venceu — segunda tentativa brasileira frustrada na categoria.",
+   "4": "Democracia em Vertigem é documentário e concorreu em 2020 na categoria de Melhor Documentário, que é outra premiação."
+  },
   "fonte": "FGV cprm-ads Q29",
   "requer_imagem": false,
   "anulada": false
@@ -3995,8 +4052,13 @@
    "Elisa Lucinda."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Lilia Moritz Schwarcz, antropóloga e historiadora da USP, venceu o Jabuti Acadêmico 2025 na categoria História e Arqueologia com \"Imagens da branquitude: a presença da ausência\", que examina a iconografia da branquitude do século XVI aos dias de hoje.",
+  "erradas": {
+   "0": "Conceição Evaristo trabalha a questão racial na literatura — romance, conto e poesia, como em Ponciá Vicêncio —, e não em obra acadêmica de História.",
+   "2": "Clarice Lispector morreu em 1977; atribuir-lhe um prêmio de 2025 é anacronismo, o tipo de alternativa que se elimina sem saber nada do livro.",
+   "3": "Fernanda Montenegro é atriz, sem produção acadêmica na área; a lembrança vem do cinema, não da historiografia.",
+   "4": "Elisa Lucinda é poeta e atriz, com obra literária e artística que não concorre na categoria História e Arqueologia."
+  },
   "fonte": "FGV cprm-ads Q30",
   "requer_imagem": false,
   "anulada": false
@@ -4014,8 +4076,13 @@
    "munging."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Address munging é a descaracterização deliberada do endereço publicado: escrever \"pessoa em servidor ponto com\" quebra o padrão usuario@dominio que os harvesters procuram, o humano relê sem esforço e o robô não casa a expressão. É contramedida de coleta — age antes de o spam existir, não sobre a mensagem recebida.",
+  "erradas": {
+   "0": "\"Diffmail\" não nomeia técnica antispam alguma; é termo inventado com aparência plausível, recurso que a FGV usa para ocupar a primeira posição da lista.",
+   "1": "A filtragem de conteúdo examina a mensagem já entregue — palavras, cabeçalhos, escore bayesiano — para classificá-la como spam. Atua depois da coleta e nada faz para proteger o endereço divulgado.",
+   "2": "Shaping é controle de tráfego: limita banda, prioriza ou atrasa fluxos. Regula o transporte da mensagem, não o formato do endereço.",
+   "3": "Greylisting rejeita temporariamente a primeira tentativa de entrega e aceita a retentativa, apostando que o spammer não retenta. É defesa no servidor receptor, não descaracterização do endereço."
+  },
   "fonte": "FGV cprm-ads Q31",
   "requer_imagem": false,
   "anulada": false
@@ -4033,8 +4100,13 @@
    "O tempo de retrocesso aumenta linearmente a cada colisão, somando valores fixos ao atraso médio."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Depois da k-ésima colisão a estação sorteia um atraso no intervalo de 0 a 2^k−1 slots: a janela dobra a cada colisão, espalhando as estações proporcionalmente à carga real do meio. O crescimento é truncado (a janela para de dobrar por volta da décima colisão e a estação desiste após a 16ª).",
+  "erradas": {
+   "0": "Desistir na segunda colisão anularia a própria função adaptativa do algoritmo; o padrão só relata erro depois de 16 tentativas frustradas.",
+   "1": "Espera fixa faria as estações que colidiram voltar a transmitir no mesmo instante — colidindo de novo. É a aleatoriedade do sorteio que quebra a sincronia.",
+   "3": "Nenhum backoff garante ausência de colisão: o mecanismo é probabilístico, reduz a chance, não a elimina. O absoluto \"garante que não haverá mais\" já derruba o item, e o detalhe do 10BASE5 só serve de fumaça.",
+   "4": "Somar valores fixos é crescimento linear; aqui a janela dobra, ou seja, cresce exponencialmente. Trocar o tipo de progressão é a pegadinha mais comum do tema."
+  },
   "fonte": "FGV cprm-ads Q32",
   "requer_imagem": false,
   "anulada": false
@@ -4052,11 +4124,19 @@
    "Transporte – Protocolo UDP (User Datagram Protocol)."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O UDP é, ao lado do TCP, um dos dois protocolos de transporte do TCP/IP — entrega datagramas sem conexão nem garantia. É o único par camada↔protocolo coerente da lista.",
+  "erradas": {
+   "0": "O RSVP sinaliza reserva de recursos ao longo do caminho (modelo IntServ) e roda diretamente sobre IP, no plano de controle da camada de rede.",
+   "1": "O IPv6 é o protocolo da camada de rede/inter-rede — é justamente a nova versão do IP. Na camada de enlace vivem Ethernet, PPP e afins.",
+   "2": "OSPF é protocolo de roteamento: trafega encapsulado em IP e pertence à camada de rede. A camada física trata de sinal, codificação e meio de transmissão, e não de protocolos.",
+   "3": "Inversão clássica de par: o TCP é o transporte, e quem ocupa a camada de rede (Internet) é o IP. A banca gosta de trocar as duas de lugar num único item."
+  },
   "fonte": "FGV cprm-ads Q33",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-osi-tcpip"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4071,11 +4151,19 @@
    "RAID 4"
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "RAID 1 é espelhamento puro: cada disco guarda a cópia integral dos dados, sem repartir o dado entre membros do conjunto. Todos os demais níveis da lista distribuem o dado em algum grão — bit, byte ou bloco.",
+  "erradas": {
+   "0": "RAID 0 é o striping em estado puro: fatia os dados em blocos entre os discos, ganha desempenho e não oferece redundância nenhuma. É o exemplo canônico da técnica, não a exceção.",
+   "2": "No RAID 2 o striping é em nível de bit, com código de Hamming gravado em discos de correção dedicados.",
+   "3": "O RAID 3 distribui em nível de byte e concentra a paridade num disco dedicado — continua havendo striping, muda só o grão.",
+   "4": "RAID 4 usa striping em blocos com paridade dedicada; o que o separa do RAID 5 é a distribuição da paridade, e não a presença do striping."
+  },
   "fonte": "FGV cprm-ads Q34",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "armazenamento-fisico"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4090,11 +4178,19 @@
    "lógica, reconstrói -se a lista de blocos livres, que não é um arquivo, desde o ponto de partida após o restauro de todas as cópias."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A cópia lógica percorre a árvore de diretórios e copia arquivos, não blocos. A lista de blocos livres não é um arquivo, portanto não entra na cópia: precisa ser reconstruída do zero depois que todas as cópias forem restauradas — é exatamente o ponto que Tanenbaum destaca ao contrastar as duas estratégias.",
+  "erradas": {
+   "0": "Quando os blocos defeituosos são visíveis ao sistema operacional, o programa de cópia física tem de evitá-los; copiá-los \"invariavelmente\" é o comportamento que o backup precisa impedir. O advérbio absoluto é o sinal.",
+   "1": "Pular diretórios escolhidos é vantagem da cópia lógica, que enxerga a estrutura de arquivos. A cópia física trabalha bloco a bloco e sequer sabe onde um diretório começa.",
+   "2": "Contradição interna: a cópia física copia todos os blocos precisamente porque ignora os metadados de arquivo. Quem parte dos metadados para decidir o que copiar é a cópia lógica.",
+   "3": "Arquivo ligado a n diretórios (hard links) é copiado uma única vez e tem os vínculos recriados no restauro; gravá-lo n vezes duplicaria dado e destruiria a identidade do link."
+  },
   "fonte": "FGV cprm-ads Q35",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "backup-recuperacao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4109,11 +4205,19 @@
    "utiliza, em seu algoritmo de decriptografia, a chave expandida em ordem reversa, não sendo idêntico ao algoritmo de criptografia."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Na decriptografia o AES consome as subchaves da chave expandida em ordem inversa e aplica as transformações inversas (InvSubBytes, InvShiftRows, InvMixColumns). Por isso o algoritmo de decriptografia não é idêntico ao de criptografia — a simetria do AES está na chave, não na estrutura das duas rotinas.",
+  "erradas": {
+   "0": "Os quatro estágios existem, mas só o AddRoundKey usa a chave; SubBytes, ShiftRows e MixColumns são transformações fixas, que dão confusão e difusão sem introduzir segredo. Atribuir o uso da chave aos quatro é o erro.",
+   "1": "O AES é uma rede de substituição-permutação (SPN); a estrutura de Feistel é a do DES. Trocar a estrutura de um pelo outro é a inversão de par mais frequente no assunto — a primeira metade da frase está certa e a segunda derruba o item.",
+   "2": "Essa é a descrição da cifra inversa equivalente, uma reformulação opcional do AES obtida ao reordenar transformações e ajustar o escalonamento. Na formulação padrão, cobrada aqui, a cifra de decriptografia não coincide com a de criptografia.",
+   "3": "Troca de número: 128, 192 e 256 bits são os tamanhos de chave admitidos; o bloco do AES é sempre de 128 bits."
+  },
   "fonte": "FGV cprm-ads Q36",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "criptografia"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4128,8 +4232,13 @@
    "Variação temporal."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "As quatro características canônicas do data warehouse, na definição de Inmon, são orientação por assunto, integração, não volatilidade (persistência) e variação temporal. Compatibilidade com OLTP é justamente o que ele não busca: o DW é separado do ambiente transacional para não competir com ele e para servir consulta analítica pesada.",
+  "erradas": {
+   "1": "Integração é característica central: as fontes heterogêneas são consolidadas com padronização de nomes, unidades e codificações antes da carga.",
+   "2": "Orientação por assunto é o traço que separa o DW do sistema operacional — os dados se organizam por tema de negócio (vendas, cliente), não por aplicação que os produziu.",
+   "3": "Persistência é a não volatilidade: o dado carregado não é atualizado nem apagado no dia a dia, apenas acrescentado, preservando a foto histórica.",
+   "4": "Variação temporal é a marca do DW: ele guarda séries com referência de tempo, enquanto o OLTP mantém apenas o estado corrente."
+  },
   "fonte": "FGV cprm-ads Q37",
   "requer_imagem": false,
   "anulada": false
@@ -4147,8 +4256,13 @@
    "dados anonimizados e dados pessoais sensíveis são tratados pela LGPD como categorias equivalentes."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "O art. 12 da LGPD é literal: dados anonimizados não são considerados dados pessoais, salvo quando a anonimização for revertida por meios exclusivamente próprios ou puder ser revertida com esforços razoáveis. A reversibilidade é o gatilho que devolve o dado ao regime da lei.",
+  "erradas": {
+   "0": "A lei não amarra anonimização a técnica alguma: o art. 5º, XI fala em meios técnicos razoáveis e disponíveis no momento do tratamento, pelos quais o dado perde a possibilidade de associação a um indivíduo. Aliás, criptografia reversível por chave é pseudonimização (art. 13, §4º), não anonimização.",
+   "1": "Não existe na LGPD delegação à ANPD para listar dados sensíveis que devam ser anonimizados: o dado sensível está definido no art. 5º, II, e seu tratamento se rege pelas hipóteses do art. 11.",
+   "3": "Inverte o art. 4º, III: tratamento para fins exclusivos de segurança pública, defesa nacional e investigação ou repressão penal está expressamente fora do alcance da LGPD, reservado a lei específica.",
+   "4": "São categorias opostas. O dado sensível é dado pessoal com proteção reforçada; o anonimizado, em regra, deixa de ser dado pessoal."
+  },
   "fonte": "FGV cprm-ads Q38",
   "requer_imagem": false,
   "anulada": false
@@ -4166,8 +4280,13 @@
    "responder pelas áreas que possuem a titularidade das informações."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Na taxonomia de papéis da governança de dados, o criador (ou produtor) está na origem do dado: é quem gera e insere a informação nas aplicações que a armazenam, e por isso responde pela qualidade no momento da entrada.",
+  "erradas": {
+   "1": "Empregar o dado, direta ou indiretamente, para atingir um objetivo descreve o usuário ou consumidor de dados — quem está na ponta de saída, não na de entrada.",
+   "2": "Definir, implementar e avaliar continuamente os mecanismos de controle é atribuição do gestor da governança (o comitê ou escritório de governança de dados).",
+   "3": "Preservar e fornecer a informação conforme as normas fixadas pelos gestores é o papel do custodiante, tipicamente exercido pela área de TI.",
+   "4": "Responder pela área que detém a titularidade da informação é papel do proprietário do dado (data owner), a quem cabe autorizar acesso e definir regras de uso."
+  },
   "fonte": "FGV cprm-ads Q39",
   "requer_imagem": false,
   "anulada": false
@@ -4185,8 +4304,13 @@
    "UDP storm envia fragmentos IP grandes e malformados à vítima usando o comando ping, causando estouro na remontagem de fragmentos IP."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O Teardrop monta fragmentos IP com campos de deslocamento inconsistentes, que se sobrepõem; pilhas antigas travavam ao tentar remontá-los. É o único item em que a descrição corresponde ao ataque nomeado — nos outros quatro a banca embaralhou as definições em cadeia.",
+  "erradas": {
+   "0": "Enviar SYN sem completar o handshake e encher a fila de conexões semiabertas é o SYN flood. O Ping of Death usa um pacote ICMP cujo tamanho remontado ultrapassa os 65.535 bytes.",
+   "1": "ICMP com origem forjada disparado em broadcast, gerando avalanche de respostas, descreve o Smurf. O Slowloris faz o oposto: abre muitas conexões HTTP e as mantém vivas com requisições propositalmente incompletas.",
+   "2": "Inundar o servidor com GET e POST na camada de aplicação é HTTP flood; o Smurf opera na camada de rede, com ICMP e amplificação por broadcast.",
+   "4": "Pacote ping malformado e gigante estourando a remontagem é a assinatura do Ping of Death. O UDP storm consiste em inundar portas com datagramas UDP até saturar o alvo."
+  },
   "fonte": "FGV cprm-ads Q40",
   "requer_imagem": false,
   "anulada": false
@@ -4204,8 +4328,13 @@
    "Spear phishing"
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O que separa o spear phishing do phishing comum é o direcionamento: mensagem personalizada, com dados reais do alvo, dirigida a uma pessoa ou grupo restrito para elevar a credibilidade. O vetor é engenharia social — convencer a vítima a agir —, não interceptação técnica.",
+  "erradas": {
+   "0": "No MitM o atacante se interpõe no canal para ler ou alterar o tráfego entre as partes; não depende de persuadir ninguém a clicar em coisa alguma.",
+   "1": "O replay reaproveita uma mensagem legítima já capturada — um token de autenticação, por exemplo — para se passar pelo usuário. Não há mensagem falsa nova, e sim reenvio da verdadeira.",
+   "2": "Session hijacking assume uma sessão já autenticada, tipicamente sequestrando o identificador de sessão. O alvo é a sessão em curso, não a confiança da pessoa.",
+   "3": "Spam é envio massivo e indiscriminado, o oposto do \"direcionado e personalizado\" do enunciado. É a quase certa que erra justamente no critério que o comando destaca."
+  },
   "fonte": "FGV cprm-ads Q41",
   "requer_imagem": false,
   "anulada": false
@@ -4223,8 +4352,13 @@
    "Volume"
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Os três Vs originais formulados por Doug Laney são volume, velocidade e variedade; a literatura posterior acrescentou veracidade e valor, entre outros. \"Viabilidade\" não pertence à lista consagrada — é o termo de aparência técnica fabricado para preencher a alternativa.",
+  "erradas": {
+   "0": "Variedade responde pela heterogeneidade dos formatos — estruturado, semiestruturado e não estruturado convivendo na mesma base. É um dos três originais.",
+   "1": "Velocidade cobre a taxa de geração e a exigência de processar o dado em fluxo, quase em tempo real; também está entre os três primeiros.",
+   "2": "Veracidade trata da confiabilidade e da incerteza do dado, e é o quarto V mais citado depois da tríade original.",
+   "4": "Volume é a escala dos dados, o V que abre a lista e o que primeiro inviabiliza as ferramentas tradicionais."
+  },
   "fonte": "FGV cprm-ads Q42",
   "requer_imagem": false,
   "anulada": false
@@ -4242,11 +4376,19 @@
    "top down."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Quando o DW passa a cobrir mais de um processo de negócio, surgem várias tabelas fato que reaproveitam as mesmas dimensões conformadas — esse arranjo é o esquema galáxia, também chamado de constelação de fatos.",
+  "erradas": {
+   "0": "Drill across é a operação de consultar dois fatos por meio das dimensões que eles têm em comum; depende do esquema galáxia, mas é operação analítica, não nome de esquema.",
+   "1": "No esquema estrela há uma única tabela fato ao centro, cercada de dimensões desnormalizadas — é o caso particular de um só processo de negócio.",
+   "2": "O floco de neve é a estrela com as dimensões normalizadas em hierarquias de tabelas; o que muda é a normalização da dimensão, não o número de fatos.",
+   "4": "Top-down é a abordagem de construção do DW (o corporativo primeiro, os data marts depois, na linha de Inmon), e não um esquema de modelagem."
+  },
   "fonte": "FGV cprm-ads Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4261,11 +4403,19 @@
    "revela-se inadequado para embasar análises temporais por sua característica bidimensional e detecção de desvios de dados (data drift)."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O dashboard é a camada de apresentação, e incorporar operações OLAP é o que o converte de painel estático em instrumento exploratório: drill-down desce ao nível de detalhe, roll-up agrega de volta na hierarquia da dimensão.",
+  "erradas": {
+   "0": "Erro de camada: o dashboard consome o dado já carregado. Transformar e preparar antes da carga é a etapa T do ETL, que acontece bem a montante da visualização.",
+   "1": "Dashboards leem o data warehouse ou o data mart já modelado, não o dado bruto do transacional — e a alternativa ainda cola \"sistema transacional\" em \"floco de neve\", que é modelagem analítica.",
+   "2": "A prioridade está invertida: privilegia-se a medida que comunica o significado com clareza, mesmo que menos precisa, e não o contrário. A troca dos dois lados da comparação é o mecanismo do item.",
+   "4": "O dashboard é ferramenta natural para análise temporal — linha do tempo, comparação com período anterior, detecção de desvio. Deduzir inadequação de uma suposta \"característica bidimensional\" é extrapolação sem apoio."
+  },
   "fonte": "FGV cprm-ads Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ssd-dss"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4280,11 +4430,19 @@
    "a robótica."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O Teste de Turing original é conversacional: exige processamento de linguagem natural, representação de conhecimento, raciocínio automatizado e aprendizado de máquina. O Teste de Turing Total acrescenta o sinal de vídeo e a passagem de objetos físicos ao avaliador, o que só se resolve com visão computacional e robótica — a robótica é a capacidade que não aparece na versão original.",
+  "erradas": {
+   "0": "Aprendizado de máquina já é uma das capacidades exigidas pelo teste original, para que a máquina se adapte a novos padrões durante a conversa.",
+   "1": "Processamento de linguagem natural é a exigência mais óbvia da versão original — sem ele não há sequer diálogo com o interrogador.",
+   "2": "Raciocínio automatizado consta da lista original: usar a informação armazenada para responder perguntas e tirar conclusões novas.",
+   "3": "Representação de conhecimento também é requisito do teste original, pois a máquina precisa armazenar o que sabe antes e durante a conversa."
+  },
   "fonte": "FGV cprm-ads Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fundamentos-ia"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4299,11 +4457,19 @@
    "radix sort."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O merge sort parte o vetor ao meio recursivamente (log n níveis) e funde as metades em tempo linear a cada nível, o que dá O(n log n) no melhor, no médio e no pior caso — desempenho independente da distribuição da entrada, que é o que o torna a resposta segura aqui.",
+  "erradas": {
+   "0": "Bucket sort com insertion sort dentro dos baldes roda em O(n) no caso médio quando a distribuição é uniforme — a própria hipótese que o item enuncia é o que derruba a alternativa.",
+   "1": "Counting sort é linear, O(n + k): conta ocorrências de chaves inteiras num intervalo conhecido em vez de comparar elementos entre si.",
+   "2": "O insertion sort tem caso médio quadrático, O(n²); o O(n) dele aparece só no melhor caso, com a entrada já ordenada.",
+   "4": "Radix sort ordena dígito a dígito com uma passada estável por posição, O(d·(n + k)) — linear quando o número de dígitos e a base são limitados."
+  },
   "fonte": "FGV cprm-ads Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4318,11 +4484,19 @@
    "Integridade referencial."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Restrição implícita (ou inerente ao modelo) é a que decorre da própria definição de relação e por isso nem precisa ser declarada: os valores dos atributos são atômicos e a relação não admite tuplas repetidas. As demais nascem do esquema, escritas na DDL.",
+  "erradas": {
+   "0": "Assertions ficam no extremo oposto da classificação: são regras de negócio que a DDL comum não expressa, declaradas em comando à parte — restrição semântica, não inerente.",
+   "2": "A integridade de domínio é declarada quando se define o tipo do atributo; sem escrevê-la no esquema, ela não existe.",
+   "3": "A integridade de entidade (chave primária não nula) também é baseada no esquema — depende de o projetista declarar a chave.",
+   "4": "A integridade referencial nasce da FOREIGN KEY entre dois esquemas de relação; nada no modelo a impõe sozinha, é preciso declará-la."
+  },
   "fonte": "FGV cprm-ads Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4337,11 +4511,19 @@
    "secundário."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Atributo principal (ou primo) é o que participa de alguma chave candidata — a superchave mínima do enunciado. Os que ficam fora de todas elas são os não principais, e a distinção é exatamente o que sustenta as definições de 2FN e 3FN.",
+  "erradas": {
+   "0": "Atômico qualifica o valor do atributo, indivisível por exigência da 1FN; nada diz sobre pertencer ou não a uma chave.",
+   "1": "\"Atributo funcional\" não nomeia classe alguma — funcional é a dependência entre atributos, não o atributo.",
+   "2": "Multivalorado é o atributo que admite um conjunto de valores para a mesma entidade, situação vedada na 1FN e resolvida com nova relação.",
+   "4": "Secundário é o rótulo intuitivo para o que fica fora das chaves candidatas — ou seja, o oposto do que se pede. É a quase certa que aposta na inversão do par."
+  },
   "fonte": "FGV cprm-ads Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "normalizacao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4356,11 +4538,19 @@
    "Utilizar índices de agrupamento ( clustering indexes ) em atributos envolvidos em junções para favorecer a eficiência do plano de execução."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "Visão não é estrutura de armazenamento nem plano pré-otimizado: na execução o SGBD normalmente expande a definição da view dentro da consulta, de modo que trocar as tabelas base por ela não traz ganho e pode piorar, ao materializar um resultado intermediário maior que o necessário. View serve para simplificar e controlar acesso; desempenho vem de índice e de reescrita.",
+  "erradas": {
+   "1": "É recomendação legítima de tuning: se o SELECT lista uma superchave, duplicatas são impossíveis e o DISTINCT só acrescenta uma ordenação ou hash inútil.",
+   "2": "Subconsulta correlacionada é reavaliada a cada tupla da consulta externa; materializá-la uma única vez com GROUP BY numa relação temporária elimina as varreduras repetidas — reescrita clássica.",
+   "3": "Quando o OR impede o otimizador de usar índice, quebrar a consulta em duas partes indexáveis unidas por UNION costuma reabilitar o acesso por índice.",
+   "4": "Índice de agrupamento no atributo de junção deixa fisicamente vizinhas as tuplas de mesmo valor, o que reduz leitura e favorece o plano — é boa prática, não sobrecarga."
+  },
   "fonte": "FGV cprm-ads Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4394,11 +4584,19 @@
    "O Android é baseado no núcleo do sistema operacional Windows 11."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo: procura-se a única falsa. O Android roda sobre um núcleo Linux modificado — nada de Windows. As outras quatro afirmações são verdadeiras e existem para tentar quem lê no automático.",
+  "erradas": {
+   "0": "Verdadeira: o UNIX nasceu interativo, multiusuário e multitarefa — é o traço que o distinguiu dos sistemas em lote da mesma época.",
+   "1": "Verdadeira: a linha Windows passou por rupturas técnicas profundas (MS-DOS com interface gráfica, família 9x, linha NT), a ponto de versões sucessivas terem pouco em comum internamente.",
+   "2": "Verdadeira: o Linux nasceu inspirado num clone do UNIX e cresceu acrescentando funcionalidades, mantendo compatibilidade razoável com a interface UNIX (POSIX).",
+   "3": "Verdadeira: é a dupla visão clássica de Tanenbaum — o SO como máquina estendida, que abstrai o hardware para o programador, e como gerenciador dos recursos disputados pelos processos."
+  },
   "fonte": "FGV cprm-ads Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4413,8 +4611,13 @@
    "programas que rodam na arquitetura J2EE apesar de restringir a escalabilidade das aplicações."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O que define uma aplicação web é executar lógica de negócio a partir de requisições do cliente — há processamento sob demanda, e não apenas entrega de arquivo pronto. Plataforma, número de camadas e protocolo são detalhes de implementação, não a definição.",
+  "erradas": {
+   "0": "Servir só conteúdo estático caracteriza um site: sem lógica executada por requisição, não há aplicação. O \"unicamente\" já entrega o exagero.",
+   "2": "CGI é uma das formas antigas de invocar programas no servidor, e escalabilidade é justamente seu ponto fraco (um processo por requisição). O \"exclusivamente\" ainda excluiria servlets, PHP e todo o resto.",
+   "3": "Aplicações web não estão presas a duas camadas, e a divisão em camadas lógicas é independente de o sistema ser monolítico ou distribuído — a alternativa funde dois conceitos distintos.",
+   "4": "JEE é uma das plataformas possíveis, não a única, e foi projetada para escalar em cluster; a alternativa erra na exclusividade e depois inverte o efeito."
+  },
   "fonte": "FGV cprm-ads Q52",
   "requer_imagem": false,
   "anulada": false
@@ -4432,11 +4635,19 @@
    "3 – 1 – 4 – 2."
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A sequência 2–1–4–3 sai de quatro palavras-chave: modular e open-source com Jakarta EE completo é o WildFly; implementar oficialmente Servlet, EL e WebSocket (e só isso) é o recorte do Tomcat; \"células\" (cells) é vocabulário exclusivo da administração do WebSphere; implementação de referência do Jakarta EE sob a Eclipse Foundation é o GlassFish.",
+  "erradas": {
+   "1": "Põe o GlassFish como o modular open-source e joga o Tomcat na descrição de células — mas cell é conceito de topologia administrativa da IBM, e não existe fora do WebSphere.",
+   "2": "Começa apresentando o WebSphere como open-source, o que o próprio enunciado desmente, e ainda transforma o Tomcat em servidor de cluster corporativo.",
+   "3": "Acerta as pontas (WildFly e GlassFish) e inverte o miolo: atribui ao WebSphere as especificações Servlet/EL/WebSocket, que são exatamente o núcleo do Tomcat, e ao Tomcat os recursos de célula.",
+   "4": "Erra as duas pontas: o modular open-source é o WildFly, não o GlassFish, e a implementação de referência é o GlassFish, não o WildFly."
+  },
   "fonte": "FGV cprm-ads Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "java-ee-web"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4451,11 +4662,19 @@
    "o método \"service\" da JSP nunca precisa ser implementado ou personalizado."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo. No Model 2 a JSP é a camada de visão, responsável pela apresentação; acesso a banco pertence ao modelo (DAO, EJB, repositório). O \"sempre\" já sinaliza a generalização indevida que a FGV planta em item incorreto.",
+  "erradas": {
+   "0": "Correta: servlet no papel de controlador, recebendo a requisição e despachando para o modelo e depois para a visão, é o arranjo padrão do MVC em JEE.",
+   "2": "Correta: o contêiner traduz a JSP em uma servlet, compila essa servlet e a executa — é o ciclo de vida clássico da tecnologia.",
+   "3": "Correta na leitura da banca: a inicialização (jspInit) pertence ao ciclo da servlet já gerada, ou seja, só ocorre depois de a página ter sido traduzida e a servlet resultante posta em execução pelo contêiner.",
+   "4": "Correta: o _jspService é gerado automaticamente pelo contêiner a partir do conteúdo da página e não deve ser sobrescrito pelo desenvolvedor."
+  },
   "fonte": "FGV cprm-ads Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "java-ee-web"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4470,11 +4689,19 @@
    "Consistente – Manter apresentação uniforme entre páginas."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "O WCAG se organiza em quatro princípios, o acrônimo POUR: perceptível, operável, compreensível e robusto. Consistência é boa prática de usabilidade e aparece como critério dentro de \"compreensível\" (navegação consistente, identificação consistente), mas não é um dos princípios.",
+  "erradas": {
+   "0": "Perceptível é o primeiro princípio: informação e componentes têm de ser apresentados de forma que o usuário consiga percebê-los, o que justifica texto alternativo, legenda e contraste.",
+   "1": "Operável é o segundo: toda a interface tem de ser utilizável, incluindo navegação só por teclado e tempo suficiente para interagir.",
+   "2": "Compreensível é o terceiro: conteúdo legível, comportamento previsível e ajuda na entrada de dados.",
+   "3": "Robusto é o quarto: o conteúdo precisa continuar interpretável por agentes de usuário variados, tecnologias assistivas incluídas — é o princípio que sustenta a exigência de marcação válida."
+  },
   "fonte": "FGV cprm-ads Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ux-acessibilidade"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4489,11 +4716,19 @@
    "A Arquitetura Orientada a Serviços possui padrões proprietários definidos pelos seus respectivos provedores de serviços de forma a garantir a segurança."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "O acoplamento fraco é o princípio que dá independência ao SOA: o consumidor conhece apenas o contrato do serviço, não sua implementação, sua linguagem ou sua localização — por isso um serviço pode ser trocado sem que os demais sejam alterados.",
+  "erradas": {
+   "0": "WSDL é XML, não JSON, e descreve o contrato do serviço (operações, tipos, binding, endereço) — não é formato de transporte de dados.",
+   "1": "UDDI é o registro onde os serviços são publicados e descobertos, uma espécie de catálogo; quem transporta os dados da chamada é a mensagem SOAP.",
+   "2": "Os três elementos estão corretos, mas o fecho inverte os papéis: os dados vão no Corpo (Body), e o Envelope é o invólucro que contém cabeçalho e corpo. Alternativa que acerta a primeira metade e erra o detalhe final.",
+   "4": "SOA se sustenta em padrões abertos — XML, WSDL, SOAP, WS-Security. Padrão proprietário por provedor seria o oposto da interoperabilidade que a arquitetura persegue."
+  },
   "fonte": "FGV cprm-ads Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4508,11 +4743,19 @@
    "O comando JAVA Cl ass.forName carrega e registra o controlador JDBC."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo, e o item falso empilha dois erros: servlet é o controlador do MVC, não a visão, e recuperar dados \"exclusivamente\" via driver JDBC tipo 1 — a antiga ponte JDBC-ODBC, hoje removida — não descreve prática alguma. Quando a FGV soma um absoluto a uma troca de papel, é quase sempre nesse item que está a resposta.",
+  "erradas": {
+   "0": "Correta: o JDBC é exatamente a camada de abstração que uniformiza o acesso da aplicação Java a SGBDs relacionais diferentes, delegando o específico ao driver.",
+   "1": "Correta: o driver tipo 1 depende de software cliente instalado na máquina (a ponte ODBC), enquanto o tipo 4, escrito totalmente em Java, é portátil e pode ser distribuído pela rede.",
+   "3": "Correta: no MVC em Java as classes de modelo ficam entre o controlador e a fonte de dados, encapsulando o acesso feito via JDBC.",
+   "4": "Correta: Class.forName carrega a classe do driver, que se registra no DriverManager. O registro automático existe desde o JDBC 4.0, mas o comando continua fazendo o que a alternativa descreve."
+  },
   "fonte": "FGV cprm-ads Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "java-ee-web"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4527,11 +4770,19 @@
    "representação gráfica do caso de uso."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "Precondição é o estado que se assume verdadeiro antes de o caso de uso começar — usuário autenticado, caixa aberto, pedido já registrado. Ela delimita o ponto de partida do fluxo, sem descrever o que dispara nem o que resulta do caso de uso.",
+  "erradas": {
+   "0": "Objetivo no contexto é o propósito do caso de uso e o valor que ele entrega ao ator; é outra seção do modelo formal, e responde \"para quê\", não \"a partir de quê\".",
+   "2": "O que dispara o caso de uso é o evento gatilho (trigger). Ele vem depois de a precondição já valer, e é acontecimento, não condição.",
+   "3": "A lista de ações do ator e respostas do sistema é o cenário principal ou fluxo básico, o corpo do caso de uso.",
+   "4": "Representação gráfica é o diagrama de casos de uso da UML — visão geral de atores e casos, que não substitui o texto formal onde a precondição é declarada."
+  },
   "fonte": "FGV cprm-ads Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "casos-uso"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4546,8 +4797,13 @@
    "o recurso GeoRaster do Oracle Spatial, já habilitado no Oracle Spatial."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Ilhas são polígonos e boias são pontos: o objeto precisa comportar tipos geométricos diferentes ao mesmo tempo, ou seja, uma coleção heterogênea (no Oracle Spatial, SDO_GTYPE terminado em 4, COLLECTION). É a heterogeneidade que o comando cobra — geometrias homogêneas como MULTIPOLYGON só admitem um tipo repetido.",
+  "erradas": {
+   "0": "Índice R-tree é estrutura de acesso, e a pergunta é sobre como modelar o objeto; além disso, indexar não resolve a convivência de pontos e polígonos na mesma geometria.",
+   "1": "Geometria homogênea aceita um único tipo — só polígonos ou só pontos. Precisamente o que não serve para ilhas e boias juntas.",
+   "3": "Geocodificação converte endereço em coordenada; aqui as coordenadas já existem, e o problema é de estrutura do objeto, não de obtenção do par latitude/longitude.",
+   "4": "GeoRaster trata de imagem matricial (satélite, mapas rasterizados); ilhas e boias são feições vetoriais."
+  },
   "fonte": "FGV cprm-ads Q59",
   "requer_imagem": false,
   "anulada": false
@@ -4565,11 +4821,19 @@
    "políticas de autenticação e autorização."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "As dez cláusulas da ISO/IEC 27001 seguem a estrutura de alto nível comum às normas de sistema de gestão: escopo, referências normativas, termos e definições, contexto da organização, liderança, planejamento, apoio, operação, avaliação de desempenho e melhoria. Política de autenticação e autorização é assunto do Anexo A (controles de acesso), outra camada da norma.",
+  "erradas": {
+   "0": "Contexto da organização é a cláusula 4 — a que exige entender partes interessadas e definir o escopo do SGSI.",
+   "1": "Liderança é a cláusula 5, com o comprometimento da alta direção, a política de segurança e a atribuição de papéis.",
+   "2": "Avaliação de desempenho é a cláusula 9: monitoramento, medição, auditoria interna e análise crítica pela direção.",
+   "3": "Suporte (ou apoio) é a cláusula 7, que trata de recursos, competência, conscientização, comunicação e informação documentada."
+  },
   "fonte": "FGV cprm-ads Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "iso-27001-27002"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4584,8 +4848,13 @@
    "Um rabbit (coelho) é um malware cujo objetivo principal é capturar credenciais e transmitir dados do usuário."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O traço que define o worm é a autopropagação pela rede: ele explora um serviço vulnerável e se copia para o próximo host sem hospedeiro e sem ação do usuário. Os outros quatro itens montam um carrossel — cada malware recebe a definição do vizinho.",
+  "erradas": {
+   "0": "Propagar-se sozinho pela rede é característica do worm. Spyware é software de monitoramento: observa a atividade e envia o que coletou ao atacante, sem necessidade de se espalhar.",
+   "2": "O cavalo de Troia se disfarça de programa legítimo para que a própria vítima o execute, e não se autorreplica. Replicação descontrolada até esgotar recursos é o comportamento do rabbit.",
+   "3": "Backdoor é o canal de acesso remoto deixado no sistema, que contorna a autenticação normal; varrer a rede e se replicar, de novo, é ofício do worm.",
+   "4": "Capturar credenciais e exfiltrar dados do usuário descreve spyware/keylogger. O rabbit se reproduz até consumir CPU, memória ou disco — é ataque à disponibilidade, não à confidencialidade."
+  },
   "fonte": "FGV cprm-ads Q61",
   "requer_imagem": false,
   "anulada": false
@@ -4603,11 +4872,19 @@
    "software em funcionamento mais que documentação abrangente."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "O Manifesto Ágil tem quatro valores: indivíduos e interações acima de processos e ferramentas; software em funcionamento acima de documentação abrangente; colaboração com o cliente acima de negociação de contratos; responder a mudanças acima de seguir um plano. Qualidade contra prazo é máxima plausível de gestão, mas não está no texto — e é assim que a banca costuma montar o quinto item.",
+  "erradas": {
+   "0": "É o primeiro valor do Manifesto: o processo e a ferramenta apoiam as pessoas, não o contrário.",
+   "2": "É o terceiro valor: o cliente participa do desenvolvimento em vez de ser tratado como contraparte contratual.",
+   "3": "É o quarto valor, o que dá o caráter adaptativo ao método — a mudança é aceita mesmo tarde no projeto.",
+   "4": "É o segundo valor: entregar software que funciona vale mais do que produzir documentação exaustiva, embora nenhum dos itens da direita seja descartado."
+  },
   "fonte": "FGV cprm-ads Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4622,11 +4899,19 @@
    "comportamentais."
   ],
   "ans": 3,
-  "why": "",
-  "erradas": {},
+  "why": "Na classificação de Pressman, o modelo orientado a fluxos é o que mostra os elementos funcionais e a transformação sofrida pelos dados ao percorrerem o sistema — o DFD é seu representante clássico. A palavra-chave do enunciado é \"transformam os dados\".",
+  "erradas": {
+   "0": "Modelos baseados em cenários descrevem o sistema do ponto de vista de quem o usa: casos de uso, diagramas de atividade e de raias.",
+   "1": "O modelo de dados representa o domínio de informação — entidades, atributos e relacionamentos —, isto é, a estrutura do dado parado, não sua transformação.",
+   "2": "Modelos orientados a classes definem classes, atributos, operações e colaborações; organizam a responsabilidade, não o fluxo.",
+   "4": "Modelos comportamentais mostram como o sistema reage a eventos externos e muda de estado, terreno do diagrama de estados."
+  },
   "fonte": "FGV cprm-ads Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4641,11 +4926,19 @@
    "As regras de negócio devem ser testadas sem a utilização do Front End da aplicação."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo. No capítulo sobre o limite dos testes, Martin sustenta que os testes apoiam o desenvolvimento, e não a operação: eles não são implantados junto com o sistema. Incluir \"e a operação\" é a extrapolação que torna o item falso.",
+  "erradas": {
+   "0": "Correta: para Martin a testabilidade é atributo de projeto — arquitetura que não permite testar as regras de negócio isoladamente já está mal desenhada.",
+   "1": "Correta e é a aplicação direta da Regra da Dependência: os testes ocupam o círculo mais externo, dependem dos componentes internos e nada do sistema depende deles.",
+   "3": "Correta: o problema dos testes frágeis surge do acoplamento forte entre teste e detalhe de implementação, quando mudar um botão ou um texto quebra centenas de casos.",
+   "4": "Correta: testar regra de negócio pela interface é o caminho para a fragilidade; daí a recomendação de uma API de teste que alcance as regras sem passar pelo Front End."
+  },
   "fonte": "FGV cprm-ads Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4660,11 +4953,19 @@
    "3 – 4 – 1 – 2 – 5"
   ],
   "ans": 0,
-  "why": "",
-  "erradas": {},
+  "why": "A sequência 3–4–2–1–5 sai da intenção de cada padrão do GoF: Singleton garante instância única com acesso controlado; Factory Method define a interface de criação e deixa a subclasse escolher a classe concreta; Strategy encapsula famílias de algoritmos intercambiáveis em tempo de execução; Observer notifica os dependentes quando o sujeito muda de estado; Decorator acrescenta responsabilidades dinamicamente, por composição, sem tocar a classe original.",
+  "erradas": {
+   "1": "Inverte dois pares de uma vez: dá ao Singleton a descrição do Factory Method e ao Strategy a do Observer, embaralhando criacionais com comportamentais.",
+   "2": "Acerta Singleton, Observer e Decorator, mas troca Factory Method por Strategy no meio — a distinção é que o Factory Method decide qual objeto criar (criacional) e o Strategy troca o algoritmo usado (comportamental).",
+   "3": "Abre atribuindo ao Singleton a descrição do Decorator, o oposto de \"instância única com ponto de acesso controlado\", e ainda deixa o Decorator com a descrição do Singleton.",
+   "4": "É a quase certa: só inverte Strategy e Observer no miolo. Escolher algoritmo em tempo de execução é Strategy; notificar dependentes na mudança de estado é Observer."
+  },
   "fonte": "FGV cprm-ads Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "padroes-projeto"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4679,11 +4980,19 @@
    "I e II, somente."
   ],
   "ans": 4,
-  "why": "",
-  "erradas": {},
+  "why": "A banca trabalha com a divisão em camadas descrita para microsserviços — hardware, comunicação, aplicação e microsserviços, a mesma que a Q67 cobra — e com a estrutura multicamada clássica do JEE (cliente, web, negócio e sistemas corporativos). A arquitetura centrada em dados se organiza em torno de um repositório central acessado por componentes independentes, e não em camadas empilhadas.",
+  "erradas": {
+   "0": "Mantém o JEE, que de fato é em camadas, mas inclui a centrada em dados, cujo princípio organizador é o repositório compartilhado (estilo repositório/blackboard), e ainda deixa os microsserviços de fora.",
+   "1": "Excluir o JEE é insustentável: o modelo em camadas é a própria descrição da plataforma, com camada cliente, camada web, camada de negócios e camada de sistemas de informação corporativos.",
+   "2": "Repete a exclusão dos microsserviços, cuja organização em camadas de hardware, comunicação, aplicação e serviços é o que a questão seguinte cobra explicitamente.",
+   "3": "Escolhe justamente o único estilo que não se estrutura em camadas e descarta os dois que se estruturam — inversão completa do conjunto."
+  },
   "fonte": "FGV cprm-ads Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4698,11 +5007,19 @@
    "arquitetura."
   ],
   "ans": 1,
-  "why": "",
-  "erradas": {},
+  "why": "A descoberta de serviços resolve o endereço de instâncias que sobem e descem o tempo todo; é infraestrutura de conversa entre serviços, ao lado de roteamento, balanceamento e gateway. Por isso mora na camada de comunicação, abaixo da lógica de negócio e acima do hardware.",
+  "erradas": {
+   "0": "A camada de hardware reúne os recursos físicos e a virtualização que hospedam os serviços — ela sustenta as instâncias, não as localiza.",
+   "2": "A camada de aplicação concentra a lógica de negócio e a composição dos serviços; ela consome o registro de serviços, mas não é onde a descoberta é implementada.",
+   "3": "A camada de microsserviços é a dos serviços de domínio propriamente ditos; o registro é serviço de infraestrutura, transversal a todos eles.",
+   "4": "\"Camada de arquitetura\" não nomeia camada alguma no modelo — é a opção fabricada com palavra de aparência técnica, recurso comum da banca para completar cinco alternativas."
+  },
   "fonte": "FGV cprm-ads Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4717,11 +5034,19 @@
    "A arquitetura de aplicativos do framework JEE pode ser dividida em múltiplos níveis físicos."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "Comando negativo. Em duas camadas físicas, o cliente que acumula apresentação e lógica de negócio é o fat client; se ficar restrito à apresentação, é thin client. A alternativa junta a definição de um com o nome do outro — inversão de par escondida no fecho da frase.",
+  "erradas": {
+   "0": "Correta: a arquitetura se divide em aspectos físicos (as máquinas, os tiers) e lógicos (apresentação, negócio e dados), e é na divisão lógica que a lógica de negócio é situada.",
+   "1": "Correta: no arranjo de três níveis físicos o banco fica em servidor próprio, separado do servidor de aplicação e da máquina do cliente.",
+   "3": "Correta: níveis físicos e divisões lógicas são independentes entre si — cada nível físico pode abrigar uma organização lógica distinta.",
+   "4": "Correta: aplicações JEE foram projetadas para se distribuir por múltiplos nós, com camadas cliente, web, de negócios e EIS em máquinas diferentes."
+  },
   "fonte": "FGV cprm-ads Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4736,11 +5061,19 @@
    "Melhoria contínua."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "No SVS da ITIL 4 a cadeia de valor de serviço é o modelo operacional central: seis atividades interconectadas (planejar, melhorar, engajar, desenhar e transicionar, obter/construir, entregar e apoiar) que convertem demanda em valor. \"Atividades interconectadas\" é a expressão que identifica o componente.",
+  "erradas": {
+   "0": "Princípios orientadores são as sete recomendações que guiam decisões em qualquer circunstância (foco no valor, comece onde você está, progrida iterativamente...), e não atividades executadas.",
+   "1": "Governança é o componente pelo qual o corpo diretivo dirige e controla a organização — avalia, direciona e monitora, sem produzir o serviço.",
+   "3": "Práticas são conjuntos de recursos organizacionais destinados a executar trabalho; alimentam as atividades da cadeia de valor, mas não são a sequência que entrega o serviço.",
+   "4": "Melhoria contínua é a atividade recorrente que atravessa todos os componentes do SVS — aperfeiçoa a cadeia, não a substitui."
+  },
   "fonte": "FGV cprm-ads Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4755,11 +5088,19 @@
    "I, somente."
   ],
   "ans": 2,
-  "why": "",
-  "erradas": {},
+  "why": "As três afirmativas reproduzem o PMBOK 6ª edição: projeto como esforço temporário para criar produto, serviço ou resultado único; valor de negócio quantificável como benefício que o projeto entrega; e a necessidade de estratégias de identificação e engajamento das partes interessadas, área de conhecimento própria do guia.",
+  "erradas": {
+   "0": "Descartar a III ignora que o gerenciamento das partes interessadas é uma das dez áreas de conhecimento, com processos formais de identificação, planejamento e monitoramento do engajamento.",
+   "1": "Excluir a I derruba justamente a definição canônica de projeto, a primeira frase conceitual do guia.",
+   "3": "Deixar a II de fora contraria a noção de valor de negócio do PMBOK: o benefício líquido quantificável obtido do empreendimento é exatamente o que o projeto se propõe a entregar.",
+   "4": "Reduzir tudo à definição de projeto é a leitura mais tímida possível — as outras duas afirmativas também reproduzem conteúdo explícito do guia."
+  },
   "fonte": "FGV cprm-ads Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pmbok"
+  ]
  },
  {
   "prova": "dataprev2024",
