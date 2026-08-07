@@ -117,7 +117,7 @@ ALE-RO ADS (63), ALE-RO BD (40), ALE-RO Redes (40), NAV Brasil Analista de
 Tecnologia (59) e Engenheiro de Software (30), NAV Brasil nível médio (45),
 CPRM ADS (70) e Pesquisador (5), EPE 2024 TI (51) e Receita Federal 2023 —
 Analista-Tributário (10) e Auditor-Fiscal (8) — todas FGV. Somando as duas
-fontes, são **1080 questões sorteáveis** pelo quiz, com gabarito auditado e
+fontes, são **1079 questões sorteáveis** pelo quiz, com gabarito auditado e
 **com a explicação de cada alternativa gravada** (a única exceção é a `nav-tec`
 Q58, que tem divergência de gabarito registrada). Roda offline, sem custo.
 

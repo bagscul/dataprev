@@ -13,7 +13,7 @@ Antes de qualquer coisa, rode `git status` e `./valida.py`.
 
 Números de referência (medidos em 07/08/2026, não precisa remedir):
 
-- `banco.json` 403 · `banco-provas.json` 700 · **1080 utilizáveis no quiz**
+- `banco.json` 403 · `banco-provas.json` 700 · **1079 utilizáveis no quiz**
 - **15 provas reais** importadas
 - `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§2)
 - **as 15 provas estão com explicação completa**; a Q58 é a única exceção
@@ -53,7 +53,7 @@ proporção do edital + 30 específicos):
 | inglês | **102** | 120 | +18 |
 | atualidades | 48 | 60 | +12 |
 | português | 129 | 120 | ok |
-| RLM | 65 | 50 | ok |
+| RLM | 64 | 50 | ok |
 | legislação | 68 | 50 | ok |
 | **todo o Módulo II** | — | — | **ok, déficit zero** |
 

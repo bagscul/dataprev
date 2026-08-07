@@ -52,7 +52,8 @@ e, por morar no parser e não no JSON, sobrevive à reimportação.
 
 Conferido por diff nas duas mudanças: 19 questões alteradas ao todo, `ans`,
 `why`, `erradas` e `sub` preservados, e o importador continua devolvendo o
-arquivo byte-idêntico.
+arquivo byte-idêntico. Com a Q17 fora do sorteio, o pool utilizável passa de
+1080 para **1079** (RLM: 65 → 64).
 
 ## 2026-08-07 — as 73 questões novas explicadas e o parser aprendendo a quinta e a sexta marca de texto-base
 

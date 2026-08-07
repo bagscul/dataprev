@@ -99,6 +99,12 @@ predominante).
   Específicos" do caderno — a mesma regra que trouxe a `nav-tec` Q33.
 - **50 depende de figura:** o `CREATE TABLE` das duas tabelas e a consulta SQL
   saíram do PDF como imagem. Fica fora do sorteio.
+- **17 também depende de figura**, e escapou da heurística: o enunciado diz "A
+  Figura **mostra** como 17 caixas cúbicas foram organizadas", e a lista de
+  dêixis do importador só previa o particípio ("mostrada"). Saiu do sorteio em
+  07/08/2026 por exceção declarada no `importar_provas.py`
+  (`DEPENDE_DE_FIGURA_MANUAL`) — a explicação continua gravada, com o caminho
+  que a questão pede: contar as 12 caixas visíveis e subtrair de 17.
 - **59** é de banco de dados geoespacial (Oracle Spatial), fora do edital da
   Dataprev — entra em `banco-dados` porque o mecanismo cobrado (modelar uma
   coleção heterogênea de geometrias) é de modelagem, mas não gere questão nova
