@@ -1,9 +1,9 @@
 # Continuar de onde paramos — 07/08/2026 (fim do dia)
 
-Arquivo de retomada. **Não há pendência aberta.** As quatro provas da busca da
-noite foram importadas *e* explicadas no mesmo dia, e o inglês quase fechou:
-falta 18 de 51. O que sobra é escolha de trabalho, não dívida. Leia na ordem:
-estado → o que fazer → o que já foi descartado.
+Arquivo de retomada. **Não há dívida técnica aberta** — as quatro provas da
+busca da noite foram importadas *e* explicadas no mesmo dia. O que sobra é
+trabalho de conteúdo, e o **§1 traz o prompt pronto** para atacá-lo. Leia na
+ordem: estado → prompt → detalhe de cada frente → ressalvas.
 
 ---
 
@@ -15,7 +15,7 @@ Números de referência (medidos em 07/08/2026, não precisa remedir):
 
 - `banco.json` 403 · `banco-provas.json` 700 · **1079 utilizáveis no quiz**
 - **15 provas reais** importadas
-- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§2)
+- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§3)
 - **as 15 provas estão com explicação completa**; a Q58 é a única exceção
 - `sub` (microtópico): **533 das 1103** questões dos dois bancos (48%)
 
@@ -43,7 +43,102 @@ Garantias que valem conhecer antes de mexer:
 
 ---
 
-## 1. O que fazer agora — falta pouco, e só de dois blocos
+## 1. O prompt da próxima conversa
+
+Quatro frentes, em ordem de retorno. **A frente A sozinha já enche uma
+conversa** (LaTeX + recompilação); se for fazer A e B no mesmo dia, comece
+conversa nova entre elas.
+
+### O prompt
+
+> Leia primeiro: este arquivo (`CONTINUAR-AQUI.md`) inteiro, o `CLAUDE.md` e,
+> conforme a frente, o `CONTRIBUINDO-QUESTOES.md` (frente B) ou o
+> `VERIFICAR-APOSTILA.md` (frente A). Rode `git status` e `./valida.py` antes
+> de mexer em qualquer coisa. Os números do §0 foram medidos em 07/08/2026 —
+> não precisa remedir.
+>
+> **FRENTE A — escrever a teoria que falta (maior retorno).** As 74 questões
+> importadas em 07/08 cobram três assuntos que **não existem em nenhuma das
+> quatro camadas** (apostila, `teoria/`, `resumo/`, `dicas/`). Hoje, se eu
+> errar essas questões, o quiz explica mas não há onde estudar. Verificado por
+> grep nas quatro camadas, não por suposição:
+>
+> 1. **Catálogo de ataques e de malware** — capítulo 07 (segurança). O
+>    capítulo se organiza por conceito (tríade, criptografia, TLS, controle de
+>    acesso, OWASP, X.800, riscos, continuidade, detecção) e **não tem seção de
+>    tipos de ataque**: XSS e SQLi só aparecem de passagem dentro do OWASP, e
+>    MitM e session hijacking não aparecem em lugar nenhum. Escreva a seção
+>    cobrindo: **CSRF**, **MitM**, **replay**, **session hijacking**, **spear
+>    phishing** (× phishing × spam), a **família DDoS** (Ping of Death,
+>    Slowloris, Smurf, Teardrop, UDP storm) e a **família de malware** (worm,
+>    spyware, trojan, backdoor, rabbit, ransomware). Âncoras reais já no banco:
+>    `cprm-ads` Q40, Q41 e Q61, e `epe-ti` Q59.
+>    **Cuidado que já custou análise:** o CSRF **não** entra na tabela do OWASP
+>    Top 10 — ele saiu da lista em 2017 e foi absorvido pelo Broken Access
+>    Control. A tabela 2025/2021 da apostila está **correta**; não mexa nela.
+>    O CSRF entra como *ataque*, não como categoria.
+> 2. **Complexidade ciclomática (McCabe)** — capítulo 02 (eng. de software),
+>    com exemplo resolvido. Âncora: `epe-ti` Q79, que pede o cálculo. A regra
+>    que a questão cobra: pontos de decisão + 1, e o `senão` final **não conta**
+>    (não testa nada, só recolhe o caso restante).
+> 3. **Code smells nomeados** — capítulo 02. Hoje "code smell" aparece como
+>    conceito genérico; faltam **Feature Envy**, **Data Clumps** e os
+>    **bloaters** com suas refatorações. Âncora: `epe-ti` Q77.
+>
+> Opcional, de menor valor: **JMeter** (Sampler, Thread Group com ramp-up,
+> Timer, Assertion) numa caixa `jacaiu` — âncora `epe-ti` Q80. O conceito de
+> teste de carga e estresse já está no capítulo 02; falta só a ferramenta.
+>
+> Regras da frente A, todas do `CLAUDE.md`:
+> - o que entrar na apostila **desce** para `resumo/<bloco>.md` e
+>   `dicas/<bloco>.md` — senão o `./valida.py` acusa drift;
+> - o `teoria/` ganha a versão didática do mesmo conteúdo (caixas `conceito`,
+>   `cuidado`, `regrapratica`, `exemplo`), **sem** as caixas de banca
+>   (`pegadinha`, `comosair`, `jacaiu`, `peso`), que são exclusivas da apostila;
+> - se acrescentar ou remover capítulo, confira a numeração: o `teoria/main.tex`
+>   fixa `\setcounter{chapter}{2}` para bater com a apostila;
+> - ao terminar: `cd apostila && latexmk -pdf main.tex`, o mesmo em `teoria/`,
+>   conferir que não sobrou overfull/underfull nem referência quebrada no
+>   `main.log`, e rodar `./valida.py`.
+>
+> **FRENTE B — fechar o déficit de questões (30).** Faltam **18 de inglês** e
+> **12 de atualidades**; português, RLM e legislação já estão no azul e **não
+> devem entrar no lote**. O plano e o rateio por microtópico estão no
+> `GERAR-LOTE-GERAIS.md`, com as cotas já corrigidas para os números de hoje.
+> Em inglês, mire `julgamento-afirmativas` e `verbos-modais`, que têm uma
+> questão cada; em atualidades, `atualidades-socioambiental` tem três. Toda
+> questão nova nasce com `sub` (o `./valida.py` bloqueia sem), e o padrão de
+> enunciado, distrator e `erradas` está no §5 do `CONTRIBUINDO-QUESTOES.md`.
+>
+> **FRENTE C — etiquetar o resto do banco.** `sub` está em **533 de 1103**
+> (48%); as ~570 sem etiqueta são quase todas questões de prova. O
+> `subtags.py` já expõe `sugerir(texto)`, então dá para fazer uma passada
+> automática propondo etiqueta e revisar só as duvidosas — não etiquete no
+> escuro, porque a etiqueta errada distorce o ranking do `./fraquezas.py`.
+> É a frente mais adiável: nenhum simulado deixa de rodar por falta de `sub`.
+>
+> **FRENTE D — vigiar dois gabaritos.** O do `nav-med` (prova de 02/08/2026) é
+> **preliminar**: quando sair o definitivo, reconferir as 45 questões e checar
+> anulações. E a `nav-tec` Q58 é divergência real registrada (§3) — se o
+> definitivo mudar para **E**, basta escrever a explicação e o `./valida.py`
+> zera os 2 avisos. Os dois em <https://conhecimento.fgv.br/concursos/navbrasil26>.
+>
+> **O que NÃO fazer**, tudo já decidido e medido:
+> - não mexer na tabela OWASP da apostila (está correta, inclusive na ausência
+>   do CSRF);
+> - não gerar questão de português, RLM ou legislação — os três estão acima da
+>   demanda dos 10 simulados;
+> - não marcar `requer_imagem` à mão no JSON: o campo **não** sobrevive à
+>   reimportação (o conserto é no `importar_provas.py`, veja o §3);
+> - não alterar `ans` para acomodar análise própria — divergência de gabarito
+>   vira anotação, como a `nav-tec` Q58;
+> - não caçar mais provas antes de gerar: só sobrou a **PM-SP Aluno-Oficial
+>   2025**, que não é da área de tecnologia e cuja contagem de inglês nunca foi
+>   confirmada. Vale só se a frente B não fechar o déficit.
+
+---
+
+## 2. Detalhe da frente B — o déficit de questões
 
 Medido contra a demanda de **10 simulados** do roteiro (cada um: 40 gerais na
 proporção do edital + 30 específicos):
@@ -133,7 +228,7 @@ I" e o texto não estiver no campo `q`, o conserto é no `importar_provas.py`.
 
 ---
 
-## 2. Ressalvas registradas — não são bugs a consertar às pressas
+## 3. Ressalvas registradas — não são bugs a consertar às pressas
 
 > **`nav-tec` Q58 — divergência real de gabarito, não conserto silencioso.**
 > O enunciado descreve dependência transitiva (`Nome_Fabricante` →
