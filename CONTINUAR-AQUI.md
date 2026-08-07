@@ -47,21 +47,57 @@ proporção do edital + 30 específicos):
 | legislação | 68 | 50 | ok |
 | **todo o Módulo II** | — | — | **ok, déficit zero** |
 
-Duas saídas, e a segunda rende mais agora:
+Duas saídas, e agora as duas têm alvo definido:
 
-1. **Mais provas.** Duas pistas ainda abertas: o caderno de **Pesquisador em
-   Geociências** do mesmo CPRM (mais 5 de inglês; o item 12.2 do edital diz
-   que o Módulo I é comum a todas as áreas de Pesquisador, então basta um
-   caderno) e a **PM-SP Aluno-Oficial 2025** (13/07/2025, tem prova de inglês,
-   não chegou a ser confirmado quantas questões). O caminho rápido é pedir ao
-   WebFetch a lista de cadernos de `conhecimento.fgv.br/concursos/<slug>` — a
-   página abre normal — e conferir a composição no **item 9** do edital.
+1. **Importar as quatro provas já verificadas** (busca de 07/08/2026, à noite —
+   composição conferida abrindo o caderno, não pelo edital). Rendem **34 de
+   inglês**, o que derruba o déficit de 51 para 17:
+
+   | prova | inglês | nível / área | por que vale |
+   |---|---|---|---|
+   | **EPE 2024** — Analista de Gestão Corporativa, TI (03/09/2024) | **11** (Q10–20) | superior, **TI** | a mais alinhada: cargo de TI, e os 45 específicos são de TI recente |
+   | **RFB 2023** — Analista-Tributário, manhã (21/03/2023) | **10** (Q16–25) | superior | inglês denso de banca grande, gabarito definitivo |
+   | **RFB 2023** — Auditor-Fiscal, manhã (21/03/2023) | **8** (Q11–18) | superior | textos diferentes do caderno de Analista (conferido) |
+   | **CPRM 2025** — Pesquisador em Geociências (30/11/2025) | **5** | superior | Módulo I comum a todas as áreas (edital, item 12.2) |
+
+   Links (todos em `https://conhecimento.fgv.br/sites/default/files/concursos/`):
+   - EPE TI–Soluções: `agc-ti-solucoescns006-tipo-1.pdf` · gabarito
+     `gabarito_definitivo_epe-gest.pdf` · composição: português 1–9,
+     **inglês 10–20**, adm. pública 21–28 (*descartar*), valor público EPE
+     29–35 (*descartar*), específicos de TI 36–80
+   - RFB Analista: `cns102-analista-tributario-da-receita-federal-do-brasil-atrfbcns102-tipo-1.pdf`
+     · gabarito `gabarito-definitivo-rfb_analista-_0.pdf`
+   - RFB Auditor: `cns101-auditor-fiscal-da-receita-federal-do-brasil-afrfbcns101-tipo-1.pdf`
+     · gabarito `serfb-gabarito-defintivo-auditor-_0.pdf`
+   - CPRM Pesquisador: `pesquisador-em-geociencias-hidrogeologia-cns01e05-tipo-1.pdf`
+     · gabarito `gabarito-definitivo-cprm.pdf`
+
+   **Bônus sem déficit, mas boa calibração:** a EPE tem *três* cadernos de TI
+   (Infraestrutura e Segurança, Soluções, Ciência de Dados). O Módulo I é o
+   mesmo nos três — **conferido** —, então o inglês entra uma vez só; os
+   específicos, porém, são diferentes, e o de Ciência de Dados alimentaria
+   `bi`, um dos blocos mais magros do Módulo II.
+
 2. **Gerar questão de inglês.** O plano está em `GERAR-LOTE-GERAIS.md`, com o
    aviso no topo: as cotas de lá são de antes das importações, e português e
    RLM têm de sair do lote. A metodologia e o rateio por microtópico continuam
    valendo. Em inglês, `julgamento-afirmativas` e `verbos-modais` saíram do
    zero (uma questão cada, vindas do `nav-med`), e `compreensao-global-ingles`
    e `vocabulario-contexto` são os mais fartos — mire nos dois primeiros.
+
+### Já verificado e descartado — não repita
+
+Além do que já constava (CNU 2025 sem inglês, INB 2026 sem prova aplicada,
+BNDES que é Cesgranrio, PSS IBGE de nível médio, SEEC-RN de professor de
+inglês, CGE-SP TI sem Módulo I, cadernos de Analista do CPRM que não sejam
+ADS), a busca de 07/08 à noite fechou mais estas:
+
+| prova | por quê |
+|---|---|
+| **Dataprev 2024 — os outros 14 cadernos** | seria o ideal (mesma empresa, mesma banca), mas **o Módulo I é idêntico** ao do caderno que já temos. Conferido baixando quatro deles — Análise de Negócio (CNS001), Segurança Cibernética (CNS005), Advocacia (CNS007) e Analista de Processamento (CNS013): mesmo texto de inglês e de atualidades, todos do turno da **tarde**. Importar qualquer um cria 40 duplicatas |
+| EPE 2022 | não tem caderno de TI (só Pesquisa Energética e Gestão Corporativa–RH), e é prova de 2022 |
+| AgSUS 2025 — Analista de Gestão em TI | cargo de TI, mas o Módulo I é português 12, informática 8 e RLM 7: **sem inglês** |
+| PM-SP Aluno-Oficial 2025 | tem inglês e é nível superior, mas não é área de tecnologia e a quantidade de questões segue não confirmada. Fica como último recurso, se as quatro acima não bastarem |
 
 ### Regras de importação — não repita erros já cometidos
 
