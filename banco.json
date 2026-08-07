@@ -1,6 +1,9 @@
 [
  {
   "tag": "eng-software",
+  "sub": [
+   "modelos-de-processo"
+  ],
   "q": "Uma equipe de desenvolvimento da Dataprev adota um processo em que os requisitos são congelados no início, e as fases de análise, projeto, implementação e testes ocorrem em sequência estrita, sem sobreposição. Sobre esse modelo, é correto afirmar que:",
   "alts": [
    "é a prototipação evolutiva, pois o produto evolui fase a fase",
@@ -20,6 +23,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "No Scrum, o artefato que reúne, em ordem de prioridade, tudo o que se sabe ser necessário no produto, sendo de responsabilidade exclusiva do Product Owner, é:",
   "alts": [
    "Sprint Backlog",
@@ -39,6 +45,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "engenharia-requisitos"
+  ],
   "q": "Durante a elicitação de requisitos de um sistema previdenciário, o analista reuniu simultaneamente representantes de diversas áreas em sessões estruturadas e facilitadas para produzir, em conjunto, os requisitos do sistema. Essa técnica é denominada:",
   "alts": [
    "JAD (Joint Application Design)",
@@ -77,6 +86,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "testes"
+  ],
   "q": "Um teste que verifica a interação correta entre o módulo de cálculo de benefícios e o módulo de persistência, exercitando os dois em conjunto, é classificado como teste de:",
   "alts": [
    "unidade",
@@ -96,6 +108,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "Sobre o Kanban, analise as afirmativas: I. Limita o trabalho em progresso (WIP) por coluna. II. Exige sprints de duração fixa, como o Scrum. III. Visualiza o fluxo de trabalho em um quadro. Está correto o que se afirma em:",
   "alts": [
    "II e III, apenas",
@@ -115,6 +130,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "ponto-funcao"
+  ],
   "q": "A métrica de Análise de Pontos de Função mede o tamanho de um software com base:",
   "alts": [
    "no esforço total em homens-hora gasto pela equipe",
@@ -134,6 +152,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "normalizacao"
+  ],
   "q": "Uma tabela está na 2FN e não possui atributos não-chave que dependam transitivamente da chave primária. É correto afirmar que essa tabela:",
   "alts": [
    "possui dependências parciais",
@@ -153,6 +174,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "sql-consultas"
+  ],
   "q": "Considere as tabelas EMPREGADO(id, nome, dept_id) e DEPTO(id, nome). A consulta que retorna TODOS os empregados, incluindo os sem departamento, junto com o nome do departamento quando houver, usa:",
   "alts": [
    "INNER JOIN",
@@ -172,6 +196,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "propriedades-acid"
+  ],
   "q": "Sobre as propriedades ACID de transações, a garantia de que uma transação levará o banco de um estado válido a outro estado válido, respeitando todas as regras e restrições definidas, é a:",
   "alts": [
    "consistência",
@@ -191,6 +218,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ],
   "q": "Um sistema precisa armazenar documentos JSON com estruturas variáveis e sem esquema fixo, priorizando escalabilidade horizontal. O tipo de banco NoSQL mais adequado é:",
   "alts": [
    "relacional distribuído, como o CockroachDB",
@@ -210,6 +240,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "Em SQL, o comando TRUNCATE TABLE difere do DELETE sem WHERE porque o TRUNCATE:",
   "alts": [
    "pode ser desfeito individualmente, linha a linha",
@@ -229,6 +262,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "Uma view materializada difere de uma view comum porque:",
   "alts": [
    "armazena fisicamente o resultado da consulta e sempre exige atualização",
@@ -267,6 +303,10 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring",
+   "anotacoes-java"
+  ],
   "q": "No Spring Framework, a anotação que marca uma classe como componente de acesso a dados, com tradução automática de exceções de persistência, é:",
   "alts": [
    "@Component",
@@ -324,6 +364,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring"
+  ],
   "q": "No Spring Boot, o mecanismo pelo qual dependências declaradas no classpath fazem o framework configurar beans automaticamente, sem XML, é chamado de:",
   "alts": [
    "component scan",
@@ -482,6 +525,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "estilos-arquiteturais"
+  ],
   "q": "Na arquitetura hexagonal (ports and adapters), o objetivo central é:",
   "alts": [
    "eliminar a necessidade de testes de integração",
@@ -520,6 +566,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "estilos-arquiteturais"
+  ],
   "q": "Na arquitetura orientada a serviços (SOA), o barramento que intermedeia, roteia e transforma mensagens entre os serviços é conhecido como:",
   "alts": [
    "ETL (Extract, Transform, Load)",
@@ -539,6 +588,10 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "tcp-udp",
+   "modelos-osi-tcpip"
+  ],
   "q": "No modelo OSI, a camada responsável pelo roteamento de pacotes entre redes distintas, onde opera o protocolo IP, é a camada de:",
   "alts": [
    "transporte (4)",
@@ -558,6 +611,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "tcp-udp"
+  ],
   "q": "Sobre TCP e UDP, é correto afirmar que:",
   "alts": [
    "o UDP estabelece a conexão via three-way handshake",
@@ -596,6 +652,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "protocolos-portas"
+  ],
   "q": "O protocolo da camada de aplicação usado para traduzir nomes de domínio, como dataprev.gov.br, em endereços IP é o:",
   "alts": [
    "DNS",
@@ -615,6 +674,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "mpls-vlan-nat"
+  ],
   "q": "Uma VLAN tem como principal função:",
   "alts": [
    "converter endereços privados em endereços públicos",
@@ -634,6 +696,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "triade-cia"
+  ],
   "q": "Os três pilares clássicos da segurança da informação, conhecidos como tríade CID, são:",
   "alts": [
    "confidencialidade, integridade e autenticidade da informação",
@@ -653,6 +718,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "criptografia"
+  ],
   "q": "Sobre criptografia, a principal diferença entre os sistemas simétrico e assimétrico é que:",
   "alts": [
    "o simétrico usa um par de chaves pública e privada, enquanto o assimétrico opera com uma única chave secreta",
@@ -691,6 +759,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "owasp-top10"
+  ],
   "q": "No OWASP Top 10, a vulnerabilidade em que dados não confiáveis são enviados a um interpretador como parte de um comando, permitindo a execução de instruções não previstas, por exemplo em consultas SQL, é classificada como:",
   "alts": [
    "desserialização insegura",
@@ -710,6 +781,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "desenvolvimento-seguro"
+  ],
   "q": "A diferença fundamental entre SAST e DAST na análise de segurança de aplicações é que o SAST:",
   "alts": [
    "só funciona em linguagens compiladas",
@@ -729,6 +803,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "controle-acesso"
+  ],
   "q": "O OAuth 2.0 é um protocolo cuja finalidade principal é:",
   "alts": [
    "cifrar o canal de comunicação entre o cliente e o servidor da aplicação web",
@@ -748,6 +825,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "fato-dimensao"
+  ],
   "q": "Em um data warehouse, a modelagem dimensional em esquema estrela (star schema) é caracterizada por:",
   "alts": [
    "a ausência de tabelas de dimensão separadas, com os atributos embutidos na própria tabela fato",
@@ -767,6 +847,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "granularidade"
+  ],
   "q": "A operação OLAP que aumenta o nível de detalhe da análise, navegando de um nível mais agregado para um mais granular, como de ano para mês, é chamada de:",
   "alts": [
    "dice",
@@ -824,6 +907,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "spa-pwa"
+  ],
   "q": "Uma SPA (Single Page Application) caracteriza-se por:",
   "alts": [
    "trocar o conteúdo via JavaScript sem recarregar toda a página, a partir de um único HTML",
@@ -843,6 +929,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "frameworks-frontend"
+  ],
   "q": "No React, o mecanismo de comparação de uma representação virtual da interface com o DOM real, atualizando apenas o que mudou, envolve o conceito de:",
   "alts": [
    "manipulação direta e imperativa do DOM",
@@ -862,6 +951,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "spa-pwa"
+  ],
   "q": "Um PWA (Progressive Web App) diferencia-se de um site tradicional principalmente por:",
   "alts": [
    "exigir publicação em loja de aplicativos para poder ser instalado no dispositivo",
@@ -881,6 +973,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "ux-acessibilidade"
+  ],
   "q": "Em acessibilidade web, os atributos ARIA (Accessible Rich Internet Applications) servem para:",
   "alts": [
    "substituir o CSS na estilização dos componentes",
@@ -919,6 +1014,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "cobit-2019"
+  ],
   "q": "No COBIT 2019, a distinção fundamental entre governança e gestão de TI é que a governança:",
   "alts": [
    "é responsabilidade exclusiva do gerente de projetos, e não do conselho de administração",
@@ -938,6 +1036,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "bpmn"
+  ],
   "q": "Na notação BPMN, o elemento gráfico losango representa:",
   "alts": [
    "um gateway, que controla divergência e convergência do fluxo",
@@ -1052,6 +1153,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "agentes-de-tratamento"
+  ],
   "q": "Segundo a LGPD (Lei 13.709/2018), o agente de tratamento a quem competem as decisões referentes ao tratamento de dados pessoais é o:",
   "alts": [
    "órgão de pesquisa",
@@ -1090,6 +1194,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "O Marco Civil da Internet (Lei 12.965/2014), em sua redação original (art. 19), estabelece, como regra geral, que o provedor de aplicações somente será responsabilizado civilmente por conteúdo gerado por terceiros se:",
   "alts": [
    "houver simples notificação extrajudicial enviada pela vítima, independentemente de decisão judicial",
@@ -1109,6 +1216,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "lai"
+  ],
   "q": "A Lei de Acesso à Informação (Lei 12.527/2011) estabelece que o acesso à informação pública é a regra, e o sigilo, a exceção. O prazo máximo de restrição para informação classificada como ultrassecreta é de:",
   "alts": [
    "50 anos",
@@ -1128,6 +1238,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "delitos-informaticos"
+  ],
   "q": "A Lei 12.737/2012 (Lei de Delitos Informáticos, conhecida como Lei Carolina Dieckmann) tipificou como crime a conduta de:",
   "alts": [
    "invadir dispositivo informático alheio, violando indevidamente mecanismo de segurança, para obter, adulterar ou destruir dados",
@@ -1147,6 +1260,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "analise-combinatoria"
+  ],
   "q": "Uma equipe de 8 analistas precisa formar uma comissão de 3 membros para revisar um edital. O número de comissões distintas possíveis é:",
   "alts": [
    "112",
@@ -1166,6 +1282,10 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "quantificadores",
+   "logica-sentencial"
+  ],
   "q": "A negação da proposição 'Todos os candidatos estudaram Java' é:",
   "alts": [
    "nem todos os candidatos estudaram Java, ou seja, pelo menos um não estudou",
@@ -1185,6 +1305,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "razao-proporcao"
+  ],
   "q": "Um servidor processa 240 requisições em 8 minutos. Mantida a mesma taxa, quantas requisições processará em 1 hora e 15 minutos?",
   "alts": [
    "3.000",
@@ -1204,6 +1327,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "argumentacao-validade"
+  ],
   "q": "Se a proposição 'Se o sistema está no ar, então o backup foi concluído' é verdadeira, e sabe-se que o backup NÃO foi concluído, pode-se concluir que:",
   "alts": [
    "nada se pode concluir sobre o sistema",
@@ -1324,6 +1450,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "No Scrum, o evento com duração máxima de 15 minutos, realizado diariamente pelos Developers para inspecionar o progresso rumo à meta da Sprint e adaptar o plano, é a:",
   "alts": [
    "Sprint Planning",
@@ -1343,6 +1472,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "modelos-de-processo"
+  ],
   "q": "No modelo de desenvolvimento incremental, o software é construído:",
   "alts": [
    "em uma única entrega final, depois de concluídas todas as fases sequenciais do projeto",
@@ -1362,6 +1494,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "engenharia-requisitos"
+  ],
   "q": "O requisito 'o sistema deve responder a qualquer consulta em até 2 segundos' é classificado como:",
   "alts": [
    "restrição de projeto da interface com o usuário",
@@ -1381,6 +1516,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "São práticas associadas ao Extreme Programming (XP), EXCETO:",
   "alts": [
    "documentação extensa e detalhada antes da codificação",
@@ -1400,6 +1538,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "No Scrum, o responsável por remover impedimentos que atrapalham o progresso da equipe e por garantir a compreensão e aplicação do framework é o:",
   "alts": [
    "stakeholder principal",
@@ -1419,6 +1560,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "A diferença entre a Sprint Review e a Sprint Retrospective é que a Review:",
   "alts": [
    "ocorre diariamente em 15 minutos",
@@ -1457,6 +1601,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "testes"
+  ],
   "q": "No teste de caixa-preta, o testador:",
   "alts": [
    "analisa apenas a cobertura de linhas de código",
@@ -1495,6 +1642,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "verificacao-validacao"
+  ],
   "q": "Na engenharia de software, a distinção entre verificação e validação é sintetizada como:",
   "alts": [
    "verificação pergunta 'estamos construindo certo o produto?' e validação 'estamos construindo o produto certo?'",
@@ -1514,6 +1664,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "modelos-de-processo"
+  ],
   "q": "A prototipação descartável (throwaway) tem como objetivo principal:",
   "alts": [
    "substituir a documentação de arquitetura",
@@ -1555,6 +1708,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "ponto-funcao"
+  ],
   "q": "Sobre story points, é correto afirmar que representam:",
   "alts": [
    "uma medida relativa de esforço e complexidade, calibrada pela equipe",
@@ -1574,6 +1730,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "mer-relacional"
+  ],
   "q": "Em um banco relacional, a restrição de chave estrangeira (foreign key) garante:",
   "alts": [
    "o incremento automático dos identificadores gerados nas linhas da tabela filha",
@@ -1593,6 +1752,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "sql-consultas"
+  ],
   "q": "Em SQL, a diferença entre as cláusulas WHERE e HAVING é que o HAVING:",
   "alts": [
    "só aceita comparações de igualdade entre colunas",
@@ -1612,6 +1774,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "sql-consultas"
+  ],
   "q": "Em SQL, a diferença entre UNION e UNION ALL é que o UNION:",
   "alts": [
    "ordena o resultado de forma decrescente por padrão",
@@ -1631,6 +1796,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "A diferença entre os comandos DELETE e DROP em SQL é que o DROP:",
   "alts": [
    "pode ser aplicado a views, mas não a tabelas",
@@ -1650,6 +1818,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "Em uma transação SQL, o comando que desfaz todas as alterações realizadas desde o início da transação é:",
   "alts": [
    "REVOKE",
@@ -1688,6 +1859,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "normalizacao"
+  ],
   "q": "Uma tabela viola a Primeira Forma Normal (1FN) quando:",
   "alts": [
    "possui dependências funcionais transitivas entre atributos",
@@ -1707,6 +1881,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "mer-relacional"
+  ],
   "q": "Sobre a chave primária de uma tabela relacional, é correto afirmar que ela:",
   "alts": [
    "pode se repetir quando a tabela estiver particionada em faixas",
@@ -1726,6 +1903,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ],
   "q": "Um banco de dados NoSQL do tipo chave-valor, como o Redis, é especialmente indicado para:",
   "alts": [
    "garantia de integridade referencial entre tabelas relacionadas",
@@ -1764,6 +1944,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "Os comandos GRANT e REVOKE pertencem à categoria SQL denominada:",
   "alts": [
    "DCL (Data Control Language)",
@@ -1783,6 +1966,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "interface-classe-abstrata"
+  ],
   "q": "Em Java, a diferença entre uma interface e uma classe abstrata é que a classe abstrata:",
   "alts": [
    "não pode conter nenhum método já implementado",
@@ -1802,6 +1988,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "interface-classe-abstrata"
+  ],
   "q": "Em Java, a palavra-chave final aplicada a uma classe tem o efeito de:",
   "alts": [
    "impedir a instanciação da classe",
@@ -1821,6 +2010,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "excecoes-java"
+  ],
   "q": "Em Java, sobre exceções verificadas (checked) e não verificadas (unchecked), é correto afirmar que:",
   "alts": [
    "exceções verificadas devem ser tratadas ou declaradas na assinatura, como IOException",
@@ -1840,6 +2032,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "colecoes-java"
+  ],
   "q": "Nas coleções Java, comparando ArrayList e LinkedList, o ArrayList oferece melhor desempenho para:",
   "alts": [
    "economia de memória por elemento em listas gigantes com inserções no meio",
@@ -1878,6 +2073,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring"
+  ],
   "q": "No Spring, o padrão em que o framework instancia e fornece as dependências de um objeto, em vez de o próprio objeto criá-las, é chamado de:",
   "alts": [
    "herança de contêiner gerenciado",
@@ -1897,6 +2095,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring"
+  ],
   "q": "No JPA, as anotações mínimas para que uma classe seja gerenciada como entidade persistente e tenha sua chave identificada são:",
   "alts": [
    "@Component e @GeneratedValue",
@@ -1916,6 +2117,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring"
+  ],
   "q": "Uma característica do Spring Boot que simplifica a publicação de aplicações web é:",
   "alts": [
    "a exigência de instalar separadamente um servidor de aplicação completo antes do deploy",
@@ -1973,6 +2177,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "criptografia"
+  ],
   "q": "A assinatura digital de um documento garante autenticidade, integridade e não repúdio porque o resumo (hash) do documento é cifrado com:",
   "alts": [
    "a senha de acesso do usuário signatário",
@@ -1992,6 +2199,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "criptografia"
+  ],
   "q": "Um certificado digital, no modelo de infraestrutura de chaves públicas (ICP), tem como função principal:",
   "alts": [
    "vincular uma chave pública à identidade do titular, atestada por uma Autoridade Certificadora",
@@ -2049,6 +2259,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "resposta-a-incidentes"
+  ],
   "q": "A diferença entre IDS e IPS é que o IPS:",
   "alts": [
    "substitui o firewall de borda da rede corporativa",
@@ -2087,6 +2300,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "owasp-top10"
+  ],
   "q": "No ataque de Cross-Site Scripting (XSS), o código malicioso é executado:",
   "alts": [
    "no firewall de borda da rede, antes de o tráfego chegar à aplicação",
@@ -2106,6 +2322,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "controle-acesso"
+  ],
   "q": "O princípio do menor privilégio estabelece que:",
   "alts": [
    "os privilégios devem ser concedidos por ordem de chegada",
@@ -2125,6 +2344,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "sub-redes"
+  ],
   "q": "São faixas de endereços IPv4 reservadas para redes privadas (RFC 1918):",
   "alts": [
    "127.0.0.0/8, 224.0.0.0/4 e 169.254.0.0/16",
@@ -2144,6 +2366,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "sub-redes"
+  ],
   "q": "O endereço IPv6 possui comprimento de:",
   "alts": [
    "32 bits",
@@ -2163,6 +2388,10 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "protocolos-portas",
+   "mpls-vlan-nat"
+  ],
   "q": "O NAT (Network Address Translation) tem como função principal:",
   "alts": [
    "traduzir endereços IP privados em públicos, dando acesso à internet",
@@ -2182,6 +2411,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "protocolos-portas"
+  ],
   "q": "O protocolo que permite a um host obter automaticamente endereço IP, máscara, gateway e DNS ao ingressar na rede é o:",
   "alts": [
    "DHCP",
@@ -2201,6 +2433,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "equipamentos"
+  ],
   "q": "A diferença entre um switch e um hub é que o switch:",
   "alts": [
    "opera na camada de rede, roteando os pacotes IP entre sub-redes distintas",
@@ -2220,6 +2455,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "protocolos-portas"
+  ],
   "q": "As portas TCP padrão dos protocolos HTTP e HTTPS são, respectivamente:",
   "alts": [
    "53 e 67",
@@ -2239,6 +2477,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "protocolos-portas"
+  ],
   "q": "O SSH substitui o Telnet na administração remota principalmente porque:",
   "alts": [
    "funciona sem exigir autenticação prévia do usuário administrador",
@@ -2258,6 +2499,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "firewall"
+  ],
   "q": "Um firewall stateful diferencia-se do filtro de pacotes simples (stateless) porque:",
   "alts": [
    "atua exclusivamente na camada de aplicação do modelo OSI, e não na de rede",
@@ -2400,6 +2644,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "formatos-dados"
+  ],
   "q": "Comparando XML e JSON como formatos de intercâmbio de dados, o XML se distingue por:",
   "alts": [
    "não permitir hierarquia entre os elementos",
@@ -2457,6 +2704,10 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "logica-sentencial",
+   "equivalencias-logicas"
+  ],
   "q": "Pela lei de De Morgan, a negação da proposição 'o sistema está no ar E o backup foi concluído' é:",
   "alts": [
    "o backup foi concluído E o sistema não está no ar",
@@ -2495,6 +2746,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "progressoes"
+  ],
   "q": "Em uma progressão aritmética, o primeiro termo é 7 e a razão é 4. O décimo termo é:",
   "alts": [
    "36",
@@ -2590,6 +2844,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "bases-legais"
+  ],
   "q": "Sobre as bases legais de tratamento de dados pessoais na LGPD, é correto afirmar que:",
   "alts": [
    "o consentimento é a única base legal admitida",
@@ -2609,6 +2866,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "anpd-cnpd"
+  ],
   "q": "O órgão da administração pública federal responsável por zelar, implementar e fiscalizar o cumprimento da LGPD é:",
   "alts": [
    "a ANPD (Autoridade Nacional de Proteção de Dados)",
@@ -2628,6 +2888,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "direitos-do-titular"
+  ],
   "q": "Entre os direitos do titular de dados pessoais garantidos pela LGPD estão:",
   "alts": [
    "confirmação da existência de tratamento, acesso, correção, anonimização, portabilidade e eliminação, a qualquer tempo",
@@ -2647,6 +2910,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "lai"
+  ],
   "q": "Na Lei de Acesso à Informação, a divulgação espontânea de informações de interesse coletivo pelos órgãos públicos, independentemente de solicitação, caracteriza a:",
   "alts": [
    "classificação sigilosa",
@@ -2666,6 +2932,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "O princípio da neutralidade de rede, previsto no Marco Civil da Internet, determina que o responsável pela transmissão deve:",
   "alts": [
    "bloquear as aplicações de empresas concorrentes",
@@ -2685,6 +2954,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Quanto à guarda obrigatória de registros prevista no Marco Civil da Internet, os prazos são:",
   "alts": [
    "a lei não fixa prazos, deixando-os a critério do provedor",
@@ -2723,6 +2995,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "fato-dimensao"
+  ],
   "q": "Na modelagem dimensional, a tabela fato contém:",
   "alts": [
    "a hierarquia geográfica das filiais e regiões",
@@ -2761,6 +3036,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "crisp-dm"
+  ],
   "q": "Data mining é definido como o processo de:",
   "alts": [
    "descobrir padrões, correlações e conhecimento não trivial em grandes volumes de dados",
@@ -2799,6 +3077,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "etl"
+  ],
   "q": "A abordagem ELT, em contraste com o ETL tradicional, caracteriza-se por:",
   "alts": [
    "eliminar por completo a etapa de extração dos dados",
@@ -2837,6 +3118,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "transacoes-distribuidas"
+  ],
   "q": "O uso de mensageria assíncrona (filas e tópicos) entre serviços proporciona principalmente:",
   "alts": [
    "consistência forte e imediata entre os serviços envolvidos",
@@ -2878,6 +3162,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "nuvem-escalabilidade"
+  ],
   "q": "A escalabilidade horizontal de uma aplicação consiste em:",
   "alts": [
    "aumentar a capacidade de CPU e memória do servidor já existente",
@@ -2916,6 +3203,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "itil"
+  ],
   "q": "No ITIL, a distinção entre incidente e problema é que o problema:",
   "alts": [
    "é sinônimo de mudança emergencial",
@@ -2935,6 +3225,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "itil"
+  ],
   "q": "As quatro dimensões do gerenciamento de serviços no ITIL v4 são:",
   "alts": [
    "governança corporativa; gestão de serviços; auditoria interna; e conformidade regulatória",
@@ -2954,6 +3247,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "No Kanban, a métrica lead time mede:",
   "alts": [
    "o número de defeitos por entrega",
@@ -2973,6 +3269,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "pmbok"
+  ],
   "q": "A tripla restrição clássica do gerenciamento de projetos é composta por:",
   "alts": [
    "pessoas, processos e tecnologia da organização",
@@ -3011,6 +3310,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "html-css"
+  ],
   "q": "No box model do CSS, a ordem dos componentes, do interior para o exterior de um elemento, é:",
   "alts": [
    "padding, content, margin, border",
@@ -3030,6 +3332,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "ajax-comunicacao"
+  ],
   "q": "A técnica AJAX permite que uma página web:",
   "alts": [
    "funcione sem JavaScript habilitado",
@@ -3068,6 +3373,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "frameworks-frontend"
+  ],
   "q": "Comparado ao React, o Angular caracteriza-se por:",
   "alts": [
    "ser um framework completo e opinativo, sempre escrito em TypeScript, com injeção de dependência",
@@ -3125,6 +3433,9 @@
  },
  {
   "tag": "orfaos",
+  "sub": [
+   "aprendizado-de-maquina"
+  ],
   "q": "No aprendizado de máquina, a diferença entre aprendizado supervisionado e não supervisionado é que o supervisionado:",
   "alts": [
    "não pode ser avaliado por métricas objetivas de desempenho preditivo do modelo treinado",
@@ -3603,6 +3914,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "html-css"
+  ],
   "q": "No modelo de caixa (box model) do CSS, um desenvolvedor precisa aumentar o espaço INTERNO entre o conteúdo de um elemento e sua borda, sem afetar o espaçamento em relação aos elementos vizinhos. Qual propriedade ele deve usar?",
   "alts": [
    "gap, que define o espaço interno entre conteúdo e borda.",
@@ -3641,6 +3955,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "html-css"
+  ],
   "q": "Sobre os módulos de layout Flexbox e Grid do CSS, assinale a alternativa CORRETA.",
   "alts": [
    "Ambos exigem obrigatoriamente media queries para funcionar.",
@@ -3660,6 +3977,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "spa-pwa"
+  ],
   "q": "Sobre a diferença entre SPA (Single Page Application) e PWA (Progressive Web App), assinale a alternativa CORRETA.",
   "alts": [
    "SPA exige obrigatoriamente um Service Worker para funcionar, sem o qual o roteamento no cliente não acontece.",
@@ -3679,6 +3999,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "spa-pwa"
+  ],
   "q": "O Service Worker é peça central de uma PWA. Sobre ele, assinale a alternativa CORRETA.",
   "alts": [
    "Executa na mesma thread da interface (UI), com acesso direto ao DOM e ao ciclo de renderização, permitindo atualizar a tela imediatamente após o evento.",
@@ -3698,6 +4021,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "frameworks-frontend"
+  ],
   "q": "No ecossistema JavaScript, é comum a distinção entre biblioteca e framework. Sobre React, Angular e Vue, assinale a alternativa CORRETA.",
   "alts": [
    "React é, por definição de seus mantenedores, uma biblioteca focada apenas na construção de interfaces, enquanto Angular é um framework completo",
@@ -3717,6 +4043,10 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "ux-acessibilidade",
+   "ajax-comunicacao"
+  ],
   "q": "Uma página web precisa buscar dados de um servidor e atualizar apenas parte do conteúdo, sem recarregar a página inteira. Que técnica/conceito descreve essa abordagem?",
   "alts": [
    "Um redirect HTTP 302 que recarrega a página completa a cada dado buscado.",
@@ -3736,6 +4066,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "ux-acessibilidade"
+  ],
   "q": "Em projeto de interfaces, distingue-se UX (User Experience) de UI (User Interface). Assinale a alternativa que descreve CORRETAMENTE essa distinção.",
   "alts": [
    "UI é sempre mais importante que UX, tornando a pesquisa de usuário desnecessária.",
@@ -3755,6 +4088,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "ux-acessibilidade"
+  ],
   "q": "As diretrizes de acessibilidade WCAG (Web Content Accessibility Guidelines) organizam-se em torno de quatro princípios. Assinale a alternativa que os apresenta CORRETAMENTE.",
   "alts": [
    "Apenas um único princípio: fornecer texto alternativo para imagens.",
@@ -3793,6 +4129,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "fundamentos-ia"
+  ],
   "q": "Sobre a relação entre os campos da Inteligência Artificial, assinale a afirmativa correta.",
   "alts": [
    "Aprendizado Profundo é um campo independente que não utiliza técnicas de Aprendizado de Máquina.",
@@ -3812,6 +4151,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "fundamentos-ia"
+  ],
   "q": "Um cientista de dados dispõe de uma base de transações rotuladas como 'fraude' ou 'legítima' e deseja treinar um modelo capaz de classificar novas transações. Já um segundo profissional possui apenas transações sem rótulo e quer descobrir grupos de comportamento semelhantes. Os paradigmas de aprendizado adequados a cada caso são, respectivamente:",
   "alts": [
    "aprendizado por reforço e aprendizado supervisionado.",
@@ -3831,6 +4173,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "vies-variancia"
+  ],
   "q": "Durante o treinamento de um modelo, observa-se erro muito baixo nos dados de treino, mas erro alto nos dados de teste, indicando que o modelo memorizou ruídos e particularidades da amostra e não generaliza bem. Esse fenômeno é denominado:",
   "alts": [
    "convergência prematura do gradiente descendente.",
@@ -3850,6 +4195,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "vies-variancia"
+  ],
   "q": "Sobre o compromisso (trade-off) entre viés (bias) e variância (variance) em modelos de aprendizado de máquina, assinale a afirmativa correta.",
   "alts": [
    "Viés e variância são conceitos independentes que nunca influenciam o erro de generalização.",
@@ -3869,6 +4217,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "metricas-ml"
+  ],
   "q": "Um classificador de e-mails de spam foi avaliado. Considerando as métricas de desempenho, é correto afirmar que:",
   "alts": [
    "a acurácia pode ser enganosa em bases muito desbalanceadas, sendo o F1-score sempre a média harmônica entre precisão e recall.",
@@ -3888,6 +4239,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "llms-generativos"
+  ],
   "q": "Os grandes modelos de linguagem (LLMs), como os da família GPT, baseiam-se predominantemente em uma arquitetura de rede neural cujo mecanismo central permite ponderar a importância relativa de diferentes partes da sequência de entrada. Essa arquitetura e esse mecanismo são, respectivamente:",
   "alts": [
    "Rede Neural Recorrente (RNN) e retropropagação no tempo.",
@@ -3907,6 +4261,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "llms-generativos"
+  ],
   "q": "Uma organização deseja que seu assistente baseado em LLM responda perguntas com base em documentos internos e atualizados da empresa, reduzindo respostas desatualizadas ou inventadas. A técnica que combina a recuperação de trechos relevantes de uma base de conhecimento externa com a geração de texto pelo modelo é conhecida como:",
   "alts": [
    "quantização dos parâmetros do modelo de linguagem.",
@@ -3926,6 +4283,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "llms-generativos"
+  ],
   "q": "No contexto dos modelos generativos de linguagem, o termo 'alucinação' (hallucination) refere-se a:",
   "alts": [
    "o consumo excessivo de energia elétrica dos data centers durante as fases de treinamento e de inferência dos modelos.",
@@ -3945,6 +4305,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "etica-ia"
+  ],
   "q": "Um banco passou a usar um modelo de IA para aprovar crédito e observou que candidatos de determinado grupo demográfico eram sistematicamente mais reprovados, refletindo desigualdades presentes nos dados históricos usados no treinamento. Sobre viés algorítmico e governança de IA, julgue as afirmativas a seguir:\nI. O viés algorítmico pode originar-se de dados de treinamento não representativos ou que carregam preconceitos históricos.\nII. A explicabilidade (explainability) e a transparência são princípios que ajudam a identificar e mitigar decisões discriminatórias.\nIII. Um modelo, por ser automatizado e matemático, é invariavelmente neutro e imune a vieses.\nAssinale a alternativa correta.",
   "alts": [
    "Apenas as afirmativas I e II estão corretas.",
@@ -3964,6 +4327,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "regulacao-ia"
+  ],
   "q": "Sobre as iniciativas de regulação da Inteligência Artificial, assinale a afirmativa correta.",
   "alts": [
    "O AI Act europeu proíbe integralmente o desenvolvimento e uso de qualquer sistema de inteligência artificial no bloco.",
@@ -3983,6 +4349,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "ia-esg"
+  ],
   "q": "A sigla ESG, cada vez mais presente em relatórios corporativos e critérios de investimento, corresponde a um conjunto de práticas que avalia o desempenho das organizações em três dimensões. Essas dimensões são:",
   "alts": [
    "Ambiental, Social e Econômico.",
@@ -4002,6 +4371,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "ia-esg"
+  ],
   "q": "A expansão da Inteligência Artificial generativa tem intensificado o debate sobre a sustentabilidade dos data centers. Sobre esse tema socioambiental, julgue as afirmativas a seguir:\nI. O treinamento e a operação de grandes modelos de IA elevam o consumo de energia elétrica e, muitas vezes, de água para resfriamento dos data centers.\nII. A transição energética para fontes renováveis é apontada como um dos caminhos para reduzir a pegada de carbono da infraestrutura de computação.\nIII. Por serem digitais, os data centers não geram qualquer impacto ambiental, sendo neutros em consumo de recursos naturais.\nAssinale a alternativa correta.",
   "alts": [
    "Apenas a afirmativa I está correta.",
@@ -4021,6 +4393,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nWhat is the main idea of the text?",
   "alts": [
    "Physical servers are more reliable than cloud-based systems.",
@@ -4040,6 +4415,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nIn the fragment \"they never use\", the pronoun \"they\" refers to:",
   "alts": [
    "the organizations",
@@ -4078,6 +4456,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Many companies now migrate their systems to the cloud expecting immediate savings. However, the reality is often more complex. Without careful planning, organizations may end up paying for idle resources they never use. Cloud computing does reduce the burden of maintaining physical servers, but it also demands new skills from IT teams. Thus, the benefits materialize only when migration is guided by a clear strategy rather than by hype.\"\n\nIn the text, the word \"burden\" is closest in meaning to:",
   "alts": [
    "advantage",
@@ -4097,6 +4478,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nWhat is the author's main point?",
   "alts": [
    "AI assistants should never be used to write code.",
@@ -4135,6 +4519,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nIn \"it does not replace the judgment\", the pronoun \"it\" refers to:",
   "alts": [
    "the judgment",
@@ -4154,6 +4541,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Artificial intelligence assistants are increasingly used to write code. Developers appreciate how quickly these tools can suggest solutions to common problems. Nevertheless, experts warn that blindly accepting generated code can introduce hidden security flaws. A suggestion may look correct and still contain a subtle vulnerability. For this reason, human review remains essential: the assistant accelerates the work, but it does not replace the judgment of an experienced engineer.\"\n\nAccording to the text, which statement is TRUE?",
   "alts": [
    "Experts encourage developers to accept generated code without checking.",
@@ -4192,6 +4582,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Remote work has reshaped the technology industry. Teams that once shared the same office now collaborate across different time zones. This shift brings clear benefits, such as access to a wider pool of talent and lower office costs. Yet it also creates challenges: communication can suffer when colleagues rarely meet in person, and junior employees may struggle to learn from senior peers. Unless companies invest in strong communication practices, these problems can quietly erode team performance.\"\n\nThe word \"Unless\" in the last sentence introduces the idea that team performance will be harmed:",
   "alts": [
    "even if companies invest in communication practices",
@@ -4211,6 +4604,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "excecoes-java"
+  ],
   "q": "Em Java, uma aplicação lança uma exceção que estende diretamente RuntimeException. Sobre a obrigatoriedade de tratamento, é correto afirmar que:",
   "alts": [
    "Só pode ser tratada se o método a declarar explicitamente com a cláusula throws.",
@@ -4230,6 +4626,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "polimorfismo"
+  ],
   "q": "Considere: na classe Base há o método 'int calc(int x)'. Na subclasse Deriv há 'int calc(int x, int y)' e 'long calc(int x)'. Analisando os conceitos de overload e override, assinale a afirmativa correta.",
   "alts": [
    "'int calc(int x, int y)' é overload, pois muda a lista de parâmetros; 'long calc(int x)' NÃO compila, por diferir apenas no retorno.",
@@ -4249,6 +4648,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "colecoes-java"
+  ],
   "q": "Um desenvolvedor precisa de uma estrutura de Map em que a iteração sobre as chaves respeite a ordem crescente natural das chaves (ex.: ordem alfabética/numérica). Qual implementação do Java Collections Framework atende diretamente a esse requisito?",
   "alts": [
    "TreeMap, que mantém as chaves ordenadas pela ordenação natural (ou por Comparator)",
@@ -4268,6 +4670,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "colecoes-java"
+  ],
   "q": "Sobre a diferença entre ArrayList e LinkedList em Java, considerando o custo das operações, assinale a afirmativa correta.",
   "alts": [
    "LinkedList oferece get(i) em O(1), pois cada nó guarda seu índice.",
@@ -4306,6 +4711,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "solid"
+  ],
   "q": "No princípio de projeto 'D' do SOLID (Inversão de Dependência), qual orientação está corretamente enunciada?",
   "alts": [
    "Subtipos não podem substituir seus tipos base sem alterar o comportamento esperado pelo cliente.",
@@ -4369,6 +4777,9 @@
  },
  {
   "tag": "java",
+  "sub": [
+   "ecossistema-spring"
+  ],
   "q": "Em JPA/Hibernate, uma consulta que carrega uma lista de N entidades pai e, para cada uma, dispara uma consulta adicional para buscar a coleção de filhos associada caracteriza um problema clássico de desempenho. Sobre isso, assinale a afirmativa correta.",
   "alts": [
    "O problema N+1 ocorre só com FetchType.EAGER, não com carregamento sob demanda.",
@@ -4429,6 +4840,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "pmbok"
+  ],
   "q": "No PMBOK (6a edição), os processos de gerenciamento de projeto são organizados em grupos de processos e em áreas de conhecimento. Assinale a alternativa que apresenta corretamente os cinco grupos de processos.",
   "alts": [
    "Evaluate, Direct, Monitor, Align e Deliver.",
@@ -4505,6 +4919,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "cobit-2019"
+  ],
   "q": "O COBIT 2019 faz uma distinção central entre governança e gestão. Sobre essa distinção, assinale a alternativa correta.",
   "alts": [
    "A governança avalia, dirige e monitora (EDM) e cabe ao conselho; a gestão planeja, constrói, executa e monitora, alinhada à direção definida.",
@@ -4524,6 +4941,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "cobit-2019"
+  ],
   "q": "O modelo central do COBIT 2019 organiza seus objetivos de governança e gestão em domínios. Assinale a alternativa que apresenta corretamente o número de domínios e sua composição entre governança e gestão.",
   "alts": [
    "Cinco domínios: dois de governança (EDM e MEA) e três de gestão (APO, BAI e DSS).",
@@ -4543,6 +4963,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "bpmn"
+  ],
   "q": "Em um modelo de processo BPMN, uma equipe precisa representar que, após o registro de um pedido, o fluxo deve seguir por apenas UM entre dois caminhos, dependendo de o cliente ser ou não cadastrado. Qual elemento BPMN representa adequadamente essa decisão exclusiva baseada em condição?",
   "alts": [
    "Fluxo de mensagem, que representa a troca de mensagens entre participantes de pools distintos do processo.",
@@ -4562,6 +4985,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "bpmn"
+  ],
   "q": "Sobre os elementos de conexão no BPMN, considere a diferença entre fluxo de sequência e fluxo de mensagem. Assinale a alternativa correta.",
   "alts": [
    "O fluxo de sequência (linha sólida) conecta atividades no mesmo pool, definindo a ordem de execução; o fluxo de mensagem (linha tracejada) liga participantes de pools distintos.",
@@ -4581,6 +5007,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "Uma equipe adota Scrum e Kanban de forma combinada. Sobre os fundamentos desses métodos e do Lean, assinale a alternativa correta.",
   "alts": [
    "No Lean, aumentar o desperdício (muda) é uma prática recomendada para acelerar a entrega de valor ao cliente.",
@@ -4600,6 +5029,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "etica-ia"
+  ],
   "q": "Uma prefeitura implementou um sistema de triagem automatizada para priorizar a concessão de determinado benefício social. O modelo foi treinado com dados históricos de concessões anteriores, que incluíam, entre outras variáveis, o CEP do requerente. Verificou-se que o CEP está fortemente correlacionado a bairros historicamente marginalizados, e o modelo passou a negar o benefício a esses bairros com frequência maior que a média, mesmo sem utilizar diretamente atributos como raça ou renda. Assinale a alternativa correta sobre esse cenário.",
   "alts": [
    "O modelo é tecnicamente neutro, pois não utiliza nenhum atributo sensível (como raça ou renda) diretamente em seu treinamento.",
@@ -4619,6 +5051,10 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "ia-esg",
+   "fundamentos-ia"
+  ],
   "q": "Um texto-base afirma que a infraestrutura de datacenters que sustenta o treinamento de modelos de Inteligência Artificial responde por parcela crescente do consumo elétrico mundial, sendo a maior fatia dessa energia consumida pelo processamento (infraestrutura de TI), seguida de perto pelos sistemas de resfriamento. O texto cita ainda iniciativas de governança, como metas regulatórias de eficiência energética (métrica PUE) e exigências de transparência sobre o impacto ambiental de produtos baseados em IA. Com base nesse texto-base, assinale a afirmativa correta.",
   "alts": [
    "O PUE relaciona a energia total consumida pelo datacenter com a energia usada apenas pela infraestrutura de TI, e valores mais próximos de 1,0 indicam maior eficiência energética.",
@@ -4638,6 +5074,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "llms-generativos"
+  ],
   "q": "Um órgão público implementa um assistente virtual baseado em um modelo de linguagem (LLM) para responder dúvidas de cidadãos sobre prazos e requisitos de um benefício, substituindo parte do atendimento humano de primeiro nível. Durante testes, o assistente forneceu, de forma fluente e convincente, um prazo de recurso administrativo que não constava em nenhuma norma vigente. Assinale a alternativa que trata corretamente desse cenário.",
   "alts": [
    "Esse tipo de erro é exclusivo de arquiteturas antigas de Inteligência Artificial e já foi completamente eliminado nos modelos comerciais mais recentes.",
@@ -4657,6 +5096,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "ia-esg"
+  ],
   "q": "Considerando o debate atual sobre sustentabilidade e o papel da tecnologia, avalie as afirmativas a seguir:\nI. O avanço tecnológico, de modo geral, produz impactos ambientais tanto positivos (eficiência, monitoramento climático) quanto negativos (consumo energético, descarte eletrônico), sem que se possa afirmar um veredito absoluto em qualquer direção.\nII. Iniciativas de transparência ambiental corporativa, como a divulgação do impacto de datacenters, são compatíveis com o avanço do setor de tecnologia.\nIII. O desenvolvimento sustentável, por definição, exige apenas o aprimoramento da eficiência técnica das tecnologias já existentes, sem qualquer mudança nos padrões de consumo.\nEstá correto o que se afirma em:",
   "alts": [
    "III, apenas",
@@ -4742,6 +5184,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Sobre a responsabilidade civil dos provedores de aplicações de internet por danos decorrentes de conteúdo gerado por terceiros, à luz do entendimento do STF fixado em 26/06/2025 (Temas 987 e 533), assinale a alternativa correta.",
   "alts": [
    "Como regra geral, a notificação extrajudicial do usuário prejudicado já é suficiente para responsabilizar civilmente o provedor que, ciente do conteúdo ilícito, deixa de removê-lo; a exigência de ordem judicial prévia permanece apenas para os casos de crimes contra a honra.",
@@ -4761,6 +5206,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Um usuário publica em uma rede social um vídeo que incita atos de violência contra um grupo específico e configura, em tese, crime contra a ordem democrática. Um terceiro identifica o conteúdo e envia uma notificação extrajudicial à plataforma, solicitando a remoção. À luz do entendimento do STF sobre o art. 19 do Marco Civil (pós-26/06/2025), assinale a alternativa correta.",
   "alts": [
    "A plataforma só pode ser responsabilizada se deixar de remover o conteúdo após ordem judicial específica, já que esse é o único critério previsto para qualquer tipo de conteúdo ilícito.",
@@ -4780,6 +5228,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Determinado usuário publica conteúdo que, em tese, configura crime de difamação contra outra pessoa física. Segundo o entendimento fixado pelo STF em 2025 sobre o art. 19 do Marco Civil, para que a plataforma seja civilmente responsabilizada por não remover esse conteúdo específico, é necessário que:",
   "alts": [
    "Haja ordem judicial específica de remoção, pois os crimes contra a honra (calúnia, injúria e difamação) são sempre a exceção que preserva a decisão judicial.",
@@ -4799,6 +5250,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Sobre a decisão do STF que tratou da constitucionalidade do art. 19 do Marco Civil da Internet (Temas 987 e 533), julgada em 26/06/2025, assinale a alternativa correta.",
   "alts": [
    "A decisão trata exclusivamente de conteúdo relacionado a crimes contra a honra, não alcançando os demais tipos de conteúdo ilícito gerado por terceiros e publicado nas plataformas.",
@@ -4818,6 +5272,10 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "vies-variancia",
+   "fundamentos-ia"
+  ],
   "q": "O chamado 'viés algorítmico' em sistemas de Inteligência Artificial ocorre quando:",
   "alts": [
    "o conjunto de dados de treino é grande demais para caber em memória",
@@ -4837,6 +5295,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "etica-ia"
+  ],
   "q": "Uma empresa utiliza um sistema de triagem automatizada de currículos, treinado com o histórico de contratações dos últimos dez anos, para pré-selecionar candidatos a vagas técnicas. Observou-se que o sistema atribui pontuação menor a currículos que mencionam licença-maternidade ou hiatos de carreira associados a cuidado familiar. Assinale a alternativa correta.",
   "alts": [
    "Como o sistema não utiliza o atributo 'sexo' como variável de entrada, ele não pode ser responsabilizado por qualquer forma de discriminação indireta.",
@@ -4856,6 +5317,10 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "regulacao-ia",
+   "fundamentos-ia"
+  ],
   "q": "A abordagem 'baseada em risco' adotada por marcos regulatórios de Inteligência Artificial, como o AI Act europeu, consiste em:",
   "alts": [
    "aplicar o mesmo conjunto de exigências regulatórias a todo e qualquer sistema de IA, independentemente de sua finalidade",
@@ -4875,6 +5340,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "ia-esg"
+  ],
   "q": "Um texto-base afirma que parte relevante da energia elétrica que abastece datacenters no mundo ainda provém de fontes fósseis, e que a expansão acelerada da Inteligência Artificial pressiona as metas de descarbonização assumidas por diversos países. Avalie as afirmativas a seguir:\nI. A expansão do uso de IA é, em alguma medida, tensionada pelas metas climáticas, na proporção em que sua infraestrutura ainda depende de matriz energética parcialmente fóssil.\nII. Por se tratar de tecnologia estratégica, a expansão de datacenters de IA está isenta de qualquer meta ou regulação de eficiência energética em todos os países.\nIII. Medidas como metas de eficiência energética (ex.: PUE) e maior uso de fontes renováveis são compatíveis com a continuidade do avanço tecnológico do setor.\nEstá correto o que se afirma em:",
   "alts": [
    "I, apenas",
@@ -4894,6 +5362,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Mesmo antes da decisão do STF de 2025 sobre o art. 19 do Marco Civil, já havia uma hipótese em que a simples notificação extrajudicial (sem exigência de ordem judicial) bastava para responsabilizar o provedor por conteúdo de terceiro. Essa hipótese, prevista no art. 21 da mesma lei, refere-se a:",
   "alts": [
    "conteúdo de cunho sexual ou de nudez envolvendo a pessoa exposta, divulgado sem seu consentimento",
@@ -4932,6 +5403,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "Sobre o regime de responsabilidade civil dos provedores de aplicações de internet por conteúdo de terceiros, após a decisão do STF de 26/06/2025 sobre o art. 19 do Marco Civil, avalie as afirmativas a seguir:\nI. Para a maioria dos conteúdos ilícitos, a notificação extrajudicial do interessado já é suficiente para responsabilizar civilmente o provedor que não age.\nII. Para os crimes contra a honra (calúnia, injúria, difamação), a exigência de ordem judicial específica foi preservada.\nIII. Para conteúdo de risco especialmente grave (ex.: incitação ao terrorismo ou à violência), o provedor deve agir de forma proativa, sem esperar notificação.\nEstá correto o que se afirma em:",
   "alts": [
    "I, apenas",
@@ -4951,6 +5425,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "marco-civil-art19"
+  ],
   "q": "O julgamento do STF que resultou na nova interpretação do art. 19 do Marco Civil (Temas 987 e 533) foi proferido em sede de:",
   "alts": [
    "medida provisória editada pelo próprio STF, com vigência de 60 dias",
@@ -5036,6 +5513,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "integracao"
+  ],
   "q": "Uma equipe precisa integrar seu sistema ao de um órgão parceiro que exige contrato de serviço publicado, segurança aplicada no nível da mensagem e independência do protocolo de transporte. Comparando SOAP e REST nesse cenário, é correto afirmar que:",
   "alts": [
    "o SOAP é um protocolo, com envelope XML e contrato em WSDL; o REST é um estilo arquitetural apoiado nos verbos HTTP",
@@ -5055,6 +5535,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "integracao"
+  ],
   "q": "Uma equipe documenta a API que acabou de publicar e quer descrever corretamente o estilo adotado. Assinale a opção que NÃO corresponde a uma característica do estilo REST.",
   "alts": [
    "Comunicação sem estado entre requisições, cada uma carregando o contexto necessário para ser processada.",
@@ -5074,6 +5557,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "nuvem-escalabilidade"
+  ],
   "q": "Uma organização contrata um serviço de nuvem em que o provedor entrega a plataforma de execução — sistema operacional, runtime e middleware já gerenciados — e a equipe interna cuida apenas do código da aplicação e dos dados. Segundo a classificação do NIST, esse modelo e a divisão de responsabilidade correspondem a:",
   "alts": [
    "IaaS, em que o cliente recebe a plataforma pronta e deixa de administrar sistema operacional e runtime",
@@ -5093,6 +5579,9 @@
  },
  {
   "tag": "arquitetura",
+  "sub": [
+   "nuvem-escalabilidade"
+  ],
   "q": "Durante uma campanha de vendas, um serviço em nuvem passa de 4 para 40 instâncias em minutos e volta a 4 na semana seguinte; a fatura acompanha o consumo hora a hora. As duas características essenciais da computação em nuvem (NIST) evidenciadas nesse relato são, respectivamente:",
   "alts": [
    "amplo acesso à rede e autosserviço sob demanda",
@@ -5169,6 +5658,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "iso-27001-27002"
+  ],
   "q": "Ao estruturar seu programa de segurança, uma organização recorre a duas normas da família ISO/IEC 27000: uma como referência dos requisitos auditáveis do sistema de gestão e outra como fonte de orientação sobre os controles. Sobre esse par de normas, é correto afirmar que:",
   "alts": [
    "a 27002 estabelece os requisitos do SGSI e é a norma contra a qual a organização obtém a certificação",
@@ -5207,6 +5699,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "controle-acesso"
+  ],
   "q": "Um sistema precisa conceder acesso considerando, no momento da requisição, atributos do usuário (lotação, cargo), do recurso (classificação) e do ambiente (horário, endereço de origem), todos avaliados por uma política. O modelo de controle de acesso adequado é:",
   "alts": [
    "RBAC, que atende ao caso agregando cada combinação possível de atributos a um papel específico",
@@ -5226,6 +5721,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "controle-acesso"
+  ],
   "q": "Sobre os modelos clássicos de controle de acesso obrigatório (MAC) e discricionário (DAC), é correto afirmar que:",
   "alts": [
    "no MAC o sistema impõe a política por rótulos de classificação; no DAC o proprietário define as permissões",
@@ -5245,6 +5743,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "controle-acesso"
+  ],
   "q": "Uma aplicação delega ao provedor de identidade corporativo a autenticação de seus usuários e precisa receber de volta a confirmação de quem é o usuário autenticado. Sobre os protocolos envolvidos, assinale a alternativa correta.",
   "alts": [
    "O OAuth 2.0 foi desenhado para autenticar o usuário final, entregando à aplicação a identidade já verificada.",
@@ -5264,6 +5765,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "owasp-top10"
+  ],
   "q": "Uma auditoria constatou que um usuário comum consegue abrir os registros de outros usuários apenas trocando o identificador presente na URL, sem que a aplicação verifique a quem o registro pertence. Na classificação do OWASP Top 10 2021, essa falha se enquadra em:",
   "alts": [
    "A03:2021 – Injection, por manipulação do parâmetro que é enviado ao servidor da aplicação",
@@ -5283,6 +5787,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "continuidade-rto-rpo"
+  ],
   "q": "Ao revisar o plano de continuidade, a diretoria define que o serviço de folha de pagamento pode ficar indisponível por no máximo 4 horas e que a perda de dados aceitável é de, no máximo, 15 minutos. Esses dois limites correspondem, respectivamente, a:",
   "alts": [
    "RPO de 4 horas e RTO de 15 minutos, na ordem em que os limites aparecem no enunciado",
@@ -5302,6 +5809,9 @@
  },
  {
   "tag": "seguranca",
+  "sub": [
+   "owasp-top10"
+  ],
   "q": "Uma aplicação recebe do usuário uma URL e busca no servidor o conteúdo daquele endereço para exibi-lo. Um atacante informa um endereço interno da própria rede e, com isso, obtém dados de um serviço que não deveria estar acessível de fora. Essa vulnerabilidade é conhecida como:",
   "alts": [
    "Cross-Site Request Forgery (CSRF), pois a requisição parte do navegador da vítima já autenticada",
@@ -5321,6 +5831,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "concorrencia"
+  ],
   "q": "Em um sistema de reservas, duas transações concorrentes leem a mesma faixa de registros; entre as duas leituras da primeira transação, a segunda insere novas linhas que passam a aparecer no resultado. Esse fenômeno e o nível de isolamento que o elimina são, respectivamente:",
   "alts": [
    "leitura fantasma (phantom read), eliminada pelo nível SERIALIZABLE",
@@ -5340,6 +5853,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "concorrencia"
+  ],
   "q": "Sobre os níveis de isolamento definidos no padrão SQL e os fenômenos que cada um admite, assinale a alternativa correta.",
   "alts": [
    "READ UNCOMMITTED é o nível mais restritivo, pois impede que se leia dado ainda não confirmado.",
@@ -5359,6 +5875,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "view-grant"
+  ],
   "q": "Um requisito determina que toda alteração de salário seja registrada em uma tabela de auditoria, sem depender de a aplicação lembrar de fazê-lo. Comparando gatilho (trigger) e procedimento armazenado (stored procedure), a solução adequada e o motivo são:",
   "alts": [
    "procedimento armazenado, porque é acionado automaticamente pelo SGBD a cada UPDATE na tabela",
@@ -5378,6 +5897,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "mer-relacional"
+  ],
   "q": "No modelo entidade-relacionamento de um sistema de pessoal, a entidade DEPENDENTE só é identificada em conjunto com o SERVIDOR ao qual está vinculada, pois não possui identificador próprio suficiente. Sobre esse caso, é correto afirmar que:",
   "alts": [
    "trata-se de entidade forte, pois possui atributos próprios além do vínculo com o servidor",
@@ -5416,6 +5938,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "sql-consultas"
+  ],
   "q": "Um analista precisa listar os departamentos que não possuem nenhum empregado. Ele escreve a consulta com NOT IN sobre uma subconsulta que retorna DEPT_ID de EMPREGADO, coluna que admite valores nulos. Sobre essa escolha, é correto afirmar que:",
   "alts": [
    "com um único DEPT_ID nulo na subconsulta, o NOT IN devolve conjunto vazio; o NOT EXISTS, não",
@@ -5630,6 +6155,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "maturidade-processo"
+  ],
   "q": "Uma organização avaliada no CMMI, na representação por estágios, foi classificada no nível 3. Sobre a escala de maturidade usada nessa avaliação, é correto afirmar que:",
   "alts": [
    "o nível 3 é o Gerenciado, e a organização ainda não padronizou processos no âmbito organizacional",
@@ -5649,6 +6177,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "testes"
+  ],
   "q": "No modelo V, cada fase do desenvolvimento é associada ao nível de teste que a verifica. Assinale a alternativa que apresenta associações corretas entre fase e nível de teste.",
   "alts": [
    "Especificação de requisitos e teste de aceitação; projeto arquitetural e teste de integração.",
@@ -5668,6 +6199,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "manutencao-software"
+  ],
   "q": "Depois de uma atualização obrigatória da versão do banco de dados corporativo, uma equipe altera o sistema para que ele continue funcionando no novo ambiente, sem acrescentar funcionalidade nem corrigir defeito relatado por usuário. Segundo a classificação usual dos tipos de manutenção, trata-se de manutenção:",
   "alts": [
    "corretiva, pois sem a alteração o sistema deixaria de funcionar como se espera dele",
@@ -5706,6 +6240,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "testes"
+  ],
   "q": "Antes de entrar em produção, uma equipe quer descobrir em que ponto o sistema deixa de responder quando o número de usuários simultâneos ultrapassa, de forma crescente, o volume previsto em contrato. O tipo de teste adequado a esse objetivo é o teste de:",
   "alts": [
    "carga, que observa o comportamento do sistema sob o volume de uso esperado em produção",
@@ -5725,6 +6262,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "O Scrum Guide associa a cada artefato um compromisso, que dá foco à equipe e permite medir o progresso. Sobre essa associação entre artefato e compromisso, assinale a alternativa correta.",
   "alts": [
    "Product Backlog e Definition of Done; Sprint Backlog e Meta do Produto.",
@@ -5744,6 +6284,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "geometria-plana"
+  ],
   "q": "Uma sala de servidores retangular mede 12 m de comprimento por 7,5 m de largura. Será instalado piso elevado em toda a área da sala e um rodapé metálico ao longo de todo o perímetro, com exceção do vão de uma porta de 1,2 m. As quantidades de piso e de rodapé são, respectivamente:",
   "alts": [
    "90 m² e 37,8 m",
@@ -5763,6 +6306,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "geometria-plana"
+  ],
   "q": "No projeto de um datacenter, um cabo será esticado na diagonal de um piso retangular de 8 m por 6 m e outro cabo dará uma volta completa em torno de um pilar cilíndrico de 1,4 m de raio. Adotando π = 3,14, os comprimentos necessários são, aproximadamente:",
   "alts": [
    "14 m e 8,79 m",
@@ -5782,6 +6328,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "medidas-de-posicao"
+  ],
   "q": "Sete medições do tempo de resposta de um serviço, em milissegundos, resultaram em: 120, 95, 110, 95, 130, 100 e 150. A média, a mediana e a moda desse conjunto são, respectivamente, aproximadamente:",
   "alts": [
    "114,3 ms, 95 ms e 110 ms",
@@ -5801,6 +6350,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "medidas-de-posicao"
+  ],
   "q": "Dois servidores foram monitorados durante o mesmo período. Ambos apresentaram tempo médio de resposta de 200 ms, mas o servidor A teve desvio padrão de 8 ms e o servidor B, de 45 ms. Sobre esses dados, é correto afirmar que:",
   "alts": [
    "o servidor A é o mais rápido dos dois, pois desvio padrão menor indica média menor",
@@ -5820,6 +6372,9 @@
  },
  {
   "tag": "rlm",
+  "sub": [
+   "juros-simples-compostos"
+  ],
   "q": "Um valor de R$ 10.000,00 é aplicado pelo prazo de 2 anos, à taxa de 10% ao ano. A diferença entre o montante obtido no regime de juros compostos e o montante obtido no regime de juros simples, ao final dos 2 anos, é de:",
   "alts": [
    "R$ 0,00",
@@ -5839,6 +6394,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nWhat is the main idea of the text?",
   "alts": [
    "Firewalls and patches are useless against the attacks described in the text.",
@@ -5858,6 +6416,10 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto",
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nIn the fragment \"Attackers know this\", the word \"this\" refers to the fact that:",
   "alts": [
    "no tool is able to stop an employee from revealing a password",
@@ -5877,6 +6439,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nAccording to the text, it is correct to state that:",
   "alts": [
    "criminals prefer to break encryption instead of contacting the users of a system",
@@ -5896,6 +6461,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Security teams often describe technology as the easy part of their job. Firewalls can be configured and patches can be deployed, but no tool prevents an employee from typing a password into a convincing fake page. Attackers know this, which is why phishing remains the most common entry point into corporate networks. Rather than breaking encryption, criminals simply ask people for the keys. Training helps, yet it must be continuous: a single awareness session at hiring time is quickly forgotten.\"\n\nIn the text, the word \"convincing\" is closest in meaning to:",
   "alts": [
    "harmless",
@@ -5915,6 +6483,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nWhat is the main idea of the text?",
   "alts": [
    "Governments should stop using artificial intelligence in public services.",
@@ -5953,6 +6524,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nIn the fragment \"a result they do not understand\", the pronoun \"they\" refers to:",
   "alts": [
    "the citizens",
@@ -5972,6 +6546,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Governments are increasingly using artificial intelligence to triage requests, answer questions and detect fraud. The appeal is obvious: algorithms work around the clock and do not grow tired. Still, automated decisions can reproduce the biases present in the data used to train them, and citizens rarely have a clear way to challenge a result they do not understand. For this reason, several countries now require that a human review any decision that significantly affects an individual's rights.\"\n\nIn the text, the verb \"challenge\" is closest in meaning to:",
   "alts": [
    "accept",
@@ -6145,6 +6722,10 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "granularidade",
+   "fato-dimensao"
+  ],
   "q": "Ao projetar o data warehouse de uma central de atendimento, a equipe decide que cada linha da tabela fato representará um atendimento individual, e não o total diário por unidade. Sobre essa decisão, é correto afirmar que:",
   "alts": [
    "define a granularidade no nível mais agregado, reduzindo o volume de linhas armazenadas",
@@ -6183,6 +6764,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "scd"
+  ],
   "q": "Em um data warehouse, a dimensão Cliente precisa preservar o histórico: quando um cliente muda de cidade, as vendas antigas devem continuar associadas à cidade em que ele morava na época. A técnica de dimensão lentamente mutante (SCD) adequada é a de:",
   "alts": [
    "tipo 1, que sobrescreve o valor antigo pelo novo no próprio registro",
@@ -6202,6 +6786,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "crisp-dm"
+  ],
   "q": "Seguindo o CRISP-DM, uma equipe concluiu a modelagem e precisa verificar se os resultados obtidos atendem aos objetivos de negócio antes de colocar o modelo em operação. A fase correspondente a essa verificação e a que vem imediatamente depois dela são:",
   "alts": [
    "Preparação dos Dados e Modelagem",
@@ -6221,6 +6808,9 @@
  },
  {
   "tag": "bi",
+  "sub": [
+   "crisp-dm"
+  ],
   "q": "Uma equipe quer, em um projeto, descobrir grupos de clientes com comportamento de consumo parecido, sem dispor de rótulos prévios; em outro projeto, quer identificar quais produtos costumam ser comprados juntos. As tarefas de mineração de dados correspondentes são, respectivamente:",
   "alts": [
    "classificação e regressão",
@@ -6240,6 +6830,9 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "interpretacao-texto"
+  ],
   "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nA ideia central do texto é a de que:",
   "alts": [
    "a digitalização só produz inclusão quando acompanhada de política de acesso",
@@ -6297,6 +6890,9 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "reescrita-significacao"
+  ],
   "q": "Leia o texto a seguir para responder à questão.\n\n\"A digitalização dos serviços públicos costuma ser apresentada como sinônimo de eficiência. De fato, formulários eletrônicos reduzem filas e encurtam prazos. Ocorre que parte considerável da população ainda enfrenta dificuldades de acesso à internet ou de manejo das ferramentas digitais. Se o atendimento presencial é desmontado antes que essas barreiras sejam vencidas, o resultado não é a inclusão prometida, mas a exclusão de quem mais depende do serviço. A tecnologia, portanto, só cumpre sua promessa quando vem acompanhada de política de acesso.\"\n\nA expressão \"manejo das ferramentas digitais\" pode ser substituída, sem alteração de sentido, por:",
   "alts": [
    "compra das ferramentas digitais",
@@ -6335,6 +6931,10 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "pessoas-do-discurso",
+   "concordancia-verbal"
+  ],
   "q": "Assinale a frase que está de acordo com a norma-padrão quanto à concordância verbal.",
   "alts": [
    "Fazem dois anos que o sistema entrou em produção.",
@@ -6354,6 +6954,10 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "regencia",
+   "pronomes-relativos"
+  ],
   "q": "Assinale a frase em que a regência verbal está de acordo com a norma-padrão.",
   "alts": [
    "O relatório a que me refiro foi arquivado pela comissão.",
@@ -6373,6 +6977,9 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "oracoes-subordinadas"
+  ],
   "q": "Assinale a frase em que a vírgula foi empregada de acordo com a norma-padrão.",
   "alts": [
    "Os servidores, que trabalham no setor de tecnologia receberam o treinamento.",
@@ -6411,6 +7018,10 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "oracoes-subordinadas",
+   "conectivos"
+  ],
   "q": "No período \"O prazo foi cumprido, embora a equipe estivesse reduzida\", a oração iniciada por \"embora\" exprime ideia de concessão. Assinale a conjunção que pode substituir \"embora\" sem alterar essa relação de sentido.",
   "alts": [
    "portanto",
@@ -6430,6 +7041,9 @@
  },
  {
   "tag": "portugues",
+  "sub": [
+   "colocacao-pronominal"
+  ],
   "q": "Assinale a frase que está de acordo com a norma-padrão quanto à colocação pronominal.",
   "alts": [
    "Não refiro-me ao processo que foi arquivado na semana passada.",
@@ -6559,6 +7173,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nWhat is the main idea of the text?",
   "alts": [
    "Experienced developers finished their tasks faster once AI tools were allowed.",
@@ -6578,6 +7195,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nIn the fragment \"This slowdown also contradicts predictions from experts\", the expression \"This slowdown\" refers to:",
   "alts": [
    "the 24% reduction in completion time developers expected before starting",
@@ -6597,6 +7217,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Despite widespread adoption, the impact of AI tools on software development in the wild remains understudied. We conduct a randomized controlled trial (RCT) to understand how AI tools at the February-June 2025 frontier affect the productivity of experienced open-source developers. 16 developers with moderate AI experience complete 246 tasks in mature projects on which they have an average of 5 years of prior experience. Each task is randomly assigned to allow or disallow usage of early 2025 AI tools. When AI tools are allowed, developers primarily use Cursor Pro, a popular code editor, and Claude 3.5/3.7 Sonnet. Before starting tasks, developers forecast that allowing AI will reduce completion time by 24%. After completing the study, developers estimate that allowing AI reduced completion time by 20%. Surprisingly, we find that allowing AI actually increases completion time by 19%--AI tooling slowed developers down. This slowdown also contradicts predictions from experts in economics (39% shorter) and ML (38% shorter).\"\nhttps://arxiv.org/abs/2507.09089\n\nThe word \"Surprisingly\", used in the text, introduces a result that:",
   "alts": [
    "confirms the figure the developers had predicted before starting the tasks",
@@ -6635,6 +7258,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nWhat is the main idea of the text?",
   "alts": [
    "Softr was designed specifically to build credential harvesting pages for criminals.",
@@ -6654,6 +7280,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nIn \"This incident demonstrates how AI tools can lower the barrier to entry\", the expression \"This incident\" refers to:",
   "alts": [
    "the campaign in which Softr generated a fake Exchange and OWA login page",
@@ -6673,6 +7302,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "q": "Read the text below and answer the question.\n\n\"Talos IR responded to a campaign that leveraged phishing, the most common means of initial access this quarter, to compromise the most targeted industry vertical this quarter: public administration. Notably, the actors leveraged the Softr AI-based web application development service, marking the first time we have documented the use of a specific AI tool by an adversary in a phishing campaign. Softr was used to generate a credential harvesting page targeting users' Microsoft Exchange and Outlook Web Access (OWA) accounts.\n\nState-sponsored and criminal actors have been observed abusing large language models (LLMs) to aid in the development of phishing lures, malicious scripts, and other tasks. DDoS-as-a-service actors have adopted AI algorithms for defense evasion and attack orchestration. While this is the first time we have documented the use of a specific AI tool in a Talos IR incident, we have moderate confidence that malicious actors have used Softr's AI-powered web application creation platform since at May 2023, based on Cisco Umbrella data and other telemetry, and have done so with increasing frequency to date.\n\nThis incident demonstrates how AI tools can lower the barrier to entry for less sophisticated actors and/or accelerate the speed of phishing and credential-harvesting campaigns.\"\nhttps://blog.talosintelligence.com/ir-trends-q1-2026/\n\nThe word \"Notably\", used in the text, signals that what follows is:",
   "alts": [
    "a consequence that follows from the choice of target described just before",
@@ -6711,6 +7343,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "estruturas-dados"
+  ],
   "q": "Uma equipe implementa um cache em memória com tabela hash de endereçamento aberto e sondagem linear. Com o crescimento do volume, o fator de carga chega a cerca de 0,9 e o tempo médio de busca dispara, embora a função hash continue distribuindo bem as chaves. Assinale a alternativa que explica corretamente o fenômeno.",
   "alts": [
    "Com endereçamento aberto, o número de elementos armazenados passa a exceder o número de posições da tabela, e o excedente é varrido sequencialmente ao final dela.",
@@ -6749,6 +7384,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "estruturas-dados"
+  ],
   "q": "Um serviço precisa recuperar registros por faixa de valores (todos os processos distribuídos entre duas datas) e também apresentar a listagem em ordem crescente de data. Assinale a alternativa correta quanto à estrutura de dados mais adequada.",
   "alts": [
    "Uma árvore de busca balanceada atende aos dois requisitos, porque mantém a ordem entre as chaves.",
@@ -6768,6 +7406,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "estruturas-dados"
+  ],
   "q": "O módulo de desfazer (undo) de um editor deve reverter as últimas operações do usuário na ordem inversa à que foram executadas. No mesmo sistema, a fila de impressão deve atender os documentos na ordem em que foram enviados. Assinale a alternativa que associa corretamente as estruturas de dados.",
   "alts": [
    "As duas situações pedem uma fila, porque ambas processam elementos guardados em sequência.",
@@ -6787,6 +7428,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "estruturas-dados"
+  ],
   "q": "Um programa precisa localizar um registro específico em um arquivo grande que não está ordenado e não possui qualquer estrutura de índice. Assinale a alternativa correta.",
   "alts": [
    "A busca binária é aplicável e resolve o problema em O(log n) comparações no pior caso.",
@@ -6806,6 +7450,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "estruturas-dados"
+  ],
   "q": "Ao escolher entre um vetor (array) e uma lista simplesmente encadeada para uma coleção que sofre muitas inserções e remoções em posições intermediárias, a diferença decisiva é que:",
   "alts": [
    "o vetor insere no meio em tempo constante, porque basta sobrescrever a posição desejada",
@@ -6825,6 +7472,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "ponto-funcao"
+  ],
   "q": "Na contagem de pontos de função de um sistema de concessão de benefícios, o analista identificou dois grupos de dados: a tabela de requerimentos, criada e mantida pelo próprio sistema, e a tabela de servidores, apenas consultada e mantida por outro sistema corporativo. Assinale a alternativa que classifica corretamente os dois grupos.",
   "alts": [
    "Os dois são Arquivos Lógicos Internos, já que ambos são lidos pela aplicação contada.",
@@ -6844,6 +7494,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "ponto-funcao"
+  ],
   "q": "Três funcionalidades foram levantadas em um sistema: (I) tela que cadastra um novo servidor, gravando os dados na base do próprio sistema; (II) relatório que lista os servidores de uma unidade, exibindo apenas dados já armazenados; (III) relatório que calcula e apresenta o tempo médio de tramitação por unidade. Na Análise de Pontos de Função, I, II e III são classificadas, respectivamente, como",
   "alts": [
    "Entrada Externa, Consulta Externa e Saída Externa.",
@@ -6863,6 +7516,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "ponto-funcao"
+  ],
   "q": "Ao justificar a técnica de medição de tamanho de software a ser usada em contratos com fornecedores, o gerente precisa de uma métrica independente da tecnologia empregada na construção. Assinale a alternativa correta.",
   "alts": [
    "Linhas de código (LOC) é a métrica indicada, por ser objetiva e diretamente comparável entre linguagens.",
@@ -6882,6 +7538,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "testes"
+  ],
   "q": "Um campo de formulário aceita idades entre 18 e 65 anos, inclusive. O analista de testes derivou os casos com os valores 17, 18, 65 e 66. Assinale a alternativa que identifica a técnica aplicada.",
   "alts": [
    "Particionamento de equivalência, porque os quatro valores pertencem a partições distintas.",
@@ -6920,6 +7579,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "rup"
+  ],
   "q": "Sobre as quatro fases do Processo Unificado (RUP), assinale a alternativa INCORRETA.",
   "alts": [
    "A Concepção delimita o escopo e o caso de negócio, sem detalhar ainda todos os requisitos.",
@@ -6958,6 +7620,9 @@
  },
  {
   "tag": "orfaos",
+  "sub": [
+   "arquitetura-computadores-so"
+  ],
   "q": "Em arquitetura de computadores, as duas unidades funcionais clássicas da CPU são a Unidade de Controle (UC) e a Unidade Lógica e Aritmética (ULA). A respeito da divisão de trabalho entre elas, é correto afirmar que:",
   "alts": [
    "a UC executa as somas e as comparações, e a ULA fica encarregada de armazenar o resultado",
@@ -7015,6 +7680,9 @@
  },
  {
   "tag": "orfaos",
+  "sub": [
+   "arquitetura-computadores-so"
+  ],
   "q": "Em arquitetura de computadores, o ciclo de instrução percorre as etapas de busca, decodificação e execução. Uma CPU com pipeline sobrepõe essas etapas de instruções diferentes, de modo que, enquanto uma instrução é executada, a seguinte já está sendo decodificada. O efeito principal do pipeline é:",
   "alts": [
    "reduzir o tempo total que uma instrução isolada leva desde a busca até a conclusão",
@@ -7072,6 +7740,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "pmbok"
+  ],
   "q": "A sétima edição do Guia PMBOK alterou a forma de organizar o conteúdo em relação à sexta edição. Sobre essa mudança, assinale a alternativa correta.",
   "alts": [
    "A sétima edição ampliou os grupos de processos de cinco para oito, mantendo as dez áreas de conhecimento.",
@@ -7091,6 +7762,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "metodos-ageis"
+  ],
   "q": "O Scrum Guide associa a cada artefato do Scrum um compromisso, que dá transparência ao progresso em relação a ele. A associação correta entre artefato e compromisso é:",
   "alts": [
    "Product Backlog e Definição de Pronto; Sprint Backlog e Meta do Produto; Incremento e Meta da Sprint",
@@ -7129,6 +7803,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "bpmn"
+  ],
   "q": "Em um diagrama BPMN de um processo de concessão de benefício, aparecem um retângulo externo nomeado \"Instituto Previdenciário\", subdividido internamente em três faixas horizontais nomeadas \"Atendimento\", \"Perícia\" e \"Concessão\". Sobre esses elementos, é correto afirmar que:",
   "alts": [
    "as três faixas são pools, e o retângulo externo é a lane que as agrupa",
@@ -7224,6 +7901,9 @@
  },
  {
   "tag": "frontend",
+  "sub": [
+   "pegadinhas-css"
+  ],
   "q": "No CSS, um elemento recebe position: absolute e as propriedades top e left. A referência usada para posicioná-lo é:",
   "alts": [
    "o ancestral posicionado mais próximo, isto é, qualquer ancestral cuja position não seja static",
@@ -7281,6 +7961,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 3,
   "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nWhat is the main idea of the text?",
   "alts": [
@@ -7300,6 +7983,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "ans": 0,
   "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nIn the fragment \"instead of only the ones anticipated\", the expression \"the ones\" refers to:",
   "alts": [
@@ -7319,6 +8005,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "ans": 2,
   "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nIn the text, the verb \"addresses\" is closest in meaning to:",
   "alts": [
@@ -7338,6 +8027,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 4,
   "q": "Read the text below and answer the question.\n\n\"When a service fails at three in the morning, dashboards rarely tell the whole story. Teams have learned that collecting metrics is not the same as understanding behaviour: a chart may show that latency rose without revealing which request path caused it. Observability addresses this gap by combining metrics, logs and traces, so that engineers can ask new questions of a running system instead of only the ones anticipated when the system was built. The shift is cultural as much as technical, since it requires developers to instrument the code they write rather than leaving that task to an operations team downstream.\"\n\nAccording to the text, the cultural dimension of the shift consists in:",
   "alts": [
@@ -7357,6 +8049,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 1,
   "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nWhat is the main idea of the text?",
   "alts": [
@@ -7376,6 +8071,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "ans": 2,
   "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nIn the text, the word \"retrofitting\" is closest in meaning to:",
   "alts": [
@@ -7395,6 +8093,10 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto",
+   "referencia-pronominal-ingles"
+  ],
   "ans": 0,
   "q": "Read the text below and answer the question.\n\n\"Organisations often treat data protection as a final review, a checklist applied once the system is ready to launch. Regulators have taken a different view. Privacy by design asks that safeguards be embedded from the earliest stage of a project, while decisions about what to collect are still open. The argument is practical rather than moral: retrofitting protection into a system that already stores unnecessary personal data is expensive and frequently incomplete. Under this approach, the most effective safeguard is often the simplest one — not collecting the data at all.\"\n\nIn the fragment \"the most effective safeguard is often the simplest one\", the word \"one\" refers to:",
   "alts": [
@@ -7433,6 +8135,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 4,
   "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nWhat is the main idea of the text?",
   "alts": [
@@ -7452,6 +8157,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "ans": 1,
   "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nIn the text, the word \"blurred\" is closest in meaning to:",
   "alts": [
@@ -7490,6 +8198,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "ans": 0,
   "q": "Read the text below and answer the question.\n\n\"Accessibility is still widely described as a feature for a minority of users, which explains why it is so often postponed. In practice the boundaries are blurred. Captions help people who are deaf, but also anyone reading in a noisy train; high contrast helps users with low vision, and equally those looking at a screen in bright sunlight. Designers who treat accessibility as an ordinary quality requirement, rather than an optional extra, tend to produce interfaces that are clearer for everyone. Moreover, the cost of this approach falls sharply when it is considered before the interface is built.\"\n\nIn the fragment \"which explains why it is so often postponed\", the pronoun \"it\" refers to:",
   "alts": [
@@ -7509,6 +8220,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 3,
   "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nWhat is the author's main point?",
   "alts": [
@@ -7528,6 +8242,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "referencia-pronominal-ingles"
+  ],
   "ans": 2,
   "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nIn the fragment \"a solution it knows to be imperfect\", the pronoun \"it\" refers to:",
   "alts": [
@@ -7547,6 +8264,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "vocabulario-contexto"
+  ],
   "ans": 1,
   "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nIn the text, the expression \"excuse carelessness\" is closest in meaning to:",
   "alts": [
@@ -7566,6 +8286,9 @@
  },
  {
   "tag": "ingles",
+  "sub": [
+   "compreensao-global-ingles"
+  ],
   "ans": 4,
   "q": "Read the text below and answer the question.\n\n\"Technical debt is a metaphor, and like every metaphor it can be pushed too far. Its usefulness lies in making a trade-off visible to people who do not read code: a team ships faster today by choosing a solution it knows to be imperfect, and pays interest later in the form of slower changes and more defects. The danger appears when the metaphor is used to excuse carelessness. Debt taken deliberately, recorded and scheduled for repayment, is a legitimate engineering decision; the same shortcut taken silently is merely a defect waiting to be found.\"\n\nAccording to the text, what distinguishes legitimate technical debt from a mere defect is that legitimate debt is:",
   "alts": [
@@ -7585,6 +8308,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "sancoes-administrativas"
+  ],
   "q": "Após processo administrativo com ampla defesa, a ANPD aplicou a um controlador a sanção de advertência, com prazo para adoção de medidas corretivas. Verificando que as medidas não foram adotadas, a autoridade pretende aplicar, no mesmo caso concreto, a suspensão parcial do funcionamento do banco de dados. À luz do art. 52 da LGPD, é correto afirmar que:",
   "alts": [
    "a suspensão pode ser aplicada, porque a advertência já imposta satisfaz a exigência legal de gradação",
@@ -7604,6 +8330,9 @@
  },
  {
   "tag": "legislacao",
+  "sub": [
+   "agentes-de-tratamento"
+  ],
   "q": "Uma autarquia federal detecta o acesso não autorizado a uma base com nomes e CPFs de mil titulares, com potencial de risco relevante. O encarregado pergunta ao jurídico em quanto tempo o incidente deve ser comunicado à ANPD e aos titulares. A resposta correta é:",
   "alts": [
    "72 horas, prazo fixado diretamente pela LGPD para a comunicação à autoridade nacional",
@@ -7642,6 +8371,9 @@
  },
  {
   "tag": "governanca",
+  "sub": [
+   "itil"
+  ],
   "q": "No ITIL 4, as 34 práticas de gerenciamento distribuem-se em três grupos. A quantidade de práticas em cada grupo é, respectivamente para gerais, de serviço e técnicas:",
   "alts": [
    "17, 14 e 3",
@@ -7680,6 +8412,9 @@
  },
  {
   "tag": "eng-software",
+  "sub": [
+   "verificacao-validacao"
+  ],
   "q": "Sobre verificação e validação em engenharia de software, assinale a alternativa correta.",
   "alts": [
    "A validação compara o produto com a especificação, e a verificação, com a necessidade do usuário.",
@@ -7699,6 +8434,9 @@
  },
  {
   "tag": "banco-dados",
+  "sub": [
+   "metadados"
+  ],
   "q": "Um relatório gerencial passou a divergir do sistema de origem. Para responder de que fonte veio cada campo e por quais transformações ele passou até chegar ao relatório, o recurso de governança de dados a ser consultado é:",
   "alts": [
    "o dicionário de dados, que registra tipos, chaves e restrições das tabelas",
@@ -7756,6 +8494,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "blockchain"
+  ],
   "q": "Em uma blockchain no modelo do Bitcoin, cada bloco encadeia-se ao anterior pelo hash deste, o que sustenta a imutabilidade da cadeia. Assinale a alternativa que apresenta um elemento que NÃO é armazenado no bloco.",
   "alts": [
    "O hash do bloco anterior.",
@@ -7775,6 +8516,9 @@
  },
  {
   "tag": "programacao",
+  "sub": [
+   "java-ee-web"
+  ],
   "q": "Uma equipe mantém uma aplicação Java EE cuja interface é montada no servidor a partir de uma árvore de componentes, com ciclo de vida em fases: restaurar visão, aplicar valores da requisição, processar validações, atualizar o modelo, invocar a aplicação e renderizar a resposta. Sobre essa tecnologia e sobre o Primefaces, é correto afirmar que:",
   "alts": [
    "trata-se do JSF, e o Primefaces é uma biblioteca de componentes construída sobre ele",
@@ -7794,6 +8538,9 @@
  },
  {
   "tag": "redes",
+  "sub": [
+   "tcp-udp"
+  ],
   "q": "Um serviço de videoconferência transmite áudio e vídeo em tempo real: perdas pontuais degradam a qualidade por instantes, mas retransmitir um trecho já ultrapassado atrapalha mais do que ajuda. Um segundo serviço, de transferência de arquivos, não tolera nenhum byte perdido ou fora de ordem. Os protocolos de transporte adequados são, respectivamente:",
   "alts": [
    "TCP para a videoconferência e UDP para a transferência, pelo controle de fluxo do TCP",
@@ -7813,6 +8560,9 @@
  },
  {
   "tag": "atualidades",
+  "sub": [
+   "regulacao-ia"
+  ],
   "q": "Sobre o estágio da regulação da inteligência artificial no Brasil e na União Europeia, assinale a alternativa correta.",
   "alts": [
    "O Brasil já possui marco legal específico de IA em vigor, oriundo da conversão do PL 2338/2023.",

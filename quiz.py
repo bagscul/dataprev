@@ -5,6 +5,8 @@ Uso:
     ./quiz.py                    10 questoes aleatorias do banco original
     ./quiz.py java               so do bloco java
     ./quiz.py java redes -n 15   15 questoes desses dois blocos
+    ./quiz.py regencia           microtopico (subtag de subtags.py): atravessa
+                                 os blocos; ./fraquezas.py diz quais valem hoje
     ./quiz.py --hoje             segue o plano do roteiro para hoje (todos os
                                  blocos do dia; revisao/simulado tratados)
     ./quiz.py --dia ontem        faz o plano de outro dia (ontem, anteontem,
@@ -30,7 +32,9 @@ Duas fontes de questao (ambas escalaveis — o quiz le quantas houver):
                      (so entram no sorteio depois do gabarito oficial; veja ./gabarito.py)
 
 Ao errar, o quiz explica por que cada alternativa errada esta errada e grava
-AUTOMATICAMENTE a entrada em erros/<bloco>.md (deduplicando por questao).
+AUTOMATICAMENTE a entrada em erros/<bloco>.md (deduplicando por questao) — com
+a linha '- **sub:**' quando a questao tem microtopico, que e o que alimenta o
+ranking do ./fraquezas.py.
 """
 
 import argparse
@@ -45,6 +49,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 import roteiro  # leitura compartilhada do plano do dia
+import subtags  # vocabulario fechado das subtags (fonte unica)
 
 BASE = Path(__file__).parent
 
@@ -55,7 +60,8 @@ ALVO_GERAIS = {"portugues": 12, "ingles": 12, "rlm": 5, "atualidades": 6, "legis
 # subtags: recorte transversal do campo opcional 'sub'. NAO sao blocos — nao
 # entram no roteiro, no progresso.csv nem no peso do simulado; servem so para
 # filtrar questoes ('./quiz.py uml') e para --dica/--resumo/--apostila.
-SUBTAGS = {"padroes-projeto", "uml", "java-moderno", "git-devops", "leitura-codigo"}
+# Vocabulario em subtags.py (fonte unica, compartilhada com valida.py/fraquezas.py).
+SUBTAGS = subtags.SUB_VALIDAS
 
 
 def peso_de(tag):
@@ -68,6 +74,7 @@ def peso_de(tag):
 # tambem: nao sao blocos do roteiro, mas o --apostila e o --dica respondem por
 # elas. padroes-projeto e uml caem no Cap. 4, separado de arquitetura (Cap. 5).
 APOSTILA = {
+    "tecnica-fgv": (2, "01-tecnica-fgv.tex", "Técnica de prova FGV"),
     "eng-software": (3, "02-eng-software.tex", "Engenharia de Software"),
     "padroes-projeto": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
     "uml": (4, "03-padroes-uml.tex", "Padrões de Projeto e UML"),
@@ -307,8 +314,15 @@ def anotar_erro(q, marcou, correta):
     ref = ref_apostila(q)
     linha_ref = f"- {ref}\n" if ref else ""
 
+    # microtopico do erro: so quando a questao ja vem etiquetada. Questao de
+    # prova real nao tem 'sub' — a etiqueta entra a mao na hora de estudar o
+    # erro, e o ./fraquezas.py --sem-sub lista o que ficou sem.
+    subs = [s for s in (q.get("sub") or []) if s in SUBTAGS]
+    linha_sub = f"- **sub:** {', '.join(subs)}\n" if subs else ""
+
     entrada = (
         f"\n## {_titulo_erro(q)} {marcador}\n"
+        f"{linha_sub}"
         f"- **Errei:** marquei {letras[marcou]}, a correta era {letras[correta]}\n"
         f"- **E:** {correcao}\n"
         f"{linha_ref}"
@@ -331,6 +345,10 @@ def mostrar_apostila(bloco):
         print(cor("\n  uso: ./quiz.py --apostila <bloco>   (--apostila hoje = do dia)\n", "dim"))
         return
     info = APOSTILA.get(bloco)
+    if not info and bloco in SUBTAGS:
+        # subtag de microtopico (nascida do caderno de erros) nao tem capitulo
+        # proprio: cai no capitulo do bloco que cobre o assunto.
+        info = APOSTILA.get(subtags.VOCAB[bloco]["apostila"])
     if not info:
         print(cor(f"\n  sem capitulo mapeado para '{bloco}'. Use ./quiz.py --apostila para listar.\n", "verm"))
         return
@@ -338,6 +356,22 @@ def mostrar_apostila(bloco):
     print(cor(f"\n  {bloco} → Apostila Cap. {cap} — {titulo}", "b"))
     print(cor(f"    fonte: apostila/capitulos/{arq}", "dim"))
     print(cor(f"    abra:  apostila/main.pdf  (Cap. {cap})\n", "dim"))
+
+
+def _resolve_arquivo(pasta, alvo):
+    """Acha o .md de dica/resumo do alvo. As cinco subtags antigas tem arquivo
+    proprio; as de microtopico (nascidas do caderno de erros) nao — essas caem
+    no arquivo do bloco que cobre o assunto, dizendo de onde veio.
+    Retorna (arquivo | None, nota | None)."""
+    arq = pasta / f"{alvo}.md"
+    if arq.exists():
+        return arq, None
+    if alvo in SUBTAGS:
+        pai = subtags.VOCAB[alvo]["apostila"]
+        alt = pasta / f"{pai}.md" if pai else None
+        if alt is not None and alt.exists():
+            return alt, f"  (nao ha {pasta.name}/{alvo}.md — mostrando o do bloco '{pai}')"
+    return None, None
 
 
 def mostrar_dica(bloco):
@@ -350,11 +384,13 @@ def mostrar_dica(bloco):
             print(f"    {d}")
         print(cor("\n  uso: ./quiz.py --dica <bloco>\n", "dim"))
         return
-    arq = dicas / f"{bloco}.md"
-    if not arq.exists():
+    arq, nota = _resolve_arquivo(dicas, bloco)
+    if arq is None:
         print(cor(f"\n  sem dica para '{bloco}'. Use ./quiz.py --dica para listar.\n", "verm"))
         return
     print()
+    if nota:
+        print(cor(nota, "dim"))
     for linha in arq.read_text(encoding="utf-8").splitlines():
         if linha.startswith("# "):
             print(cor("  " + linha[2:], "b"))
@@ -378,11 +414,13 @@ def mostrar_resumo(bloco):
         print(cor("\n  uso: ./quiz.py --resumo <bloco>", "dim"))
         print(cor("  (a visao geral esta em resumo/README.md)\n", "dim"))
         return
-    arq = resumo / f"{bloco}.md"
-    if not arq.exists():
+    arq, nota = _resolve_arquivo(resumo, bloco)
+    if arq is None:
         print(cor(f"\n  sem resumo para '{bloco}'. Use ./quiz.py --resumo para listar.\n", "verm"))
         return
     print()
+    if nota:
+        print(cor(nota, "dim"))
     for linha in arq.read_text(encoding="utf-8").splitlines():
         if linha.startswith("# "):
             print(cor("  " + linha[2:], "b"))
@@ -706,21 +744,34 @@ def main():
 
     if a.listar:
         # inventario combinado dos dois bancos, para ver tudo que da pra estudar
-        from collections import Counter
+        # defaultdict junto: os re-imports locais mais abaixo em main() tornam o
+        # nome local a funcao inteira, e o do modulo (linha 47) deixa de valer aqui
+        from collections import Counter, defaultdict
         tudo = carregar_originais() + carregar_provas()
         c = Counter(q["tag"] for q in tudo)
         print()
         for t, n in sorted(c.items()):
             tem_dica = "" if (BASE / "dicas" / f"{t}.md").exists() else cor("  (sem dica)", "dim")
             print(f"  {t:<16} {n} questoes{tem_dica}")
-        # subtags: recorte transversal, nao sao blocos do roteiro nem do simulado
+        # subtags: o vocabulario INTEIRO (subtags.py), agrupado pelo bloco que
+        # cobre o assunto. Mostra todas, inclusive as que ainda nao tem questao
+        # etiquetada — e esta lista que responde "que valor posso usar no 'sub'?".
         sub = Counter(s for q in tudo for s in q.get("sub", []))
-        if sub:
-            print(cor("\n  subtags (recorte de estudo; a questao continua no bloco dela):", "dim"))
-            for t, n in sorted(sub.items()):
-                tem_dica = "" if (BASE / "dicas" / f"{t}.md").exists() else cor("  (sem dica)", "dim")
-                print(f"  {t:<16} {n} questoes{tem_dica}")
-        print(f"\n  total: {len(tudo)}  |  dica de banca: ./quiz.py --dica <bloco>\n")
+        por_bloco = defaultdict(list)
+        for nome, v in subtags.VOCAB.items():
+            por_bloco[v["apostila"] or "(transversal)"].append(nome)
+        print(cor("\n  subtags — microtopicos (a questao continua no bloco dela);"
+                  " (n) = questoes etiquetadas:", "dim"))
+        for bloco in sorted(por_bloco):
+            # texto PURO no wrap: textwrap conta o escape de cor como largura
+            # visivel e quebraria os nomes no meio ("gof-\ncriacionais")
+            itens = " ".join(f"{n}({sub[n]})" if sub[n] else n
+                             for n in sorted(por_bloco[bloco]))
+            print(f"  {cor(bloco, 'ciano')}")
+            print(textwrap.fill(itens, width=74, initial_indent="    ",
+                                subsequent_indent="    ", break_on_hyphens=False))
+        print(f"\n  total: {len(tudo)} questoes | {len(subtags.VOCAB)} microtopicos "
+              f"| dica de banca: ./quiz.py --dica <bloco>\n")
         return
 
     if a.stats:
@@ -850,6 +901,16 @@ def main():
         # aceita bloco (tag) e subtag (campo opcional 'sub'): './quiz.py uml'
         alvo = set(a.tags)
         pool = [q for q in banco if q["tag"] in alvo or alvo & set(q.get("sub", []))]
+        if not pool:
+            # subtag de microtopico recem-criada ainda nao tem questao etiquetada:
+            # cai na busca por palavra-chave (subtags.py) para haver o que treinar
+            # hoje. So entra quando o filtro exato deu zero — sessao de subtag
+            # antiga (uml, padroes-projeto) continua exatamente como era.
+            alvo_sub = [t for t in a.tags if t in SUBTAGS]
+            pool = [q for q in banco if any(subtags.cobre(s, q) for s in alvo_sub)]
+            if pool:
+                print(cor(f"\n  nenhuma questao etiquetada com {', '.join(alvo_sub)} — "
+                          f"peguei {len(pool)} por palavra-chave.", "dim"))
         if not pool:
             print(cor(f"\n  nenhuma questao com tags {a.tags}. Use --tags para listar.\n", "verm"))
             return

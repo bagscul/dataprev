@@ -10,3 +10,6 @@ __pycache__/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# artefato do download no Windows/WSL
+*:Zone.Identifier

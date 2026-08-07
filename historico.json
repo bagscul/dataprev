@@ -122,6 +122,69 @@
    "ok": false,
    "quando": "2026-07-30T23:46:20",
    "causa": "conceitual"
+  },
+  {
+   "id": "tjrj2:38",
+   "tag": "eng-software",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "o289",
+   "tag": "eng-software",
+   "ok": false,
+   "quando": "2026-08-06T22:20:36",
+   "causa": "armadilha"
+  },
+  {
+   "id": "dataprev2024:11",
+   "tag": "portugues",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "o293",
+   "tag": "eng-software",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "o327",
+   "tag": "portugues",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "o180",
+   "tag": "eng-software",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "o290",
+   "tag": "eng-software",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
+  },
+  {
+   "id": "cnsal-ads:1",
+   "tag": "portugues",
+   "ok": false,
+   "quando": "2026-08-06T22:20:36",
+   "causa": "conceitual"
+  },
+  {
+   "id": "tjrj1:5",
+   "tag": "portugues",
+   "ok": false,
+   "quando": "2026-08-06T22:20:36",
+   "causa": "conceitual"
+  },
+  {
+   "id": "cnsal-ads:42",
+   "tag": "eng-software",
+   "ok": true,
+   "quando": "2026-08-06T22:20:36"
   }
  ]
 }

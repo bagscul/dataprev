@@ -1,5 +1,5 @@
 data,dia,semana,foco,tag,secundario,questoes,acertos,feito
-2026-08-03,seg,1,"Eng. Software: ciclo de vida, processos, modelos",eng-software,Portugues: interpretacao,0,0,0
+2026-08-03,seg,1,"Eng. Software: ciclo de vida, processos, modelos",eng-software,Portugues: interpretacao,10,7,1
 2026-08-04,ter,1,Eng. Software: engenharia de requisitos,eng-software,Ingles: reading comprehension,0,0,0
 2026-08-05,qua,1,"BD: modelo conceitual, logico, fisico; ER",banco-dados,RLM: aritmetica,0,0,0
 2026-08-06,qui,1,"BD: normalizacao 1FN-3FN, integridade referencial",banco-dados,Legislacao: LGPD cap I-II,0,0,0

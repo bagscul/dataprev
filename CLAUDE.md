@@ -36,6 +36,24 @@ de engenharia de software genérico.
 > estilo vs. provas reais): **`CONTRIBUINDO-QUESTOES.md`**. O resumo do estilo
 > está abaixo.
 
+**Escolhendo o assunto.** Se o Lucas já disse o tema, é esse — não redirecione
+para outro a pretexto de otimizar. Quando o pedido for aberto ("gere mais
+questões"), há três motivos legítimos, e vale dizer qual você usou:
+
+- **fraqueza** — `./fraquezas.py` (ou `--prompt`, que já monta o briefing)
+  ranqueia os microtópicos onde ele mais erra, cruzando o caderno de erros, a
+  causa registrada no quiz e quantas questões já cobrem aquilo;
+- **buraco de conteúdo** — `./cobertura.py` mostra subtópico da apostila com
+  pouca ou nenhuma questão, mesmo que ele nunca tenha errado ali (não errou
+  porque nunca caiu);
+- **pool curto para o simulado** — bloco com menos questões do que a proporção
+  do edital exige; o `--simulado` avisa no fim da sessão.
+
+Quando a questão nasce de um erro registrado, a **causa** escolhe o formato:
+erro **conceitual** pede questão direta de definição/comparação; erro de
+**leitura/armadilha** pede questão de aplicação com a quase-certa reforçada no
+padrão de distrator que o pegou.
+
 Sempre que gerar questões novas para `banco.json`, siga este padrão (destilado
 comparando as 237 questões originais com os lotes gerados depois — é o
 resultado de já ter testado os dois estilos neste repositório):
@@ -65,6 +83,11 @@ resultado de já ter testado os dois estilos neste repositório):
   tecido dentro da explicação, não como rótulo fixo repetido. Os mecanismos
   catalogados estão em `dicas/tecnica-fgv.md` e no Apêndice B da apostila
   (`apostila/capitulos/20-glossario-pegadinhas.tex`).
+- **`sub` (microtópico) — obrigatório:** toda questão nova do `banco.json` nasce
+  etiquetada (`"sub": ["normalizacao"]`), com um dos 167 valores de
+  `subtags.py`; o `./valida.py` **bloqueia** sem isso. `./quiz.py --tags` lista
+  os valores por bloco. A `tag` (bloco) continua mandando; a `sub` é o recorte
+  fino que alimenta `./quiz.py <microtópico>` e o `./fraquezas.py`.
 - **Depois de gerar, sempre rode `./valida.py`** antes de considerar a
   questão pronta.
 
@@ -115,10 +138,19 @@ Depois de explicar, **sempre** proponha (ou já edite direto, se o bloco for
 
 ```markdown
 ## <título curto do conceito>
+- **sub:** <microtópico do vocabulário de `subtags.py`>
 - **Errei:** <o que confundiu/errou, em uma linha>
 - **E:** <a correção/regra certa, em uma linha>
 - <fonte: banca ano concurso Qnn | dd/mm>
 ```
+
+A linha `- **sub:**` é o que faz o erro entrar no ranking do `./fraquezas.py`
+(sem ela a entrada fica de fora, e o `--sem-sub` cobra). Use um valor do
+vocabulário fechado em `subtags.py` — `./fraquezas.py --sem-sub` sugere o
+provável. Microtópico novo nasce de **erro real**: se nenhum valor servir,
+acrescente ao `subtags.py` (com keywords distintivas) antes de usar, senão o
+`./valida.py` acusa etiqueta fora do vocabulário. Quando a questão errada já
+vem com `sub`, o `./quiz.py` escreve essa linha sozinho.
 
 Blocos disponíveis em `erros/`: arquitetura, atualidades, banco-dados, bi,
 eng-software, frontend, governanca, ingles, java, legislacao, orfaos,

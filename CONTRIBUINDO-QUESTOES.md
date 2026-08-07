@@ -135,16 +135,15 @@ resposta.
 - Rode **`./valida.py`** — erro bloqueia; aviso de forma é sinal de alerta sobre
   a questão nova.
 - Registre o aprendizado do erro, quando houver, em `erros/<bloco>.md`.
-- **Preencha o `sub`** sempre que a questão tiver um recorte transversal (veja
-  abaixo). É o único campo opcional que ganha uso de verdade — os outros dois
-  saíram da documentação por não terem nenhum.
+- **Preencha o `sub`** — desde 06/08/2026 ele é **obrigatório** em questão nova
+  do `banco.json` e o `./valida.py` **bloqueia** sem ele (veja abaixo).
 
 ## Schema
 
 ```json
 {
   "tag": "<bloco>",
-  "sub": ["uml"],               // opcional (subtag) — preencha quando couber
+  "sub": ["uml"],               // OBRIGATORIO em questao nova (o valida.py bloqueia)
   "q": "<enunciado>",
   "alts": ["<a>", "<b>", "<c>", "<d>", "<e>"],
   "ans": 0,
@@ -167,18 +166,53 @@ são o gabarito. Blocos (`tag`) disponíveis: os mesmos de `erros/`.
 
 ### Campo `sub` (subtag) — recorte de estudo, não bloco
 
-`sub` é uma **lista opcional** que dá um recorte transversal à questão sem tirá-la
-do bloco. Vocabulário fechado (validado por `valida.py`, sem bloquear):
-`padroes-projeto`, `uml`, `java-moderno`, `git-devops`, `leitura-codigo`.
+`sub` é a lista de **microtópicos** da questão — o recorte fino, dentro do
+bloco. O vocabulário é **fechado, tem 167 valores e vive em `subtags.py`**
+(fonte única, lida por `quiz.py`, `valida.py` e `fraquezas.py`). Duas origens:
+
+- **derivada** (150) — é uma seção de `teoria/capitulos/*.tex`, ou da apostila
+  nos capítulos em que ela é mais detalhada. Ou seja: a taxonomia do edital que
+  já foi auditada, não um recorte inventado na hora;
+- **curada** (14) — nasceu de **erro real** no caderno (`regencia`,
+  `pessoas-do-discurso`, `comando-negativo`…), com nome e keywords à mão,
+  normalmente mais finas que a seção correspondente do livro. Cinco delas
+  (`padroes-projeto`, `uml`, `java-moderno`, `git-devops`, `leitura-codigo`)
+  têm `dicas/<nome>.md` e `resumo/<nome>.md` próprios; as demais caem no
+  arquivo do bloco que cobre o assunto.
+
+`./quiz.py --tags` lista os 167 agrupados por bloco, com a contagem de questões
+já etiquetadas — é a referência para escolher o valor.
+
+**Obrigatoriedade.** Questão nova do `banco.json` **tem** que trazer `sub`: o
+`valida.py` bloqueia (erro, não aviso) a partir do índice
+`SUB_OBRIGATORIA_APOS`, hoje 403. O acervo anterior a esse índice ainda está
+sendo etiquetado; conforme for, **baixe o número** — em 0, a regra vale para o
+banco inteiro. Subtag fora do vocabulário continua sendo aviso, não bloqueio.
+
+**Estado do acervo (06/08/2026):** 303 de 403 no `banco.json` e 194 de 422 no
+`banco-provas.json` têm `sub` — 497 de 825 (60%), cobrindo 134 dos 167
+microtópicos. As etiquetas vieram de casamento de palavra-chave sobre
+**enunciado + alternativa correta + `why`**, com um mínimo de evidência; o que
+não atingiu o mínimo ficou **sem** etiqueta de propósito. Precisão aferida à
+mão em amostra: ~94%. Duas consequências práticas: (a) etiqueta errada existe e
+é para ser corrigida quando você topar com ela estudando; (b) o que está sem
+`sub` não é "erro do script", é falta de evidência — etiquete à mão.
+
+> **Por que não casar no texto inteiro.** A primeira tentativa incluía as
+> alternativas erradas e as explicações delas, e etiquetou a questão de
+> **cascata** como `metodos-ageis`: numa questão boa da FGV os distratores são
+> justamente os conceitos vizinhos, então eles envenenam a etiqueta. Se for
+> reetiquetar algo, mantenha esse recorte.
 
 A `tag` **continua sendo o bloco** e é ela que alimenta o roteiro, o
 `progresso.csv`, o peso do simulado (geral × específico), o `erros/<tag>.md`, o
-`--stats` e o `historico.json`. A `sub` só afeta o **filtro do quiz**
-(`./quiz.py uml`) e o `--dica`/`--resumo`/`--apostila`. Por isso nunca troque a
-`tag` de uma questão para criar um recorte: acrescente `sub`.
+`--stats` e o `historico.json`. A `sub` afeta o **filtro do quiz**
+(`./quiz.py normalizacao`), o `--dica`/`--resumo`/`--apostila` e o ranking do
+`./fraquezas.py`. Por isso nunca troque a `tag` de uma questão para criar um
+recorte: acrescente `sub`.
 
-**Regra do lote novo:** toda questão gerada daqui em diante preenche a `sub`
-quando o tema couber num dos cinco recortes. Hoje são 58 de 390, e o último
-lote não acrescentou nenhuma — foi assim que `./quiz.py uml` virou um filtro
-que devolve menos do que existe. **Não há passe retroativo** nas questões
-antigas: o trabalho é grande e o ganho, marginal.
+**Microtópico novo:** primeiro procure a seção correspondente no `teoria/` — se
+existe, use o nome dela. Só escreva um recorte à mão quando o erro real não
+couber em nada e o livro tratar o assunto de passagem. Em qualquer caso, `kw`
+**distintivas**: keyword genérica infla a contagem de cobertura e faz o
+`./fraquezas.py` achar que o assunto já está coberto.

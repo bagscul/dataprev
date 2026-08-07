@@ -58,7 +58,27 @@ def carregar(csv_path=CSV):
     return linhas
 
 
-def mostrar_hoje(linhas, csv_path=CSV):
+def fraqueza_do_dia(minimo_erros=2):
+    """O primeiro microtopico do ranking do ./fraquezas.py, se ja tiver
+    'minimo_erros' erros no caderno. Devolve (subtag, erros, banco) ou None —
+    com um erro so nao ha padrao ainda, e o painel nao inventa lembrete. Falha
+    em silencio se o caderno/banco nao der para ler: e um extra do painel, nao
+    pode derrubar o resto."""
+    try:
+        import fraquezas
+        from quiz import carregar_originais, carregar_provas
+        questoes = carregar_originais() + carregar_provas()
+        dados = fraquezas.agregar(fraquezas.ler_caderno(),
+                                  fraquezas.ler_historico("lucas"), questoes)
+        for s, d in fraquezas.ordenar(dados):
+            if len(d["erros"]) >= minimo_erros:
+                return s, len(d["erros"]), d["banco"]
+    except Exception:
+        return None
+    return None
+
+
+def mostrar_hoje(linhas, csv_path=CSV, quem="lucas"):
     hoje = date.today()
     l = next((x for x in linhas if x["data"] == hoje), None)
     if l is None:
@@ -99,6 +119,18 @@ def mostrar_hoje(linhas, csv_path=CSV):
                 atalhos.append(f"--dica {b}")
             extra = cor("   ./quiz.py " + " / ".join(atalhos), "dim") if atalhos else ""
             print(f"    • {b}{extra}")
+
+    # ponta solta do dia: o microtopico no topo do ranking, se ja errado 2+ vezes.
+    # So aparece quando existe — lembrete que aparece sempre vira ruido. Fica
+    # de fora de --quem: o caderno de erros (erros/*.md) e o do Lucas.
+    quente = fraqueza_do_dia() if quem == "lucas" else None
+    if quente:
+        s, n, banco = quente
+        print(cor(f"\n  Ponto fraco: {s} — {n} erros no caderno, "
+                  f"{banco} questoes no banco", "bold"))
+        # ljust + 2 espacos: subtag longa nao pode colar no texto da direita
+        print(cor(f"    {f'./quiz.py {s}'.ljust(22)}  treina so esse microtopico", "dim"))
+        print(cor(f"    {'./fraquezas.py'.ljust(22)}  ranking completo", "dim"))
     print()
 
 
@@ -211,7 +243,7 @@ def painel(linhas, quem="lucas"):
         print()
 
     print(cor("-" * 52, "dim"))
-    mostrar_hoje(linhas, csv_de(quem))
+    mostrar_hoje(linhas, csv_de(quem), quem)
 
 
 def comparar(nome_a, linhas_a, nome_b, linhas_b):
@@ -308,6 +340,6 @@ if __name__ == "__main__":
             sys.exit(1)
         dados = carregar(arq)
         if ver_hoje:
-            mostrar_hoje(dados, arq)
+            mostrar_hoje(dados, arq, quem)
         else:
             painel(dados, quem)

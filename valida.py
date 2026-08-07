@@ -23,6 +23,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+import subtags  # vocabulario fechado das subtags (fonte unica)
+
 BASE = Path(__file__).parent
 C = {"r": "\033[0m", "verde": "\033[32m", "verm": "\033[31m", "ama": "\033[33m", "b": "\033[1m",
      "dim": "\033[2m"}
@@ -35,8 +37,16 @@ STATUS_VALIDOS = {"ok", "revisar", "ambigua", "distrator-fraco",
 # Vocabulario do campo opcional 'sub' (subtag). A 'tag' continua sendo o BLOCO
 # (roteiro, progresso.csv, peso do simulado, erros/<tag>.md, --stats, historico);
 # a 'sub' e so recorte de estudo para o filtro do quiz, e pode faltar.
-SUB_VALIDAS = {"padroes-projeto", "uml", "java-moderno", "git-devops",
-               "leitura-codigo"}
+# Fonte unica em subtags.py — o quiz.py e o fraquezas.py leem do mesmo lugar.
+SUB_VALIDAS = subtags.SUB_VALIDAS
+
+# A partir de que posicao do banco.json a 'sub' e OBRIGATORIA. Questao nova e
+# sempre anexada ao fim, entao o indice separa o acervo antigo (sem etiqueta,
+# etiquetado aos poucos) das questoes geradas daqui em diante, que nascem com
+# microtopico — senao o ./quiz.py <microtopico> e o ./fraquezas.py so enxergam
+# metade do banco. Ao etiquetar o acervo antigo, BAIXE este numero; quando
+# chegar a 0, a 'sub' vale para o banco inteiro.
+SUB_OBRIGATORIA_APOS = 403
 
 
 def cor(t, c):
@@ -93,8 +103,9 @@ def checar_questao(q, rotulo, usavel):
         else:
             fora = sorted(set(sub) - SUB_VALIDAS)
             if fora:
+                # nao despeja o vocabulario inteiro na mensagem: sao 167 valores
                 avisos.append(f"{rotulo}: subtag {fora} fora do vocabulario "
-                              f"(esperado {sorted(SUB_VALIDAS)})")
+                              f"(./quiz.py --tags lista; o vocabulario e subtags.py)")
 
     st = q.get("status")
     if st is not None and st not in STATUS_VALIDOS:
@@ -417,6 +428,28 @@ def checar_historico():
     return avisos
 
 
+RX_SUB_ERRO = re.compile(r"^-\s*\*\*sub:\*\*\s*(.+?)\s*$", re.M)
+
+
+def checar_caderno():
+    """Checagem leve das entradas de erros/*.md. A linha '- **sub:**' e
+    OPCIONAL (entrada antiga nao tem, e entrada de questao sem subtag tambem
+    nao) — so avisa quando a linha existe e traz valor fora do vocabulario, que
+    e o caso que quebraria em silencio o ranking do ./fraquezas.py."""
+    avisos = []
+    dir_erros = BASE / "erros"
+    if not dir_erros.is_dir():
+        return avisos
+    for md in sorted(dir_erros.glob("*.md")):
+        for m in RX_SUB_ERRO.finditer(md.read_text(encoding="utf-8")):
+            valores = [v.strip() for v in m.group(1).split(",") if v.strip()]
+            fora = sorted(set(valores) - SUB_VALIDAS)
+            if fora:
+                avisos.append(f"erros/{md.name}: subtag {fora} fora do vocabulario "
+                              f"(acrescente em subtags.py ou corrija a linha)")
+    return avisos
+
+
 def _arg_janela(argv):
     """Le '--novas N' (escopa a janela recente nas N ultimas questoes)."""
     if "--novas" in argv:
@@ -440,9 +473,14 @@ def main():
         n_orig = len(banco)
         vistos = set()
         for i, q in enumerate(banco, 1):   # 1-based, igual aos avisos de forma
-            e, a = checar_questao(q, f"banco.json #{i} [{q.get('tag','?')}]", usavel=True)
+            rot = f"banco.json #{i} [{q.get('tag','?')}]"
+            e, a = checar_questao(q, rot, usavel=True)
             erros += e
             avisos += a
+            if i > SUB_OBRIGATORIA_APOS and not q.get("sub"):
+                erros.append(f"{rot}: questao nova sem 'sub' — obrigatorio a partir "
+                             f"de #{SUB_OBRIGATORIA_APOS + 1}. Escolha o microtopico "
+                             f"em subtags.py (./quiz.py --tags lista)")
             n_usaveis += 1
         avisos_f = avisos_forma(banco, janela=janela)
     else:
@@ -470,6 +508,9 @@ def main():
 
     # progresso do quiz (opcional): so avisa se 'causa' vier com valor invalido
     avisos += checar_historico()
+
+    # caderno de erros (opcional): so avisa se uma subtag anotada nao existir
+    avisos += checar_caderno()
 
     # drift entre apostila, resumo, dicas e banco (nao bloqueia)
     avisos_d = avisos_drift()

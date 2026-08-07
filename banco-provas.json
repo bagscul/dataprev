@@ -6757,6 +6757,1697 @@
   "anulada": false
  },
  {
+  "prova": "nav-eng",
+  "num": 41,
+  "tag": "arquitetura",
+  "q": "Um engenheiro de software do Serviço de Navegação Aérea do Brasil recebeu a tarefa de projetar o novo microsserviço de processamento de mensagens meteorológicas aeronáuticas (METAR). O sistema precisa ler boletins climáticos de múltiplos canais (redes de rádio HF, brokers AMQP locais e APIs de satélite externas), e persistir os dados validados, tanto em um banco NoSQL local quanto em um Data Lake central da aeronáutica. Buscando isolar o núcleo das regras de negócio (cálculo de teto de nuvens e visibilidade de pista) de variações tecnológicas em bancos de dados e protocolos de rede de terceiros, o engenheiro decidiu aplicar os padrões da Arquitetura Hexagonal. No contexto da Arquitetura Hexagonal, para permitir que o núcleo da aplicação invoque operações de persistência no banco NoSQL sem criar um acoplamento direto com o driver específico do banco, o engenheiro de software deve posicionar o contrato da interface de persistência e a sua respectiva implementação em código nas seguintes estruturas:",
+  "alts": [
+   "a interface reside na camada de apresentação externa; a implementação reside no núcleo lógico do hexágono.",
+   "a interface reside no núcleo lógico do hexágono; a implementação reside na camada de adaptadores de saída.",
+   "a interface reside na camada de adaptadores de entrada; a implementação reside no ecossistema do banco NoSQL.",
+   "a interface reside no barramento de mensageria assíncrona; a implementação reside no modelo conceitual de dados.",
+   "a interface reside no núcleo lógico do hexágono; a implementação reside no controlador de rotas do API Gateway."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q41",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 42,
+  "tag": "eng-software",
+  "q": "O sistema de radar de um Centro de Controle de Área (ACC) processa fluxos de dados de vigilância aérea formatados no padrão internacional EUROCONTROL ASTERIX (Category 062 - SDPS Track Messages). A equipe técnica precisa integrar um novo módulo de monitoramento ambiental terceirizado que exige o recebimento desses mesmos dados de alvos (altitude, velocidade e proa), mas formatados estritamente na sintaxe XML do padrão meteorológico WXXM (WXXM Weather Information Exchange Model). O código do sistema de radar existente não pode sofrer modificações estruturais para evitar riscos de regressão no processamento de segurança do tráfego aéreo. Para viabilizar a comunicação síncrona entre o sistema de radar emissor de objetos ASTERIX e o módulo consumidor estruturado em XML WXXM, ocultando a incompatibilidade de interfaces sem alterar as classes originais, o engenheiro de software deve implementar o padrão de projeto",
+  "alts": [
+   "Strategy.",
+   "Adapter.",
+   "Observer.",
+   "Singleton.",
+   "Facade."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q42",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 43,
+  "tag": "banco-dados",
+  "q": "O Sistema de Alocação de Pistas e Coordenação de Slots de Pouso de um aeroporto internacional de alta densidade opera sobre um SGBD relacional transacional ACID. Em momentos de pico de tráfego, múltiplos controladores de voo executam requisições síncronas concorrentes para buscar e reservar os mesmos intervalos de horários disponíveis. A gerência de TI identificou que, durante execuções paralelas, uma transação T1 lê um conjunto de slots livres atendendo a um critério de busca geográfica; simultaneamente, uma transação T2 insere e confirma uma nova linha de slot de pouso que atende perfeitamente ao mesmo critério de T1; ao reexecutar a mesma busca na mesma transação, T1 passa a ver a nova linha inserida por T2, gerando inconsistências nas telas de planejamento dos controladores. A anomalia de concorrência transacional descrita no estudo de caso e o nível de isolamento ANSI SQL mais baixo capaz de impedir por completo a ocorrência desse fenômeno são, respectivamente,",
+  "alts": [
+   "Leitura Suja (Dirty Read) e nível Read Committed.",
+   "Leitura Não -Repetível ( Non-repeatable Read ) e nível Repeatable Read.",
+   "Leitura Fantasma (Phantom Read) e nível Serializable.",
+   "Perda de Atualização (Lost Update) e nível Read Uncommitted.",
+   "Gravação Fantasma ( Phantom Write ) e nível Snapshot Isolation."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q43",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 44,
+  "tag": "seguranca",
+  "q": "Durante o ciclo de auditoria de segurança de um Sistema de Processamento de Planos de Voo (FPL), identificou -se uma inconsistência lógica na validação de mensagens de atualização compulsórias enviadas pelas companhias aéreas. O Gerente de Engenharia de Software determinou que a equipe demonstrasse matematicamente quais linhas específicas do código-fonte do módulo de parsing foram geradas a partir de qual requisito técnico de segurança original, e quais casos de testes homologados cobrem esse escopo para subsidiar a homologação regulatória civil. A atividade de Engenharia de Requisitos voltada a estabelecer links lógicos bidirecionais contínuos entre os requisitos de origem, os artefatos de arquitetura, os componentes de código -fonte e as suítes de testes de validação finais é classificada como rastreabilidade do tipo",
+  "alts": [
+   "Backward-from-traceability.",
+   "Horizontal-traceability.",
+   "Vertical-traceability.",
+   "Forward-from-traceability.",
+   "Bi-directional Traceability."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q44",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 45,
+  "tag": "seguranca",
+  "q": "O pipeline de Integração Contínua (CI) do sistema de radar secundário de um aeroporto federal foi configurado com ferramentas automatizadas de testes de segurança de aplicações. Na fase de compilação, o analisador emitiu um relatório estancando a esteira ao detectar o uso de funções inseguras de manipulação de strings em C++ que poderiam abrir brechas para corrupção de memória. O analista DevOps alegou que a esteira de build dever ia ignorar o alerta, pois uma varredura dinâmica executada na aplicação rodando em ambiente de homologação simulado não conseguiu explorar a falha através de requisições de rede externas. Com base nos conceitos que diferenciam as abordagens de segurança SAST (Análise Estática) e DAST (Análise Dinâmica), a decisão correta do engenheiro de software deve consistir em manter a esteira travada porque a técnica SAST",
+  "alts": [
+   "possui acesso completo ao código-fonte interno, conseguindo mapear caminhos de vulnerabilidade lógicos profundos ocultos ao DAST.",
+   "executa a aplicação em contêineres de isolamento sob estresse físico para simular o ataque de injeção de tráfego.",
+   "opera exclusivamente na camada de transporte de rede monitorando sessões HTTPS ativas em tempo real de execução.",
+   "dispensa o uso de assinaturas e regras heurísticas pré - configuradas para mapear falsos positivos operacionais.",
+   "altera dinamicamente o comportamento de bytecode compilado para emular o comportamento de um agente invasor."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q45",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 46,
+  "tag": "governanca",
+  "q": "Em conformidade com as diretrizes de governança do COBIT 2019, o Serviço de Navegação Aérea do Brasil está desenhando seu novo sistema de governança de tecnologia corporativo. O analista de governança deve assegurar que as decisões e estruturas de tecnologia não sejam genéricas, mas sim customizadas em tempo real com base na realidade da instituição, que possui um perfil de tolerância a riscos baixíssimo, devido à natureza crítica do controle do espaço aéreo, adota uma estratégia de inovação constante focada em sistemas distribuídos resilientes e está sujeita a auditorias civis e militares severas. No arcabouço metodológico do COBIT 2019, os parâmetros específicos que descrevem o cenário contextual da organização – tais como perfil de risco, cenário de ameaças, estratégia corporativa, tamanho da empresa e modelo de adoção de TI –, utilizados para calibrar as prioridades dos objetivos de governança e gestão, são denominados",
+  "alts": [
+   "Componentes do Sistema de Governança.",
+   "Fatores de Design.",
+   "Áreas de Foco.",
+   "Áreas de Visão do Alinhamento de TI.",
+   "Níveis de Capacidade de Processo."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q46",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 47,
+  "tag": "eng-software",
+  "q": "O gerente de engenharia de software monitora o fluxo de trabalho de correção de defeitos em sistemas de comunicação VHF de emergência aeronáuticos, utilizando o método Kanban. Através de ferramentas de Business Intelligence, o gerente extraiu os seguintes dados operacionais estabilizados das últimas semanas: a equipe mantém uma média estrita e fixa de 12 itens de tarefas sendo trabalhados simultaneamente em progresso nas colunas de desenvolvimento ativo, e a taxa de entrega média do time está consolidada em 3 itens concluídos por semana de calendário. Aplicando as propriedades matemáticas fundamentais que regem os sistemas enxutos por meio da Lei de Little, o tempo médio total de ciclo (Cycle Time) que um item gasta para trafegar pelas colunas do fluxo de desenvolvimento ativo monitorado por esse gerente é de",
+  "alts": [
+   "36 semanas.",
+   "0,25 semana.",
+   "4 semanas.",
+   "9 semanas.",
+   "15 semanas."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q47",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 48,
+  "tag": "arquitetura",
+  "q": "Uma equipe de arquitetura de software precisa integrar o barramento de dados de radar de tráfego aéreo centralizado aos terminais secundários de visualização de doze aeródromos regionais. O sistema exige o tráfego assíncrono massivo e contínuo de dados lógicos com baixíssima latência e em milissegundos. Os arquitetos rejeitaram o uso de uma arquitetura de Integração de Aplicações Corporativas baseada em Barramento de Serviços Corporativos (ESB) tradicional pesada com transformações XML complexas e decidiram implantar um broker de mensageria moderno altamente escalável baseado em logs imutáveis distribuídos em disco. A principal justificativa técnica que ampara a escolha de um broker – baseado em logs distribuídos em detrimento de uma arquitetura baseada em ESB tradicional pesada para fluxos de dados de radar massivos em tempo real –, consiste no fato de o primeiro",
+  "alts": [
+   "descentralizar o controle de consumo, transferindo o ponteiro do estado de leitura ( offset) do broker para os clientes de software.",
+   "forçar a conversão de todos os dados trafegados em objetos SOAP síncronos criptografados nativamente.",
+   "atuar na camada de rede física roteando pacotes através de barramentos de hardware de switches gerenciáveis.",
+   "centralizar a execução de lógicas de negócio pesadas e orquestrações complexas de fluxos diretamente no servidor central.",
+   "garantir a integridade referencial distribuída por intermédio de protocolos síncronos bidirecionais de duas fases (2PC)."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q48",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 49,
+  "tag": "eng-software",
+  "q": "Ao desenvolver o algoritmo de cálculo de distância de segurança anticolisão (TCAS) entre duas aeronaves em uma nova biblioteca de software, o desenvolvedor decide aplicar de forma estrita o ciclo de passos determinado pela metodologia Test-Driven Development (TDD). Ele iniciou criando um caso de teste unitário exaustivo contendo as coordenadas geográficas tridimensionais e as velocidades vetoriais de dois alvos simulados em rota de interceptação iminente. Seguindo rigorosamente a ordem cronológica obrigatória das fases que compõem o ciclo padrão do TDD (conhecido na literatura técnica como o ciclo Red-Green-Refactor), o desenvolvedor deve, logo após ter escrito o código desse teste unitário inicial, executar os seguintes passos sequenciais:",
+  "alts": [
+   "escrever o código completo da lógica final; rodar o teste esperando que ele passe; apagar o teste unitário.",
+   "executar o teste unitário e certificar -se de que ele falhe; escrever o código mínimo para o teste passar; refatorar o código produzido.",
+   "realizar a análise estática SAST no código do teste; compilar a aplicação em modo de depuração; implantar em produção.",
+   "criar uma ramificação de branch no Git; submeter um Pull Request para o comitê técnico; rodar os testes dinâmicos DAST.",
+   "refatorar o código-fonte que ainda não existe; executar o teste esperando sucesso; documentar o bug no catálogo."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q49",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 50,
+  "tag": "seguranca",
+  "q": "Na fase de planejamento do novo Sistema de Gerenciamento de Informação Aeronáutica (AIS), a equipe de segurança e arquitetura de software implementou as diretrizes de um ciclo de vida de desenvolvimento seguro (Secure SDLC). Antes de iniciar a digitação de qualquer linha de código de produção, os analistas realizaram workshops para simular a anatomia de potenciais ataques cibernéticos contra o ecossistema, identificando as fronteiras de confiança lógicas do sistema, mapeando os ativos valiosos de dados de navegação e construindo diagramas de fluxo de dados de ameaças estruturados com base no modelo Microsoft STRIDE. No contexto das práticas obrigatórias de engenharia de segurança de um Secure SDLC, essa atividade técnica preventiva realizada na fase de design inicial do software é chamada",
+  "alts": [
+   "Teste de Invasão de Caixa Preta ( Black-Box Penetration Testing).",
+   "Análise Dinâmica de Vulnerabilidades em Runtime (DAST).",
+   "Modelagem de Ameaças (Threat Modeling).",
+   "Auditoria de Conformidade Regulatória ISO 27001 pós - implantação.",
+   "Gestão de Incidentes de Segurança Cibernética."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q50",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 51,
+  "tag": "eng-software",
+  "q": "O Serviço de Navegação Aérea está modernizando o Subsistema de Processamento de Mensagens ATS (Air Traffic Services). Devido a requisitos internacionais estritos de segurança e à necessidade de homologação por órgãos reguladores, os requisitos de comunicação e os protocolos de rede com centros de controle adjacentes são completamente conhecidos, estáveis e rígidos, não permitindo ambiguidades ou mudanças durante a execução. Diante de um cenário no qual os requisitos são estáveis, completamente definidos no início do projeto e a previsibilidade e conformidade regulatória são os fatores críticos de sucesso, o modelo de ciclo de vida tradicional linear se mostra o mais adequado. Assinale a opção que apresenta uma característica ou desvantagem típica do Modelo em Cascata, nesse contexto.",
+  "alts": [
+   "Permite a redefinição constante do escopo do sistema de mensagens aeronáuticas a cada iteração quinzenal de desenvolvimento.",
+   "Apresenta alto risco de retrabalho caso um erro de especificação crítica seja detectado apenas nas fases tardias de testes.",
+   "Exige a entrega de incrementos operacionais de software aos controladores de tráfego aéreo desde o primeiro mês de projeto.",
+   "Baseia-se na ausência completa de documentação técnica formal, priorizando interações informais entre os engenheiros.",
+   "Funciona de forma ideal quando os requisitos técnicos de comunicação via satélite são voláteis e mudam semanalmente."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q51",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 52,
+  "tag": "arquitetura",
+  "q": "No desenvolvimento de um novo painel web para visualização de boletins meteorológicos, a equipe técnica optou por uma arquitetura em camadas padrão de mercado. A meta é garantir a separação de conceitos e facilitar manutenções futuras no código do sistema de navegação aérea. A arquitetura em camadas organiza o sistema de forma que cada camada forneça serviços para a camada imediatamente superior e utilize os serviços da camada imediatamente inferior. Assinale a afirmativa correta sobre as regras de acoplamento e dependência nesse padrão arquitetural clássico.",
+  "alts": [
+   "A camada de apresentação deve se comunicar diretamente com o driver de banco de dados, ignorando a lógica de negócio.",
+   "As alterações realizadas na camada de persistência de dados devem obrigatoriamente forçar a reescrita de toda a interface gráfica.",
+   "A camada de lógica de negócio deve idealmente ser independente dos detalhes de implementação da interface de usuário instalada.",
+   "Cada camada criada no sistema possui permissão irrestrita para acessar qualquer outra camada, sem respeitar a hierarquia.",
+   "O isolamento entre as camadas impede que o sistema funcione em servidores distintos, exigindo uma implantação monolítica."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q52",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 53,
+  "tag": "eng-software",
+  "q": "Durante a revisão de código do módulo de cálculo de rotas e planos de voo de aeronaves, um engenheiro de software percebeu que a classe GerenciadorVoo possuía mais de 5.000 linhas de código, realizando desde a leitura de arquivos de configuração até a impressão de relatórios e conexão direta com o banco de dados de radares. O cenário descrito apresenta sérios problemas relacionados aos conceitos fundamentais de orientação a objetos e engenharia de software estrutural. Assinale a opção que identifica o diagnóstico técnico dessa classe e a recomendação de boas práticas de projeto aplicável.",
+  "alts": [
+   "A classe possui alta coesão e baixo acoplamento, o que representa o estado ideal de reaproveitamento de componentes reutilizáveis.",
+   "A classe possui baixa coesão, violando o Princípio da Responsabilidade Única, e deve ser refatorada em classes menores e focadas.",
+   "O acoplamento da classe é nulo porque ela centraliza todas as funções do sistema aeronáutico, eliminando dependências externas.",
+   "A modularidade é máxima nesse cenário, pois centralizar o código em um único arquivo facilita o deploy e a correção de bugs.",
+   "A classe deve receber ainda mais responsabilidades, como autenticação de usuários, para garantir que o código fique unificado."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q53",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 54,
+  "tag": "eng-software",
+  "q": "No desenvolvimento do Sistema de Gestão de Escalas de Controladores de Voo, a equipe de engenharia de requisitos mapeou diversas necessidades junto à diretoria operacional do Serviço de Navegação Aérea. Durante a fase de classificação, os analistas devem separar com precisão as restrições arquiteturais e qualidades globais do sistema das funcionalidades diretas oferecidas aos usuários. Assinale a opção que apresenta exclusivamente um Requisito Não Funcional (RNF) para o sistema citado.",
+  "alts": [
+   "O sistema deve permitir que o supervisor cadastre novos controladores informando CPF, nome e número de licença da ANAC.",
+   "O sistema deve emitir um alerta sonoro na tela do operador caso a escala ultrapasse o limite legal de horas de trabalho.",
+   "O sistema deve criptografar todos os dados trafegados em repouso utilizando o algoritmo AES -256 e responder às consultas em menos de 2 segundos.",
+   "O sistema deve gerar um relatório mensal em formato PDF contendo as ausências, folgas e plantões realizados por setor.",
+   "O sistema deve disponibilizar um filtro de busca para localizar controladores aptos com base no tipo de habilitação de radar."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q54",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 55,
+  "tag": "eng-software",
+  "q": "Após um incidente de segurança em um software de controle de tráfego de superfície de aeródromo, a diretoria exigiu saber quais módulos de código -fonte e quais casos de teste homologados estavam associados ao requisito de segurança original, catalogado como “REQ-042 – Autenticação Multifator”. A rastreabilidade de requisitos garante a capacidade de seguir a vida de um requisito em uma direção para frente e para trás, desde sua origem até a implementação e testes. O principal artefato utilizado na engenharia de requisitos para consolidar essas ligações multidirecionais é o(a)",
+  "alts": [
+   "Diagrama de Implantação da UML.",
+   "Matriz de Rastreabilidade de Requisitos.",
+   "Gráfico de Gantt do Cronograma de TI.",
+   "Plano de Contas de Custos de Desenvolvimento.",
+   "Modelo Conceitual do Banco de Dados Relacional."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q55",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 56,
+  "tag": "eng-software",
+  "q": "Uma fábrica de software concluiu a codificação de um módulo isolado que calcula a distância entre duas coordenadas geográficas para uso na navegação aérea baseada em satélite. O desenvolvedor precisa testar essa função específica de forma isolada em seu ambiente local. Na engenharia de software, os testes são categorizados em diferentes níveis e escopos de execução. O nível de teste adequado para validar o comportamento correto de métodos, funções ou classes isoladas, sem dependência de banco de dados ou redes externas, é o",
+  "alts": [
+   "Teste de Sistema, focado no comportamento global da aplicação.",
+   "Teste de Integração, que valida a comunicação entre múltiplos submódulos.",
+   "Teste Unitário (ou de Unidade), que verifica a menor parte testável de um código.",
+   "Teste de Aceitação do Usuário, conduzido pelos controladores de voo finais.",
+   "Teste de Carga, projetado para estressar a infraestrutura de servidores de rede."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q56",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 57,
+  "tag": "eng-software",
+  "q": "Uma equipe ágil está trabalhando na construção de um novo módulo para o Sistema de Tarifação de Navegação Aérea utilizando o Framework Scrum. No início de uma iteração de duas semanas, o time precisa definir quais itens do catálogo geral de requisitos serão desenvolvidos imediatamente. O Scrum estabelece eventos formais específicos para inspeção e adaptação ao longo do ciclo de desenvolvimento. O evento do Scrum cujo objetivo principal é inspecionar o Product Backlog e criar o plano de trabalho e a meta para a iteração que se inicia é o",
+  "alts": [
+   "Daily Scrum.",
+   "Sprint Retrospective.",
+   "Sprint Review.",
+   "Sprint Planning.",
+   "Product Backlog Refinement."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q57",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 58,
+  "tag": "banco-dados",
+  "q": "Durante a modelagem do banco de dados relacional que armazenará o histórico de planos de voo aprovados, um analista projetou uma tabela contendo os campos: ID_PlanoVoo (chave primária), Prefixo_Aeronave, Comandante_Nome, Telefone_Comandante e DDD_Telefone. O processo de normalização visa eliminar redundâncias e anomalias de atualização em bancos de dados relacionais através da aplicação de regras formais conhecidas como Formas Normais (FN). Assinale a opção que apresenta a condição exigida para que uma tabela esteja estritamente na Segunda Forma Normal (2FN).",
+  "alts": [
+   "A tabela deve estar previamente na 1FN e nenhum atributo não chave pode depender de forma parcial de uma chave primária composta.",
+   "Todos os atributos não chave devem possuir valores atômicos (indivisíveis), sem matrizes ou grupos repetitivos aninhados.",
+   "A tabela deve estar na 3FN e remover dependências transitivas entre colunas que não pertencem ao conjunto de chaves candidatas.",
+   "Toda chave estrangeira mapeada na tabela deve obrigatoriamente apontar para uma chave primária do tipo autoincremento numérico.",
+   "Devem ser criadas tabelas separadas para cada linha inserida, garantindo que o banco não cresça horizontalmente ao longo do tempo."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q58",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 59,
+  "tag": "banco-dados",
+  "q": "O administrador de banco de dados do Centro de Controle de Área (ACC) precisa remover permanentemente do banco de dados relacional de homologação uma tabela inteira chamada Logs_antigos_2020, incluindo toda a sua estrutura de colunas, índices e dados armazenados. A linguagem SQL é dividida em subgrupos como DDL para manipulação de estruturas e para manipulação de dados operacionais. O comando DDL padrão utilizado para eliminar de forma definitiva a estrutura e os dados da tabela citada é:",
+  "alts": [
+   "DELETE TABLE Logs_Antigos_2020;",
+   "REMOVE FROM TABLE Logs_Antigos_2020;",
+   "DROP TABLE Logs_Antigos_2020;",
+   "TRUNCATE ROW Logs_Antigos_2020;",
+   "ALTER TABLE Logs_Antigos_2020 DROP ALL;"
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q59",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 60,
+  "tag": "banco-dados",
+  "q": "Durante o processamento de uma transferência de plano de voo entre dois servidores regionais de controle de tráfego, ocorre uma falha catastrófica de energia elétrica exatamente após a exclusão do registro no Servidor A, mas antes da inserção correspondent e no Servidor B. Para evitar inconsistências graves e corrupção de dados em cenários de falha, os Sistemas de Gerenciamento de Banco de Dados (SGBD) devem suportar rigorosamente as propriedades ACID para suas transações. A propriedade ACID, responsável por garantir que uma operação seja executada em sua totalidade, ou seja, completamente desfeita, sem estados intermediários inválidos, é a(o)",
+  "alts": [
+   "Atomicidade.",
+   "Consistência.",
+   "Isolamento.",
+   "Durabilidade.",
+   "Disponibilidade."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q60",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 61,
+  "tag": "seguranca",
+  "q": "Um ataque cibernético do tipo negação de serviço distribuída (DDoS) inundou os servidores web públicos do Serviço de Navegação Aérea, impedindo que pilotos civis conseguissem acessar o sistema externo para enviar ou consultar as notificações de planos de voo por mais de quatro horas. A segurança da informação assenta -se sobre três pilares fundamentais clássicos conhecidos como a Tríade CID. O princípio básico de segurança da informação que foi diretamente violado no incidente operacional descrito foi a(o)",
+  "alts": [
+   "Confidencialidade, pois os dados sigilosos dos planos de voo foram visualizados por pessoas não autorizadas na internet.",
+   "Integridade, uma vez que as tabelas de dados de coordenadas de voo foram corrompidas e apagadas definitivamente do storage.",
+   "Disponibilidade, dado que o sistema e seus recursos associados ficaram inacessíveis para os usuários legítimos quando necessários.",
+   "Autenticidade, posto que crackers utilizaram identidades falsas e fraudadas de pilotos para assinar digitalmente os relatórios.",
+   "Não repúdio, visto que o sistema perdeu a capacidade de auditar e comprovar legalmente a autoria das requisições web externas."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q61",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 62,
+  "tag": "governanca",
+  "q": "A central de atendimento de TI do Serviço de Navegação Aérea recebeu um chamado urgente informando que o monitor secundário de uma estação de trabalho de controle de tráfego aéreo de superfície apagou repentinamente, necessitando de substituição imediata do cabo de vídeo. O framework ITIL v4 descreve diversas práticas para a gestão moderna de serviços de tecnologia da informação. A prática da ITIL v4 responsável por gerenciar a interrupção não planejada de um serviço ou a redução de sua qualidade, visando restaurar a operação normal o mais rápido possível, é a",
+  "alts": [
+   "Gestão de Problemas.",
+   "Gestão de Incidentes.",
+   "Habilitação de Mudanças.",
+   "Gestão de Liberação.",
+   "Gestão de Ativos de TI."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q62",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 63,
+  "tag": "frontend",
+  "q": "Ao desenvolver o novo portal corporativo para consulta de escalas dos técnicos em meteorologia aeronáutica, o designer do Serviço de Navegação Aérea incluiu o atributo HTML alt em todas as imagens de gráficos meteorológicos estáticos disponibilizados na tela. As diretrizes do WCAG ( Web Content Accessibility Guidelines ) estabelecem padrões internacionais essenciais para assegurar a acessibilidade web para pessoas com deficiências. A justificativa técnica para o uso correto do atributo descritivo alt em imagens significativas é",
+  "alts": [
+   "ocultar a imagem de robôs de busca do Google para evitar que o site sofra penalidades de ranqueamento de SEO na internet.",
+   "permitir que softwares leitores de tela leiam em voz alta a descrição textual do conteúdo da imagem para usuários com deficiência visual.",
+   "aumentar a velocidade de download de redes de dados móveis compactando dinamicamente os pixels do formato PNG ou JPEG.",
+   "forçar o navegador a renderizar uma animação tridimensional interativa caso o servidor central de arquivos fique indisponível.",
+   "garantir a compatibilidade do código-fonte do portal web com impressoras matriciais industriais antigas de relatórios."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q63",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 64,
+  "tag": "java",
+  "q": "No desenvolvimento do módulo de cálculo de autonomia de combustível do sistema de navegação aérea, um programador criou uma classe abstrata Aeronave com um método calcularAutonomia(). Duas subclasses, AviaoComercial e Helicoptero, herdam de Aeronave e implementam o método de maneiras totalmente distintas. A orientação a objetos baseia -se em pilares fundamentais para promover flexibilidade e reutilização de código. O conceito que permite a referências do tipo genérico Aeronave invocar comportamentos específicos diferentes, dependendo do tipo do objeto real apontado em tempo de execução, é",
+  "alts": [
+   "o Encapsulamento.",
+   "o Polimorfismo.",
+   "a Herança Múltipla.",
+   "a Sobrecarga de Métodos.",
+   "a Instanciação Estática."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q64",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 65,
+  "tag": "eng-software",
+  "q": "Um engenheiro de requisitos recém-contratado precisa mapear os requisitos detalhados de usabilidade do novo terminal gráfico utilizado por controladores de tráfego aéreo, cuja rotina de trabalho é altamente dinâmica e estressante. Na engenharia de requisitos, a escolha da técnica de elicitação é importante para o sucesso do projeto. Assinale a opção que apresenta a técnica de elicitação mais adequada para compreender a rotina real de trabalho dos operadores por meio do acompanhamento direto do seu dia a dia no ambiente de controle, sem interferências ativas prolongadas do analista.",
+  "alts": [
+   "Brainstorming ou Brainwriting.",
+   "Prototipação Descartável de Alta Fidelidade.",
+   "Questionários Fechados de Larga Escala.",
+   "Engenharia Reversa de Banco de Dados.",
+   "Etnografia ou Observação."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q65",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 66,
+  "tag": "eng-software",
+  "q": "No desenvolvimento de um microsserviço de notificação de mensagens aeronáuticas urgentes, a equipe técnica quer implementar testes automatizados de API para garantir que mudanças no código não quebrem funcionalidades existentes já consolidadas. O processo de execução repetida de testes previamente criados sobre uma aplicação modificada para garantir que novos defeitos não tenham sido introduzidos em trechos de código inalterados possui a seguinte nomenclatura técnica consagrada:",
+  "alts": [
+   "Teste de Fumaça.",
+   "Teste de Regressão.",
+   "Teste de Estresse.",
+   "Teste de Usabilidade.",
+   "Teste de Caixa-Branca Estrutural Puro."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q66",
+  "requer_imagem": true,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 67,
+  "tag": "governanca",
+  "q": "A diretoria de TI do Serviço de Navegação Aérea está estruturando seu modelo de governança corporativa baseado nas diretrizes do COBIT 2019. O objetivo principal é alinhar as metas de tecnologia da informação com as diretrizes estratégicas da aviação civil brasileira. O modelo de referência do COBIT 2019 estabelece uma distinção conceitual e organizacional clara entre Governança e Gestão. Assinale a afirmativa correta a respeito dessa diferenciação, de acordo com as diretrizes oficiais do ISACA/COBIT 2019.",
+  "alts": [
+   "A governança planeja, constrói e executa as atividades diárias de TI, enquanto a gestão apenas audita financeiramente os contratos.",
+   "A governança garante o atingimento dos objetivos corporativos avaliando necessidades, definindo diretrizes e monitorando o desempenho, enquanto a gestão planeja, constrói, executa e monitora atividades alinhadas à direção definida.",
+   "Governança e gestão correspondem exatamente às mesmas atribuições organizacionais, possuindo os mesmos papéis executados unicamente pelo CIO.",
+   "A gestão estabelece o arcabouço de conformidade legal de alto nível, enquanto a governança limita -se a configurar os equipamentos de servidores de rede.",
+   "O COBIT 2019 eliminou o conceito de gestão em sua última versão, restando apenas processos focados em segurança física e patrimonial."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q67",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 68,
+  "tag": "governanca",
+  "q": "Durante o mapeamento do processo de “Tratamento de Alertas de Proximidade de Aeronaves” no Serviço de Navegação Aérea, o analista utilizou a notação BPMN 2.0. Ele precisa representar graficamente o momento exato em que o sistema suspende o fluxo principal para aguardar uma resposta síncrona de um radar meteorológico externo por no máximo 30 segundos, direcionando para uma rota alternativa de contingência caso ocorra timeout. Diante do cenário apresentado, o elemento de fluxo da especificação BPMN 2.0 adequado para modelar essa restrição de tempo e o desvio de fluxo é",
+  "alts": [
+   "um Evento Intermediário de Tempo do tipo de Fronteira interrompente, acoplado aos limites da atividade de espera.",
+   "um Fluxo de Sequência Condicional padrão que interliga diretamente as raias internas de infraestrutura e governança de TI.",
+   "um Gateway Inclusivo configurado com expressões matemáticas complexas baseadas na velocidade do vento de cauda.",
+   "uma Tarefa de Script automatizada encarregada de executar um loop infinito de varredura nos logs do banco de dados relacional.",
+   "um Evento de Início de Mensagem posicionado estrategicamente na extremidade inferior da piscina do participante regulador."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q68",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 69,
+  "tag": "frontend",
+  "q": "Durante os testes de usabilidade em laboratório conduzidos no novo módulo de visualização de mapas de vento do Serviço de Navegação Aérea, os engenheiros mediram com precisão, por meio de cronômetros e logs do sistema, o tempo exato (em segundos) que um op erador leva para concluir com sucesso a inserção de uma coordenada de restrição de voo espacial. A métrica quantitativa de usabilidade clássica que foi diretamente avaliada por meio do procedimento de medição descrito foi a",
+  "alts": [
+   "Eficiência, que mensura a quantidade de recursos (como tempo, esforço ou cliques) gastos pelos usuários para realizar uma tarefa com sucesso.",
+   "Eficácia, que avalia a precisão e a completude com que os usuários conseguem atingir objetivos específicos independentemente do tempo gasto.",
+   "Satisfação subjetiva, que é medida de forma automatizada por meio de sensores biométricos instalados no mouse óptico do operador.",
+   "Taxa de Rejeição de Código, que monitora quantos commits de interface foram recusados na esteira de integração contínua (CI).",
+   "Acessibilidade Universal, que valida se o sistema roda adequadamente em sistemas operacionais legados sem suporte a CSS3."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q69",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-eng",
+  "num": 70,
+  "tag": "governanca",
+  "q": "O setor de qualidade de software do Serviço de Navegação Aérea está revisando um diagrama BPMN 2.0 que descreve o processo de “Modificação de Plano de Voo”. O diagrama apresenta duas Pools distintas: “Centro de Controle” e “Companhia Aérea”. O desenvolvedor utilizou uma linha contínua com uma seta na ponta para conectar diretamente uma tarefa de dentro da piscina do Centro de Controle a uma tarefa situada na piscina da Companhia Aérea. Com base nas regras estritas de sintaxe e conectores da notação BPMN 2.0 para modelagem de processos corporativos, assinale a afirmativa correta.",
+  "alts": [
+   "O diagrama apresenta um erro de sintaxe, pois a comunicação entre piscinas distintas deve ser feita obrigatoriamente por Message Flow.",
+   "O modelo está correto, pois linhas contínuas são permitidas para representar qualquer transferência de dados síncronos entre organizações.",
+   "A ligação está incorreta porque deveria utilizar uma Associação de Dados bidirecional ligada a um Objeto de Texto de anotação persistente.",
+   "O erro seria corrigido substituindo as duas piscinas por Lanes tracejadas verticais contidas em um subprocesso ad-hoc.",
+   "A sintaxe está perfeita, desde que a ponta da seta esteja apontada exclusivamente para um gateway do tipo exclusivo baseado em eventos."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-eng Q70",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 1,
+  "tag": "portugues",
+  "q": "No edital deste concurso, há uma indicação das atribuições de cada cargo indicado. O texto a seguir fala das incumbências do advogado. “Emitir opiniões legais, redigir pareceres técnico-jurídicos, elaborar e revisar contratos, representar legalmente a organização, proteger seus interesses em processos judiciais ou administrativos, mediar conflitos, participar de negociações, bem como promover a segurança jurídica das atividades e operações da empresa”. Sobre a organização ou significação dos segmentos desse pequeno texto, assinale a afirmação correta.",
+  "alts": [
+   "O termo “bem como”, ao final do texto, possui o valor semântico de comparação.",
+   "O texto mostra o uso do paralelismo, pois todas as atribuições indicadas são iniciadas por infinitivo.",
+   "O texto exemplifica o modo discursivo da narração, pois organiza ações em sequência cronológica.",
+   "O pronome possessivo “seus” mostra ambiguidade, referindo- se tanto à organização quanto ao advogado.",
+   "Os termos “legais”, “conflitos”, “negociações”, “organização” e “empresa” mostram vocábulos do campo semântico do Direito."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q1",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 2,
+  "tag": "portugues",
+  "q": "No Edital deste concurso, nas atribuições do pedagogo, o edital informa o seguinte: “Avaliar necessidades de aprendizagem, criar materiais didáticos, conduzir atividades educativas que promovam o crescimento profissional, desenvolver e implementar programas educacionais e de treinamento, focado na capacitação e desenvolvimento contínuo dos colaboradores.” Sobre a organização ou significação dos segmentos desse pequeno texto, avalie as afirmativas a seguir e assinale (V) para a verdadeira e (F) para a falsa. ( ) Rigorosamente falando, os segmentos textuais mostram preocupação com o paralelismo sintático. ( ) O primeiro segmento do texto funciona como introdução, resumindo todas as demais atribuições. ( ) Os adjetivos “didáticos” e “educativas” mostram valor subjetivo, expressando a opinião do autor do texto. As afirmativas são, respectivamente,",
+  "alts": [
+   "V – V – V.",
+   "F – V – F.",
+   "V – V – F.",
+   "F – F – V.",
+   "F – F – F."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q2",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 3,
+  "tag": "portugues",
+  "q": "No texto a seguir, referente às atribuições do pedagogo, há uma série de infinitivos que poderiam ser substituídos por substantivos, sem modificação no sentido da frase. Avaliar necessidades de aprendizagem, criar materiais didáticos, conduzir atividades educativas que promovam o crescimento profissional, desenvolver e implementar programas educacionais e de treinamento, focado na capacitação e desenvolvimento contínuo dos colaboradores. Assinale a substituição que seria inadequada.",
+  "alts": [
+   "“Avaliar necessidades de aprendizagem” / avaliação de necessidades de aprendizagem.",
+   "“criar materiais didáticos” / criatividade de materiais didáticos.",
+   "“conduzir atividades educativas” / condução de atividades educativas.",
+   "“desenvolver programas educacionais” / desenvolvimento de programas educacionais.",
+   "“implementar programas educacionais” / implementação de programas educacionais. Atenção! O texto a seguir refere-se às duas próximas questões. Um controlador de voo redigiu o seguinte comunicado ao chefe: Ontem à noite, às 20h30, a pista estava desocupada; um avião particular desceu em operação de emergência, aterrissou no início da pista e chocou -se com a parede lateral. Os bombeiros foram acionados, mas não houve feridos. A pista foi limpa e, em poucos minutos, estava totalmente desimpedida."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q3",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 4,
+  "tag": "portugues",
+  "q": "Esse texto mostra o seguinte modo de organização discursiva:",
+  "alts": [
+   "narração + descrição.",
+   "narração + dissertação expositiva.",
+   "dissertação expositiva + dissertação argumentativa.",
+   "exclusivamente descrição.",
+   "exclusivamente narração."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q4",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 5,
+  "tag": "portugues",
+  "q": "O texto apresenta um erro de escritura, que é:",
+  "alts": [
+   "a crase indevida em “à noite”.",
+   "a forma da abreviação de “horas”.",
+   "um erro de pontuação após “desocupada”.",
+   "um erro de ortografia em “aterrissou”.",
+   "a troca indevida de “contra” por “com”."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q5",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 6,
+  "tag": "portugues",
+  "q": "Assinale a opção cujo termo sublinhado tem uma função sintática diferente da dos demais.",
+  "alts": [
+   "“conjunto de técnicas, estudos e procedimentos”.",
+   "“leitura de mapas”.",
+   "“uso de instrumentos”.",
+   "“análise de condições meteorológicas”.",
+   "“formação de pilotos e comissários”."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q6",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 7,
+  "tag": "portugues",
+  "q": "Assinale a oração a seguir que recebe uma classificação diferente das demais.",
+  "alts": [
+   "“que permitem conduzir uma aeronave de um ponto a outro com segurança e eficiência”.",
+   "“que garantem”.",
+   "“que a trajetória seja cumprida da melhor forma”.",
+   "“que são centrais em cursos de formação de pilotos e comissários”.",
+   "“que se voltam para a ANAC”."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q7",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 8,
+  "tag": "portugues",
+  "q": "Manter a segurança de milhares de passageiros nos céus do Brasil é a principal missão do controlador de tráfego aéreo. Este profissional é responsável por orientar, coordenar e monitorar as aeronaves para prevenir colisões e garantir um fluxo ordenado e eficiente. Com o recente lançamento do edital do concurso da NAV Brasil (publicado em 24 de abril de 2026), o interesse pela carreira cresceu significativamente. A NAV Brasil é a empresa pública responsável pela navegação aérea no país, criada em 2021 a partir de uma cisão da Infraero. Esse é um pequeno texto publicado pelo jornal Estado de Minas no mês de maio de 2026. Assinale a afirmativa correta quanto à sua significação ou estruturação.",
+  "alts": [
+   "O primeiro período do texto resume antecipadamente todos os demais períodos.",
+   "O texto pode ser caracterizado como publicitário, já que valoriza uma empresa nacional.",
+   "O texto cita todas as missões dos controladores de tráfego aéreo.",
+   "O texto destaca a segurança dos aviões e dos passageiros como a missão mais importante do controlador de voo.",
+   "O texto incentiva a procura pela carreira de controlador de voo, mostrando vantagens da profissão."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q8",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 9,
+  "tag": "portugues",
+  "q": "Observe o pequeno texto a seguir: “Navegação aérea é o conjunto de técnicas e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e precisão.” Sobre esse fragmento textual, assinale a afirmação correta.",
+  "alts": [
+   "Trata-se de uma definição do termo “navegação aérea”.",
+   "Mostra uma explicação sobre a atividade do controlador de voo.",
+   "Apresenta um esclarecimento sobre a finalidade da navegação aérea.",
+   "Indica uma qualidade da navegação aérea que destaca o seu lado científico.",
+   "Exemplifica um texto argumentativo que defende um ponto de vista positivo sobre a navegação aérea."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q9",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 10,
+  "tag": "portugues",
+  "q": "Navegação aérea é o conjunto de técnicas e procedimentos que permitem conduzir uma aeronave de um ponto a outro com segurança e precisão. Sobre os termos desse texto, é correto afirmar que",
+  "alts": [
+   "“técnicas e procedimentos” são sinônimos e, por isso, mostram uma redundância.",
+   "o pronome relativo “que” tem por antecedente o termo “navegação aérea”.",
+   "a forma verbal “permitem” mostra um erro de concordância, devendo ser substituída por “permite”.",
+   "os dois termos da expressão “de um ponto a outro” indicam, respectivamente, o destino e a origem do voo.",
+   "“com segurança e precisão” poderia ser substituído por “segura e precisamente”."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q10",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 11,
+  "tag": "portugues",
+  "q": "Assinale a frase a seguir que é construída a partir de outro texto amplamente conhecido.",
+  "alts": [
+   "A moda é uma tirana a quem os sábios ridicularizam e obedecem.",
+   "Um homem belo é um homem insignificante.",
+   "Quem vê cara não vê que horas são.",
+   "Beleza sem expressão cansa.",
+   "Para o sábio basta apenas uma palavra."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q11",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 12,
+  "tag": "portugues",
+  "q": "Assinale a frase em que há uma substituição adequada de uma locução por um adjetivo.",
+  "alts": [
+   "A beleza de um animal alegra o olhar dos humanos sensíveis. / A beleza animalesca alegra o olhar dos humanos sensíveis.",
+   "A chave de todas as ciências é, indiscutivelmente, o signo da interrogação. / A chave de todas as ciências é, indiscutivelmente, o signo interrogatório.",
+   "O silêncio é a melhor escala do mundo. / O silêncio é a melhor escala mundana.",
+   "Uma vez fixadas nas palavras, as imagens de memória se apagam. / Uma vez fixadas nas palavras, as imagens comemorativas se apagam.",
+   "Nada é tão inútil como uma máxima de ordem geral. / Nada é tão inútil como uma máxima generalista."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q12",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 13,
+  "tag": "portugues",
+  "q": "Assinale a frase em que uma oração foi adequadamente substituída por um só termo.",
+  "alts": [
+   "Uma ideia que não é perigosa não é de todo uma ideia. / Uma ideia inofensiva não é de todo uma ideia.",
+   "Odeio os movimentos que ultrapassam as linhas. / Odeio os movimentos lineares.",
+   "Livros de frases são ótimos para pessoas que não possuem instrução. / Livros de frases são ótimos para pessoas instruídas.",
+   "Cem máximas que resumissem a sabedoria universal tornariam dispensáveis os livros. / Cem máximas conscientes tornariam dispensáveis os livros.",
+   "Um livro que nada ensina não é um livro, é um brinquedo. / Um livro ignorante não é um livro, é um brinquedo."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q13",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 14,
+  "tag": "portugues",
+  "q": "Assinale a frase em que o conector sublinhado foi substituído de forma adequada.",
+  "alts": [
+   "Alguns livros se leem na cozinha enquanto outros se leem na sala. / embora.",
+   "Nada é tão inútil como uma frase de ordem geral. / do mesmo modo que.",
+   "O sinal certo de um bom livro é que ele nos agrada cada vez mais à medida que envelhecemos. / à proporção que.",
+   "De que serve falar quando se há de viver tão pouco. / pois.",
+   "A resposta dele não foi clara, pois ele usou uma língua estrangeira. / logo."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q14",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 15,
+  "tag": "portugues",
+  "q": "Assinale a frase em que o verbo fazer tem a função de substituir toda uma oração anterior.",
+  "alts": [
+   "Um livro pode constituir uma obra, vinte podem não fazê-lo.",
+   "Perdoai-os, Senhor: eles não sabem o que fazem.",
+   "Todos fazemos o que está a nosso alcance: essa é a lei da solidariedade humana.",
+   "Todos os professores procuram ensinar enquanto outros fazem brinquedos.",
+   "Procurei fazer o bem sem olhar a quem."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q15",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 16,
+  "tag": "portugues",
+  "q": "Assinale a frase em que ocorre uma falha de construção, por não obedecer às próprias promessas do texto.",
+  "alts": [
+   "Todos os livros podem ser divididos em duas classes: os do momento e os de todos os tempos.",
+   "Vi três pessoas pela janela: de longe, meu pai e, além dele, os meus vizinhos.",
+   "Aqui estão minhas quatro medalhas: a da verdade, a da amizade e, além delas, a da solidariedade.",
+   "Aqui está minha idade: 89 anos bem vividos.",
+   "Aqui digo uma frase de gênio: Para saber falar é preciso saber escutar."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q16",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 17,
+  "tag": "portugues",
+  "q": "Assinale a frase em que o termo sublinhado não estabelece relação de coesão com nenhum termo anterior.",
+  "alts": [
+   "Um livro é um espelho: quando um macaco se olha nele, não pode ver refletido nenhum apóstolo.",
+   "O selo é um ser pegajoso cujo destino é viajar.",
+   "Pela palavra, o homem é superior ao animal; pelo silêncio, é superior a ele mesmo.",
+   "Sempre digo que o pior da bofetada é o som.",
+   "As mulheres preferem tabloides porque seus braços são mais curtos."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q17",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 18,
+  "tag": "portugues",
+  "q": "Assinale a frase em que está correta a grafia da palavra sublinhada.",
+  "alts": [
+   "Não pregues por que tens que dizer alguma coisa, mas por teres alguma coisa para dizer.",
+   "Felizes os povos sem correio porque neles não há o enfado de responder cartas.",
+   "Porque nenhum imperador está acima da gramática?",
+   "O por quê da criação das línguas é para que as pessoas não pudessem se entender.",
+   "A condição soberana da sabedoria é o silêncio, porquê?"
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q18",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 19,
+  "tag": "portugues",
+  "q": "Assinale a frase que não apresenta nenhum termo em elipse ou zeugma.",
+  "alts": [
+   "Citação é a ação de repetir de maneira errada as palavras do outro.",
+   "Para meias palavras, o dobro do cuidado.",
+   "Você pode provar qualquer coisa com estatísticas, exceto a verdade.",
+   "Que o Universo se cale e me escute falar.",
+   "Quando necessito ler um livro, eu mesmo escrevo."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q19",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 20,
+  "tag": "portugues",
+  "q": "Assinale a frase que mostra uma falha de pontuação.",
+  "alts": [
+   "Quando o fluido de uma ideia poderosa impregna o ambiente, é indiferente a personalidade do orador.",
+   "Tudo o que você diz fala de você, principalmente quando fala do outro.",
+   "Eu nunca conheci um matemático, capaz de argumentação.",
+   "É bom falar e melhor calar -se, mas os dois são maus, quando em excesso.",
+   "O silêncio é a maior persecução; os santos nunca se calaram."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q20",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 21,
+  "tag": "rlm",
+  "q": "X, Y e Z são pessoas suspeitas de terem cometido um ilícito. Ao serem questionados sobre o sinistro, eles fizeram as seguintes declarações: • X disse: “Y é o culpado.” • Y disse: “Z é o culpado.” • Z disse: “Y mentiu em sua declaração.” Sabe-se que apenas um deles é o culpado e que o culpado foi o único que mentiu. Com base nessas informações, é correto concluir que",
+  "alts": [
+   "X disse a verdade e Y é o culpado.",
+   "X disse a verdade e Z é o culpado.",
+   "Y disse a verdade e Z é o culpado.",
+   "Y disse a verdade e X é o culpado.",
+   "Z disse a verdade e X é o culpado."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q21",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 22,
+  "tag": "rlm",
+  "q": "João tem, em sua residência, um único liquidificador e uma única batedeira. Ele faz a seguinte declaração a respeito desses dois eletrodomésticos: “O meu liquidificador e a minha batedeira são pretos.” Considerando a lógica proposicional, se essa sentença tem valor lógico falso, é correto concluir que",
+  "alts": [
+   "nenhum dos eletrodomésticos é preto.",
+   "o liquidificador é preto.",
+   "a batedeira é preta.",
+   "se a batedeira é preta, então o liquidificador não é preto.",
+   "se o liquidificador não é preto, então a batedeira é preta."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q22",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 23,
+  "tag": "rlm",
+  "q": "Uma tabela formada por 3 linhas e 3 colunas, totalizando 9 células, deve ser preenchida com os números do conjunto {5,7,9,11,13,15,17,19,21}, sem repetições, de modo que a soma dos elementos em qualquer das linhas, qualquer das colunas e qualquer das duas diagonais seja sempre a mesma. O resultado dessa soma é",
+  "alts": [
+   "37.",
+   "39.",
+   "41.",
+   "43.",
+   "45."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q23",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 24,
+  "tag": "rlm",
+  "q": "Em uma repartição pública federal, todos os servidores homens possuem cargo de Analista ou de Técnico. Sabe -se que, inicialmente, 42,5% dos homens desta repartição eram Analistas. Após uma reestruturação administrativa, alguns homens que eram Técnicos foram promovidos a Analistas. Nenhum servidor foi demitido e nenhum novo servidor foi contratado. Com isso, o número de homens Analistas aumentou em exatamente 20%, e a quantidade de homens Técnicos foi reduzida a 98 servidores. Com base nessas informações, o número de Técnicos dessa repartição que foram promovidos a Analistas foi",
+  "alts": [
+   "21.",
+   "20.",
+   "19.",
+   "18.",
+   "17."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q24",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 25,
+  "tag": "rlm",
+  "q": "Um número é composto exclusivamente por 2 algarismos. Se for colocado o algarismo 0 entre eles, mantendo -se a ordem dos algarismos originais, obtém -se um novo número que é formado por 3 algarismos. A diferença entre o novo número e o original é 270. Com base nessas informações, é correto afirmar que o número original é",
+  "alts": [
+   "maior que 69 e menor que 80.",
+   "maior que 59 e menor que 70.",
+   "maior que 49 e menor que 60.",
+   "maior que 39 e menor que 50.",
+   "maior que 29 e menor que 40."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q25",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 26,
+  "tag": "rlm",
+  "q": "Um pai propõe à sua filha o seguinte desafio: • há 8 anos, a minha idade era exatamente o triplo da idade que você tinha; • daqui a 12 anos, a minha idade será exatamente o dobro da idade que você terá. Sabendo que ambos fazem aniversário no mesmo dia, é correto concluir que, no dia em que a filha fizer 35 anos, seu pai vai fazer",
+  "alts": [
+   "72 anos.",
+   "74 anos.",
+   "75 anos.",
+   "76 anos.",
+   "78 anos."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q26",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 27,
+  "tag": "rlm",
+  "q": "Considere um dado de 6 faces em que todas elas têm a mesma probabilidade de caírem voltadas para cima após um lançamento. Em vez de receberem números, essas faces são lisas de modo que duas delas são pintadas de preto e as demais, de vermelho. Quando esse dado é lançado, a face que cai voltada para cima é o resultado do lançamento (vermelho ou preto). Os resultados obtidos nos lançamentos desse dado são independentes. Se o dado for lançado duas vezes seguidas, a probabilidade de que se obtenham resultados diferentes é",
+  "alts": [
+   "2/9.",
+   "4/9.",
+   "4/15.",
+   "8/15.",
+   "9/16."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q27",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 28,
+  "tag": "rlm",
+  "q": "Uma partícula muito pequena está sobre o ponto (0,0) no plano cartesiano bidimensional x-y. Partindo desse ponto, essa partícula faz 4 movimentos sucessivos sobre esse plano: • desloca-se 2 unidades de distância no sentido positivo de y, sem alterar, nesse movimento, sua coordenada x; • desloca-se 3 unidades de distância no sentido positivo de x, sem alterar, nesse movimento, sua coordenada y; • desloca-se 1 unidade de distância no sentido negativo de y, sem alterar, nesse movimento, sua coordenada x; • desloca-se 1 unidade de distância no sentido positivo de x, sem alterar, nesse movimento, sua coordenada y; Nesse caso, após a sucessão de movimentos descrita, a partícula se encontra sobre o seguinte ponto do plano cartesiano:",
+  "alts": [
+   "(4,1).",
+   "(4,2).",
+   "(3,1).",
+   "(3,2).",
+   "(2,1). Informática"
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q28",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 33,
+  "tag": "atualidades",
+  "q": "Em estudo apresentado pelo Ministério do Trabalho e Emprego (MTE) sobre os impactos da inteligência artificial nas ocupações brasileiras, foi destacado que a análise realizada busca identificar atividades mais expostas às transformações tecnológicas. Durante a apresentação da metodologia utilizada pela Organização Internacional do Trabalho (OIT), ressaltou -se que “exposição não significa impacto”, destacando -se que a inteligência artificial tende mais a transformar ocupações do que necessariamente eliminá-las. Considere as situações a seguir. I. Um sistema de inteligência artificial passou a elaborar versões preliminares de relatórios técnicos, permanecendo sob responsabilidade dos profissionais a validação das informações e a aprovação do documento final. II. Uma ferramenta de inteligência artificial passou a classificar automaticamente documentos digitais, cabendo aos trabalhadores revisar inconsistências e decidir sobre situações excepcionais. III. Uma empresa identificou que determinadas atividades desempenhadas por seus empregados apresentam elevado potencial de automação por sistemas de inteligência artificial. À luz do estudo apresentado, é correto afirmar que",
+  "alts": [
+   "as situações I, II e III demonstram que as ocupações envolvidas serão necessariamente eliminadas pela inteligência artificial.",
+   "a situação III permite concluir, por si só, que os trabalhadores serão inevitavelmente substituídos por sistemas automatizados.",
+   "as situações I e II exemplificam casos em que a inteligência artificial modifica a forma de execução das atividades sem eliminar necessariamente a participação humana.",
+   "as situações I e II demonstram que a inteligência artificial elimina a necessidade de supervisão humana em atividades baseadas em informação.",
+   "a situação III comprova que os impactos da inteligência artificial independem das estratégias de adaptação adotadas por trabalhadores, empresas e governos."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q33",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 41,
+  "tag": "eng-software",
+  "q": "Uma equipe de desenvolvimento de sistemas de uma autarquia federal está modelando o módulo de concessão de licenças ambientais utilizando Domain-Driven Design (DDD). O domínio possui as classes ProcessoLicenciamento, ParecerTecnico, Vistoria e DocumentoObrigatorio. O arquiteto definiu que a classe ProcessoLicenciamento atuará como Aggregate Root . Durante uma revisão de código, constatou-se que um desenvolvedor criou um repositório exclusivo para a classe Vistoria, permitindo que sistemas externos alterem o status de uma vistoria diretamente no banco de dados, sem passar pelas regras de validação contidas em ProcessoLicenciamento. À luz dos padrões táticos do DDD, a abordagem do desenvolvedor está incorreta porque viola o seguinte princípio:",
+  "alts": [
+   "todas as entidades de um mesmo contexto delimitado (Bounded Context ) devem possuir seus próprios repositórios de persistência isolados.",
+   "objetos externos ao Agregado não podem manter referências diretas para nenhum componente interno que não seja a Raiz do Agregado (Aggregate Root).",
+   "os Objetos de Valor ( Value Objects ) herdados por entidades secundárias devem ser persistidos em tabelas lógicas totalmente separadas.",
+   "a consistência eventual impede a execução de transações atômicas síncronas dentro das fronteiras de um mesmo subdomínio genérico.",
+   "os Serviços de Domínio ( Domain Services ) detêm a responsabilidade exclusiva de instanciar entidades que possuam identidade própria."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q41",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 42,
+  "tag": "governanca",
+  "q": "O Comitê de Avaliação de Mudanças (CAB) de uma grande empresa pública de tecnologia está analisando uma requisição de mudança de caráter emergencial. A proposta consiste em aplicar um patch de correção em um banco de dados relacional distribuído que suporta o sistema de arrecadação de tributos estaduais. O proponente da mudança apresentou a matriz de riscos e o plano de testes homologado, mas o CAB barrou a homologação da janela de manutenção sob o argumento de que o Plano de Reversão (Rollback) apresentado dependia da restauração de um backup físico integral ( Cold Backup ) estimado em 14 horas de processamento. Considerando as boas práticas de Governança de TI e gerenciamento de mudanças do ITIL v4, a decisão do CAB de barrar a mudança justifica-se tecnicamente porque o plano de reversão",
+  "alts": [
+   "ultrapassa o Tempo Médio Entre Falhas (MTBF) historicamente aceito pelas áreas finalísticas de negócio do órgão.",
+   "viola a meta estabelecida de Tempo Máximo de Inatividade Tolerável (MTPD) fixada no planejamento de capacidade da TI.",
+   "invalida a integridade referencial dos dados lógicos transacionais ao ignorar o uso de chaves substitutas no SGBD.",
+   "excede a janela de manutenção programada e compromete o Objetivo de Tempo de Recuperação (RTO) do serviço afetado.",
+   "falha ao não discriminar as ferramentas de monitoramento sintético que validarão o sucesso da implantação do patch."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q42",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 43,
+  "tag": "eng-software",
+  "q": "Durante o evento de planejamento de um Incremento de Programa ( PI Planning ) sob o framework SAFe, três times ágeis diferentes constataram um bloqueio mútuo: o Time Alfa depende de uma API de segurança que será desenvolvida pelo Time Beta, que por sua vez depende da modelagem de dados de infraestrutura a ser realizada pelo Time Gama. O Engenheiro do Trem de Liberação (Release Train Engineer - RTE) interveio para evitar que o Trem de Liberação (Agile Release Train - ART) iniciasse a execução do ciclo de Sprints com riscos críticos não mitigados. Para visualizar, debater e gerenciar formalmente essas interdependências técnicas e restrições de precedência cronológica entre as equipes durante o PI Planning , o artefato visual obrigatório a ser utilizado é o",
+  "alts": [
+   "Product Backlog Burnup Chart.",
+   "Program Board.",
+   "Cumulative Flow Diagram (CFD).",
+   "Quadro Kanban de Portfólio Estratégico.",
+   "Gráfico de Velocidade Acumulada do Trem."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q43",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 44,
+  "tag": "arquitetura",
+  "q": "Um Analista de Tecnologia está investigando uma degradação de desempenho intermitente em um sistema de prontuário médico distribuído. Quando um médico ‘clica’ para emitir uma receita, a requisição passa por um API Gateway, dispara o Microsserviço de Autenticação, consome o Microsserviço de Pacientes, consulta o Banco de Dados Relacional e aciona uma função Serverless externa de validação de CRM. O tempo de resposta final na tela do usuário saltou de 1 para 12 segundos, mas os logs isolados de cada servidor indicam que todas as máquinas individuais estão operando com uso de CPU abaixo de 30%. Para diagnosticar em qual etapa exata do ciclo de chamadas distribuídas a latência está ocorrendo e identificar o gargalo de rede ou processamento, o analista deve implementar o seguinte mecanismo:",
+  "alts": [
+   "Análise de Despejo de Memória (Heap Dump Analysis).",
+   "Refatoração de Arquitetura por meio de Injeção de Dependências.",
+   "Monitoramento de Infraestrutura Baseado em Agentes de Sistema Operacional.",
+   "Validação Estatística de Código via Cobertura de Testes Unitários.",
+   "Rastreamento Distribuído ( Distributed Tracing com IDs de correlação)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q44",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 45,
+  "tag": "eng-software",
+  "q": "O coordenador de um time Kanban de suporte técnico notou que o tempo total de atendimento das demandas lógicas ( Lead Time) estava aumentando significativamente nas últimas semanas. O quadro visual exibe uma coluna chamada Homologação Técnica congestionada, com mais de 25 tarefas abertas simultaneamente, enquanto a equipe possui apenas dois analistas dedicados a essa validação. Com base nas propriedades matemáticas que regem o fluxo de sistemas enxutos (Lei de Little), para reduzir o Lead Time e acelerar a vazão de entrega de valor sem alterar o tamanho da equipe, o coordenador deve",
+  "alts": [
+   "suspender o uso de radiadores de informação e focar no controle de horas individuais.",
+   "aumentar a capacidade de armazenamento de novas demandas no topo do backlog do produto.",
+   "reduzir e limitar o Trabalho em Progresso (WIP Limit) na coluna congestionada.",
+   "eliminar a fase de retrospectiva para poupar tempo operacional dos desenvolvedores.",
+   "fragmentar as histórias de usuário em tarefas menores mantendo o mesmo volume de WIP."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q45",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 46,
+  "tag": "governanca",
+  "q": "Um Analista de Suporte de uma Central de Serviços recebeu dois chamados em sua fila de atendimento na mesma manhã. O Chamado X foi aberto por um diretor administrativo, relatando que sua impressora corporativa parou de funcionar devido a um atolamento de papel físico, impedindo a impressão de um relatório urgente. O Chamado Y foi aberto por um novo servidor técnico sol icitando a instalação de um software de edição de planilhas, cujo uso já é previamente homologado pela política de segurança de TI do órgão. À luz das definições de práticas de gerenciamento de serviços estabelecidas no framework ITIL v4, os chamados X e Y classificam- se, respectivamente, como",
+  "alts": [
+   "Incidente e Requisição de Serviço.",
+   "Requisição de Serviço e Incidente.",
+   "Incidente e Problema.",
+   "Evento e Mudança Emergencial.",
+   "Problema e Requisição de Serviço."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q46",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 47,
+  "tag": "eng-software",
+  "q": "Uma agência reguladora federal precisa desenvolver um sistema de monitoramento de satélites de alta complexidade. Os requisitos de segurança nacional são extremamente rígidos, e qualquer falha lógica pode gerar impactos geopolíticos severos. A gerência técnica determinou a adoção de um modelo de ciclo de vida de desenvolvimento de sistemas tradicional que priorize a gestão e análise formal de riscos em cada fase do projeto, dividindo o ciclo em iterações concêntricas de avaliação, engenharia e planejamento. O modelo de ciclo de vida de desenvolvimento de software que atende nativamente a essa exigência de controle, caracterizando - se por uma abordagem evolucionária orientada e guiada por análises de risco estruturadas, é o",
+  "alts": [
+   "Modelo em Cascata (Waterfall).",
+   "Extreme Programming (XP).",
+   "Modelo de Prototipação Rápida.",
+   "Modelo Espiral (Spiral Model).",
+   "Modelo Unificado Racional (RUP)."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q47",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 48,
+  "tag": "eng-software",
+  "q": "O Diretor de Tecnologia dos Serviços de Navegação Aérea quer aumentar a transparência do progresso do desenvolvimento de sistemas sem a necessidade de convocar reuniões gerenciais diárias exaustivas. Ele determinou a instalação de telas digitais de grande porte nos corredores centrais da TI, exibindo gráficos de Burndown atualizados em tempo real e o quadro Kanban com o status de todas as demandas ativas. No âmbito das metodologias ágeis de desenvolvimento de software, as ferramentas físicas ou digitais altamente visíveis instaladas em locais públicos para compartilhar o status do projeto de forma transparente, são classificadas como",
+  "alts": [
+   "Linhas de Base de Configuração (Baselines).",
+   "Acordos de Nível Operacional (OLAs).",
+   "Radiadores de Informação (Information Radiators).",
+   "Planos de Continuidade de Negócios (BCPs).",
+   "Repositórios de Metadados Isolados."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q48",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 49,
+  "tag": "arquitetura",
+  "q": "Durante uma aula de integração para novos desenvolvedores de um órgão público, o arquiteto sênior apresentou o desenho estrutural do sistema de RH. Ele explicou que o software utiliza uma arquitetura em camadas clássica de três níveis, onde o código associado à exibição das telas não se mistura com as regras de cálculo de férias, e essas, por sua vez, utilizam classes específicas de acesso a dados para ler o banco relacional. A principal vantagem conceitual de se adotar uma Arquitetura em Camadas tradicional, no desenvolvimento de sistemas corporativos, é permitir a",
+  "alts": [
+   "execução de código sem servidores através de funções de nuvem baseadas em gatilhos de rede.",
+   "desnormalização em massa das tabelas do banco de dados para evitar o uso de chaves estrangeiras relacionais.",
+   "eliminação completa da necessidade de realizar rotinas de backup ou planos de continuidade de dados.",
+   "centralização obrigatória de todas as regras de negócio lógicas dentro de scripts embutidos no HTML do navegador.",
+   "separação clara de responsabilidades e a facilidade de substituição ou manutenção de cada nível isolado."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q49",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 50,
+  "tag": "governanca",
+  "q": "A Diretoria de TI dos Serviços de Navegação Aérea iniciou a elaboração do mapa estratégico de riscos tecnológicos para o próximo biênio. Durante os workshops, os analistas foram orientados a mapear não apenas as ameaças e vulnerabilidades lógicas clássicas de infraestrutura, mas também a estimar matemática e estatisticamente o impacto potencial de cada evento no negócio da instituição. No âmbito dos frameworks clássicos de Governança de TI e gestão de projetos (PMBOK/COBIT), o risco corporativo é formalmente definido e calculado com base no produto vetorial entre os seguintes componentes básicos:",
+  "alts": [
+   "a quantidade de servidores virtuais e o número de licenças de software ativas.",
+   "a probabilidade de ocorrência de um evento incerto e o impacto gerado por ele nos objetivos.",
+   "o tempo médio gasto no conserto de uma máquina e a quantidade de linhas de código-fonte.",
+   "a versão semântica do patch do sistema operacional e a quantidade de chamados fechados.",
+   "o custo financeiro total do projeto e o número de programadores alocados no time."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q50",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 51,
+  "tag": "eng-software",
+  "q": "Um time ágil de uma empresa pública de informática iniciou o desenvolvimento de um aplicativo mobile de agendamento de consultas médicas. Durante a primeira reunião de alinhamento, o Scrum Master explicou à equipe que todo o trabalho do framework ocorre dentro de ciclos de desenvolvimento de duração fixa e repetitiva, com o objetivo de gerar previsibilidade e garantir a inspeção contínua do incremento de software produzido. No contexto do framework Scrum, o evento de limite de tempo que serve como um contêiner para todos os outros eventos, possuindo uma duração padrão fixa de no máximo um mês de calendário, é chamado",
+  "alts": [
+   "Product Backlog Refinement.",
+   "Sprint.",
+   "Daily Scrum Meeting.",
+   "Release Train Iteration.",
+   "Increment Validation Cycle."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q51",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 52,
+  "tag": "arquitetura",
+  "q": "Um Analista de Tecnologia precisa integrar o sistema de folha de pagamento de uma Secretaria com o sistema corporativo de cadastro de CPFs mantido pela Receita Federal. Para realizar essa integração lógica em tempo real pela web, sem expor o código -fonte interno de nenhum dos órgãos ou permitir acesso direto às tabelas físicas dos bancos de dados, os engenheiros utilizam um conjunto de pontos de extremidade (endpoints) HTTP padronizados regidos por um contrato claro de payloads JSON. Assinale a opção que apresenta a tecnologia e o acrônimo em inglês que definem essa interface de programação estruturada por meio de contratos de software claros para permitir a comunicação segura e padronizada entre diferentes sistemas computacionais.",
+  "alts": [
+   "MVC (Model-View-Controller).",
+   "SLA (Service Level Agreement).",
+   "DDD (Domain-Driven Design).",
+   "BCP (Business Continuity Plan).",
+   "API (Application Programming Interface)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q52",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 53,
+  "tag": "banco-dados",
+  "q": "Uma empresa pública de tecnologia da informação gerencia o sistema de Nota Fiscal Eletrônica de um estado, processando mais de 50 milhões de registros transacionais diariamente. O banco de dados relacional centralizado começou a apresentar degradação crítica de desempenho de E/S de disco e gargalos na gravação de dados devido ao tamanho massivo das tabelas. Visando descentralizar a escrita e a leitura, o Analista de Tecnologia propôs aplicar a técnica de Sharding horizontal, distribuindo as linhas das tabelas em múltiplos servidores de banco de dados independentes e fisicamente separados. Ao projetar uma arquitetura distribuída baseada em Sharding, o principal desafio arquitetural que o analista enfrentará para garantir a eficiência das consultas e evitar a degradação do sistema é",
+  "alts": [
+   "impedir a replicação de índices de texto total em tabelas normalizadas na primeira forma normal.",
+   "selecionar uma chave de estilhaçamento que distribua os dados e a carga de trabalho uniformemente.",
+   "isolar as extensões procedurais do SGBD dentro do espaço de endereçamento virtual do kernel.",
+   "configurar o particionamento vertical forçando o uso exclusivo de chaves estrangeiras compostas.",
+   "eliminar o uso de transações baseadas no modelo BASE para garantir a latência em cache."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q53",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 54,
+  "tag": "seguranca",
+  "q": "Um analista de segurança da informação foi designado para reformular a arquitetura de proteção perimetral de um tribunal regional. O modelo antigo apoiava -se na segurança de borda (redes internas confiáveis protegidas por firewall). Alinhado às diretrizes modernas de combate a ameaças avançadas, o analista propôs a migração para uma arquitetura baseada nos princípios de Zero Trust, estruturando mecanismos de verificação contínua e microsegmentação de rede. Ao implementar um ecossistema estritamente alinhado ao paradigma Zero Trust, o analista deve assegurar que a concessão de acessos aos sistemas e ativos da organização obedeça a seguinte diretriz técnica:",
+  "alts": [
+   "a autenticação biométrica realizada na borda da VPN confere confiança implícita para navegação na intranet.",
+   "todo tráfego originado dentro da rede local física da instituição deve ser tratado como seguro e pré-autenticado.",
+   "os privilégios de acesso são concedidos de forma estática com base exclusiva no cargo ou nível hierárquico do servidor.",
+   "cada requisição de acesso deve ser inspecionada, autenticada, autorizada e criptografada independentemente da sua origem.",
+   "a verificação de segurança é executada apenas no momento do login inicial do usuário para poupar processamento."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q54",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 55,
+  "tag": "eng-software",
+  "q": "A equipe de Engenharia de Confiabilidade de Sites (SRE) de um portal de serviços previdenciários está definindo os acordos de qualidade operacional para a API de emissão de contracheques. Eles definiram um Indicador de Nível de Serviço (SLI) baseado na latência das requisições HTTP síncronas. Com base nisso, estabeleceram o Objetivo de Nível de Serviço (SLO) de que 99,9% das requisições válidas nas últimas 4 semanas devem retornar um código HTTP 200 em menos de 200 milissegundos. A definição desse SLO gera matematicamente um Orçamento de Erro (Error Budget) de 0,1%. No âmbito das práticas de SRE, a utilidade essencial desse Error Budget para a governança compartilhada entre o time de operações e o time de desenvolvimento consiste em",
+  "alts": [
+   "estipular a penalidade financeira exata a ser descontada do fornecedor terceirizado de nuvem pública.",
+   "definir o limite de chamados de suporte que a Central de Serviços pode rejeitar automaticamente por semana.",
+   "atuar como uma métrica de controle para equilibrar a velocidade de lançamento de novos recursos com a estabilidade do sistema.",
+   "monitorar o volume máximo de logs verbosos que o pipeline de observabilidade pode indexar sem estourar o disco.",
+   "calcular a taxa de compressão que o algoritmo de backup deve aplicar aos arquivos de dump transacionais."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q55",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 56,
+  "tag": "banco-dados",
+  "q": "Um Analista de Tecnologia observou que uma consulta declarativa SQL essencial, utilizada no fechamento contábil mensal de uma secretaria de fazenda, passou a demorar 4 horas para ser concluída, paralisando os servidores. Ao extrair o Plano de Execução Gerado pelo Otimizador do SGBD Relacional, o analista constatou que o motor de banco de dados estava realizando uma varredura completa na tabela ( Table Scan / Sequential Scan ) contendo 80 milhões de linhas, em vez de utilizar o índice B -Tree existente na coluna de chave estrangeira pesquisada. Sabendo que o índice existe e é teoricamente adequado para a cláusula WHERE da consulta, a causa técnica que mais provavelmente induziu o otimizador do SGBD a ignorar o índice e optar pela varredura sequencial completa na tabela foi",
+  "alts": [
+   "a ausência de atualizações recentes nas estatísticas de distribuição de dados da tabela no SGBD.",
+   "a configuração do isolamento transacional definida no nível estrito de concorrência Read Uncommitted.",
+   "o uso de chaves primárias do tipo UUID auto -incrementais configuradas com armazenamento do tipo Heap.",
+   "a execução concomitante de comandos DDL do tipo COMMIT ou ROLLBACK no mesmo bloco lógico.",
+   "a falta de ativação de extensões procedurais voltadas à otimização estática de subconsultas correlacionadas."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q56",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 57,
+  "tag": "eng-software",
+  "q": "Uma equipe de engenharia de plataformas gerencia a infraestrutura em nuvem híbrida de um órgão público utilizando scripts Terraform (IaC). Durante um procedimento de deploy automatizado via pipeline de CI/CD, dois analistas dispararam simultaneamente o comando terraform apply, em suas respectivas máquinas, para modificar o mesmo conjunto de recursos de rede virtuais. O pipeline travou e retornou um erro crítico informando que o arquivo de estado (State File) estava bloqueado. No contexto das boas práticas de gerenciamento de Infraestrutura como Código com Terraform, a ocorrência desse travamento técnico justifica -se porque o sistema implementa o seguinte mecanismo:",
+  "alts": [
+   "compilação estática de binários em tempo de execução para evitar injeções lógicas na nuvem.",
+   "isolamento de processos a nível de Kernel Namespace para restringir o acesso a permissões IAM.",
+   "trava de estado ( State Locking ) para impedir a corrupção do arquivo que rastreia a infraestrutura real.",
+   "criptografia assimétrica ponta a ponta que proíbe o versionamento de módulos lógicos reutilizáveis.",
+   "balanceamento dinâmico de carga síncrona focado na normalização de tabelas relacionais em cache."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q57",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 58,
+  "tag": "banco-dados",
+  "q": "Durante o processo de modelagem lógica de um sistema de controle de frotas, um Analista de Tecnologia estruturou a tabela TB_VEICULO contendo as colunas ID_Veiculo (Chave Primária), Placa, Modelo, ID_Fabricante e Nome_Fabricante. Ele aplicou as regras form ais de normalização para mitigar redundâncias e anomalias de atualização de dados, garantindo que colunas não - chave dependam exclusivamente da totalidade da chave primária da tabela. Ao analisar a estrutura descrita, constata -se que a coluna Nome_Fabricante depende funcionalmente da coluna ID_Fabricante, que por sua vez depende da chave primária ID_Veiculo. Para adequar essa tabela especificamente às regras exigidas pela Terceira Forma Normal (3FN), o analista deve remover a",
+  "alts": [
+   "dependência parcial gerada por chaves primárias compostas atômicas.",
+   "ocorrência de atributos multivalorados ou repetitivos na mesma coluna.",
+   "superchave que viola as invariantes lógicas da Forma Normal de Boyce-Codd.",
+   "restrição de integridade referencial que impede a criação de índices clustered.",
+   "dependência funcional transitiva de atributos não -chave em relação à chave primária."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q58",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 59,
+  "tag": "seguranca",
+  "q": "Uma autarquia federal está adequando o seu Sistema de Gestão de Segurança da Informação (SGSI) para obter a certificação internacional na norma ABNT NBR ISO/IEC 27001. O Analista de TI encarregado do projeto consultou o guia de boas práticas da ISO/IEC 270 02 para selecionar e estruturar os controles de segurança cibernética aplicáveis à proteção física e lógica dos ativos computacionais da instituição. De acordo com a atualização e reestruturação metodológica da norma ISO/IEC 27002:2022, os controles de segurança da informação deixaram de ser divididos em 14 seções antigas e passaram a ser consolidados em quatro grandes temas taxonômicos fundamentais. São eles:",
+  "alts": [
+   "Estratégicos, Táticos, Operacionais e Técnicos.",
+   "Preventivos, Detectivos, Corretivos e Dissuasivos.",
+   "Organizacionais, de Pessoas, Físicos e Tecnológicos.",
+   "Redes, Sistemas, Aplicativos e Bancos de Dados.",
+   "Confidencialidade, Integridade, Disponibilidade e Autenticidade."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q59",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 60,
+  "tag": "arquitetura",
+  "q": "No desenvolvimento da API RESTful de um sistema de Ouvidoria, o programador precisa criar o endpoint que receberá os dados de uma nova manifestação enviada pelo cidadão. De acordo com os padrões arquiteturais hipermídia do ecossistema REST, o método deve aceitar o payload dos dados em formato JSON, processar a requisição e gravar um novo registro com ID exclusivo no banco de dados, gerando um recurso inédito no servidor a cada chamada executada. Para cumprir rigorosamente as boas práticas de design e as restrições semânticas de protocolo da arquitetura REST, o método HTTP que deve ser utilizado para expor esse endpoint e a sua classificação quanto à propriedade de idempotência, são, respectivamente,",
+  "alts": [
+   "POST e método não idempotente.",
+   "PUT e método idempotente.",
+   "GET e método idempotente.",
+   "PATCH e método não idempotente.",
+   "POST e método idempotente."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q60",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 61,
+  "tag": "bi",
+  "q": "Uma grande empresa pública de saúde enfrenta dificuldades para gerenciar seus dados analíticos. O modelo tradicional de Data Warehouse centralizado focado em tabelas altamente estruturadas e relacionais tornou-se muito rígido. Por outro lado, a implantação subsequente de um Data Lake gerou caos, acumulando arquivos de texto desestruturados e logs sem metadados, transformando -se em um Data Swamp . Buscando unificar o melhor dos dois mundos, o Analista de Dados propôs migrar para uma arquitetura de Data Lakehouse. A principal característica arquitetural que define o conceito de Data Lakehouse , diferenciando -o das abordagens tradicionais isoladas de Data Warehouse e Data Lake é a",
+  "alts": [
+   "aplicação direta de suporte a transações ACID e governança de dados estruturados diretamente sobre arquivos em sistemas de armazenamento em formato aberto.",
+   "eliminação completa do uso de armazenamento em nuvem e retorno obrigatório a storages físicos locais DAS.",
+   "centralização obrigatória de todas as regras lógicas de transformação de dados dentro de triggers embutidas no kernel do SGBD.",
+   "substituição do protocolo HTTP/REST pelo uso exclusivo de mensageria assíncrona baseada em barramentos de hardware.",
+   "proibição do uso de ferramentas de Business Intelligence e dashboards automatizados na camada semântica de análise."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q61",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 62,
+  "tag": "orfaos",
+  "q": "Um Analista de Tecnologia precisa auditar as configurações de segurança de um servidor de aplicação que roda o sistema operacional Linux Ubuntu Server. Ele acessou o diretório /var/log/app/ e executou o comando ls -l para verificar as permissões do arquivo de log transacional crítico chamado security.log. O terminal retornou a seguinte string de metadados de controle de acesso ao arquivo: -rwxr-xr--. Com base na notação padrão de permissões POSIX utilizada nativamente em sistemas operacionais Unix/Linux, a string exibida indica que o Proprietário do arquivo ( Owner), os membros do Grupo (Group) e os Outros usuários do sistema (Others) possuem, respectivamente, os seguintes direitos de acesso:",
+  "alts": [
+   "leitura e escrita; apenas leitura; leitura e execução.",
+   "apenas leitura; apenas escrita; apenas execução.",
+   "apenas execução; leitura e escrita; leitura, escrita e execução.",
+   "leitura e execução; leitura, escrita e execução; apenas escrita.",
+   "leitura, escrita e execução; leitura e execução; apenas leitura."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q62",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 63,
+  "tag": "bi",
+  "q": "Uma Secretaria de Educação implementou um ambiente de Business Intelligence (BI) para analisar o desempenho escolar da rede de ensino. O Analista de BI projetou uma tabela centralizada que armazena os registros numéricos quantificáveis das notas dos alunos em cada avaliação, o volume de faltas acumuladas e o ano letivo corrente, ligada de forma radial a tabelas periféricas contendo dados descritivos dos professores, escolas e disciplinas. No contexto da modelagem dimensional clássica utilizada em sistemas de apoio à decisão e BI, a tabela centralizadora, que abriga as métricas numéricas, os fatos de negócio e as chaves estrangeiras de amarração das dimensões, é a",
+  "alts": [
+   "Tabela de Dimensão (Dimension Table).",
+   "Tabela de Fatos (Fact Table).",
+   "Tabela de Metadados Isolados.",
+   "Matriz de Transição de Estado.",
+   "Tabela de Junção Associativa Anêmica."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q63",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 64,
+  "tag": "seguranca",
+  "q": "A política de segurança da informação de um ministério estabeleceu a obrigatoriedade de ativação de Autenticação de Múltiplos Fatores (MFA) para todos os acessos remotos aos sistemas administrativos. Agora, além de digitar a senha pessoal padrão na tela de login, o servidor público deve inserir um código numérico dinâmico de seis dígitos gerado temporariamente por um aplicativo instalado em seu smartphone corporativo. No âmbito dos fundamentos de segurança operacional e controles de identidade, a estratégia de MFA descrita no caso reforça a segurança do acesso ao validar, de forma combinada, fatores baseados em",
+  "alts": [
+   "algo que você sabe (senha) e algo que você possui (smartphone corporativo).",
+   "algo que você é (biometria) e algo que você faz (assinatura gráfica).",
+   "algo que você sabe (senha) e algo que você é (reconhecimento facial).",
+   "algo que você possui ( token) e algo que você faz (digitação cadenciada).",
+   "algo que você sabe (senha) e algo onde você está (geolocalização física)."
+  ],
+  "ans": 0,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q64",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 65,
+  "tag": "orfaos",
+  "q": "Um Analista de Tecnologia está configurando o storage físico local de um servidor de banco de dados corporativo. Ele dispõe de quatro discos rígidos idênticos de 2 TB cada. Buscando otimizar o desempenho de gravação e leitura por meio da divisão de blocos de dados entre todos os discos simultaneamente ( Striping), mas sem investir em nenhuma tolerância a falhas ou redundância física de espelhamento, ele decidiu implementar a arquitetura RAID 0. Caso um único disco físico, dentre os quatro integrantes desse arranjo RAID 0, sofra uma queima total e pare de funcionar, a consequência direta para a integridade dos dados lógicos armazenados no volume unificado será:",
+  "alts": [
+   "o sistema continuará operando normalmente em modo de degradação sem perdas.",
+   "a perda total e irreversível de todos os dados contidos no volume composto pelos quatro discos.",
+   "o espelhamento do RAID 0 assumirá o processamento copiando os dados do disco reserva.",
+   "apenas os dados do disco queimado serão perdidos, permanecendo os demais 6 TB intactos.",
+   "a paridade distribuída recalculará os bits perdidos restaurando as informações em tempo real."
+  ],
+  "ans": 1,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q65",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 66,
+  "tag": "redes",
+  "q": "Em uma reestruturação da infraestrutura física de redes de computadores de uma universidade pública, o Analista de Redes configurou um switch gerenciável de camada 2 para subdividir a rede local física em domínios de broadcast independentes e isolados logicamente. Ele isolou o tráfego do setor de finanças na ID de rede virtual 10 e o setor de laboratórios de estudantes na ID de rede virtual 20. Essa abordagem tecnológica de engenharia de redes, voltada à segmentação lógica de domínios de difusão sobre um mesmo hardware físico de comutação, é denominada",
+  "alts": [
+   "Redes Privadas Virtuais (VPNs).",
+   "Tradução de Endereços de Rede (NAT).",
+   "Redes de Armazenamento Dedicadas (SANs).",
+   "Redes Locais Virtuais (VLANs).",
+   "Protocolos de Roteamento Dinâmico (OSPF)."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q66",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 67,
+  "tag": "legislacao",
+  "q": "Um Analista de TI está revisando os fluxos lógicos de processamento de um sistema de cadastro de usuários de uma secretaria de esportes para garantir total conformidade com os requisitos jurídicos da Lei Geral de Proteção de Dados Pessoais (LGPD). Durante o mapeamento, o analista identificou colunas nas tabelas que registram informações sensíveis dos cidadãos, como convicções religiosas, filiações a sindicatos e históricos de dados médicos de saúde. De acordo com as definições explícitas estabelecidas no Art. 5º da LGPD (Lei nº 13.709/2018), dados pessoais que versem sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico são classificados de forma restrita como",
+  "alts": [
+   "Dados Pessoais Anônimos Gerais.",
+   "Dados Pessoais de Acesso Público Irrestrito.",
+   "Dados Pessoais Sensíveis.",
+   "Atributos Multivalorados de Domínio Privado.",
+   "Informações de Interesse Governamental Soberano."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q67",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 68,
+  "tag": "bi",
+  "q": "No projeto de modelagem lógica de um Data Warehouse corporativo voltado a subsidiar a tomada de decisões de uma autarquia federal, o projetista de dados decidiu adotar o modelo clássico do Star Schema . Ele interconectou uma tabela centralizada de fatos a múltiplas tabelas periféricas de dimensões. A principal característica conceitual, que define a modelagem das Tabelas de Dimensões especificamente dentro do arranjo estrutural de um Esquema Estrela puro, consiste no fato de que essas tabelas",
+  "alts": [
+   "são totalmente normalizadas até a quinta forma normal (5FN) gerando profundas ramificações hierárquicas em cadeia.",
+   "eliminam o uso de chaves estrangeiras substituindo -as por barramentos lógicos assíncronos.",
+   "contêm apenas valores atômicos numéricos criptografados com funções hash de via única.",
+   "são completamente desnormalizadas, conectando -se diretamente à tabela de fatos em um único nível lógico plano.",
+   "são armazenadas em arquivos de texto bruto imutáveis sem permissão para a criação de nenhum índice físico."
+  ],
+  "ans": 3,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q68",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 69,
+  "tag": "governanca",
+  "q": "Um Analista de Tecnologia atua como gestor técnico de um contrato de terceirização de desenvolvimento de software em um órgão governamental. Durante a validação das entregas de uma Sprint, ele constatou que a empresa contratada entregou os códigos funcionais dentro do prazo, mas violou a meta estabelecida no Acordo de Nível de Serviço (SLA) de cobertura mínima de testes unitários, que caiu de 80% para 45%. O preposto do fornecedor alegou que a redução foi necessária para cumprir o cronograma de entrega estipulado na janela de homologação. Diante da desconformidade detectada face às obrigações de qualidade acordadas, e considerando as responsabilidades legais do fiscal de contratos na Administração Pública, o analista deve",
+  "alts": [
+   "reescrever o SLA de qualidade de forma retroativa para adequar o contrato à realidade produtiva do fornecedor.",
+   "aprovar a entrega sem ressalvas, considerando que a velocidade de disponibilização do código anula o débito técnico.",
+   "registrar formalmente o descumprimento, aplicar as glosas ou sanções previstas em contrato e exigir a correção.",
+   "substituir imediatamente a equipe de programadores da empresa terceirizada por técnicos da central de serviços.",
+   "reter o pagamento integral de todos os outros contratos ativos do fornecedor até que a cobertura suba para 100%."
+  ],
+  "ans": 2,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q69",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
+  "prova": "nav-tec",
+  "num": 70,
+  "tag": "atualidades",
+  "q": "Uma equipe de engenharia de dados implantou um modelo de Aprendizado de Máquina em ambiente de produção, para prever anomalias operacionais e riscos de falhas em turbinas aeronáuticas. Após três meses de funcionamento estável, a plataforma de MLOps emitiu um alerta crítico apontando que, apesar de a infraestrutura de servidores estar operando normalmente, a acurácia das previsões do modelo degradou severamente, devido a mudanças graduais no perfil estatístico e nas propriedades das variáveis de entr ada vindas dos sensores reais de telemetria, fazendo com que os dados de produção divergissem do dataset usado no treinamento inicial. A disfunção específica que ocorre no ciclo de vida de modelos de Inteligência Artificial em produção, caracterizada pela mudança na distribuição dos dados de entrada que invalida a capacidade preditiva do modelo, é denominada",
+  "alts": [
+   "Estouro de Buffer (Buffer Overflow).",
+   "Condição de Corrida Distribuída.",
+   "Fragmentação de Índice Clustered.",
+   "Compilação Estática Tardia (JIT).",
+   "Desvio de Dados (Data Drift)."
+  ],
+  "ans": 4,
+  "why": "",
+  "erradas": {},
+  "fonte": "FGV nav-tec Q70",
+  "requer_imagem": false,
+  "anulada": false
+ },
+ {
   "prova": "tjrj1",
   "num": 1,
   "tag": "portugues",

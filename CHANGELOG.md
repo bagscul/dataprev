@@ -2,6 +2,106 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — NAV Brasil 2026 importada: +89 questões reais e o Módulo II fecha o déficit
+
+Duas provas da FGV aplicadas em **02/08/2026** (NAV Brasil, Edital 01/2026):
+`nav-tec` (Analista de Tecnologia) e `nav-eng` (Engenheiro Software) — este
+último é o cargo mais próximo do Perfil 3 que a FGV aplicou recentemente,
+exigia Engenharia da Computação e cobra projeto, teste e revisão de código.
+
+Entraram **89 das 140** questões. As 51 que ficaram de fora:
+
+- **40** — o Módulo I do `nav-eng` é **idêntico** ao do `nav-tec` (conferido
+  linha a linha no PDF, e os dois gabaritos batem exatamente nas questões 1–40).
+  Importar dos dois criaria 40 duplicatas competindo no sorteio do simulado;
+- **7** — "Legislação" do caderno é direito constitucional/administrativo e
+  ética (licitação, processo administrativo). A legislação do edital é LGPD,
+  Marco Civil e LAI. Importar repetiria o problema que o banco já tem: 42
+  questões de `legislacao` vindas do TJRJ/MPU são de direito administrativo;
+- **4** — "Informática" (Word, Chrome, planilha): o Perfil 3 não tem esse bloco.
+
+Um achado que valeu a leitura: a **questão 33 é rotulada "Informática" pela
+banca**, mas cobra o impacto da IA nas ocupações (estudo do MTE) — isso é
+`atualidades` no edital do Lucas, justamente o bloco mais escasso. Entrou pelo
+conteúdo, não pelo rótulo.
+
+Resultado: pool utilizável de 815 para **901**. O **Módulo II zerou o déficit**
+em todos os blocos, e o Módulo I caiu de 137 para 107 questões faltando
+(inglês 67, atualidades 23, português 10, RLM 7).
+
+**Pendência:** as 89 questões entraram sem `why`/`erradas` — todas as outras
+sete provas do banco têm explicação, então o `./valida.py` agora acusa 172
+avisos. O quiz roda, mas não explica ao errar.
+
+## 2026-08-06 — subtags viram taxonomia do edital (167), `sub` obrigatório e 497 questões etiquetadas
+
+O vocabulário de 14 microtópicos não cobria o banco: `rlm`, `redes`, `bi`,
+`legislação` e mais seis blocos não tinham nenhum valor aplicável. Em vez de
+inventar ~150 nomes, o vocabulário foi **derivado das seções de
+`teoria/capitulos/*.tex`** (e da apostila nos capítulos em que ela é mais
+detalhada) — a taxonomia que já passou por auditoria. Sobre isso entrou uma
+camada de curadoria explícita (77 renomeações, 10 fusões, 2 descartes: `800`
+virou `x800-osi`, `art` virou `marco-civil-art19`, `regencia-verbal-nominal`
+fundiu na `regencia` já curada) e 4 microtópicos escritos à mão para buracos que
+o livro não seccionava — `sql-consultas`, `modelos-de-processo`,
+`direitos-do-titular`, `normalizacao`. Total: **167**.
+
+As keywords extraídas do LaTeX eram cegas (`HashMap` não estava em
+`colecoes-java`), então as 167 listas foram **reescritas à mão**. Ganho duplo: a
+etiquetagem melhora e a estimativa de cobertura do `./fraquezas.py` fica honesta
+para sempre.
+
+**497 das 825 questões (60%) ganharam `sub`** por casamento de palavra-chave.
+Duas decisões que valem registro:
+
+- o casamento olha **enunciado + alternativa correta + `why`**, nunca as erradas.
+  A primeira tentativa usava o texto inteiro e etiquetou a questão de **cascata**
+  como `metodos-ageis` — numa questão boa da FGV os distratores são os conceitos
+  vizinhos, e eles envenenam a etiqueta;
+- abaixo de um mínimo de evidência a questão fica **sem** `sub`. Medindo à mão
+  por faixa, o casamento fraco acertava ~1 em 3; rótulo errado é pior que rótulo
+  nenhum, porque corrompe a sessão `./quiz.py <microtópico>` e a contagem de
+  cobertura. Precisão da faixa gravada, aferida em amostra: ~94%.
+
+Fecha com a obrigatoriedade: `SUB_OBRIGATORIA_APOS` (403) faz o `valida.py`
+**bloquear** questão nova sem `sub`. O número é um índice porque questão nova é
+sempre anexada ao fim — conforme o acervo antigo for etiquetado, ele baixa; em 0,
+a regra vale para o banco inteiro. `./quiz.py --tags` passou a listar o
+vocabulário inteiro por bloco (é a referência para escolher o valor), e
+`comando-negativo` ganhou `escopo: enunciado`: as palavras dele ("incorreta",
+"exceto") aparecem o tempo todo dentro das explicações das erradas, e sem isso
+ele casava com meio banco — chegou a etiquetar uma questão de IPv6.
+
+## 2026-08-06 — `./fraquezas.py`: ranking de microtópicos para mirar a geração de questão
+
+Faltava granularidade para responder "gere mais questões do que eu mais erro".
+O bloco (`tag`) é grosso demais — `portugues` são 90 questões, e os sete erros
+registrados no caderno estavam em sete assuntos diferentes (regência, orações
+subordinadas, referenciação, pessoas do discurso…). As três fontes de sinal
+existiam mas não se conversavam: o `historico.json` indexa por questão (não por
+conceito), o caderno de erros é prosa, e a `sub` cobria só cinco recortes de TI
+— nenhum nos blocos onde ele mais erra.
+
+O vocabulário das subtags saiu de duas cópias (`valida.py` e `quiz.py`) para
+uma fonte única, **`subtags.py`**, que ganhou nove microtópicos derivados um a
+um das entradas que já estavam no caderno, mais `kw` distintivas e o campo
+`blocos` — sem esse recorte a contagem de cobertura inflava com português solto
+em questão de TI ("alta coesão", "integridade referencial", o COMMIT do banco).
+
+O **`./fraquezas.py`** cruza as três fontes: erros vêm do caderno (é lá que o
+erro está etiquetado, pela nova linha `- **sub:**`), a causa vem do histórico
+do quiz pela junção no marcador `<!-- auto <id> -->`, e a cobertura vem dos dois
+bancos. `--prompt` monta o briefing de geração já escolhendo o FORMATO pela
+causa, na mesma trava anti-vício do `--stats`: erro conceitual pede questão
+direta de definição, erro de leitura pede aplicação com a quase-certa reforçada.
+
+Encaixes no que já existia: o `quiz.py` escreve a linha `- **sub:**` sozinho
+quando a questão errada tem etiqueta; `--dica`/`--resumo`/`--apostila` de um
+microtópico caem no arquivo do bloco que cobre o assunto (Cap. 2 entrou no mapa
+para `comando-negativo`); `./quiz.py <microtópico>` cai na busca por
+palavra-chave enquanto não houver questão etiquetada; e o `./valida.py` passou a
+cobrar etiqueta fora do vocabulário também no caderno de erros.
+
 ## 2026-07-29 — README/roteiro: reclassifica a distribuição da Dataprev 2024 e adiciona o `./estudar.sh`
 
 A tabela "Onde a prova se decide" (README) e a "Distribuição real do Módulo

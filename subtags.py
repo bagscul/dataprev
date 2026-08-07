@@ -1,0 +1,1533 @@
+#!/usr/bin/env python3
+"""Vocabulario fechado das SUBTAGS (campo opcional 'sub' das questoes e linha
+'- **sub:**' das entradas do caderno de erros).
+
+Fonte unica: valida.py, quiz.py e fraquezas.py importam daqui.
+
+A 'tag' continua sendo o BLOCO — e ela que manda no roteiro, no progresso.csv,
+no peso do simulado, no arquivo erros/<tag>.md e no --stats. A subtag e o
+MICROTOPICO: serve para (a) filtrar o quiz ('./quiz.py regencia'), (b) etiquetar
+o erro no caderno e (c) o ./fraquezas.py apontar onde vale gerar questao nova.
+
+De onde vem o vocabulario. Duas origens, e a diferenca importa:
+
+  * `curada` — nasceu de ERRO REAL registrado em erros/*.md. Nome e keywords
+    escritos a mao, mais finos que a secao correspondente do livro.
+  * `derivada` — nasceu de uma secao de teoria/capitulos/*.tex (ou da apostila,
+    nos capitulos onde ela e mais detalhada). E a taxonomia do edital ja
+    auditada, nao um recorte inventado aqui.
+
+Para ACRESCENTAR: se o assunto tem secao no livro, use o nome da secao; se
+nasceu de um erro que o livro trata de passagem, escreva a mao e marque
+origem 'curada'. Em qualquer caso ponha keywords DISTINTIVAS — o ./fraquezas.py
+usa-as para estimar quantas questoes ja cobrem o assunto, e termo generico
+estraga a estimativa.
+
+Campos de cada entrada:
+    blocos    blocos onde a contagem por keyword vale; None = todos. Existe
+              porque palavra de portugues aparece solta em questao de TI
+              ('alta coesao', 'integridade referencial', o COMMIT do banco):
+              sem esse recorte a estimativa de cobertura infla. Nao restringe o
+              campo 'sub' da questao nem o filtro do quiz.
+    apostila  bloco cujo capitulo cobre o assunto (aponta a leitura no
+              --apostila/--dica/--resumo). None = sem capitulo proprio.
+    desc      uma linha, o recorte exato.
+    kw        keywords distintivas, casadas com fronteira de palavra e sem
+              acento.
+    escopo    'enunciado' limita o casamento ao comando da questao; ausente =
+              texto inteiro (enunciado + alternativas + explicacoes). So
+              'comando-negativo' usa: as palavras dele ('incorreta', 'exceto')
+              aparecem o tempo todo dentro das explicacoes das erradas, e sem
+              esse limite ele casava com meio banco.
+"""
+
+import re
+import unicodedata
+
+VOCAB = {
+    # --- arquitetura
+    "ambientes-rede": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Ambientes de rede corporativa",
+        "kw": ["intranet", "extranet", "internet e intranet",
+               "portal corporativo", "rede corporativa", "dmz"],
+    },
+    "estilos-arquiteturais": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Estilos de arquitetura: uma sequência histórica",
+        "kw": ["monolito", "monolitico", "microsservico", "microservico",
+               "microservices", "arquitetura em camadas", "cliente-servidor",
+               "soa", "arquitetura hexagonal", "orientada a servicos",
+               "modularizacao", "monolito modular"],
+    },
+    "integracao": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Integração: REST, SOAP e web services",
+        "kw": ["rest", "restful", "soap", "web service", "webservice",
+               "wsdl", "uddi", "api rest", "grpc", "graphql", "idempotente",
+               "verbo http", "endpoint", "recurso uri", "hateoas", "openapi",
+               "swagger"],
+    },
+    "nuvem-escalabilidade": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Nuvem e escalabilidade",
+        "kw": ["computacao em nuvem", "iaas", "paas", "saas", "elasticidade",
+               "escalabilidade horizontal", "escalabilidade vertical",
+               "load balancer", "balanceamento de carga", "nuvem publica",
+               "nuvem privada", "nuvem hibrida", "auto scaling",
+               "multi-tenant", "serverless"],
+    },
+    "servidor-web-aplicacao": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Servidor web x servidor de aplicação",
+        "kw": ["servidor web", "servidor de aplicacao", "apache", "nginx",
+               "tomcat", "jboss", "wildfly", "contexto web",
+               "conteiner de servlet"],
+    },
+    "transacoes-distribuidas": {
+        "blocos": ("arquitetura",),
+        "apostila": "arquitetura",
+        "desc": "Transações distribuídas",
+        "kw": ["transacao distribuida", "two-phase commit", "2pc", "saga",
+               "compensacao", "consistencia eventual", "teorema cap",
+               "cap theorem", "commit em duas fases",
+               "coordenador de transacao"],
+    },
+
+    # --- atualidades
+    "atualidades-socioambiental": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Atualidades: o viés socioambiental",
+        "kw": ["mudanca climatica", "agenda 2030",
+               "objetivos de desenvolvimento sustentavel", "ods", "cop30",
+               "amazonia", "socioambiental", "desmatamento"],
+    },
+    "etica-ia": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Ética, governança e privacidade em IA",
+        "kw": ["vies algoritmico", "viés algoritmico",
+               "discriminacao algoritmica", "ia responsavel",
+               "transparencia algoritmica", "explicabilidade", "xai",
+               "ia explicavel", "governanca de ia", "privacidade por design"],
+    },
+    "fundamentos-ia": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Fundamentos de Inteligência Artificial",
+        "kw": ["inteligencia artificial", "aprendizado supervisionado",
+               "aprendizado nao supervisionado", "aprendizado por reforco",
+               "rede neural", "deep learning", "aprendizado profundo",
+               "algoritmo de ia", "agente inteligente",
+               "sistema especialista"],
+    },
+    "ia-aplicada-cenarios": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Reconhecendo o padrão em cenários de IA aplicada",
+        "kw": ["visao computacional", "processamento de linguagem natural",
+               "nlp", "chatbot", "reconhecimento de imagem", "recomendacao",
+               "clusterizacao", "classificacao binaria", "regressao linear",
+               "series temporais"],
+    },
+    "ia-esg": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Interseção IA ESG: energia e sustentabilidade",
+        "kw": ["esg", "sustentabilidade", "consumo energetico",
+               "pegada de carbono", "data center verde",
+               "eficiencia energetica", "transicao energetica"],
+    },
+    "llms-generativos": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Modelos generativos e LLMs",
+        "kw": ["llm", "large language model", "modelo de linguagem",
+               "ia generativa", "transformer", "gpt", "prompt", "alucinacao",
+               "token", "fine-tuning", "rag",
+               "geracao aumentada por recuperacao", "modelo generativo",
+               "difusao"],
+    },
+    "metricas-ml": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Métricas de avaliação",
+        "kw": ["acuracia", "precisao e recall", "recall", "f1-score",
+               "matriz de confusao", "curva roc", "auc", "falso positivo",
+               "falso negativo", "revocacao"],
+    },
+    "regulacao-ia": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Regulação da IA: em vigor x ainda em tramitação",
+        "kw": ["ai act", "regulamento europeu de ia", "pl 2338",
+               "marco legal da ia", "regulacao da inteligencia artificial",
+               "risco inaceitavel", "classificacao por risco"],
+    },
+    "vies-variancia": {
+        "blocos": ("atualidades",),
+        "apostila": "atualidades",
+        "desc": "Viés e variância: o trade-off central do aprendizado supervisionado",
+        "kw": ["overfitting", "underfitting", "sobreajuste", "subajuste",
+               "vies e variancia", "trade-off entre vies", "generalizacao",
+               "regularizacao", "validacao cruzada", "cross-validation",
+               "dados de treino", "conjunto de teste"],
+    },
+
+    # --- banco-dados
+    "concorrencia": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Concorrência: níveis de isolamento",
+        "kw": ["nivel de isolamento", "read uncommitted", "read committed",
+               "repeatable read", "serializable", "leitura suja",
+               "dirty read", "leitura fantasma", "phantom read",
+               "leitura nao repetivel", "deadlock", "bloqueio", "lock",
+               "controle de concorrencia"],
+    },
+    "etl": {
+        "blocos": ("banco-dados", "orfaos", "bi"),
+        "apostila": "banco-dados",
+        "desc": "ETL ELT",
+        "kw": ["etl", "elt", "extract transform load",
+               "extracao transformacao carga", "staging area",
+               "area de estagio", "ingestao de dados", "carga incremental",
+               "pipeline de dados", "batch e streaming"],
+    },
+    "indices": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Índices e notações",
+        "kw": ["indice", "b-tree", "arvore b", "indice clusterizado",
+               "indice composto", "hash index", "plano de execucao",
+               "full table scan", "seletividade", "indice unico", "bitmap",
+               "b+ tree", "arvore b+", "fator de ramificacao"],
+    },
+    "mer-relacional": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Do MER para o relacional (como cada cardinalidade vira tabela)",
+        "kw": ["modelo entidade-relacionamento", "modelo conceitual",
+               "modelo logico", "modelo fisico", "cardinalidade",
+               "entidade fraca", "relacionamento n:n", "chave estrangeira",
+               "chave primaria", "integridade referencial",
+               "auto-relacionamento", "entidade associativa",
+               "mapeamento para tabelas"],
+    },
+    "metadados": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Metadados e avaliação de modelos de dados",
+        "kw": ["metadado", "dicionario de dados", "catalogo de dados",
+               "linhagem de dados", "data lineage", "qualidade de dados",
+               "governanca de dados"],
+    },
+    "normalizacao": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "A decomposição, passo a passo",
+        "kw": ["normalizacao", "forma normal", "1fn", "2fn", "3fn", "fnbc",
+               "bcnf", "dependencia funcional", "dependencia parcial",
+               "dependencia transitiva", "desnormalizacao",
+               "decomposicao sem perda", "anomalia de atualizacao"],
+    },
+    "nosql-novos-armazenamentos": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "NoSQL e novos armazenamentos",
+        "kw": ["nosql", "chave-valor", "orientado a documentos", "mongodb",
+               "cassandra", "redis", "grafo", "neo4j", "familia de colunas",
+               "columnar", "base eventualmente consistente", "sharding",
+               "particionamento horizontal", "mongodb shell",
+               "db.collection", "insertone", "find(",
+               "documento json no banco"],
+    },
+    "notacoes-mer": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Notações do MER e chave surrogada",
+        "kw": ["notacao pe-de-galinha", "crow's foot", "notacao de chen",
+               "chave surrogada", "surrogate key", "chave natural",
+               "diagrama entidade-relacionamento"],
+    },
+    "propriedades-acid": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Propriedades ACID (transações)",
+        "kw": ["acid", "atomicidade", "consistencia", "isolamento",
+               "durabilidade", "propriedades da transacao", "rollback",
+               "commit", "transacao atomica"],
+    },
+    "relacional-multidimensional": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "Relacional Multidimensional (OLTP OLAP)",
+        "kw": ["oltp", "olap", "data warehouse", "data lake", "data mart",
+               "modelagem dimensional", "esquema estrela", "star schema",
+               "snowflake", "floco de neve", "cubo", "drill-down", "roll-up",
+               "slice", "dice", "pivot"],
+    },
+    "sql-consultas": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "SQL: consultas, juncoes, agregacao e subconsultas",
+        "kw": ["select", "inner join", "left join", "right join",
+               "full join", "group by", "order by", "having", "union all",
+               "union", "subconsulta", "subquery", "not in", "not exists",
+               "distinct", "count(", "sum(", "avg(", "where", "join"],
+    },
+    "view-grant": {
+        "blocos": ("banco-dados", "orfaos"),
+        "apostila": "banco-dados",
+        "desc": "VIEW, GRANT e o controle da transação",
+        "kw": ["view", "visao materializada", "materialized view", "grant",
+               "revoke", "trigger", "gatilho", "stored procedure",
+               "procedimento armazenado", "function", "savepoint", "ddl",
+               "dml", "dcl", "view materializada"],
+    },
+
+    # --- bi
+    "crisp-dm": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "CRISP-DM --- o ciclo de um projeto de mineração",
+        "kw": ["crisp-dm", "mineracao de dados", "data mining",
+               "entendimento do negocio", "preparacao dos dados",
+               "modelagem e avaliacao", "kdd", "descoberta de conhecimento"],
+    },
+    "fato-dimensao": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Tipos de fato e dimensão",
+        "kw": ["tabela fato", "tabela dimensao", "fato aditivo",
+               "semi-aditivo", "nao aditivo", "fato sem fato", "factless",
+               "dimensao degenerada", "dimensao conformada",
+               "chave substituta na dimensao"],
+    },
+    "fontes-de-dados": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Mapeamento de fontes de dados (boas práticas)",
+        "kw": ["fonte de dados", "sistema fonte", "mapeamento de fontes",
+               "profiling de dados", "dados heterogeneos",
+               "integracao de fontes"],
+    },
+    "granularidade": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Granularidade (o grão da fato)",
+        "kw": ["granularidade", "grao da tabela fato", "nivel de detalhe",
+               "grao"],
+    },
+    "inmon-kimball": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Inmon Kimball --- por onde se começa",
+        "kw": ["inmon", "kimball", "top-down", "bottom-up",
+               "corporate information factory", "barramento de dados",
+               "data warehouse corporativo"],
+    },
+    "scd": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Dimensões lentamente mutantes (SCD)",
+        "kw": ["slowly changing dimension", "dimensao lentamente mutante",
+               "scd tipo 1", "scd tipo 2", "scd tipo 3",
+               "historico da dimensao", "versionamento de linha"],
+    },
+    "ssd-dss": {
+        "blocos": ("bi",),
+        "apostila": "bi",
+        "desc": "Sistemas de Suporte à Decisão (SSD/DSS)",
+        "kw": ["sistema de apoio a decisao", "sistema de suporte a decisao",
+               "sad", "dss", "sistema de informacao gerencial", "sig", "eis",
+               "business intelligence"],
+    },
+
+    # --- eng-software
+    "atividade-estado": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Atividade e Estado",
+        "kw": ["diagrama de atividades", "diagrama de estados",
+               "maquina de estados", "no de decisao",
+               "barra de sincronizacao", "transicao de estado",
+               "estado inicial"],
+    },
+    "casos-uso": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Casos de Uso (requisitos funcionais)",
+        "kw": ["caso de uso", "casos de uso", "ator", "include", "extend",
+               "diagrama de casos de uso", "cenario principal",
+               "fluxo alternativo"],
+    },
+    "design-software": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Design de software",
+        "kw": ["acoplamento", "coesao", "modularidade", "encapsulamento",
+               "principio de projeto", "arquitetura em camadas",
+               "separacao de interesses", "abstracao",
+               "ocultamento de informacao"],
+    },
+    "devops-entrega": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "DevOps e entrega",
+        "kw": ["devops", "integracao continua", "entrega continua",
+               "implantacao continua", "ci/cd", "pipeline de build",
+               "deploy automatizado", "infraestrutura como codigo",
+               "blue-green", "canary", "observabilidade"],
+    },
+    "diagrama-classes": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Diagrama de Classes (o mais cobrado)",
+        "kw": ["diagrama de classes", "associacao", "agregacao",
+               "composicao", "generalizacao", "multiplicidade",
+               "visibilidade", "atributo e metodo", "navegabilidade"],
+    },
+    "diagrama-sequencia": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Sequência (interação no tempo)",
+        "kw": ["diagrama de sequencia", "linha de vida", "mensagem sincrona",
+               "mensagem assincrona", "foco de controle",
+               "fragmento combinado", "diagrama de comunicacao"],
+    },
+    "engenharia-requisitos": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Engenharia de requisitos",
+        "kw": ["requisito funcional", "requisito nao funcional",
+               "elicitacao", "levantamento de requisitos",
+               "especificacao de requisitos", "validacao de requisitos",
+               "rastreabilidade", "historia de usuario", "user story",
+               "stakeholder", "prototipacao", "brainstorming",
+               "documento de requisitos"],
+    },
+    "gof-comportamentais": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Comportamentais (como objetos interagem)",
+        "kw": ["observer", "strategy", "template method", "command", "state",
+               "chain of responsibility", "mediator", "memento", "visitor",
+               "iterator", "padrao comportamental"],
+    },
+    "gof-criacionais": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Criacionais (como criar objetos)",
+        "kw": ["singleton", "factory method", "abstract factory", "builder",
+               "prototype", "fabrica abstrata", "padrao criacional"],
+    },
+    "gof-estruturais": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Estruturais (como compor objetos/classes)",
+        "kw": ["adapter", "bridge", "composite", "decorator", "facade",
+               "flyweight", "proxy", "padrao estrutural"],
+    },
+    "grasp": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "GRASP",
+        "kw": ["grasp", "especialista na informacao", "criador",
+               "controlador", "baixo acoplamento e alta coesao",
+               "polimorfismo grasp", "indirecao", "protegido por variacoes"],
+    },
+    "manutencao-software": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Manutenção de software",
+        "kw": ["manutencao corretiva", "manutencao adaptativa",
+               "manutencao evolutiva", "manutencao preventiva",
+               "refatoracao", "debito tecnico", "engenharia reversa",
+               "reengenharia", "legado"],
+    },
+    "maturidade-processo": {
+        "blocos": ("eng-software", "governanca"),
+        "apostila": "eng-software",
+        "desc": "CMMI e MPS.BR: niveis, representacao por estagios x continua",
+        "kw": ["cmmi", "mps.br", "mps-br", "nivel de maturidade",
+               "representacao por estagios", "representacao continua",
+               "capability maturity", "area de processo", "nivel gerenciado",
+               "nivel definido", "em otimizacao"],
+    },
+    "metodos-ageis": {
+        "blocos": ("eng-software", "governanca"),
+        "apostila": "eng-software",
+        "desc": "Scrum, XP, Kanban: papeis, eventos e artefatos",
+        "kw": ["scrum", "sprint", "kanban", "extreme programming",
+               "programacao extrema", "product owner", "scrum master",
+               "manifesto agil", "retrospectiva", "backlog", "daily",
+               "incremento", "timebox", "velocidade da equipe", "lean",
+               "quadro kanban", "wip"],
+    },
+    "modelos-de-processo": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Modelos de ciclo de vida: cascata, espiral, incremental, prototipacao",
+        "kw": ["cascata", "waterfall", "espiral", "incremental",
+               "modelo em v", "prototipacao evolutiva",
+               "prototipo descartavel", "ciclo de vida do software",
+               "modelo de processo", "iterativo e incremental",
+               "modelo sequencial", "analise de riscos por ciclo"],
+    },
+    "padroes-arquiteturais": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Padrões arquiteturais (não são GoF, mas caem)",
+        "kw": ["mvc", "mvp", "mvvm", "camadas", "publish-subscribe",
+               "broker", "padrao arquitetural", "pipe and filter",
+               "repository"],
+    },
+    "padroes-projeto": {
+        "blocos": ("eng-software", "programacao", "arquitetura", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "GoF: criacionais, estruturais e comportamentais",
+        "kw": ["padrao de projeto", "padroes de projeto", "gof",
+               "gang of four", "design pattern"],
+    },
+    "ponto-funcao": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Mensuração: Ponto de Função Story Points",
+        "kw": ["ponto de funcao", "analise de pontos de funcao", "apf",
+               "story point", "estimativa de esforco", "planning poker",
+               "cocomo", "ifpug", "contagem de pontos"],
+    },
+    "reuso-anti-padroes": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "padroes-projeto",
+        "desc": "Reuso e anti-padrões",
+        "kw": ["anti-padrao", "antipattern", "big ball of mud", "god class",
+               "spaghetti code", "reuso de software",
+               "biblioteca de componentes", "framework como reuso"],
+    },
+    "rup": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "RUP --- as quatro fases e os dois eixos",
+        "kw": ["rup", "processo unificado", "concepcao", "elaboracao",
+               "construcao", "transicao", "disciplina do rup",
+               "iteracao do rup", "marco do rup"],
+    },
+    "testes": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Testes",
+        "kw": ["teste unitario", "teste de integracao", "teste de sistema",
+               "teste de aceitacao", "caixa-preta", "caixa-branca",
+               "caixa preta", "caixa branca", "teste de regressao",
+               "particao de equivalencia", "analise de valor limite",
+               "cobertura de codigo", "tdd", "mock", "teste funcional",
+               "teste de carga", "teste de estresse", "junit"],
+    },
+    "uml": {
+        "blocos": ("eng-software", "arquitetura", "programacao", "java"),
+        "apostila": "uml",
+        "desc": "os 14 diagramas, com foco em classes/sequencia/caso de uso",
+        "kw": ["uml", "diagrama uml", "14 diagramas", "diagrama estrutural",
+               "diagrama comportamental", "linguagem de modelagem unificada"],
+    },
+    "verificacao-validacao": {
+        "blocos": ("eng-software",),
+        "apostila": "eng-software",
+        "desc": "Verificação validação",
+        "kw": ["verificacao e validacao",
+               "estamos construindo o produto certo", "revisao por pares",
+               "inspecao de software", "walkthrough",
+               "revisao tecnica formal", "v&v"],
+    },
+
+    # --- frontend
+    "ajax-comunicacao": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Ajax e comunicação",
+        "kw": ["ajax", "xmlhttprequest", "fetch api",
+               "requisicao assincrona", "cors", "json no cliente",
+               "websocket", "polling"],
+    },
+    "escopo-closures-js": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Escopo e closures em JavaScript",
+        "kw": ["closure", "hoisting", "escopo lexico", "var let const",
+               "this em javascript", "arrow function", "callback", "promise",
+               "async await", "event loop"],
+    },
+    "frameworks-frontend": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Frameworks",
+        "kw": ["angular", "vue", "svelte", "framework javascript",
+               "componente reutilizavel", "two-way data binding",
+               "virtual dom"],
+    },
+    "html-css": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "HTML e CSS",
+        "kw": ["html5", "semantica do html", "tag html", "seletor css",
+               "box model", "flexbox", "css grid", "especificidade",
+               "pseudo-classe", "media query", "folha de estilo",
+               "display block", "display inline"],
+    },
+    "mobile-multiplataforma": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Mobile multiplataforma nativo",
+        "kw": ["react native", "flutter", "ionic", "aplicativo nativo",
+               "multiplataforma", "hibrido", "android e ios"],
+    },
+    "pegadinhas-css": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Pegadinhas visuais em CSS",
+        "kw": ["position absolute", "position relative", "position fixed",
+               "z-index", "float", "margin collapse", "overflow hidden",
+               "box-sizing"],
+    },
+    "renderizacao-react": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "Renderização no React",
+        "kw": ["react", "jsx", "usestate", "useeffect", "hook", "props",
+               "renderizacao condicional", "reconciliacao",
+               "componente funcional", "estado do componente"],
+    },
+    "spa-pwa": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "SPA PWA (o coração deste bloco)",
+        "kw": ["single page application", "spa", "pwa",
+               "progressive web app", "service worker", "manifest",
+               "roteamento no cliente", "offline first"],
+    },
+    "ux-acessibilidade": {
+        "blocos": ("frontend",),
+        "apostila": "frontend",
+        "desc": "UX, acessibilidade e usabilidade",
+        "kw": ["wcag", "acessibilidade", "usabilidade",
+               "heuristica de nielsen", "leitor de tela", "contraste",
+               "aria", "perceptivel operavel", "experiencia do usuario",
+               "e-mag"],
+    },
+
+    # --- governanca
+    "bpmn": {
+        "blocos": ("governanca",),
+        "apostila": "governanca",
+        "desc": "BPMN (modelagem de processos)",
+        "kw": ["bpmn", "modelagem de processos de negocio", "raia", "pool",
+               "lane", "gateway exclusivo", "gateway paralelo",
+               "evento de inicio", "bpm", "notacao de processos"],
+    },
+    "cobit-2019": {
+        "blocos": ("governanca",),
+        "apostila": "governanca",
+        "desc": "COBIT 2019",
+        "kw": ["cobit", "objetivo de governanca", "objetivo de gestao",
+               "edm", "apo", "bai", "dss", "mea", "fator de design",
+               "cascata de objetivos"],
+    },
+    "gestao-riscos-iso31000": {
+        "blocos": ("governanca",),
+        "apostila": "governanca",
+        "desc": "Gestão de riscos (ISO 31000)",
+        "kw": ["iso 31000", "apetite a risco", "tratamento do risco",
+               "identificacao de riscos", "matriz de risco",
+               "risco residual"],
+    },
+    "itil": {
+        "blocos": ("governanca",),
+        "apostila": "governanca",
+        "desc": "ITIL 4",
+        "kw": ["itil", "gerenciamento de servicos", "central de servicos",
+               "service desk", "incidente e problema",
+               "gerenciamento de mudanca", "acordo de nivel de servico",
+               "sla", "catalogo de servicos", "cadeia de valor do servico"],
+    },
+    "pmbok": {
+        "blocos": ("governanca",),
+        "apostila": "governanca",
+        "desc": "Gerenciamento de projetos (PMBOK)",
+        "kw": ["pmbok", "gerenciamento de projetos", "termo de abertura",
+               "eap", "estrutura analitica do projeto", "caminho critico",
+               "escopo do projeto", "grupo de processos",
+               "areas de conhecimento", "pmi", "cronograma"],
+    },
+
+    # --- ingles
+    "compreensao-global-ingles": {
+        "blocos": ("ingles",),
+        "apostila": "ingles",
+        "desc": "Compreensão global: ideia principal, propósito e gênero",
+        "kw": ["main idea", "the purpose of the text", "the author",
+               "best title", "the text suggests", "according to the text",
+               "main topic"],
+    },
+    "julgamento-afirmativas": {
+        "blocos": ("ingles",),
+        "apostila": "ingles",
+        "desc": "Questões de julgamento (afirmativas verdadeiro/falso)",
+        "kw": ["true or false", "the following statements",
+               "analyse the statements", "check the statements",
+               "afirmativas a seguir", "julgue as afirmativas"],
+    },
+    "referencia-pronominal-ingles": {
+        "blocos": ("ingles",),
+        "apostila": "ingles",
+        "desc": "Referência pronominal",
+        "kw": ["refers to", "the pronoun", "pronoun", "it refers",
+               "which refers", "antecedent"],
+    },
+    "verbos-modais": {
+        "blocos": ("ingles",),
+        "apostila": "ingles",
+        "desc": "Verbos modais",
+        "kw": ["modal verb", "should", "must", "may", "might", "could",
+               "ought to", "verbo modal"],
+    },
+    "vocabulario-contexto": {
+        "blocos": ("ingles",),
+        "apostila": "ingles",
+        "desc": "Vocabulário em contexto",
+        "kw": ["means the same as", "closest in meaning", "synonym",
+               "antonym", "in the text means", "can be replaced by",
+               "the word"],
+    },
+
+    # --- java
+    "anotacoes-java": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Anotações que a FGV cobra pelo nome",
+        "kw": ["@override", "@deprecated", "@functionalinterface",
+               "@suppresswarnings", "anotacao", "annotation", "@entity",
+               "@autowired"],
+    },
+    "colecoes-java": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Coleções (Collections)",
+        "kw": ["arraylist", "linkedlist", "hashmap", "hashset", "treemap",
+               "treeset", "collection", "list set map", "iterator",
+               "comparable", "comparator", "collections.sort",
+               "framework de colecoes"],
+    },
+    "escopo-variavel-java": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Escopo de variável --- a pegadinha silenciosa",
+        "kw": ["variavel local", "variavel de instancia",
+               "variavel estatica", "escopo de bloco", "shadowing",
+               "campo static", "final"],
+    },
+    "excecoes-java": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Exceções: checked unchecked",
+        "kw": ["checked exception", "unchecked exception",
+               "excecao verificada", "try catch", "finally", "throw",
+               "throws", "runtimeexception", "nullpointerexception",
+               "try-with-resources", "bloco finally"],
+    },
+    "interface-classe-abstrata": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Interface classe abstrata",
+        "kw": ["classe abstrata", "interface", "metodo abstrato",
+               "default method", "implements", "extends",
+               "heranca multipla de interface"],
+    },
+    "java-moderno": {
+        "blocos": ("java", "programacao"),
+        "apostila": "java-moderno",
+        "desc": "recursos do Java 17/21 LTS (record, sealed, stream, lambda)",
+        "kw": ["record", "sealed", "stream", "optional", "lambda",
+               "text block", "pattern matching", "var local",
+               "api de streams", "interface funcional", "java 17", "java 21"],
+    },
+    "leitura-codigo": {
+        "blocos": ("java", "programacao", "frontend"),
+        "apostila": "leitura-codigo",
+        "desc": "questao que exige rastrear a execucao de um trecho de codigo",
+        "kw": ["trecho de codigo", "codigo a seguir", "codigo abaixo",
+               "saida do programa", "o que sera impresso",
+               "assinale a saida", "resultado da execucao"],
+    },
+    "polimorfismo": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Polimorfismo: overload override",
+        "kw": ["sobrecarga", "sobrescrita", "overload", "override",
+               "polimorfismo", "vinculacao dinamica", "upcasting",
+               "downcasting", "super"],
+    },
+    "solid": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "OO e SOLID",
+        "kw": ["solid", "responsabilidade unica", "aberto/fechado",
+               "aberto-fechado", "substituicao de liskov",
+               "segregacao de interface", "inversao de dependencia",
+               "injecao de dependencia", "principio srp"],
+    },
+    "threads-virtuais": {
+        "blocos": ("java",),
+        "apostila": "java",
+        "desc": "Armadilhas de threads virtuais",
+        "kw": ["thread virtual", "virtual thread", "loom",
+               "concorrencia em java", "synchronized", "executorservice",
+               "pool de threads", "runnable"],
+    },
+
+    # --- legislacao
+    "agentes-de-tratamento": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Agentes de tratamento --- o papel vem do poder de decisão",
+        "kw": ["controlador", "operador", "encarregado", "dpo",
+               "agente de tratamento", "poder de decisao sobre o tratamento"],
+    },
+    "anpd-cnpd": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "ANPD e CNPD --- dois colegiados, e um deles mudou de nome em 2026",
+        "kw": ["anpd", "autoridade nacional de protecao de dados", "cnpd",
+               "conselho nacional de protecao de dados",
+               "autarquia de natureza especial", "15.352"],
+    },
+    "bases-legais": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Bases legais --- o art. 7º e o art. 11 são listas diferentes",
+        "kw": ["base legal", "hipoteses de tratamento", "consentimento",
+               "legitimo interesse", "obrigacao legal",
+               "execucao de contrato", "tutela da saude", "art. 7",
+               "art. 11", "dado sensivel"],
+    },
+    "decisao-automatizada": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Decisão automatizada e explicabilidade (art. 20)",
+        "kw": ["decisao automatizada", "art. 20", "revisao da decisao",
+               "perfil de consumo", "definicao de perfil", "profiling",
+               "explicabilidade da decisao"],
+    },
+    "delitos-informaticos": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Delitos Informáticos (Lei 12.737/2012, art. 154-A do CP)",
+        "kw": ["12.737", "154-a", "invasao de dispositivo informatico",
+               "crime cibernetico", "delito informatico",
+               "carolina dieckmann", "estelionato eletronico"],
+    },
+    "direitos-do-titular": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Direitos do titular (art. 18) e prazos de atendimento",
+        "kw": ["direitos do titular", "titular dos dados", "art. 18",
+               "confirmacao da existencia", "portabilidade",
+               "eliminacao dos dados pessoais", "revogacao do consentimento",
+               "peticao contra o controlador", "anonimizacao a pedido"],
+    },
+    "guarda-registros": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Guarda de registros",
+        "kw": ["registro de conexao", "registro de acesso a aplicacoes",
+               "guarda dos registros", "um ano", "seis meses",
+               "log de acesso"],
+    },
+    "lai": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "LAI (Lei 12.527/2011) --- prazos de sigilo",
+        "kw": ["lei de acesso a informacao", "12.527",
+               "informacao reservada", "informacao secreta", "ultrassecreta",
+               "prazo de sigilo", "transparencia ativa",
+               "transparencia passiva"],
+    },
+    "marco-civil-art19": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Art. 19 --- responsabilidade dos provedores (atualização crítica pós-STF, jun/2025)",
+        "kw": ["marco civil", "12.965", "art. 19",
+               "responsabilidade dos provedores",
+               "ordem judicial de remocao", "neutralidade de rede",
+               "provedor de aplicacao", "guarda de conexao"],
+    },
+    "principios-lgpd": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Princípios (art. 6º) --- o trio que a FGV confunde",
+        "kw": ["principios da lgpd", "art. 6",
+               "finalidade adequacao necessidade", "livre acesso",
+               "qualidade dos dados", "nao discriminacao",
+               "responsabilizacao e prestacao de contas", "transparencia",
+               "prevencao", "seguranca como principio"],
+    },
+    "sancoes-administrativas": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Sanções administrativas (art. 52) --- é um regime, não uma tabela de multa",
+        "kw": ["art. 52", "advertencia", "multa simples", "multa diaria",
+               "bloqueio dos dados", "eliminacao dos dados",
+               "suspensao do exercicio", "2% do faturamento",
+               "cinquenta milhoes", "sancao administrativa"],
+    },
+    "sancoes-lgpd": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Sanções (art. 12)",
+        "kw": ["art. 12", "dado anonimizado", "anonimizacao",
+               "reversibilidade"],
+    },
+    "seguranca-lgpd": {
+        "blocos": ("legislacao",),
+        "apostila": "legislacao",
+        "desc": "Segurança e boas práticas (Capítulo VII) --- a LGPD que o desenvolvedor implementa",
+        "kw": ["boas praticas e governanca",
+               "programa de governanca em privacidade",
+               "relatorio de impacto", "ripd",
+               "incidente de seguranca com dados", "comunicacao a anpd",
+               "capitulo vii"],
+    },
+
+    # --- orfaos
+    "administracao-dados": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Administração de Dados Administração de Banco de Dados",
+        "kw": ["administrador de dados", "administrador de banco de dados",
+               "dba", "administracao de dados", "papel do dba", "ad e adb"],
+    },
+    "aprendizado-de-maquina": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Aprendizado de máquina",
+        "kw": ["machine learning", "aprendizado de maquina",
+               "arvore de decisao", "k-means", "knn", "random forest", "svm",
+               "naive bayes", "clustering", "agrupamento",
+               "modelo preditivo"],
+    },
+    "aries-recuperacao": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Recuperação e transações: o protocolo ARIES",
+        "kw": ["aries", "log de transacoes", "write-ahead log", "wal",
+               "undo redo", "checkpoint", "recuperacao apos falha",
+               "analise redo undo"],
+    },
+    "armazenamento-fisico": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Armazenamento físico e desempenho",
+        "kw": ["raid", "raid 0", "raid 1", "raid 5", "raid 10", "ssd e hdd",
+               "organizacao de arquivos", "buffer pool",
+               "particionamento fisico", "tablespace"],
+    },
+    "arquitetura-computadores-so": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Arquitetura de computadores e sistema operacional",
+        "kw": ["sistema operacional", "escalonamento de processos",
+               "deadlock do so", "memoria virtual", "paginacao",
+               "segmentacao", "pipeline de instrucoes", "cache l1",
+               "barramento", "processo e thread", "kernel", "assembly",
+               "complemento de dois", "ciclo de instrucao", "registrador",
+               "unidade logica e aritmetica", "ula", "overflow aritmetico",
+               "bit menos significativo", "bit mais significativo",
+               "binario sem sinal", "instrucao de maquina", "clock"],
+    },
+    "backup-recuperacao": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Backup e recuperação",
+        "kw": ["backup completo", "backup incremental", "backup diferencial",
+               "politica de backup", "restore", "ponto de recuperacao",
+               "backup full"],
+    },
+    "seguranca-sgbd": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Segurança e acesso no SGBD",
+        "kw": ["privilegio no sgbd", "sql injection", "auditoria do banco",
+               "criptografia de coluna", "mascaramento de dados",
+               "role no banco"],
+    },
+    "sistemas-corporativos": {
+        "blocos": ("orfaos", "banco-dados"),
+        "apostila": "orfaos",
+        "desc": "Sistemas de informação corporativos",
+        "kw": ["erp", "crm", "scm", "sistema integrado de gestao",
+               "workflow corporativo", "sistema transacional corporativo"],
+    },
+
+    # --- portugues
+    "classes-palavras": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Classes de palavras",
+        "kw": ["classe de palavras", "substantivo", "adjetivo", "adverbio",
+               "preposicao", "conjuncao coordenativa", "numeral",
+               "interjeicao", "morfologia", "classe gramatical",
+               "verbo de ligacao", "verbo de estado", "locucao verbal",
+               "tempo verbal", "modo verbal", "imperativo", "subjuntivo",
+               "particípio", "gerundio", "voz passiva", "voz ativa"],
+    },
+    "colocacao-pronominal": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Colocação pronominal",
+        "kw": ["colocacao pronominal", "proclise", "enclise", "mesoclise",
+               "pronome oblique atono", "palavra atrativa"],
+    },
+    "concordancia-nominal": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Concordância nominal",
+        "kw": ["concordancia nominal", "adjetivo anteposto",
+               "anexo obrigado mesmo", "e proibido", "meio meia",
+               "bastante como adjetivo"],
+    },
+    "concordancia-verbal": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Concordância verbal",
+        "kw": ["concordancia verbal", "verbo impessoal", "sujeito composto",
+               "verbo haver", "particula se", "voz passiva sintetica",
+               "sujeito oracional"],
+    },
+    "conectivos": {
+        "blocos": ("portugues", "ingles"),
+        "apostila": "portugues",
+        "desc": "valor logico do conectivo (causa x conclusao x concessao), pt e en",
+        "kw": ["conectivo", "conectivos", "conjuncao", "valor logico",
+               "concessiva", "adversativa", "conclusiva", "explicativa",
+               "however", "therefore", "nevertheless", "moreover",
+               "linking word"],
+    },
+    "crase": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Crase",
+        "kw": ["crase", "acento grave", "a craseado",
+               "uso do acento indicativo"],
+    },
+    "interpretacao-texto": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Compreensão e interpretação de textos",
+        "kw": ["de acordo com o texto", "o texto afirma", "ideia central",
+               "tese do autor", "inferencia", "depreende-se do texto",
+               "o autor defende", "tema do texto", "intencao do autor",
+               "solicitacao de forma", "forma indireta", "ato de fala",
+               "funcao da linguagem", "funcao referencial", "funcao emotiva",
+               "funcao apelativa", "funcao metalinguistica",
+               "linguagem figurada", "figura de linguagem", "metafora",
+               "ironia"],
+    },
+    "oracoes-subordinadas": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "classificar substantiva/adjetiva/adverbial e suas reduzidas",
+        "kw": ["oracao subordinada", "oracoes subordinadas", "substantiva",
+               "adjetiva", "adverbial", "oracao reduzida",
+               "conjuncao integrante", "periodo composto", "coordenada",
+               "subordinacao", "oracao principal"],
+    },
+    "ortografia": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Ortografia",
+        "kw": ["ortografia", "por que porque", "mas mais", "mal mau",
+               "acentuacao grafica", "grafia correta", "hifen"],
+    },
+    "pessoas-do-discurso": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "1a/2a/3a pessoa, plural de modestia e voz do enunciador",
+        "kw": ["pessoa do discurso", "pessoas do discurso",
+               "plural de modestia", "primeira pessoa", "terceira pessoa",
+               "enunciador", "nos autoral"],
+    },
+    "pontuacao": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Pontuação",
+        "kw": ["virgula", "ponto e virgula", "dois-pontos", "travessao",
+               "pontuacao", "aposto explicativo", "vocativo",
+               "oracao intercalada"],
+    },
+    "pronomes-relativos": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "que/o qual/cujo/onde x aonde e o antecedente que retomam",
+        "kw": ["pronome relativo", "pronomes relativos", "aonde", "cujo",
+               "cuja", "o qual", "a qual", "antecedente do pronome"],
+    },
+    "reescrita-significacao": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "Reescrita e significação",
+        "kw": ["reescrita", "mantendo o sentido", "sem alteracao de sentido",
+               "sinonimo no texto", "substituicao do termo", "significacao",
+               "sentido conotativo", "sentido denotativo", "ambiguidade"],
+    },
+    "referenciacao": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "coesao referencial: o que cada termo retoma no texto",
+        "kw": ["coesao", "coesivo", "anafora", "catafora", "retoma",
+               "referencial", "elemento coesivo", "remete ao termo",
+               "elipse"],
+    },
+    "regencia": {
+        "blocos": ("portugues",),
+        "apostila": "portugues",
+        "desc": "regencia verbal e nominal; preposicao exigida pelo verbo",
+        "kw": ["regencia verbal", "regencia nominal", "transitivo direto",
+               "transitivo indireto", "verbo transitivo",
+               "preposicao exigida", "complemento verbal", "objeto indireto",
+               "regencia"],
+    },
+
+    # --- programacao
+    "blockchain": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Blockchain",
+        "kw": ["blockchain", "bloco encadeado", "hash do bloco",
+               "prova de trabalho", "proof of work", "smart contract",
+               "contrato inteligente", "ledger", "descentralizado"],
+    },
+    "ecossistema-spring": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Ecossistema Spring (cai muito)",
+        "kw": ["spring", "spring boot", "spring mvc", "bean",
+               "inversao de controle", "@autowired", "@restcontroller",
+               "jpa", "hibernate", "spring security"],
+    },
+    "estruturas-dados": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Estruturas de dados",
+        "kw": ["pilha", "fila", "lista encadeada", "arvore binaria", "grafo",
+               "tabela hash", "notacao big-o", "complexidade de algoritmo",
+               "lifo", "fifo", "ordenacao", "busca binaria", "recursao"],
+    },
+    "formatos-dados": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Formatos de dados: XML, JSON, XSLT",
+        "kw": ["xml", "json", "xslt", "xsd", "dtd", "yaml", "csv", "parser",
+               "serializacao", "namespace xml", "xpath"],
+    },
+    "git-devops": {
+        "blocos": ("programacao", "eng-software", "arquitetura", "governanca", "java"),
+        "apostila": "git-devops",
+        "desc": "versionamento, pipeline e conteineres",
+        "kw": ["git", "commit", "branch", "merge", "rebase", "pull request",
+               "repositorio", "docker", "kubernetes", "conteiner",
+               "dockerfile", "imagem docker", "controle de versao",
+               "git flow"],
+    },
+    "java-ee-web": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Java EE / web server-side (JSF, Primefaces)",
+        "kw": ["servlet", "jsp", "jsf", "primefaces", "java ee",
+               "jakarta ee", "ejb", "managed bean", "web.xml",
+               "ciclo de vida do jsf"],
+    },
+    "mobile-low-code": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Mobile e low-code",
+        "kw": ["low-code", "no-code", "desenvolvimento rapido de aplicacao",
+               "plataforma low code", "aplicativo movel"],
+    },
+    "php": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "PHP 8 --- funções de sessão",
+        "kw": ["php", "session_start", "$_session", "$_post", "$_get",
+               "echo", "funcao de sessao"],
+    },
+    "qualidade-codigo": {
+        "blocos": ("programacao", "java"),
+        "apostila": "programacao",
+        "desc": "Qualidade de código",
+        "kw": ["code smell", "clean code", "revisao de codigo",
+               "analise estatica", "sonarqube", "complexidade ciclomatica",
+               "legibilidade do codigo", "duplicacao de codigo"],
+    },
+
+    # --- redes
+    "acl-wildcard": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "ACL Cisco e wildcard mask",
+        "kw": ["access control list", "acl", "wildcard mask",
+               "acl estendida", "acl padrao", "permit deny"],
+    },
+    "equipamentos": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Equipamentos",
+        "kw": ["switch", "roteador", "hub", "bridge", "access point",
+               "repetidor", "gateway padrao", "tabela de roteamento",
+               "dominio de colisao"],
+    },
+    "firewall": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Firewall stateful stateless",
+        "kw": ["firewall", "stateful", "stateless", "filtro de pacotes",
+               "proxy reverso", "waf", "inspecao de estado",
+               "regra de firewall"],
+    },
+    "modelos-osi-tcpip": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Modelos de referência",
+        "kw": ["modelo osi", "camada de enlace", "camada de rede",
+               "camada de transporte", "camada de aplicacao",
+               "camada fisica", "modelo tcp/ip", "sete camadas",
+               "encapsulamento de dados"],
+    },
+    "mpls-vlan-nat": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "MPLS, VLAN, NAT",
+        "kw": ["mpls", "vlan", "nat", "pat", "trunk", "802.1q",
+               "tag de vlan", "traducao de endereco"],
+    },
+    "protocolos-portas": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Protocolos e portas",
+        "kw": ["porta 80", "porta 443", "porta 22", "porta 25", "dns",
+               "dhcp", "http", "ftp", "smtp", "snmp", "icmp", "porta padrao",
+               "protocolo de aplicacao"],
+    },
+    "ssh-telnet": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "SSH Telnet e o handshake do TLS",
+        "kw": ["ssh", "telnet", "acesso remoto seguro", "porta 23",
+               "chave publica no ssh"],
+    },
+    "sub-redes": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Sub-redes: máscara hosts utilizáveis",
+        "kw": ["sub-rede", "mascara de sub-rede", "cidr", "vlsm",
+               "hosts utilizaveis", "endereco de broadcast",
+               "endereco de rede", "ipv4", "ipv6", "faixa privada",
+               "rfc 1918"],
+    },
+    "tcp-udp": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "TCP UDP",
+        "kw": ["tcp", "udp", "three-way handshake", "controle de fluxo",
+               "janela deslizante", "orientado a conexao", "datagrama",
+               "retransmissao", "syn ack"],
+    },
+    "tipos-de-rede": {
+        "blocos": ("redes",),
+        "apostila": "redes",
+        "desc": "Tipos de rede corporativa",
+        "kw": ["lan", "man", "wan", "vpn", "topologia estrela",
+               "topologia barramento", "topologia anel", "rede sem fio",
+               "wi-fi"],
+    },
+
+    # --- rlm
+    "analise-combinatoria": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Análise combinatória",
+        "kw": ["permutacao", "arranjo", "combinacao", "fatorial",
+               "principio fundamental", "anagrama", "quantas maneiras"],
+    },
+    "argumentacao-validade": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Argumentação: validade e falácias",
+        "kw": ["argumento valido", "premissa", "conclusao do argumento",
+               "silogismo", "falacia", "modus ponens", "modus tollens",
+               "validade do argumento"],
+    },
+    "conjuntos-inclusao-exclusao": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Conjuntos: inclusão-exclusão",
+        "kw": ["diagrama de venn", "uniao e intersecao", "inclusao-exclusao",
+               "conjunto complementar", "principio da inclusao",
+               "pertence ao conjunto", "apenas um dos conjuntos"],
+    },
+    "equivalencias-logicas": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Equivalências lógicas",
+        "kw": ["equivalencia logica", "lei de de morgan", "de morgan",
+               "contrapositiva", "negacao da condicional",
+               "proposicao equivalente"],
+    },
+    "geometria-plana": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Geometria plana essencial",
+        "kw": ["area do", "perimetro", "triangulo", "retangulo",
+               "circunferencia", "teorema de pitagoras", "volume do",
+               "diagonal do"],
+    },
+    "juros-simples-compostos": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Juros simples e compostos",
+        "kw": ["juros simples", "juros compostos", "montante",
+               "capital inicial", "taxa de juros", "desconto comercial",
+               "valor presente"],
+    },
+    "logica-sentencial": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Lógica sentencial: proposições e tabelas-verdade",
+        "kw": ["tabela-verdade", "tabela verdade", "proposicao",
+               "conjuncao logica", "disjuncao", "condicional",
+               "bicondicional", "negacao", "tautologia", "contradicao",
+               "contingencia", "valor logico da proposicao"],
+    },
+    "matrizes": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Matrizes",
+        "kw": ["matriz", "determinante", "matriz identidade",
+               "matriz transposta", "multiplicacao de matrizes",
+               "sistema linear"],
+    },
+    "medidas-de-posicao": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Médias, mediana, moda e desvio padrão",
+        "kw": ["media aritmetica", "mediana", "moda", "desvio padrao",
+               "variancia", "media ponderada", "medida de dispersao"],
+    },
+    "porcentagem": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Porcentagem e taxas sucessivas",
+        "kw": ["porcentagem", "aumento sucessivo", "desconto sucessivo",
+               "acrescimo de", "reducao percentual", "por cento"],
+    },
+    "probabilidade": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Probabilidade",
+        "kw": ["probabilidade", "espaco amostral", "evento independente",
+               "probabilidade condicional", "chance de", "sorteio aleatorio"],
+    },
+    "progressoes": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Progressões aritmética e geométrica",
+        "kw": ["progressao aritmetica", "progressao geometrica",
+               "razao da progressao", "termo geral", "soma dos termos"],
+    },
+    "quantificadores": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Lógica de primeira ordem: quantificadores",
+        "kw": ["quantificador", "todo", "algum", "nenhum",
+               "existe pelo menos um", "negacao de todo",
+               "quantificador universal", "quantificador existencial"],
+    },
+    "razao-proporcao": {
+        "blocos": ("rlm",),
+        "apostila": "rlm",
+        "desc": "Razão, proporção e regra de três",
+        "kw": ["regra de tres", "proporcional", "razao entre",
+               "grandeza inversamente", "grandeza diretamente",
+               "divisao proporcional"],
+    },
+
+    # --- seguranca
+    "continuidade-rto-rpo": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Continuidade de negócio: RTO x RPO",
+        "kw": ["rto", "rpo", "continuidade de negocio",
+               "plano de contingencia", "recuperacao de desastres",
+               "analise de impacto no negocio", "bia", "site backup"],
+    },
+    "controle-acesso": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Controle de acesso",
+        "kw": ["controle de acesso", "rbac", "mac dac",
+               "autenticacao multifator", "mfa",
+               "principio do menor privilegio", "autorizacao", "sso",
+               "single sign-on", "oauth", "identidade e acesso"],
+    },
+    "criptografia": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Criptografia",
+        "kw": ["criptografia simetrica", "criptografia assimetrica",
+               "chave publica", "chave privada", "aes", "rsa",
+               "hash criptografico", "sha-256", "md5", "assinatura digital",
+               "certificado digital", "icp-brasil", "pki", "funcao de hash"],
+    },
+    "desenvolvimento-seguro": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Desenvolvimento seguro",
+        "kw": ["sdlc seguro", "modelagem de ameacas", "threat modeling",
+               "sast", "dast", "validacao de entrada", "sanitizacao",
+               "hardcoded", "codigo seguro", "devsecops"],
+    },
+    "gestao-riscos": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Gestão de riscos",
+        "kw": ["analise de risco", "avaliacao de risco",
+               "ameaca e vulnerabilidade", "probabilidade e impacto",
+               "risco residual", "tratamento do risco",
+               "aceitar transferir mitigar", "ativo de informacao"],
+    },
+    "https-ssl-tls": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "HTTPS, SSL e TLS",
+        "kw": ["https", "ssl", "tls", "handshake tls",
+               "certificado do servidor", "porta 443",
+               "criptografia em transito"],
+    },
+    "iso-27001-27002": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "ISO/IEC 27001 e 27002",
+        "kw": ["iso 27001", "iso/iec 27001", "27002", "sgsi",
+               "sistema de gestao de seguranca da informacao",
+               "declaracao de aplicabilidade", "anexo a",
+               "controles da norma"],
+    },
+    "owasp-top10": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "OWASP Top 10",
+        "kw": ["owasp", "top 10", "injection", "broken access control",
+               "xss", "cross-site scripting", "csrf", "sql injection",
+               "quebra de autenticacao",
+               "configuracao incorreta de seguranca"],
+    },
+    "resposta-a-incidentes": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "Detecção e resposta a incidentes",
+        "kw": ["resposta a incidentes", "deteccao de intrusao", "ids", "ips",
+               "siem", "csirt", "forense computacional",
+               "cadeia de custodia", "plano de resposta"],
+    },
+    "triade-cia": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "A tríade CIA: o critério que organiza tudo",
+        "kw": ["confidencialidade", "integridade e disponibilidade",
+               "triade", "disponibilidade", "autenticidade", "nao repudio",
+               "irretratabilidade"],
+    },
+    "x800-osi": {
+        "blocos": ("seguranca",),
+        "apostila": "seguranca",
+        "desc": "X.800: a arquitetura de segurança OSI",
+        "kw": ["x.800", "arquitetura de seguranca osi",
+               "servico de seguranca", "mecanismo de seguranca"],
+    },
+
+    # --- transversais (valem em qualquer bloco)
+    "comando-negativo": {
+        "blocos": None,
+        "apostila": "tecnica-fgv",
+        "desc": "item que pede a alternativa INCORRETA/EXCETO",
+        "kw": ["incorreta", "incorreto", "exceto", "nao e correto",
+               "nao corresponde", "nao se aplica",
+               "assinale a alternativa falsa"],
+        "escopo": "enunciado",
+    },
+
+}
+
+SUB_VALIDAS = frozenset(VOCAB)
+
+
+def norm(s):
+    """Minuscula e sem acento — mesma normalizacao do valida.py/cobertura.py."""
+    s = unicodedata.normalize("NFD", str(s).lower())
+    return "".join(c for c in s if unicodedata.category(c) != "Mn")
+
+
+def _regex(nome):
+    kws = sorted(VOCAB[nome]["kw"], key=len, reverse=True)
+    return re.compile(r"(?<!\w)(?:" + "|".join(re.escape(norm(k)) for k in kws) + r")(?!\w)")
+
+
+_RX = {nome: _regex(nome) for nome in VOCAB if VOCAB[nome]["kw"]}
+
+
+def texto_questao(q, escopo=None):
+    """Texto da questao, normalizado. escopo='enunciado' pega so o comando;
+    senao, enunciado + alternativas + why + erradas (o que o cobertura.py usa)."""
+    if escopo == "enunciado":
+        return norm(q.get("q", ""))
+    partes = [q.get("q", "")] + list(q.get("alts") or []) + [q.get("why", "")]
+    partes += list((q.get("erradas") or {}).values())
+    return norm(" ".join(str(p) for p in partes))
+
+
+def casa(nome, texto_norm):
+    """O texto (ja normalizado) toca o microtopico 'nome'? So keyword — nao
+    olha o bloco nem o escopo. Para contar cobertura no banco, use cobre()."""
+    rx = _RX.get(nome)
+    return bool(rx and rx.search(texto_norm))
+
+
+def cobre(nome, q, texto_norm=None):
+    """A questao 'q' conta como cobertura do microtopico 'nome'? Vale por
+    etiqueta explicita (campo 'sub') OU por keyword dentro dos blocos
+    declarados. O campo 'sub' passa por cima do recorte de bloco: se voce
+    etiquetou a questao a mao, ela conta onde estiver."""
+    v = VOCAB.get(nome)
+    if v is None:
+        return False
+    if nome in (q.get("sub") or []):
+        return True
+    if v["blocos"] and q.get("tag") not in v["blocos"]:
+        return False
+    escopo = v.get("escopo")
+    if escopo:                      # escopo proprio: ignora o texto pre-montado
+        return casa(nome, texto_questao(q, escopo))
+    return casa(nome, texto_questao(q) if texto_norm is None else texto_norm)
+
+
+def sugerir(texto):
+    """Subtags candidatas para um texto solto (usado pelo ./fraquezas.py para
+    sugerir etiqueta em entrada do caderno que ainda nao tem 'sub')."""
+    t = norm(texto)
+    return sorted(n for n in VOCAB if casa(n, t))

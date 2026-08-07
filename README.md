@@ -67,6 +67,7 @@ cai em hoje.
 ./quiz.py --dica java      # como a FGV cobra esse bloco (sem bloco: lista)
 ./quiz.py --apostila java  # aponta o capitulo da apostila desse bloco
 ./quiz.py --stats          # desempenho por bloco + causa do erro (conceitual/leitura)
+./quiz.py regencia         # microtopico (subtag), atravessando os blocos
 ```
 
 **Repeticao espacada (`--erradas`).** Nao mostra tudo que voce ja errou um
@@ -96,7 +97,7 @@ a mesma errada duas vezes nao vira duas anotacoes). Para nao gravar, use
 progresso.csv (entao nao use ./feito.sh para as questoes do quiz).
 
 403 questoes originais em estilo FGV (todas com gabarito auditado contra
-fonte) + questoes reais de 7 provas da FGV = **~815 questoes utilizaveis**.
+fonte) + questoes reais de 9 provas da FGV = **~901 questoes utilizaveis**.
 As explicacoes ja vem gravadas no banco: o quiz roda offline, sem chave de
 API e sem custo — entao qualquer pessoa com o repo roda no terminal dela.
 
@@ -131,6 +132,40 @@ alertas de redes fora-do-edital e OWASP 2025 vs 2021) esta em
 
 Duvida que a explicacao do terminal nao resolve? Cole a questao no Claude
 Code (veja `CLAUDE.md`): la da pra perguntar de volta.
+
+### Onde voce mais erra (microtopicos)
+
+O bloco e grosso demais para mirar estudo: `portugues` sao 90 questoes, e sete
+erros seus podem estar em sete assuntos diferentes. Quem tem a granularidade do
+erro e a **subtag** — o campo `sub` da questao e a linha `- **sub:**` do caderno
+de erros. Sao **167 microtopicos** em `subtags.py` (fonte unica: `quiz.py`,
+`valida.py` e `fraquezas.py` leem de la), quase todos derivados das secoes do
+`teoria/` e da apostila — a taxonomia do edital, ja auditada. `./quiz.py --tags`
+lista todos por bloco. Questao nova do `banco.json` e obrigada a trazer `sub`
+(o `./valida.py` bloqueia). Hoje 497 das 825 questoes ja tem `sub` (60%); o
+resto ficou sem etiqueta de proposito, por falta de evidencia — etiquete a mao
+quando esbarrar numa delas.
+
+```bash
+./fraquezas.py            # ranking dos microtopicos onde voce mais erra
+./fraquezas.py --top 5    # so os cinco piores
+./fraquezas.py --sem-sub  # entradas do caderno sem etiqueta (com sugestao)
+./fraquezas.py --prompt   # briefing pronto pra gerar questao dos piores
+./quiz.py regencia        # treina so aquele microtopico
+```
+
+O ranking cruza tres fontes: o **caderno de erros** (quantas vezes voce errou
+o assunto), o **historico do quiz** (a causa — conceitual ou armadilha) e os
+**dois bancos** (quantas questoes ja cobrem aquilo). Errar 2x um assunto com 5
+questoes ou menos no banco acende o alerta `←`: e ali que vale gerar questao
+nova, e o `--prompt` ja monta o pedido, inclusive escolhendo o FORMATO pela
+causa (erro conceitual pede questao direta de definicao; erro de leitura pede
+questao de aplicacao com a quase-certa reforcada).
+
+O ciclo fecha sozinho: ao errar no quiz, a entrada do caderno ja nasce com a
+subtag quando a questao tem uma. Questao de prova real nao tem — etiquete a mao
+(o `--sem-sub` sugere qual). Microtopico novo nasce de **erro real**: crie em
+`subtags.py` e o `./valida.py` cobra qualquer etiqueta fora do vocabulario.
 
 ### Questoes reais das provas
 
