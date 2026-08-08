@@ -5151,10 +5151,10 @@
   "ans": 4,
   "why": "O CEP é um exemplo clássico de variável proxy: mesmo sem usar o atributo sensível diretamente, ele carrega correlação forte com raça/renda por causa da segregação urbana histórica, e o modelo aprende e reproduz esse padrão. É o cenário-chave de viés algorítmico em IA aplicada a políticas públicas.",
   "erradas": {
-   "0": "Distrator de falsa neutralidade tecnológica (extrapolação): o enunciado já descreve o próprio mecanismo do proxy — dizer que o modelo é 'neutro' porque não usa o atributo diretamente ignora exatamente essa correlação indireta que a questão está descrevendo.",
-   "1": "Distrator absoluto: 'sempre garante decisões justas' é o tipo de promessa categórica que a FGV usa como armadilha — balancear dados reduz o risco de viés, mas não o elimina nem garante justiça de forma automática.",
-   "2": "Distrator por inversão de conceito: classificar 'conceder ou negar benefício' é problema de classificação supervisionada (rótulo conhecido), não não supervisionada; além disso, não supervisionado não 'desconsidera variáveis sensíveis' por definição — a alternativa mistura dois conceitos errados.",
-   "3": "Distrator absoluto/contradição legal: a LGPD (art. 20) garante ao titular o direito de solicitar revisão de decisões tomadas unicamente com base em tratamento automatizado que afetem seus interesses — a automação não retira esse direito, pelo contrário, é o motivo dele existir."
+   "0": "Chamar o modelo de 'neutro' porque não usa raça ou renda diretamente ignora o mecanismo que o próprio enunciado descreve: a correlação indireta via CEP. Neutralidade de atributo não é neutralidade de resultado.",
+   "1": "'Sempre garante decisões justas' é a promessa categórica que entrega a alternativa: balancear os dados reduz o risco de viés, não o elimina nem produz justiça automática.",
+   "2": "Conceder ou negar benefício a partir de rótulo histórico conhecido é classificação supervisionada, não aprendizado não supervisionado — e não supervisionado tampouco 'desconsidera variáveis sensíveis' por definição. São dois conceitos errados na mesma frase.",
+   "3": "Inverte o efeito da automação: o art. 20 da LGPD garante ao titular a revisão de decisão tomada unicamente com base em tratamento automatizado. Ser automatizada é a razão de o direito existir, não o que o afasta."
   }
  },
  {
@@ -5174,10 +5174,10 @@
   "ans": 0,
   "why": "PUE = energia total do datacenter dividida pela energia usada só pela TI. Quanto mais próximo de 1,0, mais eficiente (menos energia 'desperdiçada' fora do processamento). É a métrica-padrão citada em diretivas recentes de eficiência energética de datacenters.",
   "erradas": {
-   "1": "Distrator absoluto: 'nenhum país' é uma generalização categórica facilmente falseável — o próprio texto-base menciona que essas iniciativas regulatórias existem.",
-   "2": "Distrator de extrapolação otimista: o texto-base não afirma isso — pelo contrário, destaca o crescimento do consumo e a necessidade de governança, o que seria desnecessário se a matriz já fosse majoritariamente limpa.",
-   "3": "Distrator por extrapolação + inversão: o texto-base diz que o processamento é a maior fatia e o resfriamento a segunda maior — a alternativa inverte essa ordem e ainda generaliza para 'única variável relevante', o que o texto não sustenta.",
-   "4": "Distrator por inversão ('quase certa'): a alternativa erra o denominador e ainda inverte a conclusão final — PUE mais ALTO significa MENOS eficiência (mais energia gasta fora da TI), não mais eficiência."
+   "1": "'Nenhum país' é generalização fácil de derrubar — o próprio texto-base cita as iniciativas regulatórias em curso.",
+   "2": "Nada no texto sustenta isso; ao contrário, ele destaca o consumo crescente e a necessidade de governança, que seriam desnecessários se a matriz já fosse majoritariamente limpa.",
+   "3": "Troca a ordem que o texto dá: o processamento é a maior fatia, o resfriamento vem depois. Sobre a inversão a alternativa ainda empilha um absoluto ('única variável relevante').",
+   "4": "A quase-certa: acerta que o PUE é uma razão, mas erra o denominador e inverte a conclusão — PUE mais alto significa MENOS eficiência, não mais."
   }
  },
  {
@@ -5196,10 +5196,10 @@
   "ans": 4,
   "why": "Alucinação é quando o LLM gera uma resposta fluente e coerente, porém sem lastro factual. Em atendimento público que afeta direito do cidadão, a mitigação correta é validação humana e/ou RAG com fonte oficial — nunca confiar cegamente na resposta do modelo.",
   "erradas": {
-   "0": "Distrator absoluto: alucinação é um problema estrutural de LLMs, presente inclusive nos modelos mais recentes, não uma falha 'exclusiva de arquiteturas antigas já eliminada'.",
-   "1": "Distrator absoluto: volume de dados de treino não garante confiabilidade factual da resposta — é exatamente o tipo de alucinação descrito no enunciado que desmente essa alternativa.",
-   "2": "Alternativa 'quase certa': RAG de fato reduz o risco de alucinação ao ancorar a resposta em documentos reais, mas dizer que 'garante, de forma definitiva' e 'nunca mais' é um absoluto que a técnica não sustenta — RAG mitiga, não elimina o risco.",
-   "3": "Distrator por inversão/confusão de conceito: LLMs geram texto livre por natureza (são modelos generativos); a alternativa também erra ao vincular o problema ao tipo de aprendizado, que não é o mecanismo da alucinação."
+   "0": "Alucinação é problema estrutural de LLM, presente nos modelos mais recentes; 'exclusivo de arquiteturas antigas' e 'completamente eliminado' são dois absolutos numa frase só.",
+   "1": "Volume de treino não se converte em confiabilidade factual, e o episódio narrado no enunciado é justamente o contraexemplo que desmente a alternativa.",
+   "2": "Quase certa: RAG de fato reduz a alucinação ao ancorar a resposta em documento oficial, mas 'garante, de forma definitiva' e 'nunca mais' extrapolam o que a técnica entrega — ela mitiga o risco, não o zera.",
+   "3": "Confunde o mecanismo: LLM é modelo generativo e gera texto livre por natureza; o tipo de aprendizado não é o que causa nem o que evita a alucinação."
   }
  },
  {
@@ -5240,10 +5240,10 @@
   "ans": 0,
   "why": "box-sizing: border-box faz width incluir padding e border. Assim, mesmo com padding: 20px e border: 5px, a caixa ocupa exatamente 200px de largura total (fora a margem) — o conteúdo interno é que fica menor (200 − 2×20 − 2×5 = 150px). content: attr(data-status) imprime o VALOR do atributo ('pendente'), não o nome dele.",
   "erradas": {
-   "1": "Distrator por confusão de conceito: margin é espaço EXTERNO ao redor do elemento; ele não soma ao tamanho do próprio elemento (isso é papel de padding/border), apenas afasta os elementos vizinhos.",
-   "2": "Distrator por inversão do box model: essa conta (200 + padding + border = 250px) é a regra do box-sizing PADRÃO (content-box), não do border-box declarado no CSS. Com border-box, width já inclui padding e border.",
-   "3": "Distrator clássico de attr(): content: attr(x) imprime o VALOR do atributo x ('pendente'), não a string com o nome do atributo ('data-status').",
-   "4": "Distrator inventado: pseudo-elementos como ::after funcionam apenas com a declaração CSS associada ao seletor (aqui, .card::after) — não exigem nenhuma classe adicional no HTML."
+   "1": "Margem é espaço externo: afasta os vizinhos, não entra no tamanho do próprio elemento — quem faz isso é padding/border.",
+   "2": "A conta 200 + padding + border = 250px é a do box-sizing padrão (content-box). Com border-box, declarado ali no CSS, o width já inclui os dois.",
+   "3": "attr(x) imprime o VALOR do atributo ('pendente'), não o nome dele ('data-status') — a troca clássica nessa função.",
+   "4": "Requisito inventado: ::after funciona com a declaração no seletor (.card::after), sem nenhuma classe extra no HTML."
   }
  },
  {
@@ -5262,10 +5262,10 @@
   "ans": 3,
   "why": "useState é assíncrono e em lote (batched) dentro do mesmo handler de evento: as duas chamadas 'setCliques(cliques + 1)' leem o mesmo valor 'antigo' de cliques capturado no fechamento (closure) daquela renderização, então o resultado final avança só 1, não 2. Para acumular corretamente dentro do mesmo evento, usa-se a forma funcional c => c + 1, que sempre recebe o valor mais atualizado.",
   "erradas": {
-   "0": "Distrator absoluto/inversão: setState/useState é assíncrono e em lote (batched) dentro do mesmo handler; o valor da variável de estado só reflete a atualização na PRÓXIMA renderização, nunca imediatamente após a chamada na mesma execução.",
-   "1": "Distrator por contradição com a reconciliação: o React usa o Virtual DOM para calcular a diferença entre a árvore antiga e a nova, aplicando só as mudanças necessárias no DOM real — não recria tudo do zero a cada render.",
-   "2": "Distrator 'quase certo': parece lógico que duas chamadas somem 2, mas ambas leem o mesmo valor de 'cliques' do escopo da função (closure), não o valor já incrementado pela primeira chamada — típica pegadinha de estado assíncrono.",
-   "4": "Distrator absoluto: usar o índice como key só é seguro para listas estáticas que nunca reordenam, inserem ou removem itens no meio; em listas dinâmicas, é a prática desaconselhada."
+   "0": "Inverte o comportamento do hook: useState é assíncrono e agrupado (batched) dentro do mesmo handler, e a variável só reflete o novo valor na próxima renderização — nunca logo após a chamada.",
+   "1": "Contradiz a reconciliação: o React compara a árvore antiga com a nova no Virtual DOM e aplica no DOM real só a diferença.",
+   "2": "É a leitura intuitiva — duas chamadas, dois incrementos —, mas ambas leem o mesmo 'cliques' capturado no closure daquela renderização, então a segunda apenas repete o valor da primeira.",
+   "4": "Índice como key só é seguro em lista estática; havendo reordenação, inserção ou remoção no meio, é exatamente a prática desaconselhada. O 'sempre' entrega o distrator."
   }
  },
  {
@@ -5284,10 +5284,10 @@
   "ans": 1,
   "why": "Um return (ou uma exceção lançada) dentro do bloco finally sobrescreve qualquer valor de retorno ou exceção pendente do try/catch. Aqui, a divisão por zero aciona o catch (que 'tentaria' retornar -1), mas o finally executa depois e seu return 99 prevalece — o método sempre retorna 99, independentemente do que aconteceu no try/catch.",
   "erradas": {
-   "0": "Distrator invertido: o finally não impede a execução do catch — o catch roda normalmente; o que acontece é que o return do finally sobrescreve o resultado do catch depois.",
-   "2": "Distrator sem fundamento técnico: Java não 'invalida o resultado' recorrendo a um valor padrão nesse cenário — o valor retornado é exatamente o que o return do finally especifica (99).",
-   "3": "Distrator 'quase certo': está correto até a metade (a divisão por zero aciona o catch), mas erra no final — o finally não é 'só uma ação extra'; um return dentro dele sobrescreve o valor que viria do catch.",
-   "4": "Distrator inventado: o código compila normalmente. Ter um return dentro de finally é uma prática desaconselhada (pode mascarar exceções), mas é sintaticamente válida em Java."
+   "0": "Inverte o papel do finally: o catch roda normalmente, sim; o que acontece depois é o return do finally sobrescrever o resultado dele.",
+   "2": "Java não recorre a valor padrão nesse cenário — o retorno é exatamente o que o return do finally manda (99).",
+   "3": "Quase certa: acerta que a divisão por zero cai no catch, mas erra no final — o finally não é 'ação extra', o return dentro dele substitui o -1.",
+   "4": "O código compila. Return dentro de finally é prática desaconselhada (mascara exceção), não erro de sintaxe."
   }
  },
  {
@@ -5306,10 +5306,10 @@
   "ans": 0,
   "why": "Em 26/06/2025, o STF (Temas 987 e 533) declarou o art. 19 parcial e progressivamente inconstitucional. A regra geral passou a ser notice-and-takedown: notificação extrajudicial já basta para responsabilizar o provedor pela maioria dos conteúdos ilícitos. A exigência de ordem judicial permanece apenas para os crimes contra a honra (calúnia, injúria, difamação).",
   "erradas": {
-   "1": "Distrator de terminologia: o regime de notice-and-takedown é uma reação a uma notificação sobre conteúdo já publicado — não é análise/aprovação prévia à publicação, o que caracterizaria censura prévia.",
-   "2": "Distrator da lei antiga: essa é a redação ORIGINAL do art. 19, que exigia ordem judicial específica como regra geral. Era a regra até 25/06/2025 — hoje essa exigência é a EXCEÇÃO (só para crimes contra a honra), não mais a regra geral. É o distrator mais provável da prova para quem estudou por material desatualizado.",
-   "3": "Distrator de instrumento/fonte: a mudança veio de uma decisão do STF em controle de constitucionalidade (recursos extraordinários com repercussão geral), não de uma lei nova aprovada pelo Congresso. A própria tese vale até que o Congresso venha a legislar sobre o tema.",
-   "4": "Distrator por superextrapolação/absoluto: o STF não extinguiu a exigência de ordem judicial para todo e qualquer conteúdo — ela continua obrigatória especificamente para os crimes contra a honra."
+   "1": "Notice-and-takedown reage a conteúdo já publicado; censura prévia seria analisar antes de publicar. A alternativa troca um pelo outro.",
+   "2": "É a redação ORIGINAL do art. 19, válida até 25/06/2025: ordem judicial como regra geral. Hoje isso é exceção, restrita aos crimes contra a honra — o distrator mais provável para quem estudou por material desatualizado.",
+   "3": "Erra a fonte da mudança: veio de decisão do STF em repercussão geral, não de lei nova do Congresso. A própria tese vale até que o Congresso legisle.",
+   "4": "Superextrapola: a ordem judicial continua obrigatória para os crimes contra a honra, e 'todo e qualquer conteúdo' apaga justamente a exceção que a decisão preservou."
   }
  },
  {
@@ -5328,10 +5328,10 @@
   "ans": 1,
   "why": "Conteúdo de risco grave (crime contra a ordem democrática, terrorismo, incitação à violência/racismo) exige atuação proativa e imediata do provedor, sob dever de cuidado — é o nível mais alto de exigência dentro do novo regime, acima até da simples resposta a notificação extrajudicial que vale para o conteúdo ilícito geral.",
   "erradas": {
-   "0": "Distrator da lei antiga: exigir ordem judicial como critério ÚNICO para qualquer conteúdo é exatamente a regra que deixou de valer como regra geral a partir de 26/06/2025.",
-   "2": "Distrator inventado: não há essa restrição de legitimidade — qualquer terceiro prejudicado ou ciente do conteúdo ilícito pode notificar extrajudicialmente a plataforma.",
-   "3": "Distrator absoluto: a plataforma pode, sim, ser responsabilizada por conteúdo de terceiro sob o novo regime, especialmente diante de notificação (ou, neste caso, mesmo sem notificação, dado o dever de cuidado).",
-   "4": "Distrator por inversão de categoria: a exceção de ordem judicial obrigatória vale para crimes contra a honra (calúnia, injúria, difamação) — incitação à violência/crime contra a ordem democrática é tratado como conteúdo de risco grave, com regime ainda mais rígido (atuação proativa), não mais brando."
+   "0": "Ordem judicial como critério único para qualquer conteúdo é a regra que deixou de valer em 26/06/2025.",
+   "2": "Restrição inventada: não há reserva de legitimidade ao Ministério Público — qualquer terceiro pode notificar extrajudicialmente a plataforma.",
+   "3": "Isenção absoluta não existe no novo regime: conteúdo de terceiro responsabiliza a plataforma diante de notificação e, neste caso, até independentemente dela, pela gravidade.",
+   "4": "Troca a categoria: a exceção de ordem judicial é a dos crimes contra a honra. Incitação à violência e crime contra a ordem democrática entram no regime mais rígido, de atuação proativa, não no mais brando."
   }
  },
  {
@@ -5350,10 +5350,10 @@
   "ans": 0,
   "why": "Crimes contra a honra (calúnia, injúria, difamação) são a única categoria que preserva a exigência de ordem judicial específica após a decisão do STF de 2025 — é a exceção dentro da nova regra geral de notice-and-takedown.",
   "erradas": {
-   "1": "Distrator por inversão: aplicar a regra geral (notificação extrajudicial basta) a um crime contra a honra é o erro clássico — essa categoria é justamente a exceção que mantém a exigência de ordem judicial.",
-   "2": "Distrator inventado: a decisão do STF não criou esse requisito de dupla notificação simultânea.",
-   "3": "Distrator inventado: número de visualizações não é critério legal ou jurisprudencial para essa exigência.",
-   "4": "Distrator absoluto/contraditório: a própria tese fixada preserva expressamente a exigência de ordem judicial para os crimes contra a honra — dizer que 'não há mais qualquer hipótese' contradiz o núcleo da decisão."
+   "1": "Aplica a regra geral a quem é exceção: difamação é crime contra a honra, e é aí que a ordem judicial específica continua exigida.",
+   "2": "Dupla notificação simultânea não consta da tese — requisito inventado.",
+   "3": "Número de visualizações nunca foi critério, nem legal nem jurisprudencial, para essa exigência.",
+   "4": "Contradiz o núcleo da decisão: a tese preserva expressamente a ordem judicial para crimes contra a honra, então 'não há mais qualquer hipótese' é falso pelo próprio julgado."
   }
  },
  {
@@ -5372,10 +5372,10 @@
   "ans": 3,
   "why": "O STF, por 8 votos a 3, declarou o art. 19 parcial e progressivamente inconstitucional (não total, não por unanimidade). A tese fixada em repercussão geral tem efeito vinculante imediato e vale até que o Congresso Nacional legisle especificamente sobre o tema — não é mera recomendação nem tem prazo de validade automático.",
   "erradas": {
-   "0": "Distrator por inversão de escopo: é exatamente o contrário — crimes contra a honra são a exceção que preserva a regra antiga; a decisão do STF trata da regra geral para os demais conteúdos ilícitos.",
-   "1": "Distrator inventado: não há prazo automático de 12 meses; a tese vale até que o Congresso legisle especificamente sobre o tema, sem prazo prefixado.",
-   "2": "Distrator por troca de número/absoluto: a inconstitucionalidade foi parcial e progressiva (não total) e o placar foi 8 a 3 (não unanimidade).",
-   "4": "Distrator de efeito jurídico: decisão em repercussão geral tem efeito vinculante imediato sobre casos análogos — não é uma simples recomendação sem força normativa."
+   "0": "Inverte o escopo: crimes contra a honra são a exceção preservada; o que a decisão redefiniu foi a regra geral, valendo para os demais conteúdos ilícitos.",
+   "1": "Prazo inventado: não há validade de 12 meses — a tese vige até o Congresso legislar, sem data prefixada.",
+   "2": "Dois números trocados na mesma alternativa: a inconstitucionalidade foi parcial e progressiva, não total, e o placar foi 8 a 3, não unânime.",
+   "4": "Erra o efeito jurídico: decisão em repercussão geral vincula os casos análogos de imediato, não é recomendação ao Congresso."
   }
  },
  {
@@ -7319,7 +7319,7 @@
    "0": "Inverte o sinal do resultado, que é o erro de leitura mais comum aqui: \"increases completion time by 19%\" significa que levaram MAIS tempo, e o próprio texto glosa isso com \"slowed developers down\".",
    "1": "Extrapola. O recorte descreve devs experientes em projetos maduros nos quais já tinham em média 5 anos de casa; nada é afirmado sobre outros tipos de projeto, e \"of no use\" não aparece.",
    "3": "Pega um detalhe verdadeiro e o promove a tese. Os devs de fato baixaram de 24% para 20%, mas isso continua sendo previsão de ganho — o ponto do texto é que até a estimativa revista errou a direção.",
-   "4": "Distrator inventado. Cursor Pro e Claude aparecem apenas como as ferramentas usadas quando a IA era permitida; o experimento contrapõe permitir e proibir IA, e não uma ferramenta a outra."
+   "4": "Cursor Pro e Claude aparecem apenas como as ferramentas usadas quando a IA era permitida; o experimento contrapõe permitir e proibir IA, não uma ferramenta à outra."
   }
  },
  {

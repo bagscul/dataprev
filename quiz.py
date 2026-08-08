@@ -62,6 +62,11 @@ ALVO_GERAIS = {"portugues": 12, "ingles": 12, "rlm": 5, "atualidades": 6, "legis
 # filtrar questoes ('./quiz.py uml') e para --dica/--resumo/--apostila.
 # Vocabulario em subtags.py (fonte unica, compartilhada com valida.py/fraquezas.py).
 SUBTAGS = subtags.SUB_VALIDAS
+# Dias ate uma questao ja fixada (2 acertos seguidos) voltar ao pool do --erradas.
+# 21 dias cabe ~3 revisitas no que sobra ate 11/10 sem afogar o pool do dia; a
+# curva do esquecimento derruba retencao bem antes de 30 dias, e abaixo de ~14 a
+# repeticao vira desperdicio de sessao em questao que voce acabou de acertar.
+INTERVALO_REVISAO = 21
 
 
 def peso_de(tag):
@@ -186,15 +191,32 @@ def salvar_hist(h, quem):
     hist_de(quem).write_text(json.dumps(h, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def erradas_pendentes(hist):
+def _pendentes_por_motivo(hist, hoje=None):
     """Repeticao espacada (estilo Leitner): uma questao 'deve' revisao se voce
     ja a errou ao menos uma vez E ainda nao emendou 2 acertos seguidos desde o
-    ultimo erro. Assim que voce acerta 2x seguidas, ela se aposenta; se errar
-    de novo, volta. Evita revisar eternamente o que ja foi fixado."""
+    ultimo erro. Assim que voce acerta 2x seguidas, ela se aposenta.
+
+    A aposentadoria e TEMPORARIA: passados INTERVALO_REVISAO dias desde a ultima
+    vez que a questao apareceu, ela volta ao pool. Sem isso o Leitner fica pela
+    metade — o que foi fixado em agosto nunca mais seria revisto em outubro, e a
+    prova e em 11/10. Acertar de novo reempurra o prazo por mais um intervalo;
+    errar zera o streak e ela volta ao regime normal.
+
+    Devolve (nao_fixadas, vencidas): a primeira e quem ainda nao emendou os dois
+    acertos, a segunda e quem ja tinha fixado e venceu o intervalo."""
+    hoje = hoje or date.today()
     seq = defaultdict(list)
+    visto = {}
     for r in hist["respostas"]:
         seq[r["id"]].append(bool(r["ok"]))
-    devidas = set()
+        quando = r.get("quando")
+        if quando:
+            try:
+                d = datetime.fromisoformat(quando).date()
+            except ValueError:
+                continue
+            visto[r["id"]] = max(visto.get(r["id"], d), d)
+    nao_fixadas, vencidas = set(), set()
     for id_, outs in seq.items():
         if all(outs):
             continue  # nunca errou
@@ -205,8 +227,20 @@ def erradas_pendentes(hist):
             else:
                 break
         if streak < 2:
-            devidas.add(id_)
-    return devidas
+            nao_fixadas.add(id_)
+            continue
+        # aposentada: so volta quando o intervalo vence. Registro sem data (ou
+        # com data ilegivel) conta como antigo — melhor rever a mais que a menos.
+        ultima = visto.get(id_)
+        if ultima is None or (hoje - ultima).days >= INTERVALO_REVISAO:
+            vencidas.add(id_)
+    return nao_fixadas, vencidas
+
+
+def erradas_pendentes(hist, hoje=None):
+    """Uniao dos dois motivos de revisao (ver _pendentes_por_motivo)."""
+    nao_fixadas, vencidas = _pendentes_por_motivo(hist, hoje)
+    return nao_fixadas | vencidas
 
 
 def garantir_csv(quem):
@@ -868,10 +902,14 @@ def main():
 
     # selecao de questoes
     if a.erradas:
-        pool = [q for q in banco if q["id"] in erradas_pendentes(hist)]
+        nao_fixadas, vencidas = _pendentes_por_motivo(hist)
+        pool = [q for q in banco if q["id"] in (nao_fixadas | vencidas)]
         if not pool:
             print(cor("\n  nada pendente de revisao — voce fixou o que tinha errado.\n", "verde"))
             return
+        if vencidas:
+            print(cor(f"\n  {len(nao_fixadas)} ainda nao fixada(s) + {len(vencidas)} de volta "
+                      f"por intervalo ({INTERVALO_REVISAO} dias sem ver).", "ciano"))
     elif data_roteiro is not None:
         plano = roteiro.plano_de_hoje(csv_de(quem), data_roteiro)
         cabecalho_plano(plano)

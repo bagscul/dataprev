@@ -2,6 +2,54 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-08 — o vazamento invertido, 41 explicações reescritas e o Leitner completo
+
+Três correções que os scripts existentes não pegavam, porque cada uma estava no
+ponto cego de uma checagem que já existia.
+
+**1. A trava anti-vazamento só tinha teto — e o banco vazou pelo chão.** O
+`valida.py` avisava quando a correta era a mais longa **demais** (>25%), nunca
+quando era de menos. Aplicar "encurte a correta" a cada lote levou o
+`banco.json` a **5%** de correta-mais-longa, com **java, legislação,
+arquitetura, redes e RLM em 0%** — abaixo dos 20% do puro acaso. Isso é
+vazamento igual, só que ao contrário: medindo as 15 provas reais do
+`banco-provas.json`, a FGV põe a resposta na alternativa mais longa em **33%**
+dos itens, e o efeito se concentra nos blocos técnicos (**bi 50%, banco-dados
+49%, programação 46%, atualidades 41%**) enquanto some em português (25%) e
+inglês (17%), onde a banca nivela o tamanho. Treinar num banco em 0% ensina
+exatamente o reflexo contrário ao que a prova cobra.
+
+Três consequências: o `valida.py` ganhou **piso** (`longa_min` nos `LIMIARES`,
+0,10 global e 0,03 por bloco/janela) e passou a acusar os dois lados — são os 6
+avisos de forma novos, que somem conforme os próximos lotes entrarem na faixa;
+o `CONTRIBUINDO-QUESTOES.md` §3 trocou a regra absoluta ("a correta não pode ser
+a mais longa") pela faixa-alvo **18–28%**, com a ressalva de só encurtar a
+correta quando ela for verbosa de verdade (o aviso de ratio ≥1,7× é quem aponta
+isso); e o tell medido virou item de estratégia no `dicas/tecnica-fgv.md` §3 e
+no Cap. 2 da apostila — **desempate de último recurso**, no chute, e só nos
+blocos técnicos, nunca critério de escolha.
+
+**2. As 41 explicações que abriam no molde proibido.** O `CLAUDE.md` proíbe
+comentar gabarito com `"Distrator X:"` repetido em todas as alternativas (não é
+como a FGV comenta, e soa mecânico), mas 40 frases faziam exatamente isso,
+concentradas num lote — **#238, #239, #240, #242, #243, #244, #245, #246, #247,
+#248** e #337 —, várias com as quatro erradas da mesma questão abrindo pela
+mesma palavra. Nenhum script pegava: o `valida.py` checa se o campo `erradas`
+existe, não a forma do texto. Reescritas uma a uma, mantendo o mecanismo
+nomeado (inversão, absoluto, distrator inventado, quase-certa) mas variando a
+abertura. Junto foi o molde `"Alternativa 'quase certa':"`, pelo mesmo motivo.
+
+**3. O Leitner estava pela metade: faltava o intervalo.** O `--erradas`
+aposentava a questão após 2 acertos seguidos e **nunca mais a mostrava** —
+`erradas_pendentes()` olhava a sequência de acertos e ignorava a data. Com a
+prova em 11/10, isso significa que o que foi fixado em agosto chegaria ao dia
+sem nenhuma revisita. A aposentadoria virou **temporária**: passados
+`INTERVALO_REVISAO` = **21 dias** sem ver a questão, ela volta ao pool uma vez;
+acertar empurra o prazo por mais 21, errar devolve ao regime normal. Registro
+sem data conta como antigo (melhor rever a mais que a menos). Quando houver
+questão voltando por intervalo, o quiz avisa na abertura da sessão, separando-a
+das que você ainda não fixou.
+
 ## 2026-08-07 — déficit de questões zerado (+30) e o banco etiquetado de 48% para 80%
 
 Duas frentes fechadas no mesmo dia: a **B** (o buraco de pool para os 10

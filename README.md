@@ -75,6 +75,12 @@ dia — mostra so o que ainda nao fixou. Uma questao sai do pool quando voce
 acerta 2x seguidas desde o ultimo erro; se errar de novo, volta. Assim voce
 nao perde tempo revisando o que ja domina.
 
+A saida e **temporaria**: passados **21 dias** sem ver a questao, ela volta ao
+pool uma vez (`INTERVALO_REVISAO`, no `quiz.py`). E o que impede que o assunto
+fixado em agosto chegue a 11/10 sem nenhuma revisita; acertar de novo empurra o
+prazo por mais 21 dias, errar devolve a questao ao regime normal. Quando houver
+questao voltando por intervalo, o quiz avisa na abertura da sessao.
+
 **Simulado cronometrado (`--simulado`).** 70 questoes no formato da prova
 (gerais peso 1 + especificos peso 2,5, nessa proporcao), especificos primeiro,
 SEM correcao ate o fim, com tempo na tela. No final: nota ponderada, projecao

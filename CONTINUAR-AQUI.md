@@ -23,7 +23,11 @@ Números de referência (medidos em 07/08/2026, não precisa remedir):
 
 - `banco.json` **433** · `banco-provas.json` 700 · **1109 utilizáveis no quiz**
 - **15 provas reais** importadas, todas com explicação completa
-- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§3)
+- `./valida.py`: 0 erros, **2 avisos** — os dois da `nav-tec` Q58 (§3) — mais
+  **6 avisos de forma** que nasceram em 08/08 com o piso novo do `longa_min`:
+  não são regressão, são o diagnóstico do vazamento invertido (o banco está em
+  5% de correta-mais-longa contra 33% da prova real). Somem sozinhos conforme os
+  próximos lotes entrarem na faixa 18–28%; ver `CONTRIBUINDO-QUESTOES.md` §3
 - `sub` (microtópico): **902 das 1133** questões dos dois bancos (**80%**),
   cobrindo 153 dos **168** microtópicos
 - pool por bloco geral: inglês **120**, atualidades **60**, português 129,
@@ -167,6 +171,13 @@ Duas coisas aprendidas no lote de 07/08, que economizam retrabalho:
    pequeno: encurte a correta ou alongue um distrator. Ficou em 5 de 30, e os
    cinco restantes são empate de comprimento em alternativa de uma palavra, onde
    não há o que ajustar.
+   **Correção de 08/08:** 5 de 30 é *baixo demais*, não "ótimo". O alvo é a faixa
+   **18–28%**, e o banco inteiro havia caído a 5% (java, legislação, arquitetura,
+   redes e RLM em 0%) porque a regra só tinha teto. A prova real da FGV está em
+   33%, então banco em 0% ensina o reflexo invertido. O `valida.py` ganhou piso
+   (`longa_min`) e agora acusa os dois lados — não "conserte" mais um lote
+   encurtando a correta por reflexo; só mexa quando ela for verbosa de fato
+   (é o aviso de ratio ≥1,7× que aponta isso).
 2. **Atualidades exige fonte primária com data, e ela muda.** No lote de 07/08,
    três fatos tinham virado no semestre: o AI Act foi **alterado** pelo
    Regulamento (UE) 2026/1744 (alto risco do Anexo III adiado para 02/12/2027,

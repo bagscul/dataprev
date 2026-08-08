@@ -56,6 +56,13 @@ caminho:
    cenário e o comando), não contra sua memória.
 4. **Interpretação:** volte ao TRECHO exato. Nunca responda "pelo que faz
    sentido"; responda pelo que o texto afirma.
+5. **Só no chute, empatado: fique com a mais longa.** Medido nas 15 provas FGV
+   do `banco-provas.json`: a correta é a alternativa mais longa em **33%** dos
+   itens (o acaso é 20%), e o efeito é forte justamente nos blocos técnicos —
+   **bi 50%, banco-dados 49%, programação 46%, atualidades 41%**. Em português
+   (25%) e inglês (17%) **não vale**: ali a banca nivela o tamanho. Isso é
+   desempate de último recurso, depois de esgotar conteúdo e eliminação — não
+   é critério de escolha.
 
 ## 4. Gestão de tempo (4h, 70 questões)
 

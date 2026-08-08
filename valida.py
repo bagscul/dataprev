@@ -144,10 +144,18 @@ def _tem_absoluto(s):
 # banco saudavel. Quem pega REGRESSAO e o escopo pequeno: um lote novo enviesado se
 # dilui na media de centenas de questoes (60 questoes 100% enviesadas entrando num
 # banco de 331 levam o global a so 18%), mas salta na janela recente e no bloco.
+#
+# 'longa_min' e o PISO, e existe por um erro real de 08/2026: o limiar so tinha
+# teto, entao aplicar "encurte a correta" a cada lote levou o banco.json a 5% de
+# correta-mais-longa, ABAIXO do acaso — e nenhum aviso acendeu. Isso e vazamento
+# igual, so que ao contrario: as 15 provas reais do banco-provas.json medem 33%
+# (bi 50%, banco-dados 49%, programacao 46%; portugues 25%, ingles 17%), ou seja,
+# treinar num banco em que a mais longa quase nunca e a correta ensina o reflexo
+# invertido ao da prova. O piso e frouxo de proposito: so acusa o desvio grosseiro.
 LIMIARES = {
-    "global": {"longa": 0.25, "abs": 0.08, "gab": 0.30},
-    "bloco":  {"longa": 0.35, "abs": 0.25, "gab": 0.45},
-    "janela": {"longa": 0.30, "abs": 0.20, "gab": 0.45},
+    "global": {"longa": 0.25, "longa_min": 0.10, "abs": 0.08, "gab": 0.30},
+    "bloco":  {"longa": 0.35, "longa_min": 0.03, "abs": 0.25, "gab": 0.45},
+    "janela": {"longa": 0.30, "longa_min": 0.03, "abs": 0.20, "gab": 0.45},
 }
 JANELA_PADRAO = 30   # questao nova e sempre anexada ao fim: as N ultimas = lote recente
 BLOCO_MIN = 12       # bloco menor que isso nao e medido (flutuacao domina o sinal)
@@ -212,6 +220,15 @@ def _checa_escopo(itens, lim, rotulo):
         linhas.append(f"[{rotulo}] correta e a mais longa em {len(i_longa)}/{n} "
                       f"({f_longa*100:.0f}%) — alongue distratores ou encurte a correta "
                       f"(esperado ~20%): {_exemplos(i_longa)}")
+    elif f_longa < lim["longa_min"]:
+        # o porque so vai na linha do escopo global: repetido em cada bloco, o
+        # texto longo afoga os outros avisos
+        motivo = (" — abaixo do acaso (~20%) e do que a FGV faz na prova real (33%): "
+                  "deixe a correta ser a mais longa em parte do proximo lote, senao o "
+                  "banco treina o reflexo invertido ao da prova"
+                  if rotulo == "banco" else " — idem, piso de forma")
+        linhas.append(f"[{rotulo}] correta e a mais longa em so {len(i_longa)}/{n} "
+                      f"({f_longa*100:.0f}%){motivo}")
     if f_abs > lim["abs"]:
         linhas.append(f"[{rotulo}] termo absoluto SO em distrator em {len(i_abs)}/{n} "
                       f"({f_abs*100:.0f}%): {_exemplos(i_abs)}")

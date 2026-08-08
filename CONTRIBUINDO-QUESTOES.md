@@ -74,11 +74,16 @@ Um gerador de IA vaza a forma: dá pra acertar pela mecânica da alternativa, se
 saber o conteúdo. `valida.py` (função `avisos_forma`) monitora isso no banco
 inteiro. Numa questão nova, respeite:
 
-- **A correta não pode ser a mais longa.** Medido em 26/07/2026: o banco está em
-  **4%** e a prova real da FGV, em **33%**. Ou seja, o problema histórico
-  (62%) **já foi corrigido** — não alongue distrator para "consertar" o que não
-  está quebrado. O que se exige da questão nova é só não ser mais um caso: se a
-  correta ficou a mais longa do item, encurte-a ou alongue os distratores.
+- **A correta pode ser a mais longa — só não sempre.** O alvo é a *faixa*
+  **18–28%** do lote, não zero. Histórico: o banco já esteve em 62% (vazamento
+  real), e a correção foi longe demais — em 08/08/2026 media **5%**, com java,
+  legislação, arquitetura, redes e RLM em **0%**. Isso é vazamento invertido:
+  a prova real da FGV está em **33%** (bi 50%, banco-dados 49%, programação 46%,
+  português 25%, inglês 17%), então um banco em que a mais longa nunca é a
+  correta ensina o reflexo contrário ao que a prova cobra. O `valida.py` agora
+  tem **teto e piso** (`longa` e `longa_min` em `LIMIARES`). Regra por item:
+  não encurte a correta por reflexo — só mexa quando ela for **verbosa** (é o
+  que o aviso de ratio, correta ≥1,7× a média das erradas, aponta).
 - **Absoluto não só no distrator.** Se usar "sempre/nunca/apenas", não deixe
   esse termo aparecer *só* nas erradas — senão "elimine a que tem absoluto"
   resolve. Ou tire o absoluto, ou coloque um numa alternativa que não seja errada por causa dele.
