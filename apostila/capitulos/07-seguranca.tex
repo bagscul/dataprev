@@ -252,6 +252,192 @@ de 2021). As renomeações são material de pegadinha pronta: oferecer
 ``Authentication Failures'' num item que diz 2021.
 \end{pegadinha}
 
+\section{Catálogo de ataques e de malware}
+
+A seção anterior nomeia \textbf{vulnerabilidades} (o que está errado no
+software); esta nomeia \textbf{ataques} (o que o adversário faz). A FGV cobra
+isso de um jeito só, e sempre o mesmo: descreve o mecanismo e pede o nome, ou
+--- pior --- monta um \textbf{carrossel}, em que cada alternativa recebe a
+definição do vizinho. Contra carrossel não adianta reconhecer o nome: é
+preciso saber, de cada ataque, \textbf{qual é o traço que só ele tem}.
+
+\subsection{Ataques sobre a sessão e sobre o canal}
+
+\begin{conceito}[CSRF, XSS, MitM, replay e session hijacking]
+Cinco nomes que vivem no mesmo cenário --- usuário autenticado, navegador,
+rede --- e por isso se confundem:
+
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{9.1cm}@{}}
+\toprule
+\textbf{CSRF} & a vítima está \textbf{logada} no site legítimo; um site (ou
+e-mail) do atacante dispara uma requisição para lá e o \textbf{navegador a
+acompanha com o cookie de sessão válido}. Explora a confiança do
+\emph{servidor} no navegador da vítima. Defesa: \textbf{token anti-CSRF} e
+cookie \texttt{SameSite}. \\
+\addlinespace
+\textbf{XSS} & injeta \textbf{script} num site confiável, e o script roda no
+navegador de \emph{outras} vítimas. Explora a confiança do \emph{usuário} no
+site. Defesa: escapar a saída e validar a entrada. \\
+\addlinespace
+\textbf{MitM} & o atacante se põe \textbf{no meio do canal} e lê ou altera o
+tráfego em trânsito, com as duas pontas achando que falam direto. Defesa:
+TLS com validação de certificado. \\
+\addlinespace
+\textbf{Replay} & captura uma mensagem \textbf{válida} e a \textbf{reenvia}
+depois. Não precisa decifrar nada --- basta repetir. Defesa: \emph{nonce},
+\emph{timestamp}, número de sequência. \\
+\addlinespace
+\textbf{Session hijacking} & \textbf{rouba o identificador} de uma sessão já
+autenticada (por sniffing, XSS ou \emph{session fixation}) e passa a usá-la
+como se fosse o dono. Defesa: cookie \texttt{HttpOnly}/\texttt{Secure} e
+renovação do id no login. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+O corte que decide a questão de cenário: no \textbf{CSRF} o atacante
+\textbf{não vê} a resposta nem precisa do cookie --- ele só faz o navegador
+enviar a requisição; no \textbf{session hijacking} ele \textbf{tem} o
+identificador e age diretamente. E o par CSRF $\times$ XSS resolve-se pela
+direção da confiança: CSRF abusa da confiança do servidor no navegador
+autenticado; XSS abusa da confiança do usuário no site.
+\end{conceito}
+
+\begin{pegadinha}
+O \textbf{CSRF não está no OWASP Top 10} --- saiu da lista em 2017 e desde
+2021 aparece \emph{dentro} de A01 Broken Access Control (é a CWE-352 citada
+na categoria). Ele é \textbf{ataque}, não categoria: item que ofereça ``CSRF''
+como uma das dez posições está errado. No cenário clássico (sessão aberta no
+banco + clique em link de e-mail + operações em nome do usuário), a
+quase-certa plantada é \textbf{XSS}; o que decide é que nada foi
+\emph{injetado no site} --- a requisição partiu de fora, com o cookie a
+reboque.
+\end{pegadinha}
+
+\subsection{Engenharia social: spam, phishing e spear phishing}
+
+\begin{center}
+\begin{tabular}{@{}p{2.9cm}p{9.1cm}@{}}
+\toprule
+\textbf{Spam} & mensagem \textbf{não solicitada em massa}, tipicamente
+publicidade. Incomoda; não é necessariamente fraude. \\
+\textbf{Phishing} & isca \textbf{genérica disparada em massa} (``sua conta
+será bloqueada'') para obter credencial, clique ou download. \\
+\textbf{Spear phishing} & mensagem \textbf{personalizada e dirigida} a uma
+pessoa ou grupo restrito, com dados reais do alvo (nome do chefe, projeto em
+curso) para elevar a credibilidade. \\
+\textbf{Whaling} & spear phishing cujo alvo é a \textbf{alta direção}. \\
+\textbf{Vishing / smishing} & o mesmo por \textbf{voz} (telefone) e por
+\textbf{SMS}. \\
+\textbf{Pharming} & envenena \textbf{DNS} ou o arquivo \texttt{hosts} e leva
+a vítima ao site falso \textbf{sem que ela clique em link nenhum}. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+O gatilho de \textbf{spear} é ``direcionado'', ``personalizado'', ``grupo
+restrito'' --- se o enunciado disser isso, phishing simples e spam viram
+distratores por serem \textbf{indiscriminados}. Cuidado com a outra troca: os
+quatro primeiros são \textbf{engenharia social} (convencem a vítima a agir),
+enquanto MitM, replay e session hijacking são \textbf{interceptação técnica}
+--- a banca oferece um do outro grupo como quase-certa.
+\end{pegadinha}
+
+\subsection{A família DDoS --- o que cada nome faz}
+
+\begin{center}
+\begin{tabular}{@{}p{2.6cm}p{9.4cm}@{}}
+\toprule
+\textbf{SYN flood} & abre conexões TCP com o \emph{flag} \textbf{SYN} e
+\textbf{não conclui} o \emph{three-way handshake}; a fila de conexões
+semiabertas esgota. \\
+\addlinespace
+\textbf{Ping of Death} & envia pacote ICMP \textbf{malformado/maior} que o
+limite de 65.535 bytes, fragmentado; o alvo \textbf{estoura o buffer} ao
+remontar. \\
+\addlinespace
+\textbf{Smurf} & ICMP \emph{echo} com \textbf{origem falsificada} (a vítima)
+enviado ao endereço de \textbf{broadcast}: a rede inteira responde à vítima.
+É ataque de \textbf{amplificação/reflexão}. \\
+\addlinespace
+\textbf{Teardrop} & fragmentos IP com campos de \textbf{deslocamento
+inconsistentes, que se sobrepõem}; pilhas antigas travam na remontagem. \\
+\addlinespace
+\textbf{Slowloris} & \textbf{camada 7}: abre muitas conexões HTTP e as mantém
+vivas enviando \textbf{cabeçalhos parciais bem devagar}, ocupando o
+\emph{pool} do servidor com \textbf{pouquíssima banda}. \\
+\addlinespace
+\textbf{UDP flood \newline (UDP storm)} & inunda portas com datagramas
+\textbf{UDP}; sem aplicação escutando, o alvo responde ICMP
+\emph{destination unreachable} até saturar. Na formulação clássica do CERT
+(CA-1996-01), a ``tempestade'' liga o serviço \emph{echo} de um host ao
+\emph{chargen} de outro com pacotes forjados, e os dois consomem toda a banda
+entre si. \\
+\addlinespace
+\textbf{HTTP flood} & massa de requisições \textbf{GET/POST} aparentemente
+legítimas, para esgotar o servidor web na aplicação. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Este é o carrossel favorito da banca: cinco alternativas, cada uma com o nome
+de um ataque e a \textbf{descrição de outro}. Ancore em um traço por nome ---
+\textbf{SYN} = conexão semiaberta; \textbf{PoD} = pacote grande e malformado;
+\textbf{Teardrop} = fragmento \emph{sobreposto}; \textbf{Smurf} =
+\emph{broadcast} com origem falsificada; \textbf{Slowloris} = devagar, camada
+de aplicação, pouca banda. Duas trocas já vistas: descrever o Slowloris como
+``massivas requisições HTTP GET e POST'' (isso é \textbf{HTTP flood}) e o
+Ping of Death como ``SYN sem concluir o \emph{handshake}'' (isso é
+\textbf{SYN flood}). Note ainda que Smurf e UDP flood atacam \textbf{banda},
+Slowloris ataca \textbf{conexões} --- ele derruba um servidor de uma máquina
+só.
+\end{pegadinha}
+
+\subsection{A família de malware --- o traço que define cada um}
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9.6cm}@{}}
+\toprule
+\textbf{Vírus} & precisa de \textbf{hospedeiro} (arquivo ou programa) e da
+\textbf{ação do usuário} para executar e se replicar. \\
+\textbf{Worm} & \textbf{autopropaga pela rede}: explora um serviço
+vulnerável e se copia para o próximo host \textbf{sem hospedeiro e sem
+interação}. \\
+\textbf{Trojan} & \textbf{disfarça-se} de programa legítimo para ser
+instalado pela própria vítima. \textbf{Não se autorreplica}. \\
+\textbf{Spyware} & \textbf{coleta} informação do usuário e a envia ao
+atacante --- o \emph{keylogger} (teclas digitadas) é um subtipo. \\
+\textbf{Backdoor} & mantém uma \textbf{via de acesso remoto} que contorna a
+autenticação. Não se replica nem varre a rede: é \emph{porta}, não
+propagação. \\
+\textbf{Rabbit} \newline (\emph{wabbit}, \emph{fork bomb}) & replica-se
+\textbf{localmente} sem parar até esgotar CPU, memória ou tabela de
+processos. Ataca a \textbf{disponibilidade da máquina}; não se espalha pela
+rede. \\
+\textbf{Ransomware} & \textbf{cifra} os dados e exige resgate pela chave. \\
+\textbf{Rootkit} & \textbf{esconde} a presença do invasor (oculta processos,
+arquivos e conexões), geralmente com privilégio de sistema. \\
+\textbf{Bot / botnet} & máquina sob \textbf{controle remoto} (C\&C), alugada
+para DDoS e spam. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pegadinha}
+Mesmo carrossel, agora com malware. Duas perguntas resolvem qualquer item:
+\textbf{(i) ele se replica sozinho?} --- worm e rabbit sim, trojan e backdoor
+não; \textbf{(ii) para onde ele se espalha?} --- worm pela \textbf{rede},
+rabbit \textbf{dentro da própria máquina}. As trocas já vistas: dar ao
+\textbf{spyware} a autopropagação (é do worm), ao \textbf{trojan} a
+autorreplicação que esgota recursos (é do rabbit), à \textbf{backdoor} a
+varredura da rede (é do worm) e ao \textbf{rabbit} a captura de credenciais
+(é do spyware). O único item verdadeiro costuma ser o mais seco: ``worm usa
+a rede para espalhar sua infecção''.
+\end{pegadinha}
+
 \section{Desenvolvimento seguro}
 
 \begin{itemize}
@@ -422,11 +608,11 @@ contenção --- a FGV embaralha essa ordem.
 \end{pegadinha}
 
 \begin{jacaiu}
-\textbf{Em prova real da FGV:} 38 questões, e a lista abaixo é quase toda
-verdadeira. Cuidado com esse total: \textbf{17 das 38} saíram de uma prova só,
+\textbf{Em prova real da FGV:} 56 questões, e a lista abaixo é quase toda
+verdadeira. Cuidado com esse total: \textbf{17 das 56} saíram de uma prova só,
 a da ALERO para o perfil \emph{Redes}, e puxam o bloco para o lado de rede
 (\emph{malware}, DDoS, VPN, proxy, NGFW). Nas provas mais próximas de
-desenvolvimento, segurança fica em \textbf{19} --- na Dataprev 2024 foram
+desenvolvimento, segurança fica em \textbf{39} --- na Dataprev 2024 foram
 \textbf{4}. Controle de acesso
 \textbf{mandatório} (comparação de rótulos); \textbf{OWASP Top 10:2021},
 identificar a categoria válida (gabarito: SSRF, o A10 --- as demais
@@ -447,12 +633,18 @@ ICP; a família de \emph{malware} inteira (\emph{worm}, \emph{ransomware},
 \emph{flood}; \emph{spoofing} de MAC/IP; NGFW, WAF, proxy e VPN; e as etapas
 de \textbf{resposta a incidentes} (contenção, depois recuperação e lições
 aprendidas) --- \textbf{ALERO 2026}, que sozinha respondeu por 17 questões de
-segurança.
+segurança. \textbf{SAST $\times$ DAST $\times$ IAST} em cenário de esteira
+CI/CD --- \textbf{NAV Brasil 2026} e \textbf{EPE 2024}: o par saiu do
+``previsto pelo edital'' e virou cobrança real, sempre pedindo qual técnica vê
+o \emph{código parado} e qual precisa da \emph{aplicação rodando}.
 
-\textbf{No nosso banco} (previsto pelo edital, ainda não visto na amostra de
-provas): \textbf{SAST $\times$ DAST} --- nenhuma das 432 questões reais cita
-qualquer um dos dois. Continua valendo o estudo: é par de edital e a FGV adora
-inverter estático com dinâmico.
+O catálogo de ataques também já caiu inteiro, e sempre em carrossel:
+\textbf{CSRF} no cenário do \emph{Internet Banking} com sessão aberta
+(\textbf{EPE 2024}); a \textbf{família DDoS} (Ping of Death, Slowloris, Smurf,
+Teardrop, UDP storm), o \textbf{spear phishing} contra MitM/replay/session
+hijacking/spam, e a \textbf{família de malware} (worm, spyware, trojan,
+backdoor, rabbit) --- \textbf{CPRM 2026}, três questões seguidas no mesmo
+formato.
 
 Rode \texttt{./quiz.py seguranca}.
 \end{jacaiu}
@@ -481,7 +673,10 @@ CIA: Confidencialidade = quem VÊ; Integridade = dado ÍNTEGRO; Disponibilidade
 pelo sistema; DAC = o proprietário concede; RBAC = permissões por
 função/cargo. OWASP Top 10:2021, âncoras seguras: A01 Broken Access Control,
 A03 Injection, A10 SSRF. Se a opção falar em ``cadeia de
-suprimentos/pipeline/treinamento'', é distrator de outro framework. Gatilho
-geral: ``sempre isento'', ``SSL mais seguro'', claim trocado --- releia com
-calma.
+suprimentos/pipeline/treinamento'', é distrator de outro framework. Diante de
+carrossel de ataque ou de malware, não procure o nome conhecido: leia
+\textbf{descrição por descrição} e case cada uma com seu traço único (worm =
+rede; rabbit = local; Teardrop = fragmento sobreposto; Slowloris = devagar e
+na camada 7; spear = personalizado). Gatilho geral: ``sempre isento'', ``SSL
+mais seguro'', claim trocado --- releia com calma.
 \end{comosair}

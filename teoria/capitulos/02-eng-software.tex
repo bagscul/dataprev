@@ -581,6 +581,91 @@ cobertura de decisões fica em 50\%, mesmo sem existir nenhum bloco
 completaria a cobertura de decisões.
 \end{exemplo}
 
+\subsection{Complexidade ciclomática (McCabe)}
+
+\begin{conceito}[Uma medida de estrutura, não de tamanho]
+Duas funções com o mesmo número de linhas podem ser muito diferentes de
+testar: uma sequência de cem atribuições tem \textbf{um} caminho possível;
+dez \texttt{if} aninhados têm centenas. A complexidade ciclomática, proposta
+por Thomas McCabe em 1976, mede exatamente isso --- quantos
+\textbf{caminhos independentes} atravessam o módulo.
+
+A definição formal é sobre o \textbf{grafo de fluxo de controle} do
+programa, em que cada nó é um bloco de comandos e cada aresta um desvio
+possível:
+\[ V(G) = E - N + 2P \]
+onde $E$ é o número de arestas, $N$ o de nós e $P$ o de componentes conexos
+(1, para uma função isolada).
+
+Construir o grafo à mão é lento, e há um atalho equivalente que é o usado na
+prática --- e em prova:
+\[ V(G) = \text{pontos de decisão} + 1 \]
+
+O atalho vale porque \textbf{cada decisão acrescenta exatamente uma aresta}
+ao grafo sem acrescentar nó novo, e pela fórmula isso soma 1 a $V(G)$. O
+$+1$ final é o caminho que existe mesmo sem nenhuma decisão: o fluxo direto
+da entrada à saída.
+\end{conceito}
+
+\begin{conceito}[O que conta e o que não conta como ponto de decisão]
+\textbf{Conta:} cada \texttt{if}; cada \texttt{else if} (é um \texttt{if}
+novo, com teste próprio); cada \texttt{while}, \texttt{for} e
+\texttt{do-while}; cada \texttt{case} de um \texttt{switch}; cada operador
+ternário; e \textbf{cada} \texttt{\&\&} ou \texttt{||} de uma condição
+composta --- por curto-circuito, \texttt{if (a > 0 \&\& b > 0)} tem dois
+testes, não um, e vale 2.
+
+\textbf{Não conta:} o \texttt{else} ou \texttt{senão} final; o
+\texttt{default} de um \texttt{switch}; qualquer sequência de comandos sem
+desvio. O motivo é o mesmo nos três casos: eles \textbf{não avaliam
+condição alguma}. O \texttt{else} apenas recolhe o caso restante de um teste
+que já foi contado quando se contou o \texttt{if} correspondente --- contá-lo
+de novo seria contar a mesma decisão duas vezes.
+
+\textbf{Para que serve o número.} $V(G)$ é o tamanho do conjunto-base de
+caminhos do \textit{teste de caminho básico}, servindo de \textbf{limite
+superior} para o número de casos de teste desse critério; e funciona como
+alarme de refatoração --- McCabe sugeriu \textbf{10} por módulo como faixa de
+conforto, acima da qual o módulo tende a ser difícil de testar e de manter.
+\end{conceito}
+
+\begin{exemplo}[Calculando passo a passo]
+\begin{flushleft}\ttfamily\small
+função processarDados(entrada) \{ \\
+~~resultado = 0 \\
+~~i = 1 \\
+~~se entrada > 0~~~~~~~\{ resultado = resultado + 1 \} \\
+~~senão se entrada < 0~\{ resultado = resultado - 1 \} \\
+~~senão~~~~~~~~~~~~~~~~\{ resultado = resultado~~~~~\} \\
+~~enquanto i < 4 \{ \\
+~~~~se i == entrada~~~~\{ resultado = resultado * 2 \} \\
+~~~~i = i + 1 \\
+~~\} \\
+~~retornar resultado \\
+\}
+\end{flushleft}
+
+Percorrendo linha a linha: \texttt{se entrada > 0} é o ponto 1;
+\texttt{senão se entrada < 0} é o ponto 2, porque tem teste próprio; o
+\texttt{senão} solto \textbf{não conta}, pois não testa nada --- só recolhe
+o caso que sobrou; \texttt{enquanto i < 4} é o ponto 3; e \texttt{se i ==
+entrada}, dentro do laço, é o ponto 4 --- estar aninhado não muda a
+contagem.
+
+São \textbf{4 pontos de decisão}, logo $V(G) = 4 + 1 = \mathbf{5}$.
+
+Os dois erros de contagem mais frequentes dão respostas que estarão entre as
+alternativas: contar o \texttt{senão} final leva a \textbf{6}, e esquecer o
+$+1$ leva a \textbf{4}.
+\end{exemplo}
+
+\begin{cuidado}
+Complexidade ciclomática não mede \textbf{linhas de código}, nem
+acoplamento, nem cobertura de teste --- mede \textbf{caminhos}. Um módulo
+enorme e linear tem $V(G) = 1$; um módulo curto e cheio de condições pode
+passar de 10.
+\end{cuidado}
+
 \subsection{TDD, BDD, caixa-preta x caixa-branca, RPA}
 
 \begin{conceito}
@@ -651,6 +736,108 @@ uma falha latente identificada e sim uma obsolescência externa).
 informal que às vezes aparece em prova como se fosse categoria da norma,
 mas a ISO/IEC 14764 reconhece só as quatro da tabela acima.
 \end{cuidado}
+
+\subsection{Code smells e refatoração}
+
+\begin{conceito}[Um cheiro não é um defeito]
+\textit{Code smell} é um \textbf{sintoma}, não um erro: o código compila,
+roda e passa nos testes. O que ele indica é uma decisão de design que vai
+\textbf{encarecer a próxima alteração} --- e é por isso que a resposta a um
+cheiro não é “corrigir o bug”, e sim \textbf{refatorar}: alterar a estrutura
+interna do código \textbf{sem mudar o comportamento observável}.
+
+A distinção importa porque muda o critério de decisão. Defeito se corrige
+porque o sistema está errado; cheiro se refatora porque o \textbf{custo de
+manutenção futura} está alto demais --- é uma decisão econômica, e por isso
+legítima de adiar quando o código não vai mais ser tocado.
+
+Fowler e Beck catalogaram os cheiros em cinco famílias, agrupadas pelo tipo
+de dano que causam:
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{8.6cm}@{}}
+\toprule
+\textbf{Bloaters} \newline (inchaços) & coisas que cresceram demais para
+serem manejáveis: Long Method, Large Class, Primitive Obsession, Long
+Parameter List, \textbf{Data Clumps} \\
+\addlinespace
+\textbf{Couplers} \newline (acopladores) & acoplamento excessivo entre
+classes: \textbf{Feature Envy}, Inappropriate Intimacy, Message Chains,
+Middle Man \\
+\addlinespace
+\textbf{Change Preventers} & estruturas que fazem uma mudança simples custar
+caro: Divergent Change, Shotgun Surgery, Parallel Inheritance Hierarchies \\
+\addlinespace
+\textbf{Dispensables} & o que existe sem justificar sua existência:
+Duplicate Code, Dead Code, Lazy Class, Data Class, Speculative Generality,
+Comments \\
+\addlinespace
+\textbf{OO Abusers} & uso incompleto ou incorreto de orientação a objetos:
+Switch Statements, Refused Bequest, Temporary Field, Alternative Classes
+with Different Interfaces \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{conceito}[Os três cheiros mais cobrados, com a refatoração de cada um]
+\textbf{Long Method} (bloater). Um método que faz várias coisas de uma vez.
+O problema não é o comprimento em si, é que cada responsabilidade extra dá
+um motivo novo para o método mudar. Refatoração: \textbf{Extract Method} ---
+quebrar em métodos menores, cada um com nome que descreva o que faz. O nome
+extraído substitui o comentário que estava ali explicando o trecho.
+
+\textbf{Data Clumps} (bloater). O \textbf{mesmo grupo de variáveis} aparece
+junto em vários lugares --- \texttt{cep}, \texttt{rua}, \texttt{numero},
+\texttt{cidade} passeando juntos por meia dúzia de assinaturas de método. O
+sinal de diagnóstico de Fowler: se você apagar uma das variáveis, as outras
+deixam de fazer sentido --- então elas são, na verdade, \textbf{um objeto que
+ainda não foi criado}. Refatoração: \textbf{Extract Class} (o grupo vira a
+classe \texttt{Endereço}) ou \textbf{Introduce Parameter Object}.
+
+\textbf{Feature Envy} (coupler). Um método usa \textbf{mais os dados de outra
+classe} do que os da sua própria --- fica chamando
+\texttt{outro.getX()}, \texttt{outro.getY()}, \texttt{outro.getZ()} para
+calcular algo. O cheiro indica que o comportamento está na classe errada:
+ele “inveja” os dados do vizinho. Refatoração: \textbf{Move Method} --- levar
+o método para junto do dado que ele consome. É a aplicação direta do
+princípio de manter dados e comportamento no mesmo lugar.
+\end{conceito}
+
+\begin{exemplo}[Reconhecendo Feature Envy]
+\begin{flushleft}\ttfamily\small
+class Pedido \{ \\
+~~double calcularFrete(Endereco e) \{ \\
+~~~~if (e.getUf().equals("SP")) return e.getDistancia() * 1.2; \\
+~~~~return e.getDistancia() * 2.0 + e.getTaxaRegional(); \\
+~~\} \\
+\}
+\end{flushleft}
+
+O método está em \texttt{Pedido}, mas não usa nenhum campo de
+\texttt{Pedido}: são quatro acessos a dados de \texttt{Endereco}. Movido
+para dentro de \texttt{Endereco}, ele vira
+\texttt{e.calcularFrete()} e todos os \texttt{get} desaparecem --- o método
+passa a usar os próprios campos. Esse é o teste prático: conte de qual
+classe vêm os dados que o método consome.
+\end{exemplo}
+
+\begin{cuidado}
+\textbf{Feature Envy x Inappropriate Intimacy}: no primeiro, \emph{um método}
+está na classe errada; no segundo, \emph{duas classes} mexem nos internos uma
+da outra, em mão dupla. E o par mais invertido de todos:
+\textbf{Divergent Change} é \emph{uma classe} que muda por \emph{muitos
+motivos} diferentes; \textbf{Shotgun Surgery} é \emph{um motivo} de mudança
+que obriga a mexer em \emph{muitas classes}. Um é “muitas razões, uma
+classe”; o outro, “uma razão, muitas classes”.
+\end{cuidado}
+
+\begin{regrapratica}
+Cheiro descrito como se fosse virtude é sempre falso. “Repetir o mesmo grupo
+de variáveis ao longo do código melhora a legibilidade e a consistência”
+descreve, palavra por palavra, \textbf{Data Clumps} --- um cheiro, não uma
+boa prática.
+\end{regrapratica}
 
 \section{Mensuração: Ponto de Função e Story Points}
 

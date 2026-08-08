@@ -448,6 +448,87 @@ exista bloco \texttt{else} escrito. Nunca aceite que os dois critérios são
 equivalentes.
 \end{pegadinha}
 
+\subsection{Complexidade ciclomática (McCabe)}
+
+\begin{conceito}[Quantos caminhos independentes o código tem]
+Métrica de \textbf{estrutura}, não de tamanho: mede quantos caminhos
+independentes atravessam o módulo. Formalmente, sobre o grafo de fluxo de
+controle, $V(G) = E - N + 2P$ (arestas $-$ nós $+$ 2 $\times$ componentes
+conexos). Na prova, o que se usa é a forma prática:
+
+\begin{center}
+\textbf{V(G) = número de pontos de decisão + 1}
+\end{center}
+
+\textbf{Conta} como ponto de decisão: cada \texttt{if}, cada \texttt{else if},
+cada \texttt{while}, \texttt{for} e \texttt{do-while}, cada \texttt{case} de
+um \texttt{switch}, cada operador ternário e \textbf{cada} \texttt{\&\&} ou
+\texttt{||} dentro de uma condição composta (o curto-circuito cria um desvio
+a mais).
+
+\textbf{Não conta}: o \texttt{else} e o \texttt{senão} finais, o
+\texttt{default} do \texttt{switch} e qualquer sequência de comandos. A razão
+é a mesma nos três casos --- \textbf{eles não testam nada}, apenas recolhem o
+caso restante depois que a decisão já foi contada.
+
+Para que serve: $V(G)$ é o tamanho do conjunto-base de caminhos do
+\emph{teste de caminho básico} --- funciona como \textbf{limite superior} do
+número de casos de teste desse critério --- e como sinalizador de
+refatoração: McCabe propôs \textbf{10} como faixa de conforto por módulo.
+\end{conceito}
+
+\begin{comosair}[Calculando na prova, em 30 segundos]
+A função da EPE 2024, destrinchada:
+
+\begin{center}
+\begin{tabular}{@{}p{6.4cm}p{5.6cm}@{}}
+\toprule
+\textbf{Trecho} & \textbf{Conta?} \\
+\midrule
+\texttt{se entrada > 0} & sim (1) \\
+\texttt{senão se entrada < 0} & sim (2) --- é um \texttt{if} novo \\
+\texttt{senão \{ resultado = resultado \}} & \textbf{não} --- não testa nada \\
+\texttt{enquanto i < 4} & sim (3) \\
+\texttt{se i == entrada} & sim (4) --- laço aninhado não muda a regra \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+4 pontos de decisão $+\ 1 = \mathbf{5}$. O método é sempre esse: risque os
+\texttt{else} soltos, conte o que \emph{decide}, some 1.
+\end{comosair}
+
+\begin{pegadinha}
+Três erros, e a banca planta os três como alternativas. (i) Contar o
+\textbf{\texttt{senão} final} --- vira 6, que está sempre na lista. (ii)
+\textbf{Esquecer o $+1$} --- vira 4, a quase-certa mais comum. (iii) Ignorar
+que \texttt{if (a > 0 \&\& b > 0)} vale \textbf{2}, não 1. Cuidado também com
+o distrator conceitual: complexidade ciclomática \textbf{não} mede linhas de
+código, nem acoplamento, nem cobertura --- mede caminhos.
+\end{pegadinha}
+
+\begin{jacaiu}[JMeter --- a ferramenta, além do conceito de teste de carga]
+O conceito de carga $\times$ estresse já está acima; a \textbf{EPE 2024}
+cobrou a \textbf{ferramenta}. Os cinco componentes do Apache JMeter:
+
+\begin{itemize}
+\item \textbf{Sampler:} quem \textbf{gera a requisição}; há um por protocolo
+(HTTP, JDBC, FTP, SOAP).
+\item \textbf{Thread Group:} os \textbf{usuários virtuais}. O parâmetro
+\textbf{ramp-up} distribui a partida das \emph{threads} ao longo de um
+período --- elas \textbf{não} sobem todas no mesmo instante.
+\item \textbf{Timer:} \textbf{atraso} entre requisições, para simular a pausa
+de um usuário real.
+\item \textbf{Assertion:} \textbf{valida a resposta} --- conteúdo, tempo de
+resposta, código de status.
+\item \textbf{Listener:} coleta e exibe o resultado (árvore de resultados,
+relatório agregado).
+\end{itemize}
+
+A afirmativa falsa do item foi exatamente ``os usuários virtuais são
+iniciados simultaneamente'': quem desmente é o \textbf{ramp-up}.
+\end{jacaiu}
+
 \section{Manutenção de software}
 
 Classificação clássica (ISO/IEC 14764) do que se faz com o software
@@ -474,6 +555,67 @@ Não é corretiva (não há defeito a corrigir), não é perfectiva (não se mel
 nada) e não é preventiva (não se antecipa falha latente alguma). Cuidado
 também com ``evolutiva'', rótulo de fora dessa classificação que a banca
 oferece como se fosse um dos quatro tipos.
+\end{pegadinha}
+
+\subsection{Code smells com nome próprio}
+
+\begin{conceito}[O cheiro não é defeito --- é dívida com juros]
+\emph{Code smell} é sintoma: o código \textbf{roda e passa nos testes}, mas
+carrega uma decisão de design que vai cobrar caro na próxima alteração. Por
+isso o cheiro não se ``corrige'', se \textbf{refatora} --- e cada cheiro tem
+a sua refatoração canônica. O catálogo de Fowler e Beck é organizado em cinco
+famílias:
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{8.8cm}@{}}
+\toprule
+\textbf{Bloaters} \newline (inchaços) & Long Method, Large Class, Primitive
+Obsession, Long Parameter List, \textbf{Data Clumps} \\
+\textbf{Couplers} \newline (acopladores) & \textbf{Feature Envy},
+Inappropriate Intimacy, Message Chains, Middle Man \\
+\textbf{Change Preventers} & Divergent Change, Shotgun Surgery, Parallel
+Inheritance Hierarchies \\
+\textbf{Dispensables} & Duplicate Code, Dead Code, Lazy Class, Data Class,
+Speculative Generality, Comments \\
+\textbf{OO Abusers} & Switch Statements, Refused Bequest, Temporary Field,
+Alternative Classes with Different Interfaces \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Os três que a FGV já nomeou, com a saída de cada um:
+
+\begin{center}
+\begin{tabular}{@{}p{2.8cm}p{4.4cm}p{4.4cm}@{}}
+\toprule
+\textbf{Cheiro} & \textbf{Sintoma} & \textbf{Refatoração} \\
+\midrule
+\textbf{Long Method} \newline (bloater) & método longo demais, fazendo várias
+coisas & \textbf{Extract Method}: quebrar em métodos menores e nomeados \\
+\addlinespace
+\textbf{Data Clumps} \newline (bloater) & o \textbf{mesmo grupo de variáveis}
+reaparece junto em vários pontos (\texttt{cep}, \texttt{rua},
+\texttt{cidade}\dots) & \textbf{Extract Class} ou \textbf{Introduce Parameter
+Object}: o grupo vira um objeto \\
+\addlinespace
+\textbf{Feature Envy} \newline (coupler) & um método usa \textbf{mais os
+dados de outra classe} do que os da própria & \textbf{Move Method}: leve o
+comportamento para junto do dado que ele consome \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{pegadinha}
+A jogada da banca é \textbf{vender o cheiro como boa prática}: ``repetir o
+mesmo grupo de variáveis ao longo do código \emph{melhora a legibilidade e a
+consistência}'' --- não melhora; isso é a definição literal de \textbf{Data
+Clumps}. Em item de I/II/III, a afirmativa elogiosa costuma ser a falsa.
+Guarde também dois pares invertíveis: \textbf{Feature Envy} (um método na
+classe errada) $\times$ \textbf{Inappropriate Intimacy} (duas classes mexendo
+nos internos uma da outra); e \textbf{Divergent Change} (uma classe muda por
+muitos motivos) $\times$ \textbf{Shotgun Surgery} (um motivo obriga a mexer
+em muitas classes) --- a inversão desse último é pegadinha pronta.
 \end{pegadinha}
 
 \begin{conceito}[TDD e BDD]

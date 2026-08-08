@@ -2,6 +2,73 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — a teoria que faltava: ataques, malware, ciclomática e code smells
+
+As 74 questões importadas na véspera cobravam três assuntos que **não existiam
+em nenhuma das quatro camadas**. O quiz explicava a questão, mas não havia onde
+estudar o conteúdo. Fechado agora, nas quatro.
+
+**1. Catálogo de ataques e de malware** (Cap. 7). O capítulo se organizava por
+conceito — tríade, criptografia, TLS, controle de acesso, OWASP, X.800, riscos,
+continuidade, detecção — e não tinha seção de **tipos de ataque**: XSS e SQLi
+só apareciam de passagem dentro do OWASP; MitM e session hijacking, em lugar
+nenhum. A seção nova cobre, em quatro blocos:
+
+- **sessão e canal:** CSRF, XSS, MitM, replay, session hijacking, cada um com o
+  traço que só ele tem e a defesa correspondente;
+- **engenharia social:** spam × phishing × spear phishing, mais whaling,
+  vishing/smishing e pharming;
+- **família DDoS:** SYN flood, Ping of Death, Smurf, Teardrop, Slowloris, UDP
+  flood/storm e HTTP flood, cada um pelo recurso que esgota;
+- **família de malware:** vírus, worm, trojan, spyware, backdoor, rabbit,
+  ransomware, rootkit e bot.
+
+O fio condutor das quatro é o formato que a banca usa: o **carrossel**, em que
+cada alternativa recebe a definição do vizinho (é literalmente o que a
+`cprm-ads` faz nas Q40, Q41 e Q61). Contra carrossel não adianta reconhecer o
+nome — a apostila ancora cada um num traço único, e as duas perguntas que
+fecham o malware são "replica sozinho?" e "para onde?".
+
+Um cuidado que custou análise: o **CSRF não entra na tabela do OWASP**. Ele
+saiu da lista em 2017 e desde 2021 está *dentro* de A01 Broken Access Control —
+confirmado na página oficial da categoria, que cita a CWE-352 entre as fraquezas
+notáveis. A tabela 2025/2021 da apostila estava correta e não foi tocada; o
+CSRF entrou como **ataque**, não como categoria.
+
+**2. Complexidade ciclomática de McCabe** (Cap. 2), com exemplo resolvido. A
+fórmula formal ($V(G) = E - N + 2P$), a prática (pontos de decisão + 1), a
+lista do que conta (incluindo cada `&&`/`||`, por curto-circuito) e do que não
+conta — o `else`/`senão` final, que não testa nada. O exemplo é a função da
+`epe-ti` Q79, contada linha a linha até o 5, com os dois erros que a banca
+planta como alternativa: contar o `senão` (dá 6) e esquecer o +1 (dá 4).
+
+**3. Code smells nomeados** (Cap. 2). Antes, "code smell" aparecia só como
+conceito genérico. Agora estão as cinco famílias do catálogo de Fowler e Beck
+(bloaters, couplers, change preventers, dispensables, OO abusers) e a
+refatoração canônica dos três que a FGV já nomeou: Long Method → Extract
+Method, **Data Clumps** → Extract Class/Introduce Parameter Object, **Feature
+Envy** → Move Method. A pegadinha registrada é a da `epe-ti` Q77: vender o
+cheiro como boa prática ("repetir o mesmo grupo de variáveis melhora a
+legibilidade"), que é a definição literal de Data Clumps.
+
+**4. JMeter**, numa caixa `jacaiu` (Cap. 2), âncora `epe-ti` Q80 — Sampler,
+Thread Group com ramp-up, Timer, Assertion e Listener, com o ramp-up desmentindo
+a afirmativa de que os usuários virtuais sobem todos ao mesmo tempo.
+
+**Duas correções de fato encontradas de passagem**, ambas por contagem no banco:
+a caixa `jacaiu` de segurança dizia **38 questões** em prova real (são **56**, e
+17 delas seguem sendo da ALERO) e afirmava que **nenhuma** das 432 questões
+citava SAST/DAST — hoje são 700 questões, e o par já caiu na NAV Brasil 2026 e
+na EPE 2024, sempre em cenário de esteira CI/CD.
+
+O `teoria/` recebeu a versão didática dos mesmos conteúdos (com `conceito`,
+`cuidado`, `regrapratica` e `exemplo` — sem caixas de banca), incluindo dois
+exemplos que a apostila não comporta: por que o Slowloris derruba um servidor
+de uma máquina só, e como reconhecer Feature Envy contando de qual classe vêm
+os dados que o método consome. Apostila em **166 páginas**, teoria em **190**,
+as duas compilando sem overfull/underfull nem referência quebrada;
+`./valida.py` sem drift entre as camadas.
+
 ## 2026-08-07 — o sublinhado da banca volta ao quiz, e a Q17 do CPRM sai do sorteio
 
 Duas correções no `importar_provas.py`, as duas sobre o mesmo tema: o que a

@@ -197,6 +197,26 @@ else**: com `if (a > 10) { x = 1; }` e um único caso `a = 20`, comandos ficam
 em **100%** e decisões em **50%**, porque a condição nunca foi avaliada como
 falsa — ainda que não exista `else` escrito.
 
+**Complexidade ciclomática (McCabe)** — mede **caminhos independentes**, não
+linhas. Formal: `V(G) = E − N + 2P` sobre o grafo de fluxo de controle. Na
+prova, usa-se a forma prática:
+
+> **V(G) = pontos de decisão + 1**
+
+- **Conta:** cada `if`, cada `else if`, cada `while`/`for`/`do-while`, cada
+  `case` de `switch`, cada ternário e **cada** `&&`/`||` de condição composta
+  (curto-circuito cria desvio) — `if (a > 0 && b > 0)` vale **2**.
+- **Não conta:** o `else`/`senão` final, o `default` do `switch` e sequência de
+  comandos — **não testam nada**, só recolhem o caso restante.
+
+Serve como limite superior de casos de teste do *teste de caminho básico*, e
+McCabe sugeriu **10** por módulo como faixa de conforto.
+
+Exemplo resolvido (EPE 2024): `se entrada > 0` (1), `senão se entrada < 0` (2),
+`senão { }` (não conta), `enquanto i < 4` (3), `se i == entrada` (4) → 4 + 1 =
+**5**. Os dois erros que a banca planta: contar o `senão` final (dá 6) e
+esquecer o +1 (dá 4).
+
 - **TDD (Test-Driven Development):** escreve o **teste antes** do código
   (red → green → refactor). Foco em design e cobertura.
 - **BDD (Behavior-Driven Development):** evolução do TDD, especifica
@@ -223,6 +243,49 @@ funcionalidade nova, é **adaptativa** — a causa é o **ambiente**. Não é
 corretiva (não há defeito), nem perfectiva (não melhora nada), nem preventiva
 (não antecipa falha latente). "Evolutiva" é rótulo de fora dessa classificação
 que a banca oferece como se fosse um dos quatro tipos.
+
+### Code smells com nome próprio
+
+Cheiro **não é defeito**: o código roda e passa nos testes: é sintoma de
+decisão de design que vai encarecer a próxima alteração. Não se corrige, se
+**refatora** (muda a estrutura interna sem mudar o comportamento). As cinco
+famílias do catálogo de Fowler e Beck:
+
+| Família | Quais são |
+|---|---|
+| **Bloaters** (inchaços) | Long Method, Large Class, Primitive Obsession, Long Parameter List, **Data Clumps** |
+| **Couplers** (acopladores) | **Feature Envy**, Inappropriate Intimacy, Message Chains, Middle Man |
+| **Change Preventers** | Divergent Change, Shotgun Surgery, Parallel Inheritance Hierarchies |
+| **Dispensables** | Duplicate Code, Dead Code, Lazy Class, Data Class, Speculative Generality, Comments |
+| **OO Abusers** | Switch Statements, Refused Bequest, Temporary Field, Alternative Classes with Different Interfaces |
+
+Os três já cobrados pela FGV:
+
+| Cheiro | Sintoma | Refatoração |
+|---|---|---|
+| **Long Method** (bloater) | método longo, fazendo várias coisas | **Extract Method** |
+| **Data Clumps** (bloater) | o **mesmo grupo de variáveis** reaparece junto em vários pontos (`cep`, `rua`, `cidade`…) | **Extract Class** ou **Introduce Parameter Object** |
+| **Feature Envy** (coupler) | método usa **mais os dados de outra classe** que os da própria | **Move Method** — leve o comportamento para junto do dado |
+
+Pegadinha: a banca **vende o cheiro como boa prática** — "repetir o mesmo grupo
+de variáveis melhora a legibilidade e a consistência" é a definição literal de
+**Data Clumps**. Em item I/II/III, a afirmativa elogiosa costuma ser a falsa.
+Pares invertíveis: **Feature Envy** (um método na classe errada) × **Inappropriate
+Intimacy** (duas classes mexendo nos internos uma da outra); **Divergent Change**
+(uma classe muda por muitos motivos) × **Shotgun Surgery** (um motivo obriga a
+mexer em muitas classes).
+
+### JMeter (ferramenta de teste de carga)
+
+- **Sampler:** **gera a requisição**; um por protocolo (HTTP, JDBC, FTP, SOAP).
+- **Thread Group:** os **usuários virtuais**. O **ramp-up** distribui a partida
+  das threads ao longo de um período — elas **não** sobem todas juntas.
+- **Timer:** **atraso** entre requisições, simula a pausa do usuário real.
+- **Assertion:** **valida a resposta** (conteúdo, tempo, código de status).
+- **Listener:** coleta e exibe o resultado.
+
+Pegadinha da EPE 2024: a afirmativa falsa era "os usuários virtuais são
+iniciados simultaneamente" — quem desmente é o **ramp-up**.
 
 ## 5. Mensuração: Ponto de Função × Story Points
 

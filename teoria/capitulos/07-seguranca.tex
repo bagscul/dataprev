@@ -260,6 +260,213 @@ suprimentos \textbf{de software} virou categoria própria (A03), o que não
 retroage para tornar isso item de 2021.
 \end{cuidado}
 
+\section{Catálogo de ataques e de malware}
+
+A seção anterior nomeou \textbf{vulnerabilidades}: o que está errado no
+software, do ponto de vista de quem o constrói. Esta nomeia \textbf{ataques}:
+o que o adversário efetivamente faz. São dois vocabulários diferentes sobre o
+mesmo fenômeno, e vale fixar a diferença antes de decorar nomes --- uma
+vulnerabilidade é uma \textbf{condição} do sistema (existe mesmo que ninguém
+a explore); um ataque é uma \textbf{ação} contra ele.
+
+\subsection{Ataques sobre a sessão e sobre o canal}
+
+\begin{conceito}[Cinco ataques que vivem no mesmo cenário]
+Usuário autenticado, navegador aberto, tráfego passando pela rede: é o
+mesmo palco para cinco ataques distintos. O que separa cada um é
+\textbf{de onde vem a ação} e \textbf{o que o atacante precisa ter}.
+
+\begin{itemize}
+\item \textbf{CSRF} (\textit{Cross-Site Request Forgery}): a vítima está
+logada no site legítimo. Um site --- ou um e-mail --- do atacante dispara
+uma requisição para esse site, e o navegador, obediente, a envia
+\textbf{com o cookie de sessão válido junto}. O servidor vê uma requisição
+perfeitamente autenticada e a executa. Repare no ponto sutil: o atacante
+\textbf{não lê} a resposta e \textbf{não tem} o cookie --- ele só provoca o
+envio. Por isso o alvo típico é uma operação de escrita (transferência,
+mudança de senha). Defesa: \textbf{token anti-CSRF} (um valor imprevisível
+que o site do atacante não conhece) e cookie com atributo
+\texttt{SameSite}.
+\item \textbf{XSS} (\textit{Cross-Site Scripting}): o atacante injeta
+\textbf{script} numa página confiável, e esse script executa no navegador
+de \emph{outras} vítimas, no contexto do site legítimo. Defesa: escapar a
+saída e validar a entrada.
+\item \textbf{MitM} (\textit{Man-in-the-Middle}): o atacante se posiciona
+\textbf{no meio do canal} e lê ou altera o tráfego, com as duas pontas
+acreditando que falam diretamente uma com a outra. Defesa: TLS com
+validação de certificado --- é exatamente o problema que o certificado
+resolve.
+\item \textbf{Replay}: o atacante \textbf{captura uma mensagem válida} e a
+\textbf{reenvia} mais tarde. Não precisa decifrar coisa alguma; basta
+repetir uma requisição que já foi aceita uma vez. Defesa: \textit{nonce},
+\textit{timestamp} ou número de sequência, que tornam cada mensagem
+utilizável uma única vez.
+\item \textbf{Session hijacking}: o atacante \textbf{obtém o identificador}
+de uma sessão já autenticada --- por captura de tráfego, por XSS ou por
+\textit{session fixation} --- e passa a usá-la como se fosse o dono.
+Defesa: cookie \texttt{HttpOnly} e \texttt{Secure}, e renovação do id de
+sessão no momento do login.
+\end{itemize}
+\end{conceito}
+
+\begin{regrapratica}
+Dois cortes resolvem quase todo cenário. \textbf{CSRF x session hijacking:}
+no CSRF o atacante \textbf{não tem} o identificador de sessão, só faz o
+navegador da vítima usá-lo; no hijacking ele \textbf{tem} e age
+diretamente. \textbf{CSRF x XSS:} pergunte de quem se abusa a confiança ---
+o CSRF abusa da confiança do \emph{servidor} no navegador autenticado; o
+XSS abusa da confiança do \emph{usuário} no site.
+\end{regrapratica}
+
+\begin{cuidado}
+O \textbf{CSRF não é uma das dez categorias} do OWASP Top 10. Ele saiu da
+lista em 2017 e, desde 2021, está \textbf{dentro} de A01 Broken Access
+Control --- aparece lá como a CWE-352 entre as fraquezas notáveis da
+categoria. Guarde a distinção de nível: CSRF é \textbf{ataque}; Broken
+Access Control é a \textbf{categoria de vulnerabilidade} que o comporta.
+\end{cuidado}
+
+\subsection{Engenharia social: spam, phishing e spear phishing}
+
+\begin{conceito}[A escala e a personalização são os eixos]
+\begin{itemize}
+\item \textbf{Spam}: mensagem \textbf{não solicitada, enviada em massa},
+tipicamente publicidade. É incômodo, e não necessariamente fraude.
+\item \textbf{Phishing}: isca \textbf{genérica, também em massa} (“sua
+conta será bloqueada em 24 horas”), buscando credencial, clique ou
+download de malware. A taxa de sucesso é baixa; o volume compensa.
+\item \textbf{Spear phishing}: mensagem \textbf{personalizada e dirigida} a
+uma pessoa ou a um grupo restrito, construída com dados reais do alvo ---
+nome do gestor, projeto em curso, fornecedor conhecido. A personalização é
+o que eleva a credibilidade, e é o que dá nome ao ataque
+(\textit{spear} = arpão, contra a rede de arrasto do phishing comum).
+\item \textbf{Whaling}: spear phishing cujo alvo é a \textbf{alta direção}
+--- diretoria, presidência.
+\item \textbf{Vishing} e \textbf{smishing}: o mesmo golpe por \textbf{voz}
+(ligação telefônica) e por \textbf{SMS}.
+\item \textbf{Pharming}: envenena o \textbf{DNS} ou o arquivo
+\texttt{hosts} e conduz a vítima ao site falso \textbf{sem que ela clique
+em link nenhum} --- ela digita o endereço certo e chega ao lugar errado.
+\end{itemize}
+\end{conceito}
+
+\begin{regrapratica}
+Todos os itens acima são \textbf{engenharia social}: o vetor é convencer
+uma pessoa a agir. MitM, replay e session hijacking são \textbf{técnicos}:
+o vetor é interceptar ou reutilizar tráfego, sem depender de convencimento.
+Classificar o cenário nesses dois grupos antes de escolher o nome elimina
+metade das alternativas.
+\end{regrapratica}
+
+\subsection{A família DDoS}
+
+\begin{conceito}[Cada ataque esgota um recurso diferente]
+Todos negam serviço, mas o recurso esgotado muda --- e é esse recurso que
+identifica o ataque:
+
+\begin{center}
+\begin{tabular}{@{}p{2.5cm}p{4.2cm}p{4.6cm}@{}}
+\toprule
+\textbf{Ataque} & \textbf{Mecanismo} & \textbf{Recurso esgotado} \\
+\midrule
+SYN flood & envia \textbf{SYN} e não conclui o \textit{three-way
+handshake} & fila de conexões \textbf{semiabertas} \\
+\addlinespace
+Ping of Death & pacote ICMP \textbf{maior que o limite} de 65.535 bytes,
+fragmentado & \textbf{buffer} de remontagem \\
+\addlinespace
+Smurf & ICMP \textit{echo} com origem \textbf{falsificada} (a vítima) para
+o \textbf{broadcast} & \textbf{banda}, por amplificação --- a rede inteira
+responde \\
+\addlinespace
+Teardrop & fragmentos IP com \textbf{deslocamentos sobrepostos} &
+\textbf{pilha IP}, que trava ao remontar \\
+\addlinespace
+Slowloris & muitas conexões HTTP mantidas vivas com \textbf{cabeçalhos
+parciais lentos} & \textbf{pool de conexões} do servidor web \\
+\addlinespace
+UDP flood \newline (UDP storm) & datagramas UDP em portas sem serviço; o
+alvo responde ICMP \textit{unreachable} & \textbf{banda} e CPU \\
+\addlinespace
+HTTP flood & massa de GET/POST aparentemente legítimos & \textbf{CPU e
+processos} da aplicação \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{exemplo}[Por que o Slowloris é o mais econômico dos sete]
+Um SYN flood ou um Smurf precisam de volume: banda, e em geral uma
+\textit{botnet}. O Slowloris não. Ele abre algumas centenas de conexões
+HTTP e, em cada uma, envia um cabeçalho incompleto --- depois mais um byte,
+depois mais outro, sempre antes do \textit{timeout}. O servidor mantém cada
+conexão aberta esperando o resto da requisição, e o \textit{pool} lota. Com
+tráfego de poucos kilobits por segundo, uma máquina só derruba um servidor
+web. É o exemplo canônico de ataque que explora \textbf{o protocolo}, não a
+força bruta --- e o motivo de a defesa contra DDoS não poder ser só
+“aumentar a banda”.
+\end{exemplo}
+
+\begin{cuidado}
+Duas descrições parecidas que não são o mesmo ataque:
+\textbf{Ping of Death} (pacote grande e \emph{malformado}) x
+\textbf{Teardrop} (fragmentos com deslocamento \emph{sobreposto}) --- os
+dois quebram a remontagem, mas por motivos distintos.
+E \textbf{Slowloris} (poucas requisições, deliberadamente \emph{lentas}) x
+\textbf{HTTP flood} (muitas requisições \emph{rápidas}) --- ambos na camada
+de aplicação, com estratégias opostas.
+\end{cuidado}
+
+\subsection{A família de malware}
+
+\begin{conceito}[O traço que define cada um]
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{9.4cm}@{}}
+\toprule
+\textbf{Vírus} & precisa de \textbf{hospedeiro} (um arquivo ou programa) e
+da \textbf{ação do usuário} para executar e se replicar. \\
+\textbf{Worm} & \textbf{autopropaga pela rede}: explora um serviço
+vulnerável e se copia para o próximo host, \textbf{sem hospedeiro e sem
+interação}. \\
+\textbf{Trojan} & \textbf{disfarça-se} de programa legítimo para ser
+instalado pela própria vítima. \textbf{Não se autorreplica} --- entra uma
+vez, pela porta da frente. \\
+\textbf{Spyware} & \textbf{coleta} informação e a envia ao atacante; o
+\textit{keylogger} (registro de teclas) é um subtipo. \\
+\textbf{Backdoor} & mantém uma \textbf{via de acesso remoto} que contorna
+a autenticação normal. É porta, não propagação: não se replica nem varre a
+rede. \\
+\textbf{Rabbit} \newline (\textit{wabbit}, \textit{fork bomb}) &
+replica-se \textbf{localmente} e sem parar até esgotar CPU, memória ou a
+tabela de processos da máquina. \\
+\textbf{Ransomware} & \textbf{cifra} os dados e cobra resgate pela chave. \\
+\textbf{Rootkit} & \textbf{esconde} a presença do invasor, ocultando
+processos, arquivos e conexões, em geral com privilégio de sistema. \\
+\textbf{Bot / botnet} & máquina sob \textbf{controle remoto} (C\&C),
+usada em DDoS e disparo de spam. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceito}
+
+\begin{regrapratica}
+Duas perguntas classificam qualquer descrição: \textbf{(i) ele se replica
+sozinho?} --- worm e rabbit sim; trojan e backdoor não; vírus só com ajuda
+do usuário. \textbf{(ii) Para onde ele se replica?} --- o worm vai para
+\textbf{outras máquinas, pela rede}; o rabbit fica \textbf{dentro da mesma
+máquina}, consumindo-a. Worm ataca a rede; rabbit ataca a disponibilidade
+local.
+\end{regrapratica}
+
+\begin{cuidado}
+O par mais confundido é \textbf{worm x rabbit}, porque os dois se
+autorreplicam --- a diferença é o destino da cópia (rede x máquina local).
+Logo depois vem \textbf{spyware x rootkit}: o spyware \emph{coleta e
+envia}; o rootkit \emph{esconde} (inclusive esconde o spyware). E note que
+\textbf{backdoor} é frequentemente o \emph{resultado} de outro malware, não
+um propagador: o trojan entra e deixa a backdoor instalada.
+\end{cuidado}
+
 \section{Desenvolvimento seguro}
 
 \begin{conceito}

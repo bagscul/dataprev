@@ -151,6 +151,84 @@ auditoria** ou **rótulo de segurança** como "específico" (são
 **Preenchimento de tráfego** e **controle de roteamento** surpreendem — são
 específicos, e servem à confidencialidade do *fluxo*, não do conteúdo.
 
+## 5.2 Catálogo de ataques e de malware
+
+O OWASP nomeia **vulnerabilidade** (o que está errado no software); aqui se
+nomeia **ataque** (o que o adversário faz). A FGV cobra em **carrossel**: cada
+alternativa recebe a definição do vizinho. Só sai quem sabe o traço único de
+cada nome.
+
+### Sessão e canal
+
+| Ataque | Traço único |
+|---|---|
+| **CSRF** | vítima **logada**; site do atacante dispara a requisição e o **navegador manda o cookie de sessão junto**. O atacante **não vê** a resposta nem tem o cookie. Defesa: token anti-CSRF, `SameSite` |
+| **XSS** | injeta **script** no site confiável, que roda no navegador de outras vítimas. Defesa: escapar saída |
+| **MitM** | fica **no meio do canal** e lê/altera o tráfego. Defesa: TLS com certificado válido |
+| **Replay** | **reenvia** uma mensagem válida capturada — não precisa decifrar. Defesa: nonce, timestamp, nº de sequência |
+| **Session hijacking** | **rouba o identificador** da sessão autenticada e a usa. Defesa: `HttpOnly`/`Secure`, renovar id no login |
+
+Cortes: **CSRF × hijacking** — no CSRF o atacante *não tem* o id de sessão, só
+faz o navegador usá-lo; no hijacking ele *tem*. **CSRF × XSS** — CSRF abusa da
+confiança do *servidor* no navegador; XSS, da confiança do *usuário* no site.
+
+**O CSRF não é categoria do OWASP Top 10** — saiu em 2017 e desde 2021 está
+dentro de A01 Broken Access Control (é a CWE-352 citada lá). Item que ofereça
+"CSRF" como uma das dez posições está errado.
+
+### Engenharia social
+
+| Termo | O que é |
+|---|---|
+| **Spam** | não solicitado, **em massa**; nem sempre fraude |
+| **Phishing** | isca **genérica em massa**, quer credencial/clique |
+| **Spear phishing** | **personalizado e dirigido** a pessoa ou grupo restrito, com dados reais do alvo |
+| **Whaling** | spear phishing contra a **alta direção** |
+| **Vishing / smishing** | o mesmo por **voz** e por **SMS** |
+| **Pharming** | envenena **DNS**/`hosts` e leva ao site falso **sem clique em link** |
+
+Gatilho de *spear*: "direcionado", "personalizado", "grupo restrito". Os quatro
+primeiros são **engenharia social**; MitM, replay e hijacking são
+**interceptação técnica** — a banca oferece um do outro grupo como quase-certa.
+
+### Família DDoS
+
+| Ataque | Mecanismo |
+|---|---|
+| **SYN flood** | envia **SYN** e não conclui o *three-way handshake* — enche a fila de **semiabertas** |
+| **Ping of Death** | pacote ICMP **maior que 65.535 bytes**, fragmentado — estoura o buffer de remontagem |
+| **Smurf** | ICMP *echo* com **origem falsificada** (a vítima) para o **broadcast**: a rede toda responde — **amplificação** |
+| **Teardrop** | fragmentos IP com **deslocamentos sobrepostos** — a pilha trava ao remontar |
+| **Slowloris** | **camada 7**: muitas conexões HTTP mantidas com **cabeçalhos parciais lentos** — esgota o *pool* com **pouquíssima banda** |
+| **UDP flood / UDP storm** | inunda portas UDP sem serviço; o alvo responde ICMP *unreachable* até saturar. No clássico do CERT (CA-1996-01), liga *echo* de um host ao *chargen* de outro |
+| **HTTP flood** | massa de **GET/POST** aparentemente legítimos |
+
+Trocas já vistas: descrever o Slowloris como "massivas requisições HTTP GET e
+POST" (é **HTTP flood**) e o Ping of Death como "SYN sem concluir o handshake"
+(é **SYN flood**). Smurf e UDP flood atacam **banda**; Slowloris ataca
+**conexões**, e derruba um servidor de uma máquina só.
+
+### Família de malware
+
+| Malware | Traço único |
+|---|---|
+| **Vírus** | precisa de **hospedeiro** e da **ação do usuário** |
+| **Worm** | **autopropaga pela rede**, sem hospedeiro e sem interação |
+| **Trojan** | **disfarça-se** de programa legítimo; **não se autorreplica** |
+| **Spyware** | **coleta** informação e envia ao atacante (*keylogger* é subtipo) |
+| **Backdoor** | **via de acesso remoto** que contorna a autenticação; não se replica nem varre a rede |
+| **Rabbit** (*wabbit*, *fork bomb*) | replica-se **localmente** até esgotar CPU/memória/processos — não vai para a rede |
+| **Ransomware** | **cifra** os dados e exige resgate |
+| **Rootkit** | **esconde** a presença do invasor |
+| **Bot / botnet** | máquina sob **controle remoto** (C&C) |
+
+Duas perguntas resolvem: **(i) replica sozinho?** worm e rabbit sim, trojan e
+backdoor não; **(ii) para onde?** worm pela **rede**, rabbit **na própria
+máquina**. Trocas já vistas: dar ao spyware a autopropagação (é do worm), ao
+trojan a autorreplicação que esgota recursos (é do rabbit), à backdoor a
+varredura de rede (é do worm) e ao rabbit a captura de credenciais (é do
+spyware).
+
 ## 6. Desenvolvimento seguro
 
 - **SDL (Security Development Lifecycle):** segurança em todo o ciclo.
@@ -208,11 +286,11 @@ da contenção.
 
 ## O que já caiu
 
-**Em prova real da FGV:** 38 questões, e a lista abaixo é quase toda
-verdadeira. Cuidado com esse total: **17 das 38** saíram de uma prova só, a da
+**Em prova real da FGV:** 56 questões, e a lista abaixo é quase toda
+verdadeira. Cuidado com esse total: **17 das 56** saíram de uma prova só, a da
 ALERO para o perfil *Redes*, e puxam o bloco para o lado de rede (*malware*,
 DDoS, VPN, proxy, NGFW). Nas provas mais próximas de desenvolvimento, segurança
-fica em **19** — na Dataprev 2024 foram **4**. Controle de acesso
+fica em **39** — na Dataprev 2024 foram **4**. Controle de acesso
 **mandatório** (comparação de rótulos); **OWASP Top 10:2021**, identificar a
 categoria válida (gabarito: SSRF, o A10 — as demais alternativas descreviam
 *práticas*, não vulnerabilidades); **X.800** (mecanismo específico ×
@@ -231,10 +309,17 @@ proxy e VPN; e as etapas de **resposta a incidentes** (contenção, depois
 recuperação e lições aprendidas) — **ALERO 2026**, que sozinha respondeu por 17
 questões de segurança.
 
-**No nosso banco** (previsto pelo edital, ainda não visto na amostra de
-provas): **SAST × DAST** — nenhuma das 432 questões reais cita qualquer um dos
-dois. Continua valendo o estudo: é par de edital e a FGV adora inverter
-estático com dinâmico.
+**SAST × DAST × IAST** em cenário de esteira CI/CD — **NAV Brasil 2026** e
+**EPE 2024**: o par saiu do "previsto pelo edital" e virou cobrança real,
+sempre pedindo qual técnica vê o *código parado* e qual precisa da *aplicação
+rodando*.
+
+O **catálogo de ataques** também já caiu inteiro, sempre em carrossel: **CSRF**
+no cenário do Internet Banking com sessão aberta — **EPE 2024**; a **família
+DDoS** (Ping of Death, Slowloris, Smurf, Teardrop, UDP storm), o **spear
+phishing** contra MitM/replay/session hijacking/spam, e a **família de
+malware** (worm, spyware, trojan, backdoor, rabbit) — **CPRM 2026**, três
+questões seguidas no mesmo formato.
 
 Rode `../quiz.py seguranca`.
 

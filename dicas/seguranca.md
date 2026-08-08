@@ -34,6 +34,28 @@
 - Continuidade de negócio: RTO (tempo fora do ar) x RPO
   (dado que se aceita perder), com MTBF/MTTR/SLA como
   siglas vizinhas oferecidas junto.
+- Catálogo de ataques: cenário descreve o mecanismo e pede o
+  nome. CSRF (sessão aberta + requisição disparada de fora,
+  cookie vai junto), XSS (script injetado no site), MitM
+  (fica no meio do canal), replay (reenvia mensagem válida),
+  session hijacking (rouba o id da sessão).
+- Engenharia social: spam (massa, não solicitado) x phishing
+  (isca genérica em massa) x spear phishing (personalizado,
+  alvo restrito) x whaling (alta direção) x pharming
+  (envenena DNS, sem clique em link).
+- Família DDoS: SYN flood (semiabertas), Ping of Death
+  (pacote ICMP grande/malformado), Smurf (broadcast com
+  origem falsificada = amplificação), Teardrop (fragmentos
+  sobrepostos), Slowloris (camada 7, lento, pouca banda),
+  UDP flood/storm, HTTP flood (GET/POST em massa).
+- Família de malware: vírus (hospedeiro + ação do usuário),
+  worm (autopropaga PELA REDE), trojan (disfarce, não se
+  replica), spyware (coleta e envia; keylogger é subtipo),
+  backdoor (acesso remoto, não propaga), rabbit/fork bomb
+  (replica LOCALMENTE até esgotar recursos), ransomware
+  (cifra e cobra), rootkit (esconde), bot/botnet (C&C).
+- SAST x DAST x IAST em esteira CI/CD: já caiu na NAV Brasil
+  2026 e na EPE 2024 — deixou de ser só "previsto no edital".
 
 ## Como a banca arma a pegadinha
 - OWASP 2021: mistura itens que NÃO são da lista web —
@@ -74,6 +96,23 @@
   fora X, perde Y" e a alternativa INVERTE as siglas. Ou
   oferece MTBF/MTTR (médias observadas) e SLA (acordo
   contratual) como se fossem objetivos de plano.
+- CARROSSEL: em questão de ataque ou de malware, cada
+  alternativa traz um nome com a definição do VIZINHO. Já
+  vistas: Slowloris descrito como "massivas requisições HTTP
+  GET e POST" (é HTTP flood), Ping of Death como "SYN sem
+  concluir o handshake" (é SYN flood), spyware com a
+  autopropagação do worm, trojan com a autorreplicação do
+  rabbit, backdoor varrendo a rede (é worm) e rabbit
+  capturando credenciais (é spyware).
+- CSRF oferecido como categoria do OWASP Top 10 — não é. Saiu
+  da lista em 2017 e desde 2021 está DENTRO de A01 Broken
+  Access Control (CWE-352). CSRF é ataque, não categoria.
+- No cenário do Internet Banking (sessão aberta + clique em
+  link de e-mail + operações em nome do usuário), a
+  quase-certa plantada é XSS. Decide o fato de nada ter sido
+  injetado no site: a requisição veio de fora.
+- Spear phishing x MitM/replay/hijacking: a banca mistura
+  engenharia social com interceptação técnica na mesma lista.
 
 ## Como se sair melhor
 - CIA: Confidencialidade = quem VÊ; Integridade = dado
@@ -101,5 +140,15 @@
 - OIDC: iat = issued at (emissão); exp = expiração; sub =
   subject (usuário). HMAC = chave simétrica → autenticidade
   e integridade (não confidencialidade).
+- Diante de carrossel, não procure o nome conhecido: leia
+  DESCRIÇÃO por DESCRIÇÃO e case cada uma com seu traço
+  único. Worm = rede; rabbit = máquina local; Teardrop =
+  fragmento sobreposto; Slowloris = devagar e na camada 7;
+  spear = personalizado. Duas perguntas fecham o malware:
+  (i) replica sozinho? (ii) para onde?
+- CSRF x session hijacking: no CSRF o atacante NÃO tem o id
+  de sessão, só faz o navegador da vítima usá-lo; no
+  hijacking ele TEM. CSRF x XSS: CSRF abusa da confiança do
+  SERVIDOR no navegador; XSS, da confiança do USUÁRIO no site.
 - Gatilho: "sempre isento", "SSL mais seguro", claim trocado
   — releia com calma.

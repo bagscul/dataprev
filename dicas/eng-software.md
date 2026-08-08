@@ -21,6 +21,13 @@
   contínua e reduzem retrabalho de regressão. Também:
   cobertura de comandos x decisões (caixa-branca) e os
   testes de desempenho — carga x estresse x volume.
+- Complexidade ciclomática (McCabe): dá um trecho de código e
+  pede o número. Pontos de decisão + 1; o else/senão final
+  NÃO conta.
+- Code smells nomeados: Feature Envy, Data Clumps, bloaters —
+  vem em item I/II/III, pedindo qual afirmativa está correta.
+- JMeter: Sampler, Thread Group (ramp-up), Timer, Assertion,
+  Listener. Também em item I/II/III.
 - Maturidade de processo: CMMI por estágios (cinco níveis,
   o 3 é o Definido) e MPS.BR (sete letras, de G até A).
 - Modelo V: parear fase de desenvolvimento com nível de
@@ -66,6 +73,22 @@
   ULTRAPASSAR o previsto — carga fica DENTRO do esperado.
 - Compromissos do Scrum: mantém os nomes certos e troca as
   ligações (Definition of Done colada ao Product Backlog).
+- Ciclomática: as alternativas trazem os erros de contagem
+  prontos. Contar o senão final infla em 1; esquecer o +1
+  reduz em 1 — as duas respostas erradas estão na lista.
+  Ignorar que cada && / || vale um ponto a mais é o terceiro.
+- Code smell vendido como BOA PRÁTICA: "usar grupos idênticos
+  de variáveis que se repetem melhora a legibilidade e a
+  consistência" é a definição literal de Data Clumps, um
+  cheiro. Em item I/II/III, a afirmativa elogiosa é a falsa.
+- JMeter: "os usuários virtuais de um Thread Group são
+  iniciados simultaneamente" é falso — o ramp-up distribui a
+  partida das threads ao longo de um período.
+- Inverte Divergent Change (uma classe muda por muitos
+  motivos) com Shotgun Surgery (um motivo obriga a mexer em
+  muitas classes); e Feature Envy (um método na classe
+  errada) com Inappropriate Intimacy (duas classes mexendo
+  nos internos uma da outra).
 
 ## Como se sair melhor
 - Decore o par: RF = função/comportamento; RNF = qualidade
@@ -88,6 +111,18 @@
   que ainda não aconteceu = preventiva.
 - Cobertura: 100% de decisões IMPLICA 100% de comandos, nunca
   o contrário. Comandos < decisões < caminhos.
+- Ciclomática, o método de 30 segundos: risque os else/senão
+  soltos, conte o que DECIDE (if, else if, while, for, case,
+  ternário, cada && e cada ||), some 1. Não é linha de
+  código, não é acoplamento, não é cobertura — é caminho.
+- Code smells, a saída de cada um: Long Method → Extract
+  Method; Data Clumps → Extract Class / Introduce Parameter
+  Object; Feature Envy → Move Method (leve o comportamento
+  para junto do dado). Feature Envy é o método que usa mais
+  os dados do vizinho que os da própria classe.
+- JMeter, um verbo por componente: Sampler GERA a requisição;
+  Timer ATRASA; Assertion VALIDA a resposta; Listener EXIBE;
+  Thread Group define os usuários (e o ramp-up escalona).
 - Compromissos do Scrum, pelo horizonte: produto (longo prazo)
   → Product Backlog; a Sprint → Sprint Backlog; o "pronto" →
   Incremento.
