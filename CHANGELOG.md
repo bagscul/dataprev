@@ -2,6 +2,93 @@
 
 Melhorias no material de estudo (Dataprev 2026, Perfil 3).
 
+## 2026-08-07 — déficit de questões zerado (+30) e o banco etiquetado de 48% para 80%
+
+Duas frentes fechadas no mesmo dia: a **B** (o buraco de pool para os 10
+simulados) e a **C** (a etiquetagem do acervo). A **D** foi verificada e segue
+aberta por fato externo.
+
+**Frente B — as 30 que faltavam.** Inglês foi de 102 para **120** e atualidades,
+de 48 para **60**: exatamente a demanda de 10 simulados. Português, RLM e
+legislação não receberam questão nenhuma, porque já estavam acima da demanda.
+O déficit do Módulo I, que era de 137 em julho e de 30 na véspera, é **zero**.
+
+As 18 de inglês nasceram de **cinco textos-base novos**, escritos aqui (não são
+trecho de publicação real), todos sobre TI e serviço público: modernização de
+legado, identidade digital, formato aberto em contratação, green software e
+divisão digital. Cada texto sustenta 3–4 itens respondíveis só com ele. O rateio
+mirou os microtópicos magros: **verbos-modais** saiu de 1 para 6 questões, e o
+formato variou de propósito entre o item que pede o **valor** do modal (`may` →
+possibilidade, `should` → recomendação, `will` → certeza, `cannot` →
+impossibilidade) e o que pede a **substituição** sem mudança de sentido (`must`
+→ `has to`), que é como a FGV alterna.
+
+As 12 de atualidades saíram todas de **fonte primária conferida no dia**, e é o
+que as torna caras de refazer:
+
+- **AI Act, o adiamento que quase todo resumo erra.** O Regulamento (UE)
+  2026/1744, de 08/07/2026 (o *Digital Omnibus on AI*, publicado no JO em
+  24/07), empurrou as obrigações de alto risco do **Anexo III para 02/12/2027**
+  e do **Anexo I para 02/08/2028** — mas **não** tocou no art. 50: transparência
+  segue valendo desde **02/08/2026**, e as proibições do art. 5º, desde
+  02/02/2025. A pegadinha montada é justamente o "adiaram tudo".
+- **PL 2338/2023 continua em tramitação**, conferido no dado aberto da Câmara
+  (situação "Aguardando Parecer", movimentação de 17/06/2026) — a questão que já
+  existia no banco segue correta.
+- **COP30 (Belém, 11/2025):** a decisão do *Mutirão Global* **não menciona
+  combustíveis fósseis** e convoca esforços para ao menos **triplicar o
+  financiamento de adaptação até 2035**, além do horizonte de US$ 1,3 tri/ano.
+- **TFFF:** não é fundo de doação. É *blended finance* — o capital é investido e
+  o **rendimento** paga valor fixo por hectare de floresta em pé, com ao menos
+  **20% aos povos indígenas e comunidades locais**.
+- **Resolução CVM 244, de 29/05/2026:** revogou o art. 2º da Resolução CVM 193 e
+  **acabou com a obrigatoriedade** do relatório de sustentabilidade (ISSB) que
+  valeria a partir dos exercícios iniciados em 2026. Quem optar publica por no
+  mínimo três exercícios; a partir de 2027, quem não publicar tem de justificar
+  em comunicado ao mercado.
+
+O `./valida.py --novas 30` acusou "correta é a mais longa" em 15 das 30 (o
+esperado é ~20%) — vazamento de forma clássico de texto gerado. Corrigido item a
+item, encurtando a correta ou alongando o distrator: **5 de 30**, e os cinco
+restantes são empate de comprimento em alternativa de uma palavra ("ability." ×
+"possibility.") ou de número, onde não há o que ajustar.
+
+**Frente C — 902 de 1133 questões etiquetadas (80%).** Eram 533 de 1103 (48%).
+A passada automática propõe, mas **as 345 propostas foram revisadas à mão, uma a
+uma** — e a revisão pagou: **34 trocas** e **23 descartes**. O que a keyword
+errou é instrutivo, porque é o mesmo par que a FGV inverte: a questão do
+**teorema CAP** casou com `propriedades-acid`, a do **DIP/SOLID** casou com
+`ecossistema-spring`, a de **Flutter/Dart** com `diagrama-classes`, a de
+**LIMIT/OFFSET** com `arquitetura-computadores-so`.
+
+Dois recortes do casamento tiveram de mudar, e ficam registrados no
+`CONTRIBUINDO-QUESTOES.md`:
+
+1. **texto-base envenena tanto quanto distrator.** Casando no enunciado inteiro,
+   um item de inglês que pede *the main purpose of the text* virava
+   `verbos-modais` por causa de um "can" perdido no meio do texto. Agora o
+   casamento usa só o **comando** (o bloco depois do texto-base).
+2. **`comando-negativo` não é etiqueta de estudo.** Ele vence em qualquer item
+   que diga "assinale a INCORRETA" e enterra o conteúdo real. Ficou fora da
+   automação.
+
+Os 23 descartes são deliberados: ou o vocabulário não tem microtópico que
+descreva (stored procedure, função determinística, apassivação, decorator do
+Python — que não é o padrão GoF), ou o assunto está **fora do edital** (mandado
+de segurança, improbidade administrativa, herdados do TJRJ/MPU). Etiqueta errada
+distorce o `./fraquezas.py`; ausência, não.
+
+**Microtópico novo: `ataques-malware`** (168 no vocabulário). Ele não foi
+inventado para a etiquetagem — é a seção que a frente A escreveu na apostila e
+no `teoria/` no mesmo dia, e sem ela 12 questões reais sobre spoofing, DDoS,
+Teardrop, phishing, ransomware e keylogger não tinham onde ser etiquetadas.
+Com ele, o `SUB_OBRIGATORIA_APOS` do `valida.py` caiu de 403 para **395**.
+
+**Frente D — verificada, segue aberta.** A página do concurso da NAV Brasil
+publicou até agora apenas o gabarito **preliminar** (03/08), com recursos
+encerrados em 04/08; não há definitivo. A `nav-tec` Q58 continua como
+divergência anotada, e são os 2 avisos que o `./valida.py` mostra.
+
 ## 2026-08-07 — a teoria que faltava: ataques, malware, ciclomática e code smells
 
 As 74 questões importadas na véspera cobravam três assuntos que **não existiam

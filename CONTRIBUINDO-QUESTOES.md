@@ -167,10 +167,10 @@ são o gabarito. Blocos (`tag`) disponíveis: os mesmos de `erros/`.
 ### Campo `sub` (subtag) — recorte de estudo, não bloco
 
 `sub` é a lista de **microtópicos** da questão — o recorte fino, dentro do
-bloco. O vocabulário é **fechado, tem 167 valores e vive em `subtags.py`**
+bloco. O vocabulário é **fechado, tem 168 valores e vive em `subtags.py`**
 (fonte única, lida por `quiz.py`, `valida.py` e `fraquezas.py`). Duas origens:
 
-- **derivada** (150) — é uma seção de `teoria/capitulos/*.tex`, ou da apostila
+- **derivada** (151) — é uma seção de `teoria/capitulos/*.tex`, ou da apostila
   nos capítulos em que ela é mais detalhada. Ou seja: a taxonomia do edital que
   já foi auditada, não um recorte inventado na hora;
 - **curada** (14) — nasceu de **erro real** no caderno (`regencia`,
@@ -180,29 +180,37 @@ bloco. O vocabulário é **fechado, tem 167 valores e vive em `subtags.py`**
   têm `dicas/<nome>.md` e `resumo/<nome>.md` próprios; as demais caem no
   arquivo do bloco que cobre o assunto.
 
-`./quiz.py --tags` lista os 167 agrupados por bloco, com a contagem de questões
+`./quiz.py --tags` lista os 168 agrupados por bloco, com a contagem de questões
 já etiquetadas — é a referência para escolher o valor.
 
 **Obrigatoriedade.** Questão nova do `banco.json` **tem** que trazer `sub`: o
 `valida.py` bloqueia (erro, não aviso) a partir do índice
-`SUB_OBRIGATORIA_APOS`, hoje 403. O acervo anterior a esse índice ainda está
+`SUB_OBRIGATORIA_APOS`, hoje 395. O acervo anterior a esse índice ainda está
 sendo etiquetado; conforme for, **baixe o número** — em 0, a regra vale para o
 banco inteiro. Subtag fora do vocabulário continua sendo aviso, não bloqueio.
 
-**Estado do acervo (06/08/2026):** 303 de 403 no `banco.json` e 194 de 422 no
-`banco-provas.json` têm `sub` — 497 de 825 (60%), cobrindo 134 dos 167
+**Estado do acervo (07/08/2026):** 388 de 433 no `banco.json` e 514 de 700 no
+`banco-provas.json` têm `sub` — 902 de 1133 (80%), cobrindo 153 dos 168
 microtópicos. As etiquetas vieram de casamento de palavra-chave sobre
-**enunciado + alternativa correta + `why`**, com um mínimo de evidência; o que
-não atingiu o mínimo ficou **sem** etiqueta de propósito. Precisão aferida à
-mão em amostra: ~94%. Duas consequências práticas: (a) etiqueta errada existe e
-é para ser corrigida quando você topar com ela estudando; (b) o que está sem
-`sub` não é "erro do script", é falta de evidência — etiquete à mão.
+**comando + alternativa correta + `why`**, seguido de **revisão à mão de todas
+as 345 propostas** — 34 trocas e 23 descartes, detalhados no `CHANGELOG.md` de
+07/08. As 231 sem `sub` são de dois tipos: assunto que o vocabulário não
+descreve (trigger, função determinística, apassivação, decorator do Python) e
+assunto fora do edital (direito constitucional/administrativo do TJRJ e do
+MPU). Não é "erro do script" — etiquete à mão quando esbarrar numa delas.
 
-> **Por que não casar no texto inteiro.** A primeira tentativa incluía as
-> alternativas erradas e as explicações delas, e etiquetou a questão de
-> **cascata** como `metodos-ageis`: numa questão boa da FGV os distratores são
-> justamente os conceitos vizinhos, então eles envenenam a etiqueta. Se for
-> reetiquetar algo, mantenha esse recorte.
+> **Dois recortes que custaram etiqueta errada.** (1) Casar no texto inteiro
+> envenena: incluindo as alternativas erradas e as explicações delas, a questão
+> de **cascata** virou `metodos-ageis`, porque numa questão boa da FGV os
+> distratores são os conceitos vizinhos. (2) Casar no enunciado **com o
+> texto-base** faz o mesmo em inglês e português: o texto fala de tudo, menos do
+> que o item cobra — um item sobre *the main purpose of the text* virou
+> `verbos-modais` por causa de um "can" no meio do texto. Use só o **comando**
+> (o bloco depois do texto-base) mais a correta e o `why`.
+>
+> **Rótulo de forma não é etiqueta de estudo.** O `comando-negativo` vence a
+> disputa em qualquer item que diga "assinale a INCORRETA" e enterra o conteúdo
+> real da questão. Ele fica fora da etiquetagem automática de propósito.
 
 A `tag` **continua sendo o bloco** e é ela que alimenta o roteiro, o
 `progresso.csv`, o peso do simulado (geral × específico), o `erros/<tag>.md`, o

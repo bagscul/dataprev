@@ -1,5 +1,15 @@
 # Prompt pronto — lote de 400 questões para os blocos GERAIS
 
+> **ARQUIVO ENCERRADO — o déficit é zero desde 07/08/2026.** As 30 questões que
+> faltavam (18 de inglês, 12 de atualidades) foram geradas naquele dia: o pool
+> hoje é **inglês 120, atualidades 60, português 129, RLM 64, legislação 68**,
+> contra uma demanda de 120/60/120/50/50 para os 10 simulados. **Não gere lote
+> de gerais** sem antes remedir — hoje só sobraria trabalho. O que continua
+> valendo aqui é a **metodologia**: como dimensionar cota por microtópico, e as
+> cinco regras do prompt (fonte primária com data para atualidades, conta
+> conferida em RLM, texto-base próprio em inglês). O registro do que foi gerado
+> está no `CHANGELOG.md` de 07/08.
+
 Cole o conteúdo da seção "O prompt" numa conversa nova do Claude Code, dentro
 deste repositório. O resto do arquivo é a memória de **por que** este lote existe
 e com que números ele foi dimensionado — leia antes de mudar as cotas.

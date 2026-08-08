@@ -96,8 +96,8 @@ a mesma errada duas vezes nao vira duas anotacoes). Para nao gravar, use
 `--sem-anotar`. No fim mostra os conteudos da sessao e registra no
 progresso.csv (entao nao use ./feito.sh para as questoes do quiz).
 
-403 questoes originais em estilo FGV (todas com gabarito auditado contra
-fonte) + questoes reais de 15 provas da FGV = **~1079 questoes utilizaveis**.
+433 questoes originais em estilo FGV (todas com gabarito auditado contra
+fonte) + questoes reais de 15 provas da FGV = **~1109 questoes utilizaveis**.
 As explicacoes ja vem gravadas no banco: o quiz roda offline, sem chave de
 API e sem custo — entao qualquer pessoa com o repo roda no terminal dela.
 
@@ -138,14 +138,16 @@ Code (veja `CLAUDE.md`): la da pra perguntar de volta.
 O bloco e grosso demais para mirar estudo: `portugues` sao 90 questoes, e sete
 erros seus podem estar em sete assuntos diferentes. Quem tem a granularidade do
 erro e a **subtag** — o campo `sub` da questao e a linha `- **sub:**` do caderno
-de erros. Sao **167 microtopicos** em `subtags.py` (fonte unica: `quiz.py`,
+de erros. Sao **168 microtopicos** em `subtags.py` (fonte unica: `quiz.py`,
 `valida.py` e `fraquezas.py` leem de la), quase todos derivados das secoes do
 `teoria/` e da apostila — a taxonomia do edital, ja auditada. `./quiz.py --tags`
 lista todos por bloco. Questao nova do `banco.json` e obrigada a trazer `sub`
-(o `./valida.py` bloqueia). Hoje 533 das 1103 questoes dos dois bancos ja tem
-`sub` (48%) — 303 das 403 originais e 230 das reais; o resto ficou sem etiqueta
-de proposito, por falta de evidencia — etiquete a mao quando esbarrar numa
-delas.
+(o `./valida.py` bloqueia). Hoje 902 das 1133 questoes dos dois bancos ja tem
+`sub` (80%) — 388 das 433 originais e 514 das reais, cobrindo 153 dos 168
+microtopicos. As 231 restantes ficaram sem etiqueta **de proposito**: ou nao ha
+microtopico que as descreva (trigger, funcao deterministica, apassivacao), ou o
+assunto esta fora do edital (direito constitucional e administrativo vindo do
+TJRJ/MPU) — etiquete a mao quando esbarrar numa delas.
 
 ```bash
 ./fraquezas.py            # ranking dos microtopicos onde voce mais erra

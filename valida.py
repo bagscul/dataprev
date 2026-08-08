@@ -46,7 +46,7 @@ SUB_VALIDAS = subtags.SUB_VALIDAS
 # microtopico — senao o ./quiz.py <microtopico> e o ./fraquezas.py so enxergam
 # metade do banco. Ao etiquetar o acervo antigo, BAIXE este numero; quando
 # chegar a 0, a 'sub' vale para o banco inteiro.
-SUB_OBRIGATORIA_APOS = 403
+SUB_OBRIGATORIA_APOS = 395
 
 
 def cor(t, c):

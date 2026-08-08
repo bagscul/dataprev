@@ -84,7 +84,7 @@ resultado de já ter testado os dois estilos neste repositório):
   catalogados estão em `dicas/tecnica-fgv.md` e no Apêndice B da apostila
   (`apostila/capitulos/20-glossario-pegadinhas.tex`).
 - **`sub` (microtópico) — obrigatório:** toda questão nova do `banco.json` nasce
-  etiquetada (`"sub": ["normalizacao"]`), com um dos 167 valores de
+  etiquetada (`"sub": ["normalizacao"]`), com um dos 168 valores de
   `subtags.py`; o `./valida.py` **bloqueia** sem isso. `./quiz.py --tags` lista
   os valores por bloco. A `tag` (bloco) continua mandando; a `sub` é o recorte
   fino que alimenta `./quiz.py <microtópico>` e o `./fraquezas.py`.

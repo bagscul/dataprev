@@ -1453,6 +1453,17 @@ VOCAB = {
                "triade", "disponibilidade", "autenticidade", "nao repudio",
                "irretratabilidade"],
     },
+    "ataques-malware": {
+        "blocos": ("seguranca", "redes"),
+        "apostila": "seguranca",
+        "desc": "Catálogo de ataques e de malware",
+        "kw": ["spoofing", "man-in-the-middle", "mitm", "replay",
+               "sequestro de sessao", "session hijacking", "phishing",
+               "spear phishing", "negacao de servico", "ddos", "dos",
+               "ping of death", "slowloris", "smurf", "teardrop", "udp storm",
+               "malware", "worm", "spyware", "cavalo de troia", "trojan",
+               "backdoor", "ransomware", "rootkit", "keylogger", "botnet"],
+    },
     "x800-osi": {
         "blocos": ("seguranca",),
         "apostila": "seguranca",

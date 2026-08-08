@@ -21,7 +21,10 @@
   },
   "fonte": "FGV cnsal-ads Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pessoas-do-discurso"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -117,7 +120,10 @@
   },
   "fonte": "FGV cnsal-ads Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -261,7 +267,10 @@
   },
   "fonte": "FGV cnsal-ads Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pronomes-relativos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -357,7 +366,10 @@
   },
   "fonte": "FGV cnsal-ads Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "argumentacao-validade"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -405,7 +417,10 @@
   },
   "fonte": "FGV cnsal-ads Q17",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "probabilidade"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -477,7 +492,10 @@
   },
   "fonte": "FGV cnsal-ads Q20",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "geometria-plana"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -501,7 +519,10 @@
   },
   "fonte": "FGV cnsal-ads Q21",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "razao-proporcao"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -573,7 +594,10 @@
   },
   "fonte": "FGV cnsal-ads Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -621,7 +645,10 @@
   },
   "fonte": "FGV cnsal-ads Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -645,7 +672,10 @@
   },
   "fonte": "FGV cnsal-ads Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -669,7 +699,10 @@
   },
   "fonte": "FGV cnsal-ads Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -693,7 +726,10 @@
   },
   "fonte": "FGV cnsal-ads Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "rup"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -717,7 +753,10 @@
   },
   "fonte": "FGV cnsal-ads Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "diagrama-sequencia"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -741,7 +780,10 @@
   },
   "fonte": "FGV cnsal-ads Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "diagrama-classes"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -765,7 +807,10 @@
   },
   "fonte": "FGV cnsal-ads Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -813,7 +858,10 @@
   },
   "fonte": "FGV cnsal-ads Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "normalizacao"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -861,7 +909,10 @@
   },
   "fonte": "FGV cnsal-ads Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "gof-criacionais"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -885,7 +936,10 @@
   },
   "fonte": "FGV cnsal-ads Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -909,7 +963,10 @@
   },
   "fonte": "FGV cnsal-ads Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -933,7 +990,10 @@
   },
   "fonte": "FGV cnsal-ads Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -981,7 +1041,10 @@
   },
   "fonte": "FGV cnsal-ads Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1005,7 +1068,10 @@
   },
   "fonte": "FGV cnsal-ads Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1125,7 +1191,10 @@
   },
   "fonte": "FGV cnsal-ads Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1149,7 +1218,10 @@
   },
   "fonte": "FGV cnsal-ads Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1173,7 +1245,10 @@
   },
   "fonte": "FGV cnsal-ads Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1221,7 +1296,10 @@
   },
   "fonte": "FGV cnsal-ads Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "maturidade-processo"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1245,7 +1323,10 @@
   },
   "fonte": "FGV cnsal-ads Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ponto-funcao"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1269,7 +1350,10 @@
   },
   "fonte": "FGV cnsal-ads Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "gestao-riscos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1293,7 +1377,10 @@
   },
   "fonte": "FGV cnsal-ads Q71",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "gestao-riscos"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1317,7 +1404,10 @@
   },
   "fonte": "FGV cnsal-ads Q72",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1341,7 +1431,10 @@
   },
   "fonte": "FGV cnsal-ads Q73",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "continuidade-rto-rpo"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1389,7 +1482,10 @@
   },
   "fonte": "FGV cnsal-ads Q75",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "iso-27001-27002"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1437,7 +1533,10 @@
   },
   "fonte": "FGV cnsal-ads Q77",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "casos-uso"
+  ]
  },
  {
   "prova": "cnsal-ads",
@@ -1509,7 +1608,10 @@
   },
   "fonte": "FGV cnsal-ads Q80",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-de-processo"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1533,7 +1635,10 @@
   },
   "fonte": "FGV cnsal-bd Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "normalizacao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1557,7 +1662,10 @@
   },
   "fonte": "FGV cnsal-bd Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1581,7 +1689,10 @@
   },
   "fonte": "FGV cnsal-bd Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1605,7 +1716,10 @@
   },
   "fonte": "FGV cnsal-bd Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metadados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1629,7 +1743,10 @@
   },
   "fonte": "FGV cnsal-bd Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "aries-recuperacao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1653,7 +1770,10 @@
   },
   "fonte": "FGV cnsal-bd Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1701,7 +1821,10 @@
   },
   "fonte": "FGV cnsal-bd Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "propriedades-acid"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1725,7 +1848,10 @@
   },
   "fonte": "FGV cnsal-bd Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1773,7 +1899,10 @@
   },
   "fonte": "FGV cnsal-bd Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1797,7 +1926,10 @@
   },
   "fonte": "FGV cnsal-bd Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "etl"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1821,7 +1953,10 @@
   },
   "fonte": "FGV cnsal-bd Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metadados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1869,7 +2004,10 @@
   },
   "fonte": "FGV cnsal-bd Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1893,7 +2031,10 @@
   },
   "fonte": "FGV cnsal-bd Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -1941,7 +2082,10 @@
   },
   "fonte": "FGV cnsal-bd Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2013,7 +2157,10 @@
   },
   "fonte": "FGV cnsal-bd Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2037,7 +2184,10 @@
   },
   "fonte": "FGV cnsal-bd Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2061,7 +2211,10 @@
   },
   "fonte": "FGV cnsal-bd Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2085,7 +2238,10 @@
   },
   "fonte": "FGV cnsal-bd Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2133,7 +2289,10 @@
   },
   "fonte": "FGV cnsal-bd Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2157,7 +2316,10 @@
   },
   "fonte": "FGV cnsal-bd Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2181,7 +2343,10 @@
   },
   "fonte": "FGV cnsal-bd Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "backup-recuperacao"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2205,7 +2370,10 @@
   },
   "fonte": "FGV cnsal-bd Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "indices"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2253,7 +2421,10 @@
   },
   "fonte": "FGV cnsal-bd Q71",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "view-grant"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2277,7 +2448,10 @@
   },
   "fonte": "FGV cnsal-bd Q72",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2325,7 +2499,10 @@
   },
   "fonte": "FGV cnsal-bd Q74",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "view-grant"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2349,7 +2526,10 @@
   },
   "fonte": "FGV cnsal-bd Q75",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "armazenamento-fisico"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2373,7 +2553,10 @@
   },
   "fonte": "FGV cnsal-bd Q76",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2397,7 +2580,10 @@
   },
   "fonte": "FGV cnsal-bd Q77",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2421,7 +2607,10 @@
   },
   "fonte": "FGV cnsal-bd Q78",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2445,7 +2634,10 @@
   },
   "fonte": "FGV cnsal-bd Q79",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "cnsal-bd",
@@ -2493,7 +2685,10 @@
   },
   "fonte": "FGV cnsal-redes Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2517,7 +2712,10 @@
   },
   "fonte": "FGV cnsal-redes Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2589,7 +2787,10 @@
   },
   "fonte": "FGV cnsal-redes Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2613,7 +2814,10 @@
   },
   "fonte": "FGV cnsal-redes Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estruturas-dados"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2637,7 +2841,10 @@
   },
   "fonte": "FGV cnsal-redes Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-osi-tcpip"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2685,7 +2892,10 @@
   },
   "fonte": "FGV cnsal-redes Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equipamentos"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2709,7 +2919,10 @@
   },
   "fonte": "FGV cnsal-redes Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "tcp-udp"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2733,7 +2946,10 @@
   },
   "fonte": "FGV cnsal-redes Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sub-redes"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2757,7 +2973,10 @@
   },
   "fonte": "FGV cnsal-redes Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equipamentos"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2781,7 +3000,10 @@
   },
   "fonte": "FGV cnsal-redes Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "protocolos-portas"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2805,7 +3027,10 @@
   },
   "fonte": "FGV cnsal-redes Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mpls-vlan-nat"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2829,7 +3054,10 @@
   },
   "fonte": "FGV cnsal-redes Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sub-redes"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2853,7 +3081,10 @@
   },
   "fonte": "FGV cnsal-redes Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "tipos-de-rede"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2877,7 +3108,10 @@
   },
   "fonte": "FGV cnsal-redes Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equipamentos"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2901,7 +3135,10 @@
   },
   "fonte": "FGV cnsal-redes Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2925,7 +3162,10 @@
   },
   "fonte": "FGV cnsal-redes Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "firewall"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2949,7 +3189,10 @@
   },
   "fonte": "FGV cnsal-redes Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "criptografia"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2973,7 +3216,10 @@
   },
   "fonte": "FGV cnsal-redes Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -2997,7 +3243,10 @@
   },
   "fonte": "FGV cnsal-redes Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "resposta-a-incidentes"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3021,7 +3270,10 @@
   },
   "fonte": "FGV cnsal-redes Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3069,7 +3321,10 @@
   },
   "fonte": "FGV cnsal-redes Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "resposta-a-incidentes"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3093,7 +3348,10 @@
   },
   "fonte": "FGV cnsal-redes Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mpls-vlan-nat"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3117,7 +3375,10 @@
   },
   "fonte": "FGV cnsal-redes Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3141,7 +3402,10 @@
   },
   "fonte": "FGV cnsal-redes Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3165,7 +3429,10 @@
   },
   "fonte": "FGV cnsal-redes Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "criptografia"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3189,7 +3456,10 @@
   },
   "fonte": "FGV cnsal-redes Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "firewall"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3237,7 +3507,10 @@
   },
   "fonte": "FGV cnsal-redes Q72",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3261,7 +3534,10 @@
   },
   "fonte": "FGV cnsal-redes Q73",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "https-ssl-tls"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3285,7 +3561,10 @@
   },
   "fonte": "FGV cnsal-redes Q74",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "resposta-a-incidentes"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3357,7 +3636,10 @@
   },
   "fonte": "FGV cnsal-redes Q77",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3381,7 +3663,10 @@
   },
   "fonte": "FGV cnsal-redes Q78",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3405,7 +3690,10 @@
   },
   "fonte": "FGV cnsal-redes Q79",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "cnsal-redes",
@@ -3561,7 +3849,10 @@
   },
   "fonte": "FGV cprm-ads Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4392,7 +4683,10 @@
   },
   "fonte": "FGV cprm-ads Q37",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "inmon-kimball"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4416,7 +4710,10 @@
   },
   "fonte": "FGV cprm-ads Q38",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "principios-lgpd"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4464,7 +4761,10 @@
   },
   "fonte": "FGV cprm-ads Q40",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -4488,7 +4788,10 @@
   },
   "fonte": "FGV cprm-ads Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -5008,7 +5311,10 @@
   },
   "fonte": "FGV cprm-ads Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "cprm-ads",
@@ -5410,7 +5716,10 @@
   },
   "fonte": "FGV dataprev2024 Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5434,7 +5743,10 @@
   },
   "fonte": "FGV dataprev2024 Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5506,7 +5818,10 @@
   },
   "fonte": "FGV dataprev2024 Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "regencia"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5530,7 +5845,10 @@
   },
   "fonte": "FGV dataprev2024 Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5554,7 +5872,10 @@
   },
   "fonte": "FGV dataprev2024 Q7",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pontuacao"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5602,7 +5923,10 @@
   },
   "fonte": "FGV dataprev2024 Q9",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5626,7 +5950,10 @@
   },
   "fonte": "FGV dataprev2024 Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5650,7 +5977,10 @@
   },
   "fonte": "FGV dataprev2024 Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "concordancia-nominal"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5693,7 +6023,10 @@
   "erradas": {},
   "fonte": "FGV dataprev2024 Q13",
   "requer_imagem": false,
-  "anulada": true
+  "anulada": true,
+  "sub": [
+   "julgamento-afirmativas"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5741,7 +6074,10 @@
   },
   "fonte": "FGV dataprev2024 Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referencia-pronominal-ingles"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5765,7 +6101,10 @@
   },
   "fonte": "FGV dataprev2024 Q16",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5789,7 +6128,10 @@
   },
   "fonte": "FGV dataprev2024 Q17",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5813,7 +6155,10 @@
   },
   "fonte": "FGV dataprev2024 Q18",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "compreensao-global-ingles"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5837,7 +6182,10 @@
   },
   "fonte": "FGV dataprev2024 Q19",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referencia-pronominal-ingles"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5909,7 +6257,10 @@
   },
   "fonte": "FGV dataprev2024 Q22",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5933,7 +6284,10 @@
   },
   "fonte": "FGV dataprev2024 Q23",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "verbos-modais"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -5957,7 +6311,10 @@
   },
   "fonte": "FGV dataprev2024 Q24",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vocabulario-contexto"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6053,7 +6410,10 @@
   },
   "fonte": "FGV dataprev2024 Q28",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equivalencias-logicas"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6077,7 +6437,10 @@
   },
   "fonte": "FGV dataprev2024 Q29",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "analise-combinatoria"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6101,7 +6464,10 @@
   },
   "fonte": "FGV dataprev2024 Q30",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "porcentagem"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6245,7 +6611,10 @@
   },
   "fonte": "FGV dataprev2024 Q36",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "lai"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6269,7 +6638,10 @@
   },
   "fonte": "FGV dataprev2024 Q37",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "delitos-informaticos"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6293,7 +6665,10 @@
   },
   "fonte": "FGV dataprev2024 Q38",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sancoes-administrativas"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6317,7 +6692,10 @@
   },
   "fonte": "FGV dataprev2024 Q39",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sancoes-lgpd"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6341,7 +6719,10 @@
   },
   "fonte": "FGV dataprev2024 Q40",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "anpd-cnpd"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6365,7 +6746,10 @@
   },
   "fonte": "FGV dataprev2024 Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ecossistema-spring"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6389,7 +6773,10 @@
   },
   "fonte": "FGV dataprev2024 Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "formatos-dados"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6413,7 +6800,10 @@
   },
   "fonte": "FGV dataprev2024 Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "padroes-arquiteturais"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6437,7 +6827,10 @@
   },
   "fonte": "FGV dataprev2024 Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "tipos-de-rede"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6461,7 +6854,10 @@
   },
   "fonte": "FGV dataprev2024 Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6485,7 +6881,10 @@
   },
   "fonte": "FGV dataprev2024 Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "https-ssl-tls"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6509,7 +6908,10 @@
   },
   "fonte": "FGV dataprev2024 Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ponto-funcao"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6533,7 +6935,10 @@
   },
   "fonte": "FGV dataprev2024 Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mobile-low-code"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6576,7 +6981,10 @@
   },
   "fonte": "FGV dataprev2024 Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "servidor-web-aplicacao"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6624,7 +7032,10 @@
   },
   "fonte": "FGV dataprev2024 Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "testes"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6648,7 +7059,10 @@
   },
   "fonte": "FGV dataprev2024 Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6672,7 +7086,10 @@
   },
   "fonte": "FGV dataprev2024 Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6696,7 +7113,10 @@
   },
   "fonte": "FGV dataprev2024 Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "devops-entrega"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6720,7 +7140,10 @@
   },
   "fonte": "FGV dataprev2024 Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "blockchain"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6744,7 +7167,10 @@
   },
   "fonte": "FGV dataprev2024 Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6792,7 +7218,10 @@
   },
   "fonte": "FGV dataprev2024 Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "etl"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6816,7 +7245,10 @@
   },
   "fonte": "FGV dataprev2024 Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ssd-dss"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6840,7 +7272,10 @@
   },
   "fonte": "FGV dataprev2024 Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fontes-de-dados"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6864,7 +7299,10 @@
   },
   "fonte": "FGV dataprev2024 Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6888,7 +7326,10 @@
   },
   "fonte": "FGV dataprev2024 Q63",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "owasp-top10"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6912,7 +7353,10 @@
   },
   "fonte": "FGV dataprev2024 Q64",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "x800-osi"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6936,7 +7380,10 @@
   },
   "fonte": "FGV dataprev2024 Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "relacional-multidimensional"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6960,7 +7407,10 @@
   },
   "fonte": "FGV dataprev2024 Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -6984,7 +7434,10 @@
   },
   "fonte": "FGV dataprev2024 Q67",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "etl"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -7008,7 +7461,10 @@
   },
   "fonte": "FGV dataprev2024 Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -7032,7 +7488,10 @@
   },
   "fonte": "FGV dataprev2024 Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "dataprev2024",
@@ -7056,7 +7515,10 @@
   },
   "fonte": "FGV dataprev2024 Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "epe-ti",
@@ -7855,7 +8317,10 @@
   "erradas": {},
   "fonte": "FGV epe-ti Q58",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ataques-malware"
+  ]
  },
  {
   "prova": "epe-ti",
@@ -8431,7 +8896,10 @@
   },
   "fonte": "FGV mpu Q1",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "mpu",
@@ -8503,7 +8971,10 @@
   },
   "fonte": "FGV mpu Q4",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "mpu",
@@ -8527,7 +8998,10 @@
   },
   "fonte": "FGV mpu Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "mpu",
@@ -8551,7 +9025,10 @@
   },
   "fonte": "FGV mpu Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "mpu",
@@ -8575,7 +9052,10 @@
   },
   "fonte": "FGV mpu Q7",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "mpu",
@@ -8599,7 +9079,10 @@
   },
   "fonte": "FGV mpu Q8",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "mpu",
@@ -8671,7 +9154,10 @@
   },
   "fonte": "FGV mpu Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "mpu",
@@ -8695,7 +9181,10 @@
   },
   "fonte": "FGV mpu Q12",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "mpu",
@@ -8719,7 +9208,10 @@
   },
   "fonte": "FGV mpu Q13",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "mpu",
@@ -8743,7 +9235,10 @@
   },
   "fonte": "FGV mpu Q14",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "colocacao-pronominal"
+  ]
  },
  {
   "prova": "mpu",
@@ -8767,7 +9262,10 @@
   },
   "fonte": "FGV mpu Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "regencia"
+  ]
  },
  {
   "prova": "mpu",
@@ -9146,7 +9644,10 @@
   "erradas": {},
   "fonte": "FGV mpu Q41",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "diagrama-classes"
+  ]
  },
  {
   "prova": "mpu",
@@ -9194,7 +9695,10 @@
   },
   "fonte": "FGV mpu Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "mpu",
@@ -9218,7 +9722,10 @@
   },
   "fonte": "FGV mpu Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "mpu",
@@ -9242,7 +9749,10 @@
   },
   "fonte": "FGV mpu Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "mpu",
@@ -9290,7 +9800,10 @@
   },
   "fonte": "FGV mpu Q47",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "etl"
+  ]
  },
  {
   "prova": "mpu",
@@ -9314,7 +9827,10 @@
   },
   "fonte": "FGV mpu Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "mpu",
@@ -9338,7 +9854,10 @@
   },
   "fonte": "FGV mpu Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "mpu",
@@ -9362,7 +9881,10 @@
   },
   "fonte": "FGV mpu Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "administracao-dados"
+  ]
  },
  {
   "prova": "mpu",
@@ -9386,7 +9908,10 @@
   },
   "fonte": "FGV mpu Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "leitura-codigo"
+  ]
  },
  {
   "prova": "mpu",
@@ -9453,7 +9978,10 @@
   },
   "fonte": "FGV mpu Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "mpu",
@@ -9501,7 +10029,10 @@
   },
   "fonte": "FGV mpu Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "view-grant"
+  ]
  },
  {
   "prova": "mpu",
@@ -9525,7 +10056,10 @@
   },
   "fonte": "FGV mpu Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "principios-lgpd"
+  ]
  },
  {
   "prova": "mpu",
@@ -9549,7 +10083,10 @@
   },
   "fonte": "FGV mpu Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "mpu",
@@ -9573,7 +10110,10 @@
   },
   "fonte": "FGV mpu Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "view-grant"
+  ]
  },
  {
   "prova": "mpu",
@@ -9597,7 +10137,10 @@
   },
   "fonte": "FGV mpu Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "mpu",
@@ -9621,7 +10164,10 @@
   },
   "fonte": "FGV mpu Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "mpu",
@@ -9645,7 +10191,10 @@
   },
   "fonte": "FGV mpu Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "propriedades-acid"
+  ]
  },
  {
   "prova": "mpu",
@@ -9683,7 +10232,10 @@
   "erradas": {},
   "fonte": "FGV mpu Q64",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ponto-funcao"
+  ]
  },
  {
   "prova": "mpu",
@@ -9707,7 +10259,10 @@
   },
   "fonte": "FGV mpu Q65",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ponto-funcao"
+  ]
  },
  {
   "prova": "mpu",
@@ -9731,7 +10286,10 @@
   },
   "fonte": "FGV mpu Q66",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "mpu",
@@ -9750,7 +10308,10 @@
   "erradas": {},
   "fonte": "FGV mpu Q67",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "uml"
+  ]
  },
  {
   "prova": "mpu",
@@ -9774,7 +10335,10 @@
   },
   "fonte": "FGV mpu Q68",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ux-acessibilidade"
+  ]
  },
  {
   "prova": "mpu",
@@ -9798,7 +10362,10 @@
   },
   "fonte": "FGV mpu Q69",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "cobit-2019"
+  ]
  },
  {
   "prova": "mpu",
@@ -9822,7 +10389,10 @@
   },
   "fonte": "FGV mpu Q70",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "devops-entrega"
+  ]
  },
  {
   "prova": "mpu",
@@ -9846,7 +10416,10 @@
   },
   "fonte": "FGV mpu Q71",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "padroes-arquiteturais"
+  ]
  },
  {
   "prova": "mpu",
@@ -9870,7 +10443,10 @@
   },
   "fonte": "FGV mpu Q72",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "git-devops"
+  ]
  },
  {
   "prova": "mpu",
@@ -9894,7 +10470,10 @@
   },
   "fonte": "FGV mpu Q73",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "git-devops"
+  ]
  },
  {
   "prova": "mpu",
@@ -9966,7 +10545,10 @@
   },
   "fonte": "FGV mpu Q76",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "java-moderno"
+  ]
  },
  {
   "prova": "mpu",
@@ -9990,7 +10572,10 @@
   },
   "fonte": "FGV mpu Q77",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "renderizacao-react"
+  ]
  },
  {
   "prova": "mpu",
@@ -10014,7 +10599,10 @@
   },
   "fonte": "FGV mpu Q78",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mobile-low-code"
+  ]
  },
  {
   "prova": "mpu",
@@ -10038,7 +10626,10 @@
   },
   "fonte": "FGV mpu Q79",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "iso-27001-27002"
+  ]
  },
  {
   "prova": "mpu",
@@ -10081,7 +10672,10 @@
   "erradas": {},
   "fonte": "FGV nav-eng Q41",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -10289,7 +10883,10 @@
   "erradas": {},
   "fonte": "FGV nav-eng Q49",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "testes"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -10740,7 +11337,10 @@
   "erradas": {},
   "fonte": "FGV nav-eng Q66",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "testes"
+  ]
  },
  {
   "prova": "nav-eng",
@@ -11293,7 +11893,10 @@
   "erradas": {},
   "fonte": "FGV nav-med Q27",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "geometria-plana"
+  ]
  },
  {
   "prova": "nav-med",
@@ -11490,7 +12093,10 @@
   "erradas": {},
   "fonte": "FGV nav-med Q35",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conjuntos-inclusao-exclusao"
+  ]
  },
  {
   "prova": "nav-med",
@@ -11776,7 +12382,10 @@
   "erradas": {},
   "fonte": "FGV nav-med Q51",
   "requer_imagem": true,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "conectivos"
+  ]
  },
  {
   "prova": "nav-med",
@@ -12151,7 +12760,10 @@
   },
   "fonte": "FGV nav-tec Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -13244,7 +13856,10 @@
   "erradas": {},
   "fonte": "FGV nav-tec Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "normalizacao"
+  ]
  },
  {
   "prova": "nav-tec",
@@ -14099,7 +14714,10 @@
   },
   "fonte": "FGV tjrj1 Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14171,7 +14789,10 @@
   },
   "fonte": "FGV tjrj1 Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pronomes-relativos"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14195,7 +14816,10 @@
   },
   "fonte": "FGV tjrj1 Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14291,7 +14915,10 @@
   },
   "fonte": "FGV tjrj1 Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14315,7 +14942,10 @@
   },
   "fonte": "FGV tjrj1 Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14339,7 +14969,10 @@
   },
   "fonte": "FGV tjrj1 Q12",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14387,7 +15020,10 @@
   },
   "fonte": "FGV tjrj1 Q14",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14411,7 +15047,10 @@
   },
   "fonte": "FGV tjrj1 Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14435,7 +15074,10 @@
   },
   "fonte": "FGV tjrj1 Q16",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14459,7 +15101,10 @@
   },
   "fonte": "FGV tjrj1 Q17",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14483,7 +15128,10 @@
   },
   "fonte": "FGV tjrj1 Q18",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "interpretacao-texto"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14531,7 +15179,10 @@
   },
   "fonte": "FGV tjrj1 Q20",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14814,7 +15465,10 @@
   },
   "fonte": "FGV tjrj1 Q32",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14838,7 +15492,10 @@
   },
   "fonte": "FGV tjrj1 Q33",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "modelos-osi-tcpip"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14862,7 +15519,10 @@
   },
   "fonte": "FGV tjrj1 Q34",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "equipamentos"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14886,7 +15546,10 @@
   },
   "fonte": "FGV tjrj1 Q35",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "acl-wildcard"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14910,7 +15573,10 @@
   },
   "fonte": "FGV tjrj1 Q36",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "triade-cia"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14934,7 +15600,10 @@
   },
   "fonte": "FGV tjrj1 Q37",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nosql-novos-armazenamentos"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -14982,7 +15651,10 @@
   },
   "fonte": "FGV tjrj1 Q39",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fato-dimensao"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15006,7 +15678,10 @@
   },
   "fonte": "FGV tjrj1 Q40",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "relacional-multidimensional"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15030,7 +15705,10 @@
   },
   "fonte": "FGV tjrj1 Q41",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15054,7 +15732,10 @@
   },
   "fonte": "FGV tjrj1 Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15078,7 +15759,10 @@
   },
   "fonte": "FGV tjrj1 Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15102,7 +15786,10 @@
   },
   "fonte": "FGV tjrj1 Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fundamentos-ia"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15126,7 +15813,10 @@
   },
   "fonte": "FGV tjrj1 Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "vies-variancia"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15198,7 +15888,10 @@
   },
   "fonte": "FGV tjrj1 Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metricas-ml"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15222,7 +15915,10 @@
   },
   "fonte": "FGV tjrj1 Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "fundamentos-ia"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15246,7 +15942,10 @@
   },
   "fonte": "FGV tjrj1 Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metricas-ml"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15270,7 +15969,10 @@
   },
   "fonte": "FGV tjrj1 Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ia-aplicada-cenarios"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15294,7 +15996,10 @@
   },
   "fonte": "FGV tjrj1 Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "llms-generativos"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15318,7 +16023,10 @@
   },
   "fonte": "FGV tjrj1 Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15342,7 +16050,10 @@
   },
   "fonte": "FGV tjrj1 Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "metodos-ageis"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15366,7 +16077,10 @@
   },
   "fonte": "FGV tjrj1 Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pmbok"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15414,7 +16128,10 @@
   },
   "fonte": "FGV tjrj1 Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "cobit-2019"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15438,7 +16155,10 @@
   },
   "fonte": "FGV tjrj1 Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15462,7 +16182,10 @@
   },
   "fonte": "FGV tjrj1 Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pmbok"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15486,7 +16209,10 @@
   },
   "fonte": "FGV tjrj1 Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "decisao-automatizada"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15510,7 +16236,10 @@
   },
   "fonte": "FGV tjrj1 Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "bases-legais"
+  ]
  },
  {
   "prova": "tjrj1",
@@ -15750,7 +16479,10 @@
   },
   "fonte": "FGV tjrj2 Q2",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -15822,7 +16554,10 @@
   },
   "fonte": "FGV tjrj2 Q5",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "pronomes-relativos"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -15846,7 +16581,10 @@
   },
   "fonte": "FGV tjrj2 Q6",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -15942,7 +16680,10 @@
   },
   "fonte": "FGV tjrj2 Q10",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -15966,7 +16707,10 @@
   },
   "fonte": "FGV tjrj2 Q11",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -15990,7 +16734,10 @@
   },
   "fonte": "FGV tjrj2 Q12",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "referenciacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16038,7 +16785,10 @@
   },
   "fonte": "FGV tjrj2 Q14",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "classes-palavras"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16062,7 +16812,10 @@
   },
   "fonte": "FGV tjrj2 Q15",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16086,7 +16839,10 @@
   },
   "fonte": "FGV tjrj2 Q16",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16110,7 +16866,10 @@
   },
   "fonte": "FGV tjrj2 Q17",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "oracoes-subordinadas"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16182,7 +16941,10 @@
   },
   "fonte": "FGV tjrj2 Q20",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "reescrita-significacao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16441,7 +17203,10 @@
   },
   "fonte": "FGV tjrj2 Q31",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "nuvem-escalabilidade"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16465,7 +17230,10 @@
   },
   "fonte": "FGV tjrj2 Q32",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "tcp-udp"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16489,7 +17257,10 @@
   },
   "fonte": "FGV tjrj2 Q33",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "arquitetura-computadores-so"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16513,7 +17284,10 @@
   },
   "fonte": "FGV tjrj2 Q34",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "bases-legais"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16537,7 +17311,10 @@
   },
   "fonte": "FGV tjrj2 Q35",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "triade-cia"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16585,7 +17362,10 @@
   },
   "fonte": "FGV tjrj2 Q37",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "estilos-arquiteturais"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16609,7 +17389,10 @@
   },
   "fonte": "FGV tjrj2 Q38",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "engenharia-requisitos"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16633,7 +17416,10 @@
   },
   "fonte": "FGV tjrj2 Q39",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16657,7 +17443,10 @@
   },
   "fonte": "FGV tjrj2 Q40",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16676,7 +17465,10 @@
   "erradas": {},
   "fonte": "FGV tjrj2 Q41",
   "requer_imagem": false,
-  "anulada": true
+  "anulada": true,
+  "sub": [
+   "git-devops"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16700,7 +17492,10 @@
   },
   "fonte": "FGV tjrj2 Q42",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ponto-funcao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16724,7 +17519,10 @@
   },
   "fonte": "FGV tjrj2 Q43",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "cobit-2019"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16748,7 +17546,10 @@
   },
   "fonte": "FGV tjrj2 Q44",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "itil"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16772,7 +17573,10 @@
   },
   "fonte": "FGV tjrj2 Q45",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "php"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16796,7 +17600,10 @@
   },
   "fonte": "FGV tjrj2 Q46",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "relacional-multidimensional"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16844,7 +17651,10 @@
   },
   "fonte": "FGV tjrj2 Q48",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16868,7 +17678,10 @@
   },
   "fonte": "FGV tjrj2 Q49",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16892,7 +17705,10 @@
   },
   "fonte": "FGV tjrj2 Q50",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16916,7 +17732,10 @@
   },
   "fonte": "FGV tjrj2 Q51",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "sql-consultas"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16940,7 +17759,10 @@
   },
   "fonte": "FGV tjrj2 Q52",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "mer-relacional"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16964,7 +17786,10 @@
   },
   "fonte": "FGV tjrj2 Q53",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "controle-acesso"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -16988,7 +17813,10 @@
   },
   "fonte": "FGV tjrj2 Q54",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "git-devops"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17012,7 +17840,10 @@
   },
   "fonte": "FGV tjrj2 Q55",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ecossistema-spring"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17036,7 +17867,10 @@
   },
   "fonte": "FGV tjrj2 Q56",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "criptografia"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17060,7 +17894,10 @@
   },
   "fonte": "FGV tjrj2 Q57",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "anotacoes-java"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17084,7 +17921,10 @@
   },
   "fonte": "FGV tjrj2 Q58",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "threads-virtuais"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17108,7 +17948,10 @@
   },
   "fonte": "FGV tjrj2 Q59",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "integracao"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17132,7 +17975,10 @@
   },
   "fonte": "FGV tjrj2 Q60",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ecossistema-spring"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17156,7 +18002,10 @@
   },
   "fonte": "FGV tjrj2 Q61",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "ecossistema-spring"
+  ]
  },
  {
   "prova": "tjrj2",
@@ -17180,7 +18029,10 @@
   },
   "fonte": "FGV tjrj2 Q62",
   "requer_imagem": false,
-  "anulada": false
+  "anulada": false,
+  "sub": [
+   "git-devops"
+  ]
  },
  {
   "prova": "tjrj2",
